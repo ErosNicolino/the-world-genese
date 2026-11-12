@@ -1,0 +1,4784 @@
+{
+ "_doc": "Gerado por Tools/BuildLookCatalog.py a partir do Godot (somente leitura). Não editar à mão.",
+ "attributes": [
+  "Força",
+  "Destreza",
+  "Vitalidade",
+  "Inteligência",
+  "Mana",
+  "Espírito",
+  "Recuperação",
+  "Sorte"
+ ],
+ "races": [
+  {
+   "id": "humano",
+   "name": "Humano",
+   "tagline": "Equilibrado e versátil.",
+   "epithet": "Filhos do Vale",
+   "start": [
+    6,
+    5,
+    8,
+    4,
+    6,
+    4,
+    4,
+    4
+   ],
+   "scale": 1.0,
+   "traits": [
+    "Usa qualquer arma e magia, sem fraquezas"
+   ],
+   "skin": [
+    "#F1C6A1",
+    "#DFAF87",
+    "#B77E5B",
+    "#8E573D",
+    "#5C382B"
+   ],
+   "features": [
+    "race_none"
+   ],
+   "accent": "#E9B949",
+   "nameStart": [
+    "Ar",
+    "Bel",
+    "Cai",
+    "Dar",
+    "El",
+    "Fen",
+    "Gar",
+    "Hal",
+    "Ian",
+    "Lu",
+    "Ma",
+    "Rai",
+    "Tor",
+    "Val"
+   ],
+   "nameEnd": [
+    "an",
+    "en",
+    "ric",
+    "ton",
+    "do",
+    "ra",
+    "lia",
+    "mir",
+    "son",
+    "vel",
+    "ina",
+    "ro"
+   ],
+   "shape": {
+    "height": 1.0,
+    "width": 1.0,
+    "legs": 1.0,
+    "legThick": 1.0,
+    "torso": 1.0,
+    "arms": 1.0,
+    "head": 1.0,
+    "meters": 1.4
+   },
+   "own": [],
+   "hide": [],
+   "faceless": false,
+   "traitLabel": "Traço da raça"
+  },
+  {
+   "id": "elfo",
+   "name": "Elfo",
+   "tagline": "Ligado à magia e às flechas do vale.",
+   "epithet": "Guardiões da Floresta",
+   "start": [
+    3,
+    6,
+    9,
+    7,
+    8,
+    5,
+    2,
+    3
+   ],
+   "scale": 1.0,
+   "traits": [
+    "+20% dano com arco e magia",
+    "-20% dano corpo a corpo",
+    "Mana volta 20% mais rápido"
+   ],
+   "skin": [
+    "#F6DCC4",
+    "#EFD2BA",
+    "#D9B48E",
+    "#9AA6C8",
+    "#6E7AA8"
+   ],
+   "features": [
+    "elf_"
+   ],
+   "accent": "#6FD39A",
+   "nameStart": [
+    "Ae",
+    "Ca",
+    "El",
+    "Fae",
+    "Gil",
+    "Ith",
+    "Lae",
+    "Mel",
+    "Nae",
+    "Syl",
+    "Thal",
+    "Yl"
+   ],
+   "nameEnd": [
+    "dris",
+    "lien",
+    "riel",
+    "thas",
+    "wen",
+    "lia",
+    "nor",
+    "rion",
+    "sael",
+    "vyn",
+    "ndra"
+   ],
+   "shape": {
+    "height": 1.04,
+    "width": 0.92,
+    "legs": 1.08,
+    "legThick": 0.9,
+    "torso": 0.94,
+    "arms": 0.9,
+    "head": 0.96,
+    "meters": 1.4
+   },
+   "own": [
+    "hair",
+    "eyes"
+   ],
+   "hide": [],
+   "faceless": false,
+   "traitLabel": "Orelhas"
+  },
+  {
+   "id": "diabo",
+   "name": "Demônio",
+   "tagline": "Nascido das brasas da cratera.",
+   "epithet": "Herdeiros da Cratera",
+   "start": [
+    7,
+    5,
+    7,
+    6,
+    7,
+    4,
+    2,
+    3
+   ],
+   "scale": 1.0,
+   "traits": [
+    "+10% dano corpo a corpo",
+    "+20% dano mágico",
+    "Recebe +10% de dano"
+   ],
+   "skin": [
+    "#B8342C",
+    "#8E2430",
+    "#C25A3A",
+    "#6A3A8A",
+    "#3A2A3A"
+   ],
+   "features": [
+    "demon_"
+   ],
+   "accent": "#FF5A3C",
+   "nameStart": [
+    "Az",
+    "Bal",
+    "Ka",
+    "Mal",
+    "Mor",
+    "Naz",
+    "Ra",
+    "Shai",
+    "Vex",
+    "Xar",
+    "Zar"
+   ],
+   "nameEnd": [
+    "eth",
+    "gor",
+    "ira",
+    "kul",
+    "oth",
+    "rax",
+    "thar",
+    "vas",
+    "zul",
+    "ys",
+    "mon"
+   ],
+   "shape": {
+    "height": 1.03,
+    "width": 1.0,
+    "legs": 1.0,
+    "legThick": 1.0,
+    "torso": 1.07,
+    "arms": 1.05,
+    "head": 1.0,
+    "meters": 1.45
+   },
+   "own": [
+    "hair",
+    "eyes"
+   ],
+   "hide": [],
+   "faceless": false,
+   "traitLabel": "Chifres e cauda"
+  },
+  {
+   "id": "anao",
+   "name": "Anão",
+   "tagline": "Baixo, forte e teimoso como pedra.",
+   "epithet": "Clãs da Pedra",
+   "start": [
+    8,
+    4,
+    10,
+    2,
+    3,
+    3,
+    6,
+    5
+   ],
+   "scale": 0.6666666666666666,
+   "traits": [
+    "1,5x menor",
+    "+20% dano corpo a corpo",
+    "Recebe -10% de dano",
+    "-40% dano com arco",
+    "Não usa magia"
+   ],
+   "skin": [
+    "#F1C6A1",
+    "#E2AE8D",
+    "#C98E6A",
+    "#AA7558",
+    "#8A5A40"
+   ],
+   "features": [
+    "race_none",
+    "dwarf_"
+   ],
+   "accent": "#D08A3C",
+   "nameStart": [
+    "Bal",
+    "Bor",
+    "Dur",
+    "Grim",
+    "Kaz",
+    "Mor",
+    "Thor",
+    "Brun",
+    "Dain",
+    "Hel"
+   ],
+   "nameEnd": [
+    "din",
+    "dek",
+    "grim",
+    "in",
+    "li",
+    "mund",
+    "rak",
+    "rin",
+    "uk",
+    "dra"
+   ],
+   "shape": {
+    "height": 0.84,
+    "width": 1.02,
+    "legs": 0.72,
+    "legThick": 1.25,
+    "torso": 1.25,
+    "arms": 1.2,
+    "head": 1.12,
+    "meters": 0.98
+   },
+   "own": [
+    "hair",
+    "eyes"
+   ],
+   "hide": [],
+   "faceless": false,
+   "traitLabel": "Barba"
+  },
+  {
+   "id": "barbaro",
+   "name": "Bárbaro",
+   "tagline": "Gigante das terras geladas.",
+   "epithet": "Gigantes do Gelo",
+   "start": [
+    10,
+    4,
+    12,
+    1,
+    2,
+    2,
+    6,
+    4
+   ],
+   "scale": 1.5,
+   "traits": [
+    "1,5x maior",
+    "+35% dano corpo a corpo",
+    "Recebe -20% de dano",
+    "-40% dano mágico"
+   ],
+   "skin": [
+    "#E2AE8D",
+    "#C98E6A",
+    "#AA7558",
+    "#8A5A40",
+    "#5C382B"
+   ],
+   "features": [
+    "race_none",
+    "barb_"
+   ],
+   "accent": "#7FC8F0",
+   "nameStart": [
+    "Bjor",
+    "Gun",
+    "Hrof",
+    "Kja",
+    "Rag",
+    "Sig",
+    "Tor",
+    "Ulf",
+    "Vald",
+    "Yr"
+   ],
+   "nameEnd": [
+    "ar",
+    "dis",
+    "grim",
+    "hild",
+    "mund",
+    "nar",
+    "rik",
+    "stein",
+    "ulf",
+    "vor"
+   ],
+   "shape": {
+    "height": 1.42,
+    "width": 1.5,
+    "legs": 1.02,
+    "legThick": 1.12,
+    "torso": 1.12,
+    "arms": 1.15,
+    "head": 0.88,
+    "meters": 2.05
+   },
+   "own": [
+    "hair",
+    "eyes"
+   ],
+   "hide": [],
+   "faceless": false,
+   "traitLabel": "Marcas de guerra"
+  },
+  {
+   "id": "morto_vivo",
+   "name": "Morto-vivo",
+   "tagline": "Esqueleto erguido por cristais antigos.",
+   "epithet": "Erguidos pelos Cristais",
+   "start": [
+    4,
+    5,
+    4,
+    5,
+    9,
+    7,
+    7,
+    2
+   ],
+   "scale": 1.0,
+   "traits": [
+    "Vida e mana voltam 2x mais rápido"
+   ],
+   "skin": [
+    "#E6E0CC",
+    "#D8D2BE",
+    "#BFC4B2",
+    "#A8A89A",
+    "#8C9A8A"
+   ],
+   "features": [
+    "undead_"
+   ],
+   "accent": "#4FE3D6",
+   "nameStart": [
+    "Ash",
+    "Cor",
+    "Gho",
+    "Lich",
+    "Mor",
+    "Nyx",
+    "Os",
+    "Sep",
+    "Vel",
+    "Wra"
+   ],
+   "nameEnd": [
+    "an",
+    "ra",
+    "this",
+    "ul",
+    "veth",
+    "rix",
+    "mora",
+    "kas",
+    "thul",
+    "eon"
+   ],
+   "shape": {
+    "height": 1.0,
+    "width": 0.9,
+    "legs": 1.02,
+    "legThick": 0.78,
+    "torso": 0.9,
+    "arms": 0.78,
+    "head": 1.0,
+    "meters": 1.42
+   },
+   "own": [],
+   "hide": [
+    "hair",
+    "eyes",
+    "mouth"
+   ],
+   "faceless": false,
+   "traitLabel": "Crânio"
+  }
+ ],
+ "colorSlots": [
+  {
+   "key": "skin_color",
+   "label": "Pele",
+   "default": "#F1C6A1",
+   "palette": []
+  },
+  {
+   "key": "hair_color",
+   "label": "Cabelo",
+   "default": "#784026",
+   "palette": [
+    "#F3D9A0",
+    "#E4B877",
+    "#C9853F",
+    "#B8783D",
+    "#784026",
+    "#4A2A1C",
+    "#392A24",
+    "#1E1A1C",
+    "#D6D3C7",
+    "#B24A3A",
+    "#4C6FA8",
+    "#7D4BA0"
+   ]
+  },
+  {
+   "key": "shirt_color",
+   "label": "Camisa",
+   "default": "#507E38",
+   "palette": [
+    "#507E38",
+    "#2D6755",
+    "#28638A",
+    "#324E92",
+    "#403C8E",
+    "#8A342C",
+    "#562C3C",
+    "#B9A47A",
+    "#E2D8BE",
+    "#28262C",
+    "#C47A2C",
+    "#7A7F86"
+   ]
+  },
+  {
+   "key": "sleeve_color",
+   "label": "Mangas",
+   "default": "#507E38",
+   "palette": [
+    "#507E38",
+    "#2D6755",
+    "#28638A",
+    "#324E92",
+    "#403C8E",
+    "#8A342C",
+    "#562C3C",
+    "#B9A47A",
+    "#E2D8BE",
+    "#28262C",
+    "#C47A2C",
+    "#7A7F86"
+   ]
+  },
+  {
+   "key": "pants_color",
+   "label": "Calça",
+   "default": "#2C3142",
+   "palette": [
+    "#2C3142",
+    "#3D4939",
+    "#795A42",
+    "#354B62",
+    "#171E25",
+    "#784C2E",
+    "#BCA67C",
+    "#A82028",
+    "#5A4A6A",
+    "#2C2E3A",
+    "#6A6E72",
+    "#C4688A"
+   ]
+  },
+  {
+   "key": "boots_color",
+   "label": "Botas",
+   "default": "#5C3422",
+   "palette": [
+    "#5C3422",
+    "#784C2E",
+    "#9A6E43",
+    "#3C2B29",
+    "#28262C",
+    "#CEC2A0",
+    "#A6A9AC",
+    "#2E3A4A",
+    "#6B2A24",
+    "#4A5A3A"
+   ]
+  },
+  {
+   "key": "glove_color",
+   "label": "Luvas",
+   "default": "#583220",
+   "palette": [
+    "#583220",
+    "#784C2E",
+    "#9A6E43",
+    "#3C2B29",
+    "#28262C",
+    "#CEC2A0",
+    "#A6A9AC",
+    "#562C3C",
+    "#2E3A4A",
+    "#4A5A3A"
+   ]
+  },
+  {
+   "key": "belt_color",
+   "label": "Cinto",
+   "default": "#5E3A26",
+   "palette": [
+    "#5E3A26",
+    "#7A4A2C",
+    "#9A6E43",
+    "#3C2B29",
+    "#252B32",
+    "#B08A3A",
+    "#6B2A24",
+    "#2E3A4A"
+   ]
+  },
+  {
+   "key": "strap_color",
+   "label": "Alça e bainha",
+   "default": "#7A4A2C",
+   "palette": [
+    "#7A4A2C",
+    "#5E3A26",
+    "#9A6E43",
+    "#3C2B29",
+    "#252B32",
+    "#B08A3A",
+    "#6B2A24",
+    "#2E3A4A"
+   ]
+  }
+ ],
+ "categories": [
+  {
+   "id": "race",
+   "label": "Traço da raça"
+  },
+  {
+   "id": "hair",
+   "label": "Cabelo"
+  },
+  {
+   "id": "eyes",
+   "label": "Olhos"
+  },
+  {
+   "id": "mouth",
+   "label": "Boca"
+  },
+  {
+   "id": "head",
+   "label": "Chapéu e cabeça"
+  },
+  {
+   "id": "face_gear",
+   "label": "Rosto"
+  },
+  {
+   "id": "back",
+   "label": "Pescoço e costas"
+  },
+  {
+   "id": "shirt",
+   "label": "Camisa"
+  },
+  {
+   "id": "pants",
+   "label": "Calça"
+  },
+  {
+   "id": "shoes",
+   "label": "Sapatos"
+  },
+  {
+   "id": "gloves",
+   "label": "Luvas"
+  }
+ ],
+ "fixed": {
+  "Male": [
+   "face_male"
+  ],
+  "Female": [
+   "face_female"
+  ],
+  "all": [
+   "gear_strap",
+   "gear_belt"
+  ]
+ },
+ "pieces": {
+  "shirt_tunic": {
+   "name": "Túnica do aventureiro",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": []
+  },
+  "pants_dark": {
+   "name": "Calça de viagem",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#2C3142"
+   },
+   "races": []
+  },
+  "boots_laced": {
+   "name": "Botas de cadarço",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#5C3422"
+   },
+   "races": []
+  },
+  "gloves_leather": {
+   "name": "Luvas de couro",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#583220"
+   },
+   "races": []
+  },
+  "gear_strap": {
+   "name": "Alça",
+   "category": "gear",
+   "defaults": {
+    "strap_color": "#7A4A2C"
+   },
+   "races": []
+  },
+  "gear_belt": {
+   "name": "Cinto",
+   "category": "gear",
+   "defaults": {
+    "belt_color": "#5E3A26"
+   },
+   "races": []
+  },
+  "shirt_punk": {
+   "name": "Colete punk",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28262C",
+    "sleeve_color": "#28262C"
+   },
+   "races": []
+  },
+  "shirt_linen": {
+   "name": "Camisa de linho",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#E2D8BE",
+    "sleeve_color": "#E2D8BE"
+   },
+   "races": []
+  },
+  "shirt_mail": {
+   "name": "Cota de malha",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#324E92",
+    "sleeve_color": "#324E92"
+   },
+   "races": []
+  },
+  "shirt_robe": {
+   "name": "Manto de mago",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#403C8E",
+    "sleeve_color": "#403C8E"
+   },
+   "races": []
+  },
+  "shirt_bodice": {
+   "name": "Corpete e blusa",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#562C3C",
+    "sleeve_color": "#E2D8BE"
+   },
+   "races": []
+  },
+  "pants_jeans_punk": {
+   "name": "Jeans rasgado",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#2C2E3A"
+   },
+   "races": []
+  },
+  "pants_tartan": {
+   "name": "Xadrez punk",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#A82028"
+   },
+   "races": []
+  },
+  "pants_leather": {
+   "name": "Calça de couro",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#784C2E"
+   },
+   "races": []
+  },
+  "pants_cloth": {
+   "name": "Calça de pano remendada",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#BCA67C"
+   },
+   "races": []
+  },
+  "pants_stripes": {
+   "name": "Meia-calça listrada",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#C4688A"
+   },
+   "races": []
+  },
+  "pants_shorts": {
+   "name": "Short e meias",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#2C2E3A"
+   },
+   "races": []
+  },
+  "boots_punk": {
+   "name": "Coturno punk",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#28262C"
+   },
+   "races": []
+  },
+  "shoes_low": {
+   "name": "Sapato baixo",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#784C2E"
+   },
+   "races": []
+  },
+  "greaves": {
+   "name": "Grevas de metal",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#784C2E"
+   },
+   "races": []
+  },
+  "boots_wrap": {
+   "name": "Botas de viajante",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#CEC2A0"
+   },
+   "races": []
+  },
+  "boots_fur": {
+   "name": "Botas de pelo",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#5C3422"
+   },
+   "races": []
+  },
+  "gloves_punk": {
+   "name": "Luvas sem dedos",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#28262C"
+   },
+   "races": []
+  },
+  "gloves_bare": {
+   "name": "Mãos com faixa",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#CEC2A0"
+   },
+   "races": []
+  },
+  "gauntlets": {
+   "name": "Manoplas",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#A6A9AC"
+   },
+   "races": []
+  },
+  "bracers": {
+   "name": "Braçadeiras",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#784C2E"
+   },
+   "races": []
+  },
+  "gloves_long": {
+   "name": "Luvas longas",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#562C3C"
+   },
+   "races": []
+  },
+  "eyes_m_calm": {
+   "name": "Tranquilo",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_m_fierce": {
+   "name": "Bravo",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_m_big": {
+   "name": "Olhos grandes",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_m_happy": {
+   "name": "Sorridente",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_m_scar": {
+   "name": "Cicatriz",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_f_classic": {
+   "name": "Clássico",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_f_happy": {
+   "name": "Sorridente",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_f_sharp": {
+   "name": "Determinado",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_f_wide": {
+   "name": "Olhos brilhantes",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_f_freckles": {
+   "name": "Sardas",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_small": {
+   "name": "Pequena",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_smile": {
+   "name": "Sorriso",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_serious": {
+   "name": "Séria",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_open": {
+   "name": "Aberta",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_beard": {
+   "name": "Cavanhaque",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_lips": {
+   "name": "Batom",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_cat": {
+   "name": "Gatinho",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_grin": {
+   "name": "Dentes",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_m_sleepy": {
+   "name": "Sonolento",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_m_surprised": {
+   "name": "Surpreso",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_m_focused": {
+   "name": "Concentrado",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_m_gentle": {
+   "name": "Gentil",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_m_bold": {
+   "name": "Ousado",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_f_sleepy": {
+   "name": "Sonolento",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_f_surprised": {
+   "name": "Surpreso",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_f_focused": {
+   "name": "Concentrado",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_f_gentle": {
+   "name": "Gentil",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "eyes_f_bold": {
+   "name": "Ousado",
+   "category": "eyes",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_smirk": {
+   "name": "Sorriso de lado",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_laugh": {
+   "name": "Riso aberto",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_frown": {
+   "name": "Franzida",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_whistle": {
+   "name": "Assobiando",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "mouth_grit": {
+   "name": "Destemida",
+   "category": "mouth",
+   "defaults": {},
+   "races": []
+  },
+  "shirt_scout": {
+   "name": "Traje Patrulheiro",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": []
+  },
+  "pants_scout": {
+   "name": "Calça Patrulheiro",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#507E38"
+   },
+   "races": []
+  },
+  "boots_scout": {
+   "name": "Botas Patrulheiro",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#507E38"
+   },
+   "races": []
+  },
+  "gloves_scout": {
+   "name": "Luvas Patrulheiro",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#507E38"
+   },
+   "races": []
+  },
+  "shirt_winter": {
+   "name": "Traje Invernal",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#E2D8BE",
+    "sleeve_color": "#E2D8BE"
+   },
+   "races": []
+  },
+  "pants_winter": {
+   "name": "Calça Invernal",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#E2D8BE"
+   },
+   "races": []
+  },
+  "boots_winter": {
+   "name": "Botas Invernal",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#E2D8BE"
+   },
+   "races": []
+  },
+  "gloves_winter": {
+   "name": "Luvas Invernal",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#E2D8BE"
+   },
+   "races": []
+  },
+  "shirt_royal": {
+   "name": "Traje Nobre",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#324E92",
+    "sleeve_color": "#324E92"
+   },
+   "races": []
+  },
+  "pants_royal": {
+   "name": "Calça Nobre",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#324E92"
+   },
+   "races": []
+  },
+  "boots_royal": {
+   "name": "Botas Nobre",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#324E92"
+   },
+   "races": []
+  },
+  "gloves_royal": {
+   "name": "Luvas Nobre",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#324E92"
+   },
+   "races": []
+  },
+  "shirt_shadow": {
+   "name": "Traje Sombra",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28262C",
+    "sleeve_color": "#28262C"
+   },
+   "races": []
+  },
+  "pants_shadow": {
+   "name": "Calça Sombra",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#28262C"
+   },
+   "races": []
+  },
+  "boots_shadow": {
+   "name": "Botas Sombra",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#28262C"
+   },
+   "races": []
+  },
+  "gloves_shadow": {
+   "name": "Luvas Sombra",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#28262C"
+   },
+   "races": []
+  },
+  "shirt_healer": {
+   "name": "Traje Curandeiro",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#403C8E",
+    "sleeve_color": "#403C8E"
+   },
+   "races": []
+  },
+  "pants_healer": {
+   "name": "Calça Curandeiro",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#403C8E"
+   },
+   "races": []
+  },
+  "boots_healer": {
+   "name": "Botas Curandeiro",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#403C8E"
+   },
+   "races": []
+  },
+  "gloves_healer": {
+   "name": "Luvas Curandeiro",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#403C8E"
+   },
+   "races": []
+  },
+  "shirt_nomad": {
+   "name": "Traje Andarilho",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#D6BC8A",
+    "sleeve_color": "#D6BC8A"
+   },
+   "races": []
+  },
+  "pants_nomad": {
+   "name": "Calça Andarilho",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#D6BC8A"
+   },
+   "races": []
+  },
+  "boots_nomad": {
+   "name": "Botas Andarilho",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#D6BC8A"
+   },
+   "races": []
+  },
+  "gloves_nomad": {
+   "name": "Luvas Andarilho",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#D6BC8A"
+   },
+   "races": []
+  },
+  "shirt_sailor": {
+   "name": "Traje Marinheiro",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#283868",
+    "sleeve_color": "#283868"
+   },
+   "races": []
+  },
+  "pants_sailor": {
+   "name": "Calça Marinheiro",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#283868"
+   },
+   "races": []
+  },
+  "boots_sailor": {
+   "name": "Botas Marinheiro",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#283868"
+   },
+   "races": []
+  },
+  "gloves_sailor": {
+   "name": "Luvas Marinheiro",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#283868"
+   },
+   "races": []
+  },
+  "shirt_hunter": {
+   "name": "Traje Caçador",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#526C36",
+    "sleeve_color": "#526C36"
+   },
+   "races": []
+  },
+  "pants_hunter": {
+   "name": "Calça Caçador",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#526C36"
+   },
+   "races": []
+  },
+  "boots_hunter": {
+   "name": "Botas Caçador",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#526C36"
+   },
+   "races": []
+  },
+  "gloves_hunter": {
+   "name": "Luvas Caçador",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#526C36"
+   },
+   "races": []
+  },
+  "shirt_monk": {
+   "name": "Traje Monge",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#D68428",
+    "sleeve_color": "#D68428"
+   },
+   "races": []
+  },
+  "pants_monk": {
+   "name": "Calça Monge",
+   "category": "pants",
+   "defaults": {
+    "pants_color": "#D68428"
+   },
+   "races": []
+  },
+  "boots_monk": {
+   "name": "Botas Monge",
+   "category": "shoes",
+   "defaults": {
+    "boots_color": "#D68428"
+   },
+   "races": []
+  },
+  "gloves_monk": {
+   "name": "Luvas Monge",
+   "category": "gloves",
+   "defaults": {
+    "glove_color": "#D68428"
+   },
+   "races": []
+  },
+  "accessory_circlet": {
+   "name": "Tiara de bronze",
+   "category": "head",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_feather": {
+   "name": "Pena de explorador",
+   "category": "head",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_goggles": {
+   "name": "Óculos de campo",
+   "category": "face_gear",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_patch": {
+   "name": "Tapa-olho",
+   "category": "face_gear",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_earrings": {
+   "name": "Brincos dourados",
+   "category": "face_gear",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_ribbon": {
+   "name": "Laço",
+   "category": "head",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_crown": {
+   "name": "Coroa",
+   "category": "head",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_horns": {
+   "name": "Chifres pequenos",
+   "category": "head",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_flower": {
+   "name": "Flor do bosque",
+   "category": "head",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_bandana": {
+   "name": "Bandana",
+   "category": "head",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_hat": {
+   "name": "Chapéu de viajante",
+   "category": "head",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_mask": {
+   "name": "Máscara de pano",
+   "category": "face_gear",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_monocle": {
+   "name": "Monóculo",
+   "category": "face_gear",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_scarf": {
+   "name": "Cachecol",
+   "category": "back",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_necklace": {
+   "name": "Colar de presas",
+   "category": "back",
+   "defaults": {},
+   "races": []
+  },
+  "accessory_cape": {
+   "name": "Capa de viagem",
+   "category": "back",
+   "defaults": {},
+   "races": []
+  },
+  "race_none": {
+   "name": "Nenhum",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "elf_ears_short": {
+   "name": "Orelhas élficas curtas",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "elf_ears_long": {
+   "name": "Orelhas élficas longas",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "elf_ears_swept": {
+   "name": "Orelhas para trás",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "demon_horns_curved": {
+   "name": "Chifres curvos e cauda",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "demon_horns_straight": {
+   "name": "Chifres retos e cauda",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "demon_horns_ram": {
+   "name": "Chifres de carneiro e cauda",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "dwarf_beard_full": {
+   "name": "Barba cheia",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "dwarf_beard_braided": {
+   "name": "Barba trançada",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "dwarf_beard_long": {
+   "name": "Barba longa",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "dwarf_braids": {
+   "name": "Tranças nas têmporas",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "barb_paint_red": {
+   "name": "Pintura de guerra vermelha",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "barb_paint_blue": {
+   "name": "Pintura azul de anil",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "barb_scars": {
+   "name": "Cicatrizes de batalha",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "barb_fur": {
+   "name": "Manto de pele nos ombros",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "undead_skull": {
+   "name": "Crânio",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "undead_skull_glow": {
+   "name": "Crânio de olhos azuis",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "undead_skull_cracked": {
+   "name": "Crânio rachado",
+   "category": "race",
+   "defaults": {},
+   "races": []
+  },
+  "face_male": {
+   "name": "Rosto Male",
+   "category": "face",
+   "defaults": {},
+   "races": []
+  },
+  "face_female": {
+   "name": "Rosto Female",
+   "category": "face",
+   "defaults": {},
+   "races": []
+  },
+  "hair_male_1": {
+   "name": "Cacheado",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_male_2": {
+   "name": "Moicano punk",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_male_3": {
+   "name": "Espetado",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_male_4": {
+   "name": "Raspado lateral",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_male_5": {
+   "name": "Tranças de guerra",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_male_6": {
+   "name": "Liso repartido",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_male_7": {
+   "name": "Topete",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_male_8": {
+   "name": "Corte curto",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_male_9": {
+   "name": "Samurai",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_male_10": {
+   "name": "Ondulado longo",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_female_1": {
+   "name": "Longo",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_female_2": {
+   "name": "Rabo de cavalo",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_female_3": {
+   "name": "Chanel",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_female_4": {
+   "name": "Trança lateral",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_female_5": {
+   "name": "Coque alto",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_female_6": {
+   "name": "Curto assimétrico",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_female_7": {
+   "name": "Cachos",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_female_8": {
+   "name": "Duas tranças",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_female_9": {
+   "name": "Franja e ondas",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "hair_female_10": {
+   "name": "Coroa trançada",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": []
+  },
+  "rw_humano_hair_01": {
+   "name": "Corte de soldado",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_hair_02": {
+   "name": "Repartido do vilarejo",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_hair_03": {
+   "name": "Rabo de mercadora",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_hair_04": {
+   "name": "Cachos do porto",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_hair_05": {
+   "name": "Topete de escudeiro",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_hair_06": {
+   "name": "Longo de bardo",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_hair_07": {
+   "name": "Coque de ferreira",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_hair_08": {
+   "name": "Tranças de camponesa",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_hair_09": {
+   "name": "Espetado de aventureiro",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_hair_10": {
+   "name": "Laço de festa",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#784026"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_face_01": {
+   "name": "Olhar firme",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_face_02": {
+   "name": "Olhar gentil",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_face_03": {
+   "name": "Sardas de sol",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_face_04": {
+   "name": "Cicatriz de guarda",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_face_05": {
+   "name": "Olhos de mel",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_face_06": {
+   "name": "Vigia cansado",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_face_07": {
+   "name": "Olhos claros",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_face_08": {
+   "name": "Determinado",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_face_09": {
+   "name": "Sonhador",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_face_10": {
+   "name": "Pintura de festa",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_outfit_01": {
+   "name": "Gibão do vilarejo",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_outfit_02": {
+   "name": "Casaco de viajante",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_outfit_03": {
+   "name": "Colete de mercador",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_outfit_04": {
+   "name": "Faixa de escudeiro",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_outfit_05": {
+   "name": "Peitoral leve",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_outfit_06": {
+   "name": "Túnica xadrez",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_outfit_07": {
+   "name": "Manto de peregrino",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_outfit_08": {
+   "name": "Roupa remendada",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_outfit_09": {
+   "name": "Uniforme da guarda",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_outfit_10": {
+   "name": "Vestido de festa",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#507E38",
+    "sleeve_color": "#507E38"
+   },
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_accessory_01": {
+   "name": "Tiara simples",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_accessory_02": {
+   "name": "Chapéu de abas",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_accessory_03": {
+   "name": "Cachecol de lã",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_accessory_04": {
+   "name": "Colar de prata",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_accessory_05": {
+   "name": "Brincos de ouro",
+   "category": "face_gear",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_accessory_06": {
+   "name": "Monóculo",
+   "category": "face_gear",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_accessory_07": {
+   "name": "Capa curta",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_accessory_08": {
+   "name": "Faixa na testa",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_accessory_09": {
+   "name": "Bolsa de viagem",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_humano_accessory_10": {
+   "name": "Ombreira de couro",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "humano"
+   ]
+  },
+  "rw_elfo_hair_01": {
+   "name": "Liso de prata",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#D6D3C7"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_hair_02": {
+   "name": "Trança da floresta",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#D6D3C7"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_hair_03": {
+   "name": "Coque lunar",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#D6D3C7"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_hair_04": {
+   "name": "Cascata élfica",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#D6D3C7"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_hair_05": {
+   "name": "Rabo do arqueiro",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#D6D3C7"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_hair_06": {
+   "name": "Mecha estelar",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#D6D3C7"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_hair_07": {
+   "name": "Curto do batedor",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#D6D3C7"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_hair_08": {
+   "name": "Duas tranças finas",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#D6D3C7"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_hair_09": {
+   "name": "Nó do sábio",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#D6D3C7"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_hair_10": {
+   "name": "Ondas de orvalho",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#D6D3C7"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_face_01": {
+   "name": "Olhos de folha",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_face_02": {
+   "name": "Olhos de lua",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_face_03": {
+   "name": "Runa da mata",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_face_04": {
+   "name": "Olhar de caçadora",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_face_05": {
+   "name": "Lágrima de seiva",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_face_06": {
+   "name": "Sereno",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_face_07": {
+   "name": "Brilho arcano",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_face_08": {
+   "name": "Pintura de orvalho",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_face_09": {
+   "name": "Olhos dourados",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_face_10": {
+   "name": "Marca do bosque",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_outfit_01": {
+   "name": "Túnica de folhas",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#2D6755",
+    "sleeve_color": "#2D6755"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_outfit_02": {
+   "name": "Manto do bosque",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#2D6755",
+    "sleeve_color": "#2D6755"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_outfit_03": {
+   "name": "Colete de arqueiro",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#2D6755",
+    "sleeve_color": "#2D6755"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_outfit_04": {
+   "name": "Seda lunar",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#2D6755",
+    "sleeve_color": "#2D6755"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_outfit_05": {
+   "name": "Faixa de prata",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#2D6755",
+    "sleeve_color": "#2D6755"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_outfit_06": {
+   "name": "Veste rúnica",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#2D6755",
+    "sleeve_color": "#2D6755"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_outfit_07": {
+   "name": "Gibão de batedor",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#2D6755",
+    "sleeve_color": "#2D6755"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_outfit_08": {
+   "name": "Casaco da aurora",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#2D6755",
+    "sleeve_color": "#2D6755"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_outfit_09": {
+   "name": "Couraça de casca",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#2D6755",
+    "sleeve_color": "#2D6755"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_outfit_10": {
+   "name": "Vestes da clareira",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#2D6755",
+    "sleeve_color": "#2D6755"
+   },
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_accessory_01": {
+   "name": "Diadema de folhas",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_accessory_02": {
+   "name": "Tiara de prata",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_accessory_03": {
+   "name": "Brincos de lua",
+   "category": "face_gear",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_accessory_04": {
+   "name": "Aljava de bétula",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_accessory_05": {
+   "name": "Flor da clareira",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_accessory_06": {
+   "name": "Capa de folhas",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_accessory_07": {
+   "name": "Penas de coruja",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_accessory_08": {
+   "name": "Amuleto de seiva",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_accessory_09": {
+   "name": "Auréola de orvalho",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_elfo_accessory_10": {
+   "name": "Tomo élfico",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "elfo"
+   ]
+  },
+  "rw_diabo_hair_01": {
+   "name": "Chamas para trás",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#2a1a24"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_hair_02": {
+   "name": "Moicano de brasa",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#2a1a24"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_hair_03": {
+   "name": "Longo infernal",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#2a1a24"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_hair_04": {
+   "name": "Espinhos de cinza",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#2a1a24"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_hair_05": {
+   "name": "Rabo de enxofre",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#2a1a24"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_hair_06": {
+   "name": "Coque do pacto",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#2a1a24"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_hair_07": {
+   "name": "Lateral raspada",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#2a1a24"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_hair_08": {
+   "name": "Tranças de fumaça",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#2a1a24"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_hair_09": {
+   "name": "Cachos de lava",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#2a1a24"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_hair_10": {
+   "name": "Desgrenhado",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#2a1a24"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_face_01": {
+   "name": "Olhos de brasa",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_face_02": {
+   "name": "Olhar de enxofre",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_face_03": {
+   "name": "Chama interior",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_face_04": {
+   "name": "Marcas do pacto",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_face_05": {
+   "name": "Cicatriz de fogo",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_face_06": {
+   "name": "Olhos de rubi",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_face_07": {
+   "name": "Sombra violeta",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_face_08": {
+   "name": "Línguas de fogo",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_face_09": {
+   "name": "Fuligem",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_face_10": {
+   "name": "Selo na testa",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_outfit_01": {
+   "name": "Gibão de couro",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#8A342C",
+    "sleeve_color": "#8A342C"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_outfit_02": {
+   "name": "Manto do pacto",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#8A342C",
+    "sleeve_color": "#8A342C"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_outfit_03": {
+   "name": "Casaco de brasa",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#8A342C",
+    "sleeve_color": "#8A342C"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_outfit_04": {
+   "name": "Correntes infernais",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#8A342C",
+    "sleeve_color": "#8A342C"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_outfit_05": {
+   "name": "Faixa do juramento",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#8A342C",
+    "sleeve_color": "#8A342C"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_outfit_06": {
+   "name": "Couraça de obsidiana",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#8A342C",
+    "sleeve_color": "#8A342C"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_outfit_07": {
+   "name": "Colete de enxofre",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#8A342C",
+    "sleeve_color": "#8A342C"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_outfit_08": {
+   "name": "Túnica de cinzas",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#8A342C",
+    "sleeve_color": "#8A342C"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_outfit_09": {
+   "name": "Vestes rasgadas",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#8A342C",
+    "sleeve_color": "#8A342C"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_outfit_10": {
+   "name": "Casaca do duelo",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#8A342C",
+    "sleeve_color": "#8A342C"
+   },
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_accessory_01": {
+   "name": "Anéis nos chifres",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_accessory_02": {
+   "name": "Corrente no peito",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_accessory_03": {
+   "name": "Coroa de brasa",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_accessory_04": {
+   "name": "Brincos de rubi",
+   "category": "face_gear",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_accessory_05": {
+   "name": "Máscara de fuligem",
+   "category": "face_gear",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_accessory_06": {
+   "name": "Capa carmesim",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_accessory_07": {
+   "name": "Amuleto do pacto",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_accessory_08": {
+   "name": "Lanterna de enxofre",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_accessory_09": {
+   "name": "Ombreira de obsidiana",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_diabo_accessory_10": {
+   "name": "Fogos-fátuos",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "diabo"
+   ]
+  },
+  "rw_anao_hair_01": {
+   "name": "Careca de forja",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#B8783D"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_hair_02": {
+   "name": "Tranças de mineiro",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#B8783D"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_hair_03": {
+   "name": "Coque da bigorna",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#B8783D"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_hair_04": {
+   "name": "Juba da montanha",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#B8783D"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_hair_05": {
+   "name": "Rabo de pedreiro",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#B8783D"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_hair_06": {
+   "name": "Contas de ouro",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#B8783D"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_hair_07": {
+   "name": "Curto de picareta",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#B8783D"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_hair_08": {
+   "name": "Moicano do clã",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#B8783D"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_hair_09": {
+   "name": "Duas tranças grossas",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#B8783D"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_hair_10": {
+   "name": "Desgrenhado de túnel",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#B8783D"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_face_01": {
+   "name": "Sobrancelhas de pedra",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_face_02": {
+   "name": "Olhar de forja",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_face_03": {
+   "name": "Runas do clã",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_face_04": {
+   "name": "Cicatriz da mina",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_face_05": {
+   "name": "Olhos de âmbar",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_face_06": {
+   "name": "Bochechas coradas",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_face_07": {
+   "name": "Pintura de guerra",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_face_08": {
+   "name": "Sardas de faísca",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_face_09": {
+   "name": "Olhar de ouro",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_face_10": {
+   "name": "Velho mestre",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_outfit_01": {
+   "name": "Avental de ferreiro",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28638A",
+    "sleeve_color": "#28638A"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_outfit_02": {
+   "name": "Gibão do clã",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28638A",
+    "sleeve_color": "#28638A"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_outfit_03": {
+   "name": "Cota de malha leve",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28638A",
+    "sleeve_color": "#28638A"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_outfit_04": {
+   "name": "Couraça rúnica",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28638A",
+    "sleeve_color": "#28638A"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_outfit_05": {
+   "name": "Casaco de mineiro",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28638A",
+    "sleeve_color": "#28638A"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_outfit_06": {
+   "name": "Manto de pedra",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28638A",
+    "sleeve_color": "#28638A"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_outfit_07": {
+   "name": "Faixa do clã",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28638A",
+    "sleeve_color": "#28638A"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_outfit_08": {
+   "name": "Pele da montanha",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28638A",
+    "sleeve_color": "#28638A"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_outfit_09": {
+   "name": "Roupa de túnel",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28638A",
+    "sleeve_color": "#28638A"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_outfit_10": {
+   "name": "Uniforme da forja",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#28638A",
+    "sleeve_color": "#28638A"
+   },
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_accessory_01": {
+   "name": "Óculos de forja",
+   "category": "face_gear",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_accessory_02": {
+   "name": "Chifre de cerveja",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_accessory_03": {
+   "name": "Corrente de ouro",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_accessory_04": {
+   "name": "Brincos de cobre",
+   "category": "face_gear",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_accessory_05": {
+   "name": "Lanterna de túnel",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_accessory_06": {
+   "name": "Faixa de couro",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_accessory_07": {
+   "name": "Coroa do clã",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_accessory_08": {
+   "name": "Ombreira de ferro",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_accessory_09": {
+   "name": "Bandoleira de ferramentas",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_anao_accessory_10": {
+   "name": "Monóculo do joalheiro",
+   "category": "face_gear",
+   "defaults": {},
+   "races": [
+    "anao"
+   ]
+  },
+  "rw_barbaro_hair_01": {
+   "name": "Juba selvagem",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#E4B877"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_hair_02": {
+   "name": "Moicano de guerra",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#E4B877"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_hair_03": {
+   "name": "Tranças de batalha",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#E4B877"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_hair_04": {
+   "name": "Rabo do caçador",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#E4B877"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_hair_05": {
+   "name": "Coque de osso",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#E4B877"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_hair_06": {
+   "name": "Espinhos de gelo",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#E4B877"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_hair_07": {
+   "name": "Lateral raspada",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#E4B877"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_hair_08": {
+   "name": "Longo da tundra",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#E4B877"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_hair_09": {
+   "name": "Penas do clã",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#E4B877"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_hair_10": {
+   "name": "Nó do chefe",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#E4B877"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_face_01": {
+   "name": "Pintura azul",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_face_02": {
+   "name": "Pintura vermelha",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_face_03": {
+   "name": "Cicatriz do urso",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_face_04": {
+   "name": "Olhar de lobo",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_face_05": {
+   "name": "Tatuagem do clã",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_face_06": {
+   "name": "Olhos de gelo",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_face_07": {
+   "name": "Fúria",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_face_08": {
+   "name": "Cinzas da fogueira",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_face_09": {
+   "name": "Lágrima de guerra",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_face_10": {
+   "name": "Sardas do sol",
+   "category": "eyes",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_outfit_01": {
+   "name": "Peles do norte",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#795A42",
+    "sleeve_color": "#795A42"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_outfit_02": {
+   "name": "Pele de urso",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#795A42",
+    "sleeve_color": "#795A42"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_outfit_03": {
+   "name": "Faixa de couro",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#795A42",
+    "sleeve_color": "#795A42"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_outfit_04": {
+   "name": "Colete de caçador",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#795A42",
+    "sleeve_color": "#795A42"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_outfit_05": {
+   "name": "Túnica de guerra",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#795A42",
+    "sleeve_color": "#795A42"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_outfit_06": {
+   "name": "Couraça de osso",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#795A42",
+    "sleeve_color": "#795A42"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_outfit_07": {
+   "name": "Trapos de batalha",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#795A42",
+    "sleeve_color": "#795A42"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_outfit_08": {
+   "name": "Manto da tundra",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#795A42",
+    "sleeve_color": "#795A42"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_outfit_09": {
+   "name": "Peito de lobo",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#795A42",
+    "sleeve_color": "#795A42"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_outfit_10": {
+   "name": "Envoltório de chefe",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#795A42",
+    "sleeve_color": "#795A42"
+   },
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_accessory_01": {
+   "name": "Colar de presas",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_accessory_02": {
+   "name": "Faixa de guerra",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_accessory_03": {
+   "name": "Penas do falcão",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_accessory_04": {
+   "name": "Ombreira de crânio",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_accessory_05": {
+   "name": "Capa de pele",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_accessory_06": {
+   "name": "Brincos de osso",
+   "category": "face_gear",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_accessory_07": {
+   "name": "Coroa de chifres",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_accessory_08": {
+   "name": "Máscara do caçador",
+   "category": "face_gear",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_accessory_09": {
+   "name": "Chifre de guerra",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_barbaro_accessory_10": {
+   "name": "Bandoleira de troféus",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "barbaro"
+   ]
+  },
+  "rw_morto_vivo_hair_01": {
+   "name": "Fios ralos",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#5a5a50"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_hair_02": {
+   "name": "Longo do túmulo",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#5a5a50"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_hair_03": {
+   "name": "Tranças de cripta",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#5a5a50"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_hair_04": {
+   "name": "Rabo do coveiro",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#5a5a50"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_hair_05": {
+   "name": "Coque fúnebre",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#5a5a50"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_hair_06": {
+   "name": "Moicano de ossos",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#5a5a50"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_hair_07": {
+   "name": "Mecha espectral",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#5a5a50"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_hair_08": {
+   "name": "Desgrenhado",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#5a5a50"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_hair_09": {
+   "name": "Careca com fios",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#5a5a50"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_hair_10": {
+   "name": "Véu de teias",
+   "category": "hair",
+   "defaults": {
+    "hair_color": "#5a5a50"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "undead_rw_face_01": {
+   "name": "Crânio limpo",
+   "category": "race",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "undead_rw_face_02": {
+   "name": "Brilho azul",
+   "category": "race",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "undead_rw_face_03": {
+   "name": "Brilho verde",
+   "category": "race",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "undead_rw_face_04": {
+   "name": "Crânio rachado",
+   "category": "race",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "undead_rw_face_05": {
+   "name": "Coroa de runas",
+   "category": "race",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "undead_rw_face_06": {
+   "name": "Mandíbula perdida",
+   "category": "race",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "undead_rw_face_07": {
+   "name": "Dente de ouro",
+   "category": "race",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "undead_rw_face_08": {
+   "name": "Crânio antigo",
+   "category": "race",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "undead_rw_face_09": {
+   "name": "Rei caído",
+   "category": "race",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "undead_rw_face_10": {
+   "name": "Véu da cripta",
+   "category": "race",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_outfit_01": {
+   "name": "Mortalha",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#5a5468",
+    "sleeve_color": "#5a5468"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_outfit_02": {
+   "name": "Trapos do túmulo",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#5a5468",
+    "sleeve_color": "#5a5468"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_outfit_03": {
+   "name": "Manto da cripta",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#5a5468",
+    "sleeve_color": "#5a5468"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_outfit_04": {
+   "name": "Armadura enferrujada",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#5a5468",
+    "sleeve_color": "#5a5468"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_outfit_05": {
+   "name": "Ataduras",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#5a5468",
+    "sleeve_color": "#5a5468"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_outfit_06": {
+   "name": "Casaco do coveiro",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#5a5468",
+    "sleeve_color": "#5a5468"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_outfit_07": {
+   "name": "Correntes da masmorra",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#5a5468",
+    "sleeve_color": "#5a5468"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_outfit_08": {
+   "name": "Vestes remendadas",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#5a5468",
+    "sleeve_color": "#5a5468"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_outfit_09": {
+   "name": "Colete do lamento",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#5a5468",
+    "sleeve_color": "#5a5468"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_outfit_10": {
+   "name": "Mortalha real",
+   "category": "shirt",
+   "defaults": {
+    "shirt_color": "#5a5468",
+    "sleeve_color": "#5a5468"
+   },
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_accessory_01": {
+   "name": "Lanterna de almas",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_accessory_02": {
+   "name": "Coroa enferrujada",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_accessory_03": {
+   "name": "Corrente de cripta",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_accessory_04": {
+   "name": "Velas do velório",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_accessory_05": {
+   "name": "Auréola profana",
+   "category": "head",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_accessory_06": {
+   "name": "Capa esfarrapada",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_accessory_07": {
+   "name": "Colar de dentes",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_accessory_08": {
+   "name": "Tapa-olho",
+   "category": "face_gear",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_accessory_09": {
+   "name": "Ombreira de lápide",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "rw_morto_vivo_accessory_10": {
+   "name": "Almas errantes",
+   "category": "back",
+   "defaults": {},
+   "races": [
+    "morto_vivo"
+   ]
+  },
+  "head_none": {
+   "name": "Nenhum",
+   "category": "head",
+   "defaults": {},
+   "races": []
+  },
+  "face_gear_none": {
+   "name": "Nenhum",
+   "category": "face_gear",
+   "defaults": {},
+   "races": []
+  },
+  "back_none": {
+   "name": "Nenhum",
+   "category": "back",
+   "defaults": {},
+   "races": []
+  }
+ },
+ "catalog": {
+  "Male": {
+   "race": [
+    "race_none",
+    "elf_ears_short",
+    "elf_ears_long",
+    "elf_ears_swept",
+    "demon_horns_curved",
+    "demon_horns_straight",
+    "demon_horns_ram",
+    "dwarf_beard_full",
+    "dwarf_beard_braided",
+    "dwarf_beard_long",
+    "dwarf_braids",
+    "barb_paint_red",
+    "barb_paint_blue",
+    "barb_scars",
+    "barb_fur",
+    "undead_skull",
+    "undead_skull_glow",
+    "undead_skull_cracked",
+    "undead_rw_face_01",
+    "undead_rw_face_02",
+    "undead_rw_face_03",
+    "undead_rw_face_04",
+    "undead_rw_face_05",
+    "undead_rw_face_06",
+    "undead_rw_face_07",
+    "undead_rw_face_08",
+    "undead_rw_face_09",
+    "undead_rw_face_10"
+   ],
+   "hair": [
+    "hair_male_1",
+    "hair_male_2",
+    "hair_male_3",
+    "hair_male_4",
+    "hair_male_5",
+    "hair_male_6",
+    "hair_male_7",
+    "hair_male_8",
+    "hair_male_9",
+    "hair_male_10",
+    "rw_humano_hair_01",
+    "rw_humano_hair_02",
+    "rw_humano_hair_03",
+    "rw_humano_hair_04",
+    "rw_humano_hair_05",
+    "rw_humano_hair_06",
+    "rw_humano_hair_07",
+    "rw_humano_hair_08",
+    "rw_humano_hair_09",
+    "rw_humano_hair_10",
+    "rw_elfo_hair_01",
+    "rw_elfo_hair_02",
+    "rw_elfo_hair_03",
+    "rw_elfo_hair_04",
+    "rw_elfo_hair_05",
+    "rw_elfo_hair_06",
+    "rw_elfo_hair_07",
+    "rw_elfo_hair_08",
+    "rw_elfo_hair_09",
+    "rw_elfo_hair_10",
+    "rw_diabo_hair_01",
+    "rw_diabo_hair_02",
+    "rw_diabo_hair_03",
+    "rw_diabo_hair_04",
+    "rw_diabo_hair_05",
+    "rw_diabo_hair_06",
+    "rw_diabo_hair_07",
+    "rw_diabo_hair_08",
+    "rw_diabo_hair_09",
+    "rw_diabo_hair_10",
+    "rw_anao_hair_01",
+    "rw_anao_hair_02",
+    "rw_anao_hair_03",
+    "rw_anao_hair_04",
+    "rw_anao_hair_05",
+    "rw_anao_hair_06",
+    "rw_anao_hair_07",
+    "rw_anao_hair_08",
+    "rw_anao_hair_09",
+    "rw_anao_hair_10",
+    "rw_barbaro_hair_01",
+    "rw_barbaro_hair_02",
+    "rw_barbaro_hair_03",
+    "rw_barbaro_hair_04",
+    "rw_barbaro_hair_05",
+    "rw_barbaro_hair_06",
+    "rw_barbaro_hair_07",
+    "rw_barbaro_hair_08",
+    "rw_barbaro_hair_09",
+    "rw_barbaro_hair_10",
+    "rw_morto_vivo_hair_01",
+    "rw_morto_vivo_hair_02",
+    "rw_morto_vivo_hair_03",
+    "rw_morto_vivo_hair_04",
+    "rw_morto_vivo_hair_05",
+    "rw_morto_vivo_hair_06",
+    "rw_morto_vivo_hair_07",
+    "rw_morto_vivo_hair_08",
+    "rw_morto_vivo_hair_09",
+    "rw_morto_vivo_hair_10"
+   ],
+   "eyes": [
+    "eyes_m_calm",
+    "eyes_m_fierce",
+    "eyes_m_big",
+    "eyes_m_happy",
+    "eyes_m_scar",
+    "eyes_m_sleepy",
+    "eyes_m_surprised",
+    "eyes_m_focused",
+    "eyes_m_gentle",
+    "eyes_m_bold",
+    "rw_humano_face_01",
+    "rw_humano_face_02",
+    "rw_humano_face_03",
+    "rw_humano_face_04",
+    "rw_humano_face_05",
+    "rw_humano_face_06",
+    "rw_humano_face_07",
+    "rw_humano_face_08",
+    "rw_humano_face_09",
+    "rw_humano_face_10",
+    "rw_elfo_face_01",
+    "rw_elfo_face_02",
+    "rw_elfo_face_03",
+    "rw_elfo_face_04",
+    "rw_elfo_face_05",
+    "rw_elfo_face_06",
+    "rw_elfo_face_07",
+    "rw_elfo_face_08",
+    "rw_elfo_face_09",
+    "rw_elfo_face_10",
+    "rw_diabo_face_01",
+    "rw_diabo_face_02",
+    "rw_diabo_face_03",
+    "rw_diabo_face_04",
+    "rw_diabo_face_05",
+    "rw_diabo_face_06",
+    "rw_diabo_face_07",
+    "rw_diabo_face_08",
+    "rw_diabo_face_09",
+    "rw_diabo_face_10",
+    "rw_anao_face_01",
+    "rw_anao_face_02",
+    "rw_anao_face_03",
+    "rw_anao_face_04",
+    "rw_anao_face_05",
+    "rw_anao_face_06",
+    "rw_anao_face_07",
+    "rw_anao_face_08",
+    "rw_anao_face_09",
+    "rw_anao_face_10",
+    "rw_barbaro_face_01",
+    "rw_barbaro_face_02",
+    "rw_barbaro_face_03",
+    "rw_barbaro_face_04",
+    "rw_barbaro_face_05",
+    "rw_barbaro_face_06",
+    "rw_barbaro_face_07",
+    "rw_barbaro_face_08",
+    "rw_barbaro_face_09",
+    "rw_barbaro_face_10"
+   ],
+   "mouth": [
+    "mouth_small",
+    "mouth_smile",
+    "mouth_serious",
+    "mouth_open",
+    "mouth_beard",
+    "mouth_smirk",
+    "mouth_laugh",
+    "mouth_frown",
+    "mouth_whistle",
+    "mouth_grit"
+   ],
+   "head": [
+    "head_none",
+    "accessory_circlet",
+    "accessory_feather",
+    "accessory_ribbon",
+    "accessory_crown",
+    "accessory_horns",
+    "accessory_flower",
+    "accessory_bandana",
+    "accessory_hat",
+    "rw_humano_accessory_01",
+    "rw_humano_accessory_02",
+    "rw_humano_accessory_08",
+    "rw_elfo_accessory_01",
+    "rw_elfo_accessory_02",
+    "rw_elfo_accessory_05",
+    "rw_elfo_accessory_07",
+    "rw_elfo_accessory_09",
+    "rw_diabo_accessory_01",
+    "rw_diabo_accessory_03",
+    "rw_anao_accessory_06",
+    "rw_anao_accessory_07",
+    "rw_barbaro_accessory_02",
+    "rw_barbaro_accessory_03",
+    "rw_barbaro_accessory_07",
+    "rw_morto_vivo_accessory_02",
+    "rw_morto_vivo_accessory_05"
+   ],
+   "face_gear": [
+    "face_gear_none",
+    "accessory_goggles",
+    "accessory_patch",
+    "accessory_earrings",
+    "accessory_mask",
+    "accessory_monocle",
+    "rw_humano_accessory_05",
+    "rw_humano_accessory_06",
+    "rw_elfo_accessory_03",
+    "rw_diabo_accessory_04",
+    "rw_diabo_accessory_05",
+    "rw_anao_accessory_01",
+    "rw_anao_accessory_04",
+    "rw_anao_accessory_10",
+    "rw_barbaro_accessory_06",
+    "rw_barbaro_accessory_08",
+    "rw_morto_vivo_accessory_08"
+   ],
+   "back": [
+    "back_none",
+    "accessory_scarf",
+    "accessory_necklace",
+    "accessory_cape",
+    "rw_humano_accessory_03",
+    "rw_humano_accessory_04",
+    "rw_humano_accessory_07",
+    "rw_humano_accessory_09",
+    "rw_humano_accessory_10",
+    "rw_elfo_accessory_04",
+    "rw_elfo_accessory_06",
+    "rw_elfo_accessory_08",
+    "rw_elfo_accessory_10",
+    "rw_diabo_accessory_02",
+    "rw_diabo_accessory_06",
+    "rw_diabo_accessory_07",
+    "rw_diabo_accessory_08",
+    "rw_diabo_accessory_09",
+    "rw_diabo_accessory_10",
+    "rw_anao_accessory_02",
+    "rw_anao_accessory_03",
+    "rw_anao_accessory_05",
+    "rw_anao_accessory_08",
+    "rw_anao_accessory_09",
+    "rw_barbaro_accessory_01",
+    "rw_barbaro_accessory_04",
+    "rw_barbaro_accessory_05",
+    "rw_barbaro_accessory_09",
+    "rw_barbaro_accessory_10",
+    "rw_morto_vivo_accessory_01",
+    "rw_morto_vivo_accessory_03",
+    "rw_morto_vivo_accessory_04",
+    "rw_morto_vivo_accessory_06",
+    "rw_morto_vivo_accessory_07",
+    "rw_morto_vivo_accessory_09",
+    "rw_morto_vivo_accessory_10"
+   ],
+   "shirt": [
+    "shirt_tunic",
+    "shirt_punk",
+    "shirt_linen",
+    "shirt_mail",
+    "shirt_robe",
+    "shirt_scout",
+    "shirt_winter",
+    "shirt_royal",
+    "shirt_shadow",
+    "shirt_healer",
+    "shirt_nomad",
+    "shirt_sailor",
+    "shirt_hunter",
+    "shirt_monk",
+    "rw_humano_outfit_01",
+    "rw_humano_outfit_02",
+    "rw_humano_outfit_03",
+    "rw_humano_outfit_04",
+    "rw_humano_outfit_05",
+    "rw_humano_outfit_06",
+    "rw_humano_outfit_07",
+    "rw_humano_outfit_08",
+    "rw_humano_outfit_09",
+    "rw_humano_outfit_10",
+    "rw_elfo_outfit_01",
+    "rw_elfo_outfit_02",
+    "rw_elfo_outfit_03",
+    "rw_elfo_outfit_04",
+    "rw_elfo_outfit_05",
+    "rw_elfo_outfit_06",
+    "rw_elfo_outfit_07",
+    "rw_elfo_outfit_08",
+    "rw_elfo_outfit_09",
+    "rw_elfo_outfit_10",
+    "rw_diabo_outfit_01",
+    "rw_diabo_outfit_02",
+    "rw_diabo_outfit_03",
+    "rw_diabo_outfit_04",
+    "rw_diabo_outfit_05",
+    "rw_diabo_outfit_06",
+    "rw_diabo_outfit_07",
+    "rw_diabo_outfit_08",
+    "rw_diabo_outfit_09",
+    "rw_diabo_outfit_10",
+    "rw_anao_outfit_01",
+    "rw_anao_outfit_02",
+    "rw_anao_outfit_03",
+    "rw_anao_outfit_04",
+    "rw_anao_outfit_05",
+    "rw_anao_outfit_06",
+    "rw_anao_outfit_07",
+    "rw_anao_outfit_08",
+    "rw_anao_outfit_09",
+    "rw_anao_outfit_10",
+    "rw_barbaro_outfit_01",
+    "rw_barbaro_outfit_02",
+    "rw_barbaro_outfit_03",
+    "rw_barbaro_outfit_04",
+    "rw_barbaro_outfit_05",
+    "rw_barbaro_outfit_06",
+    "rw_barbaro_outfit_07",
+    "rw_barbaro_outfit_08",
+    "rw_barbaro_outfit_09",
+    "rw_barbaro_outfit_10",
+    "rw_morto_vivo_outfit_01",
+    "rw_morto_vivo_outfit_02",
+    "rw_morto_vivo_outfit_03",
+    "rw_morto_vivo_outfit_04",
+    "rw_morto_vivo_outfit_05",
+    "rw_morto_vivo_outfit_06",
+    "rw_morto_vivo_outfit_07",
+    "rw_morto_vivo_outfit_08",
+    "rw_morto_vivo_outfit_09",
+    "rw_morto_vivo_outfit_10"
+   ],
+   "pants": [
+    "pants_dark",
+    "pants_jeans_punk",
+    "pants_tartan",
+    "pants_leather",
+    "pants_cloth",
+    "pants_scout",
+    "pants_winter",
+    "pants_royal",
+    "pants_shadow",
+    "pants_healer",
+    "pants_nomad",
+    "pants_sailor",
+    "pants_hunter",
+    "pants_monk"
+   ],
+   "shoes": [
+    "boots_laced",
+    "boots_punk",
+    "shoes_low",
+    "greaves",
+    "boots_wrap",
+    "boots_scout",
+    "boots_winter",
+    "boots_royal",
+    "boots_shadow",
+    "boots_healer",
+    "boots_nomad",
+    "boots_sailor",
+    "boots_hunter",
+    "boots_monk"
+   ],
+   "gloves": [
+    "gloves_leather",
+    "gloves_punk",
+    "gloves_bare",
+    "gauntlets",
+    "bracers",
+    "gloves_scout",
+    "gloves_winter",
+    "gloves_royal",
+    "gloves_shadow",
+    "gloves_healer",
+    "gloves_nomad",
+    "gloves_sailor",
+    "gloves_hunter",
+    "gloves_monk"
+   ]
+  },
+  "Female": {
+   "race": [
+    "race_none",
+    "elf_ears_short",
+    "elf_ears_long",
+    "elf_ears_swept",
+    "demon_horns_curved",
+    "demon_horns_straight",
+    "demon_horns_ram",
+    "dwarf_beard_full",
+    "dwarf_beard_braided",
+    "dwarf_beard_long",
+    "dwarf_braids",
+    "barb_paint_red",
+    "barb_paint_blue",
+    "barb_scars",
+    "barb_fur",
+    "undead_skull",
+    "undead_skull_glow",
+    "undead_skull_cracked",
+    "undead_rw_face_01",
+    "undead_rw_face_02",
+    "undead_rw_face_03",
+    "undead_rw_face_04",
+    "undead_rw_face_05",
+    "undead_rw_face_06",
+    "undead_rw_face_07",
+    "undead_rw_face_08",
+    "undead_rw_face_09",
+    "undead_rw_face_10"
+   ],
+   "hair": [
+    "hair_female_1",
+    "hair_female_2",
+    "hair_female_3",
+    "hair_female_4",
+    "hair_female_5",
+    "hair_female_6",
+    "hair_female_7",
+    "hair_female_8",
+    "hair_female_9",
+    "hair_female_10",
+    "rw_humano_hair_01",
+    "rw_humano_hair_02",
+    "rw_humano_hair_03",
+    "rw_humano_hair_04",
+    "rw_humano_hair_05",
+    "rw_humano_hair_06",
+    "rw_humano_hair_07",
+    "rw_humano_hair_08",
+    "rw_humano_hair_09",
+    "rw_humano_hair_10",
+    "rw_elfo_hair_01",
+    "rw_elfo_hair_02",
+    "rw_elfo_hair_03",
+    "rw_elfo_hair_04",
+    "rw_elfo_hair_05",
+    "rw_elfo_hair_06",
+    "rw_elfo_hair_07",
+    "rw_elfo_hair_08",
+    "rw_elfo_hair_09",
+    "rw_elfo_hair_10",
+    "rw_diabo_hair_01",
+    "rw_diabo_hair_02",
+    "rw_diabo_hair_03",
+    "rw_diabo_hair_04",
+    "rw_diabo_hair_05",
+    "rw_diabo_hair_06",
+    "rw_diabo_hair_07",
+    "rw_diabo_hair_08",
+    "rw_diabo_hair_09",
+    "rw_diabo_hair_10",
+    "rw_anao_hair_01",
+    "rw_anao_hair_02",
+    "rw_anao_hair_03",
+    "rw_anao_hair_04",
+    "rw_anao_hair_05",
+    "rw_anao_hair_06",
+    "rw_anao_hair_07",
+    "rw_anao_hair_08",
+    "rw_anao_hair_09",
+    "rw_anao_hair_10",
+    "rw_barbaro_hair_01",
+    "rw_barbaro_hair_02",
+    "rw_barbaro_hair_03",
+    "rw_barbaro_hair_04",
+    "rw_barbaro_hair_05",
+    "rw_barbaro_hair_06",
+    "rw_barbaro_hair_07",
+    "rw_barbaro_hair_08",
+    "rw_barbaro_hair_09",
+    "rw_barbaro_hair_10",
+    "rw_morto_vivo_hair_01",
+    "rw_morto_vivo_hair_02",
+    "rw_morto_vivo_hair_03",
+    "rw_morto_vivo_hair_04",
+    "rw_morto_vivo_hair_05",
+    "rw_morto_vivo_hair_06",
+    "rw_morto_vivo_hair_07",
+    "rw_morto_vivo_hair_08",
+    "rw_morto_vivo_hair_09",
+    "rw_morto_vivo_hair_10"
+   ],
+   "eyes": [
+    "eyes_f_classic",
+    "eyes_f_happy",
+    "eyes_f_sharp",
+    "eyes_f_wide",
+    "eyes_f_freckles",
+    "eyes_f_sleepy",
+    "eyes_f_surprised",
+    "eyes_f_focused",
+    "eyes_f_gentle",
+    "eyes_f_bold",
+    "rw_humano_face_01",
+    "rw_humano_face_02",
+    "rw_humano_face_03",
+    "rw_humano_face_04",
+    "rw_humano_face_05",
+    "rw_humano_face_06",
+    "rw_humano_face_07",
+    "rw_humano_face_08",
+    "rw_humano_face_09",
+    "rw_humano_face_10",
+    "rw_elfo_face_01",
+    "rw_elfo_face_02",
+    "rw_elfo_face_03",
+    "rw_elfo_face_04",
+    "rw_elfo_face_05",
+    "rw_elfo_face_06",
+    "rw_elfo_face_07",
+    "rw_elfo_face_08",
+    "rw_elfo_face_09",
+    "rw_elfo_face_10",
+    "rw_diabo_face_01",
+    "rw_diabo_face_02",
+    "rw_diabo_face_03",
+    "rw_diabo_face_04",
+    "rw_diabo_face_05",
+    "rw_diabo_face_06",
+    "rw_diabo_face_07",
+    "rw_diabo_face_08",
+    "rw_diabo_face_09",
+    "rw_diabo_face_10",
+    "rw_anao_face_01",
+    "rw_anao_face_02",
+    "rw_anao_face_03",
+    "rw_anao_face_04",
+    "rw_anao_face_05",
+    "rw_anao_face_06",
+    "rw_anao_face_07",
+    "rw_anao_face_08",
+    "rw_anao_face_09",
+    "rw_anao_face_10",
+    "rw_barbaro_face_01",
+    "rw_barbaro_face_02",
+    "rw_barbaro_face_03",
+    "rw_barbaro_face_04",
+    "rw_barbaro_face_05",
+    "rw_barbaro_face_06",
+    "rw_barbaro_face_07",
+    "rw_barbaro_face_08",
+    "rw_barbaro_face_09",
+    "rw_barbaro_face_10"
+   ],
+   "mouth": [
+    "mouth_small",
+    "mouth_smile",
+    "mouth_lips",
+    "mouth_cat",
+    "mouth_grin",
+    "mouth_smirk",
+    "mouth_laugh",
+    "mouth_frown",
+    "mouth_whistle",
+    "mouth_grit"
+   ],
+   "head": [
+    "head_none",
+    "accessory_circlet",
+    "accessory_feather",
+    "accessory_ribbon",
+    "accessory_crown",
+    "accessory_horns",
+    "accessory_flower",
+    "accessory_bandana",
+    "accessory_hat",
+    "rw_humano_accessory_01",
+    "rw_humano_accessory_02",
+    "rw_humano_accessory_08",
+    "rw_elfo_accessory_01",
+    "rw_elfo_accessory_02",
+    "rw_elfo_accessory_05",
+    "rw_elfo_accessory_07",
+    "rw_elfo_accessory_09",
+    "rw_diabo_accessory_01",
+    "rw_diabo_accessory_03",
+    "rw_anao_accessory_06",
+    "rw_anao_accessory_07",
+    "rw_barbaro_accessory_02",
+    "rw_barbaro_accessory_03",
+    "rw_barbaro_accessory_07",
+    "rw_morto_vivo_accessory_02",
+    "rw_morto_vivo_accessory_05"
+   ],
+   "face_gear": [
+    "face_gear_none",
+    "accessory_goggles",
+    "accessory_patch",
+    "accessory_earrings",
+    "accessory_mask",
+    "accessory_monocle",
+    "rw_humano_accessory_05",
+    "rw_humano_accessory_06",
+    "rw_elfo_accessory_03",
+    "rw_diabo_accessory_04",
+    "rw_diabo_accessory_05",
+    "rw_anao_accessory_01",
+    "rw_anao_accessory_04",
+    "rw_anao_accessory_10",
+    "rw_barbaro_accessory_06",
+    "rw_barbaro_accessory_08",
+    "rw_morto_vivo_accessory_08"
+   ],
+   "back": [
+    "back_none",
+    "accessory_scarf",
+    "accessory_necklace",
+    "accessory_cape",
+    "rw_humano_accessory_03",
+    "rw_humano_accessory_04",
+    "rw_humano_accessory_07",
+    "rw_humano_accessory_09",
+    "rw_humano_accessory_10",
+    "rw_elfo_accessory_04",
+    "rw_elfo_accessory_06",
+    "rw_elfo_accessory_08",
+    "rw_elfo_accessory_10",
+    "rw_diabo_accessory_02",
+    "rw_diabo_accessory_06",
+    "rw_diabo_accessory_07",
+    "rw_diabo_accessory_08",
+    "rw_diabo_accessory_09",
+    "rw_diabo_accessory_10",
+    "rw_anao_accessory_02",
+    "rw_anao_accessory_03",
+    "rw_anao_accessory_05",
+    "rw_anao_accessory_08",
+    "rw_anao_accessory_09",
+    "rw_barbaro_accessory_01",
+    "rw_barbaro_accessory_04",
+    "rw_barbaro_accessory_05",
+    "rw_barbaro_accessory_09",
+    "rw_barbaro_accessory_10",
+    "rw_morto_vivo_accessory_01",
+    "rw_morto_vivo_accessory_03",
+    "rw_morto_vivo_accessory_04",
+    "rw_morto_vivo_accessory_06",
+    "rw_morto_vivo_accessory_07",
+    "rw_morto_vivo_accessory_09",
+    "rw_morto_vivo_accessory_10"
+   ],
+   "shirt": [
+    "shirt_tunic",
+    "shirt_bodice",
+    "shirt_linen",
+    "shirt_mail",
+    "shirt_robe",
+    "shirt_scout",
+    "shirt_winter",
+    "shirt_royal",
+    "shirt_shadow",
+    "shirt_healer",
+    "shirt_nomad",
+    "shirt_sailor",
+    "shirt_hunter",
+    "shirt_monk",
+    "rw_humano_outfit_01",
+    "rw_humano_outfit_02",
+    "rw_humano_outfit_03",
+    "rw_humano_outfit_04",
+    "rw_humano_outfit_05",
+    "rw_humano_outfit_06",
+    "rw_humano_outfit_07",
+    "rw_humano_outfit_08",
+    "rw_humano_outfit_09",
+    "rw_humano_outfit_10",
+    "rw_elfo_outfit_01",
+    "rw_elfo_outfit_02",
+    "rw_elfo_outfit_03",
+    "rw_elfo_outfit_04",
+    "rw_elfo_outfit_05",
+    "rw_elfo_outfit_06",
+    "rw_elfo_outfit_07",
+    "rw_elfo_outfit_08",
+    "rw_elfo_outfit_09",
+    "rw_elfo_outfit_10",
+    "rw_diabo_outfit_01",
+    "rw_diabo_outfit_02",
+    "rw_diabo_outfit_03",
+    "rw_diabo_outfit_04",
+    "rw_diabo_outfit_05",
+    "rw_diabo_outfit_06",
+    "rw_diabo_outfit_07",
+    "rw_diabo_outfit_08",
+    "rw_diabo_outfit_09",
+    "rw_diabo_outfit_10",
+    "rw_anao_outfit_01",
+    "rw_anao_outfit_02",
+    "rw_anao_outfit_03",
+    "rw_anao_outfit_04",
+    "rw_anao_outfit_05",
+    "rw_anao_outfit_06",
+    "rw_anao_outfit_07",
+    "rw_anao_outfit_08",
+    "rw_anao_outfit_09",
+    "rw_anao_outfit_10",
+    "rw_barbaro_outfit_01",
+    "rw_barbaro_outfit_02",
+    "rw_barbaro_outfit_03",
+    "rw_barbaro_outfit_04",
+    "rw_barbaro_outfit_05",
+    "rw_barbaro_outfit_06",
+    "rw_barbaro_outfit_07",
+    "rw_barbaro_outfit_08",
+    "rw_barbaro_outfit_09",
+    "rw_barbaro_outfit_10",
+    "rw_morto_vivo_outfit_01",
+    "rw_morto_vivo_outfit_02",
+    "rw_morto_vivo_outfit_03",
+    "rw_morto_vivo_outfit_04",
+    "rw_morto_vivo_outfit_05",
+    "rw_morto_vivo_outfit_06",
+    "rw_morto_vivo_outfit_07",
+    "rw_morto_vivo_outfit_08",
+    "rw_morto_vivo_outfit_09",
+    "rw_morto_vivo_outfit_10"
+   ],
+   "pants": [
+    "pants_dark",
+    "pants_shorts",
+    "pants_stripes",
+    "pants_leather",
+    "pants_cloth",
+    "pants_scout",
+    "pants_winter",
+    "pants_royal",
+    "pants_shadow",
+    "pants_healer",
+    "pants_nomad",
+    "pants_sailor",
+    "pants_hunter",
+    "pants_monk"
+   ],
+   "shoes": [
+    "boots_laced",
+    "boots_fur",
+    "shoes_low",
+    "greaves",
+    "boots_wrap",
+    "boots_scout",
+    "boots_winter",
+    "boots_royal",
+    "boots_shadow",
+    "boots_healer",
+    "boots_nomad",
+    "boots_sailor",
+    "boots_hunter",
+    "boots_monk"
+   ],
+   "gloves": [
+    "gloves_leather",
+    "gloves_long",
+    "gloves_bare",
+    "gauntlets",
+    "bracers",
+    "gloves_scout",
+    "gloves_winter",
+    "gloves_royal",
+    "gloves_shadow",
+    "gloves_healer",
+    "gloves_nomad",
+    "gloves_sailor",
+    "gloves_hunter",
+    "gloves_monk"
+   ]
+  }
+ }
+}

@@ -1,0 +1,2778 @@
+{
+ "H01": [
+  {
+   "id": "skill_warrior_heavy_blow",
+   "name": "Golpe Pesado",
+   "class": "Guerreiro"
+  },
+  {
+   "id": "skill_warrior_battle_charge",
+   "name": "Investida de Combate",
+   "class": "Guerreiro"
+  },
+  {
+   "id": "skill_warrior_war_cry",
+   "name": "Grito de Guerra",
+   "class": "Guerreiro"
+  },
+  {
+   "id": "skill_warrior_last_breath",
+   "name": "Último Fôlego",
+   "class": "Guerreiro"
+  },
+  {
+   "id": "skill_knight_shield_bash",
+   "name": "Golpe de Escudo",
+   "class": "Cavaleiro"
+  },
+  {
+   "id": "skill_knight_intervene",
+   "name": "Intervenção",
+   "class": "Cavaleiro"
+  },
+  {
+   "id": "skill_knight_defensive_stance",
+   "name": "Postura Defensiva",
+   "class": "Cavaleiro"
+  },
+  {
+   "id": "skill_knight_oath_of_protection",
+   "name": "Juramento de Proteção",
+   "class": "Cavaleiro"
+  }
+ ],
+ "H02": [
+  {
+   "id": "skill_guardian_taunt",
+   "name": "Provocação",
+   "class": "Guardião"
+  },
+  {
+   "id": "skill_guardian_living_wall",
+   "name": "Muralha Viva",
+   "class": "Guardião"
+  },
+  {
+   "id": "skill_guardian_protective_impact",
+   "name": "Impacto Protetor",
+   "class": "Guardião"
+  },
+  {
+   "id": "skill_guardian_none_shall_pass",
+   "name": "Ninguém Passa",
+   "class": "Guardião"
+  },
+  {
+   "id": "skill_ranger_piercing_arrow",
+   "name": "Flecha Perfurante",
+   "class": "Patrulheiro"
+  },
+  {
+   "id": "skill_ranger_prey_mark",
+   "name": "Marca da Presa",
+   "class": "Patrulheiro"
+  },
+  {
+   "id": "skill_ranger_retreat_leap",
+   "name": "Salto de Retirada",
+   "class": "Patrulheiro"
+  },
+  {
+   "id": "skill_ranger_arrow_rain",
+   "name": "Chuva de Flechas",
+   "class": "Patrulheiro"
+  }
+ ],
+ "H03": [
+  {
+   "id": "skill_duelist_lunge",
+   "name": "Estocada",
+   "class": "Duelista"
+  },
+  {
+   "id": "skill_duelist_parry",
+   "name": "Aparar",
+   "class": "Duelista"
+  },
+  {
+   "id": "skill_duelist_sidestep",
+   "name": "Passo Lateral",
+   "class": "Duelista"
+  },
+  {
+   "id": "skill_duelist_deadly_duel",
+   "name": "Duelo Mortal",
+   "class": "Duelista"
+  },
+  {
+   "id": "skill_assassin_shadow_stab",
+   "name": "Punhalada Sombria",
+   "class": "Assassino"
+  },
+  {
+   "id": "skill_assassin_smoke_bomb",
+   "name": "Bomba de Fumaça",
+   "class": "Assassino"
+  },
+  {
+   "id": "skill_assassin_executioner_mark",
+   "name": "Marca do Executor",
+   "class": "Assassino"
+  },
+  {
+   "id": "skill_assassin_execution",
+   "name": "Execução",
+   "class": "Assassino"
+  }
+ ],
+ "H04": [
+  {
+   "id": "skill_elemental_bolt",
+   "name": "Projétil Elemental",
+   "class": "Mago Elemental"
+  },
+  {
+   "id": "skill_elemental_burst",
+   "name": "Explosão Elemental",
+   "class": "Mago Elemental"
+  },
+  {
+   "id": "skill_elemental_convergence",
+   "name": "Convergência",
+   "class": "Mago Elemental"
+  },
+  {
+   "id": "skill_elemental_storm",
+   "name": "Tempestade Elemental",
+   "class": "Mago Elemental"
+  },
+  {
+   "id": "skill_arcane_missile",
+   "name": "Projétil Arcano",
+   "class": "Arcanista"
+  },
+  {
+   "id": "skill_arcane_containment_rune",
+   "name": "Runa de Contenção",
+   "class": "Arcanista"
+  },
+  {
+   "id": "skill_arcane_amplify",
+   "name": "Amplificação Arcana",
+   "class": "Arcanista"
+  },
+  {
+   "id": "skill_arcane_field",
+   "name": "Campo Arcano",
+   "class": "Arcanista"
+  }
+ ],
+ "H05": [
+  {
+   "id": "skill_alchemist_volatile_flask",
+   "name": "Frasco Explosivo",
+   "class": "Alquimista"
+  },
+  {
+   "id": "skill_alchemist_elixir",
+   "name": "Elixir Restaurador",
+   "class": "Alquimista"
+  },
+  {
+   "id": "skill_alchemist_unstable_compound",
+   "name": "Composto Instável",
+   "class": "Alquimista"
+  },
+  {
+   "id": "skill_alchemist_field_lab",
+   "name": "Laboratório de Campo",
+   "class": "Alquimista"
+  },
+  {
+   "id": "skill_cleric_restoring_light",
+   "name": "Luz Restauradora",
+   "class": "Clérigo"
+  },
+  {
+   "id": "skill_cleric_purify",
+   "name": "Purificação",
+   "class": "Clérigo"
+  },
+  {
+   "id": "skill_cleric_holy_symbol",
+   "name": "Símbolo Sagrado",
+   "class": "Clérigo"
+  },
+  {
+   "id": "skill_cleric_miracle",
+   "name": "Milagre",
+   "class": "Clérigo"
+  }
+ ],
+ "H06": [
+  {
+   "id": "skill_druid_binding_roots",
+   "name": "Raízes Aprisionadoras",
+   "class": "Druida"
+  },
+  {
+   "id": "skill_druid_natural_regrowth",
+   "name": "Regeneração Natural",
+   "class": "Druida"
+  },
+  {
+   "id": "skill_druid_feral_form",
+   "name": "Forma Feral",
+   "class": "Druida"
+  },
+  {
+   "id": "skill_druid_living_forest",
+   "name": "Floresta Viva",
+   "class": "Druida"
+  },
+  {
+   "id": "skill_shaman_war_totem",
+   "name": "Totem de Guerra",
+   "class": "Xamã"
+  },
+  {
+   "id": "skill_shaman_healing_totem",
+   "name": "Totem de Cura",
+   "class": "Xamã"
+  },
+  {
+   "id": "skill_shaman_spirit_call",
+   "name": "Chamado Espiritual",
+   "class": "Xamã"
+  },
+  {
+   "id": "skill_shaman_ancestor_dance",
+   "name": "Dança dos Ancestrais",
+   "class": "Xamã"
+  }
+ ],
+ "H07": [
+  {
+   "id": "skill_sorcerer_mystic_blast",
+   "name": "Rajada Mística",
+   "class": "Feiticeiro"
+  },
+  {
+   "id": "skill_sorcerer_familiar",
+   "name": "Familiar",
+   "class": "Feiticeiro"
+  },
+  {
+   "id": "skill_sorcerer_curse",
+   "name": "Maldição",
+   "class": "Feiticeiro"
+  },
+  {
+   "id": "skill_sorcerer_grand_conjuration",
+   "name": "Grande Conjuração",
+   "class": "Feiticeiro"
+  },
+  {
+   "id": "skill_arcblade_arcane_cut",
+   "name": "Corte Arcano",
+   "class": "Lâmina Arcana"
+  },
+  {
+   "id": "skill_arcblade_enchant",
+   "name": "Encantar Arma",
+   "class": "Lâmina Arcana"
+  },
+  {
+   "id": "skill_arcblade_ethereal_step",
+   "name": "Passo Etéreo",
+   "class": "Lâmina Arcana"
+  },
+  {
+   "id": "skill_arcblade_transcendent",
+   "name": "Lâmina Transcendente",
+   "class": "Lâmina Arcana"
+  }
+ ],
+ "H08": [
+  {
+   "id": "skill_monk_fist_sequence",
+   "name": "Sequência de Punhos",
+   "class": "Monge"
+  },
+  {
+   "id": "skill_monk_repulsing_palm",
+   "name": "Palma Repulsora",
+   "class": "Monge"
+  },
+  {
+   "id": "skill_monk_chi_flow",
+   "name": "Fluxo de Chi",
+   "class": "Monge"
+  },
+  {
+   "id": "skill_monk_thousand_blows",
+   "name": "Mil Golpes",
+   "class": "Monge"
+  },
+  {
+   "id": "skill_lancer_pierce",
+   "name": "Perfuração",
+   "class": "Lanceiro"
+  },
+  {
+   "id": "skill_lancer_sweep",
+   "name": "Varredura",
+   "class": "Lanceiro"
+  },
+  {
+   "id": "skill_lancer_spear_leap",
+   "name": "Salto da Lança",
+   "class": "Lanceiro"
+  },
+  {
+   "id": "skill_lancer_formation",
+   "name": "Formação de Lanças",
+   "class": "Lanceiro"
+  }
+ ],
+ "H09": [
+  {
+   "id": "skill_bard_war_song",
+   "name": "Canção de Guerra",
+   "class": "Bardo"
+  },
+  {
+   "id": "skill_bard_restoring_ballad",
+   "name": "Balada Restauradora",
+   "class": "Bardo"
+  },
+  {
+   "id": "skill_bard_dissonant_note",
+   "name": "Nota Dissonante",
+   "class": "Bardo"
+  },
+  {
+   "id": "skill_bard_grand_concert",
+   "name": "Grande Concerto",
+   "class": "Bardo"
+  },
+  {
+   "id": "skill_hunter_study_prey",
+   "name": "Estudar Presa",
+   "class": "Caçador de Monstros"
+  },
+  {
+   "id": "skill_hunter_hunting_bomb",
+   "name": "Bomba de Caça",
+   "class": "Caçador de Monstros"
+  },
+  {
+   "id": "skill_hunter_prepared_dodge",
+   "name": "Esquiva Preparada",
+   "class": "Caçador de Monstros"
+  },
+  {
+   "id": "skill_hunter_prepared_kill",
+   "name": "Abate Preparado",
+   "class": "Caçador de Monstros"
+  }
+ ],
+ "H10": [
+  {
+   "id": "skill_barbarian_brutal_axe",
+   "name": "Machado Brutal",
+   "class": "Bárbaro da Bruma"
+  },
+  {
+   "id": "skill_barbarian_war_mist",
+   "name": "Bruma de Guerra",
+   "class": "Bárbaro da Bruma"
+  },
+  {
+   "id": "skill_barbarian_tribal_roar",
+   "name": "Rugido Tribal",
+   "class": "Bárbaro da Bruma"
+  },
+  {
+   "id": "skill_barbarian_mist_frenzy",
+   "name": "Frenesi da Bruma",
+   "class": "Bárbaro da Bruma"
+  },
+  {
+   "id": "skill_runehammer_seismic",
+   "name": "Martelo Sísmico",
+   "class": "Martelo Rúnico"
+  },
+  {
+   "id": "skill_runehammer_weight_rune",
+   "name": "Runa de Peso",
+   "class": "Martelo Rúnico"
+  },
+  {
+   "id": "skill_runehammer_protective_rune",
+   "name": "Runa Protetora",
+   "class": "Martelo Rúnico"
+  },
+  {
+   "id": "skill_runehammer_judgement",
+   "name": "Julgamento Rúnico",
+   "class": "Martelo Rúnico"
+  }
+ ],
+ "H11": [
+  {
+   "id": "skill_moss_bark_skin",
+   "name": "Pele de Casca",
+   "class": "Guardião de Musgo"
+  },
+  {
+   "id": "skill_moss_living_thorns",
+   "name": "Espinhos Vivos",
+   "class": "Guardião de Musgo"
+  },
+  {
+   "id": "skill_moss_protective_roots",
+   "name": "Raízes Protetoras",
+   "class": "Guardião de Musgo"
+  },
+  {
+   "id": "skill_moss_forest_heart",
+   "name": "Coração da Floresta",
+   "class": "Guardião de Musgo"
+  },
+  {
+   "id": "skill_wind_cut",
+   "name": "Corte do Vento",
+   "class": "Andarilho do Vento"
+  },
+  {
+   "id": "skill_wind_celestial_step",
+   "name": "Passo Celeste",
+   "class": "Andarilho do Vento"
+  },
+  {
+   "id": "skill_wind_updraft",
+   "name": "Corrente Ascendente",
+   "class": "Andarilho do Vento"
+  },
+  {
+   "id": "skill_wind_storm_dance",
+   "name": "Dança da Tempestade",
+   "class": "Andarilho do Vento"
+  }
+ ],
+ "H12": [
+  {
+   "id": "skill_jade_shard",
+   "name": "Fragmento de Jade",
+   "class": "Tecelã de Jade"
+  },
+  {
+   "id": "skill_jade_flower",
+   "name": "Flor de Jade",
+   "class": "Tecelã de Jade"
+  },
+  {
+   "id": "skill_jade_vital_link",
+   "name": "Ligação Vital",
+   "class": "Tecelã de Jade"
+  },
+  {
+   "id": "skill_jade_palace",
+   "name": "Palácio de Jade",
+   "class": "Tecelã de Jade"
+  },
+  {
+   "id": "skill_moon_ray",
+   "name": "Raio Lunar",
+   "class": "Maga da Lua"
+  },
+  {
+   "id": "skill_moon_night_veil",
+   "name": "Véu Noturno",
+   "class": "Maga da Lua"
+  },
+  {
+   "id": "skill_moon_gravity",
+   "name": "Gravidade Lunar",
+   "class": "Maga da Lua"
+  },
+  {
+   "id": "skill_moon_eclipse",
+   "name": "Eclipse",
+   "class": "Maga da Lua"
+  }
+ ],
+ "H13": [
+  {
+   "id": "skill_tamer_feral_companion",
+   "name": "Companheiro Feral",
+   "class": "Domador de Feras"
+  },
+  {
+   "id": "skill_tamer_command_attack",
+   "name": "Comando: Atacar",
+   "class": "Domador de Feras"
+  },
+  {
+   "id": "skill_tamer_blood_bond",
+   "name": "Elo de Sangue",
+   "class": "Domador de Feras"
+  },
+  {
+   "id": "skill_tamer_pack_call",
+   "name": "Chamado da Alcateia",
+   "class": "Domador de Feras"
+  },
+  {
+   "id": "skill_eng_turret",
+   "name": "Torreta Arcana",
+   "class": "Engenheiro Arcano"
+  },
+  {
+   "id": "skill_eng_rune_mine",
+   "name": "Mina Rúnica",
+   "class": "Engenheiro Arcano"
+  },
+  {
+   "id": "skill_eng_repair_drone",
+   "name": "Drone Reparador",
+   "class": "Engenheiro Arcano"
+  },
+  {
+   "id": "skill_eng_overload",
+   "name": "Sobrecarga Mecânica",
+   "class": "Engenheiro Arcano"
+  }
+ ],
+ "H14": [
+  {
+   "id": "skill_corsair_pistol_shot",
+   "name": "Tiro de Pistola",
+   "class": "Corsário"
+  },
+  {
+   "id": "skill_corsair_cut",
+   "name": "Corte Corsário",
+   "class": "Corsário"
+  },
+  {
+   "id": "skill_corsair_hook",
+   "name": "Gancho",
+   "class": "Corsário"
+  },
+  {
+   "id": "skill_corsair_bombardment",
+   "name": "Bombardeio",
+   "class": "Corsário"
+  },
+  {
+   "id": "skill_pug_lightning_jab",
+   "name": "Jab Relâmpago",
+   "class": "Pugilista"
+  },
+  {
+   "id": "skill_pug_defense_break",
+   "name": "Quebra-Defesa",
+   "class": "Pugilista"
+  },
+  {
+   "id": "skill_pug_offensive_dodge",
+   "name": "Esquiva Ofensiva",
+   "class": "Pugilista"
+  },
+  {
+   "id": "skill_pug_relentless_combo",
+   "name": "Combo Implacável",
+   "class": "Pugilista"
+  }
+ ],
+ "H15": [
+  {
+   "id": "skill_dh_profane_mark",
+   "name": "Marca Profana",
+   "class": "Caçador de Demônios"
+  },
+  {
+   "id": "skill_dh_consecrated_chain",
+   "name": "Corrente Consagrada",
+   "class": "Caçador de Demônios"
+  },
+  {
+   "id": "skill_dh_demonic_purge",
+   "name": "Purga Demoníaca",
+   "class": "Caçador de Demônios"
+  },
+  {
+   "id": "skill_dh_infernal_sentence",
+   "name": "Sentença Infernal",
+   "class": "Caçador de Demônios"
+  },
+  {
+   "id": "skill_veil_duplicate",
+   "name": "Duplicata",
+   "class": "Místico do Véu"
+  },
+  {
+   "id": "skill_veil_veil",
+   "name": "Véu",
+   "class": "Místico do Véu"
+  },
+  {
+   "id": "skill_veil_nightmare",
+   "name": "Pesadelo",
+   "class": "Místico do Véu"
+  },
+  {
+   "id": "skill_veil_dream_world",
+   "name": "Mundo dos Sonhos",
+   "class": "Místico do Véu"
+  }
+ ],
+ "H16": [
+  {
+   "id": "skill_herald_war_banner",
+   "name": "Estandarte de Guerra",
+   "class": "Arauto de Guerra"
+  },
+  {
+   "id": "skill_herald_advance",
+   "name": "Ordem de Avanço",
+   "class": "Arauto de Guerra"
+  },
+  {
+   "id": "skill_herald_defense",
+   "name": "Ordem de Defesa",
+   "class": "Arauto de Guerra"
+  },
+  {
+   "id": "skill_herald_supreme_command",
+   "name": "Comando Supremo",
+   "class": "Arauto de Guerra"
+  },
+  {
+   "id": "skill_crimson_cut",
+   "name": "Corte Rubro",
+   "class": "Espadachim Carmesim"
+  },
+  {
+   "id": "skill_crimson_dance",
+   "name": "Dança Carmesim",
+   "class": "Espadachim Carmesim"
+  },
+  {
+   "id": "skill_crimson_blood_for_blood",
+   "name": "Sangue por Sangue",
+   "class": "Espadachim Carmesim"
+  },
+  {
+   "id": "skill_crimson_bloody_rose",
+   "name": "Rosa Sangrenta",
+   "class": "Espadachim Carmesim"
+  }
+ ],
+ "H17": [
+  {
+   "id": "skill_destroyer_demolition",
+   "name": "Demolição",
+   "class": "Destruidor"
+  },
+  {
+   "id": "skill_destroyer_shockwave",
+   "name": "Onda de Choque",
+   "class": "Destruidor"
+  },
+  {
+   "id": "skill_destroyer_momentum",
+   "name": "Ímpeto Destrutivo",
+   "class": "Destruidor"
+  },
+  {
+   "id": "skill_destroyer_meteor",
+   "name": "Impacto de Meteoro",
+   "class": "Destruidor"
+  },
+  {
+   "id": "skill_warlord_commander_strike",
+   "name": "Golpe do Comandante",
+   "class": "Senhor da Guerra"
+  },
+  {
+   "id": "skill_warlord_regroup",
+   "name": "Reagrupar",
+   "class": "Senhor da Guerra"
+  },
+  {
+   "id": "skill_warlord_dominant_presence",
+   "name": "Presença Dominante",
+   "class": "Senhor da Guerra"
+  },
+  {
+   "id": "skill_warlord_battlefield",
+   "name": "Campo de Batalha",
+   "class": "Senhor da Guerra"
+  }
+ ],
+ "H18": [
+  {
+   "id": "skill_colossus_trample",
+   "name": "Pisoteio",
+   "class": "Colosso"
+  },
+  {
+   "id": "skill_colossus_stone_body",
+   "name": "Corpo de Pedra",
+   "class": "Colosso"
+  },
+  {
+   "id": "skill_colossus_intercept",
+   "name": "Interceptar",
+   "class": "Colosso"
+  },
+  {
+   "id": "skill_colossus_colossal_form",
+   "name": "Forma Colossal",
+   "class": "Colosso"
+  },
+  {
+   "id": "skill_immortal_persistent_blood",
+   "name": "Sangue Persistente",
+   "class": "Imortal"
+  },
+  {
+   "id": "skill_immortal_refuse_death",
+   "name": "Recusar a Morte",
+   "class": "Imortal"
+  },
+  {
+   "id": "skill_immortal_eternity_mark",
+   "name": "Marca da Eternidade",
+   "class": "Imortal"
+  },
+  {
+   "id": "skill_immortal_rebirth",
+   "name": "Renascimento",
+   "class": "Imortal"
+  }
+ ],
+ "H19": [
+  {
+   "id": "skill_phantom_spectral_pass",
+   "name": "Passagem Espectral",
+   "class": "Fantasma"
+  },
+  {
+   "id": "skill_phantom_ghost_blade",
+   "name": "Lâmina Fantasma",
+   "class": "Fantasma"
+  },
+  {
+   "id": "skill_phantom_haunt",
+   "name": "Assombrar",
+   "class": "Fantasma"
+  },
+  {
+   "id": "skill_phantom_thousand_blades",
+   "name": "Mil Lâminas",
+   "class": "Fantasma"
+  },
+  {
+   "id": "skill_chrono_delay",
+   "name": "Atraso Temporal",
+   "class": "Cronomante"
+  },
+  {
+   "id": "skill_chrono_haste",
+   "name": "Aceleração",
+   "class": "Cronomante"
+  },
+  {
+   "id": "skill_chrono_echo",
+   "name": "Eco Temporal",
+   "class": "Cronomante"
+  },
+  {
+   "id": "skill_chrono_stop_time",
+   "name": "Parar o Tempo",
+   "class": "Cronomante"
+  }
+ ],
+ "H20": [
+  {
+   "id": "skill_oracle_omen",
+   "name": "Presságio",
+   "class": "Oráculo"
+  },
+  {
+   "id": "skill_oracle_fair_fate",
+   "name": "Destino Favorável",
+   "class": "Oráculo"
+  },
+  {
+   "id": "skill_oracle_dark_fate",
+   "name": "Destino Sombrio",
+   "class": "Oráculo"
+  },
+  {
+   "id": "skill_oracle_rewrite_fate",
+   "name": "Reescrever Destino",
+   "class": "Oráculo"
+  },
+  {
+   "id": "skill_avatar_elemental_form",
+   "name": "Forma Elemental",
+   "class": "Avatar Elemental"
+  },
+  {
+   "id": "skill_avatar_primordial_blast",
+   "name": "Explosão Primordial",
+   "class": "Avatar Elemental"
+  },
+  {
+   "id": "skill_avatar_absorption",
+   "name": "Absorção Elemental",
+   "class": "Avatar Elemental"
+  },
+  {
+   "id": "skill_avatar_manifestation",
+   "name": "Manifestação Elemental",
+   "class": "Avatar Elemental"
+  }
+ ],
+ "H21": [
+  {
+   "id": "skill_abyss_cut",
+   "name": "Corte Abissal",
+   "class": "Cavaleiro Abissal"
+  },
+  {
+   "id": "skill_abyss_void_armor",
+   "name": "Armadura do Vazio",
+   "class": "Cavaleiro Abissal"
+  },
+  {
+   "id": "skill_abyss_chains",
+   "name": "Correntes do Abismo",
+   "class": "Cavaleiro Abissal"
+  },
+  {
+   "id": "skill_abyss_gate",
+   "name": "Portão Abissal",
+   "class": "Cavaleiro Abissal"
+  },
+  {
+   "id": "skill_blood_spear",
+   "name": "Lança de Sangue",
+   "class": "Sangromante"
+  },
+  {
+   "id": "skill_blood_drain",
+   "name": "Drenagem",
+   "class": "Sangromante"
+  },
+  {
+   "id": "skill_blood_crimson_bond",
+   "name": "Laço Carmesim",
+   "class": "Sangromante"
+  },
+  {
+   "id": "skill_blood_sea",
+   "name": "Mar de Sangue",
+   "class": "Sangromante"
+  }
+ ],
+ "H22": [
+  {
+   "id": "skill_astral_star_fragment",
+   "name": "Fragmento Estelar",
+   "class": "Invocador Astral"
+  },
+  {
+   "id": "skill_astral_constellation",
+   "name": "Constelação Protetora",
+   "class": "Invocador Astral"
+  },
+  {
+   "id": "skill_astral_comet",
+   "name": "Cometa",
+   "class": "Invocador Astral"
+  },
+  {
+   "id": "skill_astral_zodiac_portal",
+   "name": "Portal Zodiacal",
+   "class": "Invocador Astral"
+  },
+  {
+   "id": "skill_chains_pull",
+   "name": "Corrente Puxadora",
+   "class": "Mestre das Correntes"
+  },
+  {
+   "id": "skill_chains_shackles",
+   "name": "Grilhões",
+   "class": "Mestre das Correntes"
+  },
+  {
+   "id": "skill_chains_protective_link",
+   "name": "Elo Protetor",
+   "class": "Mestre das Correntes"
+  },
+  {
+   "id": "skill_chains_prison",
+   "name": "Prisão de Correntes",
+   "class": "Mestre das Correntes"
+  }
+ ],
+ "H23": [
+  {
+   "id": "skill_archmage_superior_magic",
+   "name": "Magia Superior",
+   "class": "Arquimago"
+  },
+  {
+   "id": "skill_archmage_counterspell",
+   "name": "Contrafeitiço",
+   "class": "Arquimago"
+  },
+  {
+   "id": "skill_archmage_arcane_fold",
+   "name": "Dobra Arcana",
+   "class": "Arquimago"
+  },
+  {
+   "id": "skill_archmage_grand_ritual",
+   "name": "Grande Ritual",
+   "class": "Arquimago"
+  },
+  {
+   "id": "skill_dragon_charge",
+   "name": "Investida Dracônica",
+   "class": "Cavaleiro do Dragão"
+  },
+  {
+   "id": "skill_dragon_scales",
+   "name": "Escamas Dracônicas",
+   "class": "Cavaleiro do Dragão"
+  },
+  {
+   "id": "skill_dragon_breath",
+   "name": "Sopro Herdado",
+   "class": "Cavaleiro do Dragão"
+  },
+  {
+   "id": "skill_dragon_awakening",
+   "name": "Despertar do Dragão",
+   "class": "Cavaleiro do Dragão"
+  }
+ ],
+ "H24": [
+  {
+   "id": "skill_sovereign_power_rune",
+   "name": "Runa de Poder",
+   "class": "Soberano Rúnico"
+  },
+  {
+   "id": "skill_sovereign_ward_rune",
+   "name": "Runa de Proteção",
+   "class": "Soberano Rúnico"
+  },
+  {
+   "id": "skill_sovereign_prison_rune",
+   "name": "Runa de Prisão",
+   "class": "Soberano Rúnico"
+  },
+  {
+   "id": "skill_sovereign_primordial_word",
+   "name": "Palavra Primordial",
+   "class": "Soberano Rúnico"
+  },
+  {
+   "id": "skill_void_step",
+   "name": "Passo no Vazio",
+   "class": "Caminhante do Vazio"
+  },
+  {
+   "id": "skill_void_dimensional_cut",
+   "name": "Corte Dimensional",
+   "class": "Caminhante do Vazio"
+  },
+  {
+   "id": "skill_void_linked_portal",
+   "name": "Portal Vinculado",
+   "class": "Caminhante do Vazio"
+  },
+  {
+   "id": "skill_void_spatial_collapse",
+   "name": "Colapso Espacial",
+   "class": "Caminhante do Vazio"
+  }
+ ],
+ "H25": [
+  {
+   "id": "skill_saint_radiant_strike",
+   "name": "Golpe Radiante",
+   "class": "Santo Guerreiro"
+  },
+  {
+   "id": "skill_saint_shield_of_faith",
+   "name": "Escudo da Fé",
+   "class": "Santo Guerreiro"
+  },
+  {
+   "id": "skill_saint_martyrdom",
+   "name": "Martírio",
+   "class": "Santo Guerreiro"
+  },
+  {
+   "id": "skill_saint_celestial_intervention",
+   "name": "Intervenção Celestial",
+   "class": "Santo Guerreiro"
+  },
+  {
+   "id": "skill_storm_chain_lightning",
+   "name": "Relâmpago Encadeado",
+   "class": "Senhor das Tempestades"
+  },
+  {
+   "id": "skill_storm_gust",
+   "name": "Rajada de Vento",
+   "class": "Senhor das Tempestades"
+  },
+  {
+   "id": "skill_storm_cloud",
+   "name": "Nuvem de Tempestade",
+   "class": "Senhor das Tempestades"
+  },
+  {
+   "id": "skill_storm_wrath_of_heavens",
+   "name": "Ira dos Céus",
+   "class": "Senhor das Tempestades"
+  }
+ ],
+ "H26": [
+  {
+   "id": "skill_solar_cut",
+   "name": "Corte Solar",
+   "class": "Arconte Solar"
+  },
+  {
+   "id": "skill_solar_flash",
+   "name": "Clarão",
+   "class": "Arconte Solar"
+  },
+  {
+   "id": "skill_solar_aura",
+   "name": "Aura Solar",
+   "class": "Arconte Solar"
+  },
+  {
+   "id": "skill_solar_descending_sun",
+   "name": "Sol Descendente",
+   "class": "Arconte Solar"
+  },
+  {
+   "id": "skill_devourer_mana_drain",
+   "name": "Drenar Mana",
+   "class": "Devorador de Magia"
+  },
+  {
+   "id": "skill_devourer_silence",
+   "name": "Silenciamento",
+   "class": "Devorador de Magia"
+  },
+  {
+   "id": "skill_devourer_arcane_absorption",
+   "name": "Absorção Arcana",
+   "class": "Devorador de Magia"
+  },
+  {
+   "id": "skill_devourer_null_zone",
+   "name": "Zona Nula",
+   "class": "Devorador de Magia"
+  }
+ ],
+ "H27": [
+  {
+   "id": "skill_necro_raise_dead",
+   "name": "Erguer Morto",
+   "class": "Necromante"
+  },
+  {
+   "id": "skill_necro_corpse_explosion",
+   "name": "Explosão Cadavérica",
+   "class": "Necromante"
+  },
+  {
+   "id": "skill_necro_soul_harvest",
+   "name": "Colheita de Almas",
+   "class": "Necromante"
+  },
+  {
+   "id": "skill_necro_army_of_dead",
+   "name": "Exército dos Mortos",
+   "class": "Necromante"
+  },
+  {
+   "id": "skill_heir_titan_fist",
+   "name": "Punho Titânico",
+   "class": "Herdeiro do Colosso"
+  },
+  {
+   "id": "skill_heir_giant_blood",
+   "name": "Sangue de Gigante",
+   "class": "Herdeiro do Colosso"
+  },
+  {
+   "id": "skill_heir_titan_step",
+   "name": "Passo do Titã",
+   "class": "Herdeiro do Colosso"
+  },
+  {
+   "id": "skill_heir_ancestral_awakening",
+   "name": "Despertar Ancestral",
+   "class": "Herdeiro do Colosso"
+  }
+ ],
+ "H28": [
+  {
+   "id": "skill_pack_call",
+   "name": "Chamado da Matilha",
+   "class": "Senhor da Matilha"
+  },
+  {
+   "id": "skill_pack_alpha_mark",
+   "name": "Marca do Alfa",
+   "class": "Senhor da Matilha"
+  },
+  {
+   "id": "skill_pack_hunting_howl",
+   "name": "Uivo de Caça",
+   "class": "Senhor da Matilha"
+  },
+  {
+   "id": "skill_pack_great_hunt",
+   "name": "Grande Caçada",
+   "class": "Senhor da Matilha"
+  },
+  {
+   "id": "skill_carto_eye",
+   "name": "Olho do Cartógrafo",
+   "class": "Cartógrafo do Vale"
+  },
+  {
+   "id": "skill_carto_safe_route",
+   "name": "Rota Segura",
+   "class": "Cartógrafo do Vale"
+  },
+  {
+   "id": "skill_carto_mark_terrain",
+   "name": "Marcar Terreno",
+   "class": "Cartógrafo do Vale"
+  },
+  {
+   "id": "skill_carto_impossible_map",
+   "name": "Mapa Impossível",
+   "class": "Cartógrafo do Vale"
+  }
+ ],
+ "H29": [
+  {
+   "id": "skill_forge_sharpen",
+   "name": "Afiar",
+   "class": "Mestre Forjador"
+  },
+  {
+   "id": "skill_forge_reinforce",
+   "name": "Reforçar Armadura",
+   "class": "Mestre Forjador"
+  },
+  {
+   "id": "skill_forge_field_forge",
+   "name": "Forja de Campo",
+   "class": "Mestre Forjador"
+  },
+  {
+   "id": "skill_forge_masterpiece",
+   "name": "Obra-Prima",
+   "class": "Mestre Forjador"
+  },
+  {
+   "id": "skill_sanct_seal",
+   "name": "Selo do Santuário",
+   "class": "Guardião do Santuário"
+  },
+  {
+   "id": "skill_sanct_absolute_protection",
+   "name": "Proteção Absoluta",
+   "class": "Guardião do Santuário"
+  },
+  {
+   "id": "skill_sanct_judgement_of_invader",
+   "name": "Julgamento do Invasor",
+   "class": "Guardião do Santuário"
+  },
+  {
+   "id": "skill_sanct_living_sanctuary",
+   "name": "Santuário Vivo",
+   "class": "Guardião do Santuário"
+  }
+ ],
+ "H30": [
+  {
+   "id": "skill_moonb_crescent",
+   "name": "Crescente Lunar",
+   "class": "Portador da Lua"
+  },
+  {
+   "id": "skill_moonb_blessing",
+   "name": "Bênção da Lua",
+   "class": "Portador da Lua"
+  },
+  {
+   "id": "skill_moonb_lunar_step",
+   "name": "Passo Lunar",
+   "class": "Portador da Lua"
+  },
+  {
+   "id": "skill_moonb_manifested_moon",
+   "name": "Lua Manifestada",
+   "class": "Portador da Lua"
+  },
+  {
+   "id": "skill_king_royal_command",
+   "name": "Comando Real",
+   "class": "Rei sem Coroa"
+  },
+  {
+   "id": "skill_king_authority",
+   "name": "Autoridade",
+   "class": "Rei sem Coroa"
+  },
+  {
+   "id": "skill_king_rally",
+   "name": "Reunir Seguidores",
+   "class": "Rei sem Coroa"
+  },
+  {
+   "id": "skill_king_my_kingdom",
+   "name": "Meu Reino",
+   "class": "Rei sem Coroa"
+  }
+ ],
+ "H31": [
+  {
+   "id": "skill_seraph_dawn_light",
+   "name": "Luz da Aurora",
+   "class": "Serafim da Aurora"
+  },
+  {
+   "id": "skill_seraph_celestial_wings",
+   "name": "Asas Celestiais",
+   "class": "Serafim da Aurora"
+  },
+  {
+   "id": "skill_seraph_divine_grace",
+   "name": "Graça Divina",
+   "class": "Serafim da Aurora"
+  },
+  {
+   "id": "skill_seraph_first_dawn",
+   "name": "Primeiro Amanhecer",
+   "class": "Serafim da Aurora"
+  },
+  {
+   "id": "skill_end_first_seal",
+   "name": "Primeiro Selo",
+   "class": "Arauto do Fim"
+  },
+  {
+   "id": "skill_end_trumpet",
+   "name": "Trombeta",
+   "class": "Arauto do Fim"
+  },
+  {
+   "id": "skill_end_omen",
+   "name": "Presságio do Fim",
+   "class": "Arauto do Fim"
+  },
+  {
+   "id": "skill_end_apocalypse",
+   "name": "Apocalipse",
+   "class": "Arauto do Fim"
+  }
+ ],
+ "H32": [
+  {
+   "id": "skill_ether_condensed",
+   "name": "Éter Condensado",
+   "class": "Vaso do Éter"
+  },
+  {
+   "id": "skill_ether_astral_body",
+   "name": "Corpo Astral",
+   "class": "Vaso do Éter"
+  },
+  {
+   "id": "skill_ether_transfer",
+   "name": "Transferência Etérea",
+   "class": "Vaso do Éter"
+  },
+  {
+   "id": "skill_ether_transcendence",
+   "name": "Transcendência",
+   "class": "Vaso do Éter"
+  },
+  {
+   "id": "skill_primordial_create",
+   "name": "Criar",
+   "class": "Soberano Primordial"
+  },
+  {
+   "id": "skill_primordial_destroy",
+   "name": "Destruir",
+   "class": "Soberano Primordial"
+  },
+  {
+   "id": "skill_primordial_balance",
+   "name": "Equilibrar",
+   "class": "Soberano Primordial"
+  },
+  {
+   "id": "skill_primordial_law",
+   "name": "Lei Primordial",
+   "class": "Soberano Primordial"
+  }
+ ],
+ "H33": [
+  {
+   "id": "skill_chaos_fragment",
+   "name": "Fragmento Caótico",
+   "class": "Herdeiro do Caos"
+  },
+  {
+   "id": "skill_chaos_rupture",
+   "name": "Ruptura",
+   "class": "Herdeiro do Caos"
+  },
+  {
+   "id": "skill_chaos_rising_entropy",
+   "name": "Entropia Crescente",
+   "class": "Herdeiro do Caos"
+  },
+  {
+   "id": "skill_chaos_incarnate",
+   "name": "Caos Encarnado",
+   "class": "Herdeiro do Caos"
+  },
+  {
+   "id": "skill_fate_favorable_thread",
+   "name": "Fio Favorável",
+   "class": "Avatar do Destino"
+  },
+  {
+   "id": "skill_fate_cut_thread",
+   "name": "Fio Cortado",
+   "class": "Avatar do Destino"
+  },
+  {
+   "id": "skill_fate_bound_destiny",
+   "name": "Destino Vinculado",
+   "class": "Avatar do Destino"
+  },
+  {
+   "id": "skill_fate_causality",
+   "name": "Causalidade",
+   "class": "Avatar do Destino"
+  }
+ ],
+ "C01": [
+  {
+   "id": "class_warrior",
+   "name": "Guerreiro",
+   "class": "Guerreiro"
+  },
+  {
+   "id": "class_knight",
+   "name": "Cavaleiro",
+   "class": "Cavaleiro"
+  },
+  {
+   "id": "class_guardian",
+   "name": "Guardião",
+   "class": "Guardião"
+  },
+  {
+   "id": "class_ranger",
+   "name": "Patrulheiro",
+   "class": "Patrulheiro"
+  },
+  {
+   "id": "class_duelist",
+   "name": "Duelista",
+   "class": "Duelista"
+  },
+  {
+   "id": "class_assassin",
+   "name": "Assassino",
+   "class": "Assassino"
+  },
+  {
+   "id": "class_elemental_mage",
+   "name": "Mago Elemental",
+   "class": "Mago Elemental"
+  },
+  {
+   "id": "class_arcanist",
+   "name": "Arcanista",
+   "class": "Arcanista"
+  }
+ ],
+ "C02": [
+  {
+   "id": "class_alchemist",
+   "name": "Alquimista",
+   "class": "Alquimista"
+  },
+  {
+   "id": "class_cleric",
+   "name": "Clérigo",
+   "class": "Clérigo"
+  },
+  {
+   "id": "class_druid",
+   "name": "Druida",
+   "class": "Druida"
+  },
+  {
+   "id": "class_shaman",
+   "name": "Xamã",
+   "class": "Xamã"
+  },
+  {
+   "id": "class_sorcerer",
+   "name": "Feiticeiro",
+   "class": "Feiticeiro"
+  },
+  {
+   "id": "class_arcane_blade",
+   "name": "Lâmina Arcana",
+   "class": "Lâmina Arcana"
+  },
+  {
+   "id": "class_monge",
+   "name": "Monge",
+   "class": "Monge"
+  },
+  {
+   "id": "class_lanceiro",
+   "name": "Lanceiro",
+   "class": "Lanceiro"
+  }
+ ],
+ "C03": [
+  {
+   "id": "class_bardo",
+   "name": "Bardo",
+   "class": "Bardo"
+  },
+  {
+   "id": "class_cacador_de_monstros",
+   "name": "Caçador de Monstros",
+   "class": "Caçador de Monstros"
+  },
+  {
+   "id": "class_barbarian",
+   "name": "Bárbaro da Bruma",
+   "class": "Bárbaro da Bruma"
+  },
+  {
+   "id": "class_rune_hammer",
+   "name": "Martelo Rúnico",
+   "class": "Martelo Rúnico"
+  },
+  {
+   "id": "class_moss_guardian",
+   "name": "Guardião de Musgo",
+   "class": "Guardião de Musgo"
+  },
+  {
+   "id": "class_wind_walker",
+   "name": "Andarilho do Vento",
+   "class": "Andarilho do Vento"
+  },
+  {
+   "id": "class_jade_weaver",
+   "name": "Tecelã de Jade",
+   "class": "Tecelã de Jade"
+  },
+  {
+   "id": "class_moon_mage",
+   "name": "Maga da Lua",
+   "class": "Maga da Lua"
+  }
+ ],
+ "C04": [
+  {
+   "id": "class_domador_de_feras",
+   "name": "Domador de Feras",
+   "class": "Domador de Feras"
+  },
+  {
+   "id": "class_engenheiro_arcano",
+   "name": "Engenheiro Arcano",
+   "class": "Engenheiro Arcano"
+  },
+  {
+   "id": "class_corsario",
+   "name": "Corsário",
+   "class": "Corsário"
+  },
+  {
+   "id": "class_pugilista",
+   "name": "Pugilista",
+   "class": "Pugilista"
+  },
+  {
+   "id": "class_cacador_de_demonios",
+   "name": "Caçador de Demônios",
+   "class": "Caçador de Demônios"
+  },
+  {
+   "id": "class_mistico_do_veu",
+   "name": "Místico do Véu",
+   "class": "Místico do Véu"
+  },
+  {
+   "id": "class_arauto_de_guerra",
+   "name": "Arauto de Guerra",
+   "class": "Arauto de Guerra"
+  },
+  {
+   "id": "class_espadachim_carmesim",
+   "name": "Espadachim Carmesim",
+   "class": "Espadachim Carmesim"
+  }
+ ],
+ "C05": [
+  {
+   "id": "class_destroyer",
+   "name": "Destruidor",
+   "class": "Destruidor"
+  },
+  {
+   "id": "class_warlord",
+   "name": "Senhor da Guerra",
+   "class": "Senhor da Guerra"
+  },
+  {
+   "id": "class_colossus",
+   "name": "Colosso",
+   "class": "Colosso"
+  },
+  {
+   "id": "class_immortal",
+   "name": "Imortal",
+   "class": "Imortal"
+  },
+  {
+   "id": "class_phantom",
+   "name": "Fantasma",
+   "class": "Fantasma"
+  },
+  {
+   "id": "class_chronomancer",
+   "name": "Cronomante",
+   "class": "Cronomante"
+  },
+  {
+   "id": "class_oracle",
+   "name": "Oráculo",
+   "class": "Oráculo"
+  },
+  {
+   "id": "class_elemental_avatar",
+   "name": "Avatar Elemental",
+   "class": "Avatar Elemental"
+  }
+ ],
+ "C06": [
+  {
+   "id": "class_cavaleiro_abissal",
+   "name": "Cavaleiro Abissal",
+   "class": "Cavaleiro Abissal"
+  },
+  {
+   "id": "class_sangromante",
+   "name": "Sangromante",
+   "class": "Sangromante"
+  },
+  {
+   "id": "class_invocador_astral",
+   "name": "Invocador Astral",
+   "class": "Invocador Astral"
+  },
+  {
+   "id": "class_mestre_das_correntes",
+   "name": "Mestre das Correntes",
+   "class": "Mestre das Correntes"
+  },
+  {
+   "id": "class_archmage",
+   "name": "Arquimago",
+   "class": "Arquimago"
+  },
+  {
+   "id": "class_cavaleiro_do_dragao",
+   "name": "Cavaleiro do Dragão",
+   "class": "Cavaleiro do Dragão"
+  },
+  {
+   "id": "class_soberano_runico",
+   "name": "Soberano Rúnico",
+   "class": "Soberano Rúnico"
+  },
+  {
+   "id": "class_caminhante_do_vazio",
+   "name": "Caminhante do Vazio",
+   "class": "Caminhante do Vazio"
+  }
+ ],
+ "C07": [
+  {
+   "id": "class_santo_guerreiro",
+   "name": "Santo Guerreiro",
+   "class": "Santo Guerreiro"
+  },
+  {
+   "id": "class_senhor_das_tempestades",
+   "name": "Senhor das Tempestades",
+   "class": "Senhor das Tempestades"
+  },
+  {
+   "id": "class_arconte_solar",
+   "name": "Arconte Solar",
+   "class": "Arconte Solar"
+  },
+  {
+   "id": "class_devorador_de_magia",
+   "name": "Devorador de Magia",
+   "class": "Devorador de Magia"
+  },
+  {
+   "id": "class_necromancer",
+   "name": "Necromante",
+   "class": "Necromante"
+  },
+  {
+   "id": "class_herdeiro_do_colosso",
+   "name": "Herdeiro do Colosso",
+   "class": "Herdeiro do Colosso"
+  },
+  {
+   "id": "class_senhor_da_matilha",
+   "name": "Senhor da Matilha",
+   "class": "Senhor da Matilha"
+  },
+  {
+   "id": "class_cartografo_do_vale",
+   "name": "Cartógrafo do Vale",
+   "class": "Cartógrafo do Vale"
+  }
+ ],
+ "C08": [
+  {
+   "id": "class_mestre_forjador",
+   "name": "Mestre Forjador",
+   "class": "Mestre Forjador"
+  },
+  {
+   "id": "class_guardiao_do_santuario",
+   "name": "Guardião do Santuário",
+   "class": "Guardião do Santuário"
+  },
+  {
+   "id": "class_portador_da_lua",
+   "name": "Portador da Lua",
+   "class": "Portador da Lua"
+  },
+  {
+   "id": "class_rei_sem_coroa",
+   "name": "Rei sem Coroa",
+   "class": "Rei sem Coroa"
+  },
+  {
+   "id": "class_serafim_da_aurora",
+   "name": "Serafim da Aurora",
+   "class": "Serafim da Aurora"
+  },
+  {
+   "id": "class_arauto_do_fim",
+   "name": "Arauto do Fim",
+   "class": "Arauto do Fim"
+  },
+  {
+   "id": "class_vaso_do_eter",
+   "name": "Vaso do Éter",
+   "class": "Vaso do Éter"
+  },
+  {
+   "id": "class_soberano_primordial",
+   "name": "Soberano Primordial",
+   "class": "Soberano Primordial"
+  }
+ ],
+ "C09": [
+  {
+   "id": "class_herdeiro_do_caos",
+   "name": "Herdeiro do Caos",
+   "class": "Herdeiro do Caos"
+  },
+  {
+   "id": "class_avatar_do_destino",
+   "name": "Avatar do Destino",
+   "class": "Avatar do Destino"
+  }
+ ],
+ "G01": [
+  {
+   "id": "weapon_espada_de_cinzas",
+   "name": "Espada (golpe)",
+   "class": "Espada"
+  },
+  {
+   "id": "special_espada_de_cinzas",
+   "name": "Espada: Aparar",
+   "class": "Espada"
+  },
+  {
+   "id": "weapon_espadao",
+   "name": "Espadão (golpe)",
+   "class": "Espadão"
+  },
+  {
+   "id": "special_espadao",
+   "name": "Espadão: Corte Carregado",
+   "class": "Espadão"
+  },
+  {
+   "id": "weapon_machado",
+   "name": "Machado (golpe)",
+   "class": "Machado"
+  },
+  {
+   "id": "special_machado",
+   "name": "Machado: Golpe de Execução",
+   "class": "Machado"
+  },
+  {
+   "id": "weapon_machados_duplos",
+   "name": "Machados Duplos (golpe)",
+   "class": "Machados Duplos"
+  },
+  {
+   "id": "special_machados_duplos",
+   "name": "Machados Duplos: Redemoinho",
+   "class": "Machados Duplos"
+  }
+ ],
+ "G02": [
+  {
+   "id": "weapon_martelo_de_bram",
+   "name": "Martelo de Guerra (golpe)",
+   "class": "Martelo de Guerra"
+  },
+  {
+   "id": "special_martelo_de_bram",
+   "name": "Martelo de Guerra: Impacto Sísmico",
+   "class": "Martelo de Guerra"
+  },
+  {
+   "id": "weapon_lanca_do_patrulheiro",
+   "name": "Lança (golpe)",
+   "class": "Lança"
+  },
+  {
+   "id": "special_lanca_do_patrulheiro",
+   "name": "Lança: Investida Preparada",
+   "class": "Lança"
+  },
+  {
+   "id": "weapon_alabarda",
+   "name": "Alabarda (golpe)",
+   "class": "Alabarda"
+  },
+  {
+   "id": "special_alabarda",
+   "name": "Alabarda: Gancho",
+   "class": "Alabarda"
+  },
+  {
+   "id": "weapon_adagas_gemeas",
+   "name": "Adagas Duplas (golpe)",
+   "class": "Adagas Duplas"
+  },
+  {
+   "id": "special_adagas_gemeas",
+   "name": "Adagas Duplas: Passo Assassino",
+   "class": "Adagas Duplas"
+  }
+ ],
+ "G03": [
+  {
+   "id": "weapon_manoplas_de_ferro",
+   "name": "Manoplas (golpe)",
+   "class": "Manoplas"
+  },
+  {
+   "id": "special_manoplas_de_ferro",
+   "name": "Manoplas: Contra-Golpe",
+   "class": "Manoplas"
+  },
+  {
+   "id": "weapon_maca_sagrada",
+   "name": "Maça Sagrada (golpe)",
+   "class": "Maça Sagrada"
+  },
+  {
+   "id": "special_maca_sagrada",
+   "name": "Maça Sagrada: Consagrar",
+   "class": "Maça Sagrada"
+  },
+  {
+   "id": "weapon_katana_do_vento",
+   "name": "Katana (golpe)",
+   "class": "Katana"
+  },
+  {
+   "id": "special_katana_do_vento",
+   "name": "Katana: Aparar",
+   "class": "Katana"
+  },
+  {
+   "id": "weapon_arco_de_betula",
+   "name": "Arco (golpe)",
+   "class": "Arco"
+  },
+  {
+   "id": "special_arco_de_betula",
+   "name": "Arco: Disparo Preciso",
+   "class": "Arco"
+  }
+ ],
+ "G04": [
+  {
+   "id": "weapon_besta",
+   "name": "Besta (golpe)",
+   "class": "Besta"
+  },
+  {
+   "id": "special_besta",
+   "name": "Besta: Virote Pesado",
+   "class": "Besta"
+  },
+  {
+   "id": "weapon_pistola_runica",
+   "name": "Pistola Rúnica (golpe)",
+   "class": "Pistola Rúnica"
+  },
+  {
+   "id": "special_pistola_runica",
+   "name": "Pistola Rúnica: Tiro Rúnico",
+   "class": "Pistola Rúnica"
+  },
+  {
+   "id": "weapon_chakrams",
+   "name": "Chakrams (golpe)",
+   "class": "Chakrams"
+  },
+  {
+   "id": "special_chakrams",
+   "name": "Chakrams: Ricochete",
+   "class": "Chakrams"
+  },
+  {
+   "id": "weapon_cajado_de_ilsa",
+   "name": "Cajado (golpe)",
+   "class": "Cajado"
+  },
+  {
+   "id": "special_cajado_de_ilsa",
+   "name": "Cajado: Canalização",
+   "class": "Cajado"
+  }
+ ],
+ "G05": [
+  {
+   "id": "weapon_varinha",
+   "name": "Varinha (golpe)",
+   "class": "Varinha"
+  },
+  {
+   "id": "special_varinha",
+   "name": "Varinha: Sobrecarga",
+   "class": "Varinha"
+  },
+  {
+   "id": "weapon_livro_da_aurora",
+   "name": "Grimório (golpe)",
+   "class": "Grimório"
+  },
+  {
+   "id": "special_livro_da_aurora",
+   "name": "Grimório: Círculo de Conjuração",
+   "class": "Grimório"
+  },
+  {
+   "id": "weapon_orbe",
+   "name": "Orbe Arcano (golpe)",
+   "class": "Orbe Arcano"
+  },
+  {
+   "id": "special_orbe",
+   "name": "Orbe Arcano: Égide Orbital",
+   "class": "Orbe Arcano"
+  },
+  {
+   "id": "weapon_instrumento",
+   "name": "Instrumento Arcano (golpe)",
+   "class": "Instrumento Arcano"
+  },
+  {
+   "id": "special_instrumento",
+   "name": "Instrumento Arcano: Acorde Ressonante",
+   "class": "Instrumento Arcano"
+  }
+ ],
+ "G06": [
+  {
+   "id": "weapon_foice",
+   "name": "Foice (golpe)",
+   "class": "Foice"
+  },
+  {
+   "id": "special_foice",
+   "name": "Foice: Ceifar",
+   "class": "Foice"
+  },
+  {
+   "id": "weapon_chicote",
+   "name": "Chicote (golpe)",
+   "class": "Chicote"
+  },
+  {
+   "id": "special_chicote",
+   "name": "Chicote: Laçar",
+   "class": "Chicote"
+  },
+  {
+   "id": "weapon_correntes",
+   "name": "Correntes com Lâminas (golpe)",
+   "class": "Correntes com Lâminas"
+  },
+  {
+   "id": "special_correntes",
+   "name": "Correntes com Lâminas: Aprisionar",
+   "class": "Correntes com Lâminas"
+  },
+  {
+   "id": "weapon_catalisador",
+   "name": "Catalisador Alquímico (golpe)",
+   "class": "Catalisador Alquímico"
+  },
+  {
+   "id": "special_catalisador",
+   "name": "Catalisador Alquímico: Névoa Alquímica",
+   "class": "Catalisador Alquímico"
+  }
+ ],
+ "I01": [
+  {
+   "id": "weapon_espada_comum_1",
+   "name": "Lâmina do Recruta"
+  },
+  {
+   "id": "weapon_espada_comum_2",
+   "name": "Espada de Treino"
+  },
+  {
+   "id": "weapon_espada_comum_3",
+   "name": "Agulha do Viajante"
+  },
+  {
+   "id": "weapon_espada_comum_4",
+   "name": "Velha Companheira"
+  },
+  {
+   "id": "weapon_espada_comum_5",
+   "name": "Cutelo do Lenhador"
+  },
+  {
+   "id": "weapon_espada_incomum_1",
+   "name": "Foice-Verde do Bosque"
+  },
+  {
+   "id": "weapon_espada_incomum_2",
+   "name": "Espada de Cobre Batido"
+  },
+  {
+   "id": "weapon_espada_incomum_3",
+   "name": "Lâmina da Maré Baixa"
+  }
+ ],
+ "I02": [
+  {
+   "id": "weapon_espada_incomum_4",
+   "name": "Marco do Guardião"
+  },
+  {
+   "id": "weapon_espada_incomum_5",
+   "name": "Ferrão da Noite"
+  },
+  {
+   "id": "weapon_espada_raro_1",
+   "name": "Safira Gélida"
+  },
+  {
+   "id": "weapon_espada_raro_2",
+   "name": "Lua Crescente"
+  },
+  {
+   "id": "weapon_espada_raro_3",
+   "name": "Trovão Partido"
+  },
+  {
+   "id": "weapon_espada_raro_4",
+   "name": "Presa da Serpente"
+  },
+  {
+   "id": "weapon_espada_raro_5",
+   "name": "Coração de Ametista"
+  },
+  {
+   "id": "weapon_espada_epico_1",
+   "name": "Monolito Desperto"
+  }
+ ],
+ "I03": [
+  {
+   "id": "weapon_espada_epico_2",
+   "name": "Escritura do Eclipse"
+  },
+  {
+   "id": "weapon_espada_epico_3",
+   "name": "Lâmina Sanguínea"
+  },
+  {
+   "id": "weapon_espada_epico_4",
+   "name": "Fragmento do Vórtice"
+  },
+  {
+   "id": "weapon_espada_epico_5",
+   "name": "Ceifadora do Vazio"
+  },
+  {
+   "id": "weapon_espada_lendario_1",
+   "name": "Suspiro de Azhûr"
+  },
+  {
+   "id": "weapon_espada_lendario_2",
+   "name": "Aurora Eterna"
+  },
+  {
+   "id": "weapon_espada_lendario_3",
+   "name": "Asa da Fênix"
+  },
+  {
+   "id": "weapon_espada_lendario_4",
+   "name": "Sopro de Valdora"
+  }
+ ],
+ "I04": [
+  {
+   "id": "weapon_espada_lendario_5",
+   "name": "Coroa do Sol"
+  },
+  {
+   "id": "weapon_espada_unico_1",
+   "name": "Fenda Esmeralda"
+  },
+  {
+   "id": "weapon_espada_unico_2",
+   "name": "Lágrima do Inverno"
+  },
+  {
+   "id": "weapon_espada_unico_3",
+   "name": "Raiz da Primeira Árvore"
+  },
+  {
+   "id": "weapon_espada_unico_4",
+   "name": "Silêncio Branco"
+  },
+  {
+   "id": "weapon_espada_unico_5",
+   "name": "Sucata do Andarilho"
+  },
+  {
+   "id": "weapon_espada_divino_1",
+   "name": "Juramento Celeste"
+  },
+  {
+   "id": "weapon_espada_divino_2",
+   "name": "Tridente do Primeiro Selo"
+  }
+ ],
+ "I05": [
+  {
+   "id": "weapon_espada_divino_3",
+   "name": "Estrela Guia"
+  },
+  {
+   "id": "weapon_espada_divino_4",
+   "name": "Voz do Santuário"
+  },
+  {
+   "id": "weapon_espada_divino_5",
+   "name": "Gênese"
+  },
+  {
+   "id": "weapon_arco_comum_1",
+   "name": "Arco Curto"
+  },
+  {
+   "id": "weapon_arco_comum_2",
+   "name": "Arco do Batedor"
+  },
+  {
+   "id": "weapon_arco_comum_3",
+   "name": "Arco de Galho Seco"
+  },
+  {
+   "id": "weapon_arco_comum_4",
+   "name": "Arco de Bétula"
+  },
+  {
+   "id": "weapon_arco_comum_5",
+   "name": "Arco Remendado"
+  }
+ ],
+ "I06": [
+  {
+   "id": "weapon_arco_incomum_1",
+   "name": "Arco do Salgueiro"
+  },
+  {
+   "id": "weapon_arco_incomum_2",
+   "name": "Arco de Espinheiro"
+  },
+  {
+   "id": "weapon_arco_incomum_3",
+   "name": "Arco de Cobre Rubro"
+  },
+  {
+   "id": "weapon_arco_incomum_4",
+   "name": "Arco da Correnteza"
+  },
+  {
+   "id": "weapon_arco_incomum_5",
+   "name": "Arco do Caçador"
+  },
+  {
+   "id": "weapon_arco_raro_1",
+   "name": "Arco da Névoa Azul"
+  },
+  {
+   "id": "weapon_arco_raro_2",
+   "name": "Arco da Lua Prateada"
+  },
+  {
+   "id": "weapon_arco_raro_3",
+   "name": "Arco do Relâmpago"
+  }
+ ],
+ "I07": [
+  {
+   "id": "weapon_arco_raro_4",
+   "name": "Arco da Geada"
+  },
+  {
+   "id": "weapon_arco_raro_5",
+   "name": "Arco de Jade"
+  },
+  {
+   "id": "weapon_arco_epico_1",
+   "name": "Arco Ametista"
+  },
+  {
+   "id": "weapon_arco_epico_2",
+   "name": "Arco da Noite Violeta"
+  },
+  {
+   "id": "weapon_arco_epico_3",
+   "name": "Sussurro da Lua Sangrenta"
+  },
+  {
+   "id": "weapon_arco_epico_4",
+   "name": "Arco Fragmentado"
+  },
+  {
+   "id": "weapon_arco_epico_5",
+   "name": "Arco do Eclipse"
+  },
+  {
+   "id": "weapon_arco_lendario_1",
+   "name": "Arco de Magma Rúnico"
+  }
+ ],
+ "I08": [
+  {
+   "id": "weapon_arco_lendario_2",
+   "name": "Arco do Grifo Dourado"
+  },
+  {
+   "id": "weapon_arco_lendario_3",
+   "name": "Arco da Fênix"
+  },
+  {
+   "id": "weapon_arco_lendario_4",
+   "name": "Arco do Sol Nascente"
+  },
+  {
+   "id": "weapon_arco_lendario_5",
+   "name": "Arco do Bosque Ancestral"
+  },
+  {
+   "id": "weapon_arco_unico_1",
+   "name": "Arco de Braços Gêmeos"
+  },
+  {
+   "id": "weapon_arco_unico_2",
+   "name": "Arco do Espelho"
+  },
+  {
+   "id": "weapon_arco_unico_3",
+   "name": "Arco da Raiz Primeva"
+  },
+  {
+   "id": "weapon_arco_unico_4",
+   "name": "Arco Sem Sombra"
+  }
+ ],
+ "I09": [
+  {
+   "id": "weapon_arco_unico_5",
+   "name": "Arco do Viajante Perdido"
+  },
+  {
+   "id": "weapon_arco_divino_1",
+   "name": "Asas da Aurora"
+  },
+  {
+   "id": "weapon_arco_divino_2",
+   "name": "Arco da Árvore do Mundo"
+  },
+  {
+   "id": "weapon_arco_divino_3",
+   "name": "Arco das Estrelas"
+  },
+  {
+   "id": "weapon_arco_divino_4",
+   "name": "Arco do Primeiro Rio"
+  },
+  {
+   "id": "weapon_arco_divino_5",
+   "name": "Arco do Vendaval Eterno"
+  },
+  {
+   "id": "armor_viajante_head",
+   "name": "Capuz do Viajante"
+  },
+  {
+   "id": "armor_viajante_chest",
+   "name": "Colete do Viajante"
+  }
+ ],
+ "I10": [
+  {
+   "id": "armor_viajante_legs",
+   "name": "Calças do Viajante"
+  },
+  {
+   "id": "armor_viajante_boots",
+   "name": "Botas do Viajante"
+  },
+  {
+   "id": "armor_recruta_head",
+   "name": "Chapéu de Ferro do Recruta"
+  },
+  {
+   "id": "armor_recruta_chest",
+   "name": "Gibão Acolchoado"
+  },
+  {
+   "id": "armor_recruta_legs",
+   "name": "Calças Acolchoadas"
+  },
+  {
+   "id": "armor_recruta_boots",
+   "name": "Botas Enfaixadas"
+  },
+  {
+   "id": "armor_cacador_head",
+   "name": "Gorro de Pele"
+  },
+  {
+   "id": "armor_cacador_chest",
+   "name": "Casaco de Peles"
+  }
+ ],
+ "I11": [
+  {
+   "id": "armor_cacador_legs",
+   "name": "Calças de Peles"
+  },
+  {
+   "id": "armor_cacador_boots",
+   "name": "Botas de Pele"
+  },
+  {
+   "id": "armor_malha_ferro_head",
+   "name": "Elmo de Nasal"
+  },
+  {
+   "id": "armor_malha_ferro_chest",
+   "name": "Cota de Malha Reforçada"
+  },
+  {
+   "id": "armor_malha_ferro_legs",
+   "name": "Perneiras de Malha"
+  },
+  {
+   "id": "armor_malha_ferro_boots",
+   "name": "Botas de Ferro"
+  },
+  {
+   "id": "armor_batedor_head",
+   "name": "Capuz do Batedor"
+  },
+  {
+   "id": "armor_batedor_chest",
+   "name": "Gibão Tachonado"
+  }
+ ],
+ "I12": [
+  {
+   "id": "armor_batedor_legs",
+   "name": "Calças Tachonadas"
+  },
+  {
+   "id": "armor_batedor_boots",
+   "name": "Botas do Batedor"
+  },
+  {
+   "id": "armor_bronze_head",
+   "name": "Elmo de Escamas"
+  },
+  {
+   "id": "armor_bronze_chest",
+   "name": "Couraça de Escamas"
+  },
+  {
+   "id": "armor_bronze_legs",
+   "name": "Saiote de Escamas"
+  },
+  {
+   "id": "armor_bronze_boots",
+   "name": "Botas de Bronze"
+  },
+  {
+   "id": "armor_guarda_real_head",
+   "name": "Elmo de Penacho Azul"
+  },
+  {
+   "id": "armor_guarda_real_chest",
+   "name": "Peitoral com Tabardo"
+  }
+ ],
+ "I13": [
+  {
+   "id": "armor_guarda_real_legs",
+   "name": "Coxotes do Guarda"
+  },
+  {
+   "id": "armor_guarda_real_boots",
+   "name": "Grevas do Guarda"
+  },
+  {
+   "id": "armor_geada_head",
+   "name": "Elmo de Cristal de Gelo"
+  },
+  {
+   "id": "armor_geada_chest",
+   "name": "Couraça de Gelo"
+  },
+  {
+   "id": "armor_geada_legs",
+   "name": "Calças de Gelo e Pele"
+  },
+  {
+   "id": "armor_geada_boots",
+   "name": "Botas de Neve"
+  },
+  {
+   "id": "armor_mare_head",
+   "name": "Elmo de Conchas"
+  },
+  {
+   "id": "armor_mare_chest",
+   "name": "Couraça de Coral"
+  }
+ ],
+ "I14": [
+  {
+   "id": "armor_mare_legs",
+   "name": "Calças de Escama Marinha"
+  },
+  {
+   "id": "armor_mare_boots",
+   "name": "Botas da Maré"
+  },
+  {
+   "id": "armor_noite_violeta_head",
+   "name": "Elmo Chifrudo da Noite"
+  },
+  {
+   "id": "armor_noite_violeta_chest",
+   "name": "Peitoral Rúnico da Noite"
+  },
+  {
+   "id": "armor_noite_violeta_legs",
+   "name": "Perneiras Rúnicas"
+  },
+  {
+   "id": "armor_noite_violeta_boots",
+   "name": "Botas Rúnicas"
+  },
+  {
+   "id": "armor_escorpiao_head",
+   "name": "Elmo do Ferrão"
+  },
+  {
+   "id": "armor_escorpiao_chest",
+   "name": "Carapaça de Quitina"
+  }
+ ],
+ "I15": [
+  {
+   "id": "armor_dragao_rubro_head",
+   "name": "Elmo do Dragão"
+  },
+  {
+   "id": "armor_dragao_rubro_chest",
+   "name": "Peitoral de Escamas Rubras"
+  },
+  {
+   "id": "armor_dragao_rubro_legs",
+   "name": "Perneiras Rubras"
+  },
+  {
+   "id": "armor_dragao_rubro_boots",
+   "name": "Garras do Dragão"
+  },
+  {
+   "id": "armor_grifo_dourado_head",
+   "name": "Elmo Alado do Grifo"
+  },
+  {
+   "id": "armor_grifo_dourado_chest",
+   "name": "Peitoral do Grifo"
+  }
+ ],
+ "I16": [
+  {
+   "id": "armor_grifo_dourado_legs",
+   "name": "Coxotes Dourados"
+  },
+  {
+   "id": "armor_grifo_dourado_boots",
+   "name": "Garras do Grifo"
+  },
+  {
+   "id": "armor_magma_head",
+   "name": "Elmo de Obsidiana"
+  },
+  {
+   "id": "armor_magma_chest",
+   "name": "Couraça de Magma"
+  },
+  {
+   "id": "armor_magma_legs",
+   "name": "Perneiras de Magma"
+  },
+  {
+   "id": "armor_magma_boots",
+   "name": "Botas de Lava"
+  },
+  {
+   "id": "armor_bosque_ancestral_head",
+   "name": "Elmo de Galhos"
+  },
+  {
+   "id": "armor_bosque_ancestral_chest",
+   "name": "Couraça de Casca"
+  }
+ ],
+ "I17": [
+  {
+   "id": "armor_bosque_ancestral_legs",
+   "name": "Saiote de Folhas"
+  },
+  {
+   "id": "armor_bosque_ancestral_boots",
+   "name": "Botas de Raiz"
+  },
+  {
+   "id": "armor_espelho_head",
+   "name": "Elmo Espelhado"
+  },
+  {
+   "id": "armor_espelho_chest",
+   "name": "Peitoral Espelhado"
+  },
+  {
+   "id": "armor_espelho_legs",
+   "name": "Coxotes Espelhados"
+  },
+  {
+   "id": "armor_espelho_boots",
+   "name": "Botas Espelhadas"
+  },
+  {
+   "id": "armor_sem_sombra_head",
+   "name": "Elmo Sem Sombra"
+  },
+  {
+   "id": "armor_sem_sombra_chest",
+   "name": "Peitoral Sem Sombra"
+  }
+ ],
+ "I18": [
+  {
+   "id": "armor_sem_sombra_legs",
+   "name": "Calças Sem Sombra"
+  },
+  {
+   "id": "armor_sem_sombra_boots",
+   "name": "Botas Sem Sombra"
+  },
+  {
+   "id": "armor_andarilho_head",
+   "name": "Gorro Remendado"
+  },
+  {
+   "id": "armor_andarilho_chest",
+   "name": "Colete Remendado"
+  },
+  {
+   "id": "armor_andarilho_legs",
+   "name": "Calças Remendadas"
+  },
+  {
+   "id": "armor_andarilho_boots",
+   "name": "Botas Desparelhadas"
+  },
+  {
+   "id": "armor_aurora_head",
+   "name": "Elmo Alado da Aurora"
+  },
+  {
+   "id": "armor_aurora_chest",
+   "name": "Peitoral da Aurora"
+  }
+ ],
+ "I19": [
+  {
+   "id": "armor_aurora_legs",
+   "name": "Saiote de Penas"
+  },
+  {
+   "id": "armor_aurora_boots",
+   "name": "Botas Aladas"
+  },
+  {
+   "id": "armor_arvore_mundo_head",
+   "name": "Elmo de Madeira Viva"
+  },
+  {
+   "id": "armor_arvore_mundo_chest",
+   "name": "Couraça da Árvore"
+  },
+  {
+   "id": "armor_arvore_mundo_legs",
+   "name": "Perneiras de Raízes"
+  },
+  {
+   "id": "armor_arvore_mundo_boots",
+   "name": "Botas de Raiz Antiga"
+  },
+  {
+   "id": "armor_estrelas_head",
+   "name": "Elmo Estelar"
+  },
+  {
+   "id": "armor_estrelas_chest",
+   "name": "Peitoral das Constelações"
+  }
+ ],
+ "I20": [
+  {
+   "id": "armor_estrelas_legs",
+   "name": "Coxotes Estelares"
+  },
+  {
+   "id": "armor_estrelas_boots",
+   "name": "Botas Estelares"
+  },
+  {
+   "id": "item_azhur_core",
+   "name": "Coração de Azhûr"
+  },
+  {
+   "id": "item_colossus_shard",
+   "name": "Fragmento de colosso"
+  },
+  {
+   "id": "item_caldera_amulet",
+   "name": "Selo da Caldeira"
+  },
+  {
+   "id": "item_seryth_sting_charm",
+   "name": "Ferrão de Seryth"
+  },
+  {
+   "id": "item_thorun_heartwood_charm",
+   "name": "Cerne de Thorun"
+  },
+  {
+   "id": "item_ring_jade",
+   "name": "Anel de jade"
+  }
+ ],
+ "I21": [
+  {
+   "id": "item_amulet_moon",
+   "name": "Amuleto lunar"
+  },
+  {
+   "id": "item_potion_red",
+   "name": "Poção de vida"
+  },
+  {
+   "id": "item_potion_blue",
+   "name": "Poção de mana"
+  },
+  {
+   "id": "item_potion_green",
+   "name": "Poção de ervas"
+  },
+  {
+   "id": "item_bread",
+   "name": "Pão do acampamento"
+  },
+  {
+   "id": "item_gel_jade",
+   "name": "Gel de jade"
+  },
+  {
+   "id": "item_wolf_pelt",
+   "name": "Pele de lobo"
+  },
+  {
+   "id": "item_healing_herb",
+   "name": "Ervas curativas"
+  }
+ ],
+ "I22": [
+  {
+   "id": "item_mushroom_cap",
+   "name": "Chapéu de cogumelo"
+  },
+  {
+   "id": "item_moss_core",
+   "name": "Núcleo musgoso"
+  },
+  {
+   "id": "item_bat_wing",
+   "name": "Asa de ametista"
+  },
+  {
+   "id": "item_shield_wood",
+   "name": "Escudo de carvalho"
+  },
+  {
+   "id": "item_iron_scrap",
+   "name": "Sucata de ferro"
+  },
+  {
+   "id": "item_bark_fiber",
+   "name": "Fibra de casca"
+  },
+  {
+   "id": "item_obsidian_fragment",
+   "name": "Fragmento de obsidiana"
+  },
+  {
+   "id": "item_antidoto",
+   "name": "Antídoto"
+  }
+ ],
+ "I23": [
+  {
+   "id": "item_racao_de_viagem",
+   "name": "Ração de viagem"
+  },
+  {
+   "id": "item_mapa_de_viajante",
+   "name": "Mapa de viajante"
+  },
+  {
+   "id": "item_carta_de_terras_distantes",
+   "name": "Carta de terras distantes"
+  },
+  {
+   "id": "item_mapa_de_nicolly",
+   "name": "Mapa de Nicolly"
+  },
+  {
+   "id": "item_meat",
+   "name": "Carne de caça"
+  },
+  {
+   "id": "item_rabbit_pelt",
+   "name": "Pele de coelho"
+  },
+  {
+   "id": "item_deer_antler",
+   "name": "Galhada de cervo"
+  },
+  {
+   "id": "item_bandit_bandana",
+   "name": "Lenço de bandido"
+  }
+ ],
+ "I24": [
+  {
+   "id": "item_frutas_silvestres",
+   "name": "Frutas silvestres"
+  }
+ ],
+ "Q01": [
+  {
+   "id": "armor_escorpiao_legs",
+   "name": "Perneiras de Quitina"
+  },
+  {
+   "id": "armor_escorpiao_boots",
+   "name": "Botas de Garra"
+  }
+ ]
+}

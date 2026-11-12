@@ -1,0 +1,85 @@
+{
+  "fps": 24,
+  "notes": "Gerado por magicavoxel/build_blockbench_rig.py a partir de combo_sword.py (Blockbench).",
+  "buffer": {
+    "open_fraction_of_attack": 0.24,
+    "chain_window_after_attack_s": 0.48,
+    "idle_blend_s": 0.22,
+    "chain_blend_s": 0.06,
+    "first_blend_s": 0.06
+  },
+  "attacks": [
+    {
+      "index": 1,
+      "action": "Attack_01",
+      "frames": [
+        0,
+        15
+      ],
+      "duration_s": 0.62,
+      "anticipation_s": [
+        0.0,
+        0.2
+      ],
+      "active_s": [
+        0.2,
+        0.32
+      ],
+      "impact_s": 0.25,
+      "recovery_s": [
+        0.32,
+        0.62
+      ],
+      "damage": 1,
+      "stun_s": 0.35
+    },
+    {
+      "index": 2,
+      "action": "Attack_02",
+      "frames": [
+        0,
+        15
+      ],
+      "duration_s": 0.62,
+      "anticipation_s": [
+        0.0,
+        0.21
+      ],
+      "active_s": [
+        0.21,
+        0.34
+      ],
+      "impact_s": 0.27,
+      "recovery_s": [
+        0.34,
+        0.62
+      ],
+      "damage": 1,
+      "stun_s": 0.35
+    },
+    {
+      "index": 3,
+      "action": "Attack_03",
+      "frames": [
+        0,
+        23
+      ],
+      "duration_s": 0.94,
+      "anticipation_s": [
+        0.0,
+        0.36
+      ],
+      "active_s": [
+        0.36,
+        0.48
+      ],
+      "impact_s": 0.42,
+      "recovery_s": [
+        0.48,
+        0.94
+      ],
+      "damage": 2,
+      "stun_s": 0.7
+    }
+  ]
+}

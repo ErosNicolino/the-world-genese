@@ -1,0 +1,2423 @@
+{
+ "_doc": "Gerado por Tools/BuildStoryData.py (Godot + Data/Story/vortex_story.json). Não editar à mão.",
+ "chapters": [
+  {
+   "id": 1,
+   "title": "O Despertar",
+   "region": "Valdora",
+   "text": "Uma estrela caiu sobre o primeiro Selo e Azhûr acordou queimando. Os cristais do vale cantam à noite. Você atravessou o Vórtice e acordou no Estádio: é hora de descobrir por quê."
+  },
+  {
+   "id": 2,
+   "title": "Ouro e Enxame",
+   "region": "Aurivale",
+   "text": "As colmeias douradas enlouqueceram. Vespera, a Rainha do Enxame, guarda o segundo Selo."
+  },
+  {
+   "id": 3,
+   "title": "O Coração da Mata",
+   "region": "Verdalume",
+   "text": "A raiz da Yggdrasil apodrece sob Verdalume. Thorun, o Titã das Raízes, ataca quem entra."
+  },
+  {
+   "id": 4,
+   "title": "Areia de Vidro",
+   "region": "Solcânion",
+   "text": "Nas dunas de vidro, Seryth mergulha na areia e caça caravanas."
+  },
+  {
+   "id": 5,
+   "title": "O Brejo Que Respira",
+   "region": "Lodonegro",
+   "text": "O pântano cresce sobre as estradas. A Mãe-Lodo dorme um sono ruim."
+  },
+  {
+   "id": 6,
+   "title": "O Trovão sem Nuvem",
+   "region": "Picos de Raikor",
+   "text": "Raios caem do céu limpo. Raikor, a Ave-Trovão, não reconhece mais ninguém."
+  },
+  {
+   "id": 7,
+   "title": "A Forja do Vórtice",
+   "region": "Brasafenda",
+   "text": "Nas rachaduras de lava, o Forjador Rubro faz armas para algo que não é deste mundo."
+  },
+  {
+   "id": 8,
+   "title": "A Luz Parada",
+   "region": "Nivaluz",
+   "text": "A aurora do norte parou. Aurora, a Que Congela a Luz, guarda o oitavo Selo."
+  },
+  {
+   "id": 9,
+   "title": "O Rei Sem Sombra",
+   "region": "Morthúria",
+   "text": "O primeiro a ouvir o Vórtice quer abri-lo de vez."
+  },
+  {
+   "id": 10,
+   "title": "O Vórtice",
+   "region": "Yggdrasil",
+   "text": "Com os nove Selos acesos, só resta subir a árvore do mundo."
+  }
+ ],
+ "regions": {
+  "Valdora": {
+   "levels": [
+    1,
+    15
+   ],
+   "guardian": "Azhûr, o Colosso da Caldeira",
+   "text": "Campos, lagos e mata em volta do Santuário. A Caldeira do Meteoro fica a leste."
+  },
+  "Aurivale": {
+   "levels": [
+    10,
+    22
+   ],
+   "guardian": "Vespera, a Rainha do Enxame",
+   "text": "Planícies douradas de trigo e colmeias."
+  },
+  "Verdalume": {
+   "levels": [
+    15,
+    30
+   ],
+   "guardian": "Thorun, o Titã das Raízes",
+   "text": "Mata fechada e luminosa sobre a raiz da Yggdrasil."
+  },
+  "Solcânion": {
+   "levels": [
+    20,
+    35
+   ],
+   "guardian": "Seryth, o Escorpião de Vidro",
+   "text": "Dunas e cânions de vidro."
+  },
+  "Lodonegro": {
+   "levels": [
+    25,
+    40
+   ],
+   "guardian": "A Mãe-Lodo",
+   "text": "Pântano escuro, névoa e sapos-gigantes."
+  },
+  "Picos de Raikor": {
+   "levels": [
+    30,
+    45
+   ],
+   "guardian": "Raikor, a Ave-Trovão",
+   "text": "Montanhas de tempestade."
+  },
+  "Brasafenda": {
+   "levels": [
+    40,
+    55
+   ],
+   "guardian": "O Forjador Rubro",
+   "text": "Rachaduras de lava e o vulcão."
+  },
+  "Nivaluz": {
+   "levels": [
+    45,
+    60
+   ],
+   "guardian": "Aurora, a Que Congela a Luz",
+   "text": "Gelo eterno e auroras."
+  },
+  "Morthúria": {
+   "levels": [
+    55,
+    70
+   ],
+   "guardian": "O Rei Sem Sombra",
+   "text": "Terra dos mortos-vivos e das ruínas."
+  }
+ },
+ "quests": [
+  {
+   "id": "rhea_recruta",
+   "scope": "personal",
+   "giver": "rhea",
+   "title": "Recruta do Vale",
+   "offer": "Você tem cara de quem sabe segurar uma arma. Antes de te deixar sair da vila, quero ver você com as gotas de jade da campina. Três delas. Elas parecem fofas, até grudarem no seu rosto.",
+   "progress": "As gotas ficam na campina, fora da vila. Pule de lado quando elas saltarem.",
+   "done": "Nada mal, recruta. A guarda do vale tem um lugar para você. E eu tenho mais trabalho.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Slime",
+     "count": 3,
+     "text": "Derrote gotas de jade"
+    }
+   ],
+   "rewards": {
+    "xp": 60,
+    "coins": 40,
+    "items": [
+     [
+      "potion_red",
+      2
+     ]
+    ]
+   },
+   "chapter": 1,
+   "main": true,
+   "requires": [
+    "v_despertar"
+   ],
+   "source": "godot"
+  },
+  {
+   "id": "rhea_patrulha",
+   "scope": "personal",
+   "giver": "rhea",
+   "title": "Patrulha da Trilha",
+   "requires": [
+    "rhea_recruta"
+   ],
+   "offer": "Os lobos da bruma andam em matilha e o alfa uiva para chamar os outros. Os cogumelos errantes cospem veneno de longe. Limpe a trilha dos dois antes que os viajantes parem de vir.",
+   "progress": "Quando o alfa uivar, a matilha fica mais rápida. Derrube o alfa primeiro. Os cogumelos recuam: corra atrás deles.",
+   "done": "A trilha está segura de novo. Os mercadores vão voltar, e com eles as moedas.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Wolf",
+     "count": 4,
+     "text": "Derrote lobos da bruma"
+    },
+    {
+     "type": "kill",
+     "target": "Mushroom",
+     "count": 3,
+     "text": "Derrote cogumelos errantes"
+    }
+   ],
+   "rewards": {
+    "xp": 180,
+    "coins": 120,
+    "items": [
+     [
+      "potion_green",
+      1
+     ]
+    ]
+   },
+   "chapter": 1,
+   "main": true,
+   "source": "godot"
+  },
+  {
+   "id": "rhea_sombra",
+   "scope": "personal",
+   "giver": "rhea",
+   "title": "A Sombra do Colosso",
+   "requires": [
+    "rhea_patrulha"
+   ],
+   "offer": "Há vinte anos um meteoro caiu a leste e abriu a Caldeira. De lá saiu Azhûr, um colosso de basalto e brasa. Ninguém volta de lá. Vá até a borda da cratera e me diga o que viu. Só olhe. Não desça.",
+   "progress": "A Caldeira fica a leste da vila, depois do lago. Você vai saber quando chegar: o céu fica cor de brasa.",
+   "done": "Colunas de basalto, rios de lava e um gigante dormindo no meio? Então as histórias são verdadeiras. Precisamos de alguém mais forte... ou mais louco.",
+   "objectives": [
+    {
+     "type": "visit",
+     "target": [
+      170,
+      58
+     ],
+     "radius": 14,
+     "text": "Chegue à borda da Caldeira do Meteoro"
+    }
+   ],
+   "rewards": {
+    "xp": 250,
+    "coins": 150
+   },
+   "chapter": 1,
+   "main": true,
+   "source": "godot"
+  },
+  {
+   "id": "rhea_caldeira",
+   "scope": "personal",
+   "giver": "rhea",
+   "title": "A Caldeira do Meteoro",
+   "requires": [
+    "rhea_sombra"
+   ],
+   "offer": "Chegou a hora. Azhûr acorda quando alguém pisa na arena. Ele racha o chão, joga rochas e, quando fica ferido, fica furioso. Vá bem armado: o Ducci vende coisas que eu nunca vi. Derrote o colosso e o vale inteiro vai saber seu nome.",
+   "progress": "Leve poções, e não fique parado onde o chão brilha. Os avisos vermelhos mostram onde o golpe vai cair. Chame amigos se puder.",
+   "done": "Você... voltou. E trouxe o coração dele. O vale te deve a vida. Leve esta lâmina: foi forjada para quem derrubasse o colosso.",
+   "objectives": [
+    {
+     "type": "boss",
+     "target": "RuneColossus",
+     "count": 1,
+     "text": "Derrote Azhûr, o Colosso da Caldeira"
+    }
+   ],
+   "rewards": {
+    "xp": 2500,
+    "coins": 1500,
+    "items": [
+     [
+      "espada_aurora",
+      1
+     ],
+     [
+      "potion_green",
+      3
+     ]
+    ]
+   },
+   "chapter": 1,
+   "main": true,
+   "source": "godot"
+  },
+  {
+   "id": "v_despertar",
+   "giver": "rhea",
+   "title": "O Despertado",
+   "chapter": 1,
+   "main": true,
+   "auto": true,
+   "offer": "Você saiu do Estádio com uma arma na mão e nenhuma lembrança. Não é o primeiro. Venha falar comigo na praça, perto da fonte.",
+   "progress": "A Capitã Rhea espera na praça do Santuário, ao lado da Fonte de Jade.",
+   "done": "Então é verdade: o Vórtice voltou a mandar gente. Você chegou no pior momento, Desperto. Ou no melhor. O vale precisa de braços que não tremam.",
+   "objectives": [
+    {
+     "type": "talk",
+     "target": "rhea",
+     "text": "Fale com a Capitã Rhea na praça"
+    }
+   ],
+   "rewards": {
+    "xp": 40,
+    "coins": 20,
+    "items": [
+     [
+      "potion_red",
+      2
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_cristais",
+   "giver": "ilsa",
+   "title": "Os Cristais que Cantam",
+   "chapter": 1,
+   "main": true,
+   "requires": [
+    "rhea_recruta"
+   ],
+   "offer": "Você sentiu? À noite os cristais do vale zumbem, como se alguém puxasse uma corda lá em cima. A seiva da Fonte está diminuindo. Traga gel das gotas de jade: o gel guarda seiva, e eu quero ver para onde ela está indo.",
+   "progress": "Quatro porções de gel de jade. As gotas ficam nas campinas em volta da vila.",
+   "done": "Olhe... o gel está vazio por dentro. A seiva foi sugada. Isto não é doença do vale: é o céu puxando a vida da terra. A Nicolly mapeia os cristais. Ela precisa ver isto.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "gel_jade",
+     "count": 4,
+     "text": "Junte gel de jade"
+    }
+   ],
+   "rewards": {
+    "xp": 120,
+    "coins": 60,
+    "items": [
+     [
+      "potion_green",
+      1
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_mapa_cristais",
+   "giver": "nicolly",
+   "title": "Onde a Seiva Some",
+   "chapter": 1,
+   "main": true,
+   "requires": [
+    "v_cristais"
+   ],
+   "offer": "A Ilsa me mandou o gel. Eu marquei três cristais que brilham mais forte que os outros: um no lago do oeste, um na clareira ao sul e um perto da trilha do leste. Vá até eles. Quero saber se apontam todos para o mesmo lugar.",
+   "progress": "Os três cristais: o lago do oeste, a clareira do sul e a trilha do leste. Ande até perto de cada um.",
+   "done": "Todos apontam para o leste, para a Caldeira. E para cima. Há vinte anos uma estrela caiu ali... e se não foi uma estrela? Leve isto à Capitã. Ela vai querer ver com os próprios olhos.",
+   "objectives": [
+    {
+     "type": "visit",
+     "target": [
+      -92,
+      -46
+     ],
+     "radius": 14,
+     "text": "Cristal do lago do oeste"
+    },
+    {
+     "type": "visit",
+     "target": [
+      18,
+      -60
+     ],
+     "radius": 14,
+     "text": "Cristal da clareira do sul"
+    },
+    {
+     "type": "visit",
+     "target": [
+      95,
+      20
+     ],
+     "radius": 14,
+     "text": "Cristal da trilha do leste"
+    }
+   ],
+   "rewards": {
+    "xp": 220,
+    "coins": 90
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_coracao",
+   "giver": "ilsa",
+   "title": "O Coração de Azhûr",
+   "chapter": 1,
+   "main": true,
+   "requires": [
+    "rhea_caldeira"
+   ],
+   "offer": "Você trouxe o coração do colosso... ele ainda está quente. Escute: Azhûr não era um monstro. Era um Guardião, o primeiro dos nove. Se eu banhar este coração na Fonte, talvez o Selo dele volte a acender. Fique comigo enquanto eu tento.",
+   "progress": "Leve o coração de Azhûr até a Fonte de Jade e fique perto dela.",
+   "done": "Viu a luz subir pela água? O primeiro Selo acendeu. Os cristais pararam de cantar... aqui. Mas a Nicolly diz que há outros oito, espalhados pelo continente. O Vórtice ainda puxa.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "azhur_core",
+     "count": 1,
+     "keep": true,
+     "text": "O coração de Azhûr na mochila"
+    },
+    {
+     "type": "visit",
+     "target": [
+      0,
+      15
+     ],
+     "radius": 6,
+     "text": "Leve o coração à Fonte de Jade"
+    }
+   ],
+   "rewards": {
+    "xp": 600,
+    "coins": 300,
+    "items": [
+     [
+      "potion_red",
+      3
+     ],
+     [
+      "potion_blue",
+      3
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_continente",
+   "giver": "nicolly",
+   "title": "Os Nove Selos",
+   "chapter": 1,
+   "main": true,
+   "requires": [
+    "v_coracao"
+   ],
+   "offer": "Eu juntei tudo: os Guardiões, os Selos, a árvore no centro do mundo. Há nove regiões além deste vale, e cada uma tem um Selo apagando. Se o último apagar, o Vórtice abre de vez. O mapa do continente está pronto. Quando as estradas abrirem, você vai precisar dele.",
+   "progress": "Fale com a Capitã Rhea: ela precisa saber que o vale não basta.",
+   "done": "Nove Guardiões. Nove Selos. E um Desperto. Bom... talvez dois, três, se seus amigos vierem. As estradas para Aurivale e Verdalume ainda estão fechadas pela bruma. Quando abrirem, a guarda inteira vai com você até a fronteira.",
+   "objectives": [
+    {
+     "type": "talk",
+     "target": "rhea",
+     "text": "Conte à Capitã Rhea sobre os nove Selos"
+    }
+   ],
+   "rewards": {
+    "xp": 400,
+    "coins": 200,
+    "items": [
+     [
+      "racao_de_viagem",
+      3
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "ilsa_ervas",
+   "scope": "personal",
+   "giver": "ilsa",
+   "title": "Ervas para a Febre",
+   "offer": "A filha do moleiro está com febre e minhas ervas acabaram. As moitas de frutinhas na mata escondem ervas curativas. Você me traria cinco? Aperte E perto das moitas para colher.",
+   "progress": "As ervas crescem nas moitas com frutinhas vermelhas, dentro da mata. Aperte E perto delas.",
+   "done": "Que cheiro bom! Vou preparar o chá agora mesmo. Tome estas poções. Você vai precisar delas mais do que eu.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "healing_herb",
+     "count": 5,
+     "text": "Colha ervas curativas"
+    }
+   ],
+   "rewards": {
+    "xp": 70,
+    "coins": 40,
+    "items": [
+     [
+      "potion_red",
+      3
+     ]
+    ]
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "ilsa_veneno",
+   "scope": "personal",
+   "giver": "ilsa",
+   "title": "O Veneno dos Cogumelos",
+   "requires": [
+    "ilsa_ervas"
+   ],
+   "offer": "Os cogumelos errantes estão envenenando a água do lago. Preciso dos chapéus deles para fazer um antídoto. Derrote alguns e traga quatro chapéus. Cuidado com a nuvem de esporos se chegar perto demais!",
+   "progress": "Eles cospem veneno de longe e soltam esporos se ficarem encurralados. Ataque e saia de perto.",
+   "done": "Perfeito, ainda frescos. O lago vai ficar limpo em poucos dias. Aqui, um frasco da minha melhor poção.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Mushroom",
+     "count": 5,
+     "text": "Derrote cogumelos errantes"
+    },
+    {
+     "type": "collect",
+     "target": "mushroom_cap",
+     "count": 4,
+     "text": "Traga chapéus de cogumelo"
+    }
+   ],
+   "rewards": {
+    "xp": 160,
+    "coins": 90,
+    "items": [
+     [
+      "potion_green",
+      2
+     ]
+    ]
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "ilsa_jade",
+   "scope": "personal",
+   "giver": "ilsa",
+   "title": "Gel de Jade",
+   "requires": [
+    "ilsa_veneno"
+   ],
+   "offer": "O gel das gotas de jade cura feridas melhor que qualquer pomada. Seis frascos e eu faço poções de mana para você a semana inteira.",
+   "progress": "As gotas de jade ficam na campina. Quando saltarem alto, é para cair em cima de você: saia da sombra!",
+   "done": "Seis frascos brilhando! Suas poções de mana estão prontas, e sobrou um dinheirinho da venda das pomadas.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "gel_jade",
+     "count": 6,
+     "text": "Traga gel de jade"
+    }
+   ],
+   "rewards": {
+    "xp": 140,
+    "coins": 150,
+    "items": [
+     [
+      "potion_blue",
+      4
+     ]
+    ]
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "bram_sucata",
+   "scope": "personal",
+   "giver": "bram",
+   "title": "Sucata para a Forja",
+   "offer": "Minha forja está com fome e o ferro do vale acabou. Os golens musgosos têm pedaços de ferro velho presos no corpo. Traga cinco sucatas de ferro. Eles são lentos, mas batem como uma avalanche.",
+   "progress": "Os golens arremessam pedras de longe e batem no chão de perto. Fique no meio-termo e desvie da pancada.",
+   "done": "Ferro bom, antigo! Dá para fazer umas boas ferraduras... e umas moedas para você.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "iron_scrap",
+     "count": 5,
+     "text": "Traga sucata de ferro"
+    }
+   ],
+   "rewards": {
+    "xp": 180,
+    "coins": 220
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "bram_golem",
+   "scope": "personal",
+   "giver": "bram",
+   "title": "O Golem da Pedreira",
+   "requires": [
+    "bram_sucata"
+   ],
+   "offer": "Três golens tomaram a pedreira velha e ninguém consegue tirar pedra de lá. Derrube os três e eu te pago como se fosse um mestre ferreiro.",
+   "progress": "Três golens. Não tente segurar a pancada no chão: role para trás.",
+   "done": "A pedreira voltou! Bram paga o que promete. Tome, e passe no Ducci: ele vende armas que nem eu sei forjar.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Golem",
+     "count": 3,
+     "text": "Derrote golens musgosos"
+    }
+   ],
+   "rewards": {
+    "xp": 320,
+    "coins": 350
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "bram_obsidiana",
+   "scope": "personal",
+   "giver": "bram",
+   "title": "Obsidiana da Caldeira",
+   "requires": [
+    "bram_golem",
+    "rhea_caldeira"
+   ],
+   "offer": "Dizem que o colosso deixou fragmentos de obsidiana quando caiu. Com quatro deles eu forjo o martelo da minha vida. E você fica com ele, claro. Eu só quero a glória.",
+   "progress": "Os fragmentos de obsidiana ficaram com você depois da luta com Azhûr. Traga quatro.",
+   "done": "Olhe só esse brilho... Pronto: o Martelo do Rei da Forja. Cuidado, ele é mais pesado do que parece.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "obsidian_fragment",
+     "count": 4,
+     "text": "Traga fragmentos de obsidiana"
+    }
+   ],
+   "rewards": {
+    "xp": 500,
+    "coins": 200,
+    "items": [
+     [
+      "martelo_rei_da_forja",
+      1
+     ]
+    ]
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "nicolly_olhos",
+   "scope": "personal",
+   "giver": "nicolly",
+   "title": "Olhos no Vale",
+   "offer": "Meu mapa do vale está cheio de buracos! Preciso de alguém que vá até o Bosque das Cerejeiras, a oeste, e até a margem norte do lago. Só passe por lá, eu anoto tudo pelo que você me contar.",
+   "progress": "O Bosque das Cerejeiras fica a oeste (árvores rosadas). A margem norte do lago fica perto da vila. Abra o mapa com M.",
+   "done": "Maravilha! Olhe como o mapa ficou mais bonito. Leve uma cópia, e umas moedas pelas suas botas gastas.",
+   "objectives": [
+    {
+     "type": "visit",
+     "target": [
+      -92,
+      -46
+     ],
+     "radius": 16,
+     "text": "Visite o Bosque das Cerejeiras"
+    },
+    {
+     "type": "visit",
+     "target": [
+      18,
+      -16
+     ],
+     "radius": 10,
+     "text": "Visite a margem norte do lago"
+    }
+   ],
+   "rewards": {
+    "xp": 120,
+    "coins": 100,
+    "items": [
+     [
+      "mapa_de_nicolly",
+      1
+     ]
+    ]
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "nicolly_selvagens",
+   "scope": "personal",
+   "giver": "nicolly",
+   "title": "Pelas Terras Selvagens",
+   "requires": [
+    "nicolly_olhos"
+   ],
+   "offer": "Além do vale começam as Terras Selvagens: ninguém sabe onde terminam. As criaturas lá são mais fortes quanto mais longe você vai. Vá até o marco antigo ao sul e volte inteiro, por favor.",
+   "progress": "O marco fica bem ao sul, depois de onde o vale termina. Leve poções: lá fora as criaturas têm nível alto.",
+   "done": "Você viu o marco! Então as lendas do mapa antigo eram verdade. Um dia vamos mapear tudo isso juntos.",
+   "objectives": [
+    {
+     "type": "visit",
+     "target": [
+      0,
+      230
+     ],
+     "radius": 18,
+     "text": "Chegue ao marco antigo ao sul"
+    }
+   ],
+   "rewards": {
+    "xp": 300,
+    "coins": 260
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "lary_asas",
+   "scope": "personal",
+   "giver": "lary",
+   "title": "Asas na Noite",
+   "offer": "Os morcegos de ametista não me deixam dormir! Eles guincham a noite toda perto da minha janela. Espante uns cinco deles, por favor?",
+   "progress": "Eles mergulham, sobem e ficam rodando no alto. Ataque logo depois do mergulho, quando estão perto.",
+   "done": "Silêncio... que delícia. Obrigada! Hoje eu durmo como uma pedra.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Bat",
+     "count": 5,
+     "text": "Derrote morcegos de ametista"
+    }
+   ],
+   "rewards": {
+    "xp": 110,
+    "coins": 70
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "lary_presente",
+   "scope": "personal",
+   "giver": "lary",
+   "title": "Um Presente para Julia",
+   "requires": [
+    "lary_asas"
+   ],
+   "offer": "O aniversário da Julia está chegando e eu quero fazer um colar com asas de ametista. Traga duas asas de morcego e depois conte para a Julia que eu tenho uma surpresa. Mas não conte o que é!",
+   "progress": "Duas asas de morcego, e depois fale com a Julia.",
+   "done": "Ela ficou curiosa? Ótimo! O colar vai ficar lindo. Tome, uma parte do meu cofrinho.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "bat_wing",
+     "count": 2,
+     "text": "Traga asas de morcego"
+    },
+    {
+     "type": "talk",
+     "target": "julia",
+     "text": "Fale com a Julia sobre a surpresa"
+    }
+   ],
+   "rewards": {
+    "xp": 130,
+    "coins": 90
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "juh_lobos",
+   "scope": "personal",
+   "giver": "julia",
+   "title": "Lobos na Trilha",
+   "offer": "Eu queria passear pela trilha ao entardecer, mas os lobos da bruma estão lá de novo. Seis deles, pelo menos. Você dá um jeito?",
+   "progress": "Os lobos rodam em volta antes de atacar. Não deixe eles ficarem nas suas costas.",
+   "done": "A trilha está livre! Vou passear hoje mesmo. Obrigada, herói.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Wolf",
+     "count": 6,
+     "text": "Derrote lobos da bruma"
+    }
+   ],
+   "rewards": {
+    "xp": 150,
+    "coins": 90
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "juh_pele",
+   "scope": "personal",
+   "giver": "julia",
+   "title": "A Pele Mais Macia",
+   "requires": [
+    "juh_lobos"
+   ],
+   "offer": "O inverno vem aí e eu quero um casaco azul forrado. Cinco peles de lobo bastam. Azul combina com tudo, e pele de lobo combina com azul.",
+   "progress": "Cinco peles de lobo da bruma.",
+   "done": "Que macias! Vai ser o casaco mais bonito do vale. Tome, você merece.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "wolf_pelt",
+     "count": 5,
+     "text": "Traga peles de lobo"
+    }
+   ],
+   "rewards": {
+    "xp": 140,
+    "coins": 180
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "ducci_amostras",
+   "scope": "personal",
+   "giver": "ducci",
+   "title": "Amostras Encantadas",
+   "offer": "Ah, um cliente! Ou melhor: um fornecedor! Preciso de amostras para os meus encantamentos: três géis de jade, três asas de morcego e três chapéus de cogumelo. Em troca, uma arma da minha coleção particular. Rara! Quase não amaldiçoada.",
+   "progress": "Três de cada: gel de jade, asa de morcego e chapéu de cogumelo. Ducci espera! Ducci sempre espera.",
+   "done": "Excelente, excelente! Vejamos... isto aqui! O Arco da Névoa Azul. Eu diria que ele escolheu você. Na verdade ele escolhe qualquer um.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "gel_jade",
+     "count": 3,
+     "text": "Traga gel de jade"
+    },
+    {
+     "type": "collect",
+     "target": "bat_wing",
+     "count": 3,
+     "text": "Traga asas de morcego"
+    },
+    {
+     "type": "collect",
+     "target": "mushroom_cap",
+     "count": 3,
+     "text": "Traga chapéus de cogumelo"
+    }
+   ],
+   "rewards": {
+    "xp": 200,
+    "coins": 50,
+    "items": [
+     [
+      "arco_da_nevoa",
+      1
+     ]
+    ]
+   },
+   "chapter": 1,
+   "main": false,
+   "source": "godot"
+  },
+  {
+   "id": "v_julia_cachorro",
+   "giver": "julia",
+   "title": "O Faro do Biscoito",
+   "chapter": 1,
+   "offer": "Ah, oi! O Biscoito não para de latir para a mata desde que os cristais começaram a brilhar. Acho que ele sente os lobos. Você podia afastar uns três da trilha? Ele não dorme há dias... nem eu.",
+   "progress": "Os lobos da bruma andam em grupo na mata em volta da vila. Três bastam.",
+   "done": "Ele dormiu! Olha só, de barriga para cima. Obrigada, de verdade. Leve estes pães que eu assei: o Biscoito ia comer todos mesmo.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Wolf",
+     "count": 3,
+     "text": "Afaste lobos da bruma"
+    }
+   ],
+   "rewards": {
+    "xp": 90,
+    "coins": 35,
+    "items": [
+     [
+      "bread",
+      3
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_garrick_goblins",
+   "giver": "garrick",
+   "title": "Pedras na Estrada",
+   "chapter": 1,
+   "requires": [
+    "rhea_recruta"
+   ],
+   "offer": "Goblins. Atiram pedras nas carroças que trazem meu ferro. Eles andam em bando com um chefe maior. Derrube cinco e eu afio sua arma de graça... bom, quase de graça.",
+   "progress": "Os goblins acampam longe da vila, perto das bordas do vale. Cuidado com as pedras: elas caem onde você estava.",
+   "done": "Cinco! As carroças vão passar de novo. Tome, é o que eu prometi, e um pouco mais.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Goblin",
+     "count": 5,
+     "text": "Derrote goblins"
+    }
+   ],
+   "rewards": {
+    "xp": 200,
+    "coins": 110,
+    "items": [
+     [
+      "iron_scrap",
+      2
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_marta_carne",
+   "giver": "marta",
+   "title": "Ensopado do Javali Dourado",
+   "chapter": 1,
+   "offer": "A taverna está cheia de viajantes e a panela vazia. Caçe para mim: coelhos e cervos pastam nos campos. Quatro pedaços de carne e o ensopado sai hoje.",
+   "progress": "Coelhos e cervos fogem quando você chega perto. Chegue devagar, ou corra mais que eles.",
+   "done": "Que cheiro! Sente-se, o primeiro prato é seu. E leve isto para a estrada.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "meat",
+     "count": 4,
+     "text": "Junte carne de caça"
+    }
+   ],
+   "rewards": {
+    "xp": 80,
+    "coins": 45,
+    "items": [
+     [
+      "racao_de_viagem",
+      2
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_rosa_sapo",
+   "giver": "rosa",
+   "title": "A Lã que Brilha",
+   "chapter": 1,
+   "requires": [
+    "rhea_recruta"
+   ],
+   "offer": "Dizem que os sapos-gigantes do brejo guardam gel brilhante na garganta. Eu tinjo tecidos com ele: fica lindo à noite. Derrote dois sapos para mim? Ficam perto da água.",
+   "progress": "Os sapos-gigantes ficam nas margens dos lagos. A língua deles alcança longe: não fique na frente.",
+   "done": "Perfeito. Vou fazer uma capa que brilha como os cristais... sem o zumbido, espero.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Frog",
+     "count": 2,
+     "text": "Derrote sapos-gigantes do brejo"
+    }
+   ],
+   "rewards": {
+    "xp": 150,
+    "coins": 80
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_lexy_tinta",
+   "giver": "lexy",
+   "title": "Tinta de Cristal",
+   "chapter": 1,
+   "requires": [
+    "rhea_recruta"
+   ],
+   "offer": "Ei, Desperto! Gostou do rosa? Não é tinta comum: desde que a Estrela caiu, a gosma das gotas de jade brilha igual aos cristais. Misturei com chapéu de cogumelo e... bom, olha o resultado. Me traz mais? Quatro gosmas e dois chapéus, que eu tenho fila de cliente.",
+   "progress": "As gotas de jade pulam pelos campos em volta da vila. Os cogumelos errantes andam na beira da mata.",
+   "done": "Isso! Olha como a mistura acende quando eu mexo... A Ilsa diz que é a seiva subindo. Eu digo que é o tom de rosa mais bonito do vale. Toma, por conta da casa.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "gel_jade",
+     "count": 4,
+     "text": "Gosma de gota de jade"
+    },
+    {
+     "type": "collect",
+     "target": "mushroom_cap",
+     "count": 2,
+     "text": "Chapéu de cogumelo"
+    }
+   ],
+   "rewards": {
+    "xp": 110,
+    "coins": 40,
+    "items": [
+     [
+      "healing_herb",
+      2
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_lexy_morcegos",
+   "giver": "lexy",
+   "title": "Clientes Indesejados",
+   "chapter": 1,
+   "requires": [
+    "v_lexy_tinta"
+   ],
+   "offer": "Sabe o que é pior que cliente que não paga? Morcego no telhado do salão. Eles vêm de noite atrás do brilho da tinta e arranham tudo. Dá um jeito em quatro deles? Eu fico aqui segurando a vassoura.",
+   "progress": "Os morcegos só saem depois que escurece. Procure na mata em volta da vila.",
+   "done": "Silêncio, finalmente! Se a tinta atrai os morcegos, imagina o que atrai lá na Caldeira... Melhor nem pensar. Valeu, de verdade.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Bat",
+     "count": 4,
+     "text": "Afaste os morcegos"
+    }
+   ],
+   "rewards": {
+    "xp": 140,
+    "coins": 45,
+    "items": [
+     [
+      "bread",
+      2
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_lexy_brilho",
+   "giver": "lexy",
+   "title": "O Rosa que Aponta",
+   "chapter": 1,
+   "requires": [
+    "v_lexy_morcegos"
+   ],
+   "offer": "Repara no meu cabelo de noite: o rosa pulsa e fica mais forte quando eu viro para o leste. Para o lado da Caldeira. Isso não é normal, né? Leva um frasco da tinta, anda até a clareira dos cristais e depois conta para a Ilsa o que viu. Eu não saio do salão de jeito nenhum.",
+   "progress": "Leve o frasco até a clareira dos cristais e depois fale com a Ilsa.",
+   "done": "A Ilsa disse que a tinta é um pedaço da seiva da Yggdrasil sendo puxada pelo Vórtice? Que lindo e que horror ao mesmo tempo. Tá, decidido: enquanto você fecha esse tal Selo, eu deixo o vale inteiro bonito. Volta aqui quando quiser mudar o visual.",
+   "objectives": [
+    {
+     "type": "visit",
+     "target": [
+      18,
+      -60
+     ],
+     "text": "Leve a tinta à clareira dos cristais"
+    },
+    {
+     "type": "talk",
+     "target": "ilsa",
+     "text": "Conte à Ilsa o que a tinta fez"
+    }
+   ],
+   "rewards": {
+    "xp": 180,
+    "coins": 60,
+    "items": [
+     [
+      "healing_herb",
+      3
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_bunny_canteiro",
+   "giver": "bunny",
+   "title": "O Canteiro da Fonte",
+   "chapter": 1,
+   "requires": [
+    "rhea_recruta"
+   ],
+   "offer": "Ah, oi! Desculpa a terra na mão. Desde que a Estrela caiu, as flores em volta da Fonte murcham de um dia pro outro, como se alguma coisa bebesse a seiva delas. Me traz umas ervas de cura? Se eu plantar junto, talvez elas segurem as outras de pé.",
+   "progress": "As ervas de cura crescem na beira da mata, perto da vila.",
+   "done": "Olha só, já estão levantando a cabeça! A Ilsa jurou que não ia dar certo. Toma, colhi hoje cedo.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "healing_herb",
+     "count": 3,
+     "text": "Erva de cura"
+    }
+   ],
+   "rewards": {
+    "xp": 110,
+    "coins": 35,
+    "items": [
+     [
+      "bread",
+      2
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_bunny_gotas",
+   "giver": "bunny",
+   "title": "Visitas no Canteiro",
+   "chapter": 1,
+   "requires": [
+    "v_bunny_canteiro"
+   ],
+   "offer": "Descobri quem bebe a seiva das flores: as gotas de jade! Elas descem dos campos de noite, brilhando, e deixam o canteiro todo murcho. Espanta umas cinco pra mim? Eu não tenho coragem, elas pulam na cara.",
+   "progress": "As gotas de jade pulam pelos campos em volta da vila.",
+   "done": "O canteiro amanheceu inteiro! Se as gotas vêm atrás da seiva, o que será que puxa elas lá do leste... Bom, isso é coisa sua. Volta sempre, a Fonte fica mais bonita com gente por perto.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Slime",
+     "count": 5,
+     "text": "Espante as gotas de jade"
+    }
+   ],
+   "rewards": {
+    "xp": 150,
+    "coins": 50,
+    "items": [
+     [
+      "healing_herb",
+      3
+     ]
+    ]
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "v_aurivale",
+   "giver": "nicolly",
+   "title": "Ouro e Enxame",
+   "chapter": 2,
+   "main": true,
+   "requires": [
+    "v_continente"
+   ],
+   "region": "Aurivale",
+   "offer": "A bruma da estrada do norte recuou. Do outro lado ficam as planícies de Aurivale. As colmeias de lá enlouqueceram. Vá ver.",
+   "progress": "Siga a estrada do norte até Aurivale.",
+   "done": "Você voltou com cheiro de mel e veneno. Aurivale é real, e a Rainha também.",
+   "objectives": [
+    {
+     "type": "visit",
+     "target": [
+      0,
+      900
+     ],
+     "radius": 40,
+     "text": "Chegue a Aurivale"
+    }
+   ],
+   "rewards": {
+    "xp": 500,
+    "coins": 250
+   },
+   "source": "vortex"
+  },
+  {
+   "id": "lyra_trilhas",
+   "scope": "personal",
+   "giver": "lyra",
+   "title": "Rastros sob as Folhas",
+   "offer": "Os cogumelos errantes tomaram uma clareira a leste. Siga os rastros, encontre o lugar e traga três chapéus. Assim descubro de onde vieram sem pôr mais caçadores em risco.",
+   "progress": "A clareira fica a leste da vila. Os cogumelos recuam e cospem veneno; aproxime-se pelos lados.",
+   "done": "Os rastros terminam aqui. O perigo da clareira passou, e nossa vila pode voltar a caçar naquela direção.",
+   "objectives": [
+    {
+     "type": "visit",
+     "target": [
+      2925,
+      625
+     ],
+     "radius": 15,
+     "text": "Encontre a clareira a leste"
+    },
+    {
+     "type": "collect",
+     "target": "mushroom_cap",
+     "count": 3,
+     "text": "Traga três chapéus de cogumelo"
+    }
+   ],
+   "rewards": {
+    "xp": 500,
+    "coins": 280,
+    "items": [
+     [
+      "antidoto",
+      2
+     ]
+    ]
+   },
+   "chapter": 3,
+   "main": false,
+   "region": "Verdalume",
+   "source": "godot"
+  },
+  {
+   "id": "lyra_thorun",
+   "scope": "personal",
+   "giver": "lyra",
+   "title": "O Coração da Mata",
+   "requires": [
+    "lyra_trilhas"
+   ],
+   "offer": "Os rastros da clareira seguem para sudeste e desaparecem sob raízes antigas. Thorun acordou. Quando ele ergue os braços, o chão verde marca onde as vinhas virão. Não tente vencê-lo parado sob seus pés.",
+   "progress": "Thorun guarda o bosque a sudeste da vila. Observe o chão antes de cada golpe e use a pausa depois da investida.",
+   "done": "A mata voltou a respirar. O cerne de Thorun carrega uma força antiga; ele será seu símbolo entre os caçadores.",
+   "objectives": [
+    {
+     "type": "boss",
+     "target": "RootTitan",
+     "count": 1,
+     "text": "Derrote Thorun, o Titã das Raízes"
+    }
+   ],
+   "rewards": {
+    "xp": 1300,
+    "coins": 650,
+    "items": [
+     [
+      "potion_green",
+      3
+     ]
+    ]
+   },
+   "chapter": 3,
+   "main": false,
+   "region": "Verdalume",
+   "source": "godot"
+  },
+  {
+   "id": "amal_rochas",
+   "scope": "personal",
+   "giver": "amal",
+   "title": "Marcas nas Rochas",
+   "offer": "Uma pedra marcada apareceu a leste do acampamento. Os golens rondam aquele trecho. Vá até lá, observe as marcas e afaste dois deles antes que cheguem às carroças.",
+   "progress": "A pedra marcada fica a leste da fogueira, além da parte segura. Golens batem forte: dê espaço quando levantarem os braços.",
+   "done": "Você voltou inteiro. As marcas apontam para antigas rotas sob as dunas. Tenho mais trilhas para desenhar, mas hoje o acampamento está seguro.",
+   "objectives": [
+    {
+     "type": "visit",
+     "target": [
+      -2120,
+      -1006
+     ],
+     "radius": 15,
+     "text": "Investigue as rochas a leste"
+    },
+    {
+     "type": "kill",
+     "target": "Golem",
+     "count": 2,
+     "text": "Afaste dois golens"
+    }
+   ],
+   "rewards": {
+    "xp": 450,
+    "coins": 260,
+    "items": [
+     [
+      "potion_red",
+      2
+     ]
+    ]
+   },
+   "chapter": 4,
+   "main": false,
+   "region": "Solcânion",
+   "source": "godot"
+  },
+  {
+   "id": "amal_seryth",
+   "scope": "personal",
+   "giver": "amal",
+   "title": "O Ferrão sob as Dunas",
+   "requires": [
+    "amal_rochas"
+   ],
+   "offer": "As marcas formam o desenho de um escorpião. Seryth vive nas dunas ao sul do acampamento. As pinças anunciam o golpe; o ferrão cai onde você estava. Leve poções e volte com a notícia da vitória.",
+   "progress": "Procure Seryth ao sul do acampamento. Saia dos círculos dourados antes do impacto e atravesse o anel de areia na hora certa.",
+   "done": "A rota das dunas está livre. O ferrão que você trouxe não é de uma criatura comum; guarde-o como prova da travessia.",
+   "objectives": [
+    {
+     "type": "boss",
+     "target": "GlassScorpion",
+     "count": 1,
+     "text": "Derrote Seryth, o Escorpião de Vidro"
+    }
+   ],
+   "rewards": {
+    "xp": 950,
+    "coins": 500,
+    "items": [
+     [
+      "potion_green",
+      2
+     ]
+    ]
+   },
+   "chapter": 4,
+   "main": false,
+   "region": "Solcânion",
+   "source": "godot"
+  }
+ ],
+ "dialogues": {
+  "amal": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Amal",
+     "text": "Sou Amal. Leio o vento e as pegadas daqui. Se pretende explorar o cânion, fale comigo antes de sair.",
+     "choices": [
+      {
+       "text": "O que há nas rochas?",
+       "next": "rocks"
+      },
+      {
+       "text": "Por que montaram acampamento aqui?",
+       "next": "camp"
+      },
+      {
+       "text": "Voltarei mais tarde.",
+       "next": null
+      }
+     ]
+    },
+    "rocks": {
+     "speaker": "Amal",
+     "text": "Os golens não correm, mas a pancada deles alcança mais longe do que parece. Abra espaço após o golpe no chão.",
+     "next": "hello"
+    },
+    "camp": {
+     "speaker": "Amal",
+     "text": "É o último chão firme antes das dunas. Sahil vende provisões; eu marco as trilhas seguras.",
+     "next": "hello"
+    }
+   }
+  },
+  "bram": {
+   "start": "hello",
+   "nodes": {
+    "shop": {
+     "speaker": "Bram",
+     "text": "Escolha com cuidado. Faço poucas por dia, e cada uma leva a minha marca.",
+     "actions": [
+      [
+       "open_shop",
+       "bram"
+      ]
+     ]
+    },
+    "hello": {
+     "speaker": "Bram",
+     "text": "Hmpf. Mais um que acha que uma espada de ferro resolve tudo.",
+     "choices": [
+      {
+       "text": "E não resolve?",
+       "next": "iron"
+      },
+      {
+       "text": "Algo para proteger a cabeça?",
+       "next": "helm",
+       "if_not_flag": "bram_helm"
+      },
+      {
+       "text": "Quero ver suas armas.",
+       "next": "shop"
+      },
+      {
+       "text": "Até mais.",
+       "next": null
+      }
+     ]
+    },
+    "iron": {
+     "speaker": "Bram",
+     "text": "Resolve lobo e cogumelo. Golem, não. Para golem você quer jade na lâmina.",
+     "next": "hello"
+    },
+    "helm": {
+     "speaker": "Bram",
+     "text": "Tome este elmo velho. Amassado, mas ainda segura uma pancada.",
+     "actions": [
+      [
+       "give_item",
+       "helm_iron",
+       1
+      ],
+      [
+       "set_flag",
+       "bram_helm"
+      ]
+     ],
+     "next": "hello"
+    }
+   }
+  },
+  "caravana": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "{npc}",
+     "text": "Opa, viajante! A caravana para um pouco. Temos pão, ração de viagem, carne, poções e umas armas simples. E compramos o que você caçou.",
+     "choices": [
+      {
+       "text": "Quero ver o que vocês vendem.",
+       "next": "shop"
+      },
+      {
+       "text": "Para onde a caravana vai?",
+       "next": "route"
+      },
+      {
+       "text": "Alguma notícia da estrada?",
+       "next": "news"
+      },
+      {
+       "text": "Boa viagem.",
+       "next": null
+      }
+     ]
+    },
+    "shop": {
+     "speaker": "{npc}",
+     "text": "Fique à vontade. Preço de estrada, sem encantamento e sem surpresa.",
+     "actions": [
+      [
+       "open_shop",
+       "caravana"
+      ]
+     ]
+    },
+    "route": {
+     "speaker": "{npc}",
+     "text": "Saímos pelo portão da cidade, vamos até o fim da trilha e voltamos. Todo dia a mesma estrada, cada dia um cliente diferente.",
+     "next": "hello"
+    },
+    "news": {
+     "speaker": "{npc}",
+     "text": "Bandidos acampam longe da cidade, sempre em bando, com fogueira acesa à noite. O chefe usa cota de malha vermelha. Os lenços deles valem uns trocados. Ah, e os cervos fogem se você correr para cima deles.",
+     "next": "hello"
+    }
+   }
+  },
+  "ducci": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Ducci",
+     "text": "Ahá! Um cliente! Ducci, o Mercador mago ambulante, ao seu dispor. Armas encantadas, poções que quase nunca explodem e o melhor preço do vale. Do vale inteiro! Só tem eu, mas mesmo assim.",
+     "choices": [
+      {
+       "text": "Quero ver suas mercadorias.",
+       "next": "shop"
+      },
+      {
+       "text": "Quem é você, afinal?",
+       "next": "who"
+      },
+      {
+       "text": "Como funcionam suas armas?",
+       "next": "rarity"
+      },
+      {
+       "text": "Até mais.",
+       "next": null
+      }
+     ]
+    },
+    "shop": {
+     "speaker": "Ducci",
+     "text": "Olhe à vontade! O estoque muda todo dia: amanhã tem coisa nova, depois de amanhã também. E eu compro seus achados!",
+     "actions": [
+      [
+       "open_shop"
+      ]
+     ]
+    },
+    "who": {
+     "speaker": "Ducci",
+     "text": "Fui aprendiz do arquimago de Vellmar, até explodir a torre dele. Duas vezes. Agora viajo com a minha carroça encantando lâminas para quem paga bem. Os monstros daqui não sabem forjar nada, então quem quiser uma arma boa tem que falar com o Ducci.",
+     "next": "hello"
+    },
+    "rarity": {
+     "speaker": "Ducci",
+     "text": "Comum, incomum, rara, épica, lendária... e única! As épicas para cima têm um encantamento: fogo, gelo, raio, dreno. As únicas são peças que só existem uma de cada. Cada arma luta do jeito da família dela: espada, lança, martelo, cajado ou arco.",
+     "next": "hello"
+    }
+   }
+  },
+  "elfo": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "{npc}",
+     "text": "Que a luz das folhas te guie, viajante. Poucos humanos chegam até a sombra da Yggdrasil.",
+     "choices": [
+      {
+       "text": "O que é a Yggdrasil?",
+       "next": "tree"
+      },
+      {
+       "text": "Dá para entrar na árvore?",
+       "next": "door"
+      },
+      {
+       "text": "Que lugar é este?",
+       "next": "village"
+      },
+      {
+       "text": "Adeus.",
+       "next": null
+      }
+     ]
+    },
+    "tree": {
+     "speaker": "{npc}",
+     "text": "A Árvore do Mundo. Suas raízes seguram as terras do continente e sua copa guarda a luz que acende Verdalume à noite. Nós somos seus guardiões desde antes das muralhas humanas.",
+     "next": "hello"
+    },
+    "door": {
+     "speaker": "{npc}",
+     "text": "A porta de runas está selada desde a Primeira Era. Nenhum elfo vivo lembra como abri-la... e talvez seja melhor assim.",
+     "next": "hello"
+    },
+    "village": {
+     "speaker": "{npc}",
+     "text": "A aldeia élfica de Verdalume. Beba do Poço da Lua se estiver cansado e não arranque as flores que brilham: elas cantam para as raízes.",
+     "next": "hello"
+    }
+   }
+  },
+  "garrick": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Garrick",
+     "text": "Armaria do Santuário. Ferro para o corpo, aço para os ossos. O que precisa?",
+     "choices": [
+      {
+       "text": "Ver as armaduras.",
+       "next": "shop"
+      },
+      {
+       "text": "O que você compra?",
+       "next": "buys"
+      },
+      {
+       "text": "Até mais.",
+       "next": null
+      }
+     ]
+    },
+    "buys": {
+     "speaker": "Garrick",
+     "text": "Armadura de metal usada e escudo, pago quase metade. Sucata de ferro e obsidiana também, para remendar. Couro e pano é com a Rosa, no alfaiate.",
+     "next": "hello"
+    },
+    "shop": {
+     "speaker": "Garrick",
+     "text": "Cada dia sai uma leva nova da forja. O que acabou, só amanhã.",
+     "actions": [
+      [
+       "open_shop",
+       "garrick"
+      ]
+     ]
+    }
+   }
+  },
+  "guarda": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "{npc}",
+     "text": "Alto! Ah, é você, aventureiro. Os portões da Cidade do Santuário ficam abertos de dia e de noite, mas nós ficamos de olho em quem entra.",
+     "choices": [
+      {
+       "text": "O que tem lá fora?",
+       "next": "outside"
+      },
+      {
+       "text": "A cidade é segura?",
+       "next": "safe"
+      },
+      {
+       "text": "Onde fica a taverna?",
+       "next": "inn"
+      },
+      {
+       "text": "Bom serviço.",
+       "next": null
+      }
+     ]
+    },
+    "outside": {
+     "speaker": "{npc}",
+     "text": "Pelo portão sul você chega ao vale, ao lago e à cratera. Pelo norte, as trilhas levam às Planícies de Valdora e, muito além, às outras terras do continente. Quanto mais longe, mais fortes as criaturas.",
+     "next": "hello"
+    },
+    "safe": {
+     "speaker": "{npc}",
+     "text": "Dentro das muralhas, sim. A Capitã Rhea não deixa nenhuma criatura passar da muralha. Se precisar de missões, fale com ela perto da torre de vigia.",
+     "next": "hello"
+    },
+    "inn": {
+     "speaker": "{npc}",
+     "text": "A Taverna do Javali Dourado fica a oeste da rua do norte. Dizem que o ensopado é bom. Dizem.",
+     "next": "hello"
+    }
+   }
+  },
+  "ilsa": {
+   "_doc": "Nó: speaker, text, choices [{text, next, if_flag, if_not_flag}], actions [[\"give_item\", id, qtd] | [\"set_flag\", nome]], next (sem escolhas: botão Continuar). next null = fim.",
+   "start": "hello",
+   "nodes": {
+    "shop": {
+     "speaker": "Ilsa",
+     "text": "Poções, ervas e alguns cajados que eu mesma encantei. O estoque volta todo amanhecer.",
+     "actions": [
+      [
+       "open_shop",
+       "ilsa"
+      ]
+     ]
+    },
+    "hello": {
+     "speaker": "Ilsa",
+     "text": "Olá, viajante. O vale anda inquieto desde que os cristais começaram a brilhar à noite.",
+     "choices": [
+      {
+       "text": "Quem é você?",
+       "next": "who"
+      },
+      {
+       "text": "Você tem algo que me ajude?",
+       "next": "gift",
+       "if_not_flag": "ilsa_gift"
+      },
+      {
+       "text": "Precisa de alguma coisa?",
+       "next": "task"
+      },
+      {
+       "text": "Você vende poções?",
+       "next": "shop"
+      },
+      {
+       "text": "Até logo.",
+       "next": null
+      }
+     ]
+    },
+    "who": {
+     "speaker": "Ilsa",
+     "text": "Cuido das ervas do acampamento. Se você se machucar, é comigo que vai reclamar.",
+     "next": "hello"
+    },
+    "gift": {
+     "speaker": "Ilsa",
+     "text": "Leve estas poções. Não as desperdice com arranhões.",
+     "actions": [
+      [
+       "give_item",
+       "potion_red",
+       2
+      ],
+      [
+       "give_item",
+       "potion_green",
+       1
+      ],
+      [
+       "set_flag",
+       "ilsa_gift"
+      ]
+     ],
+     "next": "hello"
+    },
+    "task": {
+     "speaker": "Ilsa",
+     "text": "Gel de jade. As gotas deixam um pouco para trás quando caem. Traga e eu faço mais poções.",
+     "choices": [
+      {
+       "text": "Vou procurar.",
+       "next": null
+      },
+      {
+       "text": "Voltar",
+       "next": "hello"
+      }
+     ]
+    }
+   }
+  },
+  "lary": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Lary",
+     "text": "Oi! Sou a Lary. Gosto de passear pela praça e ver quem chegou de viagem. Quer caminhar um pouco?",
+     "choices": [
+      {
+       "text": "É seguro ficar aqui?",
+       "next": "village"
+      },
+      {
+       "text": "Gostei do seu estilo.",
+       "next": "style"
+      },
+      {
+       "text": "Até mais, Lary.",
+       "next": null
+      }
+     ]
+    },
+    "village": {
+     "speaker": "Lary",
+     "text": "Sim! As criaturas ficam fora da vila. Antes de sair, passe na Ilsa para levar algumas poções.",
+     "next": "hello"
+    },
+    "style": {
+     "speaker": "Lary",
+     "text": "Obrigada! Vinho, botas escuras e meu cabelo solto: pronta para mais uma volta pelo vale.",
+     "next": "hello"
+    }
+   }
+  },
+  "lyra": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Lyra",
+     "text": "Eu sigo rastros onde outros só veem folhas. Verdalume esconde muito mais do que mostra.",
+     "choices": [
+      {
+       "text": "Que criaturas vivem aqui?",
+       "next": "creatures"
+      },
+      {
+       "text": "Por que a vila fica neste lugar?",
+       "next": "village"
+      },
+      {
+       "text": "Boa caça.",
+       "next": null
+      }
+     ]
+    },
+    "creatures": {
+     "speaker": "Lyra",
+     "text": "Os cogumelos errantes recuam e cospem veneno. Os morcegos atacam em mergulho. Observe a direção deles antes de avançar.",
+     "next": "hello"
+    },
+    "village": {
+     "speaker": "Lyra",
+     "text": "Daqui vigiamos a mata e acolhemos quem se perde. Não siga qualquer brilho entre as árvores.",
+     "next": "hello"
+    }
+   }
+  },
+  "marta": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Marta",
+     "text": "Bem-vindo ao Javali Dourado! Sente-se, coma alguma coisa, conte uma história.",
+     "choices": [
+      {
+       "text": "Quero comprar comida.",
+       "next": "shop"
+      },
+      {
+       "text": "Vocês compram carne?",
+       "next": "buys"
+      },
+      {
+       "text": "Até mais.",
+       "next": null
+      }
+     ]
+    },
+    "buys": {
+     "speaker": "Marta",
+     "text": "Carne, pão, frutas e rações, compro tudo para a cozinha e pago melhor que o Ducci. Armas e trapos, nem me mostre.",
+     "next": "hello"
+    },
+    "shop": {
+     "speaker": "Marta",
+     "text": "O que tem hoje está aí. Acabou, só amanhã cedo.",
+     "actions": [
+      [
+       "open_shop",
+       "marta"
+      ]
+     ]
+    }
+   }
+  },
+  "morador": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "{npc}",
+     "text": "Olá, viajante! Não é todo dia que um aventureiro passa pela Cidade do Santuário. Precisa de alguma coisa?",
+     "choices": [
+      {
+       "text": "Como é viver aqui?",
+       "next": "life"
+      },
+      {
+       "text": "Alguma novidade?",
+       "next": "news"
+      },
+      {
+       "text": "Onde encontro armas?",
+       "next": "weapons"
+      },
+      {
+       "text": "Até mais!",
+       "next": null
+      }
+     ]
+    },
+    "life": {
+     "speaker": "{npc}",
+     "text": "Tranquilo, desde que levantaram as muralhas. De dia a praça enche de gente, à noite o sino toca e todo mundo vai para a taverna ou para casa.",
+     "next": "hello"
+    },
+    "news": {
+     "speaker": "{npc}",
+     "text": "Dizem que lá longe, a sudeste, existe uma árvore tão alta que toca as nuvens. Os elfos de Verdalume moram em volta dela. Eu nunca fui tão longe.",
+     "next": "hello"
+    },
+    "weapons": {
+     "speaker": "{npc}",
+     "text": "O Ducci vende armas novas todo dia na carroça roxa perto da praça. E o Bram, na forja, entende de ferro como ninguém.",
+     "next": "hello"
+    }
+   }
+  },
+  "nicolly": {
+   "start": "hello",
+   "nodes": {
+    "caldera": {
+     "speaker": "Nicolly",
+     "text": "A sudeste, a terra escurece até a Caldeira do Meteoro. A cratera é larga e há rampas entre as fissuras de lava. Azhûr guarda o centro: observe as marcas no chão e ataque quando o núcleo ficar exposto. Ele não abandona a cratera.",
+     "next": "hello"
+    },
+    "hello": {
+     "speaker": "Nicolly",
+     "text": "Bem-vindo ao vale! Sou Nicolly, a cartógrafa. Quanto mais você caminha, mais nosso mapa ganha forma.",
+     "choices": [
+      {
+       "text": "O que é aquele brilho a sudeste?",
+       "next": "caldera"
+      },
+      {
+       "text": "Como uso o mapa?",
+       "next": "map"
+      },
+      {
+       "text": "O que existe além do santuário?",
+       "next": "beyond"
+      },
+      {
+       "text": "Gostei da sua casa.",
+       "next": "home"
+      },
+      {
+       "text": "Até mais.",
+       "next": null
+      }
+     ]
+    },
+    "map": {
+     "speaker": "Nicolly",
+     "text": "Aperte M para abrir a carta. As regiões aparecem conforme você as percorre; aquilo que descobriu fica guardado neste mundo.",
+     "next": "hello"
+    },
+    "beyond": {
+     "speaker": "Nicolly",
+     "text": "O vale é muito maior do que parece daqui. Leve ervas de Ilsa, mantenha a espada de Bram afiada e explore sem pressa.",
+     "next": "hello"
+    },
+    "home": {
+     "speaker": "Nicolly",
+     "text": "Construí a oficina de mapas perto do caminho para ouvir as histórias de quem volta da floresta.",
+     "next": "hello"
+    }
+   }
+  },
+  "rhea": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Rhea",
+     "text": "Capitã Rhea, da guarda do vale. Se vai sair da vila, fale comigo antes: lá fora as criaturas não perdoam distração.",
+     "choices": [
+      {
+       "text": "O que tem lá fora?",
+       "next": "outside"
+      },
+      {
+       "text": "Conte sobre a Caldeira.",
+       "next": "caldera"
+      },
+      {
+       "text": "Até mais, capitã.",
+       "next": null
+      }
+     ]
+    },
+    "outside": {
+     "speaker": "Rhea",
+     "text": "Gotas de jade na campina, lobos da bruma nas trilhas, cogumelos venenosos na mata e morcegos à noite. Os golens ficam nas pedreiras. E quanto mais longe da vila, mais fortes eles ficam.",
+     "next": "hello"
+    },
+    "caldera": {
+     "speaker": "Rhea",
+     "text": "A leste, depois do lago, o meteoro abriu uma cratera cheia de lava. Azhûr, o colosso, guarda o centro. Ninguém que desceu lá voltou para contar. Ainda.",
+     "next": "hello"
+    }
+   }
+  },
+  "rosa": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Rosa",
+     "text": "Bem-vindo à alfaiataria! Roupa de viagem, couro e pele de lobo, tudo costurado aqui.",
+     "choices": [
+      {
+       "text": "Ver as roupas.",
+       "next": "shop"
+      },
+      {
+       "text": "O que você compra?",
+       "next": "buys"
+      },
+      {
+       "text": "Até logo.",
+       "next": null
+      }
+     ]
+    },
+    "buys": {
+     "speaker": "Rosa",
+     "text": "Peles de lobo e de coelho, fibra de casca, galhadas e até bandanas de bandido: pago bem, viram molde. Roupa usada também, mais barato.",
+     "next": "hello"
+    },
+    "shop": {
+     "speaker": "Rosa",
+     "text": "Os modelos mudam todo dia. Gostou de uma? Leve hoje, amanhã já é outra.",
+     "actions": [
+      [
+       "open_shop",
+       "rosa"
+      ]
+     ]
+    }
+   }
+  },
+  "sahil": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Sahil",
+     "text": "Bem-vindo ao Acampamento das Dunas. Aqui se compra água, remédio e coragem — esta última eu não cobro.",
+     "choices": [
+      {
+       "text": "Mostrar suprimentos de viagem.",
+       "next": "shop"
+      },
+      {
+       "text": "Quero descansar junto à fogueira.",
+       "next": "rest"
+      },
+      {
+       "text": "Como é Solcânion?",
+       "next": "region"
+      },
+      {
+       "text": "Até logo.",
+       "next": null
+      }
+     ]
+    },
+    "shop": {
+     "speaker": "Sahil",
+     "text": "Pão, poções e equipamento para atravessar as pedras quentes.",
+     "actions": [
+      [
+       "open_shop",
+       "solcanion"
+      ]
+     ]
+    },
+    "rest": {
+     "speaker": "Sahil",
+     "text": "A fogueira fica acesa até amanhecer. Guardo seu lugar; ferimentos ainda precisam de poção.",
+     "actions": [
+      [
+       "rest_village",
+       "solcanion"
+      ]
+     ]
+    },
+    "region": {
+     "speaker": "Sahil",
+     "text": "Quando as pedras cantarem sob seus pés, saia da ravina. Os golens patrulham as bordas e os bandidos conhecem cada sombra.",
+     "next": "hello"
+    }
+   }
+  },
+  "tavian": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Tavian",
+     "text": "Você chegou à Vila dos Caçadores. Os caminhos daqui são estreitos, mas sempre há lugar à nossa fogueira.",
+     "choices": [
+      {
+       "text": "Ver provisões da mata.",
+       "next": "shop"
+      },
+      {
+       "text": "Descansar e guardar meu retorno aqui.",
+       "next": "rest"
+      },
+      {
+       "text": "Como encontro a saída da floresta?",
+       "next": "paths"
+      },
+      {
+       "text": "Até logo.",
+       "next": null
+      }
+     ]
+    },
+    "shop": {
+     "speaker": "Tavian",
+     "text": "Temos antídotos, poções, mantimentos e algumas armas de caça.",
+     "actions": [
+      [
+       "open_shop",
+       "verdalume"
+      ]
+     ]
+    },
+    "rest": {
+     "speaker": "Tavian",
+     "text": "Descanse sob a proteção dos caçadores. O descanso marca seu retorno, mas não fecha ferimentos: use uma poção.",
+     "actions": [
+      [
+       "rest_village",
+       "verdalume"
+      ]
+     ]
+    },
+    "paths": {
+     "speaker": "Tavian",
+     "text": "Siga as lanternas para voltar. Se a mata ficar silenciosa de repente, procure um lugar aberto antes de enfrentar o que vem.",
+     "next": "hello"
+    }
+   }
+  },
+  "julia": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Julia",
+     "text": "Oi! Cuidado onde pisa, o Biscoito adora correr entre as pernas dos outros.",
+     "choices": [
+      {
+       "text": "Quem é o Biscoito?",
+       "next": "dog"
+      },
+      {
+       "text": "Como é a vida no Santuário?",
+       "next": "life"
+      },
+      {
+       "text": "Até mais.",
+       "next": null
+      }
+     ]
+    },
+    "dog": {
+     "speaker": "Julia",
+     "text": "Meu cachorro! Achei ele perto da Fonte, ainda filhote, no dia em que a estrela caiu. Ele nunca sai de perto de mim.",
+     "next": "hello"
+    },
+    "life": {
+     "speaker": "Julia",
+     "text": "Calma, quase sempre. A Fonte cura quem chega ferido e a Capitã cuida dos portões. Só os cristais que me dão arrepio à noite.",
+     "next": "hello"
+    }
+   }
+  },
+  "lexy": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Lexy",
+     "text": "Oi, oi! Senta aí que eu já te atendo. Brincadeira, a cadeira tá cheia de cabelo. Precisa de alguma coisa?",
+     "choices": [
+      {
+       "text": "Que lugar é esse?",
+       "next": "salon"
+      },
+      {
+       "text": "Seu cabelo está brilhando?",
+       "next": "hair"
+      },
+      {
+       "text": "O que acha dos Despertos?",
+       "next": "awake"
+      },
+      {
+       "text": "Até mais.",
+       "next": null
+      }
+     ]
+    },
+    "salon": {
+     "speaker": "Lexy",
+     "text": "O único salão do Santuário! Corto, pinto e escuto fofoca. A Rosa costura, eu cuido do resto. Até a Capitã Rhea já sentou nessa cadeira, mas ela nega até a morte.",
+     "next": "hello"
+    },
+    "hair": {
+     "speaker": "Lexy",
+     "text": "Brilha, né? É a tinta de cristal. Desde que a Estrela caiu, tudo que tem seiva acende de noite. Eu só resolvi usar isso a meu favor.",
+     "next": "hello"
+    },
+    "awake": {
+     "speaker": "Lexy",
+     "text": "Vocês chegam do Estádio sem memória e com um corte de cabelo péssimo. A memória eu não devolvo, mas o resto dá jeito.",
+     "next": "hello"
+    }
+   }
+  },
+  "bunny": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Bunny",
+     "text": "Oi! Cuidado com o canteiro, acabei de plantar. Posso te ajudar?",
+     "choices": [
+      {
+       "text": "Você cuida das flores daqui?",
+       "next": "garden"
+      },
+      {
+       "text": "Por que Bunny?",
+       "next": "name"
+      },
+      {
+       "text": "Até mais.",
+       "next": null
+      }
+     ]
+    },
+    "garden": {
+     "speaker": "Bunny",
+     "text": "De todas em volta da Fonte. A água cura gente, então eu achei que curava flor também. Funciona, quase sempre. Desde a Estrela, nem tanto.",
+     "next": "hello"
+    },
+    "name": {
+     "speaker": "Bunny",
+     "text": "Minha mãe dizia que eu vivia pulando pelos canteiros quando era pequena. O apelido ficou, e o nome de verdade ninguém lembra mais.",
+     "next": "hello"
+    }
+   }
+  }
+ },
+ "npcs": {
+  "lary": {
+   "name": "Lary",
+   "title": "Moradora do vale",
+   "barks": [
+    "Vou dar uma volta pela praça.",
+    "O vale fica lindo ao entardecer.",
+    "Aqui na vila podemos caminhar em paz."
+   ],
+   "dialogue": "lary",
+   "position": [
+    6.9,
+    15.0
+   ]
+  },
+  "ilsa": {
+   "name": "Ilsa",
+   "title": "Herbalista",
+   "barks": [
+    "As ervas do lago estão viçosas hoje.",
+    "Cuidado com os lobos da bruma.",
+    "Uma poção nunca é demais.",
+    "O fogo espanta os morcegos... quase sempre."
+   ],
+   "dialogue": "ilsa",
+   "position": [
+    10.5,
+    9.5
+   ]
+  },
+  "bram": {
+   "name": "Bram",
+   "title": "Ferreiro",
+   "barks": [
+    "Essa espada ainda aguenta muito.",
+    "Traga núcleos de golem e conversamos.",
+    "Hmpf. Ferro bom é ferro batido.",
+    "Ouviu isso? Deve ser só o vento."
+   ],
+   "dialogue": "bram",
+   "position": [
+    -11.2,
+    14.5
+   ]
+  },
+  "nicolly": {
+   "name": "Nicolly",
+   "title": "Cartógrafa",
+   "barks": [
+    "Cada trilha nova merece um risco no mapa.",
+    "Aperte M quando quiser consultar o vale.",
+    "Minha casa fica onde o caminho encontra o bosque."
+   ],
+   "dialogue": "nicolly",
+   "position": [
+    10.5,
+    23.5
+   ]
+  },
+  "ducci": {
+   "name": "Ducci",
+   "title": "O Mercador mago ambulante",
+   "barks": [
+    "Armas novas todo dia! Quase nenhuma amaldiçoada!",
+    "Peles, asas, cogumelos... Ducci compra tudo!",
+    "Psiu, aventureiro! Tenho uma lâmina que é a sua cara.",
+    "A carroça é pequena por fora. Por dentro também."
+   ],
+   "dialogue": "ducci",
+   "position": [
+    -11.5,
+    23.8
+   ]
+  },
+  "rhea": {
+   "name": "Rhea",
+   "title": "Capitã da Guarda",
+   "barks": [
+    "Olhos abertos. A trilha nunca dorme.",
+    "Recrutas: falem comigo antes de sair da vila.",
+    "Azhûr ainda dorme na Caldeira. Por enquanto."
+   ],
+   "dialogue": "rhea",
+   "position": [
+    -4.5,
+    -2.5
+   ]
+  },
+  "sahil": {
+   "name": "Sahil",
+   "title": "Mercador das Dunas",
+   "barks": [
+    "Água e poções para a travessia!",
+    "As dunas mudam, mas nossa fogueira não.",
+    "Sombra e suprimentos: entre, viajante."
+   ],
+   "dialogue": "sahil",
+   "position": [
+    -2196,
+    -998
+   ]
+  },
+  "amal": {
+   "name": "Amal",
+   "title": "Guia do Acampamento",
+   "barks": [
+    "Há pegadas de golem nas pedras.",
+    "Não atravesse o cânion sem poções.",
+    "Volte pelo brilho da fogueira."
+   ],
+   "dialogue": "amal",
+   "position": [
+    -2180,
+    -998
+   ]
+  },
+  "tavian": {
+   "name": "Tavian",
+   "title": "Provedor dos Caçadores",
+   "barks": [
+    "A floresta dá tudo a quem a respeita.",
+    "Tenho poções e provisões de caça.",
+    "Os cogumelos mais belos costumam ser os perigosos."
+   ],
+   "dialogue": "tavian",
+   "position": [
+    2863,
+    621
+   ]
+  },
+  "lyra": {
+   "name": "Lyra",
+   "title": "Rastreadora de Verdalume",
+   "barks": [
+    "Escute antes de entrar na mata.",
+    "Há rastros de cogumelos errantes ao norte.",
+    "Volte para a vila antes do anoitecer."
+   ],
+   "dialogue": "lyra",
+   "position": [
+    2878,
+    621
+   ]
+  },
+  "garrick": {
+   "name": "Garrick",
+   "title": "Armeiro",
+   "barks": [
+    "Cota de malha bem feita não range.",
+    "Escudo bom é escudo amassado e de pé.",
+    "Garrick, armeiro. Ferro para o corpo.",
+    "Elmo na cabeça vale mais que coragem."
+   ],
+   "dialogue": "garrick",
+   "position": [
+    30.0,
+    -19.0
+   ]
+  },
+  "rosa": {
+   "name": "Rosa",
+   "title": "Alfaiate",
+   "barks": [
+    "Linho, couro e pele de lobo. Tudo costurado à mão.",
+    "Esse rasgo aí tem conserto, viu?",
+    "Peles boas viram roupa boa.",
+    "A moda de Nivaluz é pele por cima de pele."
+   ],
+   "dialogue": "rosa",
+   "position": [
+    -26.5,
+    46.0
+   ]
+  },
+  "marta": {
+   "name": "Marta",
+   "title": "Taverneira",
+   "barks": [
+    "Ensopado quentinho! Venha antes que acabe.",
+    "Pão de hoje, carne de hoje.",
+    "Caçador traz carne, eu pago bem.",
+    "A taverna nunca fecha para quem tem fome."
+   ],
+   "dialogue": "marta",
+   "position": [
+    -23.5,
+    37.5
+   ]
+  },
+  "julia": {
+   "name": "Julia",
+   "title": "Moradora da praça",
+   "barks": [],
+   "dialogue": "julia",
+   "position": [
+    -7.4,
+    15.0
+   ]
+  },
+  "lexy": {
+   "name": "Lexy",
+   "title": "Cabeleireira do Santuário",
+   "barks": [],
+   "dialogue": "lexy",
+   "position": [
+    5.5,
+    40.0
+   ]
+  },
+  "bunny": {
+   "name": "Bunny",
+   "title": "Jardineira da Fonte",
+   "barks": [],
+   "dialogue": "bunny",
+   "position": [
+    -10.5,
+    15.0
+   ]
+  }
+ }
+}

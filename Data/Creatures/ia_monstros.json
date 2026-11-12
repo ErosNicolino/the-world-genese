@@ -1,0 +1,39 @@
+{
+ "_doc": "A IA dos monstros comuns (10/11; AVortexMonster em Source/Vortex/Private/Creatures/VortexMonster.cpp). Ajustar aqui não precisa compilar (o jogo lê ao abrir). Tempos em s, distâncias em cm, chances de 0 a 1. desvio_<Espécie>: a chance de desviar do golpe forte carregado (o especial do herói); quem não tem a sua usa desvioPadrao. caminho: 1 = procura caminho em volta de casas, muros, pedras e barrancos quando a linha reta está bloqueada (0 desliga).",
+ "alertaTempo": 0.8,
+ "passeioRaio": 550,
+ "passeioVelocidade": 0.3,
+ "passeioPausaMin": 3.0,
+ "passeioPausaMax": 8.0,
+ "passeioParado": 0.35,
+ "atacantesMax": 2,
+ "repetirPeso": 0.3,
+ "miraAdiantada": 0.75,
+
+ "desvioPadrao": 0.25,
+ "desvio_Goblin": 0.45,
+ "desvio_GoblinScout": 0.6,
+ "desvio_Bandit": 0.4,
+ "desvio_BanditArcher": 0.5,
+ "desvio_Mushroom": 0.5,
+ "desvio_Frog": 0.4,
+ "desvio_Spider": 0.45,
+ "desvio_Golem": 0,
+ "desvio_GoblinBrute": 0,
+ "desvio_BanditBrute": 0,
+ "desvio_BanditShield": 0.1,
+ "desvio_Bat": 0,
+ "desvioDistancia": 520,
+ "desvioForca": 650,
+ "desvioRecarga": 3.0,
+
+ "flanquear": 1,
+ "ouvir": 500,
+ "buscaTempo": 6.0,
+ "buscaVelocidade": 0.7,
+
+ "ajudaVida": 0.5,
+ "ajudaRaio": 3000,
+
+ "caminho": 1
+}

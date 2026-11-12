@@ -1,0 +1,28 @@
+{
+  "_sobre": "Roupas do humano de blocos (Tools/Blender/MakeBlockOutfit.py, Tools/ImportBlockOutfits.py). Lido por FVortexLookCatalog::BlockOutfits (VortexLook.cpp) ao abrir o jogo: mudar aqui não precisa compilar. id = a roupa do gerador (malha /Game/Vortex/Characters/Heroes/humano/Roupas/Roupa_<id>); nome = o do menu; corpo = male/female (vazio = nos dois). A ordem é a do menu; a primeira de cada corpo é a padrão. Sem malha (sem roupa): \"malha\": false.",
+  "roupas": [
+    { "id": "aventureiro", "nome": "Aventureiro", "corpo": "male" },
+    { "id": "guerreiro", "nome": "Guerreiro", "corpo": "male" },
+    { "id": "mago", "nome": "Mago viajante", "corpo": "male" },
+    { "id": "arqueira", "nome": "Arqueira", "corpo": "female" },
+    { "id": "sacerdotisa", "nome": "Sacerdotisa", "corpo": "female" },
+    { "id": "aventureira", "nome": "Aventureira", "corpo": "female" },
+    { "id": "Traje_peregrino_m", "nome": "Peregrino", "corpo": "male" },
+    { "id": "Traje_escudeiro_m", "nome": "Escudeiro", "corpo": "male" },
+    { "id": "Traje_mago_m", "nome": "Mago andarilho", "corpo": "male" },
+    { "id": "Traje_cacador_m", "nome": "Caçador da floresta", "corpo": "male" },
+    { "id": "Traje_arauto_m", "nome": "Arauto", "corpo": "male" },
+    { "id": "Traje_peregrino_f", "nome": "Peregrina", "corpo": "female" },
+    { "id": "Traje_escudeiro_f", "nome": "Escudeira", "corpo": "female" },
+    { "id": "Traje_mago_f", "nome": "Maga andarilha", "corpo": "female" },
+    { "id": "Traje_cacador_f", "nome": "Caçadora da floresta", "corpo": "female" },
+    { "id": "Traje_arauto_f", "nome": "Arauta", "corpo": "female" },
+    { "id": "Elfo_floresta_m", "nome": "Guardião da Floresta", "corpo": "male", "raca": "elfo" },
+    { "id": "Elfo_mago_m", "nome": "Mago da Corte da Lua", "corpo": "male", "raca": "elfo" },
+    { "id": "Elfo_sombra_m", "nome": "Caçador das Sombras", "corpo": "male", "raca": "elfo" },
+    { "id": "Elfo_floresta_f", "nome": "Guardiã da Floresta", "corpo": "female", "raca": "elfo" },
+    { "id": "Elfo_mago_f", "nome": "Maga da Corte da Lua", "corpo": "female", "raca": "elfo" },
+    { "id": "Elfo_sombra_f", "nome": "Caçadora das Sombras", "corpo": "female", "raca": "elfo" },
+    { "id": "nenhuma", "nome": "Sem roupa", "corpo": "", "malha": false }
+  ]
+}

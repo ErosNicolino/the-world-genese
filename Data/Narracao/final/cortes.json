@@ -1,0 +1,162 @@
+[
+ {
+  "name": "p1_q1",
+  "start": 0.0,
+  "duration": 3.18,
+  "score": 0.88,
+  "text": "No começo, havia só o mar… e Gênese.",
+  "heard": "no comeco havia so o mar e genese"
+ },
+ {
+  "name": "p1_q2",
+  "start": 3.27,
+  "duration": 4.4,
+  "score": 0.88,
+  "text": "No coração dela cresceu a Yggdrasil, a árvore que segura o mundo.",
+  "heard": "no coracao dela cresceu a ig drasil a arvore que segura o mundo"
+ },
+ {
+  "name": "p1_q3",
+  "start": 7.92,
+  "duration": 8.88,
+  "score": 0.96,
+  "text": "Pelas raízes corre a seiva da gênese: é ela que faz a grama nascer, a água correr e os bichos viverem em paz.",
+  "heard": "pelas raizes corre a seiva da genesis e ela que faz a grama nascer a agua correr e os bichos viverem em paz"
+ },
+ {
+  "name": "p1_q4",
+  "start": 17.03,
+  "duration": 4.75,
+  "score": 1.0,
+  "text": "Até o dia em que o céu, sobre a árvore, começou a girar.",
+  "heard": "ate o dia em que o ceu sobre a arvore comecou a girar"
+ },
+ {
+  "name": "p2_q1",
+  "start": 22.0,
+  "duration": 5.58,
+  "score": 1.0,
+  "text": "O Vórtice. Ninguém sabe se ele é uma ferida… ou uma porta.",
+  "heard": "o vortice ninguem sabe se ele e uma ferida ou uma porta"
+ },
+ {
+  "name": "p2_q2",
+  "start": 27.94,
+  "duration": 9.69,
+  "score": 0.94,
+  "text": "Ele puxava tudo o que era vivo, devagar, como a maré. Então os antigos ergueram nove Selos.",
+  "heard": "ele puxava tudo o que era vivo devagar como a mare entao the c os antigos ergueram nove selos"
+ },
+ {
+  "name": "p2_q3",
+  "start": 38.17,
+  "duration": 3.87,
+  "score": 1.0,
+  "text": "Em cada Selo, puseram um Guardião para dormir sobre ele.",
+  "heard": "em cada selo puseram um guardiao para dormir sobre ele"
+ },
+ {
+  "name": "p2_q4",
+  "start": 42.44,
+  "duration": 4.91,
+  "score": 0.86,
+  "text": "Enquanto os Guardiões sonhassem em paz, o Vórtice ficaria fechado.",
+  "heard": "enquanto os guardioes sonhassem em paz o vorte se ficaria fechado"
+ },
+ {
+  "name": "p3_q1",
+  "start": 47.76,
+  "duration": 6.12,
+  "score": 1.0,
+  "text": "Por mil anos, o Vale de Valdora dormiu tranquilo em volta da Fonte de Jade.",
+  "heard": "por mil anos o vale de valdora dormiu tranquilo em volta da fonte de jade"
+ },
+ {
+  "name": "p3_q2",
+  "start": 54.24,
+  "duration": 7.99,
+  "score": 0.97,
+  "text": "Até que, há vinte anos, uma estrela caiu. Só que não era uma estrela: era um pedaço do próprio Vórtice.",
+  "heard": "ate que ha anos uma estrela caiu so que nao era uma estrela era um pedaco do proprio vortice"
+ },
+ {
+  "name": "p3_q3",
+  "start": 62.59,
+  "duration": 4.84,
+  "score": 1.0,
+  "text": "Ela abriu a Caldeira do Meteoro… e acertou o primeiro Selo em cheio.",
+  "heard": "ela abriu a caldeira do meteoro e acertou o primeiro selo em cheio"
+ },
+ {
+  "name": "p3_q4",
+  "start": 67.94,
+  "duration": 3.45,
+  "score": 1.0,
+  "text": "Azhûr, o Colosso, acordou queimando por dentro.",
+  "heard": "azur o colosso acordou queimando por dentro"
+ },
+ {
+  "name": "p4_q1",
+  "start": 71.71,
+  "duration": 6.35,
+  "score": 1.0,
+  "text": "Desde então, os cristais do vale brilham à noite: a seiva está sendo puxada para o céu.",
+  "heard": "desde entao os cristais do vale brilham a noite a seiva esta sendo puxada para o ceu"
+ },
+ {
+  "name": "p4_q2",
+  "start": 78.33,
+  "duration": 2.56,
+  "score": 1.0,
+  "text": "Os bichos ficaram ferozes.",
+  "heard": "os bichos ficaram ferozes"
+ },
+ {
+  "name": "p4_q3",
+  "start": 81.29,
+  "duration": 7.46,
+  "score": 1.0,
+  "text": "A vila dobrou a guarda nas muralhas, e a Capitã Rhea vigia o leste todas as noites.",
+  "heard": "a vila dobrou a guarda nas muralhas e a capita reia vigia o leste todas as noites"
+ },
+ {
+  "name": "p4_q4",
+  "start": 89.15,
+  "duration": 6.83,
+  "score": 0.87,
+  "text": "E, um a um, os outros Guardiões começaram a sonhar mal. O Vórtice está acordando.",
+  "heard": "um a um os outros guardioes comecaram a sonhar mal o vorte se esta acordando"
+ },
+ {
+  "name": "p5_q1",
+  "start": 96.35,
+  "duration": 5.96,
+  "score": 1.0,
+  "text": "Mas o Vórtice não só puxa. Às vezes… ele devolve.",
+  "heard": "mas o vortice nao so puxa as vezes ele devolve"
+ },
+ {
+  "name": "p5_q2",
+  "start": 102.35,
+  "duration": 5.1,
+  "score": 1.0,
+  "text": "Uma alma atravessa a luz e cai no Estádio do Despertar.",
+  "heard": "uma alma atravessa a luz e cai no estadio do despertar"
+ },
+ {
+  "name": "p5_q3",
+  "start": 107.57,
+  "duration": 10.28,
+  "score": 1.0,
+  "text": "Sem nome, sem memória… só com uma arma, oferecida pela seiva. Os antigos chamam essas almas de Despertos.",
+  "heard": "sem nome sem memoria so com uma arma oferecida pela seiva os antigos chamam essas almas de despertos"
+ },
+ {
+  "name": "p5_q4",
+  "start": 117.96,
+  "duration": 7.46,
+  "score": 1.0,
+  "text": "São os únicos que tocam um Guardião sem enlouquecer. Você é um deles. Acorde.",
+  "heard": "sao os unicos que tocam um guardiao sem enlouquecer voce e um deles acorde"
+ }
+]

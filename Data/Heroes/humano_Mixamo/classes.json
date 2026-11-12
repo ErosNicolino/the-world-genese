@@ -1,0 +1,1322 @@
+{
+ "Poder_classe_warrior_heavy_blow_Full": {
+  "item": "warrior_heavy_blow",
+  "seconds": 1.0,
+  "hit": 0.45
+ },
+ "Poder_classe_warrior_battle_charge_Full": {
+  "item": "warrior_battle_charge",
+  "seconds": 0.633,
+  "hit": 0.063
+ },
+ "Poder_classe_warrior_war_cry_Full": {
+  "item": "warrior_war_cry",
+  "seconds": 1.2,
+  "hit": 0.42
+ },
+ "Poder_classe_warrior_last_breath_Full": {
+  "item": "warrior_last_breath",
+  "seconds": 1.033,
+  "hit": 0.258
+ },
+ "Poder_classe_knight_shield_bash_Full": {
+  "item": "knight_shield_bash",
+  "seconds": 0.833,
+  "hit": 0.35
+ },
+ "Poder_classe_knight_intervene_Full": {
+  "item": "knight_intervene",
+  "seconds": 0.733,
+  "hit": 0.073
+ },
+ "Poder_classe_knight_defensive_stance_Full": {
+  "item": "knight_defensive_stance",
+  "seconds": 0.867,
+  "hit": 0.217
+ },
+ "Poder_classe_knight_oath_of_protection_Full": {
+  "item": "knight_oath_of_protection",
+  "seconds": 1.333,
+  "hit": 0.773
+ },
+ "Poder_classe_guardian_taunt_Full": {
+  "item": "guardian_taunt",
+  "seconds": 1.1,
+  "hit": 0.495
+ },
+ "Poder_classe_guardian_living_wall_Full": {
+  "item": "guardian_living_wall",
+  "seconds": 1.033,
+  "hit": 0.258
+ },
+ "Poder_classe_guardian_protective_impact_Full": {
+  "item": "guardian_protective_impact",
+  "seconds": 1.0,
+  "hit": 0.35
+ },
+ "Poder_classe_guardian_none_shall_pass_Full": {
+  "item": "guardian_none_shall_pass",
+  "seconds": 1.167,
+  "hit": 0.443
+ },
+ "Poder_classe_ranger_piercing_arrow_Full": {
+  "item": "ranger_piercing_arrow",
+  "seconds": 0.933,
+  "hit": 0.373
+ },
+ "Poder_classe_ranger_prey_mark_Full": {
+  "item": "ranger_prey_mark",
+  "seconds": 0.867,
+  "hit": 0.26
+ },
+ "Poder_classe_ranger_retreat_leap_Full": {
+  "item": "ranger_retreat_leap",
+  "seconds": 0.833,
+  "hit": 0.1
+ },
+ "Poder_classe_ranger_arrow_rain_Full": {
+  "item": "ranger_arrow_rain",
+  "seconds": 1.033,
+  "hit": 0.413
+ },
+ "Poder_classe_duelist_lunge_Full": {
+  "item": "duelist_lunge",
+  "seconds": 0.667,
+  "hit": 0.187
+ },
+ "Poder_classe_duelist_parry_Full": {
+  "item": "duelist_parry",
+  "seconds": 0.6,
+  "hit": 0.15
+ },
+ "Poder_classe_duelist_sidestep_Full": {
+  "item": "duelist_sidestep",
+  "seconds": 0.667,
+  "hit": 0.08
+ },
+ "Poder_classe_duelist_deadly_duel_Full": {
+  "item": "duelist_deadly_duel",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_assassin_shadow_stab_Full": {
+  "item": "assassin_shadow_stab",
+  "seconds": 0.633,
+  "hit": 0.177
+ },
+ "Poder_classe_assassin_smoke_bomb_Full": {
+  "item": "assassin_smoke_bomb",
+  "seconds": 0.767,
+  "hit": 0.268
+ },
+ "Poder_classe_assassin_executioner_mark_Full": {
+  "item": "assassin_executioner_mark",
+  "seconds": 0.767,
+  "hit": 0.23
+ },
+ "Poder_classe_assassin_execution_Full": {
+  "item": "assassin_execution",
+  "seconds": 0.767,
+  "hit": 0.268
+ },
+ "Poder_classe_elemental_bolt_Full": {
+  "item": "elemental_bolt",
+  "seconds": 0.833,
+  "hit": 0.35
+ },
+ "Poder_classe_elemental_burst_Full": {
+  "item": "elemental_burst",
+  "seconds": 0.933,
+  "hit": 0.355
+ },
+ "Poder_classe_elemental_convergence_Full": {
+  "item": "elemental_convergence",
+  "seconds": 1.3,
+  "hit": 0.39
+ },
+ "Poder_classe_elemental_storm_Full": {
+  "item": "elemental_storm",
+  "seconds": 1.167,
+  "hit": 0.56
+ },
+ "Poder_classe_arcane_missile_Full": {
+  "item": "arcane_missile",
+  "seconds": 0.733,
+  "hit": 0.308
+ },
+ "Poder_classe_arcane_containment_rune_Full": {
+  "item": "arcane_containment_rune",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_arcane_amplify_Full": {
+  "item": "arcane_amplify",
+  "seconds": 1.0,
+  "hit": 0.55
+ },
+ "Poder_classe_arcane_field_Full": {
+  "item": "arcane_field",
+  "seconds": 1.133,
+  "hit": 0.68
+ },
+ "Poder_classe_alchemist_volatile_flask_Full": {
+  "item": "alchemist_volatile_flask",
+  "seconds": 0.767,
+  "hit": 0.268
+ },
+ "Poder_classe_alchemist_elixir_Full": {
+  "item": "alchemist_elixir",
+  "seconds": 1.2,
+  "hit": 0.6
+ },
+ "Poder_classe_alchemist_unstable_compound_Full": {
+  "item": "alchemist_unstable_compound",
+  "seconds": 0.867,
+  "hit": 0.303
+ },
+ "Poder_classe_alchemist_field_lab_Full": {
+  "item": "alchemist_field_lab",
+  "seconds": 1.267,
+  "hit": 0.76
+ },
+ "Poder_classe_cleric_restoring_light_Full": {
+  "item": "cleric_restoring_light",
+  "seconds": 1.2,
+  "hit": 0.696
+ },
+ "Poder_classe_cleric_purify_Full": {
+  "item": "cleric_purify",
+  "seconds": 0.933,
+  "hit": 0.448
+ },
+ "Poder_classe_cleric_holy_symbol_Full": {
+  "item": "cleric_holy_symbol",
+  "seconds": 1.133,
+  "hit": 0.68
+ },
+ "Poder_classe_cleric_miracle_Full": {
+  "item": "cleric_miracle",
+  "seconds": 1.433,
+  "hit": 0.831
+ },
+ "Poder_classe_druid_binding_roots_Full": {
+  "item": "druid_binding_roots",
+  "seconds": 1.067,
+  "hit": 0.405
+ },
+ "Poder_classe_druid_natural_regrowth_Full": {
+  "item": "druid_natural_regrowth",
+  "seconds": 1.333,
+  "hit": 0.667
+ },
+ "Poder_classe_druid_feral_form_Full": {
+  "item": "druid_feral_form",
+  "seconds": 1.067,
+  "hit": 0.373
+ },
+ "Poder_classe_druid_living_forest_Full": {
+  "item": "druid_living_forest",
+  "seconds": 1.367,
+  "hit": 0.82
+ },
+ "Poder_classe_shaman_war_totem_Full": {
+  "item": "shaman_war_totem",
+  "seconds": 1.0,
+  "hit": 0.35
+ },
+ "Poder_classe_shaman_healing_totem_Full": {
+  "item": "shaman_healing_totem",
+  "seconds": 1.167,
+  "hit": 0.443
+ },
+ "Poder_classe_shaman_spirit_call_Full": {
+  "item": "shaman_spirit_call",
+  "seconds": 1.133,
+  "hit": 0.68
+ },
+ "Poder_classe_shaman_ancestor_dance_Full": {
+  "item": "shaman_ancestor_dance",
+  "seconds": 1.2,
+  "hit": 0.6
+ },
+ "Poder_classe_sorcerer_mystic_blast_Full": {
+  "item": "sorcerer_mystic_blast",
+  "seconds": 1.167,
+  "hit": 0.35
+ },
+ "Poder_classe_sorcerer_familiar_Full": {
+  "item": "sorcerer_familiar",
+  "seconds": 1.033,
+  "hit": 0.62
+ },
+ "Poder_classe_sorcerer_curse_Full": {
+  "item": "sorcerer_curse",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_sorcerer_grand_conjuration_Full": {
+  "item": "sorcerer_grand_conjuration",
+  "seconds": 1.267,
+  "hit": 0.608
+ },
+ "Poder_classe_arcblade_arcane_cut_Full": {
+  "item": "arcblade_arcane_cut",
+  "seconds": 0.867,
+  "hit": 0.364
+ },
+ "Poder_classe_arcblade_enchant_Full": {
+  "item": "arcblade_enchant",
+  "seconds": 1.3,
+  "hit": 0.39
+ },
+ "Poder_classe_arcblade_ethereal_step_Full": {
+  "item": "arcblade_ethereal_step",
+  "seconds": 0.567,
+  "hit": 0.057
+ },
+ "Poder_classe_arcblade_transcendent_Full": {
+  "item": "arcblade_transcendent",
+  "seconds": 1.1,
+  "hit": 0.495
+ },
+ "Poder_classe_monk_fist_sequence_Full": {
+  "item": "monk_fist_sequence",
+  "seconds": 0.633,
+  "hit": 0.114
+ },
+ "Poder_classe_monk_repulsing_palm_Full": {
+  "item": "monk_repulsing_palm",
+  "seconds": 0.733,
+  "hit": 0.308
+ },
+ "Poder_classe_monk_chi_flow_Full": {
+  "item": "monk_chi_flow",
+  "seconds": 1.2,
+  "hit": 0.6
+ },
+ "Poder_classe_monk_thousand_blows_Full": {
+  "item": "monk_thousand_blows",
+  "seconds": 0.867,
+  "hit": 0.156
+ },
+ "Poder_classe_lancer_pierce_Full": {
+  "item": "lancer_pierce",
+  "seconds": 0.8,
+  "hit": 0.224
+ },
+ "Poder_classe_lancer_sweep_Full": {
+  "item": "lancer_sweep",
+  "seconds": 0.867,
+  "hit": 0.303
+ },
+ "Poder_classe_lancer_spear_leap_Full": {
+  "item": "lancer_spear_leap",
+  "seconds": 0.933,
+  "hit": 0.56
+ },
+ "Poder_classe_lancer_formation_Full": {
+  "item": "lancer_formation",
+  "seconds": 1.0,
+  "hit": 0.35
+ },
+ "Poder_classe_bard_war_song_Full": {
+  "item": "bard_war_song",
+  "seconds": 1.2,
+  "hit": 0.6
+ },
+ "Poder_classe_bard_restoring_ballad_Full": {
+  "item": "bard_restoring_ballad",
+  "seconds": 1.433,
+  "hit": 0.717
+ },
+ "Poder_classe_bard_dissonant_note_Full": {
+  "item": "bard_dissonant_note",
+  "seconds": 0.833,
+  "hit": 0.35
+ },
+ "Poder_classe_bard_grand_concert_Full": {
+  "item": "bard_grand_concert",
+  "seconds": 1.1,
+  "hit": 0.605
+ },
+ "Poder_classe_hunter_study_prey_Full": {
+  "item": "hunter_study_prey",
+  "seconds": 1.033,
+  "hit": 0.31
+ },
+ "Poder_classe_hunter_hunting_bomb_Full": {
+  "item": "hunter_hunting_bomb",
+  "seconds": 0.767,
+  "hit": 0.268
+ },
+ "Poder_classe_hunter_prepared_dodge_Full": {
+  "item": "hunter_prepared_dodge",
+  "seconds": 0.667,
+  "hit": 0.08
+ },
+ "Poder_classe_hunter_prepared_kill_Full": {
+  "item": "hunter_prepared_kill",
+  "seconds": 0.9,
+  "hit": 0.405
+ },
+ "Poder_classe_barbarian_brutal_axe_Full": {
+  "item": "barbarian_brutal_axe",
+  "seconds": 0.9,
+  "hit": 0.405
+ },
+ "Poder_classe_barbarian_war_mist_Full": {
+  "item": "barbarian_war_mist",
+  "seconds": 0.9,
+  "hit": 0.315
+ },
+ "Poder_classe_barbarian_tribal_roar_Full": {
+  "item": "barbarian_tribal_roar",
+  "seconds": 1.2,
+  "hit": 0.42
+ },
+ "Poder_classe_barbarian_mist_frenzy_Full": {
+  "item": "barbarian_mist_frenzy",
+  "seconds": 0.967,
+  "hit": 0.338
+ },
+ "Poder_classe_runehammer_seismic_Full": {
+  "item": "runehammer_seismic",
+  "seconds": 0.933,
+  "hit": 0.355
+ },
+ "Poder_classe_runehammer_weight_rune_Full": {
+  "item": "runehammer_weight_rune",
+  "seconds": 1.1,
+  "hit": 0.385
+ },
+ "Poder_classe_runehammer_protective_rune_Full": {
+  "item": "runehammer_protective_rune",
+  "seconds": 0.867,
+  "hit": 0.217
+ },
+ "Poder_classe_runehammer_judgement_Full": {
+  "item": "runehammer_judgement",
+  "seconds": 1.067,
+  "hit": 0.64
+ },
+ "Poder_classe_moss_bark_skin_Full": {
+  "item": "moss_bark_skin",
+  "seconds": 1.033,
+  "hit": 0.258
+ },
+ "Poder_classe_moss_living_thorns_Full": {
+  "item": "moss_living_thorns",
+  "seconds": 1.2,
+  "hit": 0.42
+ },
+ "Poder_classe_moss_protective_roots_Full": {
+  "item": "moss_protective_roots",
+  "seconds": 1.333,
+  "hit": 0.667
+ },
+ "Poder_classe_moss_forest_heart_Full": {
+  "item": "moss_forest_heart",
+  "seconds": 1.367,
+  "hit": 0.82
+ },
+ "Poder_classe_wind_cut_Full": {
+  "item": "wind_cut",
+  "seconds": 0.767,
+  "hit": 0.322
+ },
+ "Poder_classe_wind_celestial_step_Full": {
+  "item": "wind_celestial_step",
+  "seconds": 0.567,
+  "hit": 0.057
+ },
+ "Poder_classe_wind_updraft_Full": {
+  "item": "wind_updraft",
+  "seconds": 0.9,
+  "hit": 0.495
+ },
+ "Poder_classe_wind_storm_dance_Full": {
+  "item": "wind_storm_dance",
+  "seconds": 1.067,
+  "hit": 0.533
+ },
+ "Poder_classe_jade_shard_Full": {
+  "item": "jade_shard",
+  "seconds": 0.833,
+  "hit": 0.35
+ },
+ "Poder_classe_jade_flower_Full": {
+  "item": "jade_flower",
+  "seconds": 1.2,
+  "hit": 0.6
+ },
+ "Poder_classe_jade_vital_link_Full": {
+  "item": "jade_vital_link",
+  "seconds": 1.3,
+  "hit": 0.39
+ },
+ "Poder_classe_jade_palace_Full": {
+  "item": "jade_palace",
+  "seconds": 1.267,
+  "hit": 0.76
+ },
+ "Poder_classe_moon_ray_Full": {
+  "item": "moon_ray",
+  "seconds": 1.167,
+  "hit": 0.35
+ },
+ "Poder_classe_moon_night_veil_Full": {
+  "item": "moon_night_veil",
+  "seconds": 1.1,
+  "hit": 0.495
+ },
+ "Poder_classe_moon_gravity_Full": {
+  "item": "moon_gravity",
+  "seconds": 1.067,
+  "hit": 0.512
+ },
+ "Poder_classe_moon_eclipse_Full": {
+  "item": "moon_eclipse",
+  "seconds": 1.367,
+  "hit": 0.82
+ },
+ "Poder_classe_tamer_feral_companion_Full": {
+  "item": "tamer_feral_companion",
+  "seconds": 1.2,
+  "hit": 0.42
+ },
+ "Poder_classe_tamer_command_attack_Full": {
+  "item": "tamer_command_attack",
+  "seconds": 0.767,
+  "hit": 0.23
+ },
+ "Poder_classe_tamer_blood_bond_Full": {
+  "item": "tamer_blood_bond",
+  "seconds": 1.1,
+  "hit": 0.495
+ },
+ "Poder_classe_tamer_pack_call_Full": {
+  "item": "tamer_pack_call",
+  "seconds": 1.333,
+  "hit": 0.467
+ },
+ "Poder_classe_eng_turret_Full": {
+  "item": "eng_turret",
+  "seconds": 1.067,
+  "hit": 0.405
+ },
+ "Poder_classe_eng_rune_mine_Full": {
+  "item": "eng_rune_mine",
+  "seconds": 0.867,
+  "hit": 0.303
+ },
+ "Poder_classe_eng_repair_drone_Full": {
+  "item": "eng_repair_drone",
+  "seconds": 0.933,
+  "hit": 0.392
+ },
+ "Poder_classe_eng_overload_Full": {
+  "item": "eng_overload",
+  "seconds": 1.167,
+  "hit": 0.35
+ },
+ "Poder_classe_corsair_pistol_shot_Full": {
+  "item": "corsair_pistol_shot",
+  "seconds": 0.767,
+  "hit": 0.23
+ },
+ "Poder_classe_corsair_cut_Full": {
+  "item": "corsair_cut",
+  "seconds": 0.867,
+  "hit": 0.364
+ },
+ "Poder_classe_corsair_hook_Full": {
+  "item": "corsair_hook",
+  "seconds": 0.767,
+  "hit": 0.268
+ },
+ "Poder_classe_corsair_bombardment_Full": {
+  "item": "corsair_bombardment",
+  "seconds": 1.033,
+  "hit": 0.31
+ },
+ "Poder_classe_pug_lightning_jab_Full": {
+  "item": "pug_lightning_jab",
+  "seconds": 0.567,
+  "hit": 0.102
+ },
+ "Poder_classe_pug_defense_break_Full": {
+  "item": "pug_defense_break",
+  "seconds": 0.733,
+  "hit": 0.308
+ },
+ "Poder_classe_pug_offensive_dodge_Full": {
+  "item": "pug_offensive_dodge",
+  "seconds": 0.667,
+  "hit": 0.08
+ },
+ "Poder_classe_pug_relentless_combo_Full": {
+  "item": "pug_relentless_combo",
+  "seconds": 0.8,
+  "hit": 0.144
+ },
+ "Poder_classe_dh_profane_mark_Full": {
+  "item": "dh_profane_mark",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_dh_consecrated_chain_Full": {
+  "item": "dh_consecrated_chain",
+  "seconds": 0.867,
+  "hit": 0.303
+ },
+ "Poder_classe_dh_demonic_purge_Full": {
+  "item": "dh_demonic_purge",
+  "seconds": 0.933,
+  "hit": 0.392
+ },
+ "Poder_classe_dh_infernal_sentence_Full": {
+  "item": "dh_infernal_sentence",
+  "seconds": 1.433,
+  "hit": 0.43
+ },
+ "Poder_classe_veil_duplicate_Full": {
+  "item": "veil_duplicate",
+  "seconds": 0.733,
+  "hit": 0.088
+ },
+ "Poder_classe_veil_veil_Full": {
+  "item": "veil_veil",
+  "seconds": 1.1,
+  "hit": 0.495
+ },
+ "Poder_classe_veil_nightmare_Full": {
+  "item": "veil_nightmare",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_veil_dream_world_Full": {
+  "item": "veil_dream_world",
+  "seconds": 1.2,
+  "hit": 0.66
+ },
+ "Poder_classe_herald_war_banner_Full": {
+  "item": "herald_war_banner",
+  "seconds": 1.167,
+  "hit": 0.443
+ },
+ "Poder_classe_herald_advance_Full": {
+  "item": "herald_advance",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_herald_defense_Full": {
+  "item": "herald_defense",
+  "seconds": 0.867,
+  "hit": 0.217
+ },
+ "Poder_classe_herald_supreme_command_Full": {
+  "item": "herald_supreme_command",
+  "seconds": 1.333,
+  "hit": 0.467
+ },
+ "Poder_classe_crimson_cut_Full": {
+  "item": "crimson_cut",
+  "seconds": 0.767,
+  "hit": 0.322
+ },
+ "Poder_classe_crimson_dance_Full": {
+  "item": "crimson_dance",
+  "seconds": 1.067,
+  "hit": 0.533
+ },
+ "Poder_classe_crimson_blood_for_blood_Full": {
+  "item": "crimson_blood_for_blood",
+  "seconds": 1.0,
+  "hit": 0.45
+ },
+ "Poder_classe_crimson_bloody_rose_Full": {
+  "item": "crimson_bloody_rose",
+  "seconds": 0.767,
+  "hit": 0.268
+ },
+ "Poder_classe_destroyer_demolition_Full": {
+  "item": "destroyer_demolition",
+  "seconds": 1.0,
+  "hit": 0.45
+ },
+ "Poder_classe_destroyer_shockwave_Full": {
+  "item": "destroyer_shockwave",
+  "seconds": 0.9,
+  "hit": 0.315
+ },
+ "Poder_classe_destroyer_momentum_Full": {
+  "item": "destroyer_momentum",
+  "seconds": 1.067,
+  "hit": 0.373
+ },
+ "Poder_classe_destroyer_meteor_Full": {
+  "item": "destroyer_meteor",
+  "seconds": 0.933,
+  "hit": 0.56
+ },
+ "Poder_classe_warlord_commander_strike_Full": {
+  "item": "warlord_commander_strike",
+  "seconds": 0.9,
+  "hit": 0.405
+ },
+ "Poder_classe_warlord_regroup_Full": {
+  "item": "warlord_regroup",
+  "seconds": 1.2,
+  "hit": 0.42
+ },
+ "Poder_classe_warlord_dominant_presence_Full": {
+  "item": "warlord_dominant_presence",
+  "seconds": 1.1,
+  "hit": 0.495
+ },
+ "Poder_classe_warlord_battlefield_Full": {
+  "item": "warlord_battlefield",
+  "seconds": 1.167,
+  "hit": 0.443
+ },
+ "Poder_classe_colossus_trample_Full": {
+  "item": "colossus_trample",
+  "seconds": 1.1,
+  "hit": 0.385
+ },
+ "Poder_classe_colossus_stone_body_Full": {
+  "item": "colossus_stone_body",
+  "seconds": 1.1,
+  "hit": 0.275
+ },
+ "Poder_classe_colossus_intercept_Full": {
+  "item": "colossus_intercept",
+  "seconds": 0.733,
+  "hit": 0.073
+ },
+ "Poder_classe_colossus_colossal_form_Full": {
+  "item": "colossus_colossal_form",
+  "seconds": 1.567,
+  "hit": 0.548
+ },
+ "Poder_classe_immortal_persistent_blood_Full": {
+  "item": "immortal_persistent_blood",
+  "seconds": 1.2,
+  "hit": 0.6
+ },
+ "Poder_classe_immortal_refuse_death_Full": {
+  "item": "immortal_refuse_death",
+  "seconds": 0.867,
+  "hit": 0.217
+ },
+ "Poder_classe_immortal_eternity_mark_Full": {
+  "item": "immortal_eternity_mark",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_immortal_rebirth_Full": {
+  "item": "immortal_rebirth",
+  "seconds": 1.567,
+  "hit": 0.909
+ },
+ "Poder_classe_phantom_spectral_pass_Full": {
+  "item": "phantom_spectral_pass",
+  "seconds": 0.567,
+  "hit": 0.057
+ },
+ "Poder_classe_phantom_ghost_blade_Full": {
+  "item": "phantom_ghost_blade",
+  "seconds": 0.867,
+  "hit": 0.364
+ },
+ "Poder_classe_phantom_haunt_Full": {
+  "item": "phantom_haunt",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_phantom_thousand_blades_Full": {
+  "item": "phantom_thousand_blades",
+  "seconds": 0.867,
+  "hit": 0.303
+ },
+ "Poder_classe_chrono_delay_Full": {
+  "item": "chrono_delay",
+  "seconds": 1.133,
+  "hit": 0.34
+ },
+ "Poder_classe_chrono_haste_Full": {
+  "item": "chrono_haste",
+  "seconds": 0.8,
+  "hit": 0.44
+ },
+ "Poder_classe_chrono_echo_Full": {
+  "item": "chrono_echo",
+  "seconds": 1.167,
+  "hit": 0.35
+ },
+ "Poder_classe_chrono_stop_time_Full": {
+  "item": "chrono_stop_time",
+  "seconds": 1.367,
+  "hit": 0.656
+ },
+ "Poder_classe_oracle_omen_Full": {
+  "item": "oracle_omen",
+  "seconds": 1.333,
+  "hit": 0.667
+ },
+ "Poder_classe_oracle_fair_fate_Full": {
+  "item": "oracle_fair_fate",
+  "seconds": 1.067,
+  "hit": 0.512
+ },
+ "Poder_classe_oracle_dark_fate_Full": {
+  "item": "oracle_dark_fate",
+  "seconds": 1.033,
+  "hit": 0.31
+ },
+ "Poder_classe_oracle_rewrite_fate_Full": {
+  "item": "oracle_rewrite_fate",
+  "seconds": 1.433,
+  "hit": 0.831
+ },
+ "Poder_classe_avatar_elemental_form_Full": {
+  "item": "avatar_elemental_form",
+  "seconds": 1.3,
+  "hit": 0.39
+ },
+ "Poder_classe_avatar_primordial_blast_Full": {
+  "item": "avatar_primordial_blast",
+  "seconds": 1.067,
+  "hit": 0.405
+ },
+ "Poder_classe_avatar_absorption_Full": {
+  "item": "avatar_absorption",
+  "seconds": 1.067,
+  "hit": 0.533
+ },
+ "Poder_classe_avatar_manifestation_Full": {
+  "item": "avatar_manifestation",
+  "seconds": 1.433,
+  "hit": 0.502
+ },
+ "Poder_classe_abyss_cut_Full": {
+  "item": "abyss_cut",
+  "seconds": 1.0,
+  "hit": 0.45
+ },
+ "Poder_classe_abyss_void_armor_Full": {
+  "item": "abyss_void_armor",
+  "seconds": 0.933,
+  "hit": 0.233
+ },
+ "Poder_classe_abyss_chains_Full": {
+  "item": "abyss_chains",
+  "seconds": 0.867,
+  "hit": 0.303
+ },
+ "Poder_classe_abyss_gate_Full": {
+  "item": "abyss_gate",
+  "seconds": 1.367,
+  "hit": 0.82
+ },
+ "Poder_classe_blood_spear_Full": {
+  "item": "blood_spear",
+  "seconds": 0.767,
+  "hit": 0.268
+ },
+ "Poder_classe_blood_drain_Full": {
+  "item": "blood_drain",
+  "seconds": 1.3,
+  "hit": 0.39
+ },
+ "Poder_classe_blood_crimson_bond_Full": {
+  "item": "blood_crimson_bond",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_blood_sea_Full": {
+  "item": "blood_sea",
+  "seconds": 1.367,
+  "hit": 0.82
+ },
+ "Poder_classe_astral_star_fragment_Full": {
+  "item": "astral_star_fragment",
+  "seconds": 0.933,
+  "hit": 0.448
+ },
+ "Poder_classe_astral_constellation_Full": {
+  "item": "astral_constellation",
+  "seconds": 1.0,
+  "hit": 0.55
+ },
+ "Poder_classe_astral_comet_Full": {
+  "item": "astral_comet",
+  "seconds": 1.033,
+  "hit": 0.31
+ },
+ "Poder_classe_astral_zodiac_portal_Full": {
+  "item": "astral_zodiac_portal",
+  "seconds": 1.367,
+  "hit": 0.82
+ },
+ "Poder_classe_chains_pull_Full": {
+  "item": "chains_pull",
+  "seconds": 0.767,
+  "hit": 0.268
+ },
+ "Poder_classe_chains_shackles_Full": {
+  "item": "chains_shackles",
+  "seconds": 0.867,
+  "hit": 0.303
+ },
+ "Poder_classe_chains_protective_link_Full": {
+  "item": "chains_protective_link",
+  "seconds": 0.867,
+  "hit": 0.217
+ },
+ "Poder_classe_chains_prison_Full": {
+  "item": "chains_prison",
+  "seconds": 1.167,
+  "hit": 0.443
+ },
+ "Poder_classe_archmage_superior_magic_Full": {
+  "item": "archmage_superior_magic",
+  "seconds": 0.933,
+  "hit": 0.392
+ },
+ "Poder_classe_archmage_counterspell_Full": {
+  "item": "archmage_counterspell",
+  "seconds": 0.867,
+  "hit": 0.39
+ },
+ "Poder_classe_archmage_arcane_fold_Full": {
+  "item": "archmage_arcane_fold",
+  "seconds": 0.8,
+  "hit": 0.44
+ },
+ "Poder_classe_archmage_grand_ritual_Full": {
+  "item": "archmage_grand_ritual",
+  "seconds": 1.467,
+  "hit": 0.704
+ },
+ "Poder_classe_dragon_charge_Full": {
+  "item": "dragon_charge",
+  "seconds": 0.733,
+  "hit": 0.073
+ },
+ "Poder_classe_dragon_scales_Full": {
+  "item": "dragon_scales",
+  "seconds": 0.867,
+  "hit": 0.217
+ },
+ "Poder_classe_dragon_breath_Full": {
+  "item": "dragon_breath",
+  "seconds": 1.067,
+  "hit": 0.373
+ },
+ "Poder_classe_dragon_awakening_Full": {
+  "item": "dragon_awakening",
+  "seconds": 1.267,
+  "hit": 0.57
+ },
+ "Poder_classe_sovereign_power_rune_Full": {
+  "item": "sovereign_power_rune",
+  "seconds": 1.0,
+  "hit": 0.35
+ },
+ "Poder_classe_sovereign_ward_rune_Full": {
+  "item": "sovereign_ward_rune",
+  "seconds": 1.0,
+  "hit": 0.35
+ },
+ "Poder_classe_sovereign_prison_rune_Full": {
+  "item": "sovereign_prison_rune",
+  "seconds": 1.067,
+  "hit": 0.405
+ },
+ "Poder_classe_sovereign_primordial_word_Full": {
+  "item": "sovereign_primordial_word",
+  "seconds": 1.2,
+  "hit": 0.54
+ },
+ "Poder_classe_void_step_Full": {
+  "item": "void_step",
+  "seconds": 0.567,
+  "hit": 0.057
+ },
+ "Poder_classe_void_dimensional_cut_Full": {
+  "item": "void_dimensional_cut",
+  "seconds": 0.867,
+  "hit": 0.364
+ },
+ "Poder_classe_void_linked_portal_Full": {
+  "item": "void_linked_portal",
+  "seconds": 1.0,
+  "hit": 0.55
+ },
+ "Poder_classe_void_spatial_collapse_Full": {
+  "item": "void_spatial_collapse",
+  "seconds": 1.133,
+  "hit": 0.34
+ },
+ "Poder_classe_saint_radiant_strike_Full": {
+  "item": "saint_radiant_strike",
+  "seconds": 1.0,
+  "hit": 0.45
+ },
+ "Poder_classe_saint_shield_of_faith_Full": {
+  "item": "saint_shield_of_faith",
+  "seconds": 1.067,
+  "hit": 0.619
+ },
+ "Poder_classe_saint_martyrdom_Full": {
+  "item": "saint_martyrdom",
+  "seconds": 0.933,
+  "hit": 0.233
+ },
+ "Poder_classe_saint_celestial_intervention_Full": {
+  "item": "saint_celestial_intervention",
+  "seconds": 1.267,
+  "hit": 0.608
+ },
+ "Poder_classe_storm_chain_lightning_Full": {
+  "item": "storm_chain_lightning",
+  "seconds": 0.733,
+  "hit": 0.308
+ },
+ "Poder_classe_storm_gust_Full": {
+  "item": "storm_gust",
+  "seconds": 0.867,
+  "hit": 0.364
+ },
+ "Poder_classe_storm_cloud_Full": {
+  "item": "storm_cloud",
+  "seconds": 1.067,
+  "hit": 0.512
+ },
+ "Poder_classe_storm_wrath_of_heavens_Full": {
+  "item": "storm_wrath_of_heavens",
+  "seconds": 1.367,
+  "hit": 0.656
+ },
+ "Poder_classe_solar_cut_Full": {
+  "item": "solar_cut",
+  "seconds": 0.867,
+  "hit": 0.364
+ },
+ "Poder_classe_solar_flash_Full": {
+  "item": "solar_flash",
+  "seconds": 0.867,
+  "hit": 0.39
+ },
+ "Poder_classe_solar_aura_Full": {
+  "item": "solar_aura",
+  "seconds": 1.333,
+  "hit": 0.773
+ },
+ "Poder_classe_solar_descending_sun_Full": {
+  "item": "solar_descending_sun",
+  "seconds": 1.367,
+  "hit": 0.656
+ },
+ "Poder_classe_devourer_mana_drain_Full": {
+  "item": "devourer_mana_drain",
+  "seconds": 1.3,
+  "hit": 0.39
+ },
+ "Poder_classe_devourer_silence_Full": {
+  "item": "devourer_silence",
+  "seconds": 0.867,
+  "hit": 0.26
+ },
+ "Poder_classe_devourer_arcane_absorption_Full": {
+  "item": "devourer_arcane_absorption",
+  "seconds": 0.867,
+  "hit": 0.217
+ },
+ "Poder_classe_devourer_null_zone_Full": {
+  "item": "devourer_null_zone",
+  "seconds": 1.1,
+  "hit": 0.385
+ },
+ "Poder_classe_necro_raise_dead_Full": {
+  "item": "necro_raise_dead",
+  "seconds": 1.133,
+  "hit": 0.68
+ },
+ "Poder_classe_necro_corpse_explosion_Full": {
+  "item": "necro_corpse_explosion",
+  "seconds": 0.867,
+  "hit": 0.26
+ },
+ "Poder_classe_necro_soul_harvest_Full": {
+  "item": "necro_soul_harvest",
+  "seconds": 1.067,
+  "hit": 0.512
+ },
+ "Poder_classe_necro_army_of_dead_Full": {
+  "item": "necro_army_of_dead",
+  "seconds": 1.5,
+  "hit": 0.9
+ },
+ "Poder_classe_heir_titan_fist_Full": {
+  "item": "heir_titan_fist",
+  "seconds": 0.8,
+  "hit": 0.144
+ },
+ "Poder_classe_heir_giant_blood_Full": {
+  "item": "heir_giant_blood",
+  "seconds": 1.2,
+  "hit": 0.42
+ },
+ "Poder_classe_heir_titan_step_Full": {
+  "item": "heir_titan_step",
+  "seconds": 1.2,
+  "hit": 0.42
+ },
+ "Poder_classe_heir_ancestral_awakening_Full": {
+  "item": "heir_ancestral_awakening",
+  "seconds": 1.567,
+  "hit": 0.548
+ },
+ "Poder_classe_pack_call_Full": {
+  "item": "pack_call",
+  "seconds": 1.2,
+  "hit": 0.42
+ },
+ "Poder_classe_pack_alpha_mark_Full": {
+  "item": "pack_alpha_mark",
+  "seconds": 0.867,
+  "hit": 0.26
+ },
+ "Poder_classe_pack_hunting_howl_Full": {
+  "item": "pack_hunting_howl",
+  "seconds": 1.333,
+  "hit": 0.467
+ },
+ "Poder_classe_pack_great_hunt_Full": {
+  "item": "pack_great_hunt",
+  "seconds": 0.733,
+  "hit": 0.073
+ },
+ "Poder_classe_carto_eye_Full": {
+  "item": "carto_eye",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_carto_safe_route_Full": {
+  "item": "carto_safe_route",
+  "seconds": 0.933,
+  "hit": 0.448
+ },
+ "Poder_classe_carto_mark_terrain_Full": {
+  "item": "carto_mark_terrain",
+  "seconds": 1.0,
+  "hit": 0.35
+ },
+ "Poder_classe_carto_impossible_map_Full": {
+  "item": "carto_impossible_map",
+  "seconds": 1.2,
+  "hit": 0.66
+ },
+ "Poder_classe_forge_sharpen_Full": {
+  "item": "forge_sharpen",
+  "seconds": 1.167,
+  "hit": 0.35
+ },
+ "Poder_classe_forge_reinforce_Full": {
+  "item": "forge_reinforce",
+  "seconds": 0.867,
+  "hit": 0.217
+ },
+ "Poder_classe_forge_field_forge_Full": {
+  "item": "forge_field_forge",
+  "seconds": 1.167,
+  "hit": 0.443
+ },
+ "Poder_classe_forge_masterpiece_Full": {
+  "item": "forge_masterpiece",
+  "seconds": 1.167,
+  "hit": 0.56
+ },
+ "Poder_classe_sanct_seal_Full": {
+  "item": "sanct_seal",
+  "seconds": 1.167,
+  "hit": 0.443
+ },
+ "Poder_classe_sanct_absolute_protection_Full": {
+  "item": "sanct_absolute_protection",
+  "seconds": 1.033,
+  "hit": 0.258
+ },
+ "Poder_classe_sanct_judgement_of_invader_Full": {
+  "item": "sanct_judgement_of_invader",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_sanct_living_sanctuary_Full": {
+  "item": "sanct_living_sanctuary",
+  "seconds": 1.433,
+  "hit": 0.831
+ },
+ "Poder_classe_moonb_crescent_Full": {
+  "item": "moonb_crescent",
+  "seconds": 0.933,
+  "hit": 0.392
+ },
+ "Poder_classe_moonb_blessing_Full": {
+  "item": "moonb_blessing",
+  "seconds": 1.2,
+  "hit": 0.6
+ },
+ "Poder_classe_moonb_lunar_step_Full": {
+  "item": "moonb_lunar_step",
+  "seconds": 0.567,
+  "hit": 0.057
+ },
+ "Poder_classe_moonb_manifested_moon_Full": {
+  "item": "moonb_manifested_moon",
+  "seconds": 1.267,
+  "hit": 0.608
+ },
+ "Poder_classe_king_royal_command_Full": {
+  "item": "king_royal_command",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_king_authority_Full": {
+  "item": "king_authority",
+  "seconds": 1.1,
+  "hit": 0.495
+ },
+ "Poder_classe_king_rally_Full": {
+  "item": "king_rally",
+  "seconds": 1.2,
+  "hit": 0.42
+ },
+ "Poder_classe_king_my_kingdom_Full": {
+  "item": "king_my_kingdom",
+  "seconds": 1.267,
+  "hit": 0.481
+ },
+ "Poder_classe_seraph_dawn_light_Full": {
+  "item": "seraph_dawn_light",
+  "seconds": 0.933,
+  "hit": 0.392
+ },
+ "Poder_classe_seraph_celestial_wings_Full": {
+  "item": "seraph_celestial_wings",
+  "seconds": 0.833,
+  "hit": 0.375
+ },
+ "Poder_classe_seraph_divine_grace_Full": {
+  "item": "seraph_divine_grace",
+  "seconds": 1.2,
+  "hit": 0.696
+ },
+ "Poder_classe_seraph_first_dawn_Full": {
+  "item": "seraph_first_dawn",
+  "seconds": 1.367,
+  "hit": 0.615
+ },
+ "Poder_classe_end_first_seal_Full": {
+  "item": "end_first_seal",
+  "seconds": 0.933,
+  "hit": 0.28
+ },
+ "Poder_classe_end_trumpet_Full": {
+  "item": "end_trumpet",
+  "seconds": 1.333,
+  "hit": 0.467
+ },
+ "Poder_classe_end_omen_Full": {
+  "item": "end_omen",
+  "seconds": 1.033,
+  "hit": 0.31
+ },
+ "Poder_classe_end_apocalypse_Full": {
+  "item": "end_apocalypse",
+  "seconds": 1.467,
+  "hit": 0.704
+ },
+ "Poder_classe_ether_condensed_Full": {
+  "item": "ether_condensed",
+  "seconds": 0.833,
+  "hit": 0.35
+ },
+ "Poder_classe_ether_astral_body_Full": {
+  "item": "ether_astral_body",
+  "seconds": 1.3,
+  "hit": 0.39
+ },
+ "Poder_classe_ether_transfer_Full": {
+  "item": "ether_transfer",
+  "seconds": 1.2,
+  "hit": 0.696
+ },
+ "Poder_classe_ether_transcendence_Full": {
+  "item": "ether_transcendence",
+  "seconds": 1.267,
+  "hit": 0.57
+ },
+ "Poder_classe_primordial_create_Full": {
+  "item": "primordial_create",
+  "seconds": 1.267,
+  "hit": 0.76
+ },
+ "Poder_classe_primordial_destroy_Full": {
+  "item": "primordial_destroy",
+  "seconds": 1.033,
+  "hit": 0.31
+ },
+ "Poder_classe_primordial_balance_Full": {
+  "item": "primordial_balance",
+  "seconds": 1.333,
+  "hit": 0.667
+ },
+ "Poder_classe_primordial_law_Full": {
+  "item": "primordial_law",
+  "seconds": 1.367,
+  "hit": 0.519
+ },
+ "Poder_classe_chaos_fragment_Full": {
+  "item": "chaos_fragment",
+  "seconds": 0.767,
+  "hit": 0.268
+ },
+ "Poder_classe_chaos_rupture_Full": {
+  "item": "chaos_rupture",
+  "seconds": 1.0,
+  "hit": 0.35
+ },
+ "Poder_classe_chaos_rising_entropy_Full": {
+  "item": "chaos_rising_entropy",
+  "seconds": 1.3,
+  "hit": 0.39
+ },
+ "Poder_classe_chaos_incarnate_Full": {
+  "item": "chaos_incarnate",
+  "seconds": 1.433,
+  "hit": 0.502
+ },
+ "Poder_classe_fate_favorable_thread_Full": {
+  "item": "fate_favorable_thread",
+  "seconds": 1.0,
+  "hit": 0.55
+ },
+ "Poder_classe_fate_cut_thread_Full": {
+  "item": "fate_cut_thread",
+  "seconds": 0.867,
+  "hit": 0.364
+ },
+ "Poder_classe_fate_bound_destiny_Full": {
+  "item": "fate_bound_destiny",
+  "seconds": 0.867,
+  "hit": 0.217
+ },
+ "Poder_classe_fate_causality_Full": {
+  "item": "fate_causality",
+  "seconds": 1.433,
+  "hit": 0.831
+ }
+}

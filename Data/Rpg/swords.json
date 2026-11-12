@@ -1,0 +1,966 @@
+{
+ "_doc": "Gerado por Tools/Weapons/BuildSwords.py. O modelo e o poder do botão direito de cada espada.",
+ "swords": {
+  "espada_de_cinzas": {
+   "key": "comum_1",
+   "model": "W_espada_comum_1_blocos",
+   "name": "Lâmina do Recruta",
+   "rarity": "common",
+   "element": "",
+   "icon": "weapon_espada_comum_1",
+   "stats": {
+    "attack": 2
+   },
+   "price": 30,
+   "power": {
+    "name": "Corte à Distância",
+    "text": "Lança o corte para a frente."
+   }
+  },
+  "espada_de_treino": {
+   "key": "comum_2",
+   "model": "W_espada_comum_2_blocos",
+   "name": "Espada de Treino",
+   "rarity": "common",
+   "element": "",
+   "icon": "weapon_espada_comum_2",
+   "stats": {
+    "attack": 2
+   },
+   "price": 30,
+   "power": {
+    "name": "Estocada de Treino",
+    "text": "Avança 4,5 m e acerta quem estiver no caminho.",
+    "kind": "dash",
+    "mana": 0,
+    "cooldown": 9.2,
+    "values": {
+     "distance": 450,
+     "time": 0.25,
+     "scale": 2.62
+    },
+    "icon": "special_adagas_gemeas"
+   }
+  },
+  "agulha_do_viajante": {
+   "key": "comum_3",
+   "model": "W_espada_comum_3_blocos",
+   "name": "Agulha do Viajante",
+   "rarity": "common",
+   "element": "",
+   "icon": "weapon_espada_comum_3",
+   "stats": {
+    "attack": 2
+   },
+   "price": 30,
+   "power": {
+    "name": "Mil Agulhadas",
+    "text": "Cinco estocadas rápidas seguidas.",
+    "kind": "flurry",
+    "mana": 0,
+    "cooldown": 11.5,
+    "values": {
+     "count": 5,
+     "time": 1.2,
+     "scale": 0.83
+    },
+    "icon": "special_lanca_do_patrulheiro"
+   }
+  },
+  "espada_de_ferro": {
+   "key": "comum_4",
+   "model": "W_espada_comum_4_blocos",
+   "name": "Velha Companheira",
+   "rarity": "common",
+   "element": "",
+   "icon": "weapon_espada_comum_4",
+   "stats": {
+    "attack": 2
+   },
+   "price": 30,
+   "power": {
+    "name": "Varrida Cansada",
+    "text": "Um golpe largo que empurra os inimigos.",
+    "kind": "sweep",
+    "mana": 0,
+    "cooldown": 13.8,
+    "values": {
+     "reach": 420,
+     "push": 400,
+     "scale": 3.38
+    },
+    "icon": "special_espadao"
+   }
+  },
+  "cutelo_do_lenhador": {
+   "key": "comum_5",
+   "model": "W_espada_comum_5_blocos",
+   "name": "Cutelo do Lenhador",
+   "rarity": "common",
+   "element": "",
+   "icon": "weapon_espada_comum_5",
+   "stats": {
+    "attack": 2
+   },
+   "price": 30,
+   "power": {
+    "name": "Golpe do Lenhador",
+    "text": "Crava a lâmina no chão e acerta em volta.",
+    "kind": "groundslam",
+    "mana": 0,
+    "cooldown": 13.8,
+    "values": {
+     "radius": 300,
+     "scale": 3.38,
+     "delay": 0.7
+    },
+    "icon": "special_martelo_de_bram"
+   }
+  },
+  "foice_verde_do_bosque": {
+   "key": "incomum_1",
+   "model": "W_espada_incomum_1_blocos",
+   "name": "Foice-Verde do Bosque",
+   "rarity": "uncommon",
+   "element": "nature",
+   "icon": "weapon_espada_incomum_1",
+   "stats": {
+    "attack": 3,
+    "crit": 2
+   },
+   "price": 80,
+   "power": {
+    "name": "Colheita Verde",
+    "text": "Um giro rasteiro que corta tudo em volta.",
+    "kind": "reap",
+    "mana": 0,
+    "cooldown": 10.5,
+    "values": {
+     "time": 0.45,
+     "radius": 320,
+     "scale": 3.6
+    },
+    "icon": "special_foice"
+   }
+  },
+  "espada_do_soldado": {
+   "key": "incomum_2",
+   "model": "W_espada_incomum_2_blocos",
+   "name": "Espada de Cobre Batido",
+   "rarity": "uncommon",
+   "element": "",
+   "icon": "weapon_espada_incomum_2",
+   "stats": {
+    "attack": 3,
+    "crit": 2
+   },
+   "price": 80,
+   "power": {
+    "name": "Estrondo de Cobre",
+    "text": "Uma onda de choque em linha para a frente.",
+    "kind": "shockwave",
+    "mana": 0,
+    "cooldown": 12.6,
+    "values": {
+     "reach": 450,
+     "length": 650,
+     "scale": 4.05
+    },
+    "icon": "special_alabarda"
+   }
+  },
+  "lamina_da_mare_baixa": {
+   "key": "incomum_3",
+   "model": "W_espada_incomum_3_blocos",
+   "name": "Lâmina da Maré Baixa",
+   "rarity": "uncommon",
+   "element": "water",
+   "icon": "weapon_espada_incomum_3",
+   "stats": {
+    "attack": 3,
+    "crit": 2
+   },
+   "price": 80,
+   "power": {
+    "name": "Maré Rasteira",
+    "text": "Varre o chão e solta uma onda que corre na linha da mira, arrastando e empurrando os inimigos.",
+    "kind": "tidewave",
+    "mana": 0,
+    "cooldown": 12.6,
+    "values": {
+     "length": 1400,
+     "width": 320,
+     "speed": 1500,
+     "push": 900,
+     "delay": 0.5,
+     "scale": 3.06
+    },
+    "icon": "special_espadao"
+   }
+  },
+  "marco_do_guardiao": {
+   "key": "incomum_4",
+   "model": "W_espada_incomum_4_blocos",
+   "name": "Marco do Guardião",
+   "rarity": "uncommon",
+   "element": "",
+   "icon": "weapon_espada_incomum_4",
+   "stats": {
+    "attack": 3,
+    "crit": 2
+   },
+   "price": 80,
+   "power": {
+    "name": "Marco Fincado",
+    "text": "Crava a espada no chão: o chão racha, as pedras sobem e quem está perto é abalado.",
+    "kind": "groundslam",
+    "mana": 0,
+    "cooldown": 12.6,
+    "values": {
+     "radius": 380,
+     "scale": 4.05,
+     "delay": 0.62
+    },
+    "icon": "special_martelo_de_bram"
+   }
+  },
+  "ferrao_da_noite": {
+   "key": "incomum_5",
+   "model": "W_espada_incomum_5_blocos",
+   "name": "Ferrão da Noite",
+   "rarity": "uncommon",
+   "element": "poison",
+   "icon": "weapon_espada_incomum_5",
+   "stats": {
+    "attack": 3,
+    "crit": 2
+   },
+   "price": 80,
+   "power": {
+    "name": "Picada Noturna",
+    "text": "Avança como um ferrão e envenena o alvo.",
+    "kind": "dash",
+    "mana": 0,
+    "cooldown": 8.4,
+    "values": {
+     "distance": 550,
+     "time": 0.25,
+     "scale": 3.15,
+     "dot": 0.35,
+     "dot_time": 4
+    },
+    "icon": "special_adagas_gemeas"
+   }
+  },
+  "espada_aco_frio": {
+   "key": "raro_1",
+   "model": "W_espada_raro_1_blocos",
+   "name": "Safira Gélida",
+   "rarity": "rare",
+   "element": "ice",
+   "icon": "weapon_espada_raro_1",
+   "stats": {
+    "attack": 4,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "price": 200,
+   "power": {
+    "name": "Selo de Gelo",
+    "text": "Marca o chão com uma runa de gelo que explode logo depois.",
+    "kind": "runeseal",
+    "mana": 15,
+    "cooldown": 12.0,
+    "values": {
+     "delay": 1.5,
+     "radius": 320,
+     "scale": 4.5,
+     "mark": 0.25,
+     "mark_life": 5,
+     "reach": 2600
+    },
+    "icon": "special_pistola_runica"
+   }
+  },
+  "lua_crescente": {
+   "key": "raro_2",
+   "model": "W_espada_raro_2_blocos",
+   "name": "Lua Crescente",
+   "rarity": "rare",
+   "element": "",
+   "icon": "weapon_espada_raro_2",
+   "stats": {
+    "attack": 4,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "price": 200,
+   "power": {
+    "name": "Dança da Lua",
+    "text": "Gira como a lua crescente, acertando várias vezes em volta.",
+    "kind": "whirl",
+    "mana": 0,
+    "cooldown": 14.0,
+    "values": {
+     "time": 2.0,
+     "hits": 4,
+     "radius": 300,
+     "scale": 1.8
+    },
+    "icon": "special_machado"
+   }
+  },
+  "trovao_partido": {
+   "key": "raro_3",
+   "model": "W_espada_raro_3_blocos",
+   "name": "Trovão Partido",
+   "rarity": "rare",
+   "element": "lightning",
+   "icon": "weapon_espada_raro_3",
+   "stats": {
+    "attack": 4,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "price": 200,
+   "power": {
+    "name": "Descarga do Trovão",
+    "text": "Segura e solta: um raio carregado que explode no alvo.",
+    "kind": "overload",
+    "mana": 12,
+    "cooldown": 6.0,
+    "values": {
+     "charge": 0.6,
+     "scale": 4.0,
+     "radius": 260
+    },
+    "icon": "special_varinha"
+   }
+  },
+  "presa_da_serpente": {
+   "key": "raro_4",
+   "model": "W_espada_raro_4_blocos",
+   "name": "Presa da Serpente",
+   "rarity": "rare",
+   "element": "poison",
+   "icon": "weapon_espada_raro_4",
+   "stats": {
+    "attack": 4,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "price": 200,
+   "power": {
+    "name": "Bote da Serpente",
+    "text": "Sete botes rápidos que espalham veneno.",
+    "kind": "flurry",
+    "mana": 0,
+    "cooldown": 10.0,
+    "values": {
+     "count": 7,
+     "time": 1.2,
+     "scale": 1.1,
+     "dot": 0.2,
+     "dot_time": 4
+    },
+    "icon": "special_lanca_do_patrulheiro"
+   }
+  },
+  "coracao_de_ametista": {
+   "key": "raro_5",
+   "model": "W_espada_raro_5_blocos",
+   "name": "Coração de Ametista",
+   "rarity": "rare",
+   "element": "shadow",
+   "icon": "weapon_espada_raro_5",
+   "stats": {
+    "attack": 4,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "price": 200,
+   "power": {
+    "name": "Estilhaços de Ametista",
+    "text": "Cristais roxos giram em volta e atacam quem chega perto.",
+    "kind": "orbit",
+    "mana": 20,
+    "cooldown": 25.0,
+    "values": {
+     "life": 12,
+     "every": 1.5,
+     "scale": 0.5,
+     "undead": 0.5,
+     "reach": 1800
+    },
+    "icon": "special_orbe"
+   }
+  },
+  "monolito_desperto": {
+   "key": "epico_1",
+   "model": "W_espada_epico_1_blocos",
+   "name": "Monolito Desperto",
+   "rarity": "epic",
+   "element": "",
+   "icon": "weapon_espada_epico_1",
+   "stats": {
+    "attack": 6,
+    "crit": 8,
+    "crit_dmg": 20
+   },
+   "price": 520,
+   "power": {
+    "name": "Queda do Monolito",
+    "text": "A lâmina de pedra cai como um monólito e racha o chão em volta.",
+    "kind": "groundslam",
+    "mana": 0,
+    "cooldown": 11.4,
+    "values": {
+     "radius": 520,
+     "scale": 5.17,
+     "delay": 0.75
+    },
+    "icon": "special_martelo_de_bram"
+   }
+  },
+  "escritura_do_eclipse": {
+   "key": "epico_2",
+   "model": "W_espada_epico_2_blocos",
+   "name": "Escritura do Eclipse",
+   "rarity": "epic",
+   "element": "shadow",
+   "icon": "weapon_espada_epico_2",
+   "stats": {
+    "attack": 6,
+    "crit": 8,
+    "crit_dmg": 20
+   },
+   "price": 520,
+   "power": {
+    "name": "Runa do Eclipse",
+    "text": "Escreve uma runa de sombra que explode e marca os inimigos.",
+    "kind": "runeseal",
+    "mana": 15,
+    "cooldown": 11.4,
+    "values": {
+     "delay": 1.5,
+     "radius": 380,
+     "scale": 5.17,
+     "mark": 0.35,
+     "mark_life": 5,
+     "reach": 2600
+    },
+    "icon": "special_pistola_runica"
+   }
+  },
+  "lamina_sanguinea": {
+   "key": "epico_3",
+   "model": "W_espada_epico_3_blocos",
+   "name": "Lâmina Sanguínea",
+   "rarity": "epic",
+   "element": "shadow",
+   "icon": "weapon_espada_epico_3",
+   "stats": {
+    "attack": 6,
+    "crit": 8,
+    "crit_dmg": 20
+   },
+   "price": 520,
+   "power": {
+    "name": "Colheita de Sangue",
+    "text": "Um corte em círculo que bebe a vida de quem acerta.",
+    "kind": "reap",
+    "mana": 0,
+    "cooldown": 9.5,
+    "values": {
+     "time": 0.45,
+     "radius": 360,
+     "scale": 4.6,
+     "drain": 0.25
+    },
+    "icon": "special_foice"
+   }
+  },
+  "fragmento_do_vortice": {
+   "key": "epico_4",
+   "model": "W_espada_epico_4_blocos",
+   "name": "Fragmento do Vórtice",
+   "rarity": "epic",
+   "element": "lightning",
+   "icon": "weapon_espada_epico_4",
+   "stats": {
+    "attack": 6,
+    "crit": 8,
+    "crit_dmg": 20
+   },
+   "price": 520,
+   "power": {
+    "name": "Fragmentos do Vórtice",
+    "text": "Pedaços do Vórtice orbitam e disparam raios nos inimigos.",
+    "kind": "orbit",
+    "mana": 20,
+    "cooldown": 23.8,
+    "values": {
+     "life": 12,
+     "every": 1.2,
+     "scale": 0.57,
+     "undead": 0.5,
+     "reach": 1800
+    },
+    "icon": "special_orbe"
+   }
+  },
+  "espada_crepusculo": {
+   "key": "epico_5",
+   "model": "W_espada_epico_5_blocos",
+   "name": "Ceifadora do Vazio",
+   "rarity": "epic",
+   "element": "shadow",
+   "icon": "weapon_espada_epico_5",
+   "stats": {
+    "attack": 6,
+    "crit": 8,
+    "crit_dmg": 20
+   },
+   "price": 520,
+   "power": {
+    "name": "Redemoinho do Vazio",
+    "text": "Um redemoinho de sombra que acerta tudo em volta.",
+    "kind": "whirl",
+    "mana": 0,
+    "cooldown": 13.3,
+    "values": {
+     "time": 2.0,
+     "hits": 5,
+     "radius": 320,
+     "scale": 2.07
+    },
+    "icon": "special_machado"
+   }
+  },
+  "espada_suspiro_azhur": {
+   "key": "lendario_1",
+   "model": "W_espada_lendario_1_blocos",
+   "name": "Suspiro de Azhûr",
+   "rarity": "unique",
+   "element": "fire",
+   "icon": "weapon_espada_lendario_1",
+   "stats": {
+    "attack": 11,
+    "crit": 10,
+    "crit_dmg": 30
+   },
+   "price": 3200,
+   "power": {
+    "name": "Suspiro do Colosso",
+    "text": "Ergue uma muralha de brasa que queima quem atravessa.",
+    "kind": "firewall",
+    "mana": 25,
+    "cooldown": 15.3,
+    "values": {
+     "tornado_life": 2.5,
+     "tornado_radius": 250,
+     "tornado_cooldown": 3,
+     "reach": 2200,
+     "width": 900,
+     "life": 6,
+     "scale": 0.87
+    },
+    "icon": "special_livro_da_aurora"
+   }
+  },
+  "espada_aurora": {
+   "key": "lendario_2",
+   "model": "W_espada_lendario_2_blocos",
+   "name": "Aurora Eterna",
+   "rarity": "legendary",
+   "element": "holy",
+   "icon": "weapon_espada_lendario_2",
+   "stats": {
+    "attack": 9,
+    "crit": 12,
+    "crit_dmg": 35
+   },
+   "price": 1300,
+   "power": {
+    "name": "Alvorada",
+    "text": "Um golpe de luz que atordoa os inimigos e cura você.",
+    "kind": "holyslam",
+    "mana": 15,
+    "cooldown": 12.6,
+    "values": {
+     "length": 700,
+     "stun": 2.5,
+     "levels": 5,
+     "heal": 0.08,
+     "scale": 5.2
+    },
+    "icon": "special_maca_sagrada"
+   }
+  },
+  "asa_da_fenix": {
+   "key": "lendario_3",
+   "model": "W_espada_lendario_3_blocos",
+   "name": "Asa da Fênix",
+   "rarity": "legendary",
+   "element": "fire",
+   "icon": "weapon_espada_lendario_3",
+   "stats": {
+    "attack": 9,
+    "crit": 12,
+    "crit_dmg": 35
+   },
+   "price": 1300,
+   "power": {
+    "name": "Voo da Fênix",
+    "text": "Voa 9 m envolto em fogo, queimando o caminho.",
+    "kind": "dash",
+    "mana": 0,
+    "cooldown": 7.2,
+    "values": {
+     "distance": 900,
+     "time": 0.25,
+     "scale": 4.55,
+     "dot": 0.3,
+     "dot_time": 3
+    },
+    "icon": "special_adagas_gemeas"
+   }
+  },
+  "sopro_de_valdora": {
+   "key": "lendario_4",
+   "model": "W_espada_lendario_4_blocos",
+   "name": "Sopro de Valdora",
+   "rarity": "legendary",
+   "element": "nature",
+   "icon": "weapon_espada_lendario_4",
+   "stats": {
+    "attack": 9,
+    "crit": 12,
+    "crit_dmg": 35
+   },
+   "price": 1300,
+   "power": {
+    "name": "Vendaval de Valdora",
+    "text": "O vento do vale varre e arremessa os inimigos para longe.",
+    "kind": "sweep",
+    "mana": 0,
+    "cooldown": 10.8,
+    "values": {
+     "reach": 500,
+     "push": 1200,
+     "scale": 5.85
+    },
+    "icon": "special_espadao"
+   }
+  },
+  "coroa_do_sol": {
+   "key": "lendario_5",
+   "model": "W_espada_lendario_5_blocos",
+   "name": "Coroa do Sol",
+   "rarity": "legendary",
+   "element": "holy",
+   "icon": "weapon_espada_lendario_5",
+   "stats": {
+    "attack": 9,
+    "crit": 12,
+    "crit_dmg": 35
+   },
+   "price": 1300,
+   "power": {
+    "name": "Raio de Sol",
+    "text": "Um raio de sol em linha que atravessa todos os inimigos.",
+    "kind": "shockwave",
+    "mana": 0,
+    "cooldown": 10.8,
+    "values": {
+     "reach": 450,
+     "length": 1200,
+     "scale": 5.85
+    },
+    "icon": "special_alabarda"
+   }
+  },
+  "fenda_esmeralda": {
+   "key": "unico_1",
+   "model": "W_espada_unico_1_blocos",
+   "name": "Fenda Esmeralda",
+   "rarity": "unique",
+   "element": "nature",
+   "icon": "weapon_espada_unico_1",
+   "stats": {
+    "attack": 11,
+    "crit": 10,
+    "crit_dmg": 30
+   },
+   "price": 3200,
+   "power": {
+    "name": "Fenda Esmeralda",
+    "text": "Abre uma fenda verde no chão que explode e prende os inimigos.",
+    "kind": "runeseal",
+    "mana": 15,
+    "cooldown": 10.2,
+    "values": {
+     "delay": 1.1,
+     "radius": 420,
+     "scale": 6.52,
+     "mark": 0.25,
+     "mark_life": 5,
+     "reach": 2600,
+     "root": 2.5
+    },
+    "icon": "special_pistola_runica"
+   }
+  },
+  "lagrima_do_inverno": {
+   "key": "unico_2",
+   "model": "W_espada_unico_2_blocos",
+   "name": "Lágrima do Inverno",
+   "rarity": "unique",
+   "element": "ice",
+   "icon": "weapon_espada_unico_2",
+   "stats": {
+    "attack": 11,
+    "crit": 10,
+    "crit_dmg": 30
+   },
+   "price": 3200,
+   "power": {
+    "name": "Nevasca",
+    "text": "Uma nevasca de cortes em volta que congela aos poucos.",
+    "kind": "whirl",
+    "mana": 0,
+    "cooldown": 11.9,
+    "values": {
+     "time": 2.0,
+     "hits": 6,
+     "radius": 380,
+     "scale": 2.61,
+     "slow": 0.55,
+     "slow_time": 1.5
+    },
+    "icon": "special_machado"
+   }
+  },
+  "raiz_da_primeira_arvore": {
+   "key": "unico_3",
+   "model": "W_espada_unico_3_blocos",
+   "name": "Raiz da Primeira Árvore",
+   "rarity": "unique",
+   "element": "nature",
+   "icon": "weapon_espada_unico_3",
+   "stats": {
+    "attack": 11,
+    "crit": 10,
+    "crit_dmg": 30
+   },
+   "price": 3200,
+   "power": {
+    "name": "Raízes Ancestrais",
+    "text": "As raízes rompem o chão em volta, num raio enorme.",
+    "kind": "groundslam",
+    "mana": 0,
+    "cooldown": 10.2,
+    "values": {
+     "radius": 600,
+     "scale": 6.52,
+     "delay": 0.8
+    },
+    "icon": "special_martelo_de_bram"
+   }
+  },
+  "silencio_branco": {
+   "key": "unico_4",
+   "model": "W_espada_unico_4_blocos",
+   "name": "Silêncio Branco",
+   "rarity": "unique",
+   "element": "holy",
+   "icon": "weapon_espada_unico_4",
+   "stats": {
+    "attack": 11,
+    "crit": 10,
+    "crit_dmg": 30
+   },
+   "price": 3200,
+   "power": {
+    "name": "Corte do Silêncio",
+    "text": "Some e reaparece 10 m à frente, cortando tudo no caminho.",
+    "kind": "dash",
+    "mana": 0,
+    "cooldown": 6.8,
+    "values": {
+     "distance": 1000,
+     "time": 0.25,
+     "scale": 5.08
+    },
+    "icon": "special_adagas_gemeas"
+   }
+  },
+  "sucata_do_andarilho": {
+   "key": "unico_5",
+   "model": "W_espada_unico_5_blocos",
+   "name": "Sucata do Andarilho",
+   "rarity": "unique",
+   "element": "lightning",
+   "icon": "weapon_espada_unico_5",
+   "stats": {
+    "attack": 11,
+    "crit": 10,
+    "crit_dmg": 30
+   },
+   "price": 3200,
+   "power": {
+    "name": "Faísca de Sucata",
+    "text": "Segura e solta: a lasca de cristal estoura numa explosão de faíscas.",
+    "kind": "overload",
+    "mana": 12,
+    "cooldown": 5.1,
+    "values": {
+     "charge": 0.45,
+     "scale": 5.8,
+     "radius": 320
+    },
+    "icon": "special_varinha"
+   }
+  },
+  "juramento_celeste": {
+   "key": "divino_1",
+   "model": "W_espada_divino_1_blocos",
+   "name": "Juramento Celeste",
+   "rarity": "divine",
+   "element": "holy",
+   "icon": "weapon_espada_divino_1",
+   "stats": {
+    "attack": 14,
+    "crit": 14,
+    "crit_dmg": 45
+   },
+   "price": 8000,
+   "power": {
+    "name": "Juramento",
+    "text": "A luz do juramento atordoa os inimigos por mais tempo e cura bem mais.",
+    "kind": "holyslam",
+    "mana": 15,
+    "cooldown": 11.2,
+    "values": {
+     "length": 700,
+     "stun": 3.2,
+     "levels": 5,
+     "heal": 0.14,
+     "scale": 6.4
+    },
+    "icon": "special_maca_sagrada"
+   }
+  },
+  "tridente_do_primeiro_selo": {
+   "key": "divino_2",
+   "model": "W_espada_divino_2_blocos",
+   "name": "Tridente do Primeiro Selo",
+   "rarity": "divine",
+   "element": "water",
+   "icon": "weapon_espada_divino_2",
+   "stats": {
+    "attack": 14,
+    "crit": 14,
+    "crit_dmg": 45
+   },
+   "price": 8000,
+   "power": {
+    "name": "Primeiro Selo",
+    "text": "O selo das origens: uma runa enorme que explode quase na hora.",
+    "kind": "runeseal",
+    "mana": 15,
+    "cooldown": 9.6,
+    "values": {
+     "delay": 0.9,
+     "radius": 520,
+     "scale": 7.2,
+     "mark": 0.25,
+     "mark_life": 5,
+     "reach": 2600
+    },
+    "icon": "special_pistola_runica"
+   }
+  },
+  "estrela_guia": {
+   "key": "divino_3",
+   "model": "W_espada_divino_3_blocos",
+   "name": "Estrela Guia",
+   "rarity": "divine",
+   "element": "holy",
+   "icon": "weapon_espada_divino_3",
+   "stats": {
+    "attack": 14,
+    "crit": 14,
+    "crit_dmg": 45
+   },
+   "price": 8000,
+   "power": {
+    "name": "Constelação",
+    "text": "Estrelas giram em volta e caem nos inimigos sem parar.",
+    "kind": "orbit",
+    "mana": 20,
+    "cooldown": 20.0,
+    "values": {
+     "life": 16,
+     "every": 1.0,
+     "scale": 0.8,
+     "undead": 0.5,
+     "reach": 1800
+    },
+    "icon": "special_orbe"
+   }
+  },
+  "voz_do_santuario": {
+   "key": "divino_4",
+   "model": "W_espada_divino_4_blocos",
+   "name": "Voz do Santuário",
+   "rarity": "divine",
+   "element": "holy",
+   "icon": "weapon_espada_divino_4",
+   "stats": {
+    "attack": 14,
+    "crit": 14,
+    "crit_dmg": 45
+   },
+   "price": 8000,
+   "power": {
+    "name": "Prece do Santuário",
+    "text": "A prece do santuário cura você e os aliados em volta.",
+    "kind": "heal",
+    "mana": 20,
+    "cooldown": 12.8,
+    "values": {
+     "heal_reach": 1300
+    },
+    "icon": "special_cajado_de_ilsa"
+   }
+  },
+  "genese": {
+   "key": "divino_5",
+   "model": "W_espada_divino_5_blocos",
+   "name": "Gênese",
+   "rarity": "divine",
+   "element": "holy",
+   "icon": "weapon_espada_divino_5",
+   "stats": {
+    "attack": 14,
+    "crit": 14,
+    "crit_dmg": 45
+   },
+   "price": 8000,
+   "power": {
+    "name": "Gênese",
+    "text": "A luz do começo do mundo: uma onda imensa que atravessa tudo à frente.",
+    "kind": "shockwave",
+    "mana": 0,
+    "cooldown": 9.6,
+    "values": {
+     "reach": 600,
+     "length": 1700,
+     "scale": 7.2
+    },
+    "icon": "special_alabarda"
+   }
+  }
+ }
+}

@@ -1,0 +1,518 @@
+{
+ "Arco_Aim": {
+  "frames": 114,
+  "seconds": 3.7666666666666666,
+  "speed": 0.4,
+  "source": "humano_Arco_Aim.fbx"
+ },
+ "Death": {
+  "frames": 70,
+  "seconds": 2.3,
+  "speed": 29.4,
+  "source": "humano_Death.fbx"
+ },
+ "Death_Forward": {
+  "frames": 72,
+  "seconds": 2.3666666666666667,
+  "speed": 31.7,
+  "source": "humano_Death_Forward.fbx"
+ },
+ "Death_Left": {
+  "frames": 69,
+  "seconds": 2.2666666666666666,
+  "speed": 21.0,
+  "source": "humano_Death_Left.fbx"
+ },
+ "Habilidade_Corte": {
+  "frames": 90,
+  "seconds": 2.966666666666667,
+  "speed": 0.0,
+  "source": "humano_Habilidade_Corte.fbx"
+ },
+ "Hit": {
+  "frames": 22,
+  "seconds": 0.7,
+  "speed": 0.0,
+  "source": "humano_Hit.fbx"
+ },
+ "Idle": {
+  "frames": 299,
+  "seconds": 9.933333333333334,
+  "speed": 0.0,
+  "source": "humano_Idle.fbx"
+ },
+ "LevelUp": {
+  "frames": 72,
+  "seconds": 2.3666666666666667,
+  "speed": 0.0,
+  "source": "humano_LevelUp.fbx"
+ },
+ "Run": {
+  "frames": 22,
+  "seconds": 0.7,
+  "speed": 203.4,
+  "source": "humano_Run.fbx"
+ },
+ "RunArmed": {
+  "frames": 22,
+  "seconds": 0.7,
+  "speed": 223.7,
+  "source": "humano_RunArmed.fbx"
+ },
+ "Walk": {
+  "frames": 32,
+  "seconds": 1.0333333333333334,
+  "speed": 96.3,
+  "source": "humano_Walk.fbx"
+ },
+ "Arco_Draw": {
+  "frames": 25,
+  "seconds": 0.8,
+  "speed": 2.3,
+  "source": "humano_arco_puxar.fbx"
+ },
+ "Atk_Espada_3_Full": {
+  "frames": 29,
+  "seconds": 0.9333333333333333,
+  "speed": 168.4,
+  "source": "humano_giratorio.fbx"
+ },
+ "Atk_Espada_1": {
+  "frames": 20,
+  "seconds": 0.6333333333333333,
+  "speed": 11.5,
+  "source": "humano_golpe1.fbx"
+ },
+ "Atk_Espada_2": {
+  "frames": 20,
+  "seconds": 0.6333333333333333,
+  "speed": 10.7,
+  "source": "humano_golpe2.fbx"
+ },
+ "Jump_Start": {
+  "frames": 6,
+  "seconds": 0.16666666666666666,
+  "speed": 190.2,
+  "source": "humano_pulo.fbx"
+ },
+ "Jump_Loop": {
+  "frames": 10,
+  "seconds": 0.3,
+  "speed": 154.0,
+  "source": "humano_pulo.fbx"
+ },
+ "Jump_Land": {
+  "frames": 10,
+  "seconds": 0.3,
+  "speed": 177.8,
+  "source": "humano_pulo.fbx"
+ },
+ "Dodge": {
+  "frames": 22,
+  "seconds": 0.7,
+  "speed": 251.4,
+  "source": "humano_rolamento.fbx"
+ },
+ "Jog": {
+  "frames": 78,
+  "seconds": 2.566666666666667,
+  "speed": 100.2,
+  "source": "anao_Jog.fbx"
+ },
+ "RunOld": {
+  "frames": 20,
+  "seconds": 0.6333333333333333,
+  "speed": 0.0,
+  "source": "anao_Run.fbx"
+ },
+ "Walk_Back": {
+  "frames": 37,
+  "seconds": 1.2,
+  "speed": 73.6,
+  "source": "anao_Walk_Back.fbx"
+ },
+ "ArmStretching": {
+  "frames": 267,
+  "seconds": 8.866666666666667,
+  "speed": 0.0,
+  "source": "Arm Stretching.fbx"
+ },
+ "BackwardRightTurn": {
+  "frames": 21,
+  "seconds": 0.6666666666666666,
+  "speed": 213.6,
+  "source": "Backward Right Turn.fbx"
+ },
+ "Boxing": {
+  "frames": 53,
+  "seconds": 1.7333333333333334,
+  "speed": 0.0,
+  "source": "Boxing.fbx"
+ },
+ "ChangeDirection": {
+  "frames": 66,
+  "seconds": 2.1666666666666665,
+  "speed": 5.0,
+  "source": "Change Direction.fbx"
+ },
+ "ClimbingLadder": {
+  "frames": 24,
+  "seconds": 0.7666666666666667,
+  "speed": 2.3,
+  "source": "Climbing Ladder.fbx"
+ },
+ "Crawling": {
+  "frames": 55,
+  "seconds": 1.8,
+  "speed": 33.0,
+  "source": "Crawling.fbx"
+ },
+ "DrawAGreatSword2": {
+  "frames": 25,
+  "seconds": 0.8,
+  "speed": 11.5,
+  "source": "Draw A Great Sword 2.fbx"
+ },
+ "Entry": {
+  "frames": 312,
+  "seconds": 10.366666666666667,
+  "speed": 0.0,
+  "source": "Entry.fbx"
+ },
+ "GreatSwordStrafe": {
+  "frames": 36,
+  "seconds": 1.1666666666666667,
+  "speed": 82.7,
+  "source": "Great Sword Strafe.fbx"
+ },
+ "GuitarPlaying": {
+  "frames": 188,
+  "seconds": 6.233333333333333,
+  "speed": 0.0,
+  "source": "Guitar Playing.fbx"
+ },
+ "HappyIdle": {
+  "frames": 89,
+  "seconds": 2.933333333333333,
+  "speed": 0.0,
+  "source": "Happy Idle.fbx"
+ },
+ "Atk_Adagas_1": {
+  "frames": 14,
+  "seconds": 0.43333333333333335,
+  "speed": 37.9,
+  "source": "One Hand Sword Combo.fbx"
+ },
+ "Atk_Adagas_2": {
+  "frames": 14,
+  "seconds": 0.43333333333333335,
+  "speed": 46.4,
+  "source": "One Hand Sword Combo.fbx"
+ },
+ "Atk_Adagas_3": {
+  "frames": 23,
+  "seconds": 0.7333333333333333,
+  "speed": 29.5,
+  "source": "One Hand Sword Combo.fbx"
+ },
+ "PunchingBag": {
+  "frames": 98,
+  "seconds": 3.2333333333333334,
+  "speed": 0.0,
+  "source": "Punching Bag.fbx"
+ },
+ "ReceivingAnUppercut": {
+  "frames": 51,
+  "seconds": 1.6666666666666667,
+  "speed": 44.2,
+  "source": "Receiving An Uppercut.fbx"
+ },
+ "RunningToTurn": {
+  "frames": 69,
+  "seconds": 2.2666666666666666,
+  "speed": 116.4,
+  "source": "Running To Turn.fbx"
+ },
+ "RunStartOld": {
+  "frames": 50,
+  "seconds": 1.6333333333333333,
+  "speed": 109.8,
+  "source": "Running.fbx"
+ },
+ "Arco_Release": {
+  "frames": 11,
+  "seconds": 0.3333333333333333,
+  "speed": 0.7,
+  "source": "Shooting Arrow.fbx"
+ },
+ "Atk_Cajado_2": {
+  "frames": 21,
+  "seconds": 0.6666666666666666,
+  "speed": 4.6,
+  "source": "Stable Sword Inward Slash.fbx"
+ },
+ "StandingAimIdle01": {
+  "frames": 114,
+  "seconds": 3.7666666666666666,
+  "speed": 0.0,
+  "source": "Standing Aim Idle 01.fbx"
+ },
+ "TwoHandedSwordDeath": {
+  "frames": 73,
+  "seconds": 2.4,
+  "speed": 18.7,
+  "source": "Two Handed Sword Death.fbx"
+ },
+ "UnarmedJump": {
+  "frames": 71,
+  "seconds": 2.3333333333333335,
+  "speed": 0.0,
+  "source": "Unarmed Jump.fbx"
+ },
+ "WalkOld": {
+  "frames": 42,
+  "seconds": 1.3666666666666667,
+  "speed": 66.1,
+  "source": "Unarmed Walk Forward.fbx"
+ },
+ "Sacar": {
+  "frames": 22,
+  "seconds": 0.7,
+  "speed": 3.4,
+  "source": "desenbaiando.fbx"
+ },
+ "Atk_Martelo_1": {
+  "frames": 25,
+  "seconds": 0.8,
+  "speed": 65.3,
+  "source": "espada 2 maos combo.fbx"
+ },
+ "Atk_Martelo_2": {
+  "frames": 25,
+  "seconds": 0.8,
+  "speed": 52.6,
+  "source": "espada 2 maos combo.fbx"
+ },
+ "Atk_Cajado_3": {
+  "frames": 35,
+  "seconds": 1.1333333333333333,
+  "speed": 29.2,
+  "source": "espada 2 maos combo.fbx"
+ },
+ "Swim_Idle": {
+  "frames": 109,
+  "seconds": 3.6,
+  "speed": 0.0,
+  "source": "flutuando.fbx"
+ },
+ "Atk_Cajado_1": {
+  "frames": 21,
+  "seconds": 0.6666666666666666,
+  "speed": 6.2,
+  "source": "golpe espada vertical.fbx"
+ },
+ "Atk_Martelo_3_Full": {
+  "frames": 34,
+  "seconds": 1.1,
+  "speed": 20.9,
+  "source": "golpe pesado de cima.fbx"
+ },
+ "Grito": {
+  "frames": 86,
+  "seconds": 2.8333333333333335,
+  "speed": 0.0,
+  "source": "grito.fbx"
+ },
+ "Swim": {
+  "frames": 137,
+  "seconds": 4.533333333333333,
+  "speed": 31.4,
+  "source": "nadando.fbx"
+ },
+ "SentadoBanco": {
+  "frames": 179,
+  "seconds": 5.933333333333334,
+  "speed": 0.0,
+  "source": "sentado banco.fbx"
+ },
+ "Beber": {
+  "frames": 267,
+  "seconds": 8.866666666666667,
+  "speed": 0.0,
+  "source": "anao_Beber.fbx"
+ },
+ "Danca_Boba": {
+  "frames": 164,
+  "seconds": 5.433333333333334,
+  "speed": 0.0,
+  "source": "anao_Danca_Boba.fbx"
+ },
+ "Danca_Breakdance": {
+  "frames": 202,
+  "seconds": 6.7,
+  "speed": 6.7,
+  "source": "anao_Danca_Breakdance.fbx"
+ },
+ "Danca_Galinha": {
+  "frames": 144,
+  "seconds": 4.766666666666667,
+  "speed": 0.0,
+  "source": "anao_Danca_Galinha.fbx"
+ },
+ "Danca_Gangnam": {
+  "frames": 372,
+  "seconds": 12.366666666666667,
+  "speed": 0.0,
+  "source": "anao_Danca_Gangnam.fbx"
+ },
+ "Danca_HipHop": {
+  "frames": 191,
+  "seconds": 6.333333333333333,
+  "speed": 0.0,
+  "source": "anao_Danca_HipHop.fbx"
+ },
+ "Danca_Macarena": {
+  "frames": 248,
+  "seconds": 8.233333333333333,
+  "speed": 0.0,
+  "source": "anao_Danca_Macarena.fbx"
+ },
+ "Danca_Robo": {
+  "frames": 464,
+  "seconds": 15.433333333333334,
+  "speed": 0.0,
+  "source": "anao_Danca_Robo.fbx"
+ },
+ "Danca_Salsa": {
+  "frames": 79,
+  "seconds": 2.6,
+  "speed": 0.0,
+  "source": "anao_Danca_Salsa.fbx"
+ },
+ "Danca_Samba": {
+  "frames": 324,
+  "seconds": 10.766666666666667,
+  "speed": 23.3,
+  "source": "anao_Danca_Samba.fbx"
+ },
+ "Danca_Swing": {
+  "frames": 628,
+  "seconds": 20.9,
+  "speed": 0.0,
+  "source": "anao_Danca_Swing.fbx"
+ },
+ "Danca_Thriller": {
+  "frames": 896,
+  "seconds": 29.833333333333332,
+  "speed": 8.8,
+  "source": "anao_Danca_Thriller.fbx"
+ },
+ "Danca_Twist": {
+  "frames": 284,
+  "seconds": 9.433333333333334,
+  "speed": 0.0,
+  "source": "anao_Danca_Twist.fbx"
+ },
+ "Emote_Acenar": {
+  "frames": 17,
+  "seconds": 0.5333333333333333,
+  "speed": 0.0,
+  "source": "anao_Emote_Acenar.fbx"
+ },
+ "Emote_Apontar": {
+  "frames": 104,
+  "seconds": 3.433333333333333,
+  "speed": 0.0,
+  "source": "anao_Emote_Apontar.fbx"
+ },
+ "Emote_Comemorar": {
+  "frames": 88,
+  "seconds": 2.9,
+  "speed": 0.0,
+  "source": "anao_Emote_Comemorar.fbx"
+ },
+ "Emote_Palmas": {
+  "frames": 36,
+  "seconds": 1.1666666666666667,
+  "speed": 0.0,
+  "source": "anao_Emote_Palmas.fbx"
+ },
+ "Emote_Pensar": {
+  "frames": 128,
+  "seconds": 4.233333333333333,
+  "speed": 0.0,
+  "source": "anao_Emote_Pensar.fbx"
+ },
+ "Emote_Provocar": {
+  "frames": 50,
+  "seconds": 1.6333333333333333,
+  "speed": 0.0,
+  "source": "anao_Emote_Provocar.fbx"
+ },
+ "Emote_Reverencia": {
+  "frames": 83,
+  "seconds": 2.7333333333333334,
+  "speed": 0.0,
+  "source": "anao_Emote_Reverencia.fbx"
+ },
+ "Emote_Rir": {
+  "frames": 294,
+  "seconds": 9.766666666666667,
+  "speed": 0.0,
+  "source": "anao_Emote_Rir.fbx"
+ },
+ "Emote_Saudar": {
+  "frames": 86,
+  "seconds": 2.8333333333333335,
+  "speed": 0.0,
+  "source": "anao_Emote_Saudar.fbx"
+ },
+ "Emote_Vitoria": {
+  "frames": 136,
+  "seconds": 4.5,
+  "speed": 0.0,
+  "source": "anao_Emote_Vitoria.fbx"
+ },
+ "Pegar": {
+  "frames": 52,
+  "seconds": 1.7,
+  "speed": 0.6,
+  "source": "anao_Pegar.fbx"
+ },
+ "Dodge_Back": {
+  "frames": 22,
+  "seconds": 0.7,
+  "speed": 0.0,
+  "source": "Dodge ao contrário"
+ },
+ "Dodge_Left": {
+  "frames": 22,
+  "seconds": 0.7,
+  "speed": 0.0,
+  "source": "Dodge virado +90°"
+ },
+ "Dodge_Right": {
+  "frames": 22,
+  "seconds": 0.7,
+  "speed": 0.0,
+  "source": "Dodge virado -90°"
+ },
+ "Ride": {
+  "frames": 299,
+  "seconds": 9.933333333333334,
+  "speed": 0.0,
+  "source": "Idle sentado na sela"
+ },
+ "RunStart": {
+  "frames": 11,
+  "seconds": 0.3333333333333333,
+  "speed": 0.0,
+  "source": "Idle e Run"
+ },
+ "RunStop": {
+  "frames": 16,
+  "seconds": 0.5,
+  "speed": 0.0,
+  "source": "Run e Idle"
+ }
+}

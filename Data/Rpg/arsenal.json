@@ -1,0 +1,6261 @@
+{
+ "_doc": "Gerado por Tools/BuildArsenal.py (por cima do rpg.json). Não editar à mão.",
+ "elements": {
+  "fire": {
+   "name": "Fogo",
+   "text": "Queima o alvo: dano de fogo por 3 s."
+  },
+  "water": {
+   "name": "Água",
+   "text": "Encharca o alvo: 25% mais lento por 2 s."
+  },
+  "lightning": {
+   "name": "Raio",
+   "text": "O raio salta para até 2 inimigos perto (40% do dano)."
+  },
+  "ice": {
+   "name": "Gelo",
+   "text": "Congela aos poucos: 35% mais lento por 2 s."
+  },
+  "nature": {
+   "name": "Natureza",
+   "text": "Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes)."
+  },
+  "poison": {
+   "name": "Veneno",
+   "text": "Envenena: dano por 4 s."
+  },
+  "holy": {
+   "name": "Luz",
+   "text": "+50% de dano em mortos-vivos e cura 2% do dano causado."
+  },
+  "shadow": {
+   "name": "Sombra",
+   "text": "Rouba 8% do dano como vida."
+  }
+ },
+ "traits": {
+  "bleed": {
+   "name": "Sangramento",
+   "text": "Abre feridas: dano por 3 s."
+  },
+  "vampiric": {
+   "name": "Vampirismo",
+   "text": "Rouba 6% do dano causado como vida."
+  },
+  "heavy": {
+   "name": "Peso",
+   "text": "1 em cada 5 golpes atordoa por meio segundo."
+  },
+  "keen": {
+   "name": "Fio fino",
+   "text": "+8% de chance de crítico."
+  }
+ },
+ "patch": {
+  "sword_iron": {
+   "price": 30
+  },
+  "sword_jade": {
+   "price": 200
+  },
+  "arco_de_betula": {
+   "price": 30,
+   "name": "Arco de Bétula",
+   "icon": "weapon_arco_comum_4",
+   "element": "",
+   "effect_text": "",
+   "description": "Arco leve de bétula. Favorece alcance e precisão. Botão direito — Chuva de Flechas: Uma chuva de flechas cai onde você mira."
+  },
+  "lanca_do_patrulheiro": {
+   "price": 30
+  },
+  "martelo_de_bram": {
+   "price": 30
+  },
+  "cajado_de_ilsa": {
+   "price": 30
+  },
+  "espada_de_cinzas": {
+   "price": 30,
+   "name": "Lâmina do Recruta",
+   "icon": "weapon_espada_comum_1",
+   "element": "",
+   "effect_text": "",
+   "description": "Lâmina de aço cinzento marcada por brasas antigas. Botão direito — Corte à Distância: Lança o corte para a frente."
+  },
+  "espada_de_ferro": {
+   "price": 30,
+   "name": "Velha Companheira",
+   "icon": "weapon_espada_comum_4",
+   "element": "",
+   "effect_text": "",
+   "description": "Ferro batido na forja da vila. Honesta, pesada e sem enfeites. Botão direito — Varrida Cansada: Um golpe largo que empurra os inimigos."
+  },
+  "espada_do_soldado": {
+   "price": 80,
+   "element": "",
+   "effect_text": "",
+   "name": "Espada de Cobre Batido",
+   "icon": "weapon_espada_incomum_2",
+   "description": "Aço temperado com guarda de bronze, como as da antiga guarda do vale. Botão direito — Estrondo de Cobre: Uma onda de choque em linha para a frente."
+  },
+  "espada_aco_frio": {
+   "price": 200,
+   "element": "ice",
+   "effect_text": "Gelo: Congela aos poucos: 35% mais lento por 2 s.",
+   "name": "Safira Gélida",
+   "icon": "weapon_espada_raro_1",
+   "description": "Aço azulado que nunca esquenta, nem no sol do meio-dia. Corta limpo e acerta pontos fracos. Botão direito — Selo de Gelo: Marca o chão com uma runa de gelo que explode logo depois."
+  },
+  "espada_crepusculo": {
+   "price": 520,
+   "element": "shadow",
+   "effect_text": "Sombra: Rouba 8% do dano como vida.",
+   "name": "Ceifadora do Vazio",
+   "icon": "weapon_espada_epico_5",
+   "description": "Forjada ao pôr do sol com prata violeta. Às vezes congela quem ela corta. Botão direito — Redemoinho do Vazio: Um redemoinho de sombra que acerta tudo em volta."
+  },
+  "espada_aurora": {
+   "price": 1300,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "name": "Aurora Eterna",
+   "icon": "weapon_espada_lendario_2",
+   "description": "Ouro branco e uma gema de brasa no pomo. Cada golpe crítico brilha como o amanhecer, e às vezes incendeia. Botão direito — Alvorada: Um golpe de luz que atordoa os inimigos e cura você."
+  },
+  "espada_suspiro_azhur": {
+   "price": 3200,
+   "name": "Suspiro de Azhûr",
+   "icon": "weapon_espada_lendario_1",
+   "element": "fire",
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s.",
+   "description": "Obsidiana arrancada do colosso. Bebe a vida de quem corta e devolve a quem a empunha. Botão direito — Suspiro do Colosso: Ergue uma muralha de brasa que queima quem atravessa."
+  },
+  "marreta_de_ferreiro": {
+   "price": 30
+  },
+  "martelo_de_guerra": {
+   "price": 80
+  },
+  "malho_de_geada": {
+   "price": 200,
+   "element": "ice",
+   "effect_text": "Gelo: Congela aos poucos: 35% mais lento por 2 s."
+  },
+  "martelo_trovao_roxo": {
+   "price": 520,
+   "element": "lightning",
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano)."
+  },
+  "martelo_rei_da_forja": {
+   "price": 1300
+  },
+  "martelo_coracao_meteoro": {
+   "price": 3200,
+   "element": "fire",
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s."
+  },
+  "bordao_de_aprendiz": {
+   "price": 30
+  },
+  "cajado_de_carvalho": {
+   "price": 80,
+   "element": "nature",
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes)."
+  },
+  "cajado_da_mare": {
+   "price": 200,
+   "element": "water",
+   "effect_text": "Água: Encharca o alvo: 25% mais lento por 2 s."
+  },
+  "cajado_vazio_estelar": {
+   "price": 520,
+   "element": "shadow",
+   "effect_text": "Sombra: Rouba 8% do dano como vida."
+  },
+  "cajado_da_fenix": {
+   "price": 1300,
+   "element": "fire",
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s."
+  },
+  "cajado_olho_de_ducci": {
+   "price": 3200
+  },
+  "arco_curto": {
+   "price": 30,
+   "name": "Arco Curto",
+   "icon": "weapon_arco_comum_1",
+   "element": "",
+   "effect_text": "",
+   "description": "Arco simples de teixo. Bom para aprender a mirar. Botão direito — Três Seguidas: Solta três flechas rápidas, uma atrás da outra."
+  },
+  "arco_do_cacador": {
+   "price": 80,
+   "name": "Arco do Caçador",
+   "icon": "weapon_arco_incomum_5",
+   "element": "",
+   "effect_text": "",
+   "description": "Madeira curvada no vapor e corda de tripa. Solta rápido. Botão direito — Chuva do Caçador: Uma chuva de flechas onde você mira."
+  },
+  "arco_da_nevoa": {
+   "price": 200,
+   "element": "water",
+   "effect_text": "Água: Encharca o alvo: 25% mais lento por 2 s.",
+   "name": "Arco da Névoa Azul",
+   "icon": "weapon_arco_raro_1",
+   "description": "Madeira pintada de azul e pontas de prata. Flechas que acham o ponto fraco. Botão direito — Selo da Névoa: Marca o chão com uma runa de água que explode logo depois."
+  },
+  "arco_noite_violeta": {
+   "price": 520,
+   "element": "shadow",
+   "effect_text": "Sombra: Rouba 8% do dano como vida.",
+   "name": "Arco da Noite Violeta",
+   "icon": "weapon_arco_epico_2",
+   "description": "Chifre escuro e cordas de seda. Às vezes a flecha solta um raio. Botão direito — Runa da Noite: Uma runa de sombra que explode e marca os inimigos."
+  },
+  "arco_grifo_dourado": {
+   "price": 1300,
+   "name": "Arco do Grifo Dourado",
+   "icon": "weapon_arco_lendario_2",
+   "element": "",
+   "effect_text": "",
+   "description": "Asas de grifo em ouro. Às vezes a flecha congela o alvo. Botão direito — Asas do Grifo: Um leque de sete flechas douradas."
+  },
+  "arco_lua_sangrenta": {
+   "price": 3200,
+   "element": "shadow",
+   "effect_text": "Sombra: Rouba 8% do dano como vida.",
+   "name": "Sussurro da Lua Sangrenta",
+   "icon": "weapon_arco_epico_3",
+   "description": "Obsidiana e corda vermelha. Cada flecha drena um pouco da vida do alvo. Botão direito — Estrela Sangrenta: Uma flecha que explode em estrelas de sangue."
+  },
+  "adagas_gemeas": {
+   "price": 30
+  },
+  "adagas_da_vibora": {
+   "price": 200,
+   "element": "poison",
+   "effect_text": "Veneno: Envenena: dano por 4 s."
+  },
+  "adagas_do_crepusculo": {
+   "price": 520,
+   "element": "shadow",
+   "effect_text": "Sombra: Rouba 8% do dano como vida."
+  },
+  "wolf_head": {
+   "set": "lobo",
+   "price": 80,
+   "look": {
+    "head": "accessory_bandana"
+   },
+   "look_colors": {
+    "shirt_color": "6b5a48",
+    "pants_color": "4a3c30",
+    "boots_color": "3a2c22"
+   }
+  },
+  "wolf_chest": {
+   "set": "lobo",
+   "price": 80,
+   "look": {
+    "shirt": "shirt_hunter"
+   },
+   "look_colors": {
+    "shirt_color": "6b5a48",
+    "pants_color": "4a3c30",
+    "boots_color": "3a2c22"
+   }
+  },
+  "wolf_legs": {
+   "set": "lobo",
+   "price": 80,
+   "look": {
+    "pants": "pants_hunter"
+   },
+   "look_colors": {
+    "shirt_color": "6b5a48",
+    "pants_color": "4a3c30",
+    "boots_color": "3a2c22"
+   }
+  },
+  "wolf_boots": {
+   "set": "lobo",
+   "price": 80,
+   "look": {
+    "shoes": "boots_hunter"
+   },
+   "look_colors": {
+    "shirt_color": "6b5a48",
+    "pants_color": "4a3c30",
+    "boots_color": "3a2c22"
+   }
+  },
+  "guard_head": {
+   "set": "guarda",
+   "price": 80,
+   "look": {
+    "head": "accessory_hat"
+   },
+   "look_colors": {
+    "shirt_color": "8a9bb0",
+    "pants_color": "34405a",
+    "boots_color": "3a3026"
+   }
+  },
+  "guard_chest": {
+   "set": "guarda",
+   "price": 80,
+   "look": {
+    "shirt": "shirt_mail"
+   },
+   "look_colors": {
+    "shirt_color": "8a9bb0",
+    "pants_color": "34405a",
+    "boots_color": "3a3026"
+   }
+  },
+  "guard_legs": {
+   "set": "guarda",
+   "price": 80,
+   "look": {
+    "pants": "pants_leather"
+   },
+   "look_colors": {
+    "shirt_color": "8a9bb0",
+    "pants_color": "34405a",
+    "boots_color": "3a3026"
+   }
+  },
+  "guard_boots": {
+   "set": "guarda",
+   "price": 80,
+   "look": {
+    "shoes": "boots_laced"
+   },
+   "look_colors": {
+    "shirt_color": "8a9bb0",
+    "pants_color": "34405a",
+    "boots_color": "3a3026"
+   }
+  },
+  "bark_head": {
+   "set": "casca",
+   "price": 200,
+   "look": {
+    "head": "accessory_circlet"
+   },
+   "look_colors": {
+    "shirt_color": "4f6b34",
+    "pants_color": "5a4128",
+    "boots_color": "3b2a18"
+   }
+  },
+  "bark_chest": {
+   "set": "casca",
+   "price": 200,
+   "look": {
+    "shirt": "shirt_monk"
+   },
+   "look_colors": {
+    "shirt_color": "4f6b34",
+    "pants_color": "5a4128",
+    "boots_color": "3b2a18"
+   }
+  },
+  "bark_legs": {
+   "set": "casca",
+   "price": 200,
+   "look": {
+    "pants": "pants_monk"
+   },
+   "look_colors": {
+    "shirt_color": "4f6b34",
+    "pants_color": "5a4128",
+    "boots_color": "3b2a18"
+   }
+  },
+  "bark_boots": {
+   "set": "casca",
+   "price": 200,
+   "look": {
+    "shoes": "boots_monk"
+   },
+   "look_colors": {
+    "shirt_color": "4f6b34",
+    "pants_color": "5a4128",
+    "boots_color": "3b2a18"
+   }
+  },
+  "crater_head": {
+   "set": "cratera",
+   "price": 520,
+   "look": {
+    "head": "accessory_horns"
+   },
+   "look_colors": {
+    "shirt_color": "5a2a24",
+    "pants_color": "2a2222",
+    "boots_color": "6b2a1a"
+   }
+  },
+  "crater_chest": {
+   "set": "cratera",
+   "price": 520,
+   "look": {
+    "shirt": "shirt_winter"
+   },
+   "look_colors": {
+    "shirt_color": "5a2a24",
+    "pants_color": "2a2222",
+    "boots_color": "6b2a1a"
+   }
+  },
+  "crater_legs": {
+   "set": "cratera",
+   "price": 520,
+   "look": {
+    "pants": "pants_shadow"
+   },
+   "look_colors": {
+    "shirt_color": "5a2a24",
+    "pants_color": "2a2222",
+    "boots_color": "6b2a1a"
+   }
+  },
+  "crater_boots": {
+   "set": "cratera",
+   "price": 520,
+   "look": {
+    "shoes": "boots_winter"
+   },
+   "look_colors": {
+    "shirt_color": "5a2a24",
+    "pants_color": "2a2222",
+    "boots_color": "6b2a1a"
+   }
+  },
+  "helm_leather": {
+   "look": {
+    "head": "accessory_bandana"
+   },
+   "price": 30
+  },
+  "helm_iron": {
+   "look": {
+    "head": "accessory_hat"
+   },
+   "price": 80
+  },
+  "chest_tunic": {
+   "look": {
+    "shirt": "shirt_tunic"
+   },
+   "price": 30
+  },
+  "chest_mail": {
+   "look": {
+    "shirt": "shirt_mail"
+   },
+   "price": 200
+  },
+  "chest_punk": {
+   "look": {
+    "shirt": "shirt_punk"
+   },
+   "price": 80
+  },
+  "legs_cloth": {
+   "look": {
+    "pants": "pants_cloth"
+   },
+   "price": 30
+  },
+  "legs_leather": {
+   "look": {
+    "pants": "pants_leather"
+   },
+   "price": 80
+  },
+  "boots_leather": {
+   "look": {
+    "shoes": "boots_laced"
+   },
+   "price": 30
+  },
+  "boots_iron": {
+   "look": {
+    "shoes": "boots_winter"
+   },
+   "price": 200
+  },
+  "azhur_core": {
+   "price": 260
+  },
+  "colossus_shard": {
+   "price": 40
+  },
+  "caldera_amulet": {
+   "price": 260
+  },
+  "seryth_sting_charm": {
+   "price": 260
+  },
+  "thorun_heartwood_charm": {
+   "price": 260
+  },
+  "ring_jade": {
+   "price": 100
+  },
+  "amulet_moon": {
+   "price": 260
+  },
+  "potion_red": {
+   "price": 15
+  },
+  "potion_blue": {
+   "price": 15
+  },
+  "potion_green": {
+   "price": 40
+  },
+  "bread": {
+   "price": 6
+  },
+  "gel_jade": {
+   "price": 6
+  },
+  "wolf_pelt": {
+   "price": 6
+  },
+  "healing_herb": {
+   "price": 6
+  },
+  "mushroom_cap": {
+   "price": 6
+  },
+  "moss_core": {
+   "price": 40
+  },
+  "bat_wing": {
+   "price": 6
+  },
+  "iron_scrap": {
+   "price": 6
+  },
+  "bark_fiber": {
+   "price": 6
+  },
+  "obsidian_fragment": {
+   "price": 40
+  },
+  "antidoto": {
+   "price": 16
+  },
+  "racao_de_viagem": {
+   "price": 6
+  },
+  "mapa_de_viajante": {
+   "price": 40
+  },
+  "carta_de_terras_distantes": {
+   "price": 100
+  },
+  "mapa_de_nicolly": {
+   "price": 16
+  },
+  "meat": {
+   "price": 15
+  },
+  "rabbit_pelt": {
+   "price": 6
+  },
+  "deer_antler": {
+   "price": 16
+  },
+  "bandit_bandana": {
+   "price": 6
+  },
+  "frutas_silvestres": {
+   "price": 6
+  }
+ },
+ "items": {
+  "espada_de_cinzas_fire_rare": {
+   "name": "Espada das Chamas",
+   "description": "Espada de raridade rara. Fogo: Queima o alvo: dano de fogo por 3 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "espada_de_ferro",
+   "stack": 1,
+   "stats": {
+    "attack": 5,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "element": "fire",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s."
+  },
+  "espada_de_cinzas_ice_rare": {
+   "name": "Espada da Geada",
+   "description": "Espada de raridade rara. Gelo: Congela aos poucos: 35% mais lento por 2 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "espada_de_ferro",
+   "stack": 1,
+   "stats": {
+    "attack": 5,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "element": "ice",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Gelo: Congela aos poucos: 35% mais lento por 2 s."
+  },
+  "espada_de_cinzas_lightning_epic": {
+   "name": "Espada do Trovão Superior",
+   "description": "Espada de raridade épica. Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "espada_de_ferro",
+   "stack": 1,
+   "stats": {
+    "attack": 7,
+    "crit": 8,
+    "crit_dmg": 20
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "element": "lightning",
+   "trait": "",
+   "price": 520,
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano)."
+  },
+  "espada_de_cinzas_poison_bleed_rare": {
+   "name": "Espada da Peçonha",
+   "description": "Espada de raridade rara. Veneno: Envenena: dano por 4 s. Sangramento: Abre feridas: dano por 3 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "espada_de_ferro",
+   "stack": 1,
+   "stats": {
+    "attack": 5,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "element": "poison",
+   "trait": "bleed",
+   "price": 200,
+   "effect_text": "Veneno: Envenena: dano por 4 s. Sangramento: Abre feridas: dano por 3 s."
+  },
+  "espada_de_cinzas_shadow_vampiric_epic": {
+   "name": "Espada das Sombras Superior",
+   "description": "Espada de raridade épica. Sombra: Rouba 8% do dano como vida. Vampirismo: Rouba 6% do dano causado como vida.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "espada_de_ferro",
+   "stack": 1,
+   "stats": {
+    "attack": 7,
+    "crit": 8,
+    "crit_dmg": 20,
+    "lifesteal": 14
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "element": "shadow",
+   "trait": "vampiric",
+   "price": 520,
+   "effect_text": "Sombra: Rouba 8% do dano como vida. Vampirismo: Rouba 6% do dano causado como vida."
+  },
+  "espada_de_cinzas__keen_uncommon": {
+   "name": "Espada de Fio Fino",
+   "description": "Espada de raridade incomum. Fio fino: +8% de chance de crítico.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "espada_de_ferro",
+   "stack": 1,
+   "stats": {
+    "attack": 3,
+    "crit": 10
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "element": "",
+   "trait": "keen",
+   "price": 80,
+   "effect_text": "Fio fino: +8% de chance de crítico."
+  },
+  "martelo_de_bram_fire_rare": {
+   "name": "Martelo das Chamas",
+   "description": "Martelo de raridade rara. Fogo: Queima o alvo: dano de fogo por 3 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "marreta_de_ferreiro",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "defense": 2,
+    "max_health": 10,
+    "crit_dmg": 15
+   },
+   "use": {},
+   "family": "martelo_de_bram",
+   "element": "fire",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s."
+  },
+  "martelo_de_bram_ice_rare": {
+   "name": "Martelo da Geada",
+   "description": "Martelo de raridade rara. Gelo: Congela aos poucos: 35% mais lento por 2 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "marreta_de_ferreiro",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "defense": 2,
+    "max_health": 10,
+    "crit_dmg": 15
+   },
+   "use": {},
+   "family": "martelo_de_bram",
+   "element": "ice",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Gelo: Congela aos poucos: 35% mais lento por 2 s."
+  },
+  "martelo_de_bram_lightning_epic": {
+   "name": "Martelo do Trovão Superior",
+   "description": "Martelo de raridade épica. Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "marreta_de_ferreiro",
+   "stack": 1,
+   "stats": {
+    "attack": 9,
+    "defense": 3,
+    "max_health": 20,
+    "crit_dmg": 25
+   },
+   "use": {},
+   "family": "martelo_de_bram",
+   "element": "lightning",
+   "trait": "",
+   "price": 520,
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano)."
+  },
+  "martelo_de_bram_poison_bleed_rare": {
+   "name": "Martelo da Peçonha",
+   "description": "Martelo de raridade rara. Veneno: Envenena: dano por 4 s. Sangramento: Abre feridas: dano por 3 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "marreta_de_ferreiro",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "defense": 2,
+    "max_health": 10,
+    "crit_dmg": 15
+   },
+   "use": {},
+   "family": "martelo_de_bram",
+   "element": "poison",
+   "trait": "bleed",
+   "price": 200,
+   "effect_text": "Veneno: Envenena: dano por 4 s. Sangramento: Abre feridas: dano por 3 s."
+  },
+  "martelo_de_bram_shadow_vampiric_epic": {
+   "name": "Martelo das Sombras Superior",
+   "description": "Martelo de raridade épica. Sombra: Rouba 8% do dano como vida. Vampirismo: Rouba 6% do dano causado como vida.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "marreta_de_ferreiro",
+   "stack": 1,
+   "stats": {
+    "attack": 9,
+    "defense": 3,
+    "max_health": 20,
+    "crit_dmg": 25,
+    "lifesteal": 14
+   },
+   "use": {},
+   "family": "martelo_de_bram",
+   "element": "shadow",
+   "trait": "vampiric",
+   "price": 520,
+   "effect_text": "Sombra: Rouba 8% do dano como vida. Vampirismo: Rouba 6% do dano causado como vida."
+  },
+  "martelo_de_bram__heavy_uncommon": {
+   "name": "Martelo de Peso",
+   "description": "Martelo de raridade incomum. Peso: 1 em cada 5 golpes atordoa por meio segundo.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "marreta_de_ferreiro",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "defense": 1,
+    "max_health": 5
+   },
+   "use": {},
+   "family": "martelo_de_bram",
+   "element": "",
+   "trait": "heavy",
+   "price": 80,
+   "effect_text": "Peso: 1 em cada 5 golpes atordoa por meio segundo."
+  },
+  "adagas_gemeas_fire_rare": {
+   "name": "Adagas das Chamas",
+   "description": "Adagas de raridade rara. Fogo: Queima o alvo: dano de fogo por 3 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "adagas_gemeas",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "crit": 6,
+    "speed": 10
+   },
+   "use": {},
+   "family": "adagas_gemeas",
+   "element": "fire",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s."
+  },
+  "adagas_gemeas_ice_rare": {
+   "name": "Adagas da Geada",
+   "description": "Adagas de raridade rara. Gelo: Congela aos poucos: 35% mais lento por 2 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "adagas_gemeas",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "crit": 6,
+    "speed": 10
+   },
+   "use": {},
+   "family": "adagas_gemeas",
+   "element": "ice",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Gelo: Congela aos poucos: 35% mais lento por 2 s."
+  },
+  "adagas_gemeas_lightning_epic": {
+   "name": "Adagas do Trovão Superior",
+   "description": "Adagas de raridade épica. Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "adagas_gemeas",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "crit": 10,
+    "crit_dmg": 25,
+    "speed": 12
+   },
+   "use": {},
+   "family": "adagas_gemeas",
+   "element": "lightning",
+   "trait": "",
+   "price": 520,
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano)."
+  },
+  "adagas_gemeas_poison_bleed_rare": {
+   "name": "Adagas da Peçonha",
+   "description": "Adagas de raridade rara. Veneno: Envenena: dano por 4 s. Sangramento: Abre feridas: dano por 3 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "adagas_gemeas",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "crit": 6,
+    "speed": 10
+   },
+   "use": {},
+   "family": "adagas_gemeas",
+   "element": "poison",
+   "trait": "bleed",
+   "price": 200,
+   "effect_text": "Veneno: Envenena: dano por 4 s. Sangramento: Abre feridas: dano por 3 s."
+  },
+  "adagas_gemeas_shadow_vampiric_epic": {
+   "name": "Adagas das Sombras Superior",
+   "description": "Adagas de raridade épica. Sombra: Rouba 8% do dano como vida. Vampirismo: Rouba 6% do dano causado como vida.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "adagas_gemeas",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "crit": 10,
+    "crit_dmg": 25,
+    "speed": 12,
+    "lifesteal": 14
+   },
+   "use": {},
+   "family": "adagas_gemeas",
+   "element": "shadow",
+   "trait": "vampiric",
+   "price": 520,
+   "effect_text": "Sombra: Rouba 8% do dano como vida. Vampirismo: Rouba 6% do dano causado como vida."
+  },
+  "adagas_gemeas__keen_uncommon": {
+   "name": "Adagas de Fio Fino",
+   "description": "Adagas de raridade incomum. Fio fino: +8% de chance de crítico.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "adagas_gemeas",
+   "stack": 1,
+   "stats": {
+    "attack": 3,
+    "crit": 11,
+    "speed": 8
+   },
+   "use": {},
+   "family": "adagas_gemeas",
+   "element": "",
+   "trait": "keen",
+   "price": 80,
+   "effect_text": "Fio fino: +8% de chance de crítico."
+  },
+  "arco_de_betula_fire_rare": {
+   "name": "Arco das Chamas",
+   "description": "Arco de raridade rara. Fogo: Queima o alvo: dano de fogo por 3 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "arco_curto",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "crit": 6,
+    "speed": 6
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "element": "fire",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s."
+  },
+  "arco_de_betula_ice_rare": {
+   "name": "Arco da Geada",
+   "description": "Arco de raridade rara. Gelo: Congela aos poucos: 35% mais lento por 2 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "arco_curto",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "crit": 6,
+    "speed": 6
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "element": "ice",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Gelo: Congela aos poucos: 35% mais lento por 2 s."
+  },
+  "arco_de_betula_lightning_epic": {
+   "name": "Arco do Trovão Superior",
+   "description": "Arco de raridade épica. Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "arco_curto",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "crit": 9,
+    "speed": 8
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "element": "lightning",
+   "trait": "",
+   "price": 520,
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano)."
+  },
+  "arco_de_betula_poison_bleed_rare": {
+   "name": "Arco da Peçonha",
+   "description": "Arco de raridade rara. Veneno: Envenena: dano por 4 s. Sangramento: Abre feridas: dano por 3 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "arco_curto",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "crit": 6,
+    "speed": 6
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "element": "poison",
+   "trait": "bleed",
+   "price": 200,
+   "effect_text": "Veneno: Envenena: dano por 4 s. Sangramento: Abre feridas: dano por 3 s."
+  },
+  "arco_de_betula_shadow_vampiric_epic": {
+   "name": "Arco das Sombras Superior",
+   "description": "Arco de raridade épica. Sombra: Rouba 8% do dano como vida. Vampirismo: Rouba 6% do dano causado como vida.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "arco_curto",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "crit": 9,
+    "speed": 8,
+    "lifesteal": 14
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "element": "shadow",
+   "trait": "vampiric",
+   "price": 520,
+   "effect_text": "Sombra: Rouba 8% do dano como vida. Vampirismo: Rouba 6% do dano causado como vida."
+  },
+  "arco_de_betula__keen_uncommon": {
+   "name": "Arco de Fio Fino",
+   "description": "Arco de raridade incomum. Fio fino: +8% de chance de crítico.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "arco_curto",
+   "stack": 1,
+   "stats": {
+    "attack": 2,
+    "crit": 11,
+    "speed": 4
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "element": "",
+   "trait": "keen",
+   "price": 80,
+   "effect_text": "Fio fino: +8% de chance de crítico."
+  },
+  "cajado_de_ilsa_water_rare": {
+   "name": "Cajado das Marés",
+   "description": "Cajado de raridade rara. Água: Encharca o alvo: 25% mais lento por 2 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "skill": 6,
+    "max_mana": 26
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "water",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Água: Encharca o alvo: 25% mais lento por 2 s."
+  },
+  "cajado_de_ilsa_water_epic": {
+   "name": "Cajado das Marés Superior",
+   "description": "Cajado de raridade épica. Água: Encharca o alvo: 25% mais lento por 2 s.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "skill": 8,
+    "max_mana": 38
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "water",
+   "trait": "",
+   "price": 520,
+   "effect_text": "Água: Encharca o alvo: 25% mais lento por 2 s."
+  },
+  "cajado_de_ilsa_lightning_rare": {
+   "name": "Cajado do Trovão",
+   "description": "Cajado de raridade rara. Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "skill": 6,
+    "max_mana": 26
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "lightning",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano)."
+  },
+  "cajado_de_ilsa_lightning_epic": {
+   "name": "Cajado do Trovão Superior",
+   "description": "Cajado de raridade épica. Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "skill": 8,
+    "max_mana": 38
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "lightning",
+   "trait": "",
+   "price": 520,
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano)."
+  },
+  "cajado_de_ilsa_ice_rare": {
+   "name": "Cajado da Geada",
+   "description": "Cajado de raridade rara. Gelo: Congela aos poucos: 35% mais lento por 2 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "skill": 6,
+    "max_mana": 26
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "ice",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Gelo: Congela aos poucos: 35% mais lento por 2 s."
+  },
+  "cajado_de_ilsa_ice_epic": {
+   "name": "Cajado da Geada Superior",
+   "description": "Cajado de raridade épica. Gelo: Congela aos poucos: 35% mais lento por 2 s.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "skill": 8,
+    "max_mana": 38
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "ice",
+   "trait": "",
+   "price": 520,
+   "effect_text": "Gelo: Congela aos poucos: 35% mais lento por 2 s."
+  },
+  "cajado_de_ilsa_nature_rare": {
+   "name": "Cajado Verdejante",
+   "description": "Cajado de raridade rara. Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "skill": 6,
+    "max_mana": 26
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "nature",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes)."
+  },
+  "cajado_de_ilsa_nature_epic": {
+   "name": "Cajado Verdejante Superior",
+   "description": "Cajado de raridade épica. Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "skill": 8,
+    "max_mana": 38
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "nature",
+   "trait": "",
+   "price": 520,
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes)."
+  },
+  "cajado_de_ilsa_shadow_rare": {
+   "name": "Cajado das Sombras",
+   "description": "Cajado de raridade rara. Sombra: Rouba 8% do dano como vida.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "skill": 6,
+    "max_mana": 26,
+    "lifesteal": 8
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "shadow",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Sombra: Rouba 8% do dano como vida."
+  },
+  "cajado_de_ilsa_shadow_epic": {
+   "name": "Cajado das Sombras Superior",
+   "description": "Cajado de raridade épica. Sombra: Rouba 8% do dano como vida.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "skill": 8,
+    "max_mana": 38,
+    "lifesteal": 8
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "shadow",
+   "trait": "",
+   "price": 520,
+   "effect_text": "Sombra: Rouba 8% do dano como vida."
+  },
+  "cajado_de_ilsa_fire_rare": {
+   "name": "Cajado das Chamas",
+   "description": "Cajado de raridade rara. Fogo: Queima o alvo: dano de fogo por 3 s.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "skill": 6,
+    "max_mana": 26
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "fire",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s."
+  },
+  "cajado_de_ilsa_fire_epic": {
+   "name": "Cajado das Chamas Superior",
+   "description": "Cajado de raridade épica. Fogo: Queima o alvo: dano de fogo por 3 s.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "skill": 8,
+    "max_mana": 38
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "fire",
+   "trait": "",
+   "price": 520,
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s."
+  },
+  "cajado_de_ilsa_holy_rare": {
+   "name": "Cajado Sagrado",
+   "description": "Cajado de raridade rara. Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "skill": 6,
+    "max_mana": 26
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "holy",
+   "trait": "",
+   "price": 200,
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado."
+  },
+  "cajado_de_ilsa_holy_epic": {
+   "name": "Cajado Sagrado Superior",
+   "description": "Cajado de raridade épica. Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "skill": 8,
+    "max_mana": 38
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "holy",
+   "trait": "",
+   "price": 520,
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado."
+  },
+  "cajado_de_ilsa_lightning_legendary": {
+   "name": "Cajado do Trovão Ancestral",
+   "description": "Cajado de raridade lendária. Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "rarity": "legendary",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 10,
+    "skill": 11,
+    "max_mana": 54
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "lightning",
+   "trait": "",
+   "price": 1300,
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano)."
+  },
+  "cajado_de_ilsa_water_legendary": {
+   "name": "Cajado das Marés Ancestral",
+   "description": "Cajado de raridade lendária. Água: Encharca o alvo: 25% mais lento por 2 s.",
+   "rarity": "legendary",
+   "type": "weapon",
+   "slot": "weapon",
+   "icon": "bordao_de_aprendiz",
+   "stack": 1,
+   "stats": {
+    "attack": 10,
+    "skill": 11,
+    "max_mana": 54
+   },
+   "use": {},
+   "family": "cajado_de_ilsa",
+   "element": "water",
+   "trait": "",
+   "price": 1300,
+   "effect_text": "Água: Encharca o alvo: 25% mais lento por 2 s."
+  },
+  "dunas_head": {
+   "name": "Óculos do Andarilho",
+   "description": "Peça do conjunto Andarilho das Dunas. Deserto: 2 peças mais rápido; 4 peças +10% de pressa e +8 de resistência.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "head",
+   "icon": "bark_head",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 200,
+   "set": "dunas",
+   "look": {
+    "head": "accessory_goggles"
+   },
+   "look_colors": {
+    "shirt_color": "c9a76a",
+    "pants_color": "8a6a3e",
+    "boots_color": "5a4026"
+   }
+  },
+  "dunas_chest": {
+   "name": "Manto das Dunas",
+   "description": "Peça do conjunto Andarilho das Dunas. Deserto: 2 peças mais rápido; 4 peças +10% de pressa e +8 de resistência.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "bark_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "resistance": 6,
+    "speed": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 200,
+   "set": "dunas",
+   "look": {
+    "shirt": "shirt_nomad"
+   },
+   "look_colors": {
+    "shirt_color": "c9a76a",
+    "pants_color": "8a6a3e",
+    "boots_color": "5a4026"
+   }
+  },
+  "dunas_legs": {
+   "name": "Calças de Viagem",
+   "description": "Peça do conjunto Andarilho das Dunas. Deserto: 2 peças mais rápido; 4 peças +10% de pressa e +8 de resistência.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "bark_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "speed": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 200,
+   "set": "dunas",
+   "look": {
+    "pants": "pants_nomad"
+   },
+   "look_colors": {
+    "shirt_color": "c9a76a",
+    "pants_color": "8a6a3e",
+    "boots_color": "5a4026"
+   }
+  },
+  "dunas_boots": {
+   "name": "Botas de Areia",
+   "description": "Peça do conjunto Andarilho das Dunas. Deserto: 2 peças mais rápido; 4 peças +10% de pressa e +8 de resistência.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "bark_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "speed": 4
+   },
+   "use": {},
+   "family": "",
+   "price": 200,
+   "set": "dunas",
+   "look": {
+    "shoes": "boots_nomad"
+   },
+   "look_colors": {
+    "shirt_color": "c9a76a",
+    "pants_color": "8a6a3e",
+    "boots_color": "5a4026"
+   }
+  },
+  "sombra_head": {
+   "name": "Máscara da Sombra",
+   "description": "Peça do conjunto Sombra Ligeira. Assassino: 2 peças +6% de crítico; 4 peças críticos +25% mais fortes e +8% de pressa.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "head",
+   "icon": "bark_head",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "crit": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 200,
+   "set": "sombra",
+   "look": {
+    "head": "accessory_mask"
+   },
+   "look_colors": {
+    "shirt_color": "2b2433",
+    "pants_color": "1d1a24",
+    "boots_color": "181520"
+   }
+  },
+  "sombra_chest": {
+   "name": "Gibão da Sombra",
+   "description": "Peça do conjunto Sombra Ligeira. Assassino: 2 peças +6% de crítico; 4 peças críticos +25% mais fortes e +8% de pressa.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "bark_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "crit": 3,
+    "haste": 4
+   },
+   "use": {},
+   "family": "",
+   "price": 200,
+   "set": "sombra",
+   "look": {
+    "shirt": "shirt_shadow"
+   },
+   "look_colors": {
+    "shirt_color": "2b2433",
+    "pants_color": "1d1a24",
+    "boots_color": "181520"
+   }
+  },
+  "sombra_legs": {
+   "name": "Calças da Sombra",
+   "description": "Peça do conjunto Sombra Ligeira. Assassino: 2 peças +6% de crítico; 4 peças críticos +25% mais fortes e +8% de pressa.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "bark_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "crit": 2
+   },
+   "use": {},
+   "family": "",
+   "price": 200,
+   "set": "sombra",
+   "look": {
+    "pants": "pants_shadow"
+   },
+   "look_colors": {
+    "shirt_color": "2b2433",
+    "pants_color": "1d1a24",
+    "boots_color": "181520"
+   }
+  },
+  "sombra_boots": {
+   "name": "Botas Silenciosas",
+   "description": "Peça do conjunto Sombra Ligeira. Assassino: 2 peças +6% de crítico; 4 peças críticos +25% mais fortes e +8% de pressa.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "bark_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "speed": 5
+   },
+   "use": {},
+   "family": "",
+   "price": 200,
+   "set": "sombra",
+   "look": {
+    "shoes": "boots_shadow"
+   },
+   "look_colors": {
+    "shirt_color": "2b2433",
+    "pants_color": "1d1a24",
+    "boots_color": "181520"
+   }
+  },
+  "sabio_head": {
+   "name": "Diadema Rúnico",
+   "description": "Peça do conjunto Sábio Rúnico. Arcano: 2 peças +30 de mana e poder de magia; 4 peças muito mais poder e recargas menores.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "head",
+   "icon": "bark_head",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "max_mana": 20,
+    "skill": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 520,
+   "set": "sabio",
+   "look": {
+    "head": "accessory_circlet"
+   },
+   "look_colors": {
+    "shirt_color": "2d3f8a",
+    "pants_color": "1f2a5a",
+    "boots_color": "c9a24a"
+   }
+  },
+  "sabio_chest": {
+   "name": "Túnica Rúnica",
+   "description": "Peça do conjunto Sábio Rúnico. Arcano: 2 peças +30 de mana e poder de magia; 4 peças muito mais poder e recargas menores.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "bark_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "max_mana": 30,
+    "skill": 4,
+    "resistance": 8
+   },
+   "use": {},
+   "family": "",
+   "price": 520,
+   "set": "sabio",
+   "look": {
+    "shirt": "shirt_robe"
+   },
+   "look_colors": {
+    "shirt_color": "2d3f8a",
+    "pants_color": "1f2a5a",
+    "boots_color": "c9a24a"
+   }
+  },
+  "sabio_legs": {
+   "name": "Saiote Rúnico",
+   "description": "Peça do conjunto Sábio Rúnico. Arcano: 2 peças +30 de mana e poder de magia; 4 peças muito mais poder e recargas menores.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "bark_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "max_mana": 15,
+    "resistance": 5
+   },
+   "use": {},
+   "family": "",
+   "price": 520,
+   "set": "sabio",
+   "look": {
+    "pants": "pants_cloth"
+   },
+   "look_colors": {
+    "shirt_color": "2d3f8a",
+    "pants_color": "1f2a5a",
+    "boots_color": "c9a24a"
+   }
+  },
+  "sabio_boots": {
+   "name": "Sandálias Rúnicas",
+   "description": "Peça do conjunto Sábio Rúnico. Arcano: 2 peças +30 de mana e poder de magia; 4 peças muito mais poder e recargas menores.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "bark_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "max_mana": 10,
+    "speed": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 520,
+   "set": "sabio",
+   "look": {
+    "shoes": "boots_healer"
+   },
+   "look_colors": {
+    "shirt_color": "2d3f8a",
+    "pants_color": "1f2a5a",
+    "boots_color": "c9a24a"
+   }
+  },
+  "azhur_head": {
+   "name": "Elmo de Azhûr",
+   "description": "Peça do conjunto Placas de Azhûr. Colosso: 2 peças muita defesa e vida; 4 peças resistência, regeneração e ataque.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "head",
+   "icon": "bark_head",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "max_health": 30,
+    "resistance": 10
+   },
+   "use": {},
+   "family": "",
+   "price": 1300,
+   "set": "azhur",
+   "look": {
+    "head": "accessory_crown"
+   },
+   "look_colors": {
+    "shirt_color": "8a1f1a",
+    "pants_color": "3a1414",
+    "boots_color": "c99a34"
+   }
+  },
+  "azhur_chest": {
+   "name": "Couraça de Azhûr",
+   "description": "Peça do conjunto Placas de Azhûr. Colosso: 2 peças muita defesa e vida; 4 peças resistência, regeneração e ataque.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "bark_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 9,
+    "max_health": 50,
+    "resistance": 16
+   },
+   "use": {},
+   "family": "",
+   "price": 1300,
+   "set": "azhur",
+   "look": {
+    "shirt": "shirt_royal"
+   },
+   "look_colors": {
+    "shirt_color": "8a1f1a",
+    "pants_color": "3a1414",
+    "boots_color": "c99a34"
+   }
+  },
+  "azhur_legs": {
+   "name": "Grevas de Azhûr",
+   "description": "Peça do conjunto Placas de Azhûr. Colosso: 2 peças muita defesa e vida; 4 peças resistência, regeneração e ataque.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "bark_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "max_health": 25,
+    "resistance": 10
+   },
+   "use": {},
+   "family": "",
+   "price": 1300,
+   "set": "azhur",
+   "look": {
+    "pants": "pants_royal"
+   },
+   "look_colors": {
+    "shirt_color": "8a1f1a",
+    "pants_color": "3a1414",
+    "boots_color": "c99a34"
+   }
+  },
+  "azhur_boots": {
+   "name": "Botas de Azhûr",
+   "description": "Peça do conjunto Placas de Azhûr. Colosso: 2 peças muita defesa e vida; 4 peças resistência, regeneração e ataque.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "bark_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 5,
+    "max_health": 20,
+    "speed": 2
+   },
+   "use": {},
+   "family": "",
+   "price": 1300,
+   "set": "azhur",
+   "look": {
+    "shoes": "boots_royal"
+   },
+   "look_colors": {
+    "shirt_color": "8a1f1a",
+    "pants_color": "3a1414",
+    "boots_color": "c99a34"
+   }
+  },
+  "yggdrasil_head": {
+   "name": "Coroa de Folhas Eternas",
+   "description": "Peça do conjunto Guardião de Yggdrasil. Árvore do mundo: 2 peças regeneração e resistência; 4 peças vida, mana e pressa.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "head",
+   "icon": "bark_head",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "hp_regen": 6,
+    "resistance": 12
+   },
+   "use": {},
+   "family": "",
+   "price": 3200,
+   "set": "yggdrasil",
+   "look": {
+    "head": "accessory_flower"
+   },
+   "look_colors": {
+    "shirt_color": "e8e2c8",
+    "pants_color": "6a8a4a",
+    "boots_color": "c9b06a"
+   }
+  },
+  "yggdrasil_chest": {
+   "name": "Manto de Yggdrasil",
+   "description": "Peça do conjunto Guardião de Yggdrasil. Árvore do mundo: 2 peças regeneração e resistência; 4 peças vida, mana e pressa.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "bark_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 10,
+    "max_health": 60,
+    "resistance": 20
+   },
+   "use": {},
+   "family": "",
+   "price": 3200,
+   "set": "yggdrasil",
+   "look": {
+    "shirt": "shirt_healer"
+   },
+   "look_colors": {
+    "shirt_color": "e8e2c8",
+    "pants_color": "6a8a4a",
+    "boots_color": "c9b06a"
+   }
+  },
+  "yggdrasil_legs": {
+   "name": "Calças de Raiz Antiga",
+   "description": "Peça do conjunto Guardião de Yggdrasil. Árvore do mundo: 2 peças regeneração e resistência; 4 peças vida, mana e pressa.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "bark_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 7,
+    "max_health": 40,
+    "resistance": 12
+   },
+   "use": {},
+   "family": "",
+   "price": 3200,
+   "set": "yggdrasil",
+   "look": {
+    "pants": "pants_healer"
+   },
+   "look_colors": {
+    "shirt_color": "e8e2c8",
+    "pants_color": "6a8a4a",
+    "boots_color": "c9b06a"
+   }
+  },
+  "yggdrasil_boots": {
+   "name": "Botas do Caminho Verde",
+   "description": "Peça do conjunto Guardião de Yggdrasil. Árvore do mundo: 2 peças regeneração e resistência; 4 peças vida, mana e pressa.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "bark_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "speed": 5,
+    "hp_regen": 4
+   },
+   "use": {},
+   "family": "",
+   "price": 3200,
+   "set": "yggdrasil",
+   "look": {
+    "shoes": "boots_healer"
+   },
+   "look_colors": {
+    "shirt_color": "e8e2c8",
+    "pants_color": "6a8a4a",
+    "boots_color": "c9b06a"
+   }
+  },
+  "espada_de_treino": {
+   "name": "Espada de Treino",
+   "icon": "weapon_espada_comum_2",
+   "price": 30,
+   "element": "",
+   "effect_text": "",
+   "description": "Espada comum. Botão direito — Estocada de Treino: Avança 4,5 m e acerta quem estiver no caminho.",
+   "rarity": "common",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 2
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "agulha_do_viajante": {
+   "name": "Agulha do Viajante",
+   "icon": "weapon_espada_comum_3",
+   "price": 30,
+   "element": "",
+   "effect_text": "",
+   "description": "Espada comum. Botão direito — Mil Agulhadas: Cinco estocadas rápidas seguidas.",
+   "rarity": "common",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 2
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "cutelo_do_lenhador": {
+   "name": "Cutelo do Lenhador",
+   "icon": "weapon_espada_comum_5",
+   "price": 30,
+   "element": "",
+   "effect_text": "",
+   "description": "Espada comum. Botão direito — Golpe do Lenhador: Crava a lâmina no chão e acerta em volta.",
+   "rarity": "common",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 2
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "foice_verde_do_bosque": {
+   "name": "Foice-Verde do Bosque",
+   "icon": "weapon_espada_incomum_1",
+   "price": 80,
+   "element": "nature",
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "description": "Espada incomum. Botão direito — Colheita Verde: Um giro rasteiro que corta tudo em volta.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 3,
+    "crit": 2
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "lamina_da_mare_baixa": {
+   "name": "Lâmina da Maré Baixa",
+   "icon": "weapon_espada_incomum_3",
+   "price": 80,
+   "element": "water",
+   "effect_text": "Água: Encharca o alvo: 25% mais lento por 2 s.",
+   "description": "Espada incomum. Botão direito — Maré Rasteira: Varre o chão e solta uma onda que corre na linha da mira, arrastando e empurrando os inimigos.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 3,
+    "crit": 2
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "marco_do_guardiao": {
+   "name": "Marco do Guardião",
+   "icon": "weapon_espada_incomum_4",
+   "price": 80,
+   "element": "",
+   "effect_text": "",
+   "description": "Espada incomum. Botão direito — Marco Fincado: Crava a espada no chão: o chão racha, as pedras sobem e quem está perto é abalado.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 3,
+    "crit": 2
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "ferrao_da_noite": {
+   "name": "Ferrão da Noite",
+   "icon": "weapon_espada_incomum_5",
+   "price": 80,
+   "element": "poison",
+   "effect_text": "Veneno: Envenena: dano por 4 s.",
+   "description": "Espada incomum. Botão direito — Picada Noturna: Avança como um ferrão e envenena o alvo.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 3,
+    "crit": 2
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "lua_crescente": {
+   "name": "Lua Crescente",
+   "icon": "weapon_espada_raro_2",
+   "price": 200,
+   "element": "",
+   "effect_text": "",
+   "description": "Espada rara. Botão direito — Dança da Lua: Gira como a lua crescente, acertando várias vezes em volta.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "trovao_partido": {
+   "name": "Trovão Partido",
+   "icon": "weapon_espada_raro_3",
+   "price": 200,
+   "element": "lightning",
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "description": "Espada rara. Botão direito — Descarga do Trovão: Segura e solta: um raio carregado que explode no alvo.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "presa_da_serpente": {
+   "name": "Presa da Serpente",
+   "icon": "weapon_espada_raro_4",
+   "price": 200,
+   "element": "poison",
+   "effect_text": "Veneno: Envenena: dano por 4 s.",
+   "description": "Espada rara. Botão direito — Bote da Serpente: Sete botes rápidos que espalham veneno.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "coracao_de_ametista": {
+   "name": "Coração de Ametista",
+   "icon": "weapon_espada_raro_5",
+   "price": 200,
+   "element": "shadow",
+   "effect_text": "Sombra: Rouba 8% do dano como vida.",
+   "description": "Espada rara. Botão direito — Estilhaços de Ametista: Cristais roxos giram em volta e atacam quem chega perto.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 4,
+    "crit": 5,
+    "crit_dmg": 10
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "monolito_desperto": {
+   "name": "Monolito Desperto",
+   "icon": "weapon_espada_epico_1",
+   "price": 520,
+   "element": "",
+   "effect_text": "",
+   "description": "Espada épica. Botão direito — Queda do Monolito: A lâmina de pedra cai como um monólito e racha o chão em volta.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "crit": 8,
+    "crit_dmg": 20
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "escritura_do_eclipse": {
+   "name": "Escritura do Eclipse",
+   "icon": "weapon_espada_epico_2",
+   "price": 520,
+   "element": "shadow",
+   "effect_text": "Sombra: Rouba 8% do dano como vida.",
+   "description": "Espada épica. Botão direito — Runa do Eclipse: Escreve uma runa de sombra que explode e marca os inimigos.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "crit": 8,
+    "crit_dmg": 20
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "lamina_sanguinea": {
+   "name": "Lâmina Sanguínea",
+   "icon": "weapon_espada_epico_3",
+   "price": 520,
+   "element": "shadow",
+   "effect_text": "Sombra: Rouba 8% do dano como vida.",
+   "description": "Espada épica. Botão direito — Colheita de Sangue: Um corte em círculo que bebe a vida de quem acerta.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "crit": 8,
+    "crit_dmg": 20
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "fragmento_do_vortice": {
+   "name": "Fragmento do Vórtice",
+   "icon": "weapon_espada_epico_4",
+   "price": 520,
+   "element": "lightning",
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "description": "Espada épica. Botão direito — Fragmentos do Vórtice: Pedaços do Vórtice orbitam e disparam raios nos inimigos.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 6,
+    "crit": 8,
+    "crit_dmg": 20
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "asa_da_fenix": {
+   "name": "Asa da Fênix",
+   "icon": "weapon_espada_lendario_3",
+   "price": 1300,
+   "element": "fire",
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s.",
+   "description": "Espada lendária. Botão direito — Voo da Fênix: Voa 9 m envolto em fogo, queimando o caminho.",
+   "rarity": "legendary",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 9,
+    "crit": 12,
+    "crit_dmg": 35
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "sopro_de_valdora": {
+   "name": "Sopro de Valdora",
+   "icon": "weapon_espada_lendario_4",
+   "price": 1300,
+   "element": "nature",
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "description": "Espada lendária. Botão direito — Vendaval de Valdora: O vento do vale varre e arremessa os inimigos para longe.",
+   "rarity": "legendary",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 9,
+    "crit": 12,
+    "crit_dmg": 35
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "coroa_do_sol": {
+   "name": "Coroa do Sol",
+   "icon": "weapon_espada_lendario_5",
+   "price": 1300,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "description": "Espada lendária. Botão direito — Raio de Sol: Um raio de sol em linha que atravessa todos os inimigos.",
+   "rarity": "legendary",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 9,
+    "crit": 12,
+    "crit_dmg": 35
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "fenda_esmeralda": {
+   "name": "Fenda Esmeralda",
+   "icon": "weapon_espada_unico_1",
+   "price": 3200,
+   "element": "nature",
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "description": "Espada única. Botão direito — Fenda Esmeralda: Abre uma fenda verde no chão que explode e prende os inimigos.",
+   "rarity": "unique",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 11,
+    "crit": 10,
+    "crit_dmg": 30
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "lagrima_do_inverno": {
+   "name": "Lágrima do Inverno",
+   "icon": "weapon_espada_unico_2",
+   "price": 3200,
+   "element": "ice",
+   "effect_text": "Gelo: Congela aos poucos: 35% mais lento por 2 s.",
+   "description": "Espada única. Botão direito — Nevasca: Uma nevasca de cortes em volta que congela aos poucos.",
+   "rarity": "unique",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 11,
+    "crit": 10,
+    "crit_dmg": 30
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "raiz_da_primeira_arvore": {
+   "name": "Raiz da Primeira Árvore",
+   "icon": "weapon_espada_unico_3",
+   "price": 3200,
+   "element": "nature",
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "description": "Espada única. Botão direito — Raízes Ancestrais: As raízes rompem o chão em volta, num raio enorme.",
+   "rarity": "unique",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 11,
+    "crit": 10,
+    "crit_dmg": 30
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "silencio_branco": {
+   "name": "Silêncio Branco",
+   "icon": "weapon_espada_unico_4",
+   "price": 3200,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "description": "Espada única. Botão direito — Corte do Silêncio: Some e reaparece 10 m à frente, cortando tudo no caminho.",
+   "rarity": "unique",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 11,
+    "crit": 10,
+    "crit_dmg": 30
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "sucata_do_andarilho": {
+   "name": "Sucata do Andarilho",
+   "icon": "weapon_espada_unico_5",
+   "price": 3200,
+   "element": "lightning",
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "description": "Espada única. Botão direito — Faísca de Sucata: Segura e solta: a lasca de cristal estoura numa explosão de faíscas.",
+   "rarity": "unique",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 11,
+    "crit": 10,
+    "crit_dmg": 30
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "juramento_celeste": {
+   "name": "Juramento Celeste",
+   "icon": "weapon_espada_divino_1",
+   "price": 8000,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "description": "Espada divina. Botão direito — Juramento: A luz do juramento atordoa os inimigos por mais tempo e cura bem mais.",
+   "rarity": "divine",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 14,
+    "crit": 14,
+    "crit_dmg": 45
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "tridente_do_primeiro_selo": {
+   "name": "Tridente do Primeiro Selo",
+   "icon": "weapon_espada_divino_2",
+   "price": 8000,
+   "element": "water",
+   "effect_text": "Água: Encharca o alvo: 25% mais lento por 2 s.",
+   "description": "Espada divina. Botão direito — Primeiro Selo: O selo das origens: uma runa enorme que explode quase na hora.",
+   "rarity": "divine",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 14,
+    "crit": 14,
+    "crit_dmg": 45
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "estrela_guia": {
+   "name": "Estrela Guia",
+   "icon": "weapon_espada_divino_3",
+   "price": 8000,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "description": "Espada divina. Botão direito — Constelação: Estrelas giram em volta e caem nos inimigos sem parar.",
+   "rarity": "divine",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 14,
+    "crit": 14,
+    "crit_dmg": 45
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "voz_do_santuario": {
+   "name": "Voz do Santuário",
+   "icon": "weapon_espada_divino_4",
+   "price": 8000,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "description": "Espada divina. Botão direito — Prece do Santuário: A prece do santuário cura você e os aliados em volta.",
+   "rarity": "divine",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 14,
+    "crit": 14,
+    "crit_dmg": 45
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "genese": {
+   "name": "Gênese",
+   "icon": "weapon_espada_divino_5",
+   "price": 8000,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "description": "Espada divina. Botão direito — Gênese: A luz do começo do mundo: uma onda imensa que atravessa tudo à frente.",
+   "rarity": "divine",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 14,
+    "crit": 14,
+    "crit_dmg": 45
+   },
+   "use": {},
+   "family": "espada_de_cinzas",
+   "trait": ""
+  },
+  "arco_do_batedor": {
+   "name": "Arco do Batedor",
+   "icon": "weapon_arco_comum_2",
+   "price": 30,
+   "element": "",
+   "effect_text": "",
+   "description": "Arco comum. Botão direito — Leque do Batedor: Abre um leque de três flechas.",
+   "rarity": "common",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 1
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_de_galho_seco": {
+   "name": "Arco de Galho Seco",
+   "icon": "weapon_arco_comum_3",
+   "price": 30,
+   "element": "",
+   "effect_text": "",
+   "description": "Arco comum. Botão direito — Flecha Seca: Uma flecha forte que atravessa os inimigos em linha.",
+   "rarity": "common",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 1
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_remendado": {
+   "name": "Arco Remendado",
+   "icon": "weapon_arco_comum_5",
+   "price": 30,
+   "element": "",
+   "effect_text": "",
+   "description": "Arco comum. Botão direito — Chuvisco de Flechas: Uma chuva de flechas pequena onde você mira.",
+   "rarity": "common",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 1
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_do_salgueiro": {
+   "name": "Arco do Salgueiro",
+   "icon": "weapon_arco_incomum_1",
+   "price": 80,
+   "element": "nature",
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "description": "Arco incomum. Botão direito — Folhas ao Vento: Um leque de quatro flechas de folha.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 2,
+    "crit": 3,
+    "speed": 4
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_de_espinheiro": {
+   "name": "Arco de Espinheiro",
+   "icon": "weapon_arco_incomum_2",
+   "price": 80,
+   "element": "poison",
+   "effect_text": "Veneno: Envenena: dano por 4 s.",
+   "description": "Arco incomum. Botão direito — Espinhos em Fila: Três flechas de espinho envenenadas, uma atrás da outra.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 2,
+    "crit": 3,
+    "speed": 4
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_de_cobre_rubro": {
+   "name": "Arco de Cobre Rubro",
+   "icon": "weapon_arco_incomum_3",
+   "price": 80,
+   "element": "fire",
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s.",
+   "description": "Arco incomum. Botão direito — Flecha de Brasa: Uma flecha que explode em fogo onde acerta.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 2,
+    "crit": 3,
+    "speed": 4
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_da_correnteza": {
+   "name": "Arco da Correnteza",
+   "icon": "weapon_arco_incomum_4",
+   "price": 80,
+   "element": "water",
+   "effect_text": "Água: Encharca o alvo: 25% mais lento por 2 s.",
+   "description": "Arco incomum. Botão direito — Flecha da Correnteza: Atravessa os inimigos em linha, como a água.",
+   "rarity": "uncommon",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 2,
+    "crit": 3,
+    "speed": 4
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_da_lua_prateada": {
+   "name": "Arco da Lua Prateada",
+   "icon": "weapon_arco_raro_2",
+   "price": 200,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "description": "Arco rara. Botão direito — Crescente: Um leque de cinco flechas de luz em meia-lua.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 3,
+    "crit": 6,
+    "speed": 6
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_do_relampago": {
+   "name": "Arco do Relâmpago",
+   "icon": "weapon_arco_raro_3",
+   "price": 200,
+   "element": "lightning",
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "description": "Arco rara. Botão direito — Flecha-Trovão: Segura e solta: um raio carregado que explode no alvo.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 3,
+    "crit": 6,
+    "speed": 6
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_da_geada": {
+   "name": "Arco da Geada",
+   "icon": "weapon_arco_raro_4",
+   "price": 200,
+   "element": "ice",
+   "effect_text": "Gelo: Congela aos poucos: 35% mais lento por 2 s.",
+   "description": "Arco rara. Botão direito — Lança de Gelo: Uma flecha de gelo que atravessa todos em linha.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 3,
+    "crit": 6,
+    "speed": 6
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_de_jade": {
+   "name": "Arco de Jade",
+   "icon": "weapon_arco_raro_5",
+   "price": 200,
+   "element": "nature",
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "description": "Arco rara. Botão direito — Três Jades: Três flechas de jade seguidas.",
+   "rarity": "rare",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 3,
+    "crit": 6,
+    "speed": 6
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_ametista": {
+   "name": "Arco Ametista",
+   "icon": "weapon_arco_epico_1",
+   "price": 520,
+   "element": "shadow",
+   "effect_text": "Sombra: Rouba 8% do dano como vida.",
+   "description": "Arco épica. Botão direito — Estilhaços Flutuantes: Cristais de ametista giram em volta e atiram nos inimigos.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 5,
+    "crit": 9,
+    "speed": 8
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_fragmentado": {
+   "name": "Arco Fragmentado",
+   "icon": "weapon_arco_epico_4",
+   "price": 520,
+   "element": "lightning",
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "description": "Arco épica. Botão direito — Fragmentos: Cinco disparos rápidos de fragmentos do Vórtice.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 5,
+    "crit": 9,
+    "speed": 8
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_do_eclipse": {
+   "name": "Arco do Eclipse",
+   "icon": "weapon_arco_epico_5",
+   "price": 520,
+   "element": "shadow",
+   "effect_text": "Sombra: Rouba 8% do dano como vida.",
+   "description": "Arco épica. Botão direito — Flecha do Eclipse: Uma flecha escura enorme que atravessa tudo.",
+   "rarity": "epic",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 5,
+    "crit": 9,
+    "speed": 8
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_de_magma": {
+   "name": "Arco de Magma Rúnico",
+   "icon": "weapon_arco_lendario_1",
+   "price": 1300,
+   "element": "fire",
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s.",
+   "description": "Arco lendária. Botão direito — Muralha de Magma: Ergue uma muralha de magma que queima quem atravessa.",
+   "rarity": "legendary",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 8,
+    "crit": 13,
+    "speed": 10
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_da_fenix": {
+   "name": "Arco da Fênix",
+   "icon": "weapon_arco_lendario_3",
+   "price": 1300,
+   "element": "fire",
+   "effect_text": "Fogo: Queima o alvo: dano de fogo por 3 s.",
+   "description": "Arco lendária. Botão direito — Sopro da Fênix: Lança uma bola de fogo que explode em 3 m.",
+   "rarity": "legendary",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 8,
+    "crit": 13,
+    "speed": 10
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_do_sol_nascente": {
+   "name": "Arco do Sol Nascente",
+   "icon": "weapon_arco_lendario_4",
+   "price": 1300,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "description": "Arco lendária. Botão direito — Explosão Solar: Uma flecha de sol que explode em luz.",
+   "rarity": "legendary",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 8,
+    "crit": 13,
+    "speed": 10
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_do_bosque_ancestral": {
+   "name": "Arco do Bosque Ancestral",
+   "icon": "weapon_arco_lendario_5",
+   "price": 1300,
+   "element": "nature",
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "description": "Arco lendária. Botão direito — Chuva de Galhos: Uma chuva de flechas enorme onde você mira.",
+   "rarity": "legendary",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 8,
+    "crit": 13,
+    "speed": 10
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_de_bracos_gemeos": {
+   "name": "Arco de Braços Gêmeos",
+   "icon": "weapon_arco_unico_1",
+   "price": 3200,
+   "element": "lightning",
+   "effect_text": "Raio: O raio salta para até 2 inimigos perto (40% do dano).",
+   "description": "Arco única. Botão direito — Disparo Gêmeo: Seis flechas em pares, bem rápidas.",
+   "rarity": "unique",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 10,
+    "crit": 12,
+    "speed": 10
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_do_espelho": {
+   "name": "Arco do Espelho",
+   "icon": "weapon_arco_unico_2",
+   "price": 3200,
+   "element": "shadow",
+   "effect_text": "Sombra: Rouba 8% do dano como vida.",
+   "description": "Arco única. Botão direito — Reflexo: Um leque largo de seis flechas, para os dois lados da mira.",
+   "rarity": "unique",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 10,
+    "crit": 12,
+    "speed": 10
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_da_raiz_primeva": {
+   "name": "Arco da Raiz Primeva",
+   "icon": "weapon_arco_unico_3",
+   "price": 3200,
+   "element": "nature",
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "description": "Arco única. Botão direito — Raiz que Explode: Uma raiz rompe o chão onde você mira e explode.",
+   "rarity": "unique",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 10,
+    "crit": 12,
+    "speed": 10
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_sem_sombra": {
+   "name": "Arco Sem Sombra",
+   "icon": "weapon_arco_unico_4",
+   "price": 3200,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "description": "Arco única. Botão direito — Flecha Sem Sombra: Uma flecha de luz que atravessa tudo e vai muito longe.",
+   "rarity": "unique",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 10,
+    "crit": 12,
+    "speed": 10
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_do_viajante_perdido": {
+   "name": "Arco do Viajante Perdido",
+   "icon": "weapon_arco_unico_5",
+   "price": 3200,
+   "element": "ice",
+   "effect_text": "Gelo: Congela aos poucos: 35% mais lento por 2 s.",
+   "description": "Arco única. Botão direito — Fôlego do Viajante: Cura você e os aliados em volta.",
+   "rarity": "unique",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 10,
+    "crit": 12,
+    "speed": 10
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "asas_da_aurora": {
+   "name": "Asas da Aurora",
+   "icon": "weapon_arco_divino_1",
+   "price": 8000,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "description": "Arco divina. Botão direito — Aurora: Nove flechas de luz em leque.",
+   "rarity": "divine",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 13,
+    "crit": 15,
+    "speed": 12
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_da_arvore_do_mundo": {
+   "name": "Arco da Árvore do Mundo",
+   "icon": "weapon_arco_divino_2",
+   "price": 8000,
+   "element": "nature",
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "description": "Arco divina. Botão direito — Chuva da Árvore do Mundo: Uma chuva de flechas imensa onde você mira.",
+   "rarity": "divine",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 13,
+    "crit": 15,
+    "speed": 12
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_das_estrelas": {
+   "name": "Arco das Estrelas",
+   "icon": "weapon_arco_divino_3",
+   "price": 8000,
+   "element": "holy",
+   "effect_text": "Luz: +50% de dano em mortos-vivos e cura 2% do dano causado.",
+   "description": "Arco divina. Botão direito — Constelação Viva: Estrelas giram em volta e atiram nos inimigos sem parar.",
+   "rarity": "divine",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 13,
+    "crit": 15,
+    "speed": 12
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_do_primeiro_rio": {
+   "name": "Arco do Primeiro Rio",
+   "icon": "weapon_arco_divino_4",
+   "price": 8000,
+   "element": "water",
+   "effect_text": "Água: Encharca o alvo: 25% mais lento por 2 s.",
+   "description": "Arco divina. Botão direito — Rio Primordial: Uma flecha de água imensa que atravessa tudo à frente.",
+   "rarity": "divine",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 13,
+    "crit": 15,
+    "speed": 12
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arco_do_vendaval_eterno": {
+   "name": "Arco do Vendaval Eterno",
+   "icon": "weapon_arco_divino_5",
+   "price": 8000,
+   "element": "nature",
+   "effect_text": "Natureza: Vinhas prendem o alvo por meio segundo (1 em cada 4 golpes).",
+   "description": "Arco divina. Botão direito — Vendaval Eterno: Uma flecha que estoura num vendaval enorme.",
+   "rarity": "divine",
+   "type": "weapon",
+   "slot": "weapon",
+   "stack": 1,
+   "stats": {
+    "attack": 13,
+    "crit": 15,
+    "speed": 12
+   },
+   "use": {},
+   "family": "arco_de_betula",
+   "trait": ""
+  },
+  "arm_viajante_head": {
+   "name": "Capuz do Viajante",
+   "description": "Capacete do conjunto Couro do Viajante. Passiva — Bolso Fundo: +4% de moedas.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_viajante_head",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "max_health": 2,
+    "haste": 1
+   },
+   "use": {},
+   "family": "",
+   "price": 25,
+   "set": "viajante",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_viajante_chest": {
+   "name": "Colete do Viajante",
+   "description": "Peitoral do conjunto Couro do Viajante. Passiva — Fôlego: Recupera 1% da vida a cada 5 s.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_viajante_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 4
+   },
+   "use": {},
+   "family": "",
+   "price": 50,
+   "set": "viajante",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_viajante_legs": {
+   "name": "Calças do Viajante",
+   "description": "Calças do conjunto Couro do Viajante. Passiva — Pés Leves: A esquiva volta 5% mais rápido.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_viajante_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 37,
+   "set": "viajante",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_viajante_boots": {
+   "name": "Botas do Viajante",
+   "description": "Botas do conjunto Couro do Viajante. Passiva — Passo Firme: +3% de velocidade ao andar.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_viajante_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "max_health": 2
+   },
+   "use": {},
+   "family": "",
+   "price": 25,
+   "set": "viajante",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_recruta_head": {
+   "name": "Chapéu de Ferro do Recruta",
+   "description": "Capacete do conjunto Gibão do Recruta. Passiva — Bloqueio: 3% de chance de anular um golpe.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_recruta_head",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "max_health": 2
+   },
+   "use": {},
+   "family": "",
+   "price": 25,
+   "set": "recruta",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_recruta_chest": {
+   "name": "Gibão Acolchoado",
+   "description": "Peitoral do conjunto Gibão do Recruta. Passiva — Guarda Alta: O primeiro golpe a cada 12 s tira 25% menos.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_recruta_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 9
+   },
+   "use": {},
+   "family": "",
+   "price": 50,
+   "set": "recruta",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_recruta_legs": {
+   "name": "Calças Acolchoadas",
+   "description": "Calças do conjunto Gibão do Recruta. Passiva — Última Defesa: Com menos de 30% da vida, leva 8% menos de dano.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_recruta_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 37,
+   "set": "recruta",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_recruta_boots": {
+   "name": "Botas Enfaixadas",
+   "description": "Botas do conjunto Gibão do Recruta. Passiva — Vitória: Cada inimigo vencido devolve 1% da vida.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_recruta_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "max_health": 2
+   },
+   "use": {},
+   "family": "",
+   "price": 25,
+   "set": "recruta",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_cacador_head": {
+   "name": "Gorro de Pele",
+   "description": "Capacete do conjunto Peles do Caçador. Passiva — Caçador: +4% de dano contra feras.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_cacador_head",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "max_health": 2,
+    "crit": 1
+   },
+   "use": {},
+   "family": "",
+   "price": 25,
+   "set": "cacador",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_cacador_chest": {
+   "name": "Casaco de Peles",
+   "description": "Peitoral do conjunto Peles do Caçador. Passiva — Caçador: +5% de dano contra feras.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_cacador_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 4
+   },
+   "use": {},
+   "family": "",
+   "price": 50,
+   "set": "cacador",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_cacador_legs": {
+   "name": "Calças de Peles",
+   "description": "Calças do conjunto Peles do Caçador. Passiva — Passo Firme: +3% de velocidade ao andar.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_cacador_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 37,
+   "set": "cacador",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_cacador_boots": {
+   "name": "Botas de Pele",
+   "description": "Botas do conjunto Peles do Caçador. Passiva — Vitória: Cada inimigo vencido devolve 1% da vida.",
+   "rarity": "common",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_cacador_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "max_health": 2
+   },
+   "use": {},
+   "family": "",
+   "price": 25,
+   "set": "cacador",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_malha_ferro_head": {
+   "name": "Elmo de Nasal",
+   "description": "Capacete do conjunto Malha de Ferro. Passiva — Bloqueio: 3% de chance de anular um golpe.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_malha_ferro_head",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6
+   },
+   "use": {},
+   "family": "",
+   "price": 70,
+   "set": "malha_ferro",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_malha_ferro_chest": {
+   "name": "Cota de Malha Reforçada",
+   "description": "Peitoral do conjunto Malha de Ferro. Passiva — Bloqueio: 4% de chance de anular um golpe.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_malha_ferro_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "resistance": 1,
+    "max_health": 9
+   },
+   "use": {},
+   "family": "",
+   "price": 140,
+   "set": "malha_ferro",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_malha_ferro_legs": {
+   "name": "Perneiras de Malha",
+   "description": "Calças do conjunto Malha de Ferro. Passiva — Bloqueio: 3% de chance de anular um golpe.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_malha_ferro_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6
+   },
+   "use": {},
+   "family": "",
+   "price": 105,
+   "set": "malha_ferro",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_malha_ferro_boots": {
+   "name": "Botas de Ferro",
+   "description": "Botas do conjunto Malha de Ferro. Passiva — Última Defesa: Com menos de 30% da vida, leva 8% menos de dano.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_malha_ferro_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 4
+   },
+   "use": {},
+   "family": "",
+   "price": 70,
+   "set": "malha_ferro",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_batedor_head": {
+   "name": "Capuz do Batedor",
+   "description": "Capacete do conjunto Couro Batido do Batedor. Passiva — Pés Leves: A esquiva volta 6% mais rápido.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_batedor_head",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6,
+    "crit": 2
+   },
+   "use": {},
+   "family": "",
+   "price": 70,
+   "set": "batedor",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_batedor_chest": {
+   "name": "Gibão Tachonado",
+   "description": "Peitoral do conjunto Couro Batido do Batedor. Passiva — Golpe Oportuno: Depois de esquivar, o próximo golpe em 2 s é crítico.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_batedor_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "resistance": 1,
+    "max_health": 9,
+    "speed": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 140,
+   "set": "batedor",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_batedor_legs": {
+   "name": "Calças Tachonadas",
+   "description": "Calças do conjunto Couro Batido do Batedor. Passiva — Pés Leves: A esquiva volta 6% mais rápido.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_batedor_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6
+   },
+   "use": {},
+   "family": "",
+   "price": 105,
+   "set": "batedor",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_batedor_boots": {
+   "name": "Botas do Batedor",
+   "description": "Botas do conjunto Couro Batido do Batedor. Passiva — Passo Firme: +4% de velocidade ao andar.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_batedor_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 4
+   },
+   "use": {},
+   "family": "",
+   "price": 70,
+   "set": "batedor",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_bronze_head": {
+   "name": "Elmo de Escamas",
+   "description": "Capacete do conjunto Escamas de Bronze. Passiva — Espinhos: Devolve 3% do dano recebido a quem bateu.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_bronze_head",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6
+   },
+   "use": {},
+   "family": "",
+   "price": 70,
+   "set": "bronze",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_bronze_chest": {
+   "name": "Couraça de Escamas",
+   "description": "Peitoral do conjunto Escamas de Bronze. Passiva — Espinhos: Devolve 5% do dano recebido a quem bateu.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_bronze_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "resistance": 1,
+    "max_health": 9
+   },
+   "use": {},
+   "family": "",
+   "price": 140,
+   "set": "bronze",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_bronze_legs": {
+   "name": "Saiote de Escamas",
+   "description": "Calças do conjunto Escamas de Bronze. Passiva — Espinhos: Devolve 4% do dano recebido a quem bateu.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_bronze_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6
+   },
+   "use": {},
+   "family": "",
+   "price": 105,
+   "set": "bronze",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_bronze_boots": {
+   "name": "Botas de Bronze",
+   "description": "Botas do conjunto Escamas de Bronze. Passiva — Espinhos: Devolve 3% do dano recebido a quem bateu.",
+   "rarity": "uncommon",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_bronze_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 4
+   },
+   "use": {},
+   "family": "",
+   "price": 70,
+   "set": "bronze",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_guarda_real_head": {
+   "name": "Elmo de Penacho Azul",
+   "description": "Capacete do conjunto Placas do Guarda Real. Passiva — Bloqueio: 4% de chance de anular um golpe.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_guarda_real_head",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 2,
+    "max_health": 10
+   },
+   "use": {},
+   "family": "",
+   "price": 180,
+   "set": "guarda_real",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_guarda_real_chest": {
+   "name": "Peitoral com Tabardo",
+   "description": "Peitoral do conjunto Placas do Guarda Real. Passiva — Guarda Alta: O primeiro golpe a cada 10 s tira 30% menos.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_guarda_real_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 31
+   },
+   "use": {},
+   "family": "",
+   "price": 360,
+   "set": "guarda_real",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_guarda_real_legs": {
+   "name": "Coxotes do Guarda",
+   "description": "Calças do conjunto Placas do Guarda Real. Passiva — Última Defesa: Com menos de 30% da vida, leva 10% menos de dano.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_guarda_real_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "use": {},
+   "family": "",
+   "price": 270,
+   "set": "guarda_real",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_guarda_real_boots": {
+   "name": "Grevas do Guarda",
+   "description": "Botas do conjunto Placas do Guarda Real. Passiva — Bloqueio: 3% de chance de anular um golpe.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_guarda_real_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 7
+   },
+   "use": {},
+   "family": "",
+   "price": 180,
+   "set": "guarda_real",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_geada_head": {
+   "name": "Elmo de Cristal de Gelo",
+   "description": "Capacete do conjunto Couraça de Gelo. Passiva — Toque Gelado: 8% de chance de deixar lento quem te acerta.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_geada_head",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 2,
+    "max_health": 10,
+    "max_mana": 10
+   },
+   "use": {},
+   "family": "",
+   "price": 180,
+   "set": "geada",
+   "element": "ice",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_geada_chest": {
+   "name": "Couraça de Gelo",
+   "description": "Peitoral do conjunto Couraça de Gelo. Passiva — Toque Gelado: 10% de chance de deixar lento quem te acerta.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_geada_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 16
+   },
+   "use": {},
+   "family": "",
+   "price": 360,
+   "set": "geada",
+   "element": "ice",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_geada_legs": {
+   "name": "Calças de Gelo e Pele",
+   "description": "Calças do conjunto Couraça de Gelo. Passiva — Toque Gelado: 8% de chance de deixar lento quem te acerta.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_geada_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "use": {},
+   "family": "",
+   "price": 270,
+   "set": "geada",
+   "element": "ice",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_geada_boots": {
+   "name": "Botas de Neve",
+   "description": "Botas do conjunto Couraça de Gelo. Passiva — Passo Firme: +4% de velocidade ao andar.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_geada_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 7
+   },
+   "use": {},
+   "family": "",
+   "price": 180,
+   "set": "geada",
+   "element": "ice",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_mare_head": {
+   "name": "Elmo de Conchas",
+   "description": "Capacete do conjunto Armadura da Maré. Passiva — Mente Calma: Recupera 2% da mana a cada 5 s.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_mare_head",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 2,
+    "max_health": 10,
+    "max_mana": 12
+   },
+   "use": {},
+   "family": "",
+   "price": 180,
+   "set": "mare",
+   "element": "water",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_mare_chest": {
+   "name": "Couraça de Coral",
+   "description": "Peitoral do conjunto Armadura da Maré. Passiva — Fôlego: Recupera 1,2% da vida a cada 5 s.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_mare_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 16
+   },
+   "use": {},
+   "family": "",
+   "price": 360,
+   "set": "mare",
+   "element": "water",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_mare_legs": {
+   "name": "Calças de Escama Marinha",
+   "description": "Calças do conjunto Armadura da Maré. Passiva — Fôlego: Recupera 1% da vida a cada 5 s.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_mare_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "use": {},
+   "family": "",
+   "price": 270,
+   "set": "mare",
+   "element": "water",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_mare_boots": {
+   "name": "Botas da Maré",
+   "description": "Botas do conjunto Armadura da Maré. Passiva — Mente Calma: Recupera 2% da mana a cada 5 s.",
+   "rarity": "rare",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_mare_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 7
+   },
+   "use": {},
+   "family": "",
+   "price": 180,
+   "set": "mare",
+   "element": "water",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_noite_violeta_head": {
+   "name": "Elmo Chifrudo da Noite",
+   "description": "Capacete do conjunto Placas da Noite Violeta. Passiva — Fome da Noite: Rouba 1% do dano como vida (2% à noite).",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_noite_violeta_head",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 16,
+    "attack": 2
+   },
+   "use": {},
+   "family": "",
+   "price": 460,
+   "set": "noite_violeta",
+   "element": "shadow",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_noite_violeta_chest": {
+   "name": "Peitoral Rúnico da Noite",
+   "description": "Peitoral do conjunto Placas da Noite Violeta. Passiva — Fome da Noite: Rouba 1,5% do dano como vida (3% à noite).",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_noite_violeta_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 27
+   },
+   "use": {},
+   "family": "",
+   "price": 920,
+   "set": "noite_violeta",
+   "element": "shadow",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_noite_violeta_legs": {
+   "name": "Perneiras Rúnicas",
+   "description": "Calças do conjunto Placas da Noite Violeta. Passiva — Fome da Noite: Rouba 1% do dano como vida (2% à noite).",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_noite_violeta_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 20
+   },
+   "use": {},
+   "family": "",
+   "price": 690,
+   "set": "noite_violeta",
+   "element": "shadow",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_noite_violeta_boots": {
+   "name": "Botas Rúnicas",
+   "description": "Botas do conjunto Placas da Noite Violeta. Passiva — Passo Firme: +4% de velocidade ao andar.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_noite_violeta_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "use": {},
+   "family": "",
+   "price": 460,
+   "set": "noite_violeta",
+   "element": "shadow",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_escorpiao_head": {
+   "name": "Elmo do Ferrão",
+   "description": "Capacete do conjunto Carapaça do Escorpião. Passiva — Veneno: 8% de chance de envenenar o alvo.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_escorpiao_head",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 16,
+    "crit": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 460,
+   "set": "escorpiao",
+   "element": "poison",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_escorpiao_chest": {
+   "name": "Carapaça de Quitina",
+   "description": "Peitoral do conjunto Carapaça do Escorpião. Passiva — Veneno: 10% de chance de envenenar o alvo.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_escorpiao_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 27
+   },
+   "use": {},
+   "family": "",
+   "price": 920,
+   "set": "escorpiao",
+   "element": "poison",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_escorpiao_legs": {
+   "name": "Perneiras de Quitina",
+   "description": "Calças do conjunto Carapaça do Escorpião. Passiva — Espinhos: Devolve 5% do dano recebido a quem bateu.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_escorpiao_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 20
+   },
+   "use": {},
+   "family": "",
+   "price": 690,
+   "set": "escorpiao",
+   "element": "poison",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_escorpiao_boots": {
+   "name": "Botas de Garra",
+   "description": "Botas do conjunto Carapaça do Escorpião. Passiva — Veneno: 8% de chance de envenenar o alvo.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_escorpiao_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "use": {},
+   "family": "",
+   "price": 460,
+   "set": "escorpiao",
+   "element": "poison",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_dragao_rubro_head": {
+   "name": "Elmo do Dragão",
+   "description": "Capacete do conjunto Escamas do Dragão Rubro. Passiva — Sangue Quente: Não queima.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_dragao_rubro_head",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 16,
+    "attack": 2
+   },
+   "use": {},
+   "family": "",
+   "price": 460,
+   "set": "dragao_rubro",
+   "element": "fire",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_dragao_rubro_chest": {
+   "name": "Peitoral de Escamas Rubras",
+   "description": "Peitoral do conjunto Escamas do Dragão Rubro. Passiva — Pele de Brasa: 12% de chance de queimar quem te acerta.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_dragao_rubro_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 27
+   },
+   "use": {},
+   "family": "",
+   "price": 920,
+   "set": "dragao_rubro",
+   "element": "fire",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_dragao_rubro_legs": {
+   "name": "Perneiras Rubras",
+   "description": "Calças do conjunto Escamas do Dragão Rubro. Passiva — Brasa: 8% de chance de queimar o alvo.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_dragao_rubro_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 20
+   },
+   "use": {},
+   "family": "",
+   "price": 690,
+   "set": "dragao_rubro",
+   "element": "fire",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_dragao_rubro_boots": {
+   "name": "Garras do Dragão",
+   "description": "Botas do conjunto Escamas do Dragão Rubro. Passiva — Brasa: 8% de chance de queimar o alvo.",
+   "rarity": "epic",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_dragao_rubro_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "use": {},
+   "family": "",
+   "price": 460,
+   "set": "dragao_rubro",
+   "element": "fire",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_grifo_dourado_head": {
+   "name": "Elmo Alado do Grifo",
+   "description": "Capacete do conjunto Placas do Grifo Dourado. Passiva — Pés Leves: A esquiva volta 8% mais rápido.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_grifo_dourado_head",
+   "stack": 1,
+   "stats": {
+    "defense": 5,
+    "resistance": 3,
+    "max_health": 25,
+    "crit": 4
+   },
+   "use": {},
+   "family": "",
+   "price": 1150,
+   "set": "grifo_dourado",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_grifo_dourado_chest": {
+   "name": "Peitoral do Grifo",
+   "description": "Peitoral do conjunto Placas do Grifo Dourado. Passiva — Plenitude: Com a vida cheia, +8% de dano.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_grifo_dourado_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 8,
+    "resistance": 5,
+    "max_health": 41,
+    "speed": 5
+   },
+   "use": {},
+   "family": "",
+   "price": 2300,
+   "set": "grifo_dourado",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_grifo_dourado_legs": {
+   "name": "Coxotes Dourados",
+   "description": "Calças do conjunto Placas do Grifo Dourado. Passiva — Passo Firme: +5% de velocidade ao andar.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_grifo_dourado_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 30
+   },
+   "use": {},
+   "family": "",
+   "price": 1725,
+   "set": "grifo_dourado",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_grifo_dourado_boots": {
+   "name": "Garras do Grifo",
+   "description": "Botas do conjunto Placas do Grifo Dourado. Passiva — Passo Firme: +5% de velocidade ao andar.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_grifo_dourado_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 18
+   },
+   "use": {},
+   "family": "",
+   "price": 1150,
+   "set": "grifo_dourado",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_magma_head": {
+   "name": "Elmo de Obsidiana",
+   "description": "Capacete do conjunto Armadura de Magma. Passiva — Sangue Quente: Não queima.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_magma_head",
+   "stack": 1,
+   "stats": {
+    "defense": 5,
+    "resistance": 3,
+    "max_health": 25,
+    "attack": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 1150,
+   "set": "magma",
+   "element": "fire",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_magma_chest": {
+   "name": "Couraça de Magma",
+   "description": "Peitoral do conjunto Armadura de Magma. Passiva — Erupção: 8% de chance de explodir em lava em volta ao ser atingido.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_magma_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 8,
+    "resistance": 5,
+    "max_health": 41
+   },
+   "use": {},
+   "family": "",
+   "price": 2300,
+   "set": "magma",
+   "element": "fire",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_magma_legs": {
+   "name": "Perneiras de Magma",
+   "description": "Calças do conjunto Armadura de Magma. Passiva — Pele de Brasa: 12% de chance de queimar quem te acerta.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_magma_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 30
+   },
+   "use": {},
+   "family": "",
+   "price": 1725,
+   "set": "magma",
+   "element": "fire",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_magma_boots": {
+   "name": "Botas de Lava",
+   "description": "Botas do conjunto Armadura de Magma. Passiva — Erupção: 6% de chance de explodir em lava em volta ao ser atingido.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_magma_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 18
+   },
+   "use": {},
+   "family": "",
+   "price": 1150,
+   "set": "magma",
+   "element": "fire",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_bosque_ancestral_head": {
+   "name": "Elmo de Galhos",
+   "description": "Capacete do conjunto Couraça do Bosque Ancestral. Passiva — Fôlego: Recupera 1,2% da vida a cada 5 s.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_bosque_ancestral_head",
+   "stack": 1,
+   "stats": {
+    "defense": 5,
+    "resistance": 3,
+    "max_health": 25,
+    "hp_regen": 2
+   },
+   "use": {},
+   "family": "",
+   "price": 1150,
+   "set": "bosque_ancestral",
+   "element": "nature",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_bosque_ancestral_chest": {
+   "name": "Couraça de Casca",
+   "description": "Peitoral do conjunto Couraça do Bosque Ancestral. Passiva — Fôlego: Recupera 1,5% da vida a cada 5 s.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_bosque_ancestral_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 8,
+    "resistance": 5,
+    "max_health": 66
+   },
+   "use": {},
+   "family": "",
+   "price": 2300,
+   "set": "bosque_ancestral",
+   "element": "nature",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_bosque_ancestral_legs": {
+   "name": "Saiote de Folhas",
+   "description": "Calças do conjunto Couraça do Bosque Ancestral. Passiva — Espinhos: Devolve 6% do dano recebido a quem bateu.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_bosque_ancestral_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 30
+   },
+   "use": {},
+   "family": "",
+   "price": 1725,
+   "set": "bosque_ancestral",
+   "element": "nature",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_bosque_ancestral_boots": {
+   "name": "Botas de Raiz",
+   "description": "Botas do conjunto Couraça do Bosque Ancestral. Passiva — Última Defesa: Com menos de 30% da vida, leva 12% menos de dano.",
+   "rarity": "legendary",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_bosque_ancestral_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 18
+   },
+   "use": {},
+   "family": "",
+   "price": 1150,
+   "set": "bosque_ancestral",
+   "element": "nature",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_espelho_head": {
+   "name": "Elmo Espelhado",
+   "description": "Capacete do conjunto Armadura Espelhada. Passiva — Espinhos: Devolve 6% do dano recebido a quem bateu.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_espelho_head",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 31,
+    "skill": 4
+   },
+   "use": {},
+   "family": "",
+   "price": 2900,
+   "set": "espelho",
+   "element": "shadow",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_espelho_chest": {
+   "name": "Peitoral Espelhado",
+   "description": "Peitoral do conjunto Armadura Espelhada. Passiva — Espinhos: Devolve 8% do dano recebido a quem bateu.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_espelho_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 9,
+    "resistance": 6,
+    "max_health": 50
+   },
+   "use": {},
+   "family": "",
+   "price": 5800,
+   "set": "espelho",
+   "element": "shadow",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_espelho_legs": {
+   "name": "Coxotes Espelhados",
+   "description": "Calças do conjunto Armadura Espelhada. Passiva — Bloqueio: 5% de chance de anular um golpe.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_espelho_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 36
+   },
+   "use": {},
+   "family": "",
+   "price": 4350,
+   "set": "espelho",
+   "element": "shadow",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_espelho_boots": {
+   "name": "Botas Espelhadas",
+   "description": "Botas do conjunto Armadura Espelhada. Passiva — Espinhos: Devolve 6% do dano recebido a quem bateu.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_espelho_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 22
+   },
+   "use": {},
+   "family": "",
+   "price": 2900,
+   "set": "espelho",
+   "element": "shadow",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_sem_sombra_head": {
+   "name": "Elmo Sem Sombra",
+   "description": "Capacete do conjunto Armadura Sem Sombra. Passiva — Pés Leves: A esquiva volta 10% mais rápido.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_sem_sombra_head",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 31,
+    "crit": 5
+   },
+   "use": {},
+   "family": "",
+   "price": 2900,
+   "set": "sem_sombra",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_sem_sombra_chest": {
+   "name": "Peitoral Sem Sombra",
+   "description": "Peitoral do conjunto Armadura Sem Sombra. Passiva — Plenitude: Com a vida cheia, +10% de dano.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_sem_sombra_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 9,
+    "resistance": 6,
+    "max_health": 50,
+    "crit_dmg": 15
+   },
+   "use": {},
+   "family": "",
+   "price": 5800,
+   "set": "sem_sombra",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_sem_sombra_legs": {
+   "name": "Calças Sem Sombra",
+   "description": "Calças do conjunto Armadura Sem Sombra. Passiva — Pés Leves: A esquiva volta 10% mais rápido.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_sem_sombra_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 36
+   },
+   "use": {},
+   "family": "",
+   "price": 4350,
+   "set": "sem_sombra",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_sem_sombra_boots": {
+   "name": "Botas Sem Sombra",
+   "description": "Botas do conjunto Armadura Sem Sombra. Passiva — Passo Firme: +6% de velocidade ao andar.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_sem_sombra_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 22
+   },
+   "use": {},
+   "family": "",
+   "price": 2900,
+   "set": "sem_sombra",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_andarilho_head": {
+   "name": "Gorro Remendado",
+   "description": "Capacete do conjunto Vestes do Andarilho Perdido. Passiva — Bolso Fundo: +8% de moedas.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_andarilho_head",
+   "stack": 1,
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 31,
+    "haste": 4
+   },
+   "use": {},
+   "family": "",
+   "price": 2900,
+   "set": "andarilho",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_andarilho_chest": {
+   "name": "Colete Remendado",
+   "description": "Peitoral do conjunto Vestes do Andarilho Perdido. Passiva — Aprendiz: +6% de experiência.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_andarilho_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 9,
+    "resistance": 6,
+    "max_health": 50
+   },
+   "use": {},
+   "family": "",
+   "price": 5800,
+   "set": "andarilho",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_andarilho_legs": {
+   "name": "Calças Remendadas",
+   "description": "Calças do conjunto Vestes do Andarilho Perdido. Passiva — Bolso Fundo: +8% de moedas.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_andarilho_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 36
+   },
+   "use": {},
+   "family": "",
+   "price": 4350,
+   "set": "andarilho",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_andarilho_boots": {
+   "name": "Botas Desparelhadas",
+   "description": "Botas do conjunto Vestes do Andarilho Perdido. Passiva — Passo Firme: +6% de velocidade ao andar.",
+   "rarity": "unique",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_andarilho_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 22
+   },
+   "use": {},
+   "family": "",
+   "price": 2900,
+   "set": "andarilho",
+   "element": "",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_aurora_head": {
+   "name": "Elmo Alado da Aurora",
+   "description": "Capacete do conjunto Armadura da Aurora. Passiva — Fôlego: Recupera 1,5% da vida a cada 5 s.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_aurora_head",
+   "stack": 1,
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 40,
+    "skill": 5
+   },
+   "use": {},
+   "family": "",
+   "price": 7000,
+   "set": "aurora",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_aurora_chest": {
+   "name": "Peitoral da Aurora",
+   "description": "Peitoral do conjunto Armadura da Aurora. Passiva — Última Defesa: Com menos de 30% da vida, leva 15% menos de dano.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_aurora_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 12,
+    "resistance": 8,
+    "max_health": 105
+   },
+   "use": {},
+   "family": "",
+   "price": 14000,
+   "set": "aurora",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_aurora_legs": {
+   "name": "Saiote de Penas",
+   "description": "Calças do conjunto Armadura da Aurora. Passiva — Fôlego: Recupera 1,5% da vida a cada 5 s.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_aurora_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 8,
+    "resistance": 6,
+    "max_health": 47
+   },
+   "use": {},
+   "family": "",
+   "price": 10500,
+   "set": "aurora",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_aurora_boots": {
+   "name": "Botas Aladas",
+   "description": "Botas do conjunto Armadura da Aurora. Passiva — Passo Firme: +7% de velocidade ao andar.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_aurora_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 5,
+    "resistance": 4,
+    "max_health": 29
+   },
+   "use": {},
+   "family": "",
+   "price": 7000,
+   "set": "aurora",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_arvore_mundo_head": {
+   "name": "Elmo de Madeira Viva",
+   "description": "Capacete do conjunto Couraça da Árvore do Mundo. Passiva — Fôlego: Recupera 1,5% da vida a cada 5 s.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_arvore_mundo_head",
+   "stack": 1,
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 40,
+    "hp_regen": 3
+   },
+   "use": {},
+   "family": "",
+   "price": 7000,
+   "set": "arvore_mundo",
+   "element": "nature",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_arvore_mundo_chest": {
+   "name": "Couraça da Árvore",
+   "description": "Peitoral do conjunto Couraça da Árvore do Mundo. Passiva — Abrigo: Cura você e os aliados a até 9 m em 0,4% da vida por segundo.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_arvore_mundo_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 12,
+    "resistance": 8,
+    "max_health": 105
+   },
+   "use": {},
+   "family": "",
+   "price": 14000,
+   "set": "arvore_mundo",
+   "element": "nature",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_arvore_mundo_legs": {
+   "name": "Perneiras de Raízes",
+   "description": "Calças do conjunto Couraça da Árvore do Mundo. Passiva — Espinhos: Devolve 8% do dano recebido a quem bateu.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_arvore_mundo_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 8,
+    "resistance": 6,
+    "max_health": 47
+   },
+   "use": {},
+   "family": "",
+   "price": 10500,
+   "set": "arvore_mundo",
+   "element": "nature",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_arvore_mundo_boots": {
+   "name": "Botas de Raiz Antiga",
+   "description": "Botas do conjunto Couraça da Árvore do Mundo. Passiva — Última Defesa: Com menos de 30% da vida, leva 15% menos de dano.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_arvore_mundo_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 5,
+    "resistance": 4,
+    "max_health": 29
+   },
+   "use": {},
+   "family": "",
+   "price": 7000,
+   "set": "arvore_mundo",
+   "element": "nature",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_estrelas_head": {
+   "name": "Elmo Estelar",
+   "description": "Capacete do conjunto Manto das Estrelas. Passiva — Mente Calma: Recupera 3% da mana a cada 5 s.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "head",
+   "icon": "armor_estrelas_head",
+   "stack": 1,
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 40,
+    "skill": 6
+   },
+   "use": {},
+   "family": "",
+   "price": 7000,
+   "set": "estrelas",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_estrelas_chest": {
+   "name": "Peitoral das Constelações",
+   "description": "Peitoral do conjunto Manto das Estrelas. Passiva — Plenitude: Com a vida cheia, +12% de dano.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "chest",
+   "icon": "armor_estrelas_chest",
+   "stack": 1,
+   "stats": {
+    "defense": 12,
+    "resistance": 8,
+    "max_health": 65,
+    "crit": 6
+   },
+   "use": {},
+   "family": "",
+   "price": 14000,
+   "set": "estrelas",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_estrelas_legs": {
+   "name": "Coxotes Estelares",
+   "description": "Calças do conjunto Manto das Estrelas. Passiva — Pés Leves: A esquiva volta 10% mais rápido.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "legs",
+   "icon": "armor_estrelas_legs",
+   "stack": 1,
+   "stats": {
+    "defense": 8,
+    "resistance": 6,
+    "max_health": 47
+   },
+   "use": {},
+   "family": "",
+   "price": 10500,
+   "set": "estrelas",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  },
+  "arm_estrelas_boots": {
+   "name": "Botas Estelares",
+   "description": "Botas do conjunto Manto das Estrelas. Passiva — Passo Firme: +7% de velocidade ao andar.",
+   "rarity": "divine",
+   "type": "armor",
+   "slot": "boots",
+   "icon": "armor_estrelas_boots",
+   "stack": 1,
+   "stats": {
+    "defense": 5,
+    "resistance": 4,
+    "max_health": 29
+   },
+   "use": {},
+   "family": "",
+   "price": 7000,
+   "set": "estrelas",
+   "element": "holy",
+   "effect_text": "",
+   "trait": ""
+  }
+ },
+ "sets": {
+  "lobo": {
+   "name": "Couro de Lobo",
+   "pieces": [
+    "wolf_head",
+    "wolf_chest",
+    "wolf_legs",
+    "wolf_boots"
+   ],
+   "bonus2": {
+    "haste": 5
+   },
+   "bonus4": {
+    "crit": 5,
+    "speed": 6
+   },
+   "text": "Caçador: 2 peças +5% de pressa; 4 peças +5% de crítico e mais rápido."
+  },
+  "guarda": {
+   "name": "Guarda da Vila",
+   "pieces": [
+    "guard_head",
+    "guard_chest",
+    "guard_legs",
+    "guard_boots"
+   ],
+   "bonus2": {
+    "defense": 3
+   },
+   "bonus4": {
+    "resistance": 10,
+    "max_health": 25
+   },
+   "text": "Sentinela: 2 peças +3 de defesa; 4 peças +10 de resistência e +25 de vida."
+  },
+  "casca": {
+   "name": "Casca Viva",
+   "pieces": [
+    "bark_head",
+    "bark_chest",
+    "bark_legs",
+    "bark_boots"
+   ],
+   "bonus2": {
+    "hp_regen": 4
+   },
+   "bonus4": {
+    "hp_regen": 8,
+    "max_mana": 25
+   },
+   "text": "Floresta: 2 peças regeneram vida; 4 peças regeneram mais e +25 de mana."
+  },
+  "cratera": {
+   "name": "Cratera",
+   "pieces": [
+    "crater_head",
+    "crater_chest",
+    "crater_legs",
+    "crater_boots"
+   ],
+   "bonus2": {
+    "resistance": 10
+   },
+   "bonus4": {
+    "defense": 6,
+    "max_health": 50
+   },
+   "text": "Lava: 2 peças +10 de resistência; 4 peças +6 de defesa e +50 de vida."
+  },
+  "dunas": {
+   "name": "Andarilho das Dunas",
+   "pieces": [
+    "dunas_head",
+    "dunas_chest",
+    "dunas_legs",
+    "dunas_boots"
+   ],
+   "bonus2": {
+    "speed": 6
+   },
+   "bonus4": {
+    "haste": 10,
+    "resistance": 8
+   },
+   "text": "Deserto: 2 peças mais rápido; 4 peças +10% de pressa e +8 de resistência."
+  },
+  "sombra": {
+   "name": "Sombra Ligeira",
+   "pieces": [
+    "sombra_head",
+    "sombra_chest",
+    "sombra_legs",
+    "sombra_boots"
+   ],
+   "bonus2": {
+    "crit": 6
+   },
+   "bonus4": {
+    "crit_dmg": 25,
+    "haste": 8
+   },
+   "text": "Assassino: 2 peças +6% de crítico; 4 peças críticos +25% mais fortes e +8% de pressa."
+  },
+  "sabio": {
+   "name": "Sábio Rúnico",
+   "pieces": [
+    "sabio_head",
+    "sabio_chest",
+    "sabio_legs",
+    "sabio_boots"
+   ],
+   "bonus2": {
+    "max_mana": 30,
+    "skill": 4
+   },
+   "bonus4": {
+    "skill": 10,
+    "haste": 12
+   },
+   "text": "Arcano: 2 peças +30 de mana e poder de magia; 4 peças muito mais poder e recargas menores."
+  },
+  "azhur": {
+   "name": "Placas de Azhûr",
+   "pieces": [
+    "azhur_head",
+    "azhur_chest",
+    "azhur_legs",
+    "azhur_boots"
+   ],
+   "bonus2": {
+    "defense": 8,
+    "max_health": 40
+   },
+   "bonus4": {
+    "resistance": 25,
+    "hp_regen": 6,
+    "attack": 6
+   },
+   "text": "Colosso: 2 peças muita defesa e vida; 4 peças resistência, regeneração e ataque."
+  },
+  "yggdrasil": {
+   "name": "Guardião de Yggdrasil",
+   "pieces": [
+    "yggdrasil_head",
+    "yggdrasil_chest",
+    "yggdrasil_legs",
+    "yggdrasil_boots"
+   ],
+   "bonus2": {
+    "hp_regen": 12,
+    "resistance": 15
+   },
+   "bonus4": {
+    "max_health": 80,
+    "max_mana": 40,
+    "haste": 15
+   },
+   "text": "Árvore do mundo: 2 peças regeneração e resistência; 4 peças vida, mana e pressa."
+  },
+  "viajante": {
+   "name": "Couro do Viajante",
+   "pieces": [
+    "arm_viajante_head",
+    "arm_viajante_chest",
+    "arm_viajante_legs",
+    "arm_viajante_boots"
+   ],
+   "bonus2": {
+    "haste": 3
+   },
+   "bonus4": {},
+   "text": "2 peças: +3 % de recarga. 4 peças — Pé na Estrada: +6% de velocidade ao andar."
+  },
+  "recruta": {
+   "name": "Gibão do Recruta",
+   "pieces": [
+    "arm_recruta_head",
+    "arm_recruta_chest",
+    "arm_recruta_legs",
+    "arm_recruta_boots"
+   ],
+   "bonus2": {
+    "defense": 1,
+    "max_health": 10
+   },
+   "bonus4": {},
+   "text": "2 peças: +1 de defesa, +10 de vida. 4 peças — Disciplina: o primeiro golpe a cada 10 s tira 50% menos."
+  },
+  "cacador": {
+   "name": "Peles do Caçador",
+   "pieces": [
+    "arm_cacador_head",
+    "arm_cacador_chest",
+    "arm_cacador_legs",
+    "arm_cacador_boots"
+   ],
+   "bonus2": {
+    "crit": 2
+   },
+   "bonus4": {},
+   "text": "2 peças: +2 % de crítico. 4 peças — Instinto do Caçador: +12% de dano contra feras."
+  },
+  "malha_ferro": {
+   "name": "Malha de Ferro",
+   "pieces": [
+    "arm_malha_ferro_head",
+    "arm_malha_ferro_chest",
+    "arm_malha_ferro_legs",
+    "arm_malha_ferro_boots"
+   ],
+   "bonus2": {
+    "defense": 2,
+    "resistance": 2
+   },
+   "bonus4": {},
+   "text": "2 peças: +2 de defesa, +2 de resistência. 4 peças — Muralha de Ferro: 8% de chance de anular um golpe."
+  },
+  "batedor": {
+   "name": "Couro Batido do Batedor",
+   "pieces": [
+    "arm_batedor_head",
+    "arm_batedor_chest",
+    "arm_batedor_legs",
+    "arm_batedor_boots"
+   ],
+   "bonus2": {
+    "crit": 3,
+    "speed": 3
+   },
+   "bonus4": {},
+   "text": "2 peças: +3 % de crítico, +3 % de velocidade de ataque. 4 peças — Pés Leves: a esquiva volta 20% mais rápido."
+  },
+  "bronze": {
+   "name": "Escamas de Bronze",
+   "pieces": [
+    "arm_bronze_head",
+    "arm_bronze_chest",
+    "arm_bronze_legs",
+    "arm_bronze_boots"
+   ],
+   "bonus2": {
+    "defense": 2,
+    "max_health": 15
+   },
+   "bonus4": {},
+   "text": "2 peças: +2 de defesa, +15 de vida. 4 peças — Escamas Afiadas: devolve 12% do dano recebido a quem bateu."
+  },
+  "guarda_real": {
+   "name": "Placas do Guarda Real",
+   "pieces": [
+    "arm_guarda_real_head",
+    "arm_guarda_real_chest",
+    "arm_guarda_real_legs",
+    "arm_guarda_real_boots"
+   ],
+   "bonus2": {
+    "defense": 3,
+    "resistance": 3
+   },
+   "bonus4": {},
+   "text": "2 peças: +3 de defesa, +3 de resistência. 4 peças — Juramento do Guarda: com menos de 30% da vida, leva 25% menos de dano."
+  },
+  "geada": {
+   "name": "Couraça de Gelo",
+   "pieces": [
+    "arm_geada_head",
+    "arm_geada_chest",
+    "arm_geada_legs",
+    "arm_geada_boots"
+   ],
+   "bonus2": {
+    "resistance": 5
+   },
+   "bonus4": {},
+   "text": "2 peças: +5 de resistência. 4 peças — Coração Gelado: 12% de chance de congelar quem te acerta por 1,2 s."
+  },
+  "mare": {
+   "name": "Armadura da Maré",
+   "pieces": [
+    "arm_mare_head",
+    "arm_mare_chest",
+    "arm_mare_legs",
+    "arm_mare_boots"
+   ],
+   "bonus2": {
+    "hp_regen": 2,
+    "max_mana": 10
+   },
+   "bonus4": {},
+   "text": "2 peças: +2 de regeneração, +10 de mana. 4 peças — Maré Cheia: recupera 2,5% da vida a cada 5 s."
+  },
+  "noite_violeta": {
+   "name": "Placas da Noite Violeta",
+   "pieces": [
+    "arm_noite_violeta_head",
+    "arm_noite_violeta_chest",
+    "arm_noite_violeta_legs",
+    "arm_noite_violeta_boots"
+   ],
+   "bonus2": {
+    "attack": 3,
+    "lifesteal": 2
+   },
+   "bonus4": {},
+   "text": "2 peças: +3 de ataque, +2 % de roubo de vida. 4 peças — Fome da Noite: rouba 5% do dano como vida (10% à noite)."
+  },
+  "escorpiao": {
+   "name": "Carapaça do Escorpião",
+   "pieces": [
+    "arm_escorpiao_head",
+    "arm_escorpiao_chest",
+    "arm_escorpiao_legs",
+    "arm_escorpiao_boots"
+   ],
+   "bonus2": {
+    "crit": 4,
+    "attack": 2
+   },
+   "bonus4": {},
+   "text": "2 peças: +4 % de crítico, +2 de ataque. 4 peças — Veneno do Deserto: 35% de chance de envenenar o alvo."
+  },
+  "dragao_rubro": {
+   "name": "Escamas do Dragão Rubro",
+   "pieces": [
+    "arm_dragao_rubro_head",
+    "arm_dragao_rubro_chest",
+    "arm_dragao_rubro_legs",
+    "arm_dragao_rubro_boots"
+   ],
+   "bonus2": {
+    "attack": 3,
+    "max_health": 20
+   },
+   "bonus4": {},
+   "text": "2 peças: +3 de ataque, +20 de vida. 4 peças — Sangue de Dragão: 35% de chance de queimar o alvo."
+  },
+  "grifo_dourado": {
+   "name": "Placas do Grifo Dourado",
+   "pieces": [
+    "arm_grifo_dourado_head",
+    "arm_grifo_dourado_chest",
+    "arm_grifo_dourado_legs",
+    "arm_grifo_dourado_boots"
+   ],
+   "bonus2": {
+    "crit": 5,
+    "speed": 6
+   },
+   "bonus4": {},
+   "text": "2 peças: +5 % de crítico, +6 % de velocidade de ataque. 4 peças — Voo do Grifo: a esquiva volta 25% mais rápido."
+  },
+  "magma": {
+   "name": "Armadura de Magma",
+   "pieces": [
+    "arm_magma_head",
+    "arm_magma_chest",
+    "arm_magma_legs",
+    "arm_magma_boots"
+   ],
+   "bonus2": {
+    "attack": 4,
+    "resistance": 6
+   },
+   "bonus4": {},
+   "text": "2 peças: +4 de ataque, +6 de resistência. 4 peças — Erupção: 20% de chance de explodir em lava em volta ao ser atingido."
+  },
+  "bosque_ancestral": {
+   "name": "Couraça do Bosque Ancestral",
+   "pieces": [
+    "arm_bosque_ancestral_head",
+    "arm_bosque_ancestral_chest",
+    "arm_bosque_ancestral_legs",
+    "arm_bosque_ancestral_boots"
+   ],
+   "bonus2": {
+    "hp_regen": 3,
+    "max_health": 30
+   },
+   "bonus4": {},
+   "text": "2 peças: +3 de regeneração, +30 de vida. 4 peças — Seiva Ancestral: recupera 3,5% da vida a cada 5 s."
+  },
+  "espelho": {
+   "name": "Armadura Espelhada",
+   "pieces": [
+    "arm_espelho_head",
+    "arm_espelho_chest",
+    "arm_espelho_legs",
+    "arm_espelho_boots"
+   ],
+   "bonus2": {
+    "resistance": 8,
+    "skill": 4
+   },
+   "bonus4": {},
+   "text": "2 peças: +8 de resistência, +4 de poder de magia. 4 peças — Reflexo Perfeito: devolve 25% do dano recebido a quem bateu."
+  },
+  "sem_sombra": {
+   "name": "Armadura Sem Sombra",
+   "pieces": [
+    "arm_sem_sombra_head",
+    "arm_sem_sombra_chest",
+    "arm_sem_sombra_legs",
+    "arm_sem_sombra_boots"
+   ],
+   "bonus2": {
+    "crit": 6,
+    "crit_dmg": 20
+   },
+   "bonus4": {},
+   "text": "2 peças: +6 % de crítico, +20 % de dano crítico. 4 peças — Golpe Sem Sombra: depois de esquivar, o próximo golpe em 3 s é crítico."
+  },
+  "andarilho": {
+   "name": "Vestes do Andarilho Perdido",
+   "pieces": [
+    "arm_andarilho_head",
+    "arm_andarilho_chest",
+    "arm_andarilho_legs",
+    "arm_andarilho_boots"
+   ],
+   "bonus2": {
+    "haste": 6,
+    "max_health": 30
+   },
+   "bonus4": {},
+   "text": "2 peças: +6 % de recarga, +30 de vida. 4 peças — Sorte de Viajante: +15% de experiência."
+  },
+  "aurora": {
+   "name": "Armadura da Aurora",
+   "pieces": [
+    "arm_aurora_head",
+    "arm_aurora_chest",
+    "arm_aurora_legs",
+    "arm_aurora_boots"
+   ],
+   "bonus2": {
+    "max_health": 50,
+    "resistance": 8
+   },
+   "bonus4": {},
+   "text": "2 peças: +50 de vida, +8 de resistência. 4 peças — Renascer na Aurora: ao cair, levanta com 30% da vida (a cada 5 min)."
+  },
+  "arvore_mundo": {
+   "name": "Couraça da Árvore do Mundo",
+   "pieces": [
+    "arm_arvore_mundo_head",
+    "arm_arvore_mundo_chest",
+    "arm_arvore_mundo_legs",
+    "arm_arvore_mundo_boots"
+   ],
+   "bonus2": {
+    "hp_regen": 4,
+    "max_health": 50
+   },
+   "bonus4": {},
+   "text": "2 peças: +4 de regeneração, +50 de vida. 4 peças — Abrigo da Árvore: cura você e os aliados a até 10 m em 1,2% da vida por segundo."
+  },
+  "estrelas": {
+   "name": "Manto das Estrelas",
+   "pieces": [
+    "arm_estrelas_head",
+    "arm_estrelas_chest",
+    "arm_estrelas_legs",
+    "arm_estrelas_boots"
+   ],
+   "bonus2": {
+    "crit": 8,
+    "skill": 8
+   },
+   "bonus4": {},
+   "text": "2 peças: +8 % de crítico, +8 de poder de magia. 4 peças — Chuva de Estrelas: a cada 8 s uma estrela cai num inimigo a até 16 m."
+  }
+ },
+ "loot": {
+  "runecolossus": [
+   {
+    "item": "juramento_celeste",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "tridente_do_primeiro_selo",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "estrela_guia",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "voz_do_santuario",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "genese",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "asas_da_aurora",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "arco_da_arvore_do_mundo",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "arco_das_estrelas",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "arco_do_primeiro_rio",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "arco_do_vendaval_eterno",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "arm_noite_violeta_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_noite_violeta_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_noite_violeta_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_noite_violeta_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_escorpiao_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_escorpiao_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_escorpiao_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_escorpiao_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_dragao_rubro_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_dragao_rubro_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_dragao_rubro_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_dragao_rubro_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_grifo_dourado_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_grifo_dourado_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_grifo_dourado_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_grifo_dourado_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_magma_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_magma_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_magma_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_magma_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_bosque_ancestral_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_bosque_ancestral_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_bosque_ancestral_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_bosque_ancestral_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_espelho_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_espelho_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_espelho_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_espelho_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_sem_sombra_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_sem_sombra_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_sem_sombra_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_sem_sombra_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_andarilho_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_andarilho_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_andarilho_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_andarilho_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_aurora_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_aurora_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_aurora_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_aurora_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_arvore_mundo_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_arvore_mundo_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_arvore_mundo_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_arvore_mundo_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_estrelas_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_estrelas_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_estrelas_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_estrelas_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   }
+  ],
+  "golem": [
+   {
+    "item": "juramento_celeste",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "tridente_do_primeiro_selo",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "estrela_guia",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "voz_do_santuario",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "genese",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "asas_da_aurora",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "arco_da_arvore_do_mundo",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "arco_das_estrelas",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "arco_do_primeiro_rio",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "arco_do_vendaval_eterno",
+    "min": 1,
+    "max": 1,
+    "chance": 0.02
+   },
+   {
+    "item": "arm_guarda_real_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_guarda_real_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_guarda_real_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_guarda_real_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_geada_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_geada_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_geada_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_geada_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_mare_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_mare_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_mare_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_mare_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_noite_violeta_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_noite_violeta_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_noite_violeta_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_noite_violeta_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_escorpiao_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_escorpiao_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_escorpiao_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_escorpiao_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_dragao_rubro_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_dragao_rubro_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_dragao_rubro_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_dragao_rubro_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_grifo_dourado_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_grifo_dourado_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_grifo_dourado_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_grifo_dourado_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_magma_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_magma_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_magma_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_magma_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_bosque_ancestral_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_bosque_ancestral_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_bosque_ancestral_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_bosque_ancestral_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_espelho_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_espelho_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_espelho_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_espelho_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_sem_sombra_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_sem_sombra_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_sem_sombra_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_sem_sombra_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_andarilho_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_andarilho_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_andarilho_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_andarilho_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_aurora_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_aurora_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_aurora_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_aurora_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_arvore_mundo_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_arvore_mundo_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_arvore_mundo_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_arvore_mundo_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_estrelas_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_estrelas_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_estrelas_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_estrelas_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   }
+  ],
+  "bandit": [
+   {
+    "item": "arm_guarda_real_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_noite_violeta_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_noite_violeta_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_noite_violeta_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_noite_violeta_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_escorpiao_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_escorpiao_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_escorpiao_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_escorpiao_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_dragao_rubro_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_dragao_rubro_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_dragao_rubro_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_dragao_rubro_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   }
+  ],
+  "goblin": [
+   {
+    "item": "arm_guarda_real_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   }
+  ]
+ }
+}

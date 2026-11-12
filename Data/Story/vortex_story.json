@@ -1,0 +1,731 @@
+{
+ "_doc": "História do Vortex (Docs/03_Mundo/HISTORIA_DO_MUNDO.md). Tools/BuildStoryData.py junta isto às missões e diálogos do Godot em Data/Story/story.json. Missões: o mesmo formato do Godot (giver, requires, objectives kill/collect/visit/talk/boss, offer/progress/done, rewards) mais chapter (capítulo da jornada), main (linha principal), auto (entra sozinha no diário quando os requisitos se cumprem) e region (missões fora do vale ficam travadas até o continente chegar). visit: [x, z] em metros, como no Godot.",
+ "chapters": [
+  {
+   "id": 1,
+   "title": "O Despertar",
+   "region": "Valdora",
+   "text": "Uma estrela caiu sobre o primeiro Selo e Azhûr acordou queimando. Os cristais do vale cantam à noite. Você atravessou o Vórtice e acordou no Estádio: é hora de descobrir por quê."
+  },
+  {
+   "id": 2,
+   "title": "Ouro e Enxame",
+   "region": "Aurivale",
+   "text": "As colmeias douradas enlouqueceram. Vespera, a Rainha do Enxame, guarda o segundo Selo."
+  },
+  {
+   "id": 3,
+   "title": "O Coração da Mata",
+   "region": "Verdalume",
+   "text": "A raiz da Yggdrasil apodrece sob Verdalume. Thorun, o Titã das Raízes, ataca quem entra."
+  },
+  {
+   "id": 4,
+   "title": "Areia de Vidro",
+   "region": "Solcânion",
+   "text": "Nas dunas de vidro, Seryth mergulha na areia e caça caravanas."
+  },
+  {
+   "id": 5,
+   "title": "O Brejo Que Respira",
+   "region": "Lodonegro",
+   "text": "O pântano cresce sobre as estradas. A Mãe-Lodo dorme um sono ruim."
+  },
+  {
+   "id": 6,
+   "title": "O Trovão sem Nuvem",
+   "region": "Picos de Raikor",
+   "text": "Raios caem do céu limpo. Raikor, a Ave-Trovão, não reconhece mais ninguém."
+  },
+  {
+   "id": 7,
+   "title": "A Forja do Vórtice",
+   "region": "Brasafenda",
+   "text": "Nas rachaduras de lava, o Forjador Rubro faz armas para algo que não é deste mundo."
+  },
+  {
+   "id": 8,
+   "title": "A Luz Parada",
+   "region": "Nivaluz",
+   "text": "A aurora do norte parou. Aurora, a Que Congela a Luz, guarda o oitavo Selo."
+  },
+  {
+   "id": 9,
+   "title": "O Rei Sem Sombra",
+   "region": "Morthúria",
+   "text": "O primeiro a ouvir o Vórtice quer abri-lo de vez."
+  },
+  {
+   "id": 10,
+   "title": "O Vórtice",
+   "region": "Yggdrasil",
+   "text": "Com os nove Selos acesos, só resta subir a árvore do mundo."
+  }
+ ],
+ "regions": {
+  "Valdora": {
+   "levels": [
+    1,
+    15
+   ],
+   "guardian": "Azhûr, o Colosso da Caldeira",
+   "text": "Campos, lagos e mata em volta do Santuário. A Caldeira do Meteoro fica a leste."
+  },
+  "Aurivale": {
+   "levels": [
+    10,
+    22
+   ],
+   "guardian": "Vespera, a Rainha do Enxame",
+   "text": "Planícies douradas de trigo e colmeias."
+  },
+  "Verdalume": {
+   "levels": [
+    15,
+    30
+   ],
+   "guardian": "Thorun, o Titã das Raízes",
+   "text": "Mata fechada e luminosa sobre a raiz da Yggdrasil."
+  },
+  "Solcânion": {
+   "levels": [
+    20,
+    35
+   ],
+   "guardian": "Seryth, o Escorpião de Vidro",
+   "text": "Dunas e cânions de vidro."
+  },
+  "Lodonegro": {
+   "levels": [
+    25,
+    40
+   ],
+   "guardian": "A Mãe-Lodo",
+   "text": "Pântano escuro, névoa e sapos-gigantes."
+  },
+  "Picos de Raikor": {
+   "levels": [
+    30,
+    45
+   ],
+   "guardian": "Raikor, a Ave-Trovão",
+   "text": "Montanhas de tempestade."
+  },
+  "Brasafenda": {
+   "levels": [
+    40,
+    55
+   ],
+   "guardian": "O Forjador Rubro",
+   "text": "Rachaduras de lava e o vulcão."
+  },
+  "Nivaluz": {
+   "levels": [
+    45,
+    60
+   ],
+   "guardian": "Aurora, a Que Congela a Luz",
+   "text": "Gelo eterno e auroras."
+  },
+  "Morthúria": {
+   "levels": [
+    55,
+    70
+   ],
+   "guardian": "O Rei Sem Sombra",
+   "text": "Terra dos mortos-vivos e das ruínas."
+  }
+ },
+ "quests": [
+  {
+   "id": "v_despertar",
+   "giver": "rhea",
+   "title": "O Despertado",
+   "chapter": 1,
+   "main": true,
+   "auto": true,
+   "offer": "Você saiu do Estádio com uma arma na mão e nenhuma lembrança. Não é o primeiro. Venha falar comigo na praça, perto da fonte.",
+   "progress": "A Capitã Rhea espera na praça do Santuário, ao lado da Fonte de Jade.",
+   "done": "Então é verdade: o Vórtice voltou a mandar gente. Você chegou no pior momento, Desperto. Ou no melhor. O vale precisa de braços que não tremam.",
+   "objectives": [
+    {
+     "type": "talk",
+     "target": "rhea",
+     "text": "Fale com a Capitã Rhea na praça"
+    }
+   ],
+   "rewards": {
+    "xp": 40,
+    "coins": 20,
+    "items": [
+     [
+      "potion_red",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "v_cristais",
+   "giver": "ilsa",
+   "title": "Os Cristais que Cantam",
+   "chapter": 1,
+   "main": true,
+   "requires": [
+    "rhea_recruta"
+   ],
+   "offer": "Você sentiu? À noite os cristais do vale zumbem, como se alguém puxasse uma corda lá em cima. A seiva da Fonte está diminuindo. Traga gel das gotas de jade: o gel guarda seiva, e eu quero ver para onde ela está indo.",
+   "progress": "Quatro porções de gel de jade. As gotas ficam nas campinas em volta da vila.",
+   "done": "Olhe... o gel está vazio por dentro. A seiva foi sugada. Isto não é doença do vale: é o céu puxando a vida da terra. A Nicolly mapeia os cristais. Ela precisa ver isto.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "gel_jade",
+     "count": 4,
+     "text": "Junte gel de jade"
+    }
+   ],
+   "rewards": {
+    "xp": 120,
+    "coins": 60,
+    "items": [
+     [
+      "potion_green",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "v_mapa_cristais",
+   "giver": "nicolly",
+   "title": "Onde a Seiva Some",
+   "chapter": 1,
+   "main": true,
+   "requires": [
+    "v_cristais"
+   ],
+   "offer": "A Ilsa me mandou o gel. Eu marquei três cristais que brilham mais forte que os outros: um no lago do oeste, um na clareira ao sul e um perto da trilha do leste. Vá até eles. Quero saber se apontam todos para o mesmo lugar.",
+   "progress": "Os três cristais: o lago do oeste, a clareira do sul e a trilha do leste. Ande até perto de cada um.",
+   "done": "Todos apontam para o leste, para a Caldeira. E para cima. Há vinte anos uma estrela caiu ali... e se não foi uma estrela? Leve isto à Capitã. Ela vai querer ver com os próprios olhos.",
+   "objectives": [
+    {
+     "type": "visit",
+     "target": [
+      -92,
+      -46
+     ],
+     "radius": 14,
+     "text": "Cristal do lago do oeste"
+    },
+    {
+     "type": "visit",
+     "target": [
+      18,
+      -60
+     ],
+     "radius": 14,
+     "text": "Cristal da clareira do sul"
+    },
+    {
+     "type": "visit",
+     "target": [
+      95,
+      20
+     ],
+     "radius": 14,
+     "text": "Cristal da trilha do leste"
+    }
+   ],
+   "rewards": {
+    "xp": 220,
+    "coins": 90
+   }
+  },
+  {
+   "id": "v_coracao",
+   "giver": "ilsa",
+   "title": "O Coração de Azhûr",
+   "chapter": 1,
+   "main": true,
+   "requires": [
+    "rhea_caldeira"
+   ],
+   "offer": "Você trouxe o coração do colosso... ele ainda está quente. Escute: Azhûr não era um monstro. Era um Guardião, o primeiro dos nove. Se eu banhar este coração na Fonte, talvez o Selo dele volte a acender. Fique comigo enquanto eu tento.",
+   "progress": "Leve o coração de Azhûr até a Fonte de Jade e fique perto dela.",
+   "done": "Viu a luz subir pela água? O primeiro Selo acendeu. Os cristais pararam de cantar... aqui. Mas a Nicolly diz que há outros oito, espalhados pelo continente. O Vórtice ainda puxa.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "azhur_core",
+     "count": 1,
+     "keep": true,
+     "text": "O coração de Azhûr na mochila"
+    },
+    {
+     "type": "visit",
+     "target": [
+      0,
+      15
+     ],
+     "radius": 6,
+     "text": "Leve o coração à Fonte de Jade"
+    }
+   ],
+   "rewards": {
+    "xp": 600,
+    "coins": 300,
+    "items": [
+     [
+      "potion_red",
+      3
+     ],
+     [
+      "potion_blue",
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "id": "v_continente",
+   "giver": "nicolly",
+   "title": "Os Nove Selos",
+   "chapter": 1,
+   "main": true,
+   "requires": [
+    "v_coracao"
+   ],
+   "offer": "Eu juntei tudo: os Guardiões, os Selos, a árvore no centro do mundo. Há nove regiões além deste vale, e cada uma tem um Selo apagando. Se o último apagar, o Vórtice abre de vez. O mapa do continente está pronto. Quando as estradas abrirem, você vai precisar dele.",
+   "progress": "Fale com a Capitã Rhea: ela precisa saber que o vale não basta.",
+   "done": "Nove Guardiões. Nove Selos. E um Desperto. Bom... talvez dois, três, se seus amigos vierem. As estradas para Aurivale e Verdalume ainda estão fechadas pela bruma. Quando abrirem, a guarda inteira vai com você até a fronteira.",
+   "objectives": [
+    {
+     "type": "talk",
+     "target": "rhea",
+     "text": "Conte à Capitã Rhea sobre os nove Selos"
+    }
+   ],
+   "rewards": {
+    "xp": 400,
+    "coins": 200,
+    "items": [
+     [
+      "racao_de_viagem",
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "id": "v_julia_cachorro",
+   "giver": "julia",
+   "title": "O Faro do Biscoito",
+   "chapter": 1,
+   "offer": "Ah, oi! O Biscoito não para de latir para a mata desde que os cristais começaram a brilhar. Acho que ele sente os lobos. Você podia afastar uns três da trilha? Ele não dorme há dias... nem eu.",
+   "progress": "Os lobos da bruma andam em grupo na mata em volta da vila. Três bastam.",
+   "done": "Ele dormiu! Olha só, de barriga para cima. Obrigada, de verdade. Leve estes pães que eu assei: o Biscoito ia comer todos mesmo.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Wolf",
+     "count": 3,
+     "text": "Afaste lobos da bruma"
+    }
+   ],
+   "rewards": {
+    "xp": 90,
+    "coins": 35,
+    "items": [
+     [
+      "bread",
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "id": "v_garrick_goblins",
+   "giver": "garrick",
+   "title": "Pedras na Estrada",
+   "chapter": 1,
+   "requires": [
+    "rhea_recruta"
+   ],
+   "offer": "Goblins. Atiram pedras nas carroças que trazem meu ferro. Eles andam em bando com um chefe maior. Derrube cinco e eu afio sua arma de graça... bom, quase de graça.",
+   "progress": "Os goblins acampam longe da vila, perto das bordas do vale. Cuidado com as pedras: elas caem onde você estava.",
+   "done": "Cinco! As carroças vão passar de novo. Tome, é o que eu prometi, e um pouco mais.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Goblin",
+     "count": 5,
+     "text": "Derrote goblins"
+    }
+   ],
+   "rewards": {
+    "xp": 200,
+    "coins": 110,
+    "items": [
+     [
+      "iron_scrap",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "v_marta_carne",
+   "giver": "marta",
+   "title": "Ensopado do Javali Dourado",
+   "chapter": 1,
+   "offer": "A taverna está cheia de viajantes e a panela vazia. Caçe para mim: coelhos e cervos pastam nos campos. Quatro pedaços de carne e o ensopado sai hoje.",
+   "progress": "Coelhos e cervos fogem quando você chega perto. Chegue devagar, ou corra mais que eles.",
+   "done": "Que cheiro! Sente-se, o primeiro prato é seu. E leve isto para a estrada.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "meat",
+     "count": 4,
+     "text": "Junte carne de caça"
+    }
+   ],
+   "rewards": {
+    "xp": 80,
+    "coins": 45,
+    "items": [
+     [
+      "racao_de_viagem",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "v_rosa_sapo",
+   "giver": "rosa",
+   "title": "A Lã que Brilha",
+   "chapter": 1,
+   "requires": [
+    "rhea_recruta"
+   ],
+   "offer": "Dizem que os sapos-gigantes do brejo guardam gel brilhante na garganta. Eu tinjo tecidos com ele: fica lindo à noite. Derrote dois sapos para mim? Ficam perto da água.",
+   "progress": "Os sapos-gigantes ficam nas margens dos lagos. A língua deles alcança longe: não fique na frente.",
+   "done": "Perfeito. Vou fazer uma capa que brilha como os cristais... sem o zumbido, espero.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Frog",
+     "count": 2,
+     "text": "Derrote sapos-gigantes do brejo"
+    }
+   ],
+   "rewards": {
+    "xp": 150,
+    "coins": 80
+   }
+  },
+  {
+   "id": "v_aurivale",
+   "giver": "nicolly",
+   "title": "Ouro e Enxame",
+   "chapter": 2,
+   "main": true,
+   "requires": [
+    "v_continente"
+   ],
+   "region": "Aurivale",
+   "offer": "A bruma da estrada do norte recuou. Do outro lado ficam as planícies de Aurivale. As colmeias de lá enlouqueceram. Vá ver.",
+   "progress": "Siga a estrada do norte até Aurivale.",
+   "done": "Você voltou com cheiro de mel e veneno. Aurivale é real, e a Rainha também.",
+   "objectives": [
+    {
+     "type": "visit",
+     "target": [
+      0,
+      900
+     ],
+     "radius": 40,
+     "text": "Chegue a Aurivale"
+    }
+   ],
+   "rewards": {
+    "xp": 500,
+    "coins": 250
+   }
+  },
+  {
+   "id": "v_lexy_tinta",
+   "giver": "lexy",
+   "title": "Tinta de Cristal",
+   "chapter": 1,
+   "requires": [
+    "rhea_recruta"
+   ],
+   "offer": "Ei, Desperto! Gostou do rosa? Não é tinta comum: desde que a Estrela caiu, a gosma das gotas de jade brilha igual aos cristais. Misturei com chapéu de cogumelo e... bom, olha o resultado. Me traz mais? Quatro gosmas e dois chapéus, que eu tenho fila de cliente.",
+   "progress": "As gotas de jade pulam pelos campos em volta da vila. Os cogumelos errantes andam na beira da mata.",
+   "done": "Isso! Olha como a mistura acende quando eu mexo... A Ilsa diz que é a seiva subindo. Eu digo que é o tom de rosa mais bonito do vale. Toma, por conta da casa.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "gel_jade",
+     "count": 4,
+     "text": "Gosma de gota de jade"
+    },
+    {
+     "type": "collect",
+     "target": "mushroom_cap",
+     "count": 2,
+     "text": "Chapéu de cogumelo"
+    }
+   ],
+   "rewards": {
+    "xp": 110,
+    "coins": 40,
+    "items": [
+     [
+      "healing_herb",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "v_lexy_morcegos",
+   "giver": "lexy",
+   "title": "Clientes Indesejados",
+   "chapter": 1,
+   "requires": [
+    "v_lexy_tinta"
+   ],
+   "offer": "Sabe o que é pior que cliente que não paga? Morcego no telhado do salão. Eles vêm de noite atrás do brilho da tinta e arranham tudo. Dá um jeito em quatro deles? Eu fico aqui segurando a vassoura.",
+   "progress": "Os morcegos só saem depois que escurece. Procure na mata em volta da vila.",
+   "done": "Silêncio, finalmente! Se a tinta atrai os morcegos, imagina o que atrai lá na Caldeira... Melhor nem pensar. Valeu, de verdade.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Bat",
+     "count": 4,
+     "text": "Afaste os morcegos"
+    }
+   ],
+   "rewards": {
+    "xp": 140,
+    "coins": 45,
+    "items": [
+     [
+      "bread",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "v_lexy_brilho",
+   "giver": "lexy",
+   "title": "O Rosa que Aponta",
+   "chapter": 1,
+   "requires": [
+    "v_lexy_morcegos"
+   ],
+   "offer": "Repara no meu cabelo de noite: o rosa pulsa e fica mais forte quando eu viro para o leste. Para o lado da Caldeira. Isso não é normal, né? Leva um frasco da tinta, anda até a clareira dos cristais e depois conta para a Ilsa o que viu. Eu não saio do salão de jeito nenhum.",
+   "progress": "Leve o frasco até a clareira dos cristais e depois fale com a Ilsa.",
+   "done": "A Ilsa disse que a tinta é um pedaço da seiva da Yggdrasil sendo puxada pelo Vórtice? Que lindo e que horror ao mesmo tempo. Tá, decidido: enquanto você fecha esse tal Selo, eu deixo o vale inteiro bonito. Volta aqui quando quiser mudar o visual.",
+   "objectives": [
+    {
+     "type": "visit",
+     "target": [
+      18,
+      -60
+     ],
+     "text": "Leve a tinta à clareira dos cristais"
+    },
+    {
+     "type": "talk",
+     "target": "ilsa",
+     "text": "Conte à Ilsa o que a tinta fez"
+    }
+   ],
+   "rewards": {
+    "xp": 180,
+    "coins": 60,
+    "items": [
+     [
+      "healing_herb",
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "id": "v_bunny_canteiro",
+   "giver": "bunny",
+   "title": "O Canteiro da Fonte",
+   "chapter": 1,
+   "requires": [
+    "rhea_recruta"
+   ],
+   "offer": "Ah, oi! Desculpa a terra na mão. Desde que a Estrela caiu, as flores em volta da Fonte murcham de um dia pro outro, como se alguma coisa bebesse a seiva delas. Me traz umas ervas de cura? Se eu plantar junto, talvez elas segurem as outras de pé.",
+   "progress": "As ervas de cura crescem na beira da mata, perto da vila.",
+   "done": "Olha só, já estão levantando a cabeça! A Ilsa jurou que não ia dar certo. Toma, colhi hoje cedo.",
+   "objectives": [
+    {
+     "type": "collect",
+     "target": "healing_herb",
+     "count": 3,
+     "text": "Erva de cura"
+    }
+   ],
+   "rewards": {
+    "xp": 110,
+    "coins": 35,
+    "items": [
+     [
+      "bread",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "v_bunny_gotas",
+   "giver": "bunny",
+   "title": "Visitas no Canteiro",
+   "chapter": 1,
+   "requires": [
+    "v_bunny_canteiro"
+   ],
+   "offer": "Descobri quem bebe a seiva das flores: as gotas de jade! Elas descem dos campos de noite, brilhando, e deixam o canteiro todo murcho. Espanta umas cinco pra mim? Eu não tenho coragem, elas pulam na cara.",
+   "progress": "As gotas de jade pulam pelos campos em volta da vila.",
+   "done": "O canteiro amanheceu inteiro! Se as gotas vêm atrás da seiva, o que será que puxa elas lá do leste... Bom, isso é coisa sua. Volta sempre, a Fonte fica mais bonita com gente por perto.",
+   "objectives": [
+    {
+     "type": "kill",
+     "target": "Slime",
+     "count": 5,
+     "text": "Espante as gotas de jade"
+    }
+   ],
+   "rewards": {
+    "xp": 150,
+    "coins": 50,
+    "items": [
+     [
+      "healing_herb",
+      3
+     ]
+    ]
+   }
+  }
+ ],
+ "dialogues": {
+  "julia": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Julia",
+     "text": "Oi! Cuidado onde pisa, o Biscoito adora correr entre as pernas dos outros.",
+     "choices": [
+      {
+       "text": "Quem é o Biscoito?",
+       "next": "dog"
+      },
+      {
+       "text": "Como é a vida no Santuário?",
+       "next": "life"
+      },
+      {
+       "text": "Até mais.",
+       "next": null
+      }
+     ]
+    },
+    "dog": {
+     "speaker": "Julia",
+     "text": "Meu cachorro! Achei ele perto da Fonte, ainda filhote, no dia em que a estrela caiu. Ele nunca sai de perto de mim.",
+     "next": "hello"
+    },
+    "life": {
+     "speaker": "Julia",
+     "text": "Calma, quase sempre. A Fonte cura quem chega ferido e a Capitã cuida dos portões. Só os cristais que me dão arrepio à noite.",
+     "next": "hello"
+    }
+   }
+  },
+  "lexy": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Lexy",
+     "text": "Oi, oi! Senta aí que eu já te atendo. Brincadeira, a cadeira tá cheia de cabelo. Precisa de alguma coisa?",
+     "choices": [
+      {
+       "text": "Que lugar é esse?",
+       "next": "salon"
+      },
+      {
+       "text": "Seu cabelo está brilhando?",
+       "next": "hair"
+      },
+      {
+       "text": "O que acha dos Despertos?",
+       "next": "awake"
+      },
+      {
+       "text": "Até mais.",
+       "next": null
+      }
+     ]
+    },
+    "salon": {
+     "speaker": "Lexy",
+     "text": "O único salão do Santuário! Corto, pinto e escuto fofoca. A Rosa costura, eu cuido do resto. Até a Capitã Rhea já sentou nessa cadeira, mas ela nega até a morte.",
+     "next": "hello"
+    },
+    "hair": {
+     "speaker": "Lexy",
+     "text": "Brilha, né? É a tinta de cristal. Desde que a Estrela caiu, tudo que tem seiva acende de noite. Eu só resolvi usar isso a meu favor.",
+     "next": "hello"
+    },
+    "awake": {
+     "speaker": "Lexy",
+     "text": "Vocês chegam do Estádio sem memória e com um corte de cabelo péssimo. A memória eu não devolvo, mas o resto dá jeito.",
+     "next": "hello"
+    }
+   }
+  },
+  "bunny": {
+   "start": "hello",
+   "nodes": {
+    "hello": {
+     "speaker": "Bunny",
+     "text": "Oi! Cuidado com o canteiro, acabei de plantar. Posso te ajudar?",
+     "choices": [
+      {
+       "text": "Você cuida das flores daqui?",
+       "next": "garden"
+      },
+      {
+       "text": "Por que Bunny?",
+       "next": "name"
+      },
+      {
+       "text": "Até mais.",
+       "next": null
+      }
+     ]
+    },
+    "garden": {
+     "speaker": "Bunny",
+     "text": "De todas em volta da Fonte. A água cura gente, então eu achei que curava flor também. Funciona, quase sempre. Desde a Estrela, nem tanto.",
+     "next": "hello"
+    },
+    "name": {
+     "speaker": "Bunny",
+     "text": "Minha mãe dizia que eu vivia pulando pelos canteiros quando era pequena. O apelido ficou, e o nome de verdade ninguém lembra mais.",
+     "next": "hello"
+    }
+   }
+  }
+ }
+}

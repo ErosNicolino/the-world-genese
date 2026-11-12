@@ -1,0 +1,1068 @@
+{
+ "_doc": "Gerado por Tools/Weapons/BuildBows.py. O modelo, a flecha e o poder do botão direito de cada arco.",
+ "bows": {
+  "arco_curto": {
+   "key": "comum_1",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_comum_1_blocos",
+   "arrow": "W_flecha_comum_1_blocos",
+   "name": "Arco Curto",
+   "rarity": "common",
+   "element": "",
+   "icon": "weapon_arco_comum_1",
+   "stats": {
+    "attack": 1
+   },
+   "price": 30,
+   "anim": "self",
+   "power": {
+    "name": "Três Seguidas",
+    "text": "Solta três flechas rápidas, uma atrás da outra.",
+    "kind": "burst3",
+    "mana": 0,
+    "cooldown": 10.3,
+    "values": {
+     "reach": 4000,
+     "count": 3,
+     "time": 0.45,
+     "scale": 1.35
+    },
+    "icon": "special_besta"
+   }
+  },
+  "arco_do_batedor": {
+   "key": "comum_2",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_comum_2_blocos",
+   "arrow": "W_flecha_comum_2_blocos",
+   "name": "Arco do Batedor",
+   "rarity": "common",
+   "element": "",
+   "icon": "weapon_arco_comum_2",
+   "stats": {
+    "attack": 1
+   },
+   "price": 30,
+   "anim": "self",
+   "power": {
+    "name": "Leque do Batedor",
+    "text": "Abre um leque de três flechas.",
+    "kind": "volley",
+    "mana": 0,
+    "cooldown": 10.3,
+    "values": {
+     "reach": 2600,
+     "count": 3,
+     "spread": 24,
+     "scale": 0.98
+    },
+    "icon": "special_chakrams"
+   }
+  },
+  "arco_de_galho_seco": {
+   "key": "comum_3",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_comum_3_blocos",
+   "arrow": "W_flecha_comum_3_blocos",
+   "name": "Arco de Galho Seco",
+   "rarity": "common",
+   "element": "",
+   "icon": "weapon_arco_comum_3",
+   "stats": {
+    "attack": 1
+   },
+   "price": 30,
+   "anim": "self",
+   "power": {
+    "name": "Flecha Seca",
+    "text": "Uma flecha forte que atravessa os inimigos em linha.",
+    "kind": "pierce",
+    "mana": 0,
+    "cooldown": 11.5,
+    "values": {
+     "reach": 4000,
+     "size": 1.6,
+     "scale": 2.62
+    },
+    "icon": "special_lanca_do_patrulheiro"
+   }
+  },
+  "arco_de_betula": {
+   "key": "comum_4",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_comum_4_blocos",
+   "arrow": "W_flecha_comum_4_blocos",
+   "name": "Arco de Bétula",
+   "rarity": "common",
+   "element": "",
+   "icon": "weapon_arco_comum_4",
+   "stats": {
+    "attack": 1
+   },
+   "price": 30,
+   "anim": "self",
+   "power": {
+    "name": "Chuva de Flechas",
+    "text": "Uma chuva de flechas cai onde você mira."
+   }
+  },
+  "arco_remendado": {
+   "key": "comum_5",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_comum_5_blocos",
+   "arrow": "W_flecha_comum_5_blocos",
+   "name": "Arco Remendado",
+   "rarity": "common",
+   "element": "",
+   "icon": "weapon_arco_comum_5",
+   "stats": {
+    "attack": 1
+   },
+   "price": 30,
+   "anim": "self",
+   "power": {
+    "name": "Chuvisco de Flechas",
+    "text": "Uma chuva de flechas pequena onde você mira.",
+    "kind": "arrowrain",
+    "mana": 0,
+    "cooldown": 18.4,
+    "values": {
+     "reach": 2500,
+     "radius": 320,
+     "life": 1.8,
+     "arrows": 12,
+     "scale": 0.15
+    },
+    "icon": "special_arco_de_betula"
+   }
+  },
+  "arco_do_salgueiro": {
+   "key": "incomum_1",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_incomum_1_blocos",
+   "arrow": "W_flecha_incomum_1_blocos",
+   "name": "Arco do Salgueiro",
+   "rarity": "uncommon",
+   "element": "nature",
+   "icon": "weapon_arco_incomum_1",
+   "stats": {
+    "attack": 2,
+    "crit": 3,
+    "speed": 4
+   },
+   "price": 80,
+   "anim": "self",
+   "power": {
+    "name": "Folhas ao Vento",
+    "text": "Um leque de quatro flechas de folha.",
+    "kind": "volley",
+    "mana": 0,
+    "cooldown": 9.5,
+    "values": {
+     "reach": 2600,
+     "count": 4,
+     "spread": 30,
+     "scale": 1.17
+    },
+    "icon": "special_chakrams"
+   }
+  },
+  "arco_de_espinheiro": {
+   "key": "incomum_2",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_incomum_2_blocos",
+   "arrow": "W_flecha_incomum_2_blocos",
+   "name": "Arco de Espinheiro",
+   "rarity": "uncommon",
+   "element": "poison",
+   "icon": "weapon_arco_incomum_2",
+   "stats": {
+    "attack": 2,
+    "crit": 3,
+    "speed": 4
+   },
+   "price": 80,
+   "anim": "self",
+   "power": {
+    "name": "Espinhos em Fila",
+    "text": "Três flechas de espinho envenenadas, uma atrás da outra.",
+    "kind": "burst3",
+    "mana": 0,
+    "cooldown": 9.5,
+    "values": {
+     "reach": 4000,
+     "count": 3,
+     "time": 0.45,
+     "scale": 1.62
+    },
+    "icon": "special_besta"
+   }
+  },
+  "arco_de_cobre_rubro": {
+   "key": "incomum_3",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_incomum_3_blocos",
+   "arrow": "W_flecha_incomum_3_blocos",
+   "name": "Arco de Cobre Rubro",
+   "rarity": "uncommon",
+   "element": "fire",
+   "icon": "weapon_arco_incomum_3",
+   "stats": {
+    "attack": 2,
+    "crit": 3,
+    "speed": 4
+   },
+   "price": 80,
+   "anim": "self",
+   "power": {
+    "name": "Flecha de Brasa",
+    "text": "Uma flecha que explode em fogo onde acerta.",
+    "kind": "explosive",
+    "mana": 10,
+    "cooldown": 11.6,
+    "values": {
+     "reach": 3000,
+     "radius": 260,
+     "scale": 2.7
+    },
+    "icon": "special_catalisador"
+   }
+  },
+  "arco_da_correnteza": {
+   "key": "incomum_4",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_incomum_4_blocos",
+   "arrow": "W_flecha_incomum_4_blocos",
+   "name": "Arco da Correnteza",
+   "rarity": "uncommon",
+   "element": "water",
+   "icon": "weapon_arco_incomum_4",
+   "stats": {
+    "attack": 2,
+    "crit": 3,
+    "speed": 4
+   },
+   "price": 80,
+   "anim": "self",
+   "power": {
+    "name": "Flecha da Correnteza",
+    "text": "Atravessa os inimigos em linha, como a água.",
+    "kind": "pierce",
+    "mana": 0,
+    "cooldown": 10.5,
+    "values": {
+     "reach": 4000,
+     "size": 2.0,
+     "scale": 3.15
+    },
+    "icon": "special_lanca_do_patrulheiro"
+   }
+  },
+  "arco_do_cacador": {
+   "key": "incomum_5",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_incomum_5_blocos",
+   "arrow": "W_flecha_incomum_5_blocos",
+   "name": "Arco do Caçador",
+   "rarity": "uncommon",
+   "element": "",
+   "icon": "weapon_arco_incomum_5",
+   "stats": {
+    "attack": 2,
+    "crit": 3,
+    "speed": 4
+   },
+   "price": 80,
+   "anim": "self",
+   "power": {
+    "name": "Chuva do Caçador",
+    "text": "Uma chuva de flechas onde você mira.",
+    "kind": "arrowrain",
+    "mana": 0,
+    "cooldown": 16.8,
+    "values": {
+     "reach": 2500,
+     "radius": 380,
+     "life": 1.8,
+     "arrows": 20,
+     "scale": 0.18
+    },
+    "icon": "special_arco_de_betula"
+   }
+  },
+  "arco_da_nevoa": {
+   "key": "raro_1",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_raro_1_blocos",
+   "arrow": "W_flecha_raro_1_blocos",
+   "name": "Arco da Névoa Azul",
+   "rarity": "rare",
+   "element": "water",
+   "icon": "weapon_arco_raro_1",
+   "stats": {
+    "attack": 3,
+    "crit": 6,
+    "speed": 6
+   },
+   "price": 200,
+   "anim": "self",
+   "power": {
+    "name": "Selo da Névoa",
+    "text": "Marca o chão com uma runa de água que explode logo depois.",
+    "kind": "runeseal",
+    "mana": 15,
+    "cooldown": 12.0,
+    "values": {
+     "delay": 1.5,
+     "radius": 300,
+     "scale": 4.5,
+     "mark": 0.25,
+     "mark_life": 5,
+     "reach": 2600
+    },
+    "icon": "special_pistola_runica"
+   }
+  },
+  "arco_da_lua_prateada": {
+   "key": "raro_2",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_raro_2_blocos",
+   "arrow": "W_flecha_raro_2_blocos",
+   "name": "Arco da Lua Prateada",
+   "rarity": "rare",
+   "element": "holy",
+   "icon": "weapon_arco_raro_2",
+   "stats": {
+    "attack": 3,
+    "crit": 6,
+    "speed": 6
+   },
+   "price": 200,
+   "anim": "self",
+   "power": {
+    "name": "Crescente",
+    "text": "Um leque de cinco flechas de luz em meia-lua.",
+    "kind": "volley",
+    "mana": 0,
+    "cooldown": 9.0,
+    "values": {
+     "reach": 2600,
+     "count": 5,
+     "spread": 50,
+     "scale": 1.3
+    },
+    "icon": "special_chakrams"
+   }
+  },
+  "arco_do_relampago": {
+   "key": "raro_3",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_raro_3_blocos",
+   "arrow": "W_flecha_raro_3_blocos",
+   "name": "Arco do Relâmpago",
+   "rarity": "rare",
+   "element": "lightning",
+   "icon": "weapon_arco_raro_3",
+   "stats": {
+    "attack": 3,
+    "crit": 6,
+    "speed": 6
+   },
+   "price": 200,
+   "anim": "self",
+   "power": {
+    "name": "Flecha-Trovão",
+    "text": "Segura e solta: um raio carregado que explode no alvo.",
+    "kind": "overload",
+    "mana": 12,
+    "cooldown": 6.0,
+    "values": {
+     "charge": 0.6,
+     "scale": 4.0,
+     "radius": 260
+    },
+    "icon": "special_varinha"
+   }
+  },
+  "arco_da_geada": {
+   "key": "raro_4",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_raro_4_blocos",
+   "arrow": "W_flecha_raro_4_blocos",
+   "name": "Arco da Geada",
+   "rarity": "rare",
+   "element": "ice",
+   "icon": "weapon_arco_raro_4",
+   "stats": {
+    "attack": 3,
+    "crit": 6,
+    "speed": 6
+   },
+   "price": 200,
+   "anim": "self",
+   "power": {
+    "name": "Lança de Gelo",
+    "text": "Uma flecha de gelo que atravessa todos em linha.",
+    "kind": "pierce",
+    "mana": 0,
+    "cooldown": 10.0,
+    "values": {
+     "reach": 4000,
+     "size": 2.2,
+     "scale": 3.5
+    },
+    "icon": "special_lanca_do_patrulheiro"
+   }
+  },
+  "arco_de_jade": {
+   "key": "raro_5",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_raro_5_blocos",
+   "arrow": "W_flecha_raro_5_blocos",
+   "name": "Arco de Jade",
+   "rarity": "rare",
+   "element": "nature",
+   "icon": "weapon_arco_raro_5",
+   "stats": {
+    "attack": 3,
+    "crit": 6,
+    "speed": 6
+   },
+   "price": 200,
+   "anim": "self",
+   "power": {
+    "name": "Três Jades",
+    "text": "Três flechas de jade seguidas.",
+    "kind": "burst3",
+    "mana": 0,
+    "cooldown": 9.0,
+    "values": {
+     "reach": 4000,
+     "count": 3,
+     "time": 0.45,
+     "scale": 1.8
+    },
+    "icon": "special_besta"
+   }
+  },
+  "arco_ametista": {
+   "key": "epico_1",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_epico_1_blocos",
+   "arrow": "W_flecha_epico_1_blocos",
+   "name": "Arco Ametista",
+   "rarity": "epic",
+   "element": "shadow",
+   "icon": "weapon_arco_epico_1",
+   "stats": {
+    "attack": 5,
+    "crit": 9,
+    "speed": 8
+   },
+   "price": 520,
+   "anim": "self",
+   "power": {
+    "name": "Estilhaços Flutuantes",
+    "text": "Cristais de ametista giram em volta e atiram nos inimigos.",
+    "kind": "orbit",
+    "mana": 20,
+    "cooldown": 23.8,
+    "values": {
+     "life": 12,
+     "every": 1.5,
+     "scale": 0.57,
+     "undead": 0.5,
+     "reach": 1800
+    },
+    "icon": "special_orbe"
+   }
+  },
+  "arco_noite_violeta": {
+   "key": "epico_2",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_epico_2_blocos",
+   "arrow": "W_flecha_epico_2_blocos",
+   "name": "Arco da Noite Violeta",
+   "rarity": "epic",
+   "element": "shadow",
+   "icon": "weapon_arco_epico_2",
+   "stats": {
+    "attack": 5,
+    "crit": 9,
+    "speed": 8
+   },
+   "price": 520,
+   "anim": "self",
+   "power": {
+    "name": "Runa da Noite",
+    "text": "Uma runa de sombra que explode e marca os inimigos.",
+    "kind": "runeseal",
+    "mana": 15,
+    "cooldown": 11.4,
+    "values": {
+     "delay": 1.5,
+     "radius": 340,
+     "scale": 5.17,
+     "mark": 0.25,
+     "mark_life": 5,
+     "reach": 2600
+    },
+    "icon": "special_pistola_runica"
+   }
+  },
+  "arco_lua_sangrenta": {
+   "key": "epico_3",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_epico_3_blocos",
+   "arrow": "W_flecha_epico_3_blocos",
+   "name": "Sussurro da Lua Sangrenta",
+   "rarity": "unique",
+   "element": "shadow",
+   "icon": "weapon_arco_epico_3",
+   "stats": {
+    "attack": 10,
+    "crit": 12,
+    "speed": 10
+   },
+   "price": 3200,
+   "anim": "self",
+   "power": {
+    "name": "Estrela Sangrenta",
+    "text": "Uma flecha que explode em estrelas de sangue.",
+    "kind": "explosive",
+    "mana": 10,
+    "cooldown": 9.3,
+    "values": {
+     "reach": 3000,
+     "radius": 380,
+     "scale": 4.35
+    },
+    "icon": "special_catalisador"
+   }
+  },
+  "arco_fragmentado": {
+   "key": "epico_4",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_epico_4_blocos",
+   "arrow": "W_flecha_epico_4_blocos",
+   "name": "Arco Fragmentado",
+   "rarity": "epic",
+   "element": "lightning",
+   "icon": "weapon_arco_epico_4",
+   "stats": {
+    "attack": 5,
+    "crit": 9,
+    "speed": 8
+   },
+   "price": 520,
+   "anim": "self",
+   "power": {
+    "name": "Fragmentos",
+    "text": "Cinco disparos rápidos de fragmentos do Vórtice.",
+    "kind": "burst3",
+    "mana": 0,
+    "cooldown": 8.5,
+    "values": {
+     "reach": 4000,
+     "count": 5,
+     "time": 0.6,
+     "scale": 2.07
+    },
+    "icon": "special_besta"
+   }
+  },
+  "arco_do_eclipse": {
+   "key": "epico_5",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_epico_5_blocos",
+   "arrow": "W_flecha_epico_5_blocos",
+   "name": "Arco do Eclipse",
+   "rarity": "epic",
+   "element": "shadow",
+   "icon": "weapon_arco_epico_5",
+   "stats": {
+    "attack": 5,
+    "crit": 9,
+    "speed": 8
+   },
+   "price": 520,
+   "anim": "self",
+   "power": {
+    "name": "Flecha do Eclipse",
+    "text": "Uma flecha escura enorme que atravessa tudo.",
+    "kind": "pierce",
+    "mana": 0,
+    "cooldown": 9.5,
+    "values": {
+     "reach": 4000,
+     "size": 3.0,
+     "scale": 4.02
+    },
+    "icon": "special_lanca_do_patrulheiro"
+   }
+  },
+  "arco_de_magma": {
+   "key": "lendario_1",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_lendario_1_blocos",
+   "arrow": "W_flecha_lendario_1_blocos",
+   "name": "Arco de Magma Rúnico",
+   "rarity": "legendary",
+   "element": "fire",
+   "icon": "weapon_arco_lendario_1",
+   "stats": {
+    "attack": 8,
+    "crit": 13,
+    "speed": 10
+   },
+   "price": 1300,
+   "anim": "self",
+   "power": {
+    "name": "Muralha de Magma",
+    "text": "Ergue uma muralha de magma que queima quem atravessa.",
+    "kind": "firewall",
+    "mana": 25,
+    "cooldown": 16.2,
+    "values": {
+     "tornado_life": 2.5,
+     "tornado_radius": 250,
+     "tornado_cooldown": 3,
+     "reach": 2200,
+     "width": 800,
+     "life": 6,
+     "scale": 0.78
+    },
+    "icon": "special_livro_da_aurora"
+   }
+  },
+  "arco_grifo_dourado": {
+   "key": "lendario_2",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_lendario_2_blocos",
+   "arrow": "W_flecha_lendario_2_blocos",
+   "name": "Arco do Grifo Dourado",
+   "rarity": "legendary",
+   "element": "",
+   "icon": "weapon_arco_lendario_2",
+   "stats": {
+    "attack": 8,
+    "crit": 13,
+    "speed": 10
+   },
+   "price": 1300,
+   "anim": "self",
+   "power": {
+    "name": "Asas do Grifo",
+    "text": "Um leque de sete flechas douradas.",
+    "kind": "volley",
+    "mana": 0,
+    "cooldown": 8.1,
+    "values": {
+     "reach": 2600,
+     "count": 7,
+     "spread": 60,
+     "scale": 1.69
+    },
+    "icon": "special_chakrams"
+   }
+  },
+  "arco_da_fenix": {
+   "key": "lendario_3",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_lendario_3_blocos",
+   "arrow": "W_flecha_lendario_3_blocos",
+   "name": "Arco da Fênix",
+   "rarity": "legendary",
+   "element": "fire",
+   "icon": "weapon_arco_lendario_3",
+   "stats": {
+    "attack": 8,
+    "crit": 13,
+    "speed": 10
+   },
+   "price": 1300,
+   "anim": "self",
+   "power": {
+    "name": "Sopro da Fênix",
+    "text": "Lança uma bola de fogo que explode em 3 m.",
+    "kind": "fireball",
+    "mana": 15,
+    "cooldown": 9.0,
+    "values": {
+     "reach": 2600
+    },
+    "icon": "special_cajado_de_ilsa"
+   }
+  },
+  "arco_do_sol_nascente": {
+   "key": "lendario_4",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_lendario_4_blocos",
+   "arrow": "W_flecha_lendario_4_blocos",
+   "name": "Arco do Sol Nascente",
+   "rarity": "legendary",
+   "element": "holy",
+   "icon": "weapon_arco_lendario_4",
+   "stats": {
+    "attack": 8,
+    "crit": 13,
+    "speed": 10
+   },
+   "price": 1300,
+   "anim": "self",
+   "power": {
+    "name": "Explosão Solar",
+    "text": "Uma flecha de sol que explode em luz.",
+    "kind": "explosive",
+    "mana": 10,
+    "cooldown": 9.9,
+    "values": {
+     "reach": 3000,
+     "radius": 420,
+     "scale": 3.9
+    },
+    "icon": "special_catalisador"
+   }
+  },
+  "arco_do_bosque_ancestral": {
+   "key": "lendario_5",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_lendario_5_blocos",
+   "arrow": "W_flecha_lendario_5_blocos",
+   "name": "Arco do Bosque Ancestral",
+   "rarity": "legendary",
+   "element": "nature",
+   "icon": "weapon_arco_lendario_5",
+   "stats": {
+    "attack": 8,
+    "crit": 13,
+    "speed": 10
+   },
+   "price": 1300,
+   "anim": "self",
+   "power": {
+    "name": "Chuva de Galhos",
+    "text": "Uma chuva de flechas enorme onde você mira.",
+    "kind": "arrowrain",
+    "mana": 0,
+    "cooldown": 14.4,
+    "values": {
+     "reach": 2500,
+     "radius": 520,
+     "life": 1.8,
+     "arrows": 30,
+     "scale": 0.26
+    },
+    "icon": "special_arco_de_betula"
+   }
+  },
+  "arco_de_bracos_gemeos": {
+   "key": "unico_1",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_unico_1_blocos",
+   "arrow": "W_flecha_unico_1_blocos",
+   "name": "Arco de Braços Gêmeos",
+   "rarity": "unique",
+   "element": "lightning",
+   "icon": "weapon_arco_unico_1",
+   "stats": {
+    "attack": 10,
+    "crit": 12,
+    "speed": 10
+   },
+   "price": 3200,
+   "anim": "self",
+   "power": {
+    "name": "Disparo Gêmeo",
+    "text": "Seis flechas em pares, bem rápidas.",
+    "kind": "burst3",
+    "mana": 0,
+    "cooldown": 7.6,
+    "values": {
+     "reach": 4000,
+     "count": 6,
+     "time": 0.6,
+     "scale": 2.61
+    },
+    "icon": "special_besta"
+   }
+  },
+  "arco_do_espelho": {
+   "key": "unico_2",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_unico_2_blocos",
+   "arrow": "W_flecha_unico_2_blocos",
+   "name": "Arco do Espelho",
+   "rarity": "unique",
+   "element": "shadow",
+   "icon": "weapon_arco_unico_2",
+   "stats": {
+    "attack": 10,
+    "crit": 12,
+    "speed": 10
+   },
+   "price": 3200,
+   "anim": "self",
+   "power": {
+    "name": "Reflexo",
+    "text": "Um leque largo de seis flechas, para os dois lados da mira.",
+    "kind": "volley",
+    "mana": 0,
+    "cooldown": 7.6,
+    "values": {
+     "reach": 2600,
+     "count": 6,
+     "spread": 70,
+     "scale": 1.89
+    },
+    "icon": "special_chakrams"
+   }
+  },
+  "arco_da_raiz_primeva": {
+   "key": "unico_3",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_unico_3_blocos",
+   "arrow": "W_flecha_unico_3_blocos",
+   "name": "Arco da Raiz Primeva",
+   "rarity": "unique",
+   "element": "nature",
+   "icon": "weapon_arco_unico_3",
+   "stats": {
+    "attack": 10,
+    "crit": 12,
+    "speed": 10
+   },
+   "price": 3200,
+   "anim": "self",
+   "power": {
+    "name": "Raiz que Explode",
+    "text": "Uma raiz rompe o chão onde você mira e explode.",
+    "kind": "runeseal",
+    "mana": 15,
+    "cooldown": 10.2,
+    "values": {
+     "delay": 1.5,
+     "radius": 420,
+     "scale": 6.52,
+     "mark": 0.25,
+     "mark_life": 5,
+     "reach": 2600
+    },
+    "icon": "special_pistola_runica"
+   }
+  },
+  "arco_sem_sombra": {
+   "key": "unico_4",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_unico_4_blocos",
+   "arrow": "W_flecha_unico_4_blocos",
+   "name": "Arco Sem Sombra",
+   "rarity": "unique",
+   "element": "holy",
+   "icon": "weapon_arco_unico_4",
+   "stats": {
+    "attack": 10,
+    "crit": 12,
+    "speed": 10
+   },
+   "price": 3200,
+   "anim": "self",
+   "power": {
+    "name": "Flecha Sem Sombra",
+    "text": "Uma flecha de luz que atravessa tudo e vai muito longe.",
+    "kind": "pierce",
+    "mana": 0,
+    "cooldown": 8.5,
+    "values": {
+     "reach": 6000,
+     "size": 2.0,
+     "scale": 5.08
+    },
+    "icon": "special_lanca_do_patrulheiro"
+   }
+  },
+  "arco_do_viajante_perdido": {
+   "key": "unico_5",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_unico_5_blocos",
+   "arrow": "W_flecha_unico_5_blocos",
+   "name": "Arco do Viajante Perdido",
+   "rarity": "unique",
+   "element": "ice",
+   "icon": "weapon_arco_unico_5",
+   "stats": {
+    "attack": 10,
+    "crit": 12,
+    "speed": 10
+   },
+   "price": 3200,
+   "anim": "self",
+   "power": {
+    "name": "Fôlego do Viajante",
+    "text": "Cura você e os aliados em volta.",
+    "kind": "heal",
+    "mana": 20,
+    "cooldown": 13.6,
+    "values": {
+     "heal_reach": 900
+    },
+    "icon": "special_cajado_de_ilsa"
+   }
+  },
+  "asas_da_aurora": {
+   "key": "divino_1",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_divino_1_blocos",
+   "arrow": "W_flecha_divino_1_blocos",
+   "name": "Asas da Aurora",
+   "rarity": "divine",
+   "element": "holy",
+   "icon": "weapon_arco_divino_1",
+   "stats": {
+    "attack": 13,
+    "crit": 15,
+    "speed": 12
+   },
+   "price": 8000,
+   "anim": "self",
+   "power": {
+    "name": "Aurora",
+    "text": "Nove flechas de luz em leque.",
+    "kind": "volley",
+    "mana": 0,
+    "cooldown": 7.2,
+    "values": {
+     "reach": 2600,
+     "count": 9,
+     "spread": 70,
+     "scale": 2.08
+    },
+    "icon": "special_chakrams"
+   }
+  },
+  "arco_da_arvore_do_mundo": {
+   "key": "divino_2",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_divino_2_blocos",
+   "arrow": "W_flecha_divino_2_blocos",
+   "name": "Arco da Árvore do Mundo",
+   "rarity": "divine",
+   "element": "nature",
+   "icon": "weapon_arco_divino_2",
+   "stats": {
+    "attack": 13,
+    "crit": 15,
+    "speed": 12
+   },
+   "price": 8000,
+   "anim": "self",
+   "power": {
+    "name": "Chuva da Árvore do Mundo",
+    "text": "Uma chuva de flechas imensa onde você mira.",
+    "kind": "arrowrain",
+    "mana": 0,
+    "cooldown": 12.8,
+    "values": {
+     "reach": 2500,
+     "radius": 600,
+     "life": 1.8,
+     "arrows": 40,
+     "scale": 0.32
+    },
+    "icon": "special_arco_de_betula"
+   }
+  },
+  "arco_das_estrelas": {
+   "key": "divino_3",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_divino_3_blocos",
+   "arrow": "W_flecha_divino_3_blocos",
+   "name": "Arco das Estrelas",
+   "rarity": "divine",
+   "element": "holy",
+   "icon": "weapon_arco_divino_3",
+   "stats": {
+    "attack": 13,
+    "crit": 15,
+    "speed": 12
+   },
+   "price": 8000,
+   "anim": "self",
+   "power": {
+    "name": "Constelação Viva",
+    "text": "Estrelas giram em volta e atiram nos inimigos sem parar.",
+    "kind": "orbit",
+    "mana": 20,
+    "cooldown": 20.0,
+    "values": {
+     "life": 16,
+     "every": 1.0,
+     "scale": 0.8,
+     "undead": 0.5,
+     "reach": 1800
+    },
+    "icon": "special_orbe"
+   }
+  },
+  "arco_do_primeiro_rio": {
+   "key": "divino_4",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_divino_4_blocos",
+   "arrow": "W_flecha_divino_4_blocos",
+   "name": "Arco do Primeiro Rio",
+   "rarity": "divine",
+   "element": "water",
+   "icon": "weapon_arco_divino_4",
+   "stats": {
+    "attack": 13,
+    "crit": 15,
+    "speed": 12
+   },
+   "price": 8000,
+   "anim": "self",
+   "power": {
+    "name": "Rio Primordial",
+    "text": "Uma flecha de água imensa que atravessa tudo à frente.",
+    "kind": "pierce",
+    "mana": 0,
+    "cooldown": 8.0,
+    "values": {
+     "reach": 4000,
+     "size": 3.2,
+     "scale": 5.6
+    },
+    "icon": "special_lanca_do_patrulheiro"
+   }
+  },
+  "arco_do_vendaval_eterno": {
+   "key": "divino_5",
+   "weapon": "arco_de_betula",
+   "model": "W_arco_divino_5_blocos",
+   "arrow": "W_flecha_divino_5_blocos",
+   "name": "Arco do Vendaval Eterno",
+   "rarity": "divine",
+   "element": "nature",
+   "icon": "weapon_arco_divino_5",
+   "stats": {
+    "attack": 13,
+    "crit": 15,
+    "speed": 12
+   },
+   "price": 8000,
+   "anim": "self",
+   "power": {
+    "name": "Vendaval Eterno",
+    "text": "Uma flecha que estoura num vendaval enorme.",
+    "kind": "explosive",
+    "mana": 10,
+    "cooldown": 8.8,
+    "values": {
+     "reach": 3000,
+     "radius": 560,
+     "scale": 4.8
+    },
+    "icon": "special_catalisador"
+   }
+  }
+ }
+}

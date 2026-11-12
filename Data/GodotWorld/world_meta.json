@@ -1,0 +1,92 @@
+{
+ "size": 1254,
+ "meters_per_pixel": 6.0,
+ "home_pixel": [
+  560,
+  640
+ ],
+ "water_level": 2.05,
+ "extent": 3822,
+ "regions": [
+  {
+   "id": 1,
+   "name": "Planícies de Valdora",
+   "center": [
+    480.0,
+    -300.0
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Brasafenda",
+   "center": [
+    -1470.0,
+    -2700.0
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Picos de Raikor",
+   "center": [
+    780.0,
+    -2550.0
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Nivaluz",
+   "center": [
+    3000.0,
+    -2700.0
+   ]
+  },
+  {
+   "id": 5,
+   "name": "Solcânion",
+   "center": [
+    -2070.0,
+    -1020.0
+   ]
+  },
+  {
+   "id": 6,
+   "name": "Aurivale",
+   "center": [
+    2640.0,
+    -1260.0
+   ]
+  },
+  {
+   "id": 7,
+   "name": "Lodonegro",
+   "center": [
+    -1980.0,
+    960.0
+   ]
+  },
+  {
+   "id": 8,
+   "name": "Morthúria",
+   "center": [
+    480.0,
+    1710.0
+   ]
+  },
+  {
+   "id": 9,
+   "name": "Verdalume",
+   "center": [
+    2880.0,
+    720.0
+   ]
+  }
+ ],
+ "volcano": [
+  -1200.0,
+  -3330.0
+ ],
+ "yggdrasil": [
+  2910.0,
+  390.0
+ ]
+}

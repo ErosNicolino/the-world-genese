@@ -1,0 +1,747 @@
+{
+ "franjaZ": 133.0,
+ "pieces": {
+  "P_camisa_linho": {
+   "slot": "camisa",
+   "name": "Camisa de Linho",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_camisa_la_carmim": {
+   "slot": "camisa",
+   "name": "Camisa de Lã Carmim",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_camisa_musgo": {
+   "slot": "camisa",
+   "name": "Camisa de Musgo",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_camisa_azul": {
+   "slot": "camisa",
+   "name": "Camisa Azul de Punhos",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_camisa_acolchoada": {
+   "slot": "camisa",
+   "name": "Camisa Acolchoada",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_cima_colete_couro": {
+   "slot": "cima",
+   "name": "Colete de Couro",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_cima_gibao_carmim": {
+   "slot": "cima",
+   "name": "Gibão Carmim",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_cima_capa_capuz": {
+   "slot": "cima",
+   "name": "Capa com Capuz",
+   "audience": "M",
+   "hidesHair": false,
+   "tecido": true
+  },
+  "P_cima_pele_ombros": {
+   "slot": "cima",
+   "name": "Pele nos Ombros",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_cima_tabardo_azul": {
+   "slot": "cima",
+   "name": "Tabardo Azul",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_calca_la_marrom": {
+   "slot": "calca",
+   "name": "Calça de Lã Marrom",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_calca_cinza": {
+   "slot": "calca",
+   "name": "Calça Cinza com Bolsa",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_calca_linho": {
+   "slot": "calca",
+   "name": "Calça de Linho",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_calca_couro": {
+   "slot": "calca",
+   "name": "Calça de Couro",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_calca_musgo_saiote": {
+   "slot": "calca",
+   "name": "Calça de Musgo com Saiote",
+   "audience": "M",
+   "hidesHair": false,
+   "tecido": true
+  },
+  "P_calcado_amarrado": {
+   "slot": "calcado",
+   "name": "Botas Amarradas",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_calcado_cano_alto": {
+   "slot": "calcado",
+   "name": "Botas de Cano Alto",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_calcado_inverno": {
+   "slot": "calcado",
+   "name": "Botas de Inverno",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_calcado_pano": {
+   "slot": "calcado",
+   "name": "Sapatos de Pano",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_calcado_biqueira": {
+   "slot": "calcado",
+   "name": "Botas com Biqueira",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_blusa_linho": {
+   "slot": "camisa",
+   "name": "Blusa de Linho",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_blusa_rosa": {
+   "slot": "camisa",
+   "name": "Blusa Rosa de Lã",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_blusa_azul_bordada": {
+   "slot": "camisa",
+   "name": "Blusa Azul Bordada",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_blusa_vinho": {
+   "slot": "camisa",
+   "name": "Blusa Vinho Bufante",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_blusa_salvia": {
+   "slot": "camisa",
+   "name": "Blusa de Sálvia",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_corpete_couro": {
+   "slot": "cima",
+   "name": "Corpete de Couro",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_corpete_verde": {
+   "slot": "cima",
+   "name": "Corpete Verde",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_capa_ameixa": {
+   "slot": "cima",
+   "name": "Capa Ameixa",
+   "audience": "F",
+   "hidesHair": false,
+   "tecido": true
+  },
+  "P_manto_pele_branco": {
+   "slot": "cima",
+   "name": "Manto de Pele Branca",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_colete_azul_bordado": {
+   "slot": "cima",
+   "name": "Colete Bordado",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_saia_terra": {
+   "slot": "calca",
+   "name": "Saia Longa de Lã",
+   "audience": "F",
+   "hidesHair": false,
+   "tecido": true
+  },
+  "P_saia_musgo": {
+   "slot": "calca",
+   "name": "Saia Aberta de Musgo",
+   "audience": "F",
+   "hidesHair": false,
+   "tecido": true
+  },
+  "P_saia_vinho": {
+   "slot": "calca",
+   "name": "Saia Vinho Bordada",
+   "audience": "F",
+   "hidesHair": false,
+   "tecido": true
+  },
+  "P_saia_couro_meia": {
+   "slot": "calca",
+   "name": "Saiote de Couro",
+   "audience": "F",
+   "hidesHair": false,
+   "tecido": true
+  },
+  "P_saia_creme": {
+   "slot": "calca",
+   "name": "Saia de Linho",
+   "audience": "F",
+   "hidesHair": false,
+   "tecido": true
+  },
+  "P_sapato_cano_curto": {
+   "slot": "calcado",
+   "name": "Botinhas Amarradas",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_sapato_cano_alto": {
+   "slot": "calcado",
+   "name": "Botas Altas",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_sapato_pano": {
+   "slot": "calcado",
+   "name": "Sapatilhas Bordadas",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_sapato_pele": {
+   "slot": "calcado",
+   "name": "Botinhas de Pele",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_sapato_verde": {
+   "slot": "calcado",
+   "name": "Botas Verdes",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_acess_lenco": {
+   "slot": "acessorio",
+   "name": "Lenço Vermelho",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_acess_dente": {
+   "slot": "acessorio",
+   "name": "Colar de Dente",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_acess_mascara": {
+   "slot": "acessorio",
+   "name": "Meia Máscara",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_acess_corrente": {
+   "slot": "acessorio",
+   "name": "Corrente de Bronze",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_acess_tapa_olho": {
+   "slot": "acessorio",
+   "name": "Tapa-olho",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_acess_cinto_bolsas": {
+   "slot": "cintura",
+   "name": "Cinto com Bolsas",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_acess_alca_mapa": {
+   "slot": "cintura",
+   "name": "Alça com Mapa",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_acess_pulseiras": {
+   "slot": "bracos",
+   "name": "Pulseiras de Couro",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_acess_bolsa_lateral": {
+   "slot": "cintura",
+   "name": "Bolsa Lateral",
+   "audience": "M",
+   "hidesHair": false,
+   "tecido": true
+  },
+  "P_acess_bracadeiras": {
+   "slot": "bracos",
+   "name": "Braçadeiras com Pele",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_acess_fita": {
+   "slot": "acessorio",
+   "name": "Fita no Pescoço",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_acess_colar_verde": {
+   "slot": "acessorio",
+   "name": "Colar de Pedra Verde",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_acess_colar_conchas": {
+   "slot": "acessorio",
+   "name": "Colar de Conchas",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_acess_meio_veu": {
+   "slot": "acessorio",
+   "name": "Meio Véu",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_acess_brincos": {
+   "slot": "acessorio",
+   "name": "Brincos de Bronze",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_acess_cinto_ervas": {
+   "slot": "cintura",
+   "name": "Cinto de Ervas",
+   "audience": "F",
+   "hidesHair": false,
+   "tecido": true
+  },
+  "P_acess_faixa_livro": {
+   "slot": "cintura",
+   "name": "Faixa com Livro",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_acess_punhos_bordados": {
+   "slot": "bracos",
+   "name": "Punhos Bordados",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_acess_bolsa_redonda": {
+   "slot": "cintura",
+   "name": "Bolsa Redonda",
+   "audience": "F",
+   "hidesHair": false,
+   "tecido": true
+  },
+  "P_acess_bracais_bronze": {
+   "slot": "bracos",
+   "name": "Braçais de Bronze",
+   "audience": "F",
+   "hidesHair": false
+  },
+  "P_orelha_curta_clara": {
+   "slot": "orelha",
+   "name": "Orelha",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_orelha_curta_escura": {
+   "slot": "orelha",
+   "name": "Orelha",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_orelha_longa_clara": {
+   "slot": "orelha",
+   "name": "Orelha",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_orelha_longa_escura": {
+   "slot": "orelha",
+   "name": "Orelha",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_orelha_tras_clara": {
+   "slot": "orelha",
+   "name": "Orelha",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_orelha_tras_escura": {
+   "slot": "orelha",
+   "name": "Orelha",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_orelha_caida_clara": {
+   "slot": "orelha",
+   "name": "Orelha",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_orelha_caida_escura": {
+   "slot": "orelha",
+   "name": "Orelha",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_elfo_camisa_marfim": {
+   "slot": "camisa",
+   "name": "Camisa de Marfim",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_camisa_musgo": {
+   "slot": "camisa",
+   "name": "Camisa de Musgo Élfica",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_camisa_lua": {
+   "slot": "camisa",
+   "name": "Camisa da Lua",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_camisa_violeta": {
+   "slot": "camisa",
+   "name": "Camisa Violeta",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_camisa_carvao": {
+   "slot": "camisa",
+   "name": "Camisa de Carvão",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_colete_folhas": {
+   "slot": "cima",
+   "name": "Colete de Folhas",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_tabardo_ouro": {
+   "slot": "cima",
+   "name": "Tabardo Dourado",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_capa_floresta": {
+   "slot": "cima",
+   "name": "Capa da Floresta",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo",
+   "tecido": true
+  },
+  "P_elfo_manto_prata": {
+   "slot": "cima",
+   "name": "Manto de Prata",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo",
+   "tecido": true
+  },
+  "P_elfo_arreio_negro": {
+   "slot": "cima",
+   "name": "Arreio Negro",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_calca_vinha": {
+   "slot": "calca",
+   "name": "Calça de Vinhas",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_calca_musgo": {
+   "slot": "calca",
+   "name": "Calça de Musgo",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_calca_seda": {
+   "slot": "calca",
+   "name": "Calça de Seda",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_calca_violeta": {
+   "slot": "calca",
+   "name": "Calça Violeta",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_calca_negra": {
+   "slot": "calca",
+   "name": "Calça de Couro Negro",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_bota_camurca": {
+   "slot": "calcado",
+   "name": "Botas de Camurça",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_bota_folha": {
+   "slot": "calcado",
+   "name": "Botas de Folha",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_sapato_prata": {
+   "slot": "calcado",
+   "name": "Sapatos de Prata",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_bota_negra": {
+   "slot": "calcado",
+   "name": "Botas Negras",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_bota_violeta": {
+   "slot": "calcado",
+   "name": "Botas Violeta",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_blusa_marfim": {
+   "slot": "camisa",
+   "name": "Blusa de Marfim",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_blusa_salvia": {
+   "slot": "camisa",
+   "name": "Blusa de Sálvia Élfica",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_blusa_lua": {
+   "slot": "camisa",
+   "name": "Blusa da Lua",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_blusa_violeta": {
+   "slot": "camisa",
+   "name": "Blusa Violeta",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_blusa_carvao": {
+   "slot": "camisa",
+   "name": "Blusa de Carvão",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_corpete_folhas": {
+   "slot": "cima",
+   "name": "Corpete de Folhas",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_corpete_ouro": {
+   "slot": "cima",
+   "name": "Corpete Dourado",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_capa_musgo": {
+   "slot": "cima",
+   "name": "Capa de Musgo",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo",
+   "tecido": true
+  },
+  "P_elfo_manto_branco": {
+   "slot": "cima",
+   "name": "Manto Branco",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo",
+   "tecido": true
+  },
+  "P_elfo_corpete_negro": {
+   "slot": "cima",
+   "name": "Corpete Negro",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_saia_musgo": {
+   "slot": "calca",
+   "name": "Saia Longa de Musgo",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo",
+   "tecido": true
+  },
+  "P_elfo_saiote_camurca": {
+   "slot": "calca",
+   "name": "Saiote de Camurça",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo",
+   "tecido": true
+  },
+  "P_elfo_saia_marfim": {
+   "slot": "calca",
+   "name": "Saia de Marfim",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo",
+   "tecido": true
+  },
+  "P_elfo_saiote_violeta": {
+   "slot": "calca",
+   "name": "Saiote Violeta",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo",
+   "tecido": true
+  },
+  "P_elfo_saia_negra": {
+   "slot": "calca",
+   "name": "Saia Negra",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo",
+   "tecido": true
+  },
+  "P_elfo_bota_verde": {
+   "slot": "calcado",
+   "name": "Botas Verdes Élficas",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_bota_folha_f": {
+   "slot": "calcado",
+   "name": "Botas de Folha Altas",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_sapatilha": {
+   "slot": "calcado",
+   "name": "Sapatilhas de Prata",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_bota_negra_f": {
+   "slot": "calcado",
+   "name": "Botas Negras",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_bota_violeta_f": {
+   "slot": "calcado",
+   "name": "Botas Violeta",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_colar_lua": {
+   "slot": "acessorio",
+   "name": "Colar da Lua",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_mascara_negra": {
+   "slot": "acessorio",
+   "name": "Máscara Negra",
+   "audience": "M",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_colar_verde": {
+   "slot": "acessorio",
+   "name": "Colar de Esmeralda",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_elfo_veu_escuro": {
+   "slot": "acessorio",
+   "name": "Véu Escuro",
+   "audience": "F",
+   "hidesHair": false,
+   "race": "elfo"
+  },
+  "P_busto": {
+   "slot": "busto",
+   "name": "Busto",
+   "audience": "F",
+   "hidesHair": false
+  }
+ }
+}

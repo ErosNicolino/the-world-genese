@@ -1,0 +1,148 @@
+{
+ "_doc": "A rotina dos moradores da vila (08/11; AVortexNpc, Source/Vortex/Private/Creatures/VortexNpcRoutine.cpp). Ajustar aqui não precisa compilar. papeis: horários (de, ate em horas do jogo; ate menor que de = passa da meia-noite) com onde e anim. onde: posto (o lugar de trabalho do npc_posts.json), casa (a porta da casa dele: entra e dorme, some até a hora seguinte), taverna, capela, praca (a roda da fonte), banco (senta), quadro (o quadro de missões), passeio (troca de lugar a cada 40-90 s: praça, bancos, quadro, portas das lojas), patrulha (a volta do npc_extra.json). anim: trabalho (a do morador, em npcs), conversa, beber, rezar, vigiar, sentar, ou o nome de um clipe (MX_humano_<nome>). npcs: papel, trabalho (o clipe do ofício), voz (grave, medio, agudo, crianca). falas: frases a mais acima da cabeça, por hora do dia (manha 5-12, tarde 12-18, noite 18-5) e por tipo (todos, guarda, crianca, passante). passantes: moradores sem nome fixo que andam pela vila de dia (os nomes, as roupas e os cabelos sorteados com a semente).",
+ "papeis": {
+  "loja": [
+   {"de": 6, "ate": 7, "onde": "posto", "anim": "trabalho"},
+   {"de": 7, "ate": 12, "onde": "posto", "anim": "trabalho"},
+   {"de": 12, "ate": 13, "onde": "taverna", "anim": "beber"},
+   {"de": 13, "ate": 19, "onde": "posto", "anim": "trabalho"},
+   {"de": 19, "ate": 21, "onde": "taverna", "anim": "conversa"},
+   {"de": 21, "ate": 6, "onde": "casa"}
+  ],
+  "loja_tarde": [
+   {"de": 8, "ate": 13, "onde": "posto", "anim": "trabalho"},
+   {"de": 13, "ate": 14, "onde": "banco", "anim": "sentar"},
+   {"de": 14, "ate": 20, "onde": "posto", "anim": "trabalho"},
+   {"de": 20, "ate": 22, "onde": "praca", "anim": "conversa"},
+   {"de": 22, "ate": 8, "onde": "casa"}
+  ],
+  "taverneira": [
+   {"de": 7, "ate": 24, "onde": "posto", "anim": "trabalho"},
+   {"de": 0, "ate": 1, "onde": "posto", "anim": "trabalho"},
+   {"de": 1, "ate": 7, "onde": "casa"}
+  ],
+  "guarda": [
+   {"de": 0, "ate": 24, "onde": "posto", "anim": "vigiar"}
+  ],
+  "capita": [
+   {"de": 6, "ate": 12, "onde": "posto", "anim": "vigiar"},
+   {"de": 12, "ate": 13, "onde": "taverna", "anim": "beber"},
+   {"de": 13, "ate": 22, "onde": "posto", "anim": "vigiar"},
+   {"de": 22, "ate": 6, "onde": "casa"}
+  ],
+  "capela": [
+   {"de": 5, "ate": 12, "onde": "posto", "anim": "rezar"},
+   {"de": 12, "ate": 13, "onde": "banco", "anim": "sentar"},
+   {"de": 13, "ate": 21, "onde": "posto", "anim": "rezar"},
+   {"de": 21, "ate": 5, "onde": "casa"}
+  ],
+  "morador": [
+   {"de": 7, "ate": 10, "onde": "praca", "anim": "conversa"},
+   {"de": 10, "ate": 12, "onde": "banco", "anim": "sentar"},
+   {"de": 12, "ate": 13, "onde": "taverna", "anim": "beber"},
+   {"de": 13, "ate": 17, "onde": "passeio"},
+   {"de": 17, "ate": 20, "onde": "banco", "anim": "sentar"},
+   {"de": 20, "ate": 22, "onde": "taverna", "anim": "conversa"},
+   {"de": 22, "ate": 7, "onde": "casa"}
+  ],
+  "julia": [
+   {"de": 8, "ate": 12, "onde": "patrulha"},
+   {"de": 12, "ate": 13, "onde": "banco", "anim": "sentar"},
+   {"de": 13, "ate": 19, "onde": "patrulha"},
+   {"de": 19, "ate": 22, "onde": "praca", "anim": "conversa"},
+   {"de": 22, "ate": 8, "onde": "casa"}
+  ],
+  "passante": [
+   {"de": 7, "ate": 21, "onde": "passeio"},
+   {"de": 21, "ate": 7, "onde": "casa"}
+  ],
+  "crianca": [
+   {"de": 8, "ate": 12, "onde": "passeio"},
+   {"de": 12, "ate": 13, "onde": "praca", "anim": "Emote_Rir"},
+   {"de": 13, "ate": 19, "onde": "passeio"},
+   {"de": 19, "ate": 8, "onde": "casa"}
+  ]
+ },
+ "npcs": {
+  "bram": {"papel": "loja", "trabalho": "Npc_Martelar", "voz": "grave"},
+  "garrick": {"papel": "loja", "trabalho": "Npc_Balcao", "voz": "grave"},
+  "rosa": {"papel": "loja_tarde", "trabalho": "Npc_Costurar", "voz": "agudo"},
+  "ilsa": {"papel": "loja", "trabalho": "Npc_Mexer", "voz": "agudo"},
+  "nicolly": {"papel": "loja_tarde", "trabalho": "Npc_Ler", "voz": "agudo"},
+  "ducci": {"papel": "loja_tarde", "trabalho": "Npc_Conversar", "voz": "medio"},
+  "marta": {"papel": "taverneira", "trabalho": "Npc_Balcao", "voz": "agudo"},
+  "lexy": {"papel": "loja_tarde", "trabalho": "Npc_Costurar", "voz": "agudo"},
+  "bunny": {"papel": "loja_tarde", "trabalho": "Npc_Mexer", "voz": "agudo"},
+  "tomas": {"papel": "loja", "trabalho": "Npc_Sovar", "voz": "medio"},
+  "edda": {"papel": "loja", "trabalho": "Npc_Serrar", "voz": "agudo"},
+  "joao_cavalarico": {"papel": "loja", "trabalho": "Npc_Escovar", "voz": "medio"},
+  "irma_celia": {"papel": "capela", "trabalho": "Npc_Rezar", "voz": "agudo"},
+  "rhea": {"papel": "capita", "trabalho": "Npc_Vigiar", "voz": "medio"},
+  "guarda_0_0": {"papel": "guarda", "trabalho": "Npc_Vigiar", "voz": "grave"},
+  "guarda_0_1": {"papel": "guarda", "trabalho": "Npc_Vigiar", "voz": "grave"},
+  "guarda_1_0": {"papel": "guarda", "trabalho": "Npc_Vigiar", "voz": "grave"},
+  "guarda_1_1": {"papel": "guarda", "trabalho": "Npc_Vigiar", "voz": "grave"},
+  "guarda_2_0": {"papel": "guarda", "trabalho": "Npc_Vigiar", "voz": "grave"},
+  "guarda_2_1": {"papel": "guarda", "trabalho": "Npc_Vigiar", "voz": "grave"},
+  "lary": {"papel": "morador", "trabalho": "Npc_Conversar", "voz": "agudo"},
+  "bento": {"papel": "morador", "trabalho": "Npc_Conversar", "voz": "grave"},
+  "julia": {"papel": "julia", "trabalho": "Npc_Conversar", "voz": "agudo"}
+ },
+ "falas": {
+  "todos": {
+   "manha": ["Bom dia, aventureiro!", "Acordou cedo, hein?", "O pão do Tomás já saiu do forno.", "Dia bonito para sair da vila.", "Cuidado com as gotas na estrada.", "A fonte está fresquinha agora."],
+   "tarde": ["Que calor hoje.", "A tarde está tranquila.", "Já almoçou? A taverna está cheia.", "O Bram está martelando desde cedo.", "Dizem que o vale está mudando.", "Precisa de alguma coisa, viajante?"],
+   "noite": ["Boa noite. Cuidado lá fora.", "Já está tarde...", "Os lobos uivam mais à noite.", "Não vá para a floresta agora.", "A taverna ainda está aberta.", "Durma com a porta fechada."]
+  },
+  "guarda": {
+   "manha": ["Portão aberto. Boa caçada.", "Tudo em ordem por aqui."],
+   "tarde": ["Nada passa por este portão sem eu ver.", "Mantenha a arma guardada na vila."],
+   "noite": ["Vigília da noite. Siga seu caminho.", "Fique perto das tochas."]
+  },
+  "crianca": {
+   "manha": ["Pega! Tá com você!", "Eu vi um lobo! Juro!"],
+   "tarde": ["Quando eu crescer vou ter uma espada assim!", "Brinca com a gente?"],
+   "noite": ["Minha mãe já me chamou..."]
+  },
+  "passante": {
+   "manha": ["Bom dia!", "Vou à padaria antes que acabe."],
+   "tarde": ["Já viu o quadro de missões?", "Dizem que tem um golem na cratera..."],
+   "noite": ["Hora de ir para casa.", "Boa noite."]
+  }
+ },
+ "gestos": {
+  "adulto": ["Emote_Acenar", "Emote_Reverencia", "Emote_Rir", "Emote_Pensar", "Emote_Palmas", "Emote_Saudar", "", ""],
+  "guarda": ["Emote_Saudar", "Emote_Reverencia", "", ""],
+  "crianca": ["Emote_Comemorar", "Emote_Palmas", "Emote_Rir", "Emote_Acenar", "Emote_Vitoria", ""]
+ },
+ "conversas": {
+  "manha": [
+   ["Bom dia! Dormiu bem?", "Mais ou menos. Os lobos uivaram a noite toda.", "Também ouvi. Vieram mais perto da cerca."],
+   ["O pão saiu quentinho hoje.", "Guarda um para mim?", "Só se pagar o de ontem!"],
+   ["Vai ter feira esta semana?", "Se a estrada estiver aberta, vai.", "Tomara. Preciso de linha nova."],
+   ["Viu quem chegou ontem?", "Aquele aventureiro? Vi sim.", "Tem cara de quem vai arrumar confusão."],
+   ["O galo cantou às quatro de novo.", "Esse galo vai virar sopa."]
+  ],
+  "tarde": [
+   ["Que calor, hein?", "Nem me fale. A forja do Bram piora tudo.", "Ao menos as espadas ficam prontas."],
+   ["Já olhou o quadro de missões?", "Tem um pedido novo sobre as gotas.", "Essas gosmas estão por toda parte."],
+   ["Dizem que tem um golem na cratera.", "Dizem muita coisa.", "Meu primo viu com os próprios olhos!", "Seu primo vê até fantasma."],
+   ["A taverna estava cheia no almoço.", "A Marta faz o melhor ensopado do vale."],
+   ["Você ainda deve aquelas moedas.", "Que moedas?", "Muito engraçado."]
+  ],
+  "noite": [
+   ["Fechou tudo por hoje?", "Fechei. Amanhã tem mais.", "Durma bem."],
+   ["Viu aquela luz na floresta?", "Não vi e não quero ver.", "Melhor assim."],
+   ["Uma última caneca?", "Só mais uma.", "Foi o que você disse ontem."],
+   ["As estrelas estão bonitas hoje.", "Minha avó dizia que são raízes da Árvore do Mundo."]
+  ]
+ },
+ "passantes": {
+  "adultos": 10,
+  "criancas": 6,
+  "semente": 2611,
+  "nomes_m": ["Aldo", "Bruno", "Caio", "Dario", "Elias", "Fausto", "Gael", "Hugo", "Igor", "Lino", "Murilo", "Otto"],
+  "nomes_f": ["Alba", "Bia", "Clara", "Dora", "Eva", "Flora", "Gina", "Helena", "Iara", "Lia", "Mila", "Nina"],
+  "cores_cabelo": ["#2E2019", "#1E1A1C", "#6B4426", "#A8743A", "#D9B26A", "#8A2E1E", "#4A4A50", "#E8E0D0"]
+ }
+}

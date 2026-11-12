@@ -1,0 +1,34 @@
+# Repositório "leve" (12/11): só o código, a configuração, os scripts, os JSON, os textos dos Docs e os vídeos curtos.
+# A arte (Content, modelos, texturas) fica no PC. Regra: tudo fora, depois libera o que vai.
+/*
+!/.gitignore
+!/Vortex.uproject
+!/CLAUDE.md
+!/README.md
+!/LICENSE
+!/Source/
+!/Config/
+!/Tools/
+!/Data/
+!/Docs/
+
+# Data: só os JSON
+/Data/**/*.*
+!/Data/**/*.json
+!/Data/**/
+
+# Docs: só os textos e os vídeos do jogo (cada um com menos de 100 MB)
+/Docs/**/*.*
+!/Docs/**/*.md
+!/Docs/**/*.html
+!/Docs/**/*.txt
+!/Docs/Videos/*.mp4
+!/Docs/Github/**/*.jpg
+!/Docs/Github/**/*.png
+!/Docs/Github/**/*.mp4
+!/Docs/**/
+
+# o que nunca vai
+/Data/Online/eos_credentials.json
+__pycache__/
+*.pyc

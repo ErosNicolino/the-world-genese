@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>O que falta</title>
+<style>
+@page { size: A4; margin: 14mm 13mm; }
+* { box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #1f2430; margin: 0; font-size: 10.5pt; line-height: 1.45; }
+.cover { background: linear-gradient(150deg, #1c2340 0%, #2c1d4a 60%, #5a2d16 100%); color: #f4ead2; border-radius: 14px;
+  padding: 14mm 14mm 12mm; margin-bottom: 7mm; }
+.cover h1 { margin: 0; font-size: 28pt; color: #f0cf7a; }
+.cover p { margin: 2mm 0 0; font-size: 11.5pt; }
+.cover .sum { display: flex; gap: 4mm; margin-top: 7mm; flex-wrap: wrap; }
+.cover .sum div { background: rgba(255,255,255,.1); border-radius: 10px; padding: 3mm 5mm; font-size: 10pt; }
+.cover .sum b { display: block; font-size: 18pt; color: #fff; }
+h2 { font-size: 14pt; margin: 7mm 0 3mm; padding: 2.5mm 4mm; border-radius: 8px; color: #fff; page-break-after: avoid; }
+h3 { font-size: 11pt; margin: 4mm 0 1mm; color: #2c1d4a; page-break-after: avoid; }
+.test h2 { background: #2f855a; } .todo h2 { background: #c05621; } .wait h2 { background: #6b46c1; } .you h2 { background: #2b6cb0; }
+.done h2 { background: #4a5568; }
+ul { list-style: none; margin: 0; padding: 0; }
+li { padding: 2.2mm 3mm 2.2mm 9mm; border-bottom: 1px solid #e6e8ef; position: relative; page-break-inside: avoid; }
+li::before { content: "☐"; position: absolute; left: 2mm; top: 2mm; font-size: 11pt; color: #8a8fa0; }
+.done li::before { content: "☑"; color: #2f855a; }
+li b { color: #2c1d4a; }
+li small { display: block; color: #5b6070; font-size: 9pt; margin-top: .6mm; }
+.tag { font-size: 8pt; font-weight: 700; padding: .3mm 2mm; border-radius: 4px; color: #fff; margin-left: 1.5mm; vertical-align: 1px; }
+.alta { background: #c53030; } .media { background: #d69e2e; } .baixa { background: #718096; } .novo { background: #2f855a; }
+.foot { margin-top: 8mm; font-size: 9pt; color: #5b6070; border-top: 1px solid #e6e8ef; padding-top: 3mm; }
+</style>
+</head>
+<body>
+<div class="cover">
+  <h1>O que falta no jogo</h1>
+  <p>The World Gêneses — situação em 08/11/2026. De 04/11 para cá: a vila nova, as 70 armas e as 21 armaduras, os poderes
+  únicos, a economia, os lugares marcantes, o relevo de cada região, os moradores com rotina, as travadas e a tela de
+  carregamento nova. O instalador do Windows com tudo isso está no itch.</p>
+  <p>O detalhe técnico de cada item está em <b>Docs/CONTINUAR_AQUI.md</b> e nos Docs de cada assunto.</p>
+  <div class="sum">
+    <div><b>20</b>feitos, falta você testar</div>
+    <div><b>9</b>pedidos ainda por fazer</div>
+    <div><b>4</b>esperando a sua decisão</div>
+    <div><b>4</b>coisas que só você faz</div>
+  </div>
+</div>
+
+<div class="todo">
+<h2>Bugs para corrigir (11/11, vistos jogando)</h2>
+<ul>
+  <li><b>Forja: o Bram martela o ar</b><span class="tag alta">alta</span><small>A bigorna ficou longe dele. Ele fica no alpendre olhando para a rua; a bigorna tem que ficar na frente dele.</small></li>
+  <li><b>Forja: lampião no lugar errado e sem luz</b><span class="tag media">média</span><small>Está dentro da casa, quase no chão e virado para a parede. Vai para a parede de fora, ao lado da porta, na altura certa e com luz.</small></li>
+  <li><b>Forja: sem porta e coisas na frente da porta</b><span class="tag alta">alta</span><small>A bancada, o balde e a bigorna bloqueiam a passagem até o arco, e o arco não tem porta. Liberar a passagem e pôr a porta que abre com E.</small></li>
+  <li><b>Forja: chaminé cortada e brasa cortada</b><span class="tag media">média</span><small>A chaminé é feita de duas peças, com a tampa de uma no meio, e a de baixo entra na brasa da fornalha. Fazer uma chaminé só e a brasa só na frente.</small></li>
+  <li><b>Forja: paredes parecem papel</b><span class="tag media">média</span><small>Paredes lisas e janelas sem vidro. Pôr vidro nas janelas e vigas de madeira por fora, para dar relevo.</small></li>
+  <li><b>Reflexo no metal das roupas, até na sombra</b><span class="tag media">média</span><small>As partes de metal (ombreiras, caneleiras) brilham como espelho mesmo no escuro. Não é o efeito de molhado: é a rugosidade do metal no M_ArmorBlock (0,36), que precisa subir.</small></li>
+  <li><b>A fada pequena demais</b><span class="tag baixa">baixa</span><small>Com 9 cm quase não se vê. Aumentar a escala no fadas.json (sem compilar).</small></li>
+</ul>
+<small>11/11: todos corrigidos e já no jogo (a forja exportada e importada, com fotos; o metal com rugosidade 0,65; a fada com escala 2). Falta você ver jogando, principalmente o lampião, que não apareceu na foto.</small>
+</div>
+
+<div class="test">
+<h2>Feito: falta você testar jogando</h2>
+
+<h3>O mundo</h3>
+<ul>
+  <li><b>Monstros menos colados</b><span class="tag novo">novo</span><small>12/11: menos bandos, mais espaço entre eles e mais mistura dos tipos que já existem em cada região (os números em Data/Population/spawn_tuning.json). Falta: monstros novos próprios de cada região (o usuário pediu para depois).</small></li>
+  <li><b>Clima e estações</b><span class="tag alta">alta</span><span class="tag novo">novo</span><small>12/11: chuva, tempestade com relâmpagos, neve, nevasca, neblina e nublado, mudando a cada 6 horas do jogo pela estação e pela região; a estação e o tempo aparecem embaixo do horário, no minimapa. A chuva e a neve somem debaixo de um teto.</small></li>
+  <li><b>Bichos e sons na cidade</b><span class="tag novo">novo</span><small>12/11: galinhas com pintinhos nos terreiros, gatos, cachorros nas ruas, ovelhas e porcos num cercado; fogo e bigorna na forja, conversa na taverna, o sino da capela, cavalo no estábulo e o mercado. Ouvir se o volume de cada um está bom.</small></li>
+  <li><b>Bandidos novos e viajantes</b><span class="tag novo">novo</span><small>12/11: os bandidos no corpo de blocos (o ladrão de capuz, o capitão, o gordo, o pequeno e o cavaleiro de cota de malha) e quatro viajantes pelas estradas dos portões, cada um com roupa própria.</small></li>
+  <li><b>Opções reorganizadas e só valendo no Aplicar</b><span class="tag alta">alta</span><span class="tag novo">novo</span><small>11/11: abas Tela, Qualidade, Luz e efeitos, Desempenho, Áudio, Controles e Interface, com nomes e descrições novos. Mudar e sair sem aplicar não muda mais nada; o Aplicar mostra "Aplicando..." até o mundo remontar. Ver se nada ficou aplicando sozinho.</small></li>
+  <li><b>Mais FPS</b><span class="tag alta">alta</span><span class="tag novo">novo</span><small>11/11: Baixa e Média sem a luz global do Lumen, o DLSS com o modelo leve nas RTX 20 e 30 (opção "Modelo do DLSS"), moradores e chão da vila mais leves. Ver se o DLSS leve não ficou borrado em movimento.</small></li>
+  <li><b>Casas fechadas e ícones das lojas no mapa</b><span class="tag novo">novo</span><small>11/11: só as lojas, a taverna, a capela e a forja abrem; as outras casas têm a porta fechada. Cada lugar com morador tem o ícone do símbolo da placa no minimapa e no mapa.</small></li>
+  <li><b>Vila maior, com as casas do kit novo</b><span class="tag alta">alta</span><span class="tag novo">novo</span><small>11/11: a vila foi de 124 para 142 m, as casas ficaram afastadas umas das outras e longe da muralha (faixa verde com árvores), e todas as casas e lojas foram refeitas com o kit da Quaternius: pedra embaixo, enxaimel em cima, telha de barro. Dá para entrar em todas; os sobrados têm escada e quarto em cima. Ver se nenhuma escada trava e se os lojistas estão atrás do balcão.</small></li>
+  <li><b>Chão, postes e fonte combinando com a vila</b><span class="tag novo">novo</span><small>11/11: rua de pedra irregular, praças de pedra cortada, meio-fio na beira das ruas, caminho de pedra da porta de cada casa até a rua, poste de madeira com lampião, bancos e cercas do kit, e a fonte com a mesma pedra. A forja ficou com a pedra para fora (estava ao contrário).</small></li>
+  <li><b>A vila nova, refeita do zero</b><span class="tag alta">alta</span><small>Planta nova, chão plano, interiores com móveis (camas, lareiras, estantes), sobrados com escada, a forja do Bram refeita, telhados com beiral. Portas que abrem e fecham com E e placas pintadas com o nome e o símbolo de cada lugar.</small></li>
+  <li><b>Os 6 lugares marcantes perto da cidade</b><span class="tag novo">novo</span><small>Mirante da Cachoeira, Colina do Anel de Pedras, Arco do Vento, Lago Espelho, Ponte de Raiz e Ninho dos Cristais, com caminhos de terra desde a cidade. A Ponte de Raiz dá para atravessar andando.</small></li>
+  <li><b>As 50 raízes da Árvore do Mundo pelo mapa</b><span class="tag novo">novo</span><small>14 sobre rios estreitos (dá para andar por cima) e 36 saindo do chão, com veios de seiva acesos.</small></li>
+  <li><b>Relevo de cada região</b><span class="tag novo">novo</span><small>Mesas em camadas em Solcânion, picos em Raikor, basalto em degraus em Brasafenda, agulhas em Morthúria, morros redondos em Verdalume, sulcos de erosão e rios que serpenteiam. As pontes e as cabanas mudaram de lugar junto com os rios.</small></li>
+  <li><b>Moradores com rotina de dia e noite</b><span class="tag novo">novo</span><small>Trabalham no posto com animação do ofício (o Bram martela, a Ilsa mexe o caldeirão, o Tomás sova a massa...), almoçam na taverna, sentam nos bancos e dormem em casa. À noite as lojas fecham. Também olham para o herói, cumprimentam, mudam as falas com a hora e falam com som de voz. Agora há 16 passantes, entre adultos e crianças.</small></li>
+</ul>
+
+<h3>Combate e itens</h3>
+<ul>
+  <li><b>As 35 espadas, os 35 arcos e as 21 armaduras</b><span class="tag alta">alta</span><small>Das suas pranchas, em blocos. As armaduras com raridade (capacete, peito, pernas e botas).</small></li>
+  <li><b>Um poder único para cada arma</b><span class="tag alta">alta</span><small>As 70 armas com animação própria no Blender e efeito próprio (nada de retângulo cinza). As espadas seguras pelo cabo.</small></li>
+  <li><b>Os 264 poderes de classe refeitos</b><span class="tag alta">alta</span><small>Cada um com animação e efeito próprios. Os 2º e 3º poderes do necromante não saíram no teste.</small></li>
+  <li><b>Nível de item e balanceamento</b><small>A mesma arma em vários níveis, com a trava "nível X" para usar. O dano de cada tipo de arma foi comparado com outros jogos.</small></li>
+  <li><b>Saque no chão</b><small>Como no Fortnite: o item gira no chão com um brilho; E pega. Dá para jogar um item da mochila no chão.</small></li>
+  <li><b>Economia</b><small>A forja do Bram sobe o nível do item com moedas e material, a loja vende no nível do herói e as poções curam uma parte da vida.</small></li>
+  <li><b>Flecha encaixada no arco, barris e caixotes</b><small>A flecha vai da corda até passar da madeira. Só a espada quebra barris, e a flecha crava neles.</small></li>
+  <li><b>Corpo feminino igual ao masculino e passadas mais longas</b><small>Mesma malha e mesmas animações (muda a textura e os olhos). A corrida cobre mais chão e o rolamento vai mais longe. As roupas femininas podem encostar no corpo.</small></li>
+  <li><b>Os da lista de 04/11 que você ainda não confirmou</b><small>Arco carregado, cajado com Caps Lock, cura no aliado da mira, bola de fogo, ping colorido, nome do cavalo, cratera do Azhûr sem lago, sons dos monstros.</small></li>
+</ul>
+
+<h3>Interface e desempenho</h3>
+<ul>
+  <li><b>HUD e janelas no estilo fantasia</b><small>Pelas suas referências (herói, mochila, diário de missões, loja). A vitrine do herói está mais clara e na proporção certa.</small></li>
+  <li><b>Tutorial de 16 passos</b><small>Sem o F; com C, V, Q, X, Z, B, M e I, e segue fora do Estádio até o fim.</small></li>
+  <li><b>Tela de carregamento nova</b><span class="tag novo">novo</span><small>Fundo com as pinturas da abertura (a da região para onde você vai), o nome do lugar em dourado e uma dica. Corrigido o bug do mundo aparecendo antes dela, depois de escolher a arma.</small></li>
+  <li><b>Menos travadas ao andar pelo mundo</b><span class="tag novo">novo</span><small>Os bichos só nascem com a malha carregada (o Colosso travava 0,9 s, o cavalo 1,4 s). Também: sons sem travar, shaders preparados no carregamento e bichos longe pensando menos vezes.</small></li>
+  <li><b>Arsenal só no editor</b><small>O modo de teste das armas não aparece no jogo instalado.</small></li>
+  <li><b>O que só dá para ver com outra pessoa</b><span class="tag media">média</span><small>Azhûr em rede, montaria em rede e os moradores na tela de um convidado.</small></li>
+</ul>
+</div>
+
+<div class="todo">
+<h2>Pedidos ainda por fazer</h2>
+<ul>
+  <li><b>Slime estilo Slime Rancher / Rimuru</b><span class="tag alta">alta</span><small>O rosto continua bugado e o corpo ainda está duro: bem mole, gelatinoso e fofo, com rosto simples e expressivo.</small></li>
+  <li><b>Arco e flecha na primeira pessoa</b><span class="tag alta">alta</span><small>O arco ainda fica torto e a mão tampa o meio.</small></li>
+  <li><b>Herói molhado de verdade</b><span class="tag media">média</span><small>Hoje quase não muda. Ideias: mais escuro e brilhante, borda em escadinha de pixel, secar de cima para baixo, pingos de cubinhos, pegadas molhadas, respingos, o mesmo efeito na chuva.</small></li>
+  <li><b>Menos pedidos de desenho por quadro</b><span class="tag media">média</span><small>O que ainda segura os ~72 FPS: juntar as peças da vila em poucas malhas e árvores distantes como imagem plana. Falta também medir o jogo empacotado (o número real).</small></li>
+  <li><b>Instalador do Linux</b><span class="tag media">média</span><small>O do itch é de 06/11; o do Windows foi atualizado hoje.</small></li>
+  <li><b>Itens das raças no menu</b><small>Orelhas de elfo, chifres de demônio e crânio de esqueleto: depois que os corpos passarem pelo Mixamo.</small></li>
+  <li><b>Pé do personagem de blocos</b><small>Cobrir o vão do tornozelo.</small></li>
+  <li><b>Monstros novos</b><small>Seryth (escorpião de vidro) e o sapo, das ofertas antigas.</small></li>
+  <li><b>Cabelos</b><small>Ajustar a física e ver se algum entra no corpo nas animações.</small></li>
+</ul>
+</div>
+
+<div class="wait">
+<h2>Esperando a sua decisão</h2>
+<ul>
+  <li><b>Imagens das classes</b><small>As do menu de escolha de classe, no ChatGPT: a referência do herói padrão está em <b>Midia/Referencia_Heroi</b> (de frente e em três quartos).</small></li>
+  <li><b>Músicas</b><small>Os prompts do Suno estão prontos em <b>05_Referencias/PROMPTS_ARMADURAS_E_MUSICA.md</b>; quando gerar, eu coloco no jogo.</small></li>
+  <li><b>Lojas à noite</b><small>Hoje o lojista dorme e a loja fecha. Se preferir aberta, é só trocar o horário no arquivo da rotina.</small></li>
+  <li><b>Próximo passo do desempenho</b><small>Medir o jogo empacotado (precisa de uma hora sem jogar) ou juntar as peças da vila.</small></li>
+</ul>
+</div>
+
+<div class="you">
+<h2>Coisas que só você faz</h2>
+<ul>
+  <li><b>itch.io: apagar o arquivo .zip antigo</b><small>Edit game → Uploads → apagar o do canal <i>windows</i>. Ficam só o .exe e o .run.</small></li>
+  <li><b>Avisar quem joga no Linux</b><small>Depois de baixar: <i>chmod +x</i> no .run, ou abrir com <i>sh TheWorldGeneses_Alpha_1.0_Linux.run</i>.</small></li>
+  <li><b>Corpos das raças no Mixamo</b><small>Os .fbx estão em <i>modelando ainda/</i>.</small></li>
+  <li><b>Não jogar enquanto eu empacoto</b><small>Empacotar usa muita memória: com o jogo aberto junto, o PC de 16 GB deu crash. Eu aviso antes.</small></li>
+</ul>
+</div>
+
+<div class="done">
+<h2>Saíram da lista (feitos desde 04/11)</h2>
+<ul>
+  <li><b>Refazer a vila expandida inteira</b><small>A vila nova (06/11).</small></li>
+  <li><b>Armaduras com raridade</b><small>As 21 armaduras (07/11).</small></li>
+  <li><b>Refazer as habilidades das classes</b><small>Os 264 poderes (07/11).</small></li>
+  <li><b>Barris só com a espada, corpo feminino, passadas mais longas</b><small>05/11.</small></li>
+  <li><b>Instalador com a vila nova</b><small>O do Windows, no itch em 08/11.</small></li>
+</ul>
+</div>
+
+<div class="foot">Gerado a partir do Docs/CONTINUAR_AQUI.md. Para refazer: abrir Docs/O_QUE_FALTA.html no navegador e imprimir em PDF
+(ou <i>msedge --headless --print-to-pdf</i>).</div>
+</body>
+</html>

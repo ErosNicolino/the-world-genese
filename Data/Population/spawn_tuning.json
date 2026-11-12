@@ -1,0 +1,20 @@
+{
+  "_comment": "Nascimento dos monstros no mundo (UVortexCreatureSubsystem::GenerateCell). Mudar aqui não precisa compilar; vale num mundo novo ou ao reabrir o jogo. 12/11: menos bandos e mais espalhados.",
+  "group_chance": 0.36,
+  "pack_spread_cm": [500, 750],
+  "bandit_camp_cm": 450,
+  "night_chance": 0.22,
+  "_regions": "0 mar, 1 Valdora, 2 Brasafenda, 3 Raikor, 4 Nivaluz, 5 Solcânion, 6 Aurivale, 7 Lodonegro, 8 Morthúria, 9 Verdalume. Repetir um nome deixa ele mais comum. Slime vira a gota da região sozinho.",
+  "regions": [
+    [],
+    ["Slime", "Wolf", "Mushroom", "Bat", "Goblin"],
+    ["Golem", "Slime", "Golem", "Bat", "Goblin"],
+    ["Wolf", "Golem", "Slime", "Bat", "Goblin"],
+    ["Wolf", "Wolf", "Golem", "Bat", "Slime"],
+    ["Golem", "Bat", "Slime", "Wolf", "Goblin"],
+    ["Slime", "Mushroom", "Wolf", "Goblin", "Bat"],
+    ["Frog", "Frog", "Mushroom", "Slime", "Bat"],
+    ["Bat", "Slime", "Wolf", "Golem", "Undead", "Skeleton"],
+    ["Mushroom", "Slime", "Bat", "Frog", "Wolf"]
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "_doc": "Peças só do Vortex (Tools/BuildJuliaPieces.py); juntadas ao catálogo do Godot pelo jogo.",
+  "pieces": {
+    "julia_hair": {
+      "name": "Longo com pontas azuis",
+      "category": "hair",
+      "defaults": {},
+      "races": []
+    },
+    "julia_glasses": {
+      "name": "Óculos redondos",
+      "category": "face_gear",
+      "defaults": {},
+      "races": []
+    },
+    "julia_choker": {
+      "name": "Gargantilha de estrela",
+      "category": "back",
+      "defaults": {},
+      "races": []
+    },
+    "julia_dress": {
+      "name": "Vestido preto",
+      "category": "shirt",
+      "defaults": {},
+      "races": []
+    },
+    "julia_stockings": {
+      "name": "Meias 7/8",
+      "category": "pants",
+      "defaults": {},
+      "races": []
+    },
+    "gloves_none": {
+      "name": "Nenhuma",
+      "category": "gloves",
+      "defaults": {},
+      "races": []
+    }
+  }
+}

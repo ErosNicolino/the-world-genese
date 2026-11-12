@@ -1,0 +1,23 @@
+{
+ "_doc": "As fadas (10/11; AVortexFairies em Source/VortexWorld). Só enfeite em cada máquina, como os pássaros: não dá para acertar; voam perto do herói e fogem quando alguém chega perto. Ajustar aqui não precisa compilar. Distâncias em cm, tempos em s. ajusteYaw: gira o modelo se ela voar de lado ou de costas (graus). escala: 1 = 9 cm de altura. brilhoCorpo: a luz própria do corpo e do rosto (sem ela a fada fica preta na sombra).",
+ "quantas": 4,
+ "perto": 900,
+ "longe": 2600,
+ "some": 6000,
+ "alturaMin": 70,
+ "alturaMax": 230,
+ "voltaRaio": 320,
+ "velocidade": 130,
+ "fugaDistancia": 450,
+ "fugaVelocidade": 650,
+ "fugaTempo": 3.5,
+ "batidas": 11,
+ "batidasParada": 7,
+ "aberturaAsa": 55,
+ "atrasoAsaBaixo": 0.25,
+ "escala": 2.0,
+ "ajusteYaw": 0,
+ "brilhoDia": 0.8,
+ "brilhoNoite": 2.5,
+ "brilhoCorpo": 0.5
+}

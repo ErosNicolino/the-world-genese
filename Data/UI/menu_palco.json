@@ -1,0 +1,6 @@
+{
+  "_sobre": "A luz do palco do menu nas telas do herói (a lista e a criação). Lido por AVortexMenuStage (VortexMenuStage.cpp) ao abrir o menu: mudar aqui não precisa compilar. luz_preenchimento = a força (candelas) da luz suave que anda com a câmera e clareia o lado do herói na sombra do sol; luz_altura = quantos cm acima da câmera; exposicao = o ajuste da exposição (mais negativo = mais escuro; o mundo usa -0.38).",
+  "luz_preenchimento": 35,
+  "luz_altura": 60,
+  "exposicao": -0.73
+}

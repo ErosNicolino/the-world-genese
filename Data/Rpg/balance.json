@@ -1,0 +1,133 @@
+{
+  "_doc": "Balanceamento (02/11). Ver Docs/02_Combate/BALANCEAMENTO.md. Lido ao abrir o jogo (FVortexRpgCatalog::LoadBalance): mudar aqui não precisa compilar.",
+  "_doc_pontos": "Cada atributo vale (max + maxPerLevel x nível) x pontos / (pontos + mid x nível). Os primeiros pontos rendem muito, o resto cada vez menos; como o meio cresce com o nível, pôr a mesma parte dos pontos vale o mesmo no nível 5 e no 100. mid maior = achata mais cedo (favorece espalhar).",
+  "levelDamage": 1.0,
+  "_doc_levelDamage": "Dano que o herói ganha por nível, somado ao da arma (antes do bônus dos pontos).",
+  "defenseK": 20,
+  "defenseKPerLevel": 6,
+  "_doc_defesa": "Defesa e Resistência dividem o golpe: passa K / (K + defesa), K = defenseK + defenseKPerLevel x nível. Defesa igual a K corta metade.",
+  "monsterHitBase": 3.5,
+  "monsterHitPerLevel": 1.6,
+  "monsterDamagePerLevel": 0.14,
+  "groupRange": 4000,
+  "groupXpBonus": 0.1,
+  "groupHealthPerHero": 0.5,
+  "pvpDamage": 0.5,
+  "_doc_pvp": "Herói contra herói (duelo e PvP): o golpe calculado pela ficha de quem bate, menos a defesa de quem apanha, vezes pvpDamage.",
+  "_doc_grupo": "Em grupo (02/11): cada herói vivo a até groupRange cm do bicho vencido ganha o XP inteiro (sem dividir), com +groupXpBonus por companheiro; o bicho leva menos dano com mais heróis perto (a vida vale 1 + groupHealthPerHero por herói a mais).",
+  "_doc_criaturas": "A vida das criaturas é golpes x (monsterHitBase + monsterHitPerLevel x (nível - 1)); o dano cresce monsterDamagePerLevel por nível. O nível sai da região (VortexTerrainData::AreaLevel).",
+  "points": {
+    "attack": {
+      "max": 0,
+      "maxPerLevel": 3,
+      "mid": 4
+    },
+    "defense": {
+      "max": 0,
+      "maxPerLevel": 10,
+      "mid": 4
+    },
+    "resistance": {
+      "max": 0,
+      "maxPerLevel": 10,
+      "mid": 4
+    },
+    "max_health": {
+      "max": 0,
+      "maxPerLevel": 50,
+      "mid": 3
+    },
+    "max_mana": {
+      "max": 0,
+      "maxPerLevel": 30,
+      "mid": 3
+    },
+    "crit": {
+      "max": 30,
+      "maxPerLevel": 0,
+      "mid": 2
+    },
+    "crit_dmg": {
+      "max": 150,
+      "maxPerLevel": 0,
+      "mid": 2
+    },
+    "speed": {
+      "max": 60,
+      "maxPerLevel": 0,
+      "mid": 1.5
+    },
+    "haste": {
+      "max": 50,
+      "maxPerLevel": 0,
+      "mid": 1.5
+    },
+    "skill": {
+      "max": 0,
+      "maxPerLevel": 3,
+      "mid": 4
+    },
+    "lifesteal": {
+      "max": 12,
+      "maxPerLevel": 0,
+      "mid": 3
+    },
+    "hp_regen": {
+      "max": 0,
+      "maxPerLevel": 4,
+      "mid": 3
+    }
+  },
+  "_doc_monstros_0711": "07/11: 3 -> 3,5 e 1,3 -> 1,6: com o golpe da arma multiplicando, o 3º golpe dobra e os poderes valem o que dizem; os bichos aguentam um pouco mais para manter o ritmo.",
+  "weaponDamageScale": {
+    "_doc": "07/11: o golpe de cada tipo de arma multiplica o dano do herói (1 + Ataque + Força + nível) pelo dano do golpe e por esta escala. Calculada para o dano por segundo ficar: espada 100%, adagas 110% (alcance curto), martelo 100% (lento, mas o pesado acerta em área), lança 95%, arco e cajado 75% (de longe). Tools/Balance/WeaponDps.py.",
+    "espada_de_cinzas": 1.0,
+    "adagas_gemeas": 0.71,
+    "martelo_de_bram": 0.62,
+    "lanca_do_patrulheiro": 0.79,
+    "arco_de_betula": 0.9,
+    "cajado_de_ilsa": 0.7
+  },
+  "itemLevel": {
+    "_doc": "07/11: o nível do item (como Diablo e WoW). A mesma arma ou armadura existe em qualquer nível ('<id>@<nível>'): o saque cai no nível do bicho e só veste quem tem o nível. Ataque (ou Poder de magia) = (attackBase + attackPerLevel x nível) x o fator da arma (o martelo bate um pouco mais que a espada, o arco um pouco menos); defesa, vida e mana crescem growthPerLevel por nível; crítico, velocidade e roubo de vida não crescem. No mesmo nível, a Divina rende ~1,8x o golpe da Normal; 10 níveis a mais rendem ~+9%. Ordem: common, uncommon, rare, epic, legendary, unique, divine.",
+    "natural": [
+      1,
+      5,
+      12,
+      20,
+      30,
+      40,
+      50
+    ],
+    "attackBase": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+    ],
+    "attackPerLevel": [
+      0.25,
+      0.4,
+      0.56,
+      0.71,
+      0.88,
+      1.06,
+      1.25
+    ],
+    "attackDefault": [
+      2,
+      3,
+      4,
+      6,
+      9,
+      11,
+      14
+    ],
+    "growthPerLevel": 0.1,
+    "pricePerLevel": 0.125,
+    "max": 100
+  }
+}

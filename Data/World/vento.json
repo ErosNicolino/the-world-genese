@@ -1,0 +1,23 @@
+{
+  "_doc": "Rastros de vento no ar (AVortexWindTrails). Mudar aqui não precisa compilar. Distâncias em cm, tempos em s. ventoGraus: a direção (26,6 = a do vento da grama). noite: quanto sobra da opacidade de noite (0 a 1).",
+  "quantidade": 10,
+  "opacidade": 0.4,
+  "noite": 0.2,
+  "corR": 1.0,
+  "corG": 1.0,
+  "corB": 1.0,
+  "comprimento": 600,
+  "largura": 6,
+  "raioLaco": 45,
+  "distanciaMin": 500,
+  "distanciaMax": 2200,
+  "anguloVista": 65,
+  "alturaMin": 80,
+  "alturaMax": 350,
+  "ventoGraus": 26.6,
+  "velocidade": 160,
+  "vidaMin": 2.2,
+  "vidaMax": 3.6,
+  "pausaMin": 0.6,
+  "pausaMax": 3.5
+}

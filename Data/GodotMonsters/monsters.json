@@ -1,0 +1,389 @@
+{
+  "Slime": {
+    "title": "Gota de Jade",
+    "scale": 0.56,
+    "godot_height_m": 1.155,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Attack",
+      "Leap",
+      "Hit",
+      "Death"
+    ],
+    "glow": [
+      0.25,
+      1.0,
+      0.72
+    ],
+    "height_m": 1.155,
+    "bottom_m": 0.0,
+    "materials": 2
+  },
+  "Mushroom": {
+    "title": "Cogumelo Errante",
+    "scale": 0.56,
+    "godot_height_m": 1.26,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Attack",
+      "Spores",
+      "Hop",
+      "Hit",
+      "Tremble",
+      "Death"
+    ],
+    "glow": [
+      0,
+      0,
+      0
+    ],
+    "height_m": 1.295,
+    "bottom_m": -0.035,
+    "materials": 2
+  },
+  "Golem": {
+    "title": "Golem Musgoso",
+    "scale": 0.56,
+    "godot_height_m": 2.345,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Attack",
+      "Slam",
+      "Throw",
+      "Hit",
+      "Death"
+    ],
+    "glow": [
+      0.25,
+      1.0,
+      0.72
+    ],
+    "height_m": 2.345,
+    "bottom_m": 0.0,
+    "materials": 2
+  },
+  "Bat": {
+    "title": "Morcego de Ametista",
+    "scale": 0.56,
+    "godot_height_m": 1.61,
+    "clips": [
+      "Fly",
+      "Attack",
+      "Dive",
+      "Screech",
+      "Hit",
+      "Death"
+    ],
+    "glow": [
+      0.75,
+      0.45,
+      1.0
+    ],
+    "height_m": 1.33,
+    "bottom_m": 0.28,
+    "materials": 2
+  },
+  "Rabbit": {
+    "title": "Coelho",
+    "scale": 0.56,
+    "godot_height_m": 0.735,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Run",
+      "Eat",
+      "Hit",
+      "Death"
+    ],
+    "glow": [
+      0,
+      0,
+      0
+    ],
+    "height_m": 0.77,
+    "bottom_m": -0.035,
+    "materials": 2
+  },
+  "Deer": {
+    "title": "Cervo",
+    "scale": 0.56,
+    "godot_height_m": 2.135,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Run",
+      "Eat",
+      "Alert",
+      "Hit",
+      "Death"
+    ],
+    "glow": [
+      0,
+      0,
+      0
+    ],
+    "height_m": 2.135,
+    "bottom_m": 0.0,
+    "materials": 2
+  },
+  "GlassScorpion": {
+    "title": "Escorpião de Vidro",
+    "scale": 0.56,
+    "godot_height_m": 2.45,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Attack",
+      "TailSlam",
+      "SandBurst",
+      "Burrow",
+      "Hit",
+      "Death"
+    ],
+    "glow": [
+      0.17,
+      0.68,
+      0.65
+    ],
+    "height_m": 2.415,
+    "bottom_m": 0.035,
+    "materials": 2
+  },
+  "RootTitan": {
+    "title": "Titã das Raízes",
+    "scale": 0.56,
+    "godot_height_m": 3.36,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Attack",
+      "Hit",
+      "Death",
+      "RootCleave",
+      "VineSnare",
+      "SporeRing",
+      "RootRush"
+    ],
+    "glow": [
+      0,
+      0,
+      0
+    ],
+    "height_m": 3.465,
+    "bottom_m": -0.105,
+    "materials": 2
+  },
+  "Frog": {
+    "title": "Sapo-Gigante do Brejo",
+    "scale": 0.56,
+    "godot_height_m": 0.875,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Run",
+      "Attack",
+      "Leap",
+      "Hit",
+      "Death"
+    ],
+    "glow": [
+      0.9,
+      0.78,
+      0.2
+    ],
+    "height_m": 0.945,
+    "bottom_m": -0.07,
+    "materials": 2
+  },
+  "Goblin": {
+    "title": "Goblin",
+    "scale": 0.56,
+    "godot_height_m": 1.015,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Run",
+      "Attack",
+      "Throw",
+      "Hit",
+      "Death"
+    ],
+    "glow": [
+      1.0,
+      0.6,
+      0.1
+    ],
+    "height_m": 1.015,
+    "bottom_m": 0.0,
+    "materials": 2
+  },
+  "RuneColossus": {
+    "title": "Azhûr, o Colosso da Caldeira",
+    "scale": 1.28,
+    "godot_height_m": 8.16,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Punch",
+      "Stomp",
+      "Throw",
+      "Combo",
+      "Seismic",
+      "Debris",
+      "Charge",
+      "Summon",
+      "Rupture",
+      "Cataclysm",
+      "CoreBurst",
+      "Hands",
+      "Fury",
+      "LastCollapse",
+      "Awaken",
+      "Phase",
+      "Hit",
+      "Death"
+    ],
+    "glow": [
+      1,
+      0.24,
+      0.015
+    ],
+    "height_m": 8.72,
+    "bottom_m": -0.08,
+    "materials": 2
+  },
+  "Horse_Baio": {
+    "title": "Cavalo Baio",
+    "scale": 1.0,
+    "godot_height_m": 2.415,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Run",
+      "Rear",
+      "Hit",
+      "Death",
+      "Eat"
+    ],
+    "glow": [
+      0,
+      0,
+      0
+    ],
+    "height_m": 1.652,
+    "bottom_m": 0.018,
+    "materials": 1
+  },
+  "Horse_Tordilho": {
+    "title": "Cavalo Tordilho",
+    "scale": 1.0,
+    "godot_height_m": 2.415,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Run",
+      "Rear",
+      "Hit",
+      "Death",
+      "Eat"
+    ],
+    "glow": [
+      0,
+      0,
+      0
+    ],
+    "height_m": 1.652,
+    "bottom_m": 0.018,
+    "materials": 1
+  },
+  "Horse_Malhado": {
+    "title": "Cavalo Malhado",
+    "scale": 1.0,
+    "godot_height_m": 2.415,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Run",
+      "Rear",
+      "Hit",
+      "Death",
+      "Eat"
+    ],
+    "glow": [
+      0,
+      0,
+      0
+    ],
+    "height_m": 1.652,
+    "bottom_m": 0.018,
+    "materials": 1
+  },
+  "Horse_Negro": {
+    "title": "Cavalo Negro",
+    "scale": 1.0,
+    "godot_height_m": 2.415,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Run",
+      "Rear",
+      "Hit",
+      "Death",
+      "Eat"
+    ],
+    "glow": [
+      0,
+      0,
+      0
+    ],
+    "height_m": 1.652,
+    "bottom_m": 0.018,
+    "materials": 1
+  },
+  "Horse_Palomino": {
+    "title": "Cavalo Palomino",
+    "scale": 1.0,
+    "godot_height_m": 2.415,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Run",
+      "Rear",
+      "Hit",
+      "Death",
+      "Eat"
+    ],
+    "glow": [
+      0,
+      0,
+      0
+    ],
+    "height_m": 1.652,
+    "bottom_m": 0.018,
+    "materials": 1
+  },
+  "Spider": {
+    "title": "Aranha do Portal",
+    "scale": 1.0,
+    "godot_height_m": 1.0,
+    "clips": [
+      "Idle",
+      "Walk",
+      "Attack",
+      "Leap",
+      "Hit",
+      "Death"
+    ],
+    "glow": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "height_m": 1.0,
+    "bottom_m": 0.0,
+    "materials": 2
+  }
+}

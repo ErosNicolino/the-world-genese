@@ -1,0 +1,2735 @@
+{
+  "core": {
+    "category": "core",
+    "groups": [
+      "core__Foot_L",
+      "core__Foot_L_mesh",
+      "core__Foot_R",
+      "core__Foot_R_mesh",
+      "core__Forearm_L",
+      "core__Forearm_L_mesh",
+      "core__Forearm_R",
+      "core__Forearm_R_mesh",
+      "core__Hand_L",
+      "core__Hand_L_mesh",
+      "core__Hand_R",
+      "core__Hand_R_mesh",
+      "core__Hips",
+      "core__Hips_mesh",
+      "core__Shin_L",
+      "core__Shin_L_mesh",
+      "core__Shin_R",
+      "core__Shin_R_mesh",
+      "core__Thigh_L",
+      "core__Thigh_L_mesh",
+      "core__Thigh_R",
+      "core__Thigh_R_mesh",
+      "core__Torso",
+      "core__Torso_mesh",
+      "core__UpperArm_L",
+      "core__UpperArm_L_mesh",
+      "core__UpperArm_R",
+      "core__UpperArm_R_mesh"
+    ]
+  },
+  "accessory_bandana": {
+    "category": "accessory",
+    "groups": [
+      "accessory_bandana__Head"
+    ]
+  },
+  "accessory_cape": {
+    "category": "accessory",
+    "groups": [
+      "accessory_cape__Hips",
+      "accessory_cape__Torso"
+    ]
+  },
+  "accessory_circlet": {
+    "category": "accessory",
+    "groups": [
+      "accessory_circlet__Head"
+    ]
+  },
+  "accessory_crown": {
+    "category": "accessory",
+    "groups": [
+      "accessory_crown__Head"
+    ]
+  },
+  "accessory_earrings": {
+    "category": "accessory",
+    "groups": [
+      "accessory_earrings__Head"
+    ]
+  },
+  "accessory_feather": {
+    "category": "accessory",
+    "groups": [
+      "accessory_feather__Head"
+    ]
+  },
+  "accessory_flower": {
+    "category": "accessory",
+    "groups": [
+      "accessory_flower__Head"
+    ]
+  },
+  "accessory_goggles": {
+    "category": "accessory",
+    "groups": [
+      "accessory_goggles__Head"
+    ]
+  },
+  "accessory_hat": {
+    "category": "accessory",
+    "groups": [
+      "accessory_hat__Head"
+    ]
+  },
+  "accessory_horns": {
+    "category": "accessory",
+    "groups": [
+      "accessory_horns__Head"
+    ]
+  },
+  "accessory_mask": {
+    "category": "accessory",
+    "groups": [
+      "accessory_mask__Head"
+    ]
+  },
+  "accessory_monocle": {
+    "category": "accessory",
+    "groups": [
+      "accessory_monocle__Head"
+    ]
+  },
+  "accessory_necklace": {
+    "category": "accessory",
+    "groups": [
+      "accessory_necklace__Torso"
+    ]
+  },
+  "accessory_patch": {
+    "category": "accessory",
+    "groups": [
+      "accessory_patch__Head"
+    ]
+  },
+  "accessory_ribbon": {
+    "category": "accessory",
+    "groups": [
+      "accessory_ribbon__Head"
+    ]
+  },
+  "accessory_scarf": {
+    "category": "accessory",
+    "groups": [
+      "accessory_scarf__Torso"
+    ]
+  },
+  "barb_fur": {
+    "category": "race",
+    "groups": [
+      "barb_fur__Torso"
+    ]
+  },
+  "barb_paint_blue": {
+    "category": "race",
+    "groups": [
+      "barb_paint_blue__Head"
+    ]
+  },
+  "barb_paint_red": {
+    "category": "race",
+    "groups": [
+      "barb_paint_red__Head"
+    ]
+  },
+  "barb_scars": {
+    "category": "race",
+    "groups": [
+      "barb_scars__Head"
+    ]
+  },
+  "boots_fur": {
+    "category": "shoes",
+    "groups": [
+      "boots_fur__Foot_L",
+      "boots_fur__Foot_R",
+      "boots_fur__Shin_L",
+      "boots_fur__Shin_R"
+    ]
+  },
+  "boots_healer": {
+    "category": "shoes",
+    "groups": [
+      "boots_healer__Foot_L",
+      "boots_healer__Foot_R",
+      "boots_healer__Shin_L",
+      "boots_healer__Shin_R"
+    ]
+  },
+  "boots_hunter": {
+    "category": "shoes",
+    "groups": [
+      "boots_hunter__Foot_L",
+      "boots_hunter__Foot_R",
+      "boots_hunter__Shin_L",
+      "boots_hunter__Shin_R"
+    ]
+  },
+  "boots_laced": {
+    "category": "shoes",
+    "groups": [
+      "boots_laced__Foot_L",
+      "boots_laced__Foot_R",
+      "boots_laced__Shin_L",
+      "boots_laced__Shin_R"
+    ]
+  },
+  "boots_monk": {
+    "category": "shoes",
+    "groups": [
+      "boots_monk__Foot_L",
+      "boots_monk__Foot_R",
+      "boots_monk__Shin_L",
+      "boots_monk__Shin_R"
+    ]
+  },
+  "boots_nomad": {
+    "category": "shoes",
+    "groups": [
+      "boots_nomad__Foot_L",
+      "boots_nomad__Foot_R",
+      "boots_nomad__Shin_L",
+      "boots_nomad__Shin_R"
+    ]
+  },
+  "boots_punk": {
+    "category": "shoes",
+    "groups": [
+      "boots_punk__Foot_L",
+      "boots_punk__Foot_R",
+      "boots_punk__Shin_L",
+      "boots_punk__Shin_R"
+    ]
+  },
+  "boots_royal": {
+    "category": "shoes",
+    "groups": [
+      "boots_royal__Foot_L",
+      "boots_royal__Foot_R",
+      "boots_royal__Shin_L",
+      "boots_royal__Shin_R"
+    ]
+  },
+  "boots_sailor": {
+    "category": "shoes",
+    "groups": [
+      "boots_sailor__Foot_L",
+      "boots_sailor__Foot_R",
+      "boots_sailor__Shin_L",
+      "boots_sailor__Shin_R"
+    ]
+  },
+  "boots_scout": {
+    "category": "shoes",
+    "groups": [
+      "boots_scout__Foot_L",
+      "boots_scout__Foot_R",
+      "boots_scout__Shin_L",
+      "boots_scout__Shin_R"
+    ]
+  },
+  "boots_shadow": {
+    "category": "shoes",
+    "groups": [
+      "boots_shadow__Foot_L",
+      "boots_shadow__Foot_R",
+      "boots_shadow__Shin_L",
+      "boots_shadow__Shin_R"
+    ]
+  },
+  "boots_winter": {
+    "category": "shoes",
+    "groups": [
+      "boots_winter__Foot_L",
+      "boots_winter__Foot_R",
+      "boots_winter__Shin_L",
+      "boots_winter__Shin_R"
+    ]
+  },
+  "boots_wrap": {
+    "category": "shoes",
+    "groups": [
+      "boots_wrap__Foot_L",
+      "boots_wrap__Foot_R",
+      "boots_wrap__Shin_L",
+      "boots_wrap__Shin_R"
+    ]
+  },
+  "bracers": {
+    "category": "gloves",
+    "groups": [
+      "bracers__Forearm_L",
+      "bracers__Forearm_R",
+      "bracers__Hand_L",
+      "bracers__Hand_R"
+    ]
+  },
+  "demon_horns_curved": {
+    "category": "race",
+    "groups": [
+      "demon_horns_curved__Head",
+      "demon_horns_curved__Hips"
+    ]
+  },
+  "demon_horns_ram": {
+    "category": "race",
+    "groups": [
+      "demon_horns_ram__Head",
+      "demon_horns_ram__Hips"
+    ]
+  },
+  "demon_horns_straight": {
+    "category": "race",
+    "groups": [
+      "demon_horns_straight__Head",
+      "demon_horns_straight__Hips"
+    ]
+  },
+  "dwarf_beard_braided": {
+    "category": "race",
+    "groups": [
+      "dwarf_beard_braided__Head"
+    ]
+  },
+  "dwarf_beard_full": {
+    "category": "race",
+    "groups": [
+      "dwarf_beard_full__Head"
+    ]
+  },
+  "dwarf_beard_long": {
+    "category": "race",
+    "groups": [
+      "dwarf_beard_long__Head"
+    ]
+  },
+  "dwarf_braids": {
+    "category": "race",
+    "groups": [
+      "dwarf_braids__Head"
+    ]
+  },
+  "elf_ears_long": {
+    "category": "race",
+    "groups": [
+      "elf_ears_long__Head"
+    ]
+  },
+  "elf_ears_short": {
+    "category": "race",
+    "groups": [
+      "elf_ears_short__Head"
+    ]
+  },
+  "elf_ears_swept": {
+    "category": "race",
+    "groups": [
+      "elf_ears_swept__Head"
+    ]
+  },
+  "eyes_f_bold": {
+    "category": "eyes",
+    "groups": [
+      "eyes_f_bold__Head"
+    ]
+  },
+  "eyes_f_classic": {
+    "category": "eyes",
+    "groups": [
+      "eyes_f_classic__Head"
+    ]
+  },
+  "eyes_f_focused": {
+    "category": "eyes",
+    "groups": [
+      "eyes_f_focused__Head"
+    ]
+  },
+  "eyes_f_freckles": {
+    "category": "eyes",
+    "groups": [
+      "eyes_f_freckles__Head"
+    ]
+  },
+  "eyes_f_gentle": {
+    "category": "eyes",
+    "groups": [
+      "eyes_f_gentle__Head"
+    ]
+  },
+  "eyes_f_happy": {
+    "category": "eyes",
+    "groups": [
+      "eyes_f_happy__Head"
+    ]
+  },
+  "eyes_f_sharp": {
+    "category": "eyes",
+    "groups": [
+      "eyes_f_sharp__Head"
+    ]
+  },
+  "eyes_f_sleepy": {
+    "category": "eyes",
+    "groups": [
+      "eyes_f_sleepy__Head"
+    ]
+  },
+  "eyes_f_surprised": {
+    "category": "eyes",
+    "groups": [
+      "eyes_f_surprised__Head"
+    ]
+  },
+  "eyes_f_wide": {
+    "category": "eyes",
+    "groups": [
+      "eyes_f_wide__Head"
+    ]
+  },
+  "eyes_m_big": {
+    "category": "eyes",
+    "groups": [
+      "eyes_m_big__Head"
+    ]
+  },
+  "eyes_m_bold": {
+    "category": "eyes",
+    "groups": [
+      "eyes_m_bold__Head"
+    ]
+  },
+  "eyes_m_calm": {
+    "category": "eyes",
+    "groups": [
+      "eyes_m_calm__Head"
+    ]
+  },
+  "eyes_m_fierce": {
+    "category": "eyes",
+    "groups": [
+      "eyes_m_fierce__Head"
+    ]
+  },
+  "eyes_m_focused": {
+    "category": "eyes",
+    "groups": [
+      "eyes_m_focused__Head"
+    ]
+  },
+  "eyes_m_gentle": {
+    "category": "eyes",
+    "groups": [
+      "eyes_m_gentle__Head"
+    ]
+  },
+  "eyes_m_happy": {
+    "category": "eyes",
+    "groups": [
+      "eyes_m_happy__Head"
+    ]
+  },
+  "eyes_m_scar": {
+    "category": "eyes",
+    "groups": [
+      "eyes_m_scar__Head"
+    ]
+  },
+  "eyes_m_sleepy": {
+    "category": "eyes",
+    "groups": [
+      "eyes_m_sleepy__Head"
+    ]
+  },
+  "eyes_m_surprised": {
+    "category": "eyes",
+    "groups": [
+      "eyes_m_surprised__Head"
+    ]
+  },
+  "face_female": {
+    "category": "face",
+    "groups": [
+      "face_female__Head"
+    ]
+  },
+  "face_male": {
+    "category": "face",
+    "groups": [
+      "face_male__Head"
+    ]
+  },
+  "gauntlets": {
+    "category": "gloves",
+    "groups": [
+      "gauntlets__Forearm_L",
+      "gauntlets__Forearm_R",
+      "gauntlets__Hand_L",
+      "gauntlets__Hand_R"
+    ]
+  },
+  "gear_belt": {
+    "category": "gear",
+    "groups": [
+      "gear_belt__Hips"
+    ]
+  },
+  "gear_strap": {
+    "category": "gear",
+    "groups": [
+      "gear_strap__Hips",
+      "gear_strap__Torso"
+    ]
+  },
+  "gloves_bare": {
+    "category": "gloves",
+    "groups": [
+      "gloves_bare__Forearm_L",
+      "gloves_bare__Forearm_R",
+      "gloves_bare__Hand_L",
+      "gloves_bare__Hand_R"
+    ]
+  },
+  "gloves_healer": {
+    "category": "gloves",
+    "groups": [
+      "gloves_healer__Forearm_L",
+      "gloves_healer__Forearm_R",
+      "gloves_healer__Hand_L",
+      "gloves_healer__Hand_R"
+    ]
+  },
+  "gloves_hunter": {
+    "category": "gloves",
+    "groups": [
+      "gloves_hunter__Forearm_L",
+      "gloves_hunter__Forearm_R",
+      "gloves_hunter__Hand_L",
+      "gloves_hunter__Hand_R"
+    ]
+  },
+  "gloves_leather": {
+    "category": "gloves",
+    "groups": [
+      "gloves_leather__Forearm_L",
+      "gloves_leather__Forearm_R",
+      "gloves_leather__Hand_L",
+      "gloves_leather__Hand_R"
+    ]
+  },
+  "gloves_long": {
+    "category": "gloves",
+    "groups": [
+      "gloves_long__Forearm_L",
+      "gloves_long__Forearm_R",
+      "gloves_long__Hand_L",
+      "gloves_long__Hand_R"
+    ]
+  },
+  "gloves_monk": {
+    "category": "gloves",
+    "groups": [
+      "gloves_monk__Forearm_L",
+      "gloves_monk__Forearm_R",
+      "gloves_monk__Hand_L",
+      "gloves_monk__Hand_R"
+    ]
+  },
+  "gloves_nomad": {
+    "category": "gloves",
+    "groups": [
+      "gloves_nomad__Forearm_L",
+      "gloves_nomad__Forearm_R",
+      "gloves_nomad__Hand_L",
+      "gloves_nomad__Hand_R"
+    ]
+  },
+  "gloves_punk": {
+    "category": "gloves",
+    "groups": [
+      "gloves_punk__Forearm_L",
+      "gloves_punk__Forearm_R",
+      "gloves_punk__Hand_L",
+      "gloves_punk__Hand_R"
+    ]
+  },
+  "gloves_royal": {
+    "category": "gloves",
+    "groups": [
+      "gloves_royal__Forearm_L",
+      "gloves_royal__Forearm_R",
+      "gloves_royal__Hand_L",
+      "gloves_royal__Hand_R"
+    ]
+  },
+  "gloves_sailor": {
+    "category": "gloves",
+    "groups": [
+      "gloves_sailor__Forearm_L",
+      "gloves_sailor__Forearm_R",
+      "gloves_sailor__Hand_L",
+      "gloves_sailor__Hand_R"
+    ]
+  },
+  "gloves_scout": {
+    "category": "gloves",
+    "groups": [
+      "gloves_scout__Forearm_L",
+      "gloves_scout__Forearm_R",
+      "gloves_scout__Hand_L",
+      "gloves_scout__Hand_R"
+    ]
+  },
+  "gloves_shadow": {
+    "category": "gloves",
+    "groups": [
+      "gloves_shadow__Forearm_L",
+      "gloves_shadow__Forearm_R",
+      "gloves_shadow__Hand_L",
+      "gloves_shadow__Hand_R"
+    ]
+  },
+  "gloves_winter": {
+    "category": "gloves",
+    "groups": [
+      "gloves_winter__Forearm_L",
+      "gloves_winter__Forearm_R",
+      "gloves_winter__Hand_L",
+      "gloves_winter__Hand_R"
+    ]
+  },
+  "greaves": {
+    "category": "shoes",
+    "groups": [
+      "greaves__Foot_L",
+      "greaves__Foot_R",
+      "greaves__Shin_L",
+      "greaves__Shin_R"
+    ]
+  },
+  "hair_female_1": {
+    "category": "hair",
+    "groups": [
+      "hair_female_1__Head"
+    ]
+  },
+  "hair_female_10": {
+    "category": "hair",
+    "groups": [
+      "hair_female_10__Head"
+    ]
+  },
+  "hair_female_2": {
+    "category": "hair",
+    "groups": [
+      "hair_female_2__Head"
+    ]
+  },
+  "hair_female_3": {
+    "category": "hair",
+    "groups": [
+      "hair_female_3__Head"
+    ]
+  },
+  "hair_female_4": {
+    "category": "hair",
+    "groups": [
+      "hair_female_4__Head"
+    ]
+  },
+  "hair_female_5": {
+    "category": "hair",
+    "groups": [
+      "hair_female_5__Head"
+    ]
+  },
+  "hair_female_6": {
+    "category": "hair",
+    "groups": [
+      "hair_female_6__Head"
+    ]
+  },
+  "hair_female_7": {
+    "category": "hair",
+    "groups": [
+      "hair_female_7__Head"
+    ]
+  },
+  "hair_female_8": {
+    "category": "hair",
+    "groups": [
+      "hair_female_8__Head"
+    ]
+  },
+  "hair_female_9": {
+    "category": "hair",
+    "groups": [
+      "hair_female_9__Head"
+    ]
+  },
+  "hair_male_1": {
+    "category": "hair",
+    "groups": [
+      "hair_male_1__Head"
+    ]
+  },
+  "hair_male_10": {
+    "category": "hair",
+    "groups": [
+      "hair_male_10__Head"
+    ]
+  },
+  "hair_male_2": {
+    "category": "hair",
+    "groups": [
+      "hair_male_2__Head"
+    ]
+  },
+  "hair_male_3": {
+    "category": "hair",
+    "groups": [
+      "hair_male_3__Head"
+    ]
+  },
+  "hair_male_4": {
+    "category": "hair",
+    "groups": [
+      "hair_male_4__Head"
+    ]
+  },
+  "hair_male_5": {
+    "category": "hair",
+    "groups": [
+      "hair_male_5__Head"
+    ]
+  },
+  "hair_male_6": {
+    "category": "hair",
+    "groups": [
+      "hair_male_6__Head"
+    ]
+  },
+  "hair_male_7": {
+    "category": "hair",
+    "groups": [
+      "hair_male_7__Head"
+    ]
+  },
+  "hair_male_8": {
+    "category": "hair",
+    "groups": [
+      "hair_male_8__Head"
+    ]
+  },
+  "hair_male_9": {
+    "category": "hair",
+    "groups": [
+      "hair_male_9__Head"
+    ]
+  },
+  "mouth_beard": {
+    "category": "mouth",
+    "groups": [
+      "mouth_beard__Head"
+    ]
+  },
+  "mouth_cat": {
+    "category": "mouth",
+    "groups": [
+      "mouth_cat__Head"
+    ]
+  },
+  "mouth_frown": {
+    "category": "mouth",
+    "groups": [
+      "mouth_frown__Head"
+    ]
+  },
+  "mouth_grin": {
+    "category": "mouth",
+    "groups": [
+      "mouth_grin__Head"
+    ]
+  },
+  "mouth_grit": {
+    "category": "mouth",
+    "groups": [
+      "mouth_grit__Head"
+    ]
+  },
+  "mouth_laugh": {
+    "category": "mouth",
+    "groups": [
+      "mouth_laugh__Head"
+    ]
+  },
+  "mouth_lips": {
+    "category": "mouth",
+    "groups": [
+      "mouth_lips__Head"
+    ]
+  },
+  "mouth_open": {
+    "category": "mouth",
+    "groups": [
+      "mouth_open__Head"
+    ]
+  },
+  "mouth_serious": {
+    "category": "mouth",
+    "groups": [
+      "mouth_serious__Head"
+    ]
+  },
+  "mouth_small": {
+    "category": "mouth",
+    "groups": [
+      "mouth_small__Head"
+    ]
+  },
+  "mouth_smile": {
+    "category": "mouth",
+    "groups": [
+      "mouth_smile__Head"
+    ]
+  },
+  "mouth_smirk": {
+    "category": "mouth",
+    "groups": [
+      "mouth_smirk__Head"
+    ]
+  },
+  "mouth_whistle": {
+    "category": "mouth",
+    "groups": [
+      "mouth_whistle__Head"
+    ]
+  },
+  "pants_cloth": {
+    "category": "pants",
+    "groups": [
+      "pants_cloth__Thigh_L",
+      "pants_cloth__Thigh_R"
+    ]
+  },
+  "pants_dark": {
+    "category": "pants",
+    "groups": [
+      "pants_dark__Thigh_L",
+      "pants_dark__Thigh_R"
+    ]
+  },
+  "pants_healer": {
+    "category": "pants",
+    "groups": [
+      "pants_healer__Thigh_L",
+      "pants_healer__Thigh_R"
+    ]
+  },
+  "pants_hunter": {
+    "category": "pants",
+    "groups": [
+      "pants_hunter__Thigh_L",
+      "pants_hunter__Thigh_R"
+    ]
+  },
+  "pants_jeans_punk": {
+    "category": "pants",
+    "groups": [
+      "pants_jeans_punk__Thigh_L",
+      "pants_jeans_punk__Thigh_R"
+    ]
+  },
+  "pants_leather": {
+    "category": "pants",
+    "groups": [
+      "pants_leather__Thigh_L",
+      "pants_leather__Thigh_R"
+    ]
+  },
+  "pants_monk": {
+    "category": "pants",
+    "groups": [
+      "pants_monk__Thigh_L",
+      "pants_monk__Thigh_R"
+    ]
+  },
+  "pants_nomad": {
+    "category": "pants",
+    "groups": [
+      "pants_nomad__Thigh_L",
+      "pants_nomad__Thigh_R"
+    ]
+  },
+  "pants_royal": {
+    "category": "pants",
+    "groups": [
+      "pants_royal__Thigh_L",
+      "pants_royal__Thigh_R"
+    ]
+  },
+  "pants_sailor": {
+    "category": "pants",
+    "groups": [
+      "pants_sailor__Thigh_L",
+      "pants_sailor__Thigh_R"
+    ]
+  },
+  "pants_scout": {
+    "category": "pants",
+    "groups": [
+      "pants_scout__Thigh_L",
+      "pants_scout__Thigh_R"
+    ]
+  },
+  "pants_shadow": {
+    "category": "pants",
+    "groups": [
+      "pants_shadow__Thigh_L",
+      "pants_shadow__Thigh_R"
+    ]
+  },
+  "pants_shorts": {
+    "category": "pants",
+    "groups": [
+      "pants_shorts__Thigh_L",
+      "pants_shorts__Thigh_R"
+    ]
+  },
+  "pants_stripes": {
+    "category": "pants",
+    "groups": [
+      "pants_stripes__Thigh_L",
+      "pants_stripes__Thigh_R"
+    ]
+  },
+  "pants_tartan": {
+    "category": "pants",
+    "groups": [
+      "pants_tartan__Thigh_L",
+      "pants_tartan__Thigh_R"
+    ]
+  },
+  "pants_winter": {
+    "category": "pants",
+    "groups": [
+      "pants_winter__Thigh_L",
+      "pants_winter__Thigh_R"
+    ]
+  },
+  "shirt_bodice": {
+    "category": "shirt",
+    "groups": [
+      "shirt_bodice__Hips",
+      "shirt_bodice__Torso",
+      "shirt_bodice__UpperArm_L",
+      "shirt_bodice__UpperArm_R"
+    ]
+  },
+  "shirt_healer": {
+    "category": "shirt",
+    "groups": [
+      "shirt_healer__Hips",
+      "shirt_healer__Torso",
+      "shirt_healer__UpperArm_L",
+      "shirt_healer__UpperArm_R"
+    ]
+  },
+  "shirt_hunter": {
+    "category": "shirt",
+    "groups": [
+      "shirt_hunter__Hips",
+      "shirt_hunter__Torso",
+      "shirt_hunter__UpperArm_L",
+      "shirt_hunter__UpperArm_R"
+    ]
+  },
+  "shirt_linen": {
+    "category": "shirt",
+    "groups": [
+      "shirt_linen__Hips",
+      "shirt_linen__Torso",
+      "shirt_linen__UpperArm_L",
+      "shirt_linen__UpperArm_R"
+    ]
+  },
+  "shirt_mail": {
+    "category": "shirt",
+    "groups": [
+      "shirt_mail__Hips",
+      "shirt_mail__Torso",
+      "shirt_mail__UpperArm_L",
+      "shirt_mail__UpperArm_R"
+    ]
+  },
+  "shirt_monk": {
+    "category": "shirt",
+    "groups": [
+      "shirt_monk__Hips",
+      "shirt_monk__Torso",
+      "shirt_monk__UpperArm_L",
+      "shirt_monk__UpperArm_R"
+    ]
+  },
+  "shirt_nomad": {
+    "category": "shirt",
+    "groups": [
+      "shirt_nomad__Hips",
+      "shirt_nomad__Torso",
+      "shirt_nomad__UpperArm_L",
+      "shirt_nomad__UpperArm_R"
+    ]
+  },
+  "shirt_punk": {
+    "category": "shirt",
+    "groups": [
+      "shirt_punk__Hips",
+      "shirt_punk__Torso",
+      "shirt_punk__UpperArm_L",
+      "shirt_punk__UpperArm_R"
+    ]
+  },
+  "shirt_robe": {
+    "category": "shirt",
+    "groups": [
+      "shirt_robe__Hips",
+      "shirt_robe__Torso",
+      "shirt_robe__UpperArm_L",
+      "shirt_robe__UpperArm_R"
+    ]
+  },
+  "shirt_royal": {
+    "category": "shirt",
+    "groups": [
+      "shirt_royal__Hips",
+      "shirt_royal__Torso",
+      "shirt_royal__UpperArm_L",
+      "shirt_royal__UpperArm_R"
+    ]
+  },
+  "shirt_sailor": {
+    "category": "shirt",
+    "groups": [
+      "shirt_sailor__Hips",
+      "shirt_sailor__Torso",
+      "shirt_sailor__UpperArm_L",
+      "shirt_sailor__UpperArm_R"
+    ]
+  },
+  "shirt_scout": {
+    "category": "shirt",
+    "groups": [
+      "shirt_scout__Hips",
+      "shirt_scout__Torso",
+      "shirt_scout__UpperArm_L",
+      "shirt_scout__UpperArm_R"
+    ]
+  },
+  "shirt_shadow": {
+    "category": "shirt",
+    "groups": [
+      "shirt_shadow__Hips",
+      "shirt_shadow__Torso",
+      "shirt_shadow__UpperArm_L",
+      "shirt_shadow__UpperArm_R"
+    ]
+  },
+  "shirt_tunic": {
+    "category": "shirt",
+    "groups": [
+      "shirt_tunic__Hips",
+      "shirt_tunic__Torso",
+      "shirt_tunic__UpperArm_L",
+      "shirt_tunic__UpperArm_R"
+    ]
+  },
+  "shirt_winter": {
+    "category": "shirt",
+    "groups": [
+      "shirt_winter__Hips",
+      "shirt_winter__Torso",
+      "shirt_winter__UpperArm_L",
+      "shirt_winter__UpperArm_R"
+    ]
+  },
+  "shoes_low": {
+    "category": "shoes",
+    "groups": [
+      "shoes_low__Foot_L",
+      "shoes_low__Foot_R",
+      "shoes_low__Shin_L",
+      "shoes_low__Shin_R"
+    ]
+  },
+  "undead_skull": {
+    "category": "race",
+    "groups": [
+      "undead_skull__Head"
+    ]
+  },
+  "undead_skull_cracked": {
+    "category": "race",
+    "groups": [
+      "undead_skull_cracked__Head"
+    ]
+  },
+  "undead_skull_glow": {
+    "category": "race",
+    "groups": [
+      "undead_skull_glow__Head"
+    ]
+  },
+  "rw_anao_accessory_01": {
+    "category": "accessory",
+    "groups": [
+      "rw_anao_accessory_01__Head"
+    ]
+  },
+  "rw_anao_accessory_02": {
+    "category": "accessory",
+    "groups": [
+      "rw_anao_accessory_02__Hips"
+    ]
+  },
+  "rw_anao_accessory_03": {
+    "category": "accessory",
+    "groups": [
+      "rw_anao_accessory_03__Torso"
+    ]
+  },
+  "rw_anao_accessory_04": {
+    "category": "accessory",
+    "groups": [
+      "rw_anao_accessory_04__Head"
+    ]
+  },
+  "rw_anao_accessory_05": {
+    "category": "accessory",
+    "groups": [
+      "rw_anao_accessory_05__Hips"
+    ]
+  },
+  "rw_anao_accessory_06": {
+    "category": "accessory",
+    "groups": [
+      "rw_anao_accessory_06__Head"
+    ]
+  },
+  "rw_anao_accessory_07": {
+    "category": "accessory",
+    "groups": [
+      "rw_anao_accessory_07__Head"
+    ]
+  },
+  "rw_anao_accessory_08": {
+    "category": "accessory",
+    "groups": [
+      "rw_anao_accessory_08__UpperArm_L"
+    ]
+  },
+  "rw_anao_accessory_09": {
+    "category": "accessory",
+    "groups": [
+      "rw_anao_accessory_09__Torso"
+    ]
+  },
+  "rw_anao_accessory_10": {
+    "category": "accessory",
+    "groups": [
+      "rw_anao_accessory_10__Head"
+    ]
+  },
+  "rw_anao_face_01": {
+    "category": "eyes",
+    "groups": [
+      "rw_anao_face_01__Head"
+    ]
+  },
+  "rw_anao_face_02": {
+    "category": "eyes",
+    "groups": [
+      "rw_anao_face_02__Head"
+    ]
+  },
+  "rw_anao_face_03": {
+    "category": "eyes",
+    "groups": [
+      "rw_anao_face_03__Head"
+    ]
+  },
+  "rw_anao_face_04": {
+    "category": "eyes",
+    "groups": [
+      "rw_anao_face_04__Head"
+    ]
+  },
+  "rw_anao_face_05": {
+    "category": "eyes",
+    "groups": [
+      "rw_anao_face_05__Head"
+    ]
+  },
+  "rw_anao_face_06": {
+    "category": "eyes",
+    "groups": [
+      "rw_anao_face_06__Head"
+    ]
+  },
+  "rw_anao_face_07": {
+    "category": "eyes",
+    "groups": [
+      "rw_anao_face_07__Head"
+    ]
+  },
+  "rw_anao_face_08": {
+    "category": "eyes",
+    "groups": [
+      "rw_anao_face_08__Head"
+    ]
+  },
+  "rw_anao_face_09": {
+    "category": "eyes",
+    "groups": [
+      "rw_anao_face_09__Head"
+    ]
+  },
+  "rw_anao_face_10": {
+    "category": "eyes",
+    "groups": [
+      "rw_anao_face_10__Head"
+    ]
+  },
+  "rw_anao_hair_01": {
+    "category": "hair",
+    "groups": [
+      "rw_anao_hair_01__Head"
+    ]
+  },
+  "rw_anao_hair_02": {
+    "category": "hair",
+    "groups": [
+      "rw_anao_hair_02__Head"
+    ]
+  },
+  "rw_anao_hair_03": {
+    "category": "hair",
+    "groups": [
+      "rw_anao_hair_03__Head"
+    ]
+  },
+  "rw_anao_hair_04": {
+    "category": "hair",
+    "groups": [
+      "rw_anao_hair_04__Head"
+    ]
+  },
+  "rw_anao_hair_05": {
+    "category": "hair",
+    "groups": [
+      "rw_anao_hair_05__Head"
+    ]
+  },
+  "rw_anao_hair_06": {
+    "category": "hair",
+    "groups": [
+      "rw_anao_hair_06__Head"
+    ]
+  },
+  "rw_anao_hair_07": {
+    "category": "hair",
+    "groups": [
+      "rw_anao_hair_07__Head"
+    ]
+  },
+  "rw_anao_hair_08": {
+    "category": "hair",
+    "groups": [
+      "rw_anao_hair_08__Head"
+    ]
+  },
+  "rw_anao_hair_09": {
+    "category": "hair",
+    "groups": [
+      "rw_anao_hair_09__Head"
+    ]
+  },
+  "rw_anao_hair_10": {
+    "category": "hair",
+    "groups": [
+      "rw_anao_hair_10__Head"
+    ]
+  },
+  "rw_anao_outfit_01": {
+    "category": "shirt",
+    "groups": [
+      "rw_anao_outfit_01__Torso",
+      "rw_anao_outfit_01__Hips",
+      "rw_anao_outfit_01__UpperArm_L",
+      "rw_anao_outfit_01__UpperArm_R"
+    ]
+  },
+  "rw_anao_outfit_02": {
+    "category": "shirt",
+    "groups": [
+      "rw_anao_outfit_02__Torso",
+      "rw_anao_outfit_02__Hips",
+      "rw_anao_outfit_02__UpperArm_L",
+      "rw_anao_outfit_02__UpperArm_R"
+    ]
+  },
+  "rw_anao_outfit_03": {
+    "category": "shirt",
+    "groups": [
+      "rw_anao_outfit_03__Torso",
+      "rw_anao_outfit_03__Hips",
+      "rw_anao_outfit_03__UpperArm_L",
+      "rw_anao_outfit_03__UpperArm_R"
+    ]
+  },
+  "rw_anao_outfit_04": {
+    "category": "shirt",
+    "groups": [
+      "rw_anao_outfit_04__Torso",
+      "rw_anao_outfit_04__Hips",
+      "rw_anao_outfit_04__UpperArm_L",
+      "rw_anao_outfit_04__UpperArm_R"
+    ]
+  },
+  "rw_anao_outfit_05": {
+    "category": "shirt",
+    "groups": [
+      "rw_anao_outfit_05__Torso",
+      "rw_anao_outfit_05__Hips",
+      "rw_anao_outfit_05__UpperArm_L",
+      "rw_anao_outfit_05__UpperArm_R"
+    ]
+  },
+  "rw_anao_outfit_06": {
+    "category": "shirt",
+    "groups": [
+      "rw_anao_outfit_06__Torso",
+      "rw_anao_outfit_06__Hips",
+      "rw_anao_outfit_06__UpperArm_L",
+      "rw_anao_outfit_06__UpperArm_R"
+    ]
+  },
+  "rw_anao_outfit_07": {
+    "category": "shirt",
+    "groups": [
+      "rw_anao_outfit_07__Torso",
+      "rw_anao_outfit_07__Hips",
+      "rw_anao_outfit_07__UpperArm_L",
+      "rw_anao_outfit_07__UpperArm_R"
+    ]
+  },
+  "rw_anao_outfit_08": {
+    "category": "shirt",
+    "groups": [
+      "rw_anao_outfit_08__Torso",
+      "rw_anao_outfit_08__Hips",
+      "rw_anao_outfit_08__UpperArm_L",
+      "rw_anao_outfit_08__UpperArm_R"
+    ]
+  },
+  "rw_anao_outfit_09": {
+    "category": "shirt",
+    "groups": [
+      "rw_anao_outfit_09__Torso",
+      "rw_anao_outfit_09__Hips"
+    ]
+  },
+  "rw_anao_outfit_10": {
+    "category": "shirt",
+    "groups": [
+      "rw_anao_outfit_10__Torso",
+      "rw_anao_outfit_10__Hips",
+      "rw_anao_outfit_10__UpperArm_L",
+      "rw_anao_outfit_10__UpperArm_R"
+    ]
+  },
+  "rw_barbaro_accessory_01": {
+    "category": "accessory",
+    "groups": [
+      "rw_barbaro_accessory_01__Torso"
+    ]
+  },
+  "rw_barbaro_accessory_02": {
+    "category": "accessory",
+    "groups": [
+      "rw_barbaro_accessory_02__Head"
+    ]
+  },
+  "rw_barbaro_accessory_03": {
+    "category": "accessory",
+    "groups": [
+      "rw_barbaro_accessory_03__Head"
+    ]
+  },
+  "rw_barbaro_accessory_04": {
+    "category": "accessory",
+    "groups": [
+      "rw_barbaro_accessory_04__UpperArm_L"
+    ]
+  },
+  "rw_barbaro_accessory_05": {
+    "category": "accessory",
+    "groups": [
+      "rw_barbaro_accessory_05__Torso"
+    ]
+  },
+  "rw_barbaro_accessory_06": {
+    "category": "accessory",
+    "groups": [
+      "rw_barbaro_accessory_06__Head"
+    ]
+  },
+  "rw_barbaro_accessory_07": {
+    "category": "accessory",
+    "groups": [
+      "rw_barbaro_accessory_07__Head"
+    ]
+  },
+  "rw_barbaro_accessory_08": {
+    "category": "accessory",
+    "groups": [
+      "rw_barbaro_accessory_08__Head"
+    ]
+  },
+  "rw_barbaro_accessory_09": {
+    "category": "accessory",
+    "groups": [
+      "rw_barbaro_accessory_09__Hips"
+    ]
+  },
+  "rw_barbaro_accessory_10": {
+    "category": "accessory",
+    "groups": [
+      "rw_barbaro_accessory_10__Torso"
+    ]
+  },
+  "rw_barbaro_face_01": {
+    "category": "eyes",
+    "groups": [
+      "rw_barbaro_face_01__Head"
+    ]
+  },
+  "rw_barbaro_face_02": {
+    "category": "eyes",
+    "groups": [
+      "rw_barbaro_face_02__Head"
+    ]
+  },
+  "rw_barbaro_face_03": {
+    "category": "eyes",
+    "groups": [
+      "rw_barbaro_face_03__Head"
+    ]
+  },
+  "rw_barbaro_face_04": {
+    "category": "eyes",
+    "groups": [
+      "rw_barbaro_face_04__Head"
+    ]
+  },
+  "rw_barbaro_face_05": {
+    "category": "eyes",
+    "groups": [
+      "rw_barbaro_face_05__Head"
+    ]
+  },
+  "rw_barbaro_face_06": {
+    "category": "eyes",
+    "groups": [
+      "rw_barbaro_face_06__Head"
+    ]
+  },
+  "rw_barbaro_face_07": {
+    "category": "eyes",
+    "groups": [
+      "rw_barbaro_face_07__Head"
+    ]
+  },
+  "rw_barbaro_face_08": {
+    "category": "eyes",
+    "groups": [
+      "rw_barbaro_face_08__Head"
+    ]
+  },
+  "rw_barbaro_face_09": {
+    "category": "eyes",
+    "groups": [
+      "rw_barbaro_face_09__Head"
+    ]
+  },
+  "rw_barbaro_face_10": {
+    "category": "eyes",
+    "groups": [
+      "rw_barbaro_face_10__Head"
+    ]
+  },
+  "rw_barbaro_hair_01": {
+    "category": "hair",
+    "groups": [
+      "rw_barbaro_hair_01__Head"
+    ]
+  },
+  "rw_barbaro_hair_02": {
+    "category": "hair",
+    "groups": [
+      "rw_barbaro_hair_02__Head"
+    ]
+  },
+  "rw_barbaro_hair_03": {
+    "category": "hair",
+    "groups": [
+      "rw_barbaro_hair_03__Head"
+    ]
+  },
+  "rw_barbaro_hair_04": {
+    "category": "hair",
+    "groups": [
+      "rw_barbaro_hair_04__Head"
+    ]
+  },
+  "rw_barbaro_hair_05": {
+    "category": "hair",
+    "groups": [
+      "rw_barbaro_hair_05__Head"
+    ]
+  },
+  "rw_barbaro_hair_06": {
+    "category": "hair",
+    "groups": [
+      "rw_barbaro_hair_06__Head"
+    ]
+  },
+  "rw_barbaro_hair_07": {
+    "category": "hair",
+    "groups": [
+      "rw_barbaro_hair_07__Head"
+    ]
+  },
+  "rw_barbaro_hair_08": {
+    "category": "hair",
+    "groups": [
+      "rw_barbaro_hair_08__Head"
+    ]
+  },
+  "rw_barbaro_hair_09": {
+    "category": "hair",
+    "groups": [
+      "rw_barbaro_hair_09__Head"
+    ]
+  },
+  "rw_barbaro_hair_10": {
+    "category": "hair",
+    "groups": [
+      "rw_barbaro_hair_10__Head"
+    ]
+  },
+  "rw_barbaro_outfit_01": {
+    "category": "shirt",
+    "groups": [
+      "rw_barbaro_outfit_01__Torso",
+      "rw_barbaro_outfit_01__Hips",
+      "rw_barbaro_outfit_01__UpperArm_L",
+      "rw_barbaro_outfit_01__UpperArm_R"
+    ]
+  },
+  "rw_barbaro_outfit_02": {
+    "category": "shirt",
+    "groups": [
+      "rw_barbaro_outfit_02__Torso",
+      "rw_barbaro_outfit_02__Hips",
+      "rw_barbaro_outfit_02__UpperArm_L",
+      "rw_barbaro_outfit_02__UpperArm_R"
+    ]
+  },
+  "rw_barbaro_outfit_03": {
+    "category": "shirt",
+    "groups": [
+      "rw_barbaro_outfit_03__Torso",
+      "rw_barbaro_outfit_03__Hips"
+    ]
+  },
+  "rw_barbaro_outfit_04": {
+    "category": "shirt",
+    "groups": [
+      "rw_barbaro_outfit_04__Torso",
+      "rw_barbaro_outfit_04__Hips"
+    ]
+  },
+  "rw_barbaro_outfit_05": {
+    "category": "shirt",
+    "groups": [
+      "rw_barbaro_outfit_05__Torso",
+      "rw_barbaro_outfit_05__Hips",
+      "rw_barbaro_outfit_05__UpperArm_L",
+      "rw_barbaro_outfit_05__UpperArm_R"
+    ]
+  },
+  "rw_barbaro_outfit_06": {
+    "category": "shirt",
+    "groups": [
+      "rw_barbaro_outfit_06__Torso",
+      "rw_barbaro_outfit_06__Hips",
+      "rw_barbaro_outfit_06__UpperArm_L",
+      "rw_barbaro_outfit_06__UpperArm_R"
+    ]
+  },
+  "rw_barbaro_outfit_07": {
+    "category": "shirt",
+    "groups": [
+      "rw_barbaro_outfit_07__Torso",
+      "rw_barbaro_outfit_07__Hips"
+    ]
+  },
+  "rw_barbaro_outfit_08": {
+    "category": "shirt",
+    "groups": [
+      "rw_barbaro_outfit_08__Torso",
+      "rw_barbaro_outfit_08__Hips",
+      "rw_barbaro_outfit_08__UpperArm_L",
+      "rw_barbaro_outfit_08__UpperArm_R"
+    ]
+  },
+  "rw_barbaro_outfit_09": {
+    "category": "shirt",
+    "groups": [
+      "rw_barbaro_outfit_09__Torso",
+      "rw_barbaro_outfit_09__Hips",
+      "rw_barbaro_outfit_09__UpperArm_L",
+      "rw_barbaro_outfit_09__UpperArm_R"
+    ]
+  },
+  "rw_barbaro_outfit_10": {
+    "category": "shirt",
+    "groups": [
+      "rw_barbaro_outfit_10__Torso",
+      "rw_barbaro_outfit_10__Hips"
+    ]
+  },
+  "rw_diabo_accessory_01": {
+    "category": "accessory",
+    "groups": [
+      "rw_diabo_accessory_01__Head"
+    ]
+  },
+  "rw_diabo_accessory_02": {
+    "category": "accessory",
+    "groups": [
+      "rw_diabo_accessory_02__Torso"
+    ]
+  },
+  "rw_diabo_accessory_03": {
+    "category": "accessory",
+    "groups": [
+      "rw_diabo_accessory_03__Head"
+    ]
+  },
+  "rw_diabo_accessory_04": {
+    "category": "accessory",
+    "groups": [
+      "rw_diabo_accessory_04__Head"
+    ]
+  },
+  "rw_diabo_accessory_05": {
+    "category": "accessory",
+    "groups": [
+      "rw_diabo_accessory_05__Head"
+    ]
+  },
+  "rw_diabo_accessory_06": {
+    "category": "accessory",
+    "groups": [
+      "rw_diabo_accessory_06__Torso"
+    ]
+  },
+  "rw_diabo_accessory_07": {
+    "category": "accessory",
+    "groups": [
+      "rw_diabo_accessory_07__Torso"
+    ]
+  },
+  "rw_diabo_accessory_08": {
+    "category": "accessory",
+    "groups": [
+      "rw_diabo_accessory_08__Hips"
+    ]
+  },
+  "rw_diabo_accessory_09": {
+    "category": "accessory",
+    "groups": [
+      "rw_diabo_accessory_09__UpperArm_L"
+    ]
+  },
+  "rw_diabo_accessory_10": {
+    "category": "accessory",
+    "groups": [
+      "rw_diabo_accessory_10__Head"
+    ]
+  },
+  "rw_diabo_face_01": {
+    "category": "eyes",
+    "groups": [
+      "rw_diabo_face_01__Head"
+    ]
+  },
+  "rw_diabo_face_02": {
+    "category": "eyes",
+    "groups": [
+      "rw_diabo_face_02__Head"
+    ]
+  },
+  "rw_diabo_face_03": {
+    "category": "eyes",
+    "groups": [
+      "rw_diabo_face_03__Head"
+    ]
+  },
+  "rw_diabo_face_04": {
+    "category": "eyes",
+    "groups": [
+      "rw_diabo_face_04__Head"
+    ]
+  },
+  "rw_diabo_face_05": {
+    "category": "eyes",
+    "groups": [
+      "rw_diabo_face_05__Head"
+    ]
+  },
+  "rw_diabo_face_06": {
+    "category": "eyes",
+    "groups": [
+      "rw_diabo_face_06__Head"
+    ]
+  },
+  "rw_diabo_face_07": {
+    "category": "eyes",
+    "groups": [
+      "rw_diabo_face_07__Head"
+    ]
+  },
+  "rw_diabo_face_08": {
+    "category": "eyes",
+    "groups": [
+      "rw_diabo_face_08__Head"
+    ]
+  },
+  "rw_diabo_face_09": {
+    "category": "eyes",
+    "groups": [
+      "rw_diabo_face_09__Head"
+    ]
+  },
+  "rw_diabo_face_10": {
+    "category": "eyes",
+    "groups": [
+      "rw_diabo_face_10__Head"
+    ]
+  },
+  "rw_diabo_hair_01": {
+    "category": "hair",
+    "groups": [
+      "rw_diabo_hair_01__Head"
+    ]
+  },
+  "rw_diabo_hair_02": {
+    "category": "hair",
+    "groups": [
+      "rw_diabo_hair_02__Head"
+    ]
+  },
+  "rw_diabo_hair_03": {
+    "category": "hair",
+    "groups": [
+      "rw_diabo_hair_03__Head"
+    ]
+  },
+  "rw_diabo_hair_04": {
+    "category": "hair",
+    "groups": [
+      "rw_diabo_hair_04__Head"
+    ]
+  },
+  "rw_diabo_hair_05": {
+    "category": "hair",
+    "groups": [
+      "rw_diabo_hair_05__Head"
+    ]
+  },
+  "rw_diabo_hair_06": {
+    "category": "hair",
+    "groups": [
+      "rw_diabo_hair_06__Head"
+    ]
+  },
+  "rw_diabo_hair_07": {
+    "category": "hair",
+    "groups": [
+      "rw_diabo_hair_07__Head"
+    ]
+  },
+  "rw_diabo_hair_08": {
+    "category": "hair",
+    "groups": [
+      "rw_diabo_hair_08__Head"
+    ]
+  },
+  "rw_diabo_hair_09": {
+    "category": "hair",
+    "groups": [
+      "rw_diabo_hair_09__Head"
+    ]
+  },
+  "rw_diabo_hair_10": {
+    "category": "hair",
+    "groups": [
+      "rw_diabo_hair_10__Head"
+    ]
+  },
+  "rw_diabo_outfit_01": {
+    "category": "shirt",
+    "groups": [
+      "rw_diabo_outfit_01__Torso",
+      "rw_diabo_outfit_01__Hips",
+      "rw_diabo_outfit_01__UpperArm_L",
+      "rw_diabo_outfit_01__UpperArm_R"
+    ]
+  },
+  "rw_diabo_outfit_02": {
+    "category": "shirt",
+    "groups": [
+      "rw_diabo_outfit_02__Torso",
+      "rw_diabo_outfit_02__Hips",
+      "rw_diabo_outfit_02__UpperArm_L",
+      "rw_diabo_outfit_02__UpperArm_R"
+    ]
+  },
+  "rw_diabo_outfit_03": {
+    "category": "shirt",
+    "groups": [
+      "rw_diabo_outfit_03__Torso",
+      "rw_diabo_outfit_03__Hips",
+      "rw_diabo_outfit_03__UpperArm_L",
+      "rw_diabo_outfit_03__UpperArm_R"
+    ]
+  },
+  "rw_diabo_outfit_04": {
+    "category": "shirt",
+    "groups": [
+      "rw_diabo_outfit_04__Torso",
+      "rw_diabo_outfit_04__Hips"
+    ]
+  },
+  "rw_diabo_outfit_05": {
+    "category": "shirt",
+    "groups": [
+      "rw_diabo_outfit_05__Torso",
+      "rw_diabo_outfit_05__Hips",
+      "rw_diabo_outfit_05__UpperArm_L",
+      "rw_diabo_outfit_05__UpperArm_R"
+    ]
+  },
+  "rw_diabo_outfit_06": {
+    "category": "shirt",
+    "groups": [
+      "rw_diabo_outfit_06__Torso",
+      "rw_diabo_outfit_06__Hips",
+      "rw_diabo_outfit_06__UpperArm_L",
+      "rw_diabo_outfit_06__UpperArm_R"
+    ]
+  },
+  "rw_diabo_outfit_07": {
+    "category": "shirt",
+    "groups": [
+      "rw_diabo_outfit_07__Torso",
+      "rw_diabo_outfit_07__Hips",
+      "rw_diabo_outfit_07__UpperArm_L",
+      "rw_diabo_outfit_07__UpperArm_R"
+    ]
+  },
+  "rw_diabo_outfit_08": {
+    "category": "shirt",
+    "groups": [
+      "rw_diabo_outfit_08__Torso",
+      "rw_diabo_outfit_08__Hips",
+      "rw_diabo_outfit_08__UpperArm_L",
+      "rw_diabo_outfit_08__UpperArm_R"
+    ]
+  },
+  "rw_diabo_outfit_09": {
+    "category": "shirt",
+    "groups": [
+      "rw_diabo_outfit_09__Torso",
+      "rw_diabo_outfit_09__Hips",
+      "rw_diabo_outfit_09__UpperArm_L",
+      "rw_diabo_outfit_09__UpperArm_R"
+    ]
+  },
+  "rw_diabo_outfit_10": {
+    "category": "shirt",
+    "groups": [
+      "rw_diabo_outfit_10__Torso",
+      "rw_diabo_outfit_10__Hips",
+      "rw_diabo_outfit_10__UpperArm_L",
+      "rw_diabo_outfit_10__UpperArm_R"
+    ]
+  },
+  "rw_elfo_accessory_01": {
+    "category": "accessory",
+    "groups": [
+      "rw_elfo_accessory_01__Head"
+    ]
+  },
+  "rw_elfo_accessory_02": {
+    "category": "accessory",
+    "groups": [
+      "rw_elfo_accessory_02__Head"
+    ]
+  },
+  "rw_elfo_accessory_03": {
+    "category": "accessory",
+    "groups": [
+      "rw_elfo_accessory_03__Head"
+    ]
+  },
+  "rw_elfo_accessory_04": {
+    "category": "accessory",
+    "groups": [
+      "rw_elfo_accessory_04__Torso"
+    ]
+  },
+  "rw_elfo_accessory_05": {
+    "category": "accessory",
+    "groups": [
+      "rw_elfo_accessory_05__Head"
+    ]
+  },
+  "rw_elfo_accessory_06": {
+    "category": "accessory",
+    "groups": [
+      "rw_elfo_accessory_06__Torso"
+    ]
+  },
+  "rw_elfo_accessory_07": {
+    "category": "accessory",
+    "groups": [
+      "rw_elfo_accessory_07__Head"
+    ]
+  },
+  "rw_elfo_accessory_08": {
+    "category": "accessory",
+    "groups": [
+      "rw_elfo_accessory_08__Torso"
+    ]
+  },
+  "rw_elfo_accessory_09": {
+    "category": "accessory",
+    "groups": [
+      "rw_elfo_accessory_09__Head"
+    ]
+  },
+  "rw_elfo_accessory_10": {
+    "category": "accessory",
+    "groups": [
+      "rw_elfo_accessory_10__Hips"
+    ]
+  },
+  "rw_elfo_face_01": {
+    "category": "eyes",
+    "groups": [
+      "rw_elfo_face_01__Head"
+    ]
+  },
+  "rw_elfo_face_02": {
+    "category": "eyes",
+    "groups": [
+      "rw_elfo_face_02__Head"
+    ]
+  },
+  "rw_elfo_face_03": {
+    "category": "eyes",
+    "groups": [
+      "rw_elfo_face_03__Head"
+    ]
+  },
+  "rw_elfo_face_04": {
+    "category": "eyes",
+    "groups": [
+      "rw_elfo_face_04__Head"
+    ]
+  },
+  "rw_elfo_face_05": {
+    "category": "eyes",
+    "groups": [
+      "rw_elfo_face_05__Head"
+    ]
+  },
+  "rw_elfo_face_06": {
+    "category": "eyes",
+    "groups": [
+      "rw_elfo_face_06__Head"
+    ]
+  },
+  "rw_elfo_face_07": {
+    "category": "eyes",
+    "groups": [
+      "rw_elfo_face_07__Head"
+    ]
+  },
+  "rw_elfo_face_08": {
+    "category": "eyes",
+    "groups": [
+      "rw_elfo_face_08__Head"
+    ]
+  },
+  "rw_elfo_face_09": {
+    "category": "eyes",
+    "groups": [
+      "rw_elfo_face_09__Head"
+    ]
+  },
+  "rw_elfo_face_10": {
+    "category": "eyes",
+    "groups": [
+      "rw_elfo_face_10__Head"
+    ]
+  },
+  "rw_elfo_hair_01": {
+    "category": "hair",
+    "groups": [
+      "rw_elfo_hair_01__Head"
+    ]
+  },
+  "rw_elfo_hair_02": {
+    "category": "hair",
+    "groups": [
+      "rw_elfo_hair_02__Head"
+    ]
+  },
+  "rw_elfo_hair_03": {
+    "category": "hair",
+    "groups": [
+      "rw_elfo_hair_03__Head"
+    ]
+  },
+  "rw_elfo_hair_04": {
+    "category": "hair",
+    "groups": [
+      "rw_elfo_hair_04__Head"
+    ]
+  },
+  "rw_elfo_hair_05": {
+    "category": "hair",
+    "groups": [
+      "rw_elfo_hair_05__Head"
+    ]
+  },
+  "rw_elfo_hair_06": {
+    "category": "hair",
+    "groups": [
+      "rw_elfo_hair_06__Head"
+    ]
+  },
+  "rw_elfo_hair_07": {
+    "category": "hair",
+    "groups": [
+      "rw_elfo_hair_07__Head"
+    ]
+  },
+  "rw_elfo_hair_08": {
+    "category": "hair",
+    "groups": [
+      "rw_elfo_hair_08__Head"
+    ]
+  },
+  "rw_elfo_hair_09": {
+    "category": "hair",
+    "groups": [
+      "rw_elfo_hair_09__Head"
+    ]
+  },
+  "rw_elfo_hair_10": {
+    "category": "hair",
+    "groups": [
+      "rw_elfo_hair_10__Head"
+    ]
+  },
+  "rw_elfo_outfit_01": {
+    "category": "shirt",
+    "groups": [
+      "rw_elfo_outfit_01__Torso",
+      "rw_elfo_outfit_01__Hips"
+    ]
+  },
+  "rw_elfo_outfit_02": {
+    "category": "shirt",
+    "groups": [
+      "rw_elfo_outfit_02__Torso",
+      "rw_elfo_outfit_02__Hips",
+      "rw_elfo_outfit_02__UpperArm_L",
+      "rw_elfo_outfit_02__UpperArm_R"
+    ]
+  },
+  "rw_elfo_outfit_03": {
+    "category": "shirt",
+    "groups": [
+      "rw_elfo_outfit_03__Torso",
+      "rw_elfo_outfit_03__Hips",
+      "rw_elfo_outfit_03__UpperArm_L",
+      "rw_elfo_outfit_03__UpperArm_R"
+    ]
+  },
+  "rw_elfo_outfit_04": {
+    "category": "shirt",
+    "groups": [
+      "rw_elfo_outfit_04__Torso",
+      "rw_elfo_outfit_04__Hips",
+      "rw_elfo_outfit_04__UpperArm_L",
+      "rw_elfo_outfit_04__UpperArm_R"
+    ]
+  },
+  "rw_elfo_outfit_05": {
+    "category": "shirt",
+    "groups": [
+      "rw_elfo_outfit_05__Torso",
+      "rw_elfo_outfit_05__Hips",
+      "rw_elfo_outfit_05__UpperArm_L",
+      "rw_elfo_outfit_05__UpperArm_R"
+    ]
+  },
+  "rw_elfo_outfit_06": {
+    "category": "shirt",
+    "groups": [
+      "rw_elfo_outfit_06__Torso",
+      "rw_elfo_outfit_06__Hips",
+      "rw_elfo_outfit_06__UpperArm_L",
+      "rw_elfo_outfit_06__UpperArm_R"
+    ]
+  },
+  "rw_elfo_outfit_07": {
+    "category": "shirt",
+    "groups": [
+      "rw_elfo_outfit_07__Torso",
+      "rw_elfo_outfit_07__Hips"
+    ]
+  },
+  "rw_elfo_outfit_08": {
+    "category": "shirt",
+    "groups": [
+      "rw_elfo_outfit_08__Torso",
+      "rw_elfo_outfit_08__Hips",
+      "rw_elfo_outfit_08__UpperArm_L",
+      "rw_elfo_outfit_08__UpperArm_R"
+    ]
+  },
+  "rw_elfo_outfit_09": {
+    "category": "shirt",
+    "groups": [
+      "rw_elfo_outfit_09__Torso",
+      "rw_elfo_outfit_09__Hips",
+      "rw_elfo_outfit_09__UpperArm_L",
+      "rw_elfo_outfit_09__UpperArm_R"
+    ]
+  },
+  "rw_elfo_outfit_10": {
+    "category": "shirt",
+    "groups": [
+      "rw_elfo_outfit_10__Torso",
+      "rw_elfo_outfit_10__Hips",
+      "rw_elfo_outfit_10__UpperArm_L",
+      "rw_elfo_outfit_10__UpperArm_R"
+    ]
+  },
+  "rw_humano_accessory_01": {
+    "category": "accessory",
+    "groups": [
+      "rw_humano_accessory_01__Head"
+    ]
+  },
+  "rw_humano_accessory_02": {
+    "category": "accessory",
+    "groups": [
+      "rw_humano_accessory_02__Head"
+    ]
+  },
+  "rw_humano_accessory_03": {
+    "category": "accessory",
+    "groups": [
+      "rw_humano_accessory_03__Torso"
+    ]
+  },
+  "rw_humano_accessory_04": {
+    "category": "accessory",
+    "groups": [
+      "rw_humano_accessory_04__Torso"
+    ]
+  },
+  "rw_humano_accessory_05": {
+    "category": "accessory",
+    "groups": [
+      "rw_humano_accessory_05__Head"
+    ]
+  },
+  "rw_humano_accessory_06": {
+    "category": "accessory",
+    "groups": [
+      "rw_humano_accessory_06__Head"
+    ]
+  },
+  "rw_humano_accessory_07": {
+    "category": "accessory",
+    "groups": [
+      "rw_humano_accessory_07__Torso"
+    ]
+  },
+  "rw_humano_accessory_08": {
+    "category": "accessory",
+    "groups": [
+      "rw_humano_accessory_08__Head"
+    ]
+  },
+  "rw_humano_accessory_09": {
+    "category": "accessory",
+    "groups": [
+      "rw_humano_accessory_09__Hips"
+    ]
+  },
+  "rw_humano_accessory_10": {
+    "category": "accessory",
+    "groups": [
+      "rw_humano_accessory_10__UpperArm_L"
+    ]
+  },
+  "rw_humano_face_01": {
+    "category": "eyes",
+    "groups": [
+      "rw_humano_face_01__Head"
+    ]
+  },
+  "rw_humano_face_02": {
+    "category": "eyes",
+    "groups": [
+      "rw_humano_face_02__Head"
+    ]
+  },
+  "rw_humano_face_03": {
+    "category": "eyes",
+    "groups": [
+      "rw_humano_face_03__Head"
+    ]
+  },
+  "rw_humano_face_04": {
+    "category": "eyes",
+    "groups": [
+      "rw_humano_face_04__Head"
+    ]
+  },
+  "rw_humano_face_05": {
+    "category": "eyes",
+    "groups": [
+      "rw_humano_face_05__Head"
+    ]
+  },
+  "rw_humano_face_06": {
+    "category": "eyes",
+    "groups": [
+      "rw_humano_face_06__Head"
+    ]
+  },
+  "rw_humano_face_07": {
+    "category": "eyes",
+    "groups": [
+      "rw_humano_face_07__Head"
+    ]
+  },
+  "rw_humano_face_08": {
+    "category": "eyes",
+    "groups": [
+      "rw_humano_face_08__Head"
+    ]
+  },
+  "rw_humano_face_09": {
+    "category": "eyes",
+    "groups": [
+      "rw_humano_face_09__Head"
+    ]
+  },
+  "rw_humano_face_10": {
+    "category": "eyes",
+    "groups": [
+      "rw_humano_face_10__Head"
+    ]
+  },
+  "rw_humano_hair_01": {
+    "category": "hair",
+    "groups": [
+      "rw_humano_hair_01__Head"
+    ]
+  },
+  "rw_humano_hair_02": {
+    "category": "hair",
+    "groups": [
+      "rw_humano_hair_02__Head"
+    ]
+  },
+  "rw_humano_hair_03": {
+    "category": "hair",
+    "groups": [
+      "rw_humano_hair_03__Head"
+    ]
+  },
+  "rw_humano_hair_04": {
+    "category": "hair",
+    "groups": [
+      "rw_humano_hair_04__Head"
+    ]
+  },
+  "rw_humano_hair_05": {
+    "category": "hair",
+    "groups": [
+      "rw_humano_hair_05__Head"
+    ]
+  },
+  "rw_humano_hair_06": {
+    "category": "hair",
+    "groups": [
+      "rw_humano_hair_06__Head"
+    ]
+  },
+  "rw_humano_hair_07": {
+    "category": "hair",
+    "groups": [
+      "rw_humano_hair_07__Head"
+    ]
+  },
+  "rw_humano_hair_08": {
+    "category": "hair",
+    "groups": [
+      "rw_humano_hair_08__Head"
+    ]
+  },
+  "rw_humano_hair_09": {
+    "category": "hair",
+    "groups": [
+      "rw_humano_hair_09__Head"
+    ]
+  },
+  "rw_humano_hair_10": {
+    "category": "hair",
+    "groups": [
+      "rw_humano_hair_10__Head"
+    ]
+  },
+  "rw_humano_outfit_01": {
+    "category": "shirt",
+    "groups": [
+      "rw_humano_outfit_01__Torso",
+      "rw_humano_outfit_01__Hips",
+      "rw_humano_outfit_01__UpperArm_L",
+      "rw_humano_outfit_01__UpperArm_R"
+    ]
+  },
+  "rw_humano_outfit_02": {
+    "category": "shirt",
+    "groups": [
+      "rw_humano_outfit_02__Torso",
+      "rw_humano_outfit_02__Hips",
+      "rw_humano_outfit_02__UpperArm_L",
+      "rw_humano_outfit_02__UpperArm_R"
+    ]
+  },
+  "rw_humano_outfit_03": {
+    "category": "shirt",
+    "groups": [
+      "rw_humano_outfit_03__Torso",
+      "rw_humano_outfit_03__Hips",
+      "rw_humano_outfit_03__UpperArm_L",
+      "rw_humano_outfit_03__UpperArm_R"
+    ]
+  },
+  "rw_humano_outfit_04": {
+    "category": "shirt",
+    "groups": [
+      "rw_humano_outfit_04__Torso",
+      "rw_humano_outfit_04__Hips",
+      "rw_humano_outfit_04__UpperArm_L",
+      "rw_humano_outfit_04__UpperArm_R"
+    ]
+  },
+  "rw_humano_outfit_05": {
+    "category": "shirt",
+    "groups": [
+      "rw_humano_outfit_05__Torso",
+      "rw_humano_outfit_05__Hips",
+      "rw_humano_outfit_05__UpperArm_L",
+      "rw_humano_outfit_05__UpperArm_R"
+    ]
+  },
+  "rw_humano_outfit_06": {
+    "category": "shirt",
+    "groups": [
+      "rw_humano_outfit_06__Torso",
+      "rw_humano_outfit_06__Hips",
+      "rw_humano_outfit_06__UpperArm_L",
+      "rw_humano_outfit_06__UpperArm_R"
+    ]
+  },
+  "rw_humano_outfit_07": {
+    "category": "shirt",
+    "groups": [
+      "rw_humano_outfit_07__Torso",
+      "rw_humano_outfit_07__Hips",
+      "rw_humano_outfit_07__UpperArm_L",
+      "rw_humano_outfit_07__UpperArm_R"
+    ]
+  },
+  "rw_humano_outfit_08": {
+    "category": "shirt",
+    "groups": [
+      "rw_humano_outfit_08__Torso",
+      "rw_humano_outfit_08__Hips",
+      "rw_humano_outfit_08__UpperArm_L",
+      "rw_humano_outfit_08__UpperArm_R"
+    ]
+  },
+  "rw_humano_outfit_09": {
+    "category": "shirt",
+    "groups": [
+      "rw_humano_outfit_09__Torso",
+      "rw_humano_outfit_09__Hips",
+      "rw_humano_outfit_09__UpperArm_L",
+      "rw_humano_outfit_09__UpperArm_R"
+    ]
+  },
+  "rw_humano_outfit_10": {
+    "category": "shirt",
+    "groups": [
+      "rw_humano_outfit_10__Torso",
+      "rw_humano_outfit_10__Hips",
+      "rw_humano_outfit_10__UpperArm_L",
+      "rw_humano_outfit_10__UpperArm_R"
+    ]
+  },
+  "rw_morto_vivo_accessory_01": {
+    "category": "accessory",
+    "groups": [
+      "rw_morto_vivo_accessory_01__Hips"
+    ]
+  },
+  "rw_morto_vivo_accessory_02": {
+    "category": "accessory",
+    "groups": [
+      "rw_morto_vivo_accessory_02__Head"
+    ]
+  },
+  "rw_morto_vivo_accessory_03": {
+    "category": "accessory",
+    "groups": [
+      "rw_morto_vivo_accessory_03__Torso"
+    ]
+  },
+  "rw_morto_vivo_accessory_04": {
+    "category": "accessory",
+    "groups": [
+      "rw_morto_vivo_accessory_04__Head"
+    ]
+  },
+  "rw_morto_vivo_accessory_05": {
+    "category": "accessory",
+    "groups": [
+      "rw_morto_vivo_accessory_05__Head"
+    ]
+  },
+  "rw_morto_vivo_accessory_06": {
+    "category": "accessory",
+    "groups": [
+      "rw_morto_vivo_accessory_06__Torso"
+    ]
+  },
+  "rw_morto_vivo_accessory_07": {
+    "category": "accessory",
+    "groups": [
+      "rw_morto_vivo_accessory_07__Torso"
+    ]
+  },
+  "rw_morto_vivo_accessory_08": {
+    "category": "accessory",
+    "groups": [
+      "rw_morto_vivo_accessory_08__Head"
+    ]
+  },
+  "rw_morto_vivo_accessory_09": {
+    "category": "accessory",
+    "groups": [
+      "rw_morto_vivo_accessory_09__UpperArm_L"
+    ]
+  },
+  "rw_morto_vivo_accessory_10": {
+    "category": "accessory",
+    "groups": [
+      "rw_morto_vivo_accessory_10__Head"
+    ]
+  },
+  "rw_morto_vivo_hair_01": {
+    "category": "hair",
+    "groups": [
+      "rw_morto_vivo_hair_01__Head"
+    ]
+  },
+  "rw_morto_vivo_hair_02": {
+    "category": "hair",
+    "groups": [
+      "rw_morto_vivo_hair_02__Head"
+    ]
+  },
+  "rw_morto_vivo_hair_03": {
+    "category": "hair",
+    "groups": [
+      "rw_morto_vivo_hair_03__Head"
+    ]
+  },
+  "rw_morto_vivo_hair_04": {
+    "category": "hair",
+    "groups": [
+      "rw_morto_vivo_hair_04__Head"
+    ]
+  },
+  "rw_morto_vivo_hair_05": {
+    "category": "hair",
+    "groups": [
+      "rw_morto_vivo_hair_05__Head"
+    ]
+  },
+  "rw_morto_vivo_hair_06": {
+    "category": "hair",
+    "groups": [
+      "rw_morto_vivo_hair_06__Head"
+    ]
+  },
+  "rw_morto_vivo_hair_07": {
+    "category": "hair",
+    "groups": [
+      "rw_morto_vivo_hair_07__Head"
+    ]
+  },
+  "rw_morto_vivo_hair_08": {
+    "category": "hair",
+    "groups": [
+      "rw_morto_vivo_hair_08__Head"
+    ]
+  },
+  "rw_morto_vivo_hair_09": {
+    "category": "hair",
+    "groups": [
+      "rw_morto_vivo_hair_09__Head"
+    ]
+  },
+  "rw_morto_vivo_hair_10": {
+    "category": "hair",
+    "groups": [
+      "rw_morto_vivo_hair_10__Head"
+    ]
+  },
+  "rw_morto_vivo_outfit_01": {
+    "category": "shirt",
+    "groups": [
+      "rw_morto_vivo_outfit_01__Torso",
+      "rw_morto_vivo_outfit_01__Hips",
+      "rw_morto_vivo_outfit_01__UpperArm_L",
+      "rw_morto_vivo_outfit_01__UpperArm_R"
+    ]
+  },
+  "rw_morto_vivo_outfit_02": {
+    "category": "shirt",
+    "groups": [
+      "rw_morto_vivo_outfit_02__Torso",
+      "rw_morto_vivo_outfit_02__Hips",
+      "rw_morto_vivo_outfit_02__UpperArm_L",
+      "rw_morto_vivo_outfit_02__UpperArm_R"
+    ]
+  },
+  "rw_morto_vivo_outfit_03": {
+    "category": "shirt",
+    "groups": [
+      "rw_morto_vivo_outfit_03__Torso",
+      "rw_morto_vivo_outfit_03__Hips",
+      "rw_morto_vivo_outfit_03__UpperArm_L",
+      "rw_morto_vivo_outfit_03__UpperArm_R"
+    ]
+  },
+  "rw_morto_vivo_outfit_04": {
+    "category": "shirt",
+    "groups": [
+      "rw_morto_vivo_outfit_04__Torso",
+      "rw_morto_vivo_outfit_04__Hips",
+      "rw_morto_vivo_outfit_04__UpperArm_L",
+      "rw_morto_vivo_outfit_04__UpperArm_R"
+    ]
+  },
+  "rw_morto_vivo_outfit_05": {
+    "category": "shirt",
+    "groups": [
+      "rw_morto_vivo_outfit_05__Torso",
+      "rw_morto_vivo_outfit_05__Hips",
+      "rw_morto_vivo_outfit_05__UpperArm_L",
+      "rw_morto_vivo_outfit_05__UpperArm_R"
+    ]
+  },
+  "rw_morto_vivo_outfit_06": {
+    "category": "shirt",
+    "groups": [
+      "rw_morto_vivo_outfit_06__Torso",
+      "rw_morto_vivo_outfit_06__Hips",
+      "rw_morto_vivo_outfit_06__UpperArm_L",
+      "rw_morto_vivo_outfit_06__UpperArm_R"
+    ]
+  },
+  "rw_morto_vivo_outfit_07": {
+    "category": "shirt",
+    "groups": [
+      "rw_morto_vivo_outfit_07__Torso",
+      "rw_morto_vivo_outfit_07__Hips"
+    ]
+  },
+  "rw_morto_vivo_outfit_08": {
+    "category": "shirt",
+    "groups": [
+      "rw_morto_vivo_outfit_08__Torso",
+      "rw_morto_vivo_outfit_08__Hips",
+      "rw_morto_vivo_outfit_08__UpperArm_L",
+      "rw_morto_vivo_outfit_08__UpperArm_R"
+    ]
+  },
+  "rw_morto_vivo_outfit_09": {
+    "category": "shirt",
+    "groups": [
+      "rw_morto_vivo_outfit_09__Torso",
+      "rw_morto_vivo_outfit_09__Hips",
+      "rw_morto_vivo_outfit_09__UpperArm_L",
+      "rw_morto_vivo_outfit_09__UpperArm_R"
+    ]
+  },
+  "rw_morto_vivo_outfit_10": {
+    "category": "shirt",
+    "groups": [
+      "rw_morto_vivo_outfit_10__Torso",
+      "rw_morto_vivo_outfit_10__Hips",
+      "rw_morto_vivo_outfit_10__UpperArm_L",
+      "rw_morto_vivo_outfit_10__UpperArm_R"
+    ]
+  },
+  "undead_rw_face_01": {
+    "category": "race",
+    "groups": [
+      "undead_rw_face_01__Head"
+    ]
+  },
+  "undead_rw_face_02": {
+    "category": "race",
+    "groups": [
+      "undead_rw_face_02__Head"
+    ]
+  },
+  "undead_rw_face_03": {
+    "category": "race",
+    "groups": [
+      "undead_rw_face_03__Head"
+    ]
+  },
+  "undead_rw_face_04": {
+    "category": "race",
+    "groups": [
+      "undead_rw_face_04__Head"
+    ]
+  },
+  "undead_rw_face_05": {
+    "category": "race",
+    "groups": [
+      "undead_rw_face_05__Head"
+    ]
+  },
+  "undead_rw_face_06": {
+    "category": "race",
+    "groups": [
+      "undead_rw_face_06__Head"
+    ]
+  },
+  "undead_rw_face_07": {
+    "category": "race",
+    "groups": [
+      "undead_rw_face_07__Head"
+    ]
+  },
+  "undead_rw_face_08": {
+    "category": "race",
+    "groups": [
+      "undead_rw_face_08__Head"
+    ]
+  },
+  "undead_rw_face_09": {
+    "category": "race",
+    "groups": [
+      "undead_rw_face_09__Head"
+    ]
+  },
+  "undead_rw_face_10": {
+    "category": "race",
+    "groups": [
+      "undead_rw_face_10__Head"
+    ]
+  },
+  "julia_hair": {
+    "category": "hair",
+    "groups": [
+      "julia_hair__Head"
+    ]
+  },
+  "julia_glasses": {
+    "category": "face_gear",
+    "groups": [
+      "julia_glasses__Head"
+    ]
+  },
+  "julia_choker": {
+    "category": "back",
+    "groups": [
+      "julia_choker__Torso"
+    ]
+  },
+  "julia_dress": {
+    "category": "shirt",
+    "groups": [
+      "julia_dress__Torso",
+      "julia_dress__UpperArm_L",
+      "julia_dress__UpperArm_R",
+      "julia_dress__Hips"
+    ]
+  },
+  "julia_stockings": {
+    "category": "pants",
+    "groups": [
+      "julia_stockings__Shin_L",
+      "julia_stockings__Thigh_L",
+      "julia_stockings__Shin_R",
+      "julia_stockings__Thigh_R"
+    ]
+  }
+}

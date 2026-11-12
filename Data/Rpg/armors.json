@@ -1,0 +1,3520 @@
+{
+ "_doc": "Gerado por Tools/Armor/BuildArmors.py. As 21 armaduras: peças, passivas, visual e cabelo.",
+ "sets": {
+  "viajante": {
+   "name": "Couro do Viajante",
+   "rarity": "common",
+   "element": "",
+   "source": "comum_1",
+   "pieces": {
+    "head": "arm_viajante_head",
+    "chest": "arm_viajante_chest",
+    "legs": "arm_viajante_legs",
+    "boots": "arm_viajante_boots"
+   },
+   "bonus2": {
+    "haste": 3
+   },
+   "passive4": {
+    "kind": "move",
+    "values": {
+     "amount": 0.06
+    },
+    "name": "Pé na Estrada",
+    "text": "+6% de velocidade ao andar"
+   }
+  },
+  "recruta": {
+   "name": "Gibão do Recruta",
+   "rarity": "common",
+   "element": "",
+   "source": "comum_2",
+   "pieces": {
+    "head": "arm_recruta_head",
+    "chest": "arm_recruta_chest",
+    "legs": "arm_recruta_legs",
+    "boots": "arm_recruta_boots"
+   },
+   "bonus2": {
+    "defense": 1,
+    "max_health": 10
+   },
+   "passive4": {
+    "kind": "first_hit",
+    "values": {
+     "amount": 0.5,
+     "every": 10
+    },
+    "name": "Disciplina",
+    "text": "o primeiro golpe a cada 10 s tira 50% menos"
+   }
+  },
+  "cacador": {
+   "name": "Peles do Caçador",
+   "rarity": "common",
+   "element": "",
+   "source": "comum_3",
+   "pieces": {
+    "head": "arm_cacador_head",
+    "chest": "arm_cacador_chest",
+    "legs": "arm_cacador_legs",
+    "boots": "arm_cacador_boots"
+   },
+   "bonus2": {
+    "crit": 2
+   },
+   "passive4": {
+    "kind": "beast",
+    "values": {
+     "amount": 0.12
+    },
+    "name": "Instinto do Caçador",
+    "text": "+12% de dano contra feras"
+   }
+  },
+  "malha_ferro": {
+   "name": "Malha de Ferro",
+   "rarity": "uncommon",
+   "element": "",
+   "source": "incomum_1",
+   "pieces": {
+    "head": "arm_malha_ferro_head",
+    "chest": "arm_malha_ferro_chest",
+    "legs": "arm_malha_ferro_legs",
+    "boots": "arm_malha_ferro_boots"
+   },
+   "bonus2": {
+    "defense": 2,
+    "resistance": 2
+   },
+   "passive4": {
+    "kind": "block",
+    "values": {
+     "chance": 0.08
+    },
+    "name": "Muralha de Ferro",
+    "text": "8% de chance de anular um golpe"
+   }
+  },
+  "batedor": {
+   "name": "Couro Batido do Batedor",
+   "rarity": "uncommon",
+   "element": "",
+   "source": "incomum_2",
+   "pieces": {
+    "head": "arm_batedor_head",
+    "chest": "arm_batedor_chest",
+    "legs": "arm_batedor_legs",
+    "boots": "arm_batedor_boots"
+   },
+   "bonus2": {
+    "crit": 3,
+    "speed": 3
+   },
+   "passive4": {
+    "kind": "dodge_cd",
+    "values": {
+     "amount": 0.2
+    },
+    "name": "Pés Leves",
+    "text": "a esquiva volta 20% mais rápido"
+   }
+  },
+  "bronze": {
+   "name": "Escamas de Bronze",
+   "rarity": "uncommon",
+   "element": "",
+   "source": "incomum_3",
+   "pieces": {
+    "head": "arm_bronze_head",
+    "chest": "arm_bronze_chest",
+    "legs": "arm_bronze_legs",
+    "boots": "arm_bronze_boots"
+   },
+   "bonus2": {
+    "defense": 2,
+    "max_health": 15
+   },
+   "passive4": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.12
+    },
+    "name": "Escamas Afiadas",
+    "text": "devolve 12% do dano recebido a quem bateu"
+   }
+  },
+  "guarda_real": {
+   "name": "Placas do Guarda Real",
+   "rarity": "rare",
+   "element": "",
+   "source": "raro_1",
+   "pieces": {
+    "head": "arm_guarda_real_head",
+    "chest": "arm_guarda_real_chest",
+    "legs": "arm_guarda_real_legs",
+    "boots": "arm_guarda_real_boots"
+   },
+   "bonus2": {
+    "defense": 3,
+    "resistance": 3
+   },
+   "passive4": {
+    "kind": "last_stand",
+    "values": {
+     "amount": 0.25
+    },
+    "name": "Juramento do Guarda",
+    "text": "com menos de 30% da vida, leva 25% menos de dano"
+   }
+  },
+  "geada": {
+   "name": "Couraça de Gelo",
+   "rarity": "rare",
+   "element": "ice",
+   "source": "raro_2",
+   "pieces": {
+    "head": "arm_geada_head",
+    "chest": "arm_geada_chest",
+    "legs": "arm_geada_legs",
+    "boots": "arm_geada_boots"
+   },
+   "bonus2": {
+    "resistance": 5
+   },
+   "passive4": {
+    "kind": "freeze",
+    "values": {
+     "chance": 0.12,
+     "time": 1.2
+    },
+    "name": "Coração Gelado",
+    "text": "12% de chance de congelar quem te acerta por 1,2 s"
+   }
+  },
+  "mare": {
+   "name": "Armadura da Maré",
+   "rarity": "rare",
+   "element": "water",
+   "source": "raro_3",
+   "pieces": {
+    "head": "arm_mare_head",
+    "chest": "arm_mare_chest",
+    "legs": "arm_mare_legs",
+    "boots": "arm_mare_boots"
+   },
+   "bonus2": {
+    "hp_regen": 2,
+    "max_mana": 10
+   },
+   "passive4": {
+    "kind": "regen",
+    "values": {
+     "amount": 0.025
+    },
+    "name": "Maré Cheia",
+    "text": "recupera 2,5% da vida a cada 5 s"
+   }
+  },
+  "noite_violeta": {
+   "name": "Placas da Noite Violeta",
+   "rarity": "epic",
+   "element": "shadow",
+   "source": "epico_1",
+   "pieces": {
+    "head": "arm_noite_violeta_head",
+    "chest": "arm_noite_violeta_chest",
+    "legs": "arm_noite_violeta_legs",
+    "boots": "arm_noite_violeta_boots"
+   },
+   "bonus2": {
+    "attack": 3,
+    "lifesteal": 2
+   },
+   "passive4": {
+    "kind": "leech",
+    "values": {
+     "day": 0.05,
+     "night": 0.1
+    },
+    "name": "Fome da Noite",
+    "text": "rouba 5% do dano como vida (10% à noite)"
+   }
+  },
+  "escorpiao": {
+   "name": "Carapaça do Escorpião",
+   "rarity": "epic",
+   "element": "poison",
+   "source": "epico_2",
+   "pieces": {
+    "head": "arm_escorpiao_head",
+    "chest": "arm_escorpiao_chest",
+    "legs": "arm_escorpiao_legs",
+    "boots": "arm_escorpiao_boots"
+   },
+   "bonus2": {
+    "crit": 4,
+    "attack": 2
+   },
+   "passive4": {
+    "kind": "proc_poison",
+    "values": {
+     "chance": 0.35
+    },
+    "name": "Veneno do Deserto",
+    "text": "35% de chance de envenenar o alvo"
+   }
+  },
+  "dragao_rubro": {
+   "name": "Escamas do Dragão Rubro",
+   "rarity": "epic",
+   "element": "fire",
+   "source": "epico_3",
+   "pieces": {
+    "head": "arm_dragao_rubro_head",
+    "chest": "arm_dragao_rubro_chest",
+    "legs": "arm_dragao_rubro_legs",
+    "boots": "arm_dragao_rubro_boots"
+   },
+   "bonus2": {
+    "attack": 3,
+    "max_health": 20
+   },
+   "passive4": {
+    "kind": "proc_burn",
+    "values": {
+     "chance": 0.35
+    },
+    "name": "Sangue de Dragão",
+    "text": "35% de chance de queimar o alvo"
+   }
+  },
+  "grifo_dourado": {
+   "name": "Placas do Grifo Dourado",
+   "rarity": "legendary",
+   "element": "",
+   "source": "lendario_1",
+   "pieces": {
+    "head": "arm_grifo_dourado_head",
+    "chest": "arm_grifo_dourado_chest",
+    "legs": "arm_grifo_dourado_legs",
+    "boots": "arm_grifo_dourado_boots"
+   },
+   "bonus2": {
+    "crit": 5,
+    "speed": 6
+   },
+   "passive4": {
+    "kind": "dodge_cd",
+    "values": {
+     "amount": 0.25
+    },
+    "name": "Voo do Grifo",
+    "text": "a esquiva volta 25% mais rápido"
+   }
+  },
+  "magma": {
+   "name": "Armadura de Magma",
+   "rarity": "legendary",
+   "element": "fire",
+   "source": "lendario_2",
+   "pieces": {
+    "head": "arm_magma_head",
+    "chest": "arm_magma_chest",
+    "legs": "arm_magma_legs",
+    "boots": "arm_magma_boots"
+   },
+   "bonus2": {
+    "attack": 4,
+    "resistance": 6
+   },
+   "passive4": {
+    "kind": "magma_burst",
+    "values": {
+     "chance": 0.2,
+     "radius": 480,
+     "scale": 4.0
+    },
+    "name": "Erupção",
+    "text": "20% de chance de explodir em lava em volta ao ser atingido"
+   }
+  },
+  "bosque_ancestral": {
+   "name": "Couraça do Bosque Ancestral",
+   "rarity": "legendary",
+   "element": "nature",
+   "source": "lendario_3",
+   "pieces": {
+    "head": "arm_bosque_ancestral_head",
+    "chest": "arm_bosque_ancestral_chest",
+    "legs": "arm_bosque_ancestral_legs",
+    "boots": "arm_bosque_ancestral_boots"
+   },
+   "bonus2": {
+    "hp_regen": 3,
+    "max_health": 30
+   },
+   "passive4": {
+    "kind": "regen",
+    "values": {
+     "amount": 0.035
+    },
+    "name": "Seiva Ancestral",
+    "text": "recupera 3,5% da vida a cada 5 s"
+   }
+  },
+  "espelho": {
+   "name": "Armadura Espelhada",
+   "rarity": "unique",
+   "element": "shadow",
+   "source": "unico_1",
+   "pieces": {
+    "head": "arm_espelho_head",
+    "chest": "arm_espelho_chest",
+    "legs": "arm_espelho_legs",
+    "boots": "arm_espelho_boots"
+   },
+   "bonus2": {
+    "resistance": 8,
+    "skill": 4
+   },
+   "passive4": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.25
+    },
+    "name": "Reflexo Perfeito",
+    "text": "devolve 25% do dano recebido a quem bateu"
+   }
+  },
+  "sem_sombra": {
+   "name": "Armadura Sem Sombra",
+   "rarity": "unique",
+   "element": "holy",
+   "source": "unico_2",
+   "pieces": {
+    "head": "arm_sem_sombra_head",
+    "chest": "arm_sem_sombra_chest",
+    "legs": "arm_sem_sombra_legs",
+    "boots": "arm_sem_sombra_boots"
+   },
+   "bonus2": {
+    "crit": 6,
+    "crit_dmg": 20
+   },
+   "passive4": {
+    "kind": "dodge_crit",
+    "values": {
+     "window": 3
+    },
+    "name": "Golpe Sem Sombra",
+    "text": "depois de esquivar, o próximo golpe em 3 s é crítico"
+   }
+  },
+  "andarilho": {
+   "name": "Vestes do Andarilho Perdido",
+   "rarity": "unique",
+   "element": "",
+   "source": "unico_3",
+   "pieces": {
+    "head": "arm_andarilho_head",
+    "chest": "arm_andarilho_chest",
+    "legs": "arm_andarilho_legs",
+    "boots": "arm_andarilho_boots"
+   },
+   "bonus2": {
+    "haste": 6,
+    "max_health": 30
+   },
+   "passive4": {
+    "kind": "xp",
+    "values": {
+     "amount": 0.15
+    },
+    "name": "Sorte de Viajante",
+    "text": "+15% de experiência"
+   }
+  },
+  "aurora": {
+   "name": "Armadura da Aurora",
+   "rarity": "divine",
+   "element": "holy",
+   "source": "divino_1",
+   "pieces": {
+    "head": "arm_aurora_head",
+    "chest": "arm_aurora_chest",
+    "legs": "arm_aurora_legs",
+    "boots": "arm_aurora_boots"
+   },
+   "bonus2": {
+    "max_health": 50,
+    "resistance": 8
+   },
+   "passive4": {
+    "kind": "revive",
+    "values": {
+     "amount": 0.3,
+     "every": 300
+    },
+    "name": "Renascer na Aurora",
+    "text": "ao cair, levanta com 30% da vida (a cada 5 min)"
+   }
+  },
+  "arvore_mundo": {
+   "name": "Couraça da Árvore do Mundo",
+   "rarity": "divine",
+   "element": "nature",
+   "source": "divino_2",
+   "pieces": {
+    "head": "arm_arvore_mundo_head",
+    "chest": "arm_arvore_mundo_chest",
+    "legs": "arm_arvore_mundo_legs",
+    "boots": "arm_arvore_mundo_boots"
+   },
+   "bonus2": {
+    "hp_regen": 4,
+    "max_health": 50
+   },
+   "passive4": {
+    "kind": "ally_heal",
+    "values": {
+     "amount": 0.012,
+     "radius": 1000
+    },
+    "name": "Abrigo da Árvore",
+    "text": "cura você e os aliados a até 10 m em 1,2% da vida por segundo"
+   }
+  },
+  "estrelas": {
+   "name": "Manto das Estrelas",
+   "rarity": "divine",
+   "element": "holy",
+   "source": "divino_3",
+   "pieces": {
+    "head": "arm_estrelas_head",
+    "chest": "arm_estrelas_chest",
+    "legs": "arm_estrelas_legs",
+    "boots": "arm_estrelas_boots"
+   },
+   "bonus2": {
+    "crit": 8,
+    "skill": 8
+   },
+   "passive4": {
+    "kind": "starfall",
+    "values": {
+     "every": 8,
+     "radius": 1600,
+     "damage": 12
+    },
+    "name": "Chuva de Estrelas",
+    "text": "a cada 8 s uma estrela cai num inimigo a até 16 m"
+   }
+  }
+ },
+ "pieces": {
+  "arm_viajante_head": {
+   "set": "viajante",
+   "slot": "head",
+   "name": "Capuz do Viajante",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "max_health": 2,
+    "haste": 1
+   },
+   "price": 25,
+   "icon": "armor_viajante_head",
+   "source": "comum_1_head",
+   "mesh": "A_viajante_head",
+   "passive": {
+    "kind": "coins",
+    "values": {
+     "amount": 0.04
+    },
+    "name": "Bolso Fundo",
+    "text": "+4% de moedas"
+   },
+   "hair": "fringe",
+   "shop": "rosa"
+  },
+  "arm_viajante_chest": {
+   "set": "viajante",
+   "slot": "chest",
+   "name": "Colete do Viajante",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 4
+   },
+   "price": 50,
+   "icon": "armor_viajante_chest",
+   "source": "comum_1_chest",
+   "mesh": "A_viajante_chest",
+   "passive": {
+    "kind": "regen",
+    "values": {
+     "amount": 0.01
+    },
+    "name": "Fôlego",
+    "text": "recupera 1% da vida a cada 5 s"
+   },
+   "shop": "rosa"
+  },
+  "arm_viajante_legs": {
+   "set": "viajante",
+   "slot": "legs",
+   "name": "Calças do Viajante",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 3
+   },
+   "price": 37,
+   "icon": "armor_viajante_legs",
+   "source": "comum_1_legs",
+   "mesh": "A_viajante_legs",
+   "passive": {
+    "kind": "dodge_cd",
+    "values": {
+     "amount": 0.05
+    },
+    "name": "Pés Leves",
+    "text": "a esquiva volta 5% mais rápido"
+   },
+   "shop": "rosa"
+  },
+  "arm_viajante_boots": {
+   "set": "viajante",
+   "slot": "boots",
+   "name": "Botas do Viajante",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "max_health": 2
+   },
+   "price": 25,
+   "icon": "armor_viajante_boots",
+   "source": "comum_1_boots",
+   "mesh": "A_viajante_boots",
+   "passive": {
+    "kind": "move",
+    "values": {
+     "amount": 0.03
+    },
+    "name": "Passo Firme",
+    "text": "+3% de velocidade ao andar"
+   },
+   "shop": "rosa"
+  },
+  "arm_recruta_head": {
+   "set": "recruta",
+   "slot": "head",
+   "name": "Chapéu de Ferro do Recruta",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "max_health": 2
+   },
+   "price": 25,
+   "icon": "armor_recruta_head",
+   "source": "comum_2_head",
+   "mesh": "A_recruta_head",
+   "passive": {
+    "kind": "block",
+    "values": {
+     "chance": 0.03
+    },
+    "name": "Bloqueio",
+    "text": "3% de chance de anular um golpe"
+   },
+   "hair": "fringe",
+   "shop": "rosa"
+  },
+  "arm_recruta_chest": {
+   "set": "recruta",
+   "slot": "chest",
+   "name": "Gibão Acolchoado",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 9
+   },
+   "price": 50,
+   "icon": "armor_recruta_chest",
+   "source": "comum_2_chest",
+   "mesh": "A_recruta_chest",
+   "passive": {
+    "kind": "first_hit",
+    "values": {
+     "amount": 0.25,
+     "every": 12
+    },
+    "name": "Guarda Alta",
+    "text": "o primeiro golpe a cada 12 s tira 25% menos"
+   },
+   "shop": "rosa"
+  },
+  "arm_recruta_legs": {
+   "set": "recruta",
+   "slot": "legs",
+   "name": "Calças Acolchoadas",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 3
+   },
+   "price": 37,
+   "icon": "armor_recruta_legs",
+   "source": "comum_2_legs",
+   "mesh": "A_recruta_legs",
+   "passive": {
+    "kind": "last_stand",
+    "values": {
+     "amount": 0.08
+    },
+    "name": "Última Defesa",
+    "text": "com menos de 30% da vida, leva 8% menos de dano"
+   },
+   "shop": "rosa"
+  },
+  "arm_recruta_boots": {
+   "set": "recruta",
+   "slot": "boots",
+   "name": "Botas Enfaixadas",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "max_health": 2
+   },
+   "price": 25,
+   "icon": "armor_recruta_boots",
+   "source": "comum_2_boots",
+   "mesh": "A_recruta_boots",
+   "passive": {
+    "kind": "kill_heal",
+    "values": {
+     "amount": 0.01
+    },
+    "name": "Vitória",
+    "text": "cada inimigo vencido devolve 1% da vida"
+   },
+   "shop": "rosa"
+  },
+  "arm_cacador_head": {
+   "set": "cacador",
+   "slot": "head",
+   "name": "Gorro de Pele",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "max_health": 2,
+    "crit": 1
+   },
+   "price": 25,
+   "icon": "armor_cacador_head",
+   "source": "comum_3_head",
+   "mesh": "A_cacador_head",
+   "passive": {
+    "kind": "beast",
+    "values": {
+     "amount": 0.04
+    },
+    "name": "Caçador",
+    "text": "+4% de dano contra feras"
+   },
+   "hair": "fringe",
+   "shop": "rosa"
+  },
+  "arm_cacador_chest": {
+   "set": "cacador",
+   "slot": "chest",
+   "name": "Casaco de Peles",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 4
+   },
+   "price": 50,
+   "icon": "armor_cacador_chest",
+   "source": "comum_3_chest",
+   "mesh": "A_cacador_chest",
+   "passive": {
+    "kind": "beast",
+    "values": {
+     "amount": 0.05
+    },
+    "name": "Caçador",
+    "text": "+5% de dano contra feras"
+   },
+   "shop": "rosa"
+  },
+  "arm_cacador_legs": {
+   "set": "cacador",
+   "slot": "legs",
+   "name": "Calças de Peles",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 3
+   },
+   "price": 37,
+   "icon": "armor_cacador_legs",
+   "source": "comum_3_legs",
+   "mesh": "A_cacador_legs",
+   "passive": {
+    "kind": "move",
+    "values": {
+     "amount": 0.03
+    },
+    "name": "Passo Firme",
+    "text": "+3% de velocidade ao andar"
+   },
+   "shop": "rosa"
+  },
+  "arm_cacador_boots": {
+   "set": "cacador",
+   "slot": "boots",
+   "name": "Botas de Pele",
+   "rarity": "common",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "max_health": 2
+   },
+   "price": 25,
+   "icon": "armor_cacador_boots",
+   "source": "comum_3_boots",
+   "mesh": "A_cacador_boots",
+   "passive": {
+    "kind": "kill_heal",
+    "values": {
+     "amount": 0.01
+    },
+    "name": "Vitória",
+    "text": "cada inimigo vencido devolve 1% da vida"
+   },
+   "shop": "rosa"
+  },
+  "arm_malha_ferro_head": {
+   "set": "malha_ferro",
+   "slot": "head",
+   "name": "Elmo de Nasal",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6
+   },
+   "price": 70,
+   "icon": "armor_malha_ferro_head",
+   "source": "incomum_1_head",
+   "mesh": "A_malha_ferro_head",
+   "passive": {
+    "kind": "block",
+    "values": {
+     "chance": 0.03
+    },
+    "name": "Bloqueio",
+    "text": "3% de chance de anular um golpe"
+   },
+   "hair": "hide",
+   "shop": "garrick"
+  },
+  "arm_malha_ferro_chest": {
+   "set": "malha_ferro",
+   "slot": "chest",
+   "name": "Cota de Malha Reforçada",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 3,
+    "resistance": 1,
+    "max_health": 9
+   },
+   "price": 140,
+   "icon": "armor_malha_ferro_chest",
+   "source": "incomum_1_chest",
+   "mesh": "A_malha_ferro_chest",
+   "passive": {
+    "kind": "block",
+    "values": {
+     "chance": 0.04
+    },
+    "name": "Bloqueio",
+    "text": "4% de chance de anular um golpe"
+   },
+   "shop": "garrick"
+  },
+  "arm_malha_ferro_legs": {
+   "set": "malha_ferro",
+   "slot": "legs",
+   "name": "Perneiras de Malha",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6
+   },
+   "price": 105,
+   "icon": "armor_malha_ferro_legs",
+   "source": "incomum_1_legs",
+   "mesh": "A_malha_ferro_legs",
+   "passive": {
+    "kind": "block",
+    "values": {
+     "chance": 0.03
+    },
+    "name": "Bloqueio",
+    "text": "3% de chance de anular um golpe"
+   },
+   "shop": "garrick"
+  },
+  "arm_malha_ferro_boots": {
+   "set": "malha_ferro",
+   "slot": "boots",
+   "name": "Botas de Ferro",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 4
+   },
+   "price": 70,
+   "icon": "armor_malha_ferro_boots",
+   "source": "incomum_1_boots",
+   "mesh": "A_malha_ferro_boots",
+   "passive": {
+    "kind": "last_stand",
+    "values": {
+     "amount": 0.08
+    },
+    "name": "Última Defesa",
+    "text": "com menos de 30% da vida, leva 8% menos de dano"
+   },
+   "shop": "garrick"
+  },
+  "arm_batedor_head": {
+   "set": "batedor",
+   "slot": "head",
+   "name": "Capuz do Batedor",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6,
+    "crit": 2
+   },
+   "price": 70,
+   "icon": "armor_batedor_head",
+   "source": "incomum_2_head",
+   "mesh": "A_batedor_head",
+   "passive": {
+    "kind": "dodge_cd",
+    "values": {
+     "amount": 0.06
+    },
+    "name": "Pés Leves",
+    "text": "a esquiva volta 6% mais rápido"
+   },
+   "hair": "fringe",
+   "shop": "rosa"
+  },
+  "arm_batedor_chest": {
+   "set": "batedor",
+   "slot": "chest",
+   "name": "Gibão Tachonado",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 3,
+    "resistance": 1,
+    "max_health": 9,
+    "speed": 3
+   },
+   "price": 140,
+   "icon": "armor_batedor_chest",
+   "source": "incomum_2_chest",
+   "mesh": "A_batedor_chest",
+   "passive": {
+    "kind": "dodge_crit",
+    "values": {
+     "window": 2
+    },
+    "name": "Golpe Oportuno",
+    "text": "depois de esquivar, o próximo golpe em 2 s é crítico"
+   },
+   "shop": "rosa"
+  },
+  "arm_batedor_legs": {
+   "set": "batedor",
+   "slot": "legs",
+   "name": "Calças Tachonadas",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6
+   },
+   "price": 105,
+   "icon": "armor_batedor_legs",
+   "source": "incomum_2_legs",
+   "mesh": "A_batedor_legs",
+   "passive": {
+    "kind": "dodge_cd",
+    "values": {
+     "amount": 0.06
+    },
+    "name": "Pés Leves",
+    "text": "a esquiva volta 6% mais rápido"
+   },
+   "shop": "rosa"
+  },
+  "arm_batedor_boots": {
+   "set": "batedor",
+   "slot": "boots",
+   "name": "Botas do Batedor",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 4
+   },
+   "price": 70,
+   "icon": "armor_batedor_boots",
+   "source": "incomum_2_boots",
+   "mesh": "A_batedor_boots",
+   "passive": {
+    "kind": "move",
+    "values": {
+     "amount": 0.04
+    },
+    "name": "Passo Firme",
+    "text": "+4% de velocidade ao andar"
+   },
+   "shop": "rosa"
+  },
+  "arm_bronze_head": {
+   "set": "bronze",
+   "slot": "head",
+   "name": "Elmo de Escamas",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6
+   },
+   "price": 70,
+   "icon": "armor_bronze_head",
+   "source": "incomum_3_head",
+   "mesh": "A_bronze_head",
+   "passive": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.03
+    },
+    "name": "Espinhos",
+    "text": "devolve 3% do dano recebido a quem bateu"
+   },
+   "hair": "hide",
+   "shop": "garrick"
+  },
+  "arm_bronze_chest": {
+   "set": "bronze",
+   "slot": "chest",
+   "name": "Couraça de Escamas",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 3,
+    "resistance": 1,
+    "max_health": 9
+   },
+   "price": 140,
+   "icon": "armor_bronze_chest",
+   "source": "incomum_3_chest",
+   "mesh": "A_bronze_chest",
+   "passive": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.05
+    },
+    "name": "Espinhos",
+    "text": "devolve 5% do dano recebido a quem bateu"
+   },
+   "shop": "garrick"
+  },
+  "arm_bronze_legs": {
+   "set": "bronze",
+   "slot": "legs",
+   "name": "Saiote de Escamas",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 6
+   },
+   "price": 105,
+   "icon": "armor_bronze_legs",
+   "source": "incomum_3_legs",
+   "mesh": "A_bronze_legs",
+   "passive": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.04
+    },
+    "name": "Espinhos",
+    "text": "devolve 4% do dano recebido a quem bateu"
+   },
+   "shop": "garrick"
+  },
+  "arm_bronze_boots": {
+   "set": "bronze",
+   "slot": "boots",
+   "name": "Botas de Bronze",
+   "rarity": "uncommon",
+   "element": "",
+   "stats": {
+    "defense": 1,
+    "resistance": 1,
+    "max_health": 4
+   },
+   "price": 70,
+   "icon": "armor_bronze_boots",
+   "source": "incomum_3_boots",
+   "mesh": "A_bronze_boots",
+   "passive": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.03
+    },
+    "name": "Espinhos",
+    "text": "devolve 3% do dano recebido a quem bateu"
+   },
+   "shop": "garrick"
+  },
+  "arm_guarda_real_head": {
+   "set": "guarda_real",
+   "slot": "head",
+   "name": "Elmo de Penacho Azul",
+   "rarity": "rare",
+   "element": "",
+   "stats": {
+    "defense": 2,
+    "resistance": 2,
+    "max_health": 10
+   },
+   "price": 180,
+   "icon": "armor_guarda_real_head",
+   "source": "raro_1_head",
+   "mesh": "A_guarda_real_head",
+   "passive": {
+    "kind": "block",
+    "values": {
+     "chance": 0.04
+    },
+    "name": "Bloqueio",
+    "text": "4% de chance de anular um golpe"
+   },
+   "hair": "hide"
+  },
+  "arm_guarda_real_chest": {
+   "set": "guarda_real",
+   "slot": "chest",
+   "name": "Peitoral com Tabardo",
+   "rarity": "rare",
+   "element": "",
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 31
+   },
+   "price": 360,
+   "icon": "armor_guarda_real_chest",
+   "source": "raro_1_chest",
+   "mesh": "A_guarda_real_chest",
+   "passive": {
+    "kind": "first_hit",
+    "values": {
+     "amount": 0.3,
+     "every": 10
+    },
+    "name": "Guarda Alta",
+    "text": "o primeiro golpe a cada 10 s tira 30% menos"
+   }
+  },
+  "arm_guarda_real_legs": {
+   "set": "guarda_real",
+   "slot": "legs",
+   "name": "Coxotes do Guarda",
+   "rarity": "rare",
+   "element": "",
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "price": 270,
+   "icon": "armor_guarda_real_legs",
+   "source": "raro_1_legs",
+   "mesh": "A_guarda_real_legs",
+   "passive": {
+    "kind": "last_stand",
+    "values": {
+     "amount": 0.1
+    },
+    "name": "Última Defesa",
+    "text": "com menos de 30% da vida, leva 10% menos de dano"
+   }
+  },
+  "arm_guarda_real_boots": {
+   "set": "guarda_real",
+   "slot": "boots",
+   "name": "Grevas do Guarda",
+   "rarity": "rare",
+   "element": "",
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 7
+   },
+   "price": 180,
+   "icon": "armor_guarda_real_boots",
+   "source": "raro_1_boots",
+   "mesh": "A_guarda_real_boots",
+   "passive": {
+    "kind": "block",
+    "values": {
+     "chance": 0.03
+    },
+    "name": "Bloqueio",
+    "text": "3% de chance de anular um golpe"
+   }
+  },
+  "arm_geada_head": {
+   "set": "geada",
+   "slot": "head",
+   "name": "Elmo de Cristal de Gelo",
+   "rarity": "rare",
+   "element": "ice",
+   "stats": {
+    "defense": 2,
+    "resistance": 2,
+    "max_health": 10,
+    "max_mana": 10
+   },
+   "price": 180,
+   "icon": "armor_geada_head",
+   "source": "raro_2_head",
+   "mesh": "A_geada_head",
+   "passive": {
+    "kind": "chill",
+    "values": {
+     "chance": 0.08
+    },
+    "name": "Toque Gelado",
+    "text": "8% de chance de deixar lento quem te acerta"
+   },
+   "hair": "hide"
+  },
+  "arm_geada_chest": {
+   "set": "geada",
+   "slot": "chest",
+   "name": "Couraça de Gelo",
+   "rarity": "rare",
+   "element": "ice",
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 16
+   },
+   "price": 360,
+   "icon": "armor_geada_chest",
+   "source": "raro_2_chest",
+   "mesh": "A_geada_chest",
+   "passive": {
+    "kind": "chill",
+    "values": {
+     "chance": 0.1
+    },
+    "name": "Toque Gelado",
+    "text": "10% de chance de deixar lento quem te acerta"
+   }
+  },
+  "arm_geada_legs": {
+   "set": "geada",
+   "slot": "legs",
+   "name": "Calças de Gelo e Pele",
+   "rarity": "rare",
+   "element": "ice",
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "price": 270,
+   "icon": "armor_geada_legs",
+   "source": "raro_2_legs",
+   "mesh": "A_geada_legs",
+   "passive": {
+    "kind": "chill",
+    "values": {
+     "chance": 0.08
+    },
+    "name": "Toque Gelado",
+    "text": "8% de chance de deixar lento quem te acerta"
+   }
+  },
+  "arm_geada_boots": {
+   "set": "geada",
+   "slot": "boots",
+   "name": "Botas de Neve",
+   "rarity": "rare",
+   "element": "ice",
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 7
+   },
+   "price": 180,
+   "icon": "armor_geada_boots",
+   "source": "raro_2_boots",
+   "mesh": "A_geada_boots",
+   "passive": {
+    "kind": "move",
+    "values": {
+     "amount": 0.04
+    },
+    "name": "Passo Firme",
+    "text": "+4% de velocidade ao andar"
+   }
+  },
+  "arm_mare_head": {
+   "set": "mare",
+   "slot": "head",
+   "name": "Elmo de Conchas",
+   "rarity": "rare",
+   "element": "water",
+   "stats": {
+    "defense": 2,
+    "resistance": 2,
+    "max_health": 10,
+    "max_mana": 12
+   },
+   "price": 180,
+   "icon": "armor_mare_head",
+   "source": "raro_3_head",
+   "mesh": "A_mare_head",
+   "passive": {
+    "kind": "mana_regen",
+    "values": {
+     "amount": 0.02
+    },
+    "name": "Mente Calma",
+    "text": "recupera 2% da mana a cada 5 s"
+   },
+   "hair": "hide"
+  },
+  "arm_mare_chest": {
+   "set": "mare",
+   "slot": "chest",
+   "name": "Couraça de Coral",
+   "rarity": "rare",
+   "element": "water",
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 16
+   },
+   "price": 360,
+   "icon": "armor_mare_chest",
+   "source": "raro_3_chest",
+   "mesh": "A_mare_chest",
+   "passive": {
+    "kind": "regen",
+    "values": {
+     "amount": 0.012
+    },
+    "name": "Fôlego",
+    "text": "recupera 1,2% da vida a cada 5 s"
+   }
+  },
+  "arm_mare_legs": {
+   "set": "mare",
+   "slot": "legs",
+   "name": "Calças de Escama Marinha",
+   "rarity": "rare",
+   "element": "water",
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "price": 270,
+   "icon": "armor_mare_legs",
+   "source": "raro_3_legs",
+   "mesh": "A_mare_legs",
+   "passive": {
+    "kind": "regen",
+    "values": {
+     "amount": 0.01
+    },
+    "name": "Fôlego",
+    "text": "recupera 1% da vida a cada 5 s"
+   }
+  },
+  "arm_mare_boots": {
+   "set": "mare",
+   "slot": "boots",
+   "name": "Botas da Maré",
+   "rarity": "rare",
+   "element": "water",
+   "stats": {
+    "defense": 2,
+    "resistance": 1,
+    "max_health": 7
+   },
+   "price": 180,
+   "icon": "armor_mare_boots",
+   "source": "raro_3_boots",
+   "mesh": "A_mare_boots",
+   "passive": {
+    "kind": "mana_regen",
+    "values": {
+     "amount": 0.02
+    },
+    "name": "Mente Calma",
+    "text": "recupera 2% da mana a cada 5 s"
+   }
+  },
+  "arm_noite_violeta_head": {
+   "set": "noite_violeta",
+   "slot": "head",
+   "name": "Elmo Chifrudo da Noite",
+   "rarity": "epic",
+   "element": "shadow",
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 16,
+    "attack": 2
+   },
+   "price": 460,
+   "icon": "armor_noite_violeta_head",
+   "source": "epico_1_head",
+   "mesh": "A_noite_violeta_head",
+   "passive": {
+    "kind": "leech",
+    "values": {
+     "day": 0.01,
+     "night": 0.02
+    },
+    "name": "Fome da Noite",
+    "text": "rouba 1% do dano como vida (2% à noite)"
+   },
+   "hair": "hide"
+  },
+  "arm_noite_violeta_chest": {
+   "set": "noite_violeta",
+   "slot": "chest",
+   "name": "Peitoral Rúnico da Noite",
+   "rarity": "epic",
+   "element": "shadow",
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 27
+   },
+   "price": 920,
+   "icon": "armor_noite_violeta_chest",
+   "source": "epico_1_chest",
+   "mesh": "A_noite_violeta_chest",
+   "passive": {
+    "kind": "leech",
+    "values": {
+     "day": 0.015,
+     "night": 0.03
+    },
+    "name": "Fome da Noite",
+    "text": "rouba 1,5% do dano como vida (3% à noite)"
+   }
+  },
+  "arm_noite_violeta_legs": {
+   "set": "noite_violeta",
+   "slot": "legs",
+   "name": "Perneiras Rúnicas",
+   "rarity": "epic",
+   "element": "shadow",
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 20
+   },
+   "price": 690,
+   "icon": "armor_noite_violeta_legs",
+   "source": "epico_1_legs",
+   "mesh": "A_noite_violeta_legs",
+   "passive": {
+    "kind": "leech",
+    "values": {
+     "day": 0.01,
+     "night": 0.02
+    },
+    "name": "Fome da Noite",
+    "text": "rouba 1% do dano como vida (2% à noite)"
+   }
+  },
+  "arm_noite_violeta_boots": {
+   "set": "noite_violeta",
+   "slot": "boots",
+   "name": "Botas Rúnicas",
+   "rarity": "epic",
+   "element": "shadow",
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "price": 460,
+   "icon": "armor_noite_violeta_boots",
+   "source": "epico_1_boots",
+   "mesh": "A_noite_violeta_boots",
+   "passive": {
+    "kind": "move",
+    "values": {
+     "amount": 0.04
+    },
+    "name": "Passo Firme",
+    "text": "+4% de velocidade ao andar"
+   }
+  },
+  "arm_escorpiao_head": {
+   "set": "escorpiao",
+   "slot": "head",
+   "name": "Elmo do Ferrão",
+   "rarity": "epic",
+   "element": "poison",
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 16,
+    "crit": 3
+   },
+   "price": 460,
+   "icon": "armor_escorpiao_head",
+   "source": "epico_2_head",
+   "mesh": "A_escorpiao_head",
+   "passive": {
+    "kind": "proc_poison",
+    "values": {
+     "chance": 0.08
+    },
+    "name": "Veneno",
+    "text": "8% de chance de envenenar o alvo"
+   },
+   "hair": "hide"
+  },
+  "arm_escorpiao_chest": {
+   "set": "escorpiao",
+   "slot": "chest",
+   "name": "Carapaça de Quitina",
+   "rarity": "epic",
+   "element": "poison",
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 27
+   },
+   "price": 920,
+   "icon": "armor_escorpiao_chest",
+   "source": "epico_2_chest",
+   "mesh": "A_escorpiao_chest",
+   "passive": {
+    "kind": "proc_poison",
+    "values": {
+     "chance": 0.1
+    },
+    "name": "Veneno",
+    "text": "10% de chance de envenenar o alvo"
+   }
+  },
+  "arm_escorpiao_legs": {
+   "set": "escorpiao",
+   "slot": "legs",
+   "name": "Perneiras de Quitina",
+   "rarity": "epic",
+   "element": "poison",
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 20
+   },
+   "price": 690,
+   "icon": "armor_escorpiao_legs",
+   "source": "epico_2_legs",
+   "mesh": "A_escorpiao_legs",
+   "passive": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.05
+    },
+    "name": "Espinhos",
+    "text": "devolve 5% do dano recebido a quem bateu"
+   }
+  },
+  "arm_escorpiao_boots": {
+   "set": "escorpiao",
+   "slot": "boots",
+   "name": "Botas de Garra",
+   "rarity": "epic",
+   "element": "poison",
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "price": 460,
+   "icon": "armor_escorpiao_boots",
+   "source": "epico_2_boots",
+   "mesh": "A_escorpiao_boots",
+   "passive": {
+    "kind": "proc_poison",
+    "values": {
+     "chance": 0.08
+    },
+    "name": "Veneno",
+    "text": "8% de chance de envenenar o alvo"
+   }
+  },
+  "arm_dragao_rubro_head": {
+   "set": "dragao_rubro",
+   "slot": "head",
+   "name": "Elmo do Dragão",
+   "rarity": "epic",
+   "element": "fire",
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 16,
+    "attack": 2
+   },
+   "price": 460,
+   "icon": "armor_dragao_rubro_head",
+   "source": "epico_3_head",
+   "mesh": "A_dragao_rubro_head",
+   "passive": {
+    "kind": "burn_immune",
+    "values": {},
+    "name": "Sangue Quente",
+    "text": "não queima"
+   },
+   "hair": "hide"
+  },
+  "arm_dragao_rubro_chest": {
+   "set": "dragao_rubro",
+   "slot": "chest",
+   "name": "Peitoral de Escamas Rubras",
+   "rarity": "epic",
+   "element": "fire",
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 27
+   },
+   "price": 920,
+   "icon": "armor_dragao_rubro_chest",
+   "source": "epico_3_chest",
+   "mesh": "A_dragao_rubro_chest",
+   "passive": {
+    "kind": "burn_attacker",
+    "values": {
+     "chance": 0.12
+    },
+    "name": "Pele de Brasa",
+    "text": "12% de chance de queimar quem te acerta"
+   }
+  },
+  "arm_dragao_rubro_legs": {
+   "set": "dragao_rubro",
+   "slot": "legs",
+   "name": "Perneiras Rubras",
+   "rarity": "epic",
+   "element": "fire",
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 20
+   },
+   "price": 690,
+   "icon": "armor_dragao_rubro_legs",
+   "source": "epico_3_legs",
+   "mesh": "A_dragao_rubro_legs",
+   "passive": {
+    "kind": "proc_burn",
+    "values": {
+     "chance": 0.08
+    },
+    "name": "Brasa",
+    "text": "8% de chance de queimar o alvo"
+   }
+  },
+  "arm_dragao_rubro_boots": {
+   "set": "dragao_rubro",
+   "slot": "boots",
+   "name": "Garras do Dragão",
+   "rarity": "epic",
+   "element": "fire",
+   "stats": {
+    "defense": 3,
+    "resistance": 2,
+    "max_health": 12
+   },
+   "price": 460,
+   "icon": "armor_dragao_rubro_boots",
+   "source": "epico_3_boots",
+   "mesh": "A_dragao_rubro_boots",
+   "passive": {
+    "kind": "proc_burn",
+    "values": {
+     "chance": 0.08
+    },
+    "name": "Brasa",
+    "text": "8% de chance de queimar o alvo"
+   }
+  },
+  "arm_grifo_dourado_head": {
+   "set": "grifo_dourado",
+   "slot": "head",
+   "name": "Elmo Alado do Grifo",
+   "rarity": "legendary",
+   "element": "",
+   "stats": {
+    "defense": 5,
+    "resistance": 3,
+    "max_health": 25,
+    "crit": 4
+   },
+   "price": 1150,
+   "icon": "armor_grifo_dourado_head",
+   "source": "lendario_1_head",
+   "mesh": "A_grifo_dourado_head",
+   "passive": {
+    "kind": "dodge_cd",
+    "values": {
+     "amount": 0.08
+    },
+    "name": "Pés Leves",
+    "text": "a esquiva volta 8% mais rápido"
+   },
+   "hair": "hide"
+  },
+  "arm_grifo_dourado_chest": {
+   "set": "grifo_dourado",
+   "slot": "chest",
+   "name": "Peitoral do Grifo",
+   "rarity": "legendary",
+   "element": "",
+   "stats": {
+    "defense": 8,
+    "resistance": 5,
+    "max_health": 41,
+    "speed": 5
+   },
+   "price": 2300,
+   "icon": "armor_grifo_dourado_chest",
+   "source": "lendario_1_chest",
+   "mesh": "A_grifo_dourado_chest",
+   "passive": {
+    "kind": "full_power",
+    "values": {
+     "amount": 0.08
+    },
+    "name": "Plenitude",
+    "text": "com a vida cheia, +8% de dano"
+   }
+  },
+  "arm_grifo_dourado_legs": {
+   "set": "grifo_dourado",
+   "slot": "legs",
+   "name": "Coxotes Dourados",
+   "rarity": "legendary",
+   "element": "",
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 30
+   },
+   "price": 1725,
+   "icon": "armor_grifo_dourado_legs",
+   "source": "lendario_1_legs",
+   "mesh": "A_grifo_dourado_legs",
+   "passive": {
+    "kind": "move",
+    "values": {
+     "amount": 0.05
+    },
+    "name": "Passo Firme",
+    "text": "+5% de velocidade ao andar"
+   }
+  },
+  "arm_grifo_dourado_boots": {
+   "set": "grifo_dourado",
+   "slot": "boots",
+   "name": "Garras do Grifo",
+   "rarity": "legendary",
+   "element": "",
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 18
+   },
+   "price": 1150,
+   "icon": "armor_grifo_dourado_boots",
+   "source": "lendario_1_boots",
+   "mesh": "A_grifo_dourado_boots",
+   "passive": {
+    "kind": "move",
+    "values": {
+     "amount": 0.05
+    },
+    "name": "Passo Firme",
+    "text": "+5% de velocidade ao andar"
+   }
+  },
+  "arm_magma_head": {
+   "set": "magma",
+   "slot": "head",
+   "name": "Elmo de Obsidiana",
+   "rarity": "legendary",
+   "element": "fire",
+   "stats": {
+    "defense": 5,
+    "resistance": 3,
+    "max_health": 25,
+    "attack": 3
+   },
+   "price": 1150,
+   "icon": "armor_magma_head",
+   "source": "lendario_2_head",
+   "mesh": "A_magma_head",
+   "passive": {
+    "kind": "burn_immune",
+    "values": {},
+    "name": "Sangue Quente",
+    "text": "não queima"
+   },
+   "hair": "hide"
+  },
+  "arm_magma_chest": {
+   "set": "magma",
+   "slot": "chest",
+   "name": "Couraça de Magma",
+   "rarity": "legendary",
+   "element": "fire",
+   "stats": {
+    "defense": 8,
+    "resistance": 5,
+    "max_health": 41
+   },
+   "price": 2300,
+   "icon": "armor_magma_chest",
+   "source": "lendario_2_chest",
+   "mesh": "A_magma_chest",
+   "passive": {
+    "kind": "magma_burst",
+    "values": {
+     "chance": 0.08,
+     "radius": 380,
+     "scale": 3.0
+    },
+    "name": "Erupção",
+    "text": "8% de chance de explodir em lava em volta ao ser atingido"
+   }
+  },
+  "arm_magma_legs": {
+   "set": "magma",
+   "slot": "legs",
+   "name": "Perneiras de Magma",
+   "rarity": "legendary",
+   "element": "fire",
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 30
+   },
+   "price": 1725,
+   "icon": "armor_magma_legs",
+   "source": "lendario_2_legs",
+   "mesh": "A_magma_legs",
+   "passive": {
+    "kind": "burn_attacker",
+    "values": {
+     "chance": 0.12
+    },
+    "name": "Pele de Brasa",
+    "text": "12% de chance de queimar quem te acerta"
+   }
+  },
+  "arm_magma_boots": {
+   "set": "magma",
+   "slot": "boots",
+   "name": "Botas de Lava",
+   "rarity": "legendary",
+   "element": "fire",
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 18
+   },
+   "price": 1150,
+   "icon": "armor_magma_boots",
+   "source": "lendario_2_boots",
+   "mesh": "A_magma_boots",
+   "passive": {
+    "kind": "magma_burst",
+    "values": {
+     "chance": 0.06,
+     "radius": 380,
+     "scale": 3.0
+    },
+    "name": "Erupção",
+    "text": "6% de chance de explodir em lava em volta ao ser atingido"
+   }
+  },
+  "arm_bosque_ancestral_head": {
+   "set": "bosque_ancestral",
+   "slot": "head",
+   "name": "Elmo de Galhos",
+   "rarity": "legendary",
+   "element": "nature",
+   "stats": {
+    "defense": 5,
+    "resistance": 3,
+    "max_health": 25,
+    "hp_regen": 2
+   },
+   "price": 1150,
+   "icon": "armor_bosque_ancestral_head",
+   "source": "lendario_3_head",
+   "mesh": "A_bosque_ancestral_head",
+   "passive": {
+    "kind": "regen",
+    "values": {
+     "amount": 0.012
+    },
+    "name": "Fôlego",
+    "text": "recupera 1,2% da vida a cada 5 s"
+   },
+   "hair": "hide"
+  },
+  "arm_bosque_ancestral_chest": {
+   "set": "bosque_ancestral",
+   "slot": "chest",
+   "name": "Couraça de Casca",
+   "rarity": "legendary",
+   "element": "nature",
+   "stats": {
+    "defense": 8,
+    "resistance": 5,
+    "max_health": 66
+   },
+   "price": 2300,
+   "icon": "armor_bosque_ancestral_chest",
+   "source": "lendario_3_chest",
+   "mesh": "A_bosque_ancestral_chest",
+   "passive": {
+    "kind": "regen",
+    "values": {
+     "amount": 0.015
+    },
+    "name": "Fôlego",
+    "text": "recupera 1,5% da vida a cada 5 s"
+   }
+  },
+  "arm_bosque_ancestral_legs": {
+   "set": "bosque_ancestral",
+   "slot": "legs",
+   "name": "Saiote de Folhas",
+   "rarity": "legendary",
+   "element": "nature",
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 30
+   },
+   "price": 1725,
+   "icon": "armor_bosque_ancestral_legs",
+   "source": "lendario_3_legs",
+   "mesh": "A_bosque_ancestral_legs",
+   "passive": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.06
+    },
+    "name": "Espinhos",
+    "text": "devolve 6% do dano recebido a quem bateu"
+   }
+  },
+  "arm_bosque_ancestral_boots": {
+   "set": "bosque_ancestral",
+   "slot": "boots",
+   "name": "Botas de Raiz",
+   "rarity": "legendary",
+   "element": "nature",
+   "stats": {
+    "defense": 4,
+    "resistance": 2,
+    "max_health": 18
+   },
+   "price": 1150,
+   "icon": "armor_bosque_ancestral_boots",
+   "source": "lendario_3_boots",
+   "mesh": "A_bosque_ancestral_boots",
+   "passive": {
+    "kind": "last_stand",
+    "values": {
+     "amount": 0.12
+    },
+    "name": "Última Defesa",
+    "text": "com menos de 30% da vida, leva 12% menos de dano"
+   }
+  },
+  "arm_espelho_head": {
+   "set": "espelho",
+   "slot": "head",
+   "name": "Elmo Espelhado",
+   "rarity": "unique",
+   "element": "shadow",
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 31,
+    "skill": 4
+   },
+   "price": 2900,
+   "icon": "armor_espelho_head",
+   "source": "unico_1_head",
+   "mesh": "A_espelho_head",
+   "passive": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.06
+    },
+    "name": "Espinhos",
+    "text": "devolve 6% do dano recebido a quem bateu"
+   },
+   "hair": "hide"
+  },
+  "arm_espelho_chest": {
+   "set": "espelho",
+   "slot": "chest",
+   "name": "Peitoral Espelhado",
+   "rarity": "unique",
+   "element": "shadow",
+   "stats": {
+    "defense": 9,
+    "resistance": 6,
+    "max_health": 50
+   },
+   "price": 5800,
+   "icon": "armor_espelho_chest",
+   "source": "unico_1_chest",
+   "mesh": "A_espelho_chest",
+   "passive": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.08
+    },
+    "name": "Espinhos",
+    "text": "devolve 8% do dano recebido a quem bateu"
+   }
+  },
+  "arm_espelho_legs": {
+   "set": "espelho",
+   "slot": "legs",
+   "name": "Coxotes Espelhados",
+   "rarity": "unique",
+   "element": "shadow",
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 36
+   },
+   "price": 4350,
+   "icon": "armor_espelho_legs",
+   "source": "unico_1_legs",
+   "mesh": "A_espelho_legs",
+   "passive": {
+    "kind": "block",
+    "values": {
+     "chance": 0.05
+    },
+    "name": "Bloqueio",
+    "text": "5% de chance de anular um golpe"
+   }
+  },
+  "arm_espelho_boots": {
+   "set": "espelho",
+   "slot": "boots",
+   "name": "Botas Espelhadas",
+   "rarity": "unique",
+   "element": "shadow",
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 22
+   },
+   "price": 2900,
+   "icon": "armor_espelho_boots",
+   "source": "unico_1_boots",
+   "mesh": "A_espelho_boots",
+   "passive": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.06
+    },
+    "name": "Espinhos",
+    "text": "devolve 6% do dano recebido a quem bateu"
+   }
+  },
+  "arm_sem_sombra_head": {
+   "set": "sem_sombra",
+   "slot": "head",
+   "name": "Elmo Sem Sombra",
+   "rarity": "unique",
+   "element": "holy",
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 31,
+    "crit": 5
+   },
+   "price": 2900,
+   "icon": "armor_sem_sombra_head",
+   "source": "unico_2_head",
+   "mesh": "A_sem_sombra_head",
+   "passive": {
+    "kind": "dodge_cd",
+    "values": {
+     "amount": 0.1
+    },
+    "name": "Pés Leves",
+    "text": "a esquiva volta 10% mais rápido"
+   },
+   "hair": "hide"
+  },
+  "arm_sem_sombra_chest": {
+   "set": "sem_sombra",
+   "slot": "chest",
+   "name": "Peitoral Sem Sombra",
+   "rarity": "unique",
+   "element": "holy",
+   "stats": {
+    "defense": 9,
+    "resistance": 6,
+    "max_health": 50,
+    "crit_dmg": 15
+   },
+   "price": 5800,
+   "icon": "armor_sem_sombra_chest",
+   "source": "unico_2_chest",
+   "mesh": "A_sem_sombra_chest",
+   "passive": {
+    "kind": "full_power",
+    "values": {
+     "amount": 0.1
+    },
+    "name": "Plenitude",
+    "text": "com a vida cheia, +10% de dano"
+   }
+  },
+  "arm_sem_sombra_legs": {
+   "set": "sem_sombra",
+   "slot": "legs",
+   "name": "Calças Sem Sombra",
+   "rarity": "unique",
+   "element": "holy",
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 36
+   },
+   "price": 4350,
+   "icon": "armor_sem_sombra_legs",
+   "source": "unico_2_legs",
+   "mesh": "A_sem_sombra_legs",
+   "passive": {
+    "kind": "dodge_cd",
+    "values": {
+     "amount": 0.1
+    },
+    "name": "Pés Leves",
+    "text": "a esquiva volta 10% mais rápido"
+   }
+  },
+  "arm_sem_sombra_boots": {
+   "set": "sem_sombra",
+   "slot": "boots",
+   "name": "Botas Sem Sombra",
+   "rarity": "unique",
+   "element": "holy",
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 22
+   },
+   "price": 2900,
+   "icon": "armor_sem_sombra_boots",
+   "source": "unico_2_boots",
+   "mesh": "A_sem_sombra_boots",
+   "passive": {
+    "kind": "move",
+    "values": {
+     "amount": 0.06
+    },
+    "name": "Passo Firme",
+    "text": "+6% de velocidade ao andar"
+   }
+  },
+  "arm_andarilho_head": {
+   "set": "andarilho",
+   "slot": "head",
+   "name": "Gorro Remendado",
+   "rarity": "unique",
+   "element": "",
+   "stats": {
+    "defense": 6,
+    "resistance": 4,
+    "max_health": 31,
+    "haste": 4
+   },
+   "price": 2900,
+   "icon": "armor_andarilho_head",
+   "source": "unico_3_head",
+   "mesh": "A_andarilho_head",
+   "passive": {
+    "kind": "coins",
+    "values": {
+     "amount": 0.08
+    },
+    "name": "Bolso Fundo",
+    "text": "+8% de moedas"
+   },
+   "hair": "fringe"
+  },
+  "arm_andarilho_chest": {
+   "set": "andarilho",
+   "slot": "chest",
+   "name": "Colete Remendado",
+   "rarity": "unique",
+   "element": "",
+   "stats": {
+    "defense": 9,
+    "resistance": 6,
+    "max_health": 50
+   },
+   "price": 5800,
+   "icon": "armor_andarilho_chest",
+   "source": "unico_3_chest",
+   "mesh": "A_andarilho_chest",
+   "passive": {
+    "kind": "xp",
+    "values": {
+     "amount": 0.06
+    },
+    "name": "Aprendiz",
+    "text": "+6% de experiência"
+   }
+  },
+  "arm_andarilho_legs": {
+   "set": "andarilho",
+   "slot": "legs",
+   "name": "Calças Remendadas",
+   "rarity": "unique",
+   "element": "",
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 36
+   },
+   "price": 4350,
+   "icon": "armor_andarilho_legs",
+   "source": "unico_3_legs",
+   "mesh": "A_andarilho_legs",
+   "passive": {
+    "kind": "coins",
+    "values": {
+     "amount": 0.08
+    },
+    "name": "Bolso Fundo",
+    "text": "+8% de moedas"
+   }
+  },
+  "arm_andarilho_boots": {
+   "set": "andarilho",
+   "slot": "boots",
+   "name": "Botas Desparelhadas",
+   "rarity": "unique",
+   "element": "",
+   "stats": {
+    "defense": 4,
+    "resistance": 3,
+    "max_health": 22
+   },
+   "price": 2900,
+   "icon": "armor_andarilho_boots",
+   "source": "unico_3_boots",
+   "mesh": "A_andarilho_boots",
+   "passive": {
+    "kind": "move",
+    "values": {
+     "amount": 0.06
+    },
+    "name": "Passo Firme",
+    "text": "+6% de velocidade ao andar"
+   }
+  },
+  "arm_aurora_head": {
+   "set": "aurora",
+   "slot": "head",
+   "name": "Elmo Alado da Aurora",
+   "rarity": "divine",
+   "element": "holy",
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 40,
+    "skill": 5
+   },
+   "price": 7000,
+   "icon": "armor_aurora_head",
+   "source": "divino_1_head",
+   "mesh": "A_aurora_head",
+   "passive": {
+    "kind": "regen",
+    "values": {
+     "amount": 0.015
+    },
+    "name": "Fôlego",
+    "text": "recupera 1,5% da vida a cada 5 s"
+   },
+   "hair": "hide"
+  },
+  "arm_aurora_chest": {
+   "set": "aurora",
+   "slot": "chest",
+   "name": "Peitoral da Aurora",
+   "rarity": "divine",
+   "element": "holy",
+   "stats": {
+    "defense": 12,
+    "resistance": 8,
+    "max_health": 105
+   },
+   "price": 14000,
+   "icon": "armor_aurora_chest",
+   "source": "divino_1_chest",
+   "mesh": "A_aurora_chest",
+   "passive": {
+    "kind": "last_stand",
+    "values": {
+     "amount": 0.15
+    },
+    "name": "Última Defesa",
+    "text": "com menos de 30% da vida, leva 15% menos de dano"
+   }
+  },
+  "arm_aurora_legs": {
+   "set": "aurora",
+   "slot": "legs",
+   "name": "Saiote de Penas",
+   "rarity": "divine",
+   "element": "holy",
+   "stats": {
+    "defense": 8,
+    "resistance": 6,
+    "max_health": 47
+   },
+   "price": 10500,
+   "icon": "armor_aurora_legs",
+   "source": "divino_1_legs",
+   "mesh": "A_aurora_legs",
+   "passive": {
+    "kind": "regen",
+    "values": {
+     "amount": 0.015
+    },
+    "name": "Fôlego",
+    "text": "recupera 1,5% da vida a cada 5 s"
+   }
+  },
+  "arm_aurora_boots": {
+   "set": "aurora",
+   "slot": "boots",
+   "name": "Botas Aladas",
+   "rarity": "divine",
+   "element": "holy",
+   "stats": {
+    "defense": 5,
+    "resistance": 4,
+    "max_health": 29
+   },
+   "price": 7000,
+   "icon": "armor_aurora_boots",
+   "source": "divino_1_boots",
+   "mesh": "A_aurora_boots",
+   "passive": {
+    "kind": "move",
+    "values": {
+     "amount": 0.07
+    },
+    "name": "Passo Firme",
+    "text": "+7% de velocidade ao andar"
+   }
+  },
+  "arm_arvore_mundo_head": {
+   "set": "arvore_mundo",
+   "slot": "head",
+   "name": "Elmo de Madeira Viva",
+   "rarity": "divine",
+   "element": "nature",
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 40,
+    "hp_regen": 3
+   },
+   "price": 7000,
+   "icon": "armor_arvore_mundo_head",
+   "source": "divino_2_head",
+   "mesh": "A_arvore_mundo_head",
+   "passive": {
+    "kind": "regen",
+    "values": {
+     "amount": 0.015
+    },
+    "name": "Fôlego",
+    "text": "recupera 1,5% da vida a cada 5 s"
+   },
+   "hair": "hide"
+  },
+  "arm_arvore_mundo_chest": {
+   "set": "arvore_mundo",
+   "slot": "chest",
+   "name": "Couraça da Árvore",
+   "rarity": "divine",
+   "element": "nature",
+   "stats": {
+    "defense": 12,
+    "resistance": 8,
+    "max_health": 105
+   },
+   "price": 14000,
+   "icon": "armor_arvore_mundo_chest",
+   "source": "divino_2_chest",
+   "mesh": "A_arvore_mundo_chest",
+   "passive": {
+    "kind": "ally_heal",
+    "values": {
+     "amount": 0.004,
+     "radius": 900
+    },
+    "name": "Abrigo",
+    "text": "cura você e os aliados a até 9 m em 0,4% da vida por segundo"
+   }
+  },
+  "arm_arvore_mundo_legs": {
+   "set": "arvore_mundo",
+   "slot": "legs",
+   "name": "Perneiras de Raízes",
+   "rarity": "divine",
+   "element": "nature",
+   "stats": {
+    "defense": 8,
+    "resistance": 6,
+    "max_health": 47
+   },
+   "price": 10500,
+   "icon": "armor_arvore_mundo_legs",
+   "source": "divino_2_legs",
+   "mesh": "A_arvore_mundo_legs",
+   "passive": {
+    "kind": "thorns",
+    "values": {
+     "amount": 0.08
+    },
+    "name": "Espinhos",
+    "text": "devolve 8% do dano recebido a quem bateu"
+   }
+  },
+  "arm_arvore_mundo_boots": {
+   "set": "arvore_mundo",
+   "slot": "boots",
+   "name": "Botas de Raiz Antiga",
+   "rarity": "divine",
+   "element": "nature",
+   "stats": {
+    "defense": 5,
+    "resistance": 4,
+    "max_health": 29
+   },
+   "price": 7000,
+   "icon": "armor_arvore_mundo_boots",
+   "source": "divino_2_boots",
+   "mesh": "A_arvore_mundo_boots",
+   "passive": {
+    "kind": "last_stand",
+    "values": {
+     "amount": 0.15
+    },
+    "name": "Última Defesa",
+    "text": "com menos de 30% da vida, leva 15% menos de dano"
+   }
+  },
+  "arm_estrelas_head": {
+   "set": "estrelas",
+   "slot": "head",
+   "name": "Elmo Estelar",
+   "rarity": "divine",
+   "element": "holy",
+   "stats": {
+    "defense": 7,
+    "resistance": 5,
+    "max_health": 40,
+    "skill": 6
+   },
+   "price": 7000,
+   "icon": "armor_estrelas_head",
+   "source": "divino_3_head",
+   "mesh": "A_estrelas_head",
+   "passive": {
+    "kind": "mana_regen",
+    "values": {
+     "amount": 0.03
+    },
+    "name": "Mente Calma",
+    "text": "recupera 3% da mana a cada 5 s"
+   },
+   "hair": "hide"
+  },
+  "arm_estrelas_chest": {
+   "set": "estrelas",
+   "slot": "chest",
+   "name": "Peitoral das Constelações",
+   "rarity": "divine",
+   "element": "holy",
+   "stats": {
+    "defense": 12,
+    "resistance": 8,
+    "max_health": 65,
+    "crit": 6
+   },
+   "price": 14000,
+   "icon": "armor_estrelas_chest",
+   "source": "divino_3_chest",
+   "mesh": "A_estrelas_chest",
+   "passive": {
+    "kind": "full_power",
+    "values": {
+     "amount": 0.12
+    },
+    "name": "Plenitude",
+    "text": "com a vida cheia, +12% de dano"
+   }
+  },
+  "arm_estrelas_legs": {
+   "set": "estrelas",
+   "slot": "legs",
+   "name": "Coxotes Estelares",
+   "rarity": "divine",
+   "element": "holy",
+   "stats": {
+    "defense": 8,
+    "resistance": 6,
+    "max_health": 47
+   },
+   "price": 10500,
+   "icon": "armor_estrelas_legs",
+   "source": "divino_3_legs",
+   "mesh": "A_estrelas_legs",
+   "passive": {
+    "kind": "dodge_cd",
+    "values": {
+     "amount": 0.1
+    },
+    "name": "Pés Leves",
+    "text": "a esquiva volta 10% mais rápido"
+   }
+  },
+  "arm_estrelas_boots": {
+   "set": "estrelas",
+   "slot": "boots",
+   "name": "Botas Estelares",
+   "rarity": "divine",
+   "element": "holy",
+   "stats": {
+    "defense": 5,
+    "resistance": 4,
+    "max_health": 29
+   },
+   "price": 7000,
+   "icon": "armor_estrelas_boots",
+   "source": "divino_3_boots",
+   "mesh": "A_estrelas_boots",
+   "passive": {
+    "kind": "move",
+    "values": {
+     "amount": 0.07
+    },
+    "name": "Passo Firme",
+    "text": "+7% de velocidade ao andar"
+   }
+  }
+ },
+ "visual": {
+  "helm_leather": "arm_viajante_head",
+  "helm_iron": "arm_malha_ferro_head",
+  "chest_tunic": "arm_viajante_chest",
+  "chest_mail": "arm_malha_ferro_chest",
+  "chest_punk": "arm_batedor_chest",
+  "legs_cloth": "arm_recruta_legs",
+  "legs_leather": "arm_viajante_legs",
+  "boots_leather": "arm_viajante_boots",
+  "boots_iron": "arm_malha_ferro_boots",
+  "wolf_head": "arm_cacador_head",
+  "wolf_chest": "arm_cacador_chest",
+  "wolf_legs": "arm_cacador_legs",
+  "wolf_boots": "arm_cacador_boots",
+  "guard_head": "arm_guarda_real_head",
+  "guard_chest": "arm_guarda_real_chest",
+  "guard_legs": "arm_guarda_real_legs",
+  "guard_boots": "arm_guarda_real_boots",
+  "bark_head": "arm_bosque_ancestral_head",
+  "bark_chest": "arm_bosque_ancestral_chest",
+  "bark_legs": "arm_bosque_ancestral_legs",
+  "bark_boots": "arm_bosque_ancestral_boots",
+  "crater_head": "arm_magma_head",
+  "crater_chest": "arm_magma_chest",
+  "crater_legs": "arm_magma_legs",
+  "crater_boots": "arm_magma_boots",
+  "dunas_head": "arm_escorpiao_head",
+  "dunas_chest": "arm_escorpiao_chest",
+  "dunas_legs": "arm_escorpiao_legs",
+  "dunas_boots": "arm_escorpiao_boots",
+  "sombra_head": "arm_noite_violeta_head",
+  "sombra_chest": "arm_noite_violeta_chest",
+  "sombra_legs": "arm_noite_violeta_legs",
+  "sombra_boots": "arm_noite_violeta_boots",
+  "sabio_head": "arm_espelho_head",
+  "sabio_chest": "arm_espelho_chest",
+  "sabio_legs": "arm_espelho_legs",
+  "sabio_boots": "arm_espelho_boots",
+  "azhur_head": "arm_dragao_rubro_head",
+  "azhur_chest": "arm_dragao_rubro_chest",
+  "azhur_legs": "arm_dragao_rubro_legs",
+  "azhur_boots": "arm_dragao_rubro_boots",
+  "yggdrasil_head": "arm_arvore_mundo_head",
+  "yggdrasil_chest": "arm_arvore_mundo_chest",
+  "yggdrasil_legs": "arm_arvore_mundo_legs",
+  "yggdrasil_boots": "arm_arvore_mundo_boots"
+ },
+ "loot": {
+  "bandit": [
+   {
+    "item": "arm_guarda_real_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_noite_violeta_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_noite_violeta_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_noite_violeta_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_noite_violeta_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_escorpiao_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_escorpiao_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_escorpiao_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_escorpiao_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_dragao_rubro_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_dragao_rubro_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_dragao_rubro_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   },
+   {
+    "item": "arm_dragao_rubro_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.005
+   }
+  ],
+  "goblin": [
+   {
+    "item": "arm_guarda_real_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_guarda_real_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_geada_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_mare_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   }
+  ],
+  "golem": [
+   {
+    "item": "arm_guarda_real_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_guarda_real_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_guarda_real_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_guarda_real_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_geada_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_geada_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_geada_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_geada_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_mare_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_mare_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_mare_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_mare_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_noite_violeta_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_noite_violeta_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_noite_violeta_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_noite_violeta_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_escorpiao_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_escorpiao_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_escorpiao_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_escorpiao_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_dragao_rubro_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_dragao_rubro_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_dragao_rubro_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_dragao_rubro_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.015
+   },
+   {
+    "item": "arm_grifo_dourado_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_grifo_dourado_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_grifo_dourado_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_grifo_dourado_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_magma_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_magma_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_magma_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_magma_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_bosque_ancestral_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_bosque_ancestral_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_bosque_ancestral_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_bosque_ancestral_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_espelho_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_espelho_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_espelho_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_espelho_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_sem_sombra_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_sem_sombra_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_sem_sombra_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_sem_sombra_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_andarilho_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_andarilho_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_andarilho_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_andarilho_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.006
+   },
+   {
+    "item": "arm_aurora_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_aurora_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_aurora_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_aurora_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_arvore_mundo_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_arvore_mundo_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_arvore_mundo_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_arvore_mundo_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_estrelas_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_estrelas_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_estrelas_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   },
+   {
+    "item": "arm_estrelas_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.003
+   }
+  ],
+  "runecolossus": [
+   {
+    "item": "arm_noite_violeta_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_noite_violeta_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_noite_violeta_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_noite_violeta_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_escorpiao_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_escorpiao_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_escorpiao_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_escorpiao_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_dragao_rubro_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_dragao_rubro_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_dragao_rubro_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_dragao_rubro_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.01
+   },
+   {
+    "item": "arm_grifo_dourado_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_grifo_dourado_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_grifo_dourado_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_grifo_dourado_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_magma_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_magma_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_magma_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_magma_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_bosque_ancestral_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_bosque_ancestral_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_bosque_ancestral_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_bosque_ancestral_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.012
+   },
+   {
+    "item": "arm_espelho_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_espelho_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_espelho_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_espelho_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_sem_sombra_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_sem_sombra_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_sem_sombra_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_sem_sombra_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_andarilho_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_andarilho_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_andarilho_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_andarilho_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.008
+   },
+   {
+    "item": "arm_aurora_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_aurora_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_aurora_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_aurora_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_arvore_mundo_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_arvore_mundo_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_arvore_mundo_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_arvore_mundo_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_estrelas_head",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_estrelas_chest",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_estrelas_legs",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   },
+   {
+    "item": "arm_estrelas_boots",
+    "min": 1,
+    "max": 1,
+    "chance": 0.004
+   }
+  ]
+ }
+}

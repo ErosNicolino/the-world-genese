@@ -1,0 +1,19 @@
+{
+  "_sobre": "Rostos do humano de blocos (Tools/MakeBlockFace.py --estilo <id>, Tools/ImportBlockFaces.py). Lido por AVortexCharacter (VortexCharacter.cpp) e pelo menu de criação ao abrir o jogo: mudar aqui não precisa compilar. id = o estilo do gerador (textura T_humano_Eyes_<id>, e T_humano_Eyes_F_<id> no corpo feminino; o 'padrao' usa T_humano_Eyes / T_humano_Eyes_F); nome = o do menu. O primeiro é o padrão.",
+  "rostos": [
+    { "id": "padrao", "nome": "Padrão" },
+    { "id": "azul", "nome": "Olhos azuis" },
+    { "id": "verde", "nome": "Olhos verdes" },
+    { "id": "sereno", "nome": "Sereno" },
+    { "id": "determinado", "nome": "Determinado" },
+    { "id": "fofo", "nome": "Fofo" },
+    { "id": "pontos", "nome": "Pontinhos" },
+    { "id": "sardas", "nome": "Sardas" },
+    { "id": "elfo_verde", "nome": "Verde élfico", "pele": "clara" },
+    { "id": "elfo_dourado", "nome": "Dourado", "pele": "clara" },
+    { "id": "elfo_gelo", "nome": "Azul-gelo", "pele": "clara" },
+    { "id": "dark_vermelho", "nome": "Vermelho", "pele": "escura" },
+    { "id": "dark_violeta", "nome": "Violeta", "pele": "escura" },
+    { "id": "dark_prata", "nome": "Prata", "pele": "escura" }
+  ]
+}

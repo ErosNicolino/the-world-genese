@@ -1,0 +1,29 @@
+{
+  "_doc": "Folhas caindo das árvores (AVortexFallingLeaves). Mudar aqui não precisa compilar. 'arvores': por tipo, quanto solta (taxa: 0 = nada, 1 = normal) e as cores possíveis (0 a 1, sRGB). Tipo fora da lista não solta folha (pinheiros, mortas, cactos, gelo...). O vento é o da grama (direção ventoGraus e as mesmas rajadas). Distâncias em cm, tempos em s.",
+  "quantidade": 70,
+  "raio": 2600,
+  "tamanhoMin": 0.8,
+  "tamanhoMax": 1.35,
+  "queda": 55,
+  "ventoGraus": 26.6,
+  "vento": 140,
+  "balanco": 70,
+  "balancoVelocidade": 2.4,
+  "noChao": 6,
+  "naAgua": 9,
+  "arvores": {
+    "tree_oak": { "taxa": 1.0, "cores": [[0.33, 0.52, 0.16], [0.42, 0.58, 0.18], [0.55, 0.55, 0.2]] },
+    "tree_apple": { "taxa": 0.8, "cores": [[0.36, 0.56, 0.18], [0.45, 0.6, 0.2]] },
+    "tree_birch": { "taxa": 1.2, "cores": [[0.62, 0.66, 0.24], [0.78, 0.72, 0.25], [0.5, 0.6, 0.2]] },
+    "tree_autumn": { "taxa": 3.0, "cores": [[0.9, 0.45, 0.12], [0.8, 0.24, 0.1], [0.95, 0.66, 0.18], [0.7, 0.35, 0.12]] },
+    "tree_cherry": { "taxa": 3.0, "cores": [[0.98, 0.7, 0.8], [0.95, 0.82, 0.88], [0.9, 0.58, 0.7]] },
+    "tree_golden": { "taxa": 2.5, "cores": [[0.96, 0.78, 0.22], [0.9, 0.62, 0.15], [1.0, 0.86, 0.4]] },
+    "tree_elven": { "taxa": 1.5, "cores": [[0.55, 0.85, 0.6], [0.7, 0.92, 0.65]] },
+    "tree_moonleaf": { "taxa": 1.5, "cores": [[0.72, 0.8, 0.96], [0.85, 0.88, 1.0]] },
+    "tree_willow": { "taxa": 1.0, "cores": [[0.48, 0.62, 0.26], [0.58, 0.66, 0.3]] },
+    "tree_haunted": { "taxa": 1.2, "cores": [[0.36, 0.22, 0.42], [0.25, 0.18, 0.3]] },
+    "tree_mangrove": { "taxa": 0.7, "cores": [[0.3, 0.46, 0.18]] },
+    "tree_acacia": { "taxa": 0.6, "cores": [[0.5, 0.56, 0.2], [0.62, 0.58, 0.24]] },
+    "tree_ember": { "taxa": 1.5, "cores": [[1.0, 0.5, 0.12], [0.85, 0.25, 0.08]] }
+  }
+}

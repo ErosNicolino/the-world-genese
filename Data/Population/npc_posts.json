@@ -1,0 +1,1143 @@
+{
+ "_doc": "Gerado por Tools/ExtractNpcPosts.py a partir de the-world-geneses/data/npcs.json (somente leitura). Unreal: cm, X = x do Godot, Y = z do Godot; yaw em graus.",
+ "version": 1,
+ "npcs": [
+  {
+   "id": "lary",
+   "name": "Lary",
+   "title": "Moradora do vale",
+   "post_cm": [
+    2450.0,
+    2100.0
+   ],
+   "yaw": 90.0,
+   "patrol_cm": [
+    [
+     2450.0,
+     2100.0
+    ],
+    [
+     2325.9,
+     2482.1
+    ],
+    [
+     2000.9,
+     2718.2
+    ],
+    [
+     1599.1,
+     2718.2
+    ],
+    [
+     1274.1,
+     2482.1
+    ],
+    [
+     1150.0,
+     2100.0
+    ],
+    [
+     1274.1,
+     1717.9
+    ],
+    [
+     1599.1,
+     1481.8
+    ],
+    [
+     2000.9,
+     1481.8
+    ],
+    [
+     2325.9,
+     1717.9
+    ]
+   ],
+   "look": {
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_9",
+     "eyes": "eyes_f_gentle",
+     "shirt": "shirt_bodice",
+     "pants": "pants_shorts",
+     "shoes": "boots_laced",
+     "gloves": "gloves_bare",
+     "accessory": "accessory_earrings",
+     "block_hair": "block_hair_franja_longa",
+     "npc_outfit": "lary",
+     "block_face": "padrao"
+    },
+    "colors": {
+     "skin_color": "#E2AE8D",
+     "hair_color": "#30201D",
+     "shirt_color": "#8D233D",
+     "sleeve_color": "#781C33",
+     "pants_color": "#211E27",
+     "boots_color": "#25222A",
+     "belt_color": "#25202A",
+     "strap_color": "#8D233D"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "ilsa",
+   "name": "Ilsa",
+   "title": "Herbalista",
+   "post_cm": [
+    1040.0,
+    3570.0
+   ],
+   "yaw": -90.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_5",
+     "eyes": "eyes_f_happy",
+     "mouth": "mouth_smile",
+     "shirt": "shirt_healer",
+     "pants": "pants_cloth",
+     "shoes": "boots_wrap",
+     "gloves": "gloves_long",
+     "accessory": "accessory_flower",
+     "block_hair": "block_hair_tranca_lateral",
+     "block_face": "verde",
+     "npc_outfit": "ilsa"
+    },
+    "colors": {
+     "skin_color": "#EDC4A0",
+     "hair_color": "#B8612E",
+     "shirt_color": "#56773A",
+     "sleeve_color": "#6E8F4A",
+     "pants_color": "#6B5A45",
+     "boots_color": "#5C4030",
+     "glove_color": "#4A6A34",
+     "belt_color": "#6B4A2E",
+     "strap_color": "#6B4A2E"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "bram",
+   "name": "Bram",
+   "title": "Ferreiro",
+   "post_cm": [
+    -1900.0,
+    5290.0
+   ],
+   "yaw": -90.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "male",
+    "parts": {
+     "hair": "hair_male_4",
+     "eyes": "eyes_m_bold",
+     "mouth": "mouth_beard",
+     "shirt": "shirt_punk",
+     "pants": "pants_leather",
+     "shoes": "boots_laced",
+     "gloves": "gauntlets",
+     "accessory": "accessory_goggles",
+     "block_hair": "block_hair_raspado",
+     "block_face": "determinado",
+     "npc_outfit": "bram"
+    },
+    "colors": {
+     "skin_color": "#C98E6A",
+     "hair_color": "#2E2019",
+     "shirt_color": "#5A3A26",
+     "sleeve_color": "#5A3A26",
+     "pants_color": "#3E2E24",
+     "boots_color": "#2E2420",
+     "glove_color": "#4A4A50",
+     "belt_color": "#3A2818"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "nicolly",
+   "name": "Nicolly",
+   "title": "Cartógrafa",
+   "post_cm": [
+    2560.0,
+    3570.0
+   ],
+   "yaw": -90.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_7",
+     "eyes": "eyes_f_gentle",
+     "shirt": "shirt_linen",
+     "pants": "pants_cloth",
+     "shoes": "shoes_low",
+     "gloves": "gloves_bare",
+     "accessory": "accessory_earrings",
+     "block_hair": "block_hair_cacheado_longo",
+     "block_face": "padrao",
+     "npc_outfit": "nicolly"
+    },
+    "colors": {
+     "skin_color": "#AA7558",
+     "hair_color": "#2E211E",
+     "shirt_color": "#BFA889",
+     "sleeve_color": "#BFA889",
+     "pants_color": "#65584C"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "ducci",
+   "name": "Ducci",
+   "title": "O Mercador mago ambulante",
+   "post_cm": [
+    -1570.0,
+    2760.0
+   ],
+   "yaw": 0.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "male",
+    "parts": {
+     "hair": "hair_male_6",
+     "eyes": "eyes_m_happy",
+     "mouth": "mouth_beard",
+     "shirt": "shirt_robe",
+     "pants": "pants_healer",
+     "shoes": "boots_royal",
+     "gloves": "gloves_long",
+     "accessory": "accessory_circlet",
+     "block_hair": "block_hair_longo_desfiado",
+     "block_face": "sereno",
+     "npc_outfit": "ducci"
+    },
+    "colors": {
+     "skin_color": "#D9A882",
+     "hair_color": "#E6E1D6",
+     "shirt_color": "#5A2F86",
+     "sleeve_color": "#6E3FA0",
+     "pants_color": "#3A2458",
+     "boots_color": "#2A1C38",
+     "glove_color": "#C9A24A",
+     "belt_color": "#C9A24A",
+     "strap_color": "#C9A24A"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "rhea",
+   "name": "Rhea",
+   "title": "Capitã da Guarda",
+   "post_cm": [
+    -1830.0,
+    -430.0
+   ],
+   "yaw": -90.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_4",
+     "eyes": "eyes_f_sharp",
+     "mouth": "mouth_serious",
+     "shirt": "shirt_mail",
+     "pants": "pants_leather",
+     "shoes": "greaves",
+     "gloves": "gauntlets",
+     "accessory": "accessory_ribbon",
+     "block_hair": "block_hair_rabo_cavalo_alto",
+     "block_face": "determinado",
+     "npc_outfit": "rhea"
+    },
+    "colors": {
+     "skin_color": "#D8A07E",
+     "hair_color": "#B3402E",
+     "shirt_color": "#7D8A96",
+     "sleeve_color": "#2F5AA6",
+     "pants_color": "#3A3028",
+     "boots_color": "#5E656B",
+     "glove_color": "#5E656B",
+     "belt_color": "#6B4A2E",
+     "strap_color": "#2F5AA6"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "sahil",
+   "name": "Sahil",
+   "title": "Mercador das Dunas",
+   "post_cm": [
+    -219600.0,
+    -99800.0
+   ],
+   "yaw": -180.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "male",
+    "parts": {
+     "hair": "hair_male_3",
+     "eyes": "eyes_m_happy",
+     "shirt": "shirt_scout",
+     "pants": "pants_leather",
+     "shoes": "boots_wrap",
+     "accessory": "accessory_feather",
+     "block_hair": "block_hair_penteado_tras",
+     "block_face": "padrao",
+     "npc_outfit": "sahil"
+    },
+    "colors": {
+     "skin_color": "#B98361",
+     "hair_color": "#2E211E",
+     "shirt_color": "#B78953",
+     "sleeve_color": "#9E6D40",
+     "pants_color": "#5C4030",
+     "boots_color": "#493322",
+     "belt_color": "#6B4A2E"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "amal",
+   "name": "Amal",
+   "title": "Guia do Acampamento",
+   "post_cm": [
+    -218000.0,
+    -99800.0
+   ],
+   "yaw": -0.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_4",
+     "eyes": "eyes_f_sharp",
+     "shirt": "shirt_scout",
+     "pants": "pants_leather",
+     "shoes": "boots_wrap",
+     "accessory": "accessory_earrings",
+     "block_hair": "block_hair_trancas_duplas",
+     "block_face": "padrao",
+     "npc_outfit": "amal"
+    },
+    "colors": {
+     "skin_color": "#C98E6A",
+     "hair_color": "#30201D",
+     "shirt_color": "#AC7540",
+     "sleeve_color": "#8D5D36",
+     "pants_color": "#4C3B2E",
+     "boots_color": "#493322",
+     "belt_color": "#6B4A2E"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "tavian",
+   "name": "Tavian",
+   "title": "Provedor dos Caçadores",
+   "post_cm": [
+    286300.0,
+    62100.0
+   ],
+   "yaw": -180.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "male",
+    "parts": {
+     "hair": "hair_male_4",
+     "eyes": "eyes_m_happy",
+     "shirt": "shirt_scout",
+     "pants": "pants_leather",
+     "shoes": "boots_scout",
+     "accessory": "accessory_feather",
+     "block_hair": "block_hair_risca_lateral",
+     "block_face": "verde",
+     "npc_outfit": "tavian"
+    },
+    "colors": {
+     "skin_color": "#D8A07E",
+     "hair_color": "#784026",
+     "shirt_color": "#47744F",
+     "sleeve_color": "#335F42",
+     "pants_color": "#3E2E24",
+     "boots_color": "#30291F",
+     "belt_color": "#6B4A2E"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "lyra",
+   "name": "Lyra",
+   "title": "Rastreadora de Verdalume",
+   "post_cm": [
+    287800.0,
+    62100.0
+   ],
+   "yaw": -0.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_8",
+     "eyes": "eyes_f_sharp",
+     "shirt": "shirt_scout",
+     "pants": "pants_leather",
+     "shoes": "boots_scout",
+     "accessory": "accessory_flower",
+     "block_hair": "block_hair_rabo_cavalo_baixo",
+     "block_face": "verde",
+     "npc_outfit": "lyra"
+    },
+    "colors": {
+     "skin_color": "#AA7558",
+     "hair_color": "#30201D",
+     "shirt_color": "#3B765B",
+     "sleeve_color": "#2F604B",
+     "pants_color": "#3E2E24",
+     "boots_color": "#30291F",
+     "belt_color": "#6B4A2E"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "garrick",
+   "name": "Garrick",
+   "title": "Armeiro",
+   "post_cm": [
+    5370.0,
+    5560.0
+   ],
+   "yaw": 180.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "male",
+    "parts": {
+     "hair": "hair_male_2",
+     "eyes": "eyes_m_bold",
+     "mouth": "mouth_beard",
+     "shirt": "shirt_mail",
+     "pants": "pants_leather",
+     "shoes": "greaves",
+     "gloves": "gauntlets",
+     "accessory": "accessory_none",
+     "block_hair": "block_hair_undercut",
+     "block_face": "determinado",
+     "npc_outfit": "garrick"
+    },
+    "colors": {
+     "skin_color": "#AA7558",
+     "hair_color": "#1E1A1C",
+     "shirt_color": "#6E7078",
+     "sleeve_color": "#6E7078",
+     "pants_color": "#3A3028",
+     "boots_color": "#4A4A50",
+     "glove_color": "#4A4A50",
+     "belt_color": "#3A2818"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "rosa",
+   "name": "Rosa",
+   "title": "Alfaiate",
+   "post_cm": [
+    2560.0,
+    5670.0
+   ],
+   "yaw": -90.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_2",
+     "eyes": "eyes_f_gentle",
+     "mouth": "mouth_smile",
+     "shirt": "shirt_linen",
+     "pants": "pants_cloth",
+     "shoes": "boots_wrap",
+     "gloves": "gloves_bare",
+     "accessory": "accessory_ribbon",
+     "block_hair": "block_hair_coque_despojado",
+     "block_face": "fofo",
+     "npc_outfit": "rosa"
+    },
+    "colors": {
+     "skin_color": "#E2AE8D",
+     "hair_color": "#A0301E",
+     "shirt_color": "#E6D6B0",
+     "sleeve_color": "#E6D6B0",
+     "pants_color": "#5C4030",
+     "boots_color": "#5C3422",
+     "belt_color": "#6B4A2E"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "marta",
+   "name": "Marta",
+   "title": "Taverneira",
+   "post_cm": [
+    -50.0,
+    155.0
+   ],
+   "yaw": 90.0,
+   "patrol_cm": [],
+   "look": {
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_4",
+     "eyes": "eyes_f_happy",
+     "mouth": "mouth_smile",
+     "shirt": "shirt_bodice",
+     "pants": "pants_cloth",
+     "shoes": "shoes_low",
+     "gloves": "gloves_bare",
+     "accessory": "accessory_none",
+     "block_hair": "block_hair_meio_preso",
+     "block_face": "padrao",
+     "npc_outfit": "marta"
+    },
+    "colors": {
+     "skin_color": "#D8A07E",
+     "hair_color": "#5A3A26",
+     "shirt_color": "#8D233D",
+     "sleeve_color": "#E6D6B0",
+     "pants_color": "#3E2E24",
+     "boots_color": "#3A3028",
+     "belt_color": "#6B4A2E"
+    },
+    "race": "humano"
+   }
+  },
+  {
+   "id": "julia",
+   "name": "Julia",
+   "title": "Moradora da praça",
+   "post_cm": [
+    1150.0,
+    2100.0
+   ],
+   "yaw": -90.0,
+   "patrol_cm": [
+    [
+     1150.0,
+     2100.0
+    ],
+    [
+     1274.1,
+     2482.1
+    ],
+    [
+     1599.1,
+     2718.2
+    ],
+    [
+     2000.9,
+     2718.2
+    ],
+    [
+     2325.9,
+     2482.1
+    ],
+    [
+     2450.0,
+     2100.0
+    ],
+    [
+     2325.9,
+     1717.9
+    ],
+    [
+     2000.9,
+     1481.8
+    ],
+    [
+     1599.1,
+     1481.8
+    ],
+    [
+     1274.1,
+     1717.9
+    ]
+   ],
+   "look": {
+    "race": "humano",
+    "appearance": "female",
+    "parts": {
+     "hair": "julia_hair",
+     "eyes": "eyes_f_gentle",
+     "mouth": "mouth_small",
+     "shirt": "julia_dress",
+     "pants": "julia_stockings",
+     "shoes": "boots_shadow",
+     "gloves": "gloves_none",
+     "head": "head_none",
+     "face_gear": "julia_glasses",
+     "back": "julia_choker",
+     "race": "race_none",
+     "block_hair": "block_hair_liso_longo_mechas",
+     "npc_outfit": "julia",
+     "block_face": "padrao"
+    },
+    "colors": {
+     "skin_color": "#F4D7C6",
+     "hair_color": "#141216",
+     "shirt_color": "#28262C",
+     "sleeve_color": "#28262C",
+     "pants_color": "#171E25",
+     "boots_color": "#28262C",
+     "glove_color": "#28262C",
+     "belt_color": "#252B32",
+     "hair_streak": "#2E4FD8"
+    }
+   },
+   "pet": "dog"
+  },
+  {
+   "id": "lexy",
+   "name": "Lexy",
+   "title": "Cabeleireira do Santuário",
+   "post_cm": [
+    2850.0,
+    2450.0
+   ],
+   "yaw": 180.0,
+   "look": {
+    "race": "humano",
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_9",
+     "eyes": "eyes_f_gentle",
+     "mouth": "mouth_small",
+     "block_hair": "block_hair_bob_degrade_mechas",
+     "npc_outfit": "lexy",
+     "block_face": "padrao"
+    },
+    "colors": {
+     "skin_color": "#F2D3C4",
+     "hair_color": "#141114",
+     "hair_streak": "#F0388C",
+     "shirt_color": "#E9A3B0",
+     "sleeve_color": "#E9A3B0",
+     "pants_color": "#D9748C",
+     "boots_color": "#1A181E"
+    }
+   }
+  },
+  {
+   "id": "bunny",
+   "name": "Bunny",
+   "title": "Jardineira da Fonte",
+   "post_cm": [
+    900.0,
+    2300.0
+   ],
+   "yaw": -12.5,
+   "patrol_cm": [],
+   "look": {
+    "race": "humano",
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_9",
+     "eyes": "eyes_f_gentle",
+     "mouth": "mouth_small",
+     "block_hair": "block_hair_ondulado_longo",
+     "npc_outfit": "bunny",
+     "block_face": "padrao"
+    },
+    "colors": {
+     "skin_color": "#F0C9A8",
+     "hair_color": "#C8622A",
+     "shirt_color": "#9EB884",
+     "sleeve_color": "#9EB884",
+     "pants_color": "#9EB884",
+     "boots_color": "#E0AA9E"
+    }
+   },
+   "pet": ""
+  },
+  {
+   "id": "guarda_0_0",
+   "name": "Guarda",
+   "title": "Guarda do Cidade do Santuário",
+   "post_cm": [
+    1440.0,
+    -4580.0
+   ],
+   "yaw": 90.0,
+   "patrol_cm": [],
+   "look": {
+    "race": "humano",
+    "appearance": "male",
+    "parts": {
+     "block_hair": "block_hair_raspado",
+     "block_face": "determinado",
+     "npc_outfit": "garrick"
+    },
+    "colors": {
+     "skin_color": "#C98E6A",
+     "hair_color": "#2E2019"
+    }
+   }
+  },
+  {
+   "id": "guarda_0_1",
+   "name": "Guarda",
+   "title": "Guarda do Cidade do Santuário",
+   "post_cm": [
+    2160.0,
+    -4580.0
+   ],
+   "yaw": 90.0,
+   "patrol_cm": [],
+   "look": {
+    "race": "humano",
+    "appearance": "male",
+    "parts": {
+     "block_hair": "block_hair_undercut",
+     "block_face": "determinado",
+     "npc_outfit": "guerreiro"
+    },
+    "colors": {
+     "skin_color": "#AA7558",
+     "hair_color": "#1E1A1C"
+    }
+   }
+  },
+  {
+   "id": "guarda_1_0",
+   "name": "Guarda",
+   "title": "Guarda do Portão do Estádio",
+   "post_cm": [
+    8480.0,
+    1740.0
+   ],
+   "yaw": 180.0,
+   "patrol_cm": [],
+   "look": {
+    "race": "humano",
+    "appearance": "female",
+    "parts": {
+     "block_hair": "block_hair_rabo_cavalo_alto",
+     "block_face": "determinado",
+     "npc_outfit": "rhea"
+    },
+    "colors": {
+     "skin_color": "#D8A07E",
+     "hair_color": "#3A2A20"
+    }
+   }
+  },
+  {
+   "id": "guarda_1_1",
+   "name": "Guarda",
+   "title": "Guarda do Portão do Estádio",
+   "post_cm": [
+    8480.0,
+    2460.0
+   ],
+   "yaw": 180.0,
+   "patrol_cm": [],
+   "look": {
+    "race": "humano",
+    "appearance": "male",
+    "parts": {
+     "block_hair": "block_hair_liso_curto",
+     "block_face": "determinado",
+     "npc_outfit": "garrick"
+    },
+    "colors": {
+     "skin_color": "#8A5A40",
+     "hair_color": "#141012"
+    }
+   }
+  },
+  {
+   "id": "guarda_2_0",
+   "name": "Guarda",
+   "title": "Guarda do Portão Sul",
+   "post_cm": [
+    2160.0,
+    8780.0
+   ],
+   "yaw": -90.0,
+   "patrol_cm": [],
+   "look": {
+    "race": "humano",
+    "appearance": "male",
+    "parts": {
+     "block_hair": "block_hair_raspado",
+     "block_face": "determinado",
+     "npc_outfit": "guerreiro"
+    },
+    "colors": {
+     "skin_color": "#E0B090",
+     "hair_color": "#7A5030"
+    }
+   }
+  },
+  {
+   "id": "guarda_2_1",
+   "name": "Guarda",
+   "title": "Guarda do Portão Sul",
+   "post_cm": [
+    1440.0,
+    8780.0
+   ],
+   "yaw": -90.0,
+   "patrol_cm": [],
+   "look": {
+    "race": "humano",
+    "appearance": "female",
+    "parts": {
+     "block_hair": "block_hair_rabo_cavalo_alto",
+     "block_face": "determinado",
+     "npc_outfit": "rhea"
+    },
+    "colors": {
+     "skin_color": "#AA7558",
+     "hair_color": "#1E1A1C"
+    }
+   }
+  },
+  {
+   "id": "tomas",
+   "name": "Tomás",
+   "title": "Padeiro",
+   "post_cm": [
+    5370.0,
+    2900.0
+   ],
+   "yaw": 180.0,
+   "patrol_cm": [],
+   "look": {
+    "race": "humano",
+    "appearance": "male",
+    "parts": {
+     "block_hair": "block_hair_liso_curto",
+     "block_face": "padrao",
+     "npc_outfit": "aventureiro"
+    },
+    "colors": {
+     "skin_color": "#D8A07E",
+     "hair_color": "#5A3A26"
+    }
+   }
+  },
+  {
+   "id": "irma_celia",
+   "name": "Irmã Célia",
+   "title": "Cuidadora da capela",
+   "post_cm": [
+    1130.0,
+    6650.0
+   ],
+   "yaw": -90.0,
+   "patrol_cm": [],
+   "look": {
+    "race": "humano",
+    "appearance": "female",
+    "parts": {
+     "block_hair": "block_hair_meio_preso",
+     "block_face": "padrao",
+     "npc_outfit": "sacerdotisa"
+    },
+    "colors": {
+     "skin_color": "#E8C0A0",
+     "hair_color": "#2E2019"
+    }
+   }
+  },
+  {
+   "id": "joao_cavalarico",
+   "name": "João",
+   "title": "Cavalariço",
+   "post_cm": [
+    4720.0,
+    770.0
+   ],
+   "yaw": 180.0,
+   "patrol_cm": [],
+   "look": {
+    "race": "humano",
+    "appearance": "male",
+    "parts": {
+     "block_hair": "block_hair_undercut",
+     "block_face": "padrao",
+     "npc_outfit": "aventureiro"
+    },
+    "colors": {
+     "skin_color": "#AA7558",
+     "hair_color": "#2E2019"
+    }
+   }
+  },
+  {
+   "id": "edda",
+   "name": "Edda",
+   "title": "Carpinteira",
+   "post_cm": [
+    -1980.0,
+    4070.0
+   ],
+   "yaw": 90.0,
+   "patrol_cm": [],
+   "look": {
+    "race": "humano",
+    "appearance": "female",
+    "parts": {
+     "block_hair": "block_hair_rabo_cavalo_alto",
+     "block_face": "determinado",
+     "npc_outfit": "aventureira"
+    },
+    "colors": {
+     "skin_color": "#C98E6A",
+     "hair_color": "#7A3A20"
+    }
+   }
+  },
+  {
+   "id": "bento",
+   "name": "Bento",
+   "title": "Morador",
+   "post_cm": [
+    1980.0,
+    -4100.0
+   ],
+   "yaw": 90.0,
+   "patrol_cm": [
+    [
+     1980.0,
+     -4100.0
+    ],
+    [
+     1980.0,
+     -900.0
+    ],
+    [
+     1980.0,
+     900.0
+    ],
+    [
+     1620.0,
+     900.0
+    ],
+    [
+     1620.0,
+     -900.0
+    ],
+    [
+     1620.0,
+     -4100.0
+    ]
+   ],
+   "look": {
+    "race": "humano",
+    "appearance": "male",
+    "parts": {
+     "block_hair": "block_hair_liso_curto",
+     "block_face": "padrao",
+     "npc_outfit": "aventureiro"
+    },
+    "colors": {
+     "skin_color": "#E0B090",
+     "hair_color": "#7A5030"
+    }
+   }
+  },
+  {
+   "id": "viajante_mercador",
+   "name": "Osvaldo",
+   "title": "Mercador viajante",
+   "post_cm": [
+    1600.0,
+    -4400.0
+   ],
+   "yaw": -90.0,
+   "patrol_cm": [
+    [
+     1600.0,
+     -4400.0
+    ],
+    [
+     1600.0,
+     -8000.0
+    ],
+    [
+     1600.0,
+     -13000.0
+    ],
+    [
+     1600.0,
+     -19000.0
+    ],
+    [
+     1600.0,
+     -25000.0
+    ]
+   ],
+   "look": {
+    "race": "humano",
+    "appearance": "male",
+    "parts": {
+     "block_hair": "block_hair_liso_curto",
+     "block_face": "padrao",
+     "npc_outfit": "viajante_mercador"
+    },
+    "colors": {
+     "skin_color": "#C98E6A",
+     "hair_color": "#5A3A26"
+    }
+   }
+  },
+  {
+   "id": "viajante_bardo",
+   "name": "Lírio",
+   "title": "Bardo andarilho",
+   "post_cm": [
+    8300.0,
+    1900.0
+   ],
+   "yaw": 0.0,
+   "patrol_cm": [
+    [
+     8300.0,
+     1900.0
+    ],
+    [
+     11900.0,
+     1900.0
+    ],
+    [
+     16900.0,
+     1900.0
+    ],
+    [
+     22900.0,
+     1900.0
+    ],
+    [
+     28900.0,
+     1900.0
+    ]
+   ],
+   "look": {
+    "race": "humano",
+    "appearance": "male",
+    "parts": {
+     "block_hair": "block_hair_undercut",
+     "block_face": "padrao",
+     "npc_outfit": "viajante_bardo"
+    },
+    "colors": {
+     "skin_color": "#E0B090",
+     "hair_color": "#7A3A20"
+    }
+   }
+  },
+  {
+   "id": "viajante_campones",
+   "name": "Tião",
+   "title": "Camponês",
+   "post_cm": [
+    2000.0,
+    8600.0
+   ],
+   "yaw": 90.0,
+   "patrol_cm": [
+    [
+     2000.0,
+     8600.0
+    ],
+    [
+     2000.0,
+     12200.0
+    ],
+    [
+     2000.0,
+     17200.0
+    ],
+    [
+     2000.0,
+     23200.0
+    ],
+    [
+     2000.0,
+     29200.0
+    ]
+   ],
+   "look": {
+    "race": "humano",
+    "appearance": "male",
+    "parts": {
+     "block_hair": "block_hair_raspado",
+     "block_face": "padrao",
+     "npc_outfit": "viajante_campones"
+    },
+    "colors": {
+     "skin_color": "#AA7558",
+     "hair_color": "#2E2019"
+    }
+   }
+  },
+  {
+   "id": "viajante_peregrina",
+   "name": "Irene",
+   "title": "Peregrina",
+   "post_cm": [
+    2000.0,
+    -4400.0
+   ],
+   "yaw": -90.0,
+   "patrol_cm": [
+    [
+     2000.0,
+     -4400.0
+    ],
+    [
+     2000.0,
+     -8000.0
+    ],
+    [
+     2000.0,
+     -13000.0
+    ],
+    [
+     2000.0,
+     -19000.0
+    ],
+    [
+     2000.0,
+     -25000.0
+    ]
+   ],
+   "look": {
+    "race": "humano",
+    "appearance": "female",
+    "parts": {
+     "block_hair": "block_hair_meio_preso",
+     "block_face": "padrao",
+     "npc_outfit": "Traje_peregrino_f"
+    },
+    "colors": {
+     "skin_color": "#D8A07E",
+     "hair_color": "#3A2A20"
+    }
+   }
+  }
+ ],
+ "_doc_vila": "06/11: os postos dos NPCs da cidade são escritos por Tools/Town/BuildVila.py (a vila nova): lojistas atrás do balcão, Bram na forja, Rhea no quartel, Ducci na carroça, Lary e Julia na fonte.",
+ "_doc_blocos": "02/11: os NPCs no corpo de blocos do herói (AVortexNpc::ApplyLook). parts: block_hair (o cabelo de Data/Looks/cabelos.json, block_hair_<id>), npc_outfit (a roupa só do NPC: Roupa_<id> de Tools/Blender/MakeBlockOutfit.py) ou block_outfit (uma do menu), block_face (Data/Looks/rostos.json); colors: hair_color e hair_streak (as mechas). As outras peças são do boneco antigo (aventureiro), usadas só por quem não é humano."
+}

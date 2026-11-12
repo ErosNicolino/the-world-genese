@@ -1,0 +1,254 @@
+[
+ {
+  "name": "vila_cima",
+  "eye": [
+   1800,
+   2000,
+   15000
+  ],
+  "target": [
+   1800,
+   2150,
+   0
+  ],
+  "hour": 13
+ },
+ {
+  "name": "vila_aerea_norte",
+  "eye": [
+   1800,
+   -6200,
+   4200
+  ],
+  "target": [
+   1800,
+   2200,
+   0
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_aerea_leste",
+  "eye": [
+   10000,
+   2100,
+   4200
+  ],
+  "target": [
+   1400,
+   2100,
+   0
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_aerea_sul",
+  "eye": [
+   1800,
+   10400,
+   4200
+  ],
+  "target": [
+   1800,
+   2000,
+   0
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_aerea_oeste",
+  "eye": [
+   -6400,
+   2100,
+   4200
+  ],
+  "target": [
+   2200,
+   2100,
+   0
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_praca",
+  "eye": [
+   2700,
+   2750,
+   300
+  ],
+  "target": [
+   1800,
+   2100,
+   60
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_capela",
+  "eye": [
+   970,
+   4050,
+   180
+  ],
+  "target": [
+   970,
+   4900,
+   250
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_capela_dentro",
+  "eye": [
+   970,
+   5350,
+   170
+  ],
+  "target": [
+   970,
+   6400,
+   120
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_loja_frente",
+  "eye": [
+   550,
+   2580,
+   170
+  ],
+  "target": [
+   800,
+   3050,
+   110
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_loja_dentro",
+  "eye": [
+   850,
+   3050,
+   170
+  ],
+  "target": [
+   1020,
+   3440,
+   100
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_poco",
+  "eye": [
+   7070,
+   -1030,
+   240
+  ],
+  "target": [
+   6750,
+   -1350,
+   40
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_guardas",
+  "eye": [
+   1800,
+   -2800,
+   220
+  ],
+  "target": [
+   1800,
+   -3700,
+   130
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_rua_noite",
+  "eye": [
+   2060,
+   -100,
+   200
+  ],
+  "target": [
+   2060,
+   -3000,
+   160
+  ],
+  "hour": 22
+ },
+ {
+  "name": "vila_praca_noite",
+  "eye": [
+   2700,
+   2750,
+   300
+  ],
+  "target": [
+   1800,
+   2100,
+   100
+  ],
+  "hour": 21
+ },
+ {
+  "name": "vila_taverna_dentro",
+  "eye": [
+   600,
+   1080,
+   480
+  ],
+  "target": [
+   600,
+   150,
+   200
+  ],
+  "hour": 14
+ },
+ {
+  "name": "vila_forja_frente",
+  "eye": [
+   -1380,
+   4250,
+   330
+  ],
+  "target": [
+   -1530,
+   5250,
+   200
+  ],
+  "hour": 15
+ },
+ {
+  "name": "vila_placa_taverna",
+  "eye": [
+   1700,
+   2100,
+   380
+  ],
+  "target": [
+   1000,
+   1250,
+   420
+  ],
+  "hour": 14
+ },
+ {
+  "name": "vila_telhados",
+  "eye": [
+   300,
+   2600,
+   1300
+  ],
+  "target": [
+   1500,
+   3800,
+   700
+  ],
+  "hour": 16
+ }
+]

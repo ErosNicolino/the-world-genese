@@ -1,0 +1,154 @@
+{
+ "_doc": "NPCs só do Vortex (não existem no Godot). Mesmo formato do npcs.json do Godot (metros, giro em graus); aparência com as peças do catálogo (inclusive as de Tools/BuildJuliaPieces.py).",
+ "npcs": [
+  {
+   "id": "julia",
+   "name": "Julia",
+   "title": "Moradora da praça",
+   "position": [
+    -7.4,
+    15.0
+   ],
+   "facing": 0,
+   "patrol": [
+    [
+     -7.4,
+     15.0
+    ],
+    [
+     -6.41,
+     11.3
+    ],
+    [
+     -3.7,
+     8.59
+    ],
+    [
+     -0.0,
+     7.6
+    ],
+    [
+     3.7,
+     8.59
+    ],
+    [
+     6.41,
+     11.3
+    ],
+    [
+     7.4,
+     15.0
+    ],
+    [
+     6.41,
+     18.7
+    ],
+    [
+     3.7,
+     21.41
+    ],
+    [
+     0.0,
+     22.4
+    ],
+    [
+     -3.7,
+     21.41
+    ],
+    [
+     -6.41,
+     18.7
+    ]
+   ],
+   "pet": "dog",
+   "look": {
+    "race": "humano",
+    "appearance": "female",
+    "parts": {
+     "hair": "julia_hair",
+     "eyes": "eyes_f_gentle",
+     "mouth": "mouth_small",
+     "shirt": "julia_dress",
+     "pants": "julia_stockings",
+     "shoes": "boots_shadow",
+     "gloves": "gloves_none",
+     "head": "head_none",
+     "face_gear": "julia_glasses",
+     "back": "julia_choker",
+     "race": "race_none"
+    },
+    "colors": {
+     "skin_color": "#F4D7C6",
+     "hair_color": "#1E1A1C",
+     "shirt_color": "#28262C",
+     "sleeve_color": "#28262C",
+     "pants_color": "#171E25",
+     "boots_color": "#28262C",
+     "glove_color": "#28262C",
+     "belt_color": "#252B32"
+    }
+   }
+  },
+  {
+   "id": "lexy",
+   "name": "Lexy",
+   "title": "Cabeleireira do Santuário",
+   "position": [
+    5.5,
+    40.0
+   ],
+   "facing": 0,
+   "look": {
+    "race": "humano",
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_9",
+     "eyes": "eyes_f_gentle",
+     "mouth": "mouth_small",
+     "block_hair": "block_hair_bob_degrade_mechas",
+     "npc_outfit": "lexy",
+     "block_face": "padrao"
+    },
+    "colors": {
+     "skin_color": "#F2D3C4",
+     "hair_color": "#141114",
+     "hair_streak": "#F0388C",
+     "shirt_color": "#E9A3B0",
+     "sleeve_color": "#E9A3B0",
+     "pants_color": "#D9748C",
+     "boots_color": "#1A181E"
+    }
+   }
+  },
+  {
+   "id": "bunny",
+   "name": "Bunny",
+   "title": "Jardineira da Fonte",
+   "position": [
+    -10.5,
+    15.0
+   ],
+   "facing": 270,
+   "look": {
+    "race": "humano",
+    "appearance": "female",
+    "parts": {
+     "hair": "hair_female_9",
+     "eyes": "eyes_f_gentle",
+     "mouth": "mouth_small",
+     "block_hair": "block_hair_ondulado_longo",
+     "npc_outfit": "bunny",
+     "block_face": "padrao"
+    },
+    "colors": {
+     "skin_color": "#F0C9A8",
+     "hair_color": "#C8622A",
+     "shirt_color": "#9EB884",
+     "sleeve_color": "#9EB884",
+     "pants_color": "#9EB884",
+     "boots_color": "#E0AA9E"
+    }
+   }
+  }
+ ]
+}

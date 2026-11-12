@@ -1,0 +1,57 @@
+{
+ "Npc_Martelar": {
+  "item": "Npc_Martelar",
+  "kind": "npc",
+  "seconds": 1.1
+ },
+ "Npc_Balcao": {
+  "item": "Npc_Balcao",
+  "kind": "npc",
+  "seconds": 4.0
+ },
+ "Npc_Costurar": {
+  "item": "Npc_Costurar",
+  "kind": "npc",
+  "seconds": 1.6
+ },
+ "Npc_Mexer": {
+  "item": "Npc_Mexer",
+  "kind": "npc",
+  "seconds": 1.4
+ },
+ "Npc_Ler": {
+  "item": "Npc_Ler",
+  "kind": "npc",
+  "seconds": 5.0
+ },
+ "Npc_Conversar": {
+  "item": "Npc_Conversar",
+  "kind": "npc",
+  "seconds": 4.0
+ },
+ "Npc_Sovar": {
+  "item": "Npc_Sovar",
+  "kind": "npc",
+  "seconds": 1.2
+ },
+ "Npc_Serrar": {
+  "item": "Npc_Serrar",
+  "kind": "npc",
+  "seconds": 1.0
+ },
+ "Npc_Escovar": {
+  "item": "Npc_Escovar",
+  "kind": "npc",
+  "seconds": 1.3
+ },
+ "Npc_Rezar": {
+  "item": "Npc_Rezar",
+  "kind": "npc",
+  "seconds": 5.0
+ },
+ "Npc_Vigiar": {
+  "item": "Npc_Vigiar",
+  "kind": "npc",
+  "seconds": 8.0
+ }
+}
