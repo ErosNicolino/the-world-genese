@@ -21,7 +21,7 @@
 ## Trailer
 
 <p align="center">
-  <a href="Docs/Github/trailer.mp4">
+  <a href="https://youtu.be/VxLjuB3mnEc">
     <img src="Docs/Github/trailer-capa.jpg" alt="Trailer de The World Gêneses (clique para assistir)" width="85%">
   </a>
   <br>
