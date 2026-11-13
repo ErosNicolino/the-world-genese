@@ -1,0 +1,11 @@
+{
+  "_comment": "Tomadas do trailer com o mundo quieto (-VortexQuietWorld -VortexNoWildlife): só os bichos da cena.",
+  "Shots": [
+    { "Name": "fadas_close", "Kind": "orbit", "At": [2880, 720], "Hero": [2877.5, 720], "HeroYaw": 0, "Radius": 2.6, "Height": 1.4, "LookHeight": 1.6, "From": 150, "Sweep": 40, "Seconds": 7, "Hour": 17.2, "Commands": ["spawn fada 4"], "ScareAt": 4.0, "HideHero": true, "Fov": 60 },
+    { "Name": "lobos_luta", "Kind": "orbit", "At": [3003, -2700], "Hero": [3000, -2700], "HeroYaw": 0, "Radius": 8, "Height": 2.5, "LookHeight": 0.8, "From": 120, "Sweep": 40, "Seconds": 7, "Hour": 15, "Commands": ["spawn lobo 6 4"], "Fight": true },
+    { "Name": "chefe_frente", "Kind": "orbit", "Track": "boss", "At": [170, 110], "Hero": [147, 104], "HeroNear": [-10, -3], "Radius": 17, "Height": 3, "LookHeight": 5, "From": 200, "Sweep": -15, "Seconds": 7, "Hour": 13, "Fight": true, "Keep": true },
+    { "Name": "chefe_ombro", "Kind": "orbit", "Track": "boss", "At": [170, 110], "Hero": [147, 104], "HeroNear": [-10, -3], "Radius": 22, "Height": 2.5, "LookHeight": 6, "From": 192, "Sweep": 8, "Seconds": 6, "Hour": 13, "Fight": true, "Keep": true },
+    { "Name": "chefe_alto", "Kind": "orbit", "Track": "boss", "At": [170, 110], "Hero": [147, 104], "HeroNear": [-10, -3], "Radius": 32, "Height": 14, "LookHeight": 3, "From": 230, "Sweep": 30, "Seconds": 6, "Hour": 13, "Fight": true },
+    { "Name": "cavalo_deserto", "Kind": "chase", "Track": "hero", "Ride": true, "At": [-2796, -978], "Hero": [-2796, -978], "HeroYaw": 0, "Turn": 70, "TurnAt": 0.55, "Radius": 9, "Height": 3.5, "LookHeight": 1.6, "From": 25, "Sweep": 0, "Seconds": 8, "Hour": 17 }
+  ]
+}

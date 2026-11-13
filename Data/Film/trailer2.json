@@ -1,0 +1,12 @@
+{
+  "_comment": "Tomadas novas do trailer (12/11, 2a rodada), mundo normal. Campos em Data/Film/trailer.json e no começo de BeginFilm (VortexRoamBench.cpp).",
+  "Shots": [
+    { "Name": "ygg_subida", "Kind": "orbit", "At": [2910, 390], "Radius": 70, "Height": 3, "HeightTo": 70, "LookHeight": 45, "From": 200, "Sweep": 12, "Seconds": 7, "Hour": 11, "Weather": "Clear", "HideHero": true },
+    { "Name": "heroi_close", "Kind": "orbit", "At": [-11, 40], "Radius": 2.4, "Height": 1.7, "LookHeight": 1.5, "From": 200, "Sweep": 35, "Seconds": 6, "Hour": 16.5, "Fov": 55, "Hero": [-11, 40] },
+    { "Name": "forja_bram", "Kind": "orbit", "At": [-19, 52.6], "Hero": [-11, 40], "Radius": 4.8, "Height": 2.3, "LookHeight": 1.1, "From": -100, "Sweep": 20, "Seconds": 7, "Hour": 13, "HideHero": true, "Fov": 60 },
+    { "Name": "praca_tempestade", "Kind": "orbit", "At": [18, 21], "Hero": [13, 24], "Radius": 9, "Height": 3, "LookHeight": 1.5, "From": 160, "Sweep": 18, "Seconds": 7, "Hour": 20.5, "Weather": "Storm" },
+    { "Name": "brasafenda_vulcao2", "Kind": "dolly", "At": [-1200, -2400], "To": [-1200, -2380], "Height": 8, "Look": [-1200, -3330], "LookZ": 140, "Seconds": 6, "Hour": 17.3, "HideHero": true },
+    { "Name": "raikor_picos2", "Kind": "dolly", "At": [852, -1420], "To": [852, -1400], "Height": 6, "Look": [852, -2034], "LookZ": 150, "Seconds": 6, "Hour": 10, "HideHero": true },
+    { "Name": "lodonegro_pantano", "Kind": "orbit", "At": [-2160, -30], "Radius": 24, "Height": 11, "LookHeight": 0, "From": 40, "Sweep": 20, "Seconds": 6, "Hour": 8, "Weather": "Fog", "HideHero": true }
+  ]
+}

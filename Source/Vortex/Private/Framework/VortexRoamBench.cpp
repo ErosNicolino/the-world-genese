@@ -29,18 +29,85 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/HUD.h"
 #include "UnrealClient.h"
+#include "Dom/JsonObject.h"
+#include "Serialization/JsonReader.h"
+#include "Serialization/JsonSerializer.h"
+#include "Misc/FileHelper.h"
+#include "Engine/Engine.h"
+#include "Framework/VortexCharacterMovementComponent.h"
+#include "World/VortexWorldLayout.h"
 
 namespace VortexRoamBench
 {
-    // 12/11: -VortexRoamBench -VortexFilm: um passeio de câmera pela vila para gravar vídeo (Tools/RecordFilm.ps1).
-    // Três tomadas: do alto à tarde, na rua no pôr do sol e na praça à noite com chuva. Salva cada quadro em Saved/Film/frames.
+    // 12/11: -VortexRoamBench -VortexFilm[=trailer]: tomadas de câmera de Data/Film/<nome>.json (Tools/RecordFilm.ps1), com passo
+    // fixo (-BENCHMARK -FPS=30). Em cada tomada: leva o herói ao lugar, acerta a hora e o clima, roda os comandos do chat
+    // (Vortex.Cmd), espera o terreno carregar e salva cada quadro (sem a HUD) em Saved/Film/<tomada>/. Medidas do JSON em metros.
+    // Câmeras: orbit (gira em volta), dolly (anda de At até To) e chase (atrás do que segue, girada From graus). Track "boss"
+    // ou "hero" faz o centro andar junto; Fight faz o herói bater no inimigo mais perto; Ride galopa a cavalo (curva em TurnAt).
     void BeginFilm(AGameModeBase* Mode, APlayerController* Player)
     {
-        struct FState { float Time = -1.f, Waited = 0.f; TWeakObjectPtr<ACameraActor> Camera; int32 Shot = -1, Frame = 0; bool bRolling = false; };
+        struct FShot
+        {
+            FString Name, Kind, Weather, Track;
+            FVector2D At, To, Look, Hero, HeroNear;
+            float Radius = 3000.f, Height = 1500.f, LookHeight = 200.f, From = 0.f, Sweep = 20.f, Seconds = 5.f, Hour = 12.f, Fov = 70.f;
+            float HeightTo = -1.f, RadiusTo = -1.f, LookZ = -1.f, HeroYaw = 0.f, ScareAt = -1.f, Turn = 0.f, TurnAt = .5f;
+            bool bHideHero = false, bLook = false, bNear = false, bFight = false, bRide = false, bKeep = false;
+            TArray<FString> Commands;
+        };
+        TArray<FShot> Shots;
+        FString File = TEXT("trailer"), Text;
+        FParse::Value(FCommandLine::Get(), TEXT("VortexFilm="), File);
+        TSharedPtr<FJsonObject> Root;
+        if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Film") / (File + TEXT(".json")))) || !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root.IsValid())
+        {
+            UE_LOG(LogTemp, Error, TEXT("VORTEX_FILM sem Data/Film/%s.json (ou JSON com erro)"), *File);
+            FPlatformMisc::RequestExit(false);
+            return;
+        }
+        auto Point = [](const TSharedPtr<FJsonObject>& O, const TCHAR* Key, FVector2D& Out)
+        {
+            const TArray<TSharedPtr<FJsonValue>>* A = nullptr;
+            if (!O->TryGetArrayField(Key, A) || A->Num() < 2) return false;
+            Out = FVector2D((*A)[0]->AsNumber(), (*A)[1]->AsNumber()) * 100.f;
+            return true;
+        };
+        auto Number = [](const TSharedPtr<FJsonObject>& O, const TCHAR* Key, float& Out, float Scale) { double D; if (O->TryGetNumberField(Key, D)) Out = float(D) * Scale; };
+        for (const TSharedPtr<FJsonValue>& Value : Root->GetArrayField(TEXT("Shots")))
+        {
+            const TSharedPtr<FJsonObject> O = Value->AsObject();
+            FShot Shot;
+            Shot.Name = O->GetStringField(TEXT("Name"));
+            Shot.Kind = O->GetStringField(TEXT("Kind"));
+            O->TryGetStringField(TEXT("Weather"), Shot.Weather);
+            O->TryGetStringField(TEXT("Track"), Shot.Track);
+            Point(O, TEXT("At"), Shot.At);
+            Shot.To = Shot.Hero = Shot.At;
+            Point(O, TEXT("To"), Shot.To);
+            Point(O, TEXT("Hero"), Shot.Hero);
+            Shot.bLook = Point(O, TEXT("Look"), Shot.Look);
+            Shot.bNear = Point(O, TEXT("HeroNear"), Shot.HeroNear);
+            Number(O, TEXT("Radius"), Shot.Radius, 100.f); Number(O, TEXT("Height"), Shot.Height, 100.f); Number(O, TEXT("LookHeight"), Shot.LookHeight, 100.f);
+            Number(O, TEXT("RadiusTo"), Shot.RadiusTo, 100.f); Number(O, TEXT("HeightTo"), Shot.HeightTo, 100.f); Number(O, TEXT("LookZ"), Shot.LookZ, 100.f);
+            Number(O, TEXT("From"), Shot.From, 1.f); Number(O, TEXT("Sweep"), Shot.Sweep, 1.f); Number(O, TEXT("Seconds"), Shot.Seconds, 1.f);
+            Number(O, TEXT("Hour"), Shot.Hour, 1.f); Number(O, TEXT("Fov"), Shot.Fov, 1.f); Number(O, TEXT("HeroYaw"), Shot.HeroYaw, 1.f);
+            Number(O, TEXT("ScareAt"), Shot.ScareAt, 1.f); Number(O, TEXT("Turn"), Shot.Turn, 1.f); Number(O, TEXT("TurnAt"), Shot.TurnAt, 1.f);
+            O->TryGetBoolField(TEXT("HideHero"), Shot.bHideHero);
+            O->TryGetBoolField(TEXT("Fight"), Shot.bFight);
+            O->TryGetBoolField(TEXT("Ride"), Shot.bRide);
+            O->TryGetBoolField(TEXT("Keep"), Shot.bKeep);
+            O->TryGetStringArrayField(TEXT("Commands"), Shot.Commands);
+            Shots.Add(Shot);
+        }
+        struct FState
+        {
+            int32 Index = -1, Frame = 0; float Time = 0.f, SwingIn = 0.f; bool bRolling = false, bEntered = false, bSpawnedBoss = false;
+            FVector Eye = FVector::ZeroVector; TWeakObjectPtr<ACameraActor> Camera; TWeakObjectPtr<AVortexMonster> Boss, Horse;
+        };
         TSharedRef<FState> S = MakeShared<FState>();
         TWeakObjectPtr<AGameModeBase> WeakMode(Mode);
         TWeakObjectPtr<APlayerController> Controller(Player);
-        FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([WeakMode, Controller, S](float Delta) -> bool
+        FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([WeakMode, Controller, S, Shots](float Delta) -> bool
         {
             AGameModeBase* Game = WeakMode.Get();
             AVortexCharacter* Hero = Controller.IsValid() ? Cast<AVortexCharacter>(Controller->GetPawn()) : nullptr;
@@ -49,86 +116,170 @@ namespace VortexRoamBench
             AVortexTerrainStreamer* Streamer = nullptr;
             for (TActorIterator<AVortexTerrainStreamer> It(World); It; ++It) Streamer = *It;
             if (!Hero || !Streamer || !Streamer->IsReady() || !Streamer->IsInitialFillDone() || !Hero->GetSheet() || !Hero->GetSheet()->IsLoaded()) return true;
-            const FVector2D Plaza(1800.f, 2100.f);
-            auto Ground = [Streamer](const FVector2D& At) { return Streamer->GroundAt(At.X, At.Y); };
-            const FVector2D HeroAt = Plaza + FVector2D(-500.f, 300.f);
-            Hero->GetCharacterMovement()->DisableMovement();
-            Hero->SetActorLocation(FVector(HeroAt, Ground(HeroAt) + 110.f), false, nullptr, ETeleportType::TeleportPhysics);
-            Hero->SetActorRotation(FRotator(0.f, -40.f, 0.f));
-            if (AHUD* Hud = Controller->GetHUD()) Hud->bShowHUD = false;
             AVortexGameState* State = World->GetGameState<AVortexGameState>();
             UVortexWeatherSubsystem* Weather = World->GetSubsystem<UVortexWeatherSubsystem>();
-            if (!S->bRolling)
+            if (S->Index < 0)
             {
-                // como o passeio de FPS: espera a pré-carga e a fila de carregamento (até 25 s), e mais 4 s para assentar
-                S->Waited += Delta;
-                const UVortexCreatureSubsystem* Creatures = World->GetSubsystem<UVortexCreatureSubsystem>();
-                if (S->Waited < 25.f && ((Creatures && !Creatures->IsPreloadDone()) || GetNumAsyncPackages() > 0)) return true;
-                if (State) State->SetDayHour(16.5f);
-                if (Weather) Weather->ForceWeather(EVortexWeather::Clear);
                 FActorSpawnParameters Params;
                 Params.ObjectFlags |= RF_Transient;
-                S->Camera = World->SpawnActor<ACameraActor>(FVector(Plaza, Ground(Plaza) + 3000.f), FRotator(-30.f, 0.f, 0.f), Params);
+                S->Camera = World->SpawnActor<ACameraActor>(Hero->GetActorLocation(), FRotator::ZeroRotator, Params);
                 if (!S->Camera.IsValid()) return false;
                 S->Camera->GetCameraComponent()->SetConstraintAspectRatio(false);
-                S->Camera->GetCameraComponent()->SetFieldOfView(70.f);
                 Controller->SetViewTarget(S->Camera.Get());
-                S->Time = -4.f;
-                S->bRolling = true;
+                if (AHUD* Hud = Controller->GetHUD()) Hud->bShowHUD = false;
+                GEngine->Exec(World, TEXT("Vortex.Cmd deus"));
+                S->Index = 0;
+            }
+            if (S->Index >= Shots.Num())
+            {
+                UE_LOG(LogTemp, Display, TEXT("VORTEX_FILM fim"));
+                FPlatformMisc::RequestExit(false);
+                return false;
+            }
+            const FShot& Shot = Shots[S->Index];
+            auto Ground = [Streamer](const FVector2D& At) { return Streamer->GroundAt(At.X, At.Y); };
+            const FVector2D HeroDir = FVector2D(FRotator(0.f, Shot.HeroYaw, 0.f).Vector()).GetSafeNormal();
+            if (!S->bEntered)
+            {
+                S->bEntered = true;
+                S->Eye = FVector::ZeroVector;
+                S->SwingIn = 0.f;
+                if (!Shot.bRide) Hero->GetCharacterMovement()->DisableMovement();
+                else Hero->GetCharacterMovement()->SetMovementMode(MOVE_Walking);   // a tomada anterior deixou travado
+                Hero->SetActorLocationAndRotation(FVector(Shot.Hero, Ground(Shot.Hero) + 110.f), FRotator(0.f, Shot.HeroYaw, 0.f), false, nullptr, ETeleportType::TeleportPhysics);
+                Controller->SetControlRotation(FRotator(0.f, Shot.HeroYaw, 0.f));
+                Hero->SetActorHiddenInGame(Shot.bHideHero);
+                if (Weather)
+                {
+                    Weather->ForceWeather(EVortexWeather::Clear);
+                    for (uint8 W = 0; W <= uint8(EVortexWeather::Fog); ++W)
+                        if (Shot.Weather.Equals(UVortexWeatherSubsystem::WeatherName(EVortexWeather(W)), ESearchCase::IgnoreCase)) Weather->ForceWeather(EVortexWeather(W));
+                }
+                for (const FString& Command : Shot.Commands) GEngine->Exec(World, *(TEXT("Vortex.Cmd ") + Command));
+                // ScareAt: o herói sai de perto logo depois dos comandos (as fadas fogem de quem chega) e volta para At na hora
+                if (Shot.ScareAt >= 0.f)
+                {
+                    const FVector2D Away = Shot.Hero - HeroDir * 3000.f;
+                    Hero->SetActorLocation(FVector(Away, Ground(Away) + 110.f), false, nullptr, ETeleportType::TeleportPhysics);
+                }
+                S->Camera->GetCameraComponent()->SetFieldOfView(Shot.Fov);
+                UE_LOG(LogTemp, Display, TEXT("VORTEX_FILM tomada %s"), *Shot.Name);
             }
             S->Time += Delta;
-            const float T = FMath::Max(S->Time, 0.f);
-            if (S->Time >= 0.f && S->Time - Delta < 0.f) UE_LOG(LogTemp, Display, TEXT("VORTEX_FILM começo"));
-            const FVector Look(Plaza, Ground(Plaza) + 250.f);
-            FVector Eye;
-            FVector Target = Look;
-            float Hour;
-            const int32 Shot = T < 14.f ? 0 : T < 26.f ? 1 : 2;
-            if (Shot == 0)
+            if (State) State->SetDayHour(Shot.Hour);
+            const float T = S->bRolling ? FMath::Clamp(S->Time / Shot.Seconds, 0.f, 1.f) : 0.f;
+            // o chefe: o do posto da Caldeira (um de teste só se ele não nasceu)
+            if (Shot.Track == TEXT("boss") && !S->Boss.IsValid())
             {
-                // do alto, girando devagar em volta da praça
-                const float Angle = FMath::DegreesToRadians(-140.f + T * 3.f);
-                Eye = FVector(Plaza + FVector2D(FMath::Cos(Angle), FMath::Sin(Angle)) * 5200.f, Ground(Plaza) + 2600.f);
-                Hour = 16.5f + T * .1f;
+                for (TActorIterator<AVortexMonster> It(World); It; ++It) if (It->IsBoss() && !It->IsCreatureDead()) S->Boss = *It;
+                if (!S->Boss.IsValid() && !S->bSpawnedBoss && S->Time > 8.f)
+                    if (UVortexCreatureSubsystem* Creatures = World->GetSubsystem<UVortexCreatureSubsystem>())
+                    {
+                        S->bSpawnedBoss = true;
+                        const FVector2D Center(VortexWorldLayout::CalderaCenterX, VortexWorldLayout::CalderaCenterY);
+                        Creatures->DebugSpawnNear(TEXT("RuneColossus"), FVector(Center, Ground(Center) + 100.f), 12);
+                    }
             }
-            else if (Shot == 1)
+            // o cavalo: o herói ganha um domado e monta (a corrida só começa quando grava)
+            if (Shot.bRide && !Hero->IsMounted())
             {
-                // na altura dos olhos, andando pela rua até a praça
-                const float A = FMath::SmoothStep(0.f, 1.f, (T - 14.f) / 12.f);
-                const FVector2D At = FMath::Lerp(FVector2D(2300.f, -600.f), FVector2D(2300.f, 700.f), A);
-                Eye = FVector(At, Ground(At) + 200.f);
-                Target = FVector(At + FVector2D(1.f, .35f) * 2000.f, Ground(At) + 150.f);
-                Hour = 18.f + (T - 14.f) * .1f;
+                if (!S->Horse.IsValid())
+                {
+                    Hero->GetSheet()->SetMountCoat(TEXT("Horse_Palomino"));
+                    const FVector Side = Hero->GetActorLocation() + FVector(FVector2D(-HeroDir.Y, HeroDir.X) * 220.f, 0.f);
+                    S->Horse = AVortexMonster::SpawnTamed(World, TEXT("Horse_Palomino"), FTransform(FRotator(0.f, Shot.HeroYaw, 0.f), Side), Hero);
+                }
+                else if (S->Time > 1.f) Hero->DebugHorse(S->Horse.Get());
             }
-            else
+            AVortexMonster* Boss = S->Boss.Get();
+            FVector2D Center = Shot.At;
+            if (Shot.Track == TEXT("boss") && Boss) Center = FVector2D(Boss->GetActorLocation());
+            else if (Shot.Track == TEXT("hero")) Center = FVector2D(Hero->GetActorLocation());
+            // o herói perto do chefe (o chefe acorda e briga)
+            if (Shot.bNear && Boss && FVector2D::Distance(FVector2D(Hero->GetActorLocation()), Center + Shot.HeroNear) > 400.f)
             {
-                // à noite, com chuva, perto da fonte e do herói
-                const float Angle = FMath::DegreesToRadians(150.f + (T - 26.f) * 2.5f);
-                Eye = FVector(Plaza + FVector2D(FMath::Cos(Angle), FMath::Sin(Angle)) * 1300.f, Ground(Plaza) + 420.f);
-                Target = FVector(Plaza, Ground(Plaza) + 120.f);
-                Hour = 21.f;
+                const FVector2D Spot = Center + Shot.HeroNear;
+                Hero->SetActorLocation(FVector(Spot, Ground(Spot) + 110.f), false, nullptr, ETeleportType::TeleportPhysics);
             }
-            if (Shot != S->Shot)
+            if (Shot.ScareAt >= 0.f && S->bRolling && S->Time >= Shot.ScareAt && S->Time - Delta < Shot.ScareAt)
+                Hero->SetActorLocation(FVector(Shot.At, Ground(Shot.At) + 110.f), false, nullptr, ETeleportType::TeleportPhysics);
+            if (Shot.bRide && S->bRolling && Hero->IsMounted())
             {
-                S->Shot = Shot;
-                if (Weather) Weather->ForceWeather(Shot == 2 ? EVortexWeather::Rain : EVortexWeather::Clear);
-                UE_LOG(LogTemp, Display, TEXT("VORTEX_FILM tomada %d em %.1f s"), Shot, T);
+                const float Yaw = Shot.HeroYaw + Shot.Turn * FMath::SmoothStep(Shot.TurnAt, FMath::Min(1.f, Shot.TurnAt + .25f), T);
+                Hero->GetVortexMovement()->bWantsToSprint = true;
+                Controller->SetControlRotation(FRotator(0.f, Yaw, 0.f));
+                Hero->AddMovementInput(FRotator(0.f, Yaw, 0.f).Vector(), 1.f);
             }
-            if (State) State->SetDayHour(Hour);
+            if (Shot.bFight)
+            {
+                // bate no inimigo vivo mais perto (até 25 m), virado para ele
+                AActor* Foe = Boss;
+                float Best = 2500.f;
+                if (!Foe)
+                    for (TActorIterator<AVortexMonster> It(World); It; ++It)
+                        if (!It->IsCreatureDead() && !It->IsPassive() && !It->IsHorse())
+                            if (const float D = FVector::Dist2D(It->GetActorLocation(), Hero->GetActorLocation()); D < Best) { Best = D; Foe = *It; }
+                if (Foe)
+                {
+                    const float Yaw = (Foe->GetActorLocation() - Hero->GetActorLocation()).Rotation().Yaw;
+                    Hero->SetActorRotation(FRotator(0.f, Yaw, 0.f));
+                    Controller->SetControlRotation(FRotator(0.f, Yaw, 0.f));
+                    S->SwingIn -= Delta;
+                    if (S->SwingIn <= 0.f) { Hero->BeginPrimaryAttack(); S->SwingIn = .55f; }
+                }
+            }
+            const float Radius = Shot.RadiusTo >= 0.f ? FMath::Lerp(Shot.Radius, Shot.RadiusTo, FMath::SmoothStep(0.f, 1.f, T)) : Shot.Radius;
+            const float Height = Shot.HeightTo >= 0.f ? FMath::Lerp(Shot.Height, Shot.HeightTo, FMath::SmoothStep(0.f, 1.f, T)) : Shot.Height;
+            FVector Eye, Target;
+            auto Aim = [&](const FVector2D& Spot) { return FVector(Spot, Shot.LookZ >= 0.f ? Shot.LookZ : Ground(Spot) + Shot.LookHeight); };
+            if (Shot.Kind == TEXT("chase"))
+            {
+                // atrás do que segue (From = 0: bem atrás; 90: do lado), olhando para ele
+                const float Facing = Shot.Track == TEXT("hero") ? Hero->GetActorRotation().Yaw : Shot.HeroYaw;
+                const FVector2D Dir = FVector2D(FRotator(0.f, Facing + 180.f + Shot.From + Shot.Sweep * T, 0.f).Vector()).GetSafeNormal();
+                const FVector2D Spot = Center + Dir * Radius;
+                Eye = FVector(Spot, FMath::Max(Ground(Center) + Height, Ground(Spot) + 150.f));
+                Target = Aim(Shot.bLook ? Shot.Look : Center);
+            }
+            else if (Shot.Kind == TEXT("orbit"))
+            {
+                const float Angle = FMath::DegreesToRadians(Shot.From + Shot.Sweep * T);
+                const FVector2D Spot = Center + FVector2D(FMath::Cos(Angle), FMath::Sin(Angle)) * Radius;
+                Eye = FVector(Spot, FMath::Max(Ground(Center) + Height, Ground(Spot) + 150.f));
+                Target = Aim(Shot.bLook ? Shot.Look : Center);
+            }
+            else   // dolly: de At até To, olhando para Look (ou para a frente)
+            {
+                const FVector2D Spot = FMath::Lerp(Shot.At, Shot.To, FMath::SmoothStep(0.f, 1.f, T));
+                Eye = FVector(Spot, Ground(Spot) + Height);
+                Target = Aim(Shot.bLook ? Shot.Look : Spot + (Shot.To - Shot.At).GetSafeNormal() * 2000.f);
+            }
+            // a câmera que segue anda macia (o galope e o chefe sacodem)
+            if (!Shot.Track.IsEmpty() && !S->Eye.IsZero() && S->bRolling) Eye = FMath::VInterpTo(S->Eye, Eye, Delta, 4.f);
+            S->Eye = Eye;
             S->Camera->SetActorLocationAndRotation(Eye, (Target - Eye).Rotation());
-            // cada quadro vira uma imagem (o jogo roda escondido, com passo fixo: -BENCHMARK -FPS=30); o ffmpeg junta depois
-            if (S->Time >= 0.f)
-                FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / FString::Printf(TEXT("Film/frames/f_%05d.png"), S->Frame++), false, false);
-            if (T < 40.f) return true;
-            UE_LOG(LogTemp, Display, TEXT("VORTEX_FILM fim"));
-            FPlatformMisc::RequestExit(false);
-            return false;
+            if (!S->bRolling)
+            {
+                // o terreno e os bichos em volta carregam antes de gravar (3 a 25 s); o chefe e o cavalo precisam existir
+                const bool bWaitBoss = Shot.Track == TEXT("boss") && !Boss && S->Time < 30.f;
+                const bool bWaitHorse = Shot.bRide && !Hero->IsMounted() && S->Time < 20.f;
+                if (S->Time < 3.f || bWaitBoss || bWaitHorse || (S->Time < 25.f && (Streamer->PendingChunks() > 0 || GetNumAsyncPackages() > 0))) return true;
+                S->bRolling = true; S->Time = 0.f; S->Frame = 0;
+                return true;
+            }
+            FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / FString::Printf(TEXT("Film/%s/f_%05d.png"), *Shot.Name, S->Frame++), false, false);
+            if (S->Time < Shot.Seconds) return true;
+            if (Shot.bRide) Hero->GetVortexMovement()->bWantsToSprint = false;
+            if (!Shot.bKeep) { GEngine->Exec(World, TEXT("Vortex.Cmd matar 300")); S->Boss = nullptr; }
+            ++S->Index; S->Time = 0.f; S->bRolling = S->bEntered = false;
+            return true;
         }));
     }
 
     void Begin(AGameModeBase* Mode, APlayerController* Player)
     {
-        if (FParse::Param(FCommandLine::Get(), TEXT("VortexFilm"))) { BeginFilm(Mode, Player); return; }
+        FString Film;
+        if (FParse::Param(FCommandLine::Get(), TEXT("VortexFilm")) || FParse::Value(FCommandLine::Get(), TEXT("VortexFilm="), Film)) { BeginFilm(Mode, Player); return; }
         struct FState { float Time = 0.f, WindowTime = 0.f; int32 WindowFrames = 0; double WindowGame = 0.0, WindowRender = 0.0, WindowGpu = 0.0; TArray<double> Frames, Settled; double GameMs = 0.0, RenderMs = 0.0, GpuMs = 0.0, Draws = 0.0, Prims = 0.0; int32 Samples = 0; bool bStarted = false; float Waited = 0.f; };
         TSharedRef<FState> S = MakeShared<FState>();
         // 08/11: quem carrega do disco "na marra" no meio do passeio (cada um é uma travada): o nome vai para o log
@@ -256,5 +407,41 @@ namespace VortexRoamBench
             return false;
         }));
     }
+}
+
+namespace
+{
+    // 12/11: -VortexDumpFrames=nome: salva todo quadro (sem a HUD) em Saved/Film/<nome>/, para os testes que jogam sozinhos
+    // virarem filmagem do trailer (Tools/RecordGameplay.ps1, com passo fixo). Começa quando o herói existe e a carga acabou.
+    struct FFrameDumper
+    {
+        FFrameDumper()
+        {
+            FCoreDelegates::GetOnPostEngineInit().AddLambda([]
+            {
+                FString Name;
+                if (!FParse::Value(FCommandLine::Get(), TEXT("VortexDumpFrames="), Name)) return;
+                TSharedRef<int32> Frame = MakeShared<int32>(-1);
+                FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Name, Frame](float) -> bool
+                {
+                    bool bReady = false;
+                    for (const FWorldContext& Context : GEngine->GetWorldContexts())
+                        if (Context.WorldType == EWorldType::Game && Context.World())
+                            if (APlayerController* PC = Context.World()->GetFirstPlayerController())
+                            {
+                                bReady |= PC->GetPawn() != nullptr;
+                                if (AHUD* Hud = PC->GetHUD()) Hud->bShowHUD = false;   // filmagem sem a HUD (o teste pode reabrir)
+                            }
+                    if (*Frame < 0)
+                    {
+                        if (!bReady || GetNumAsyncPackages() > 0) return true;
+                        *Frame = 0;
+                    }
+                    FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / FString::Printf(TEXT("Film/%s/f_%05d.png"), *Name, (*Frame)++), false, false);
+                    return true;
+                }));
+            });
+        }
+    } GFrameDumper;
 }
 #endif

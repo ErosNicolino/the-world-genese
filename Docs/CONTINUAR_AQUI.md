@@ -37,17 +37,50 @@ abaixo fica em [02_Combate/PERSONAGEM_BASE_BLOCOS.md](02_Combate/PERSONAGEM_BASE
   - `Tools/RunBanditSmoke.ps1`;
   - `Tools/RunCreatureSmoke.ps1 -Species X`.
 
-## Vídeo do jogo (12/11, pausado a pedido do usuário; compilado, ainda sem vídeo)
+## GitHub (12/11): repositório privado ErosNicolino/the-world-genese
 
-- O modo filme (`-VortexRoamBench -VortexFilm`, em `VortexRoamBench.cpp`) faz uma câmera passear pela vila em três
-  tomadas: do alto à tarde, na rua no pôr do sol e na praça à noite com chuva. São 40 s, e cada quadro vira um PNG em
-  `Saved/Film/frames`.
-- `Tools/RecordFilm.ps1` roda o jogo escondido, com passo fixo de 30 FPS, sem usar a tela do PC, e junta os quadros em
-  `Saved/Film/bruto.mp4`.
-- A primeira tentativa, pela tela com o ffmpeg, pegou a tela do usuário em vez do jogo; o arquivo foi apagado. A
-  segunda foi parada antes de salvar quadros.
-- **Próximo:** rodar `RecordFilm.ps1`, conferir os quadros (a noite pode ficar escura demais; a rua pode atravessar
-  casas) e editar uns 30 s com `Docs/Midia/Musicas/O_Despertar_de_Valdora.mp3`.
+- Só o pacote "leve": código, Config, Tools, os JSON, os textos dos Docs, `README.md`, `LICENSE` (todos os direitos
+  reservados) e `Docs/Github` (banner, trailer de 25 s e galeria). O `.gitignore` da raiz escolhe o que vai.
+- **Cuidado:** a pasta Vortex já tinha um `.git` antigo (commits até 11/10, ramos `main` e `vortex-unreal-publicacao`,
+  com LFS). Ele **não** é usado nem publicado. A publicação usa um repositório separado, fora da pasta:
+  `../github-publicacao.git`. Para mandar mudanças:
+  `git --git-dir="../github-publicacao.git" --work-tree=. add -A`, depois `commit` e `push`, com os mesmos dois
+  parâmetros.
+- Os prints da HUD mostram o nome do PC no canto (PC-NIKO-…). Nos prints publicados ele foi coberto com uma faixa. O
+  teste da HUD (`RunHudShot`) ainda usa o anão antigo, então os prints dele não servem para divulgação.
+- O trailer saiu de `RecordFilm.ps1`. A tomada da rua atravessa uma parede depois de uns 4 s: corrigir o caminho em
+  `BeginFilm` (`VortexRoamBench.cpp`) antes do próximo vídeo.
+
+## Vídeo do jogo (12/11; trailer novo de 1:14 pronto, em Docs/Videos/trailer_geneses_2026-11.mp4)
+
+- **Tomadas de câmera:** `Data/Film/trailer.json` lista as tomadas (medidas em metros). Cada uma leva o herói ao lugar, acerta a hora,
+  o clima e roda comandos do chat (`spawn lobo 6 4`). O modo filme (`-VortexRoamBench -VortexFilm=trailer`,
+  `VortexRoamBench.cpp`) grava cada quadro sem HUD. `Tools/RecordFilm.ps1 [-Only a,b]` roda escondido com passo fixo de
+  30 FPS e gera `Saved/Film/clips/<tomada>.mp4`.
+  - Câmera a mais de ~60 m do herói olha para o terreno que ainda não carregou (sai vazio): usar raio de 40 a 60 m.
+- **Testes que jogam sozinhos como filmagem:** `Tools/RecordGameplay.ps1 -Name chefe -Flag VortexBossShots` usa
+  `-VortexDumpFrames`, esconde a HUD e renumera os quadros que falharem. Gravados: chefe, cavalo, habilidades, bandidos.
+- **Montagem:** feita no FilmCraft por roteiro (`filmcraft-cli run <jsonl>`). O projeto está em `Docs/Midia/trailer_geneses.fcproj`.
+  - 31 cortes no compasso de "The Hero's Journey" (`Docs/Midia/Musicas/The_Heros_Journey_trailer.mp3`, 100 BPM).
+  - A música usa o começo (0 a 51,7 s) emendado com o fim (171,6 s em diante).
+  - Os títulos são PNG com a fonte Cinzel.
+- **Trailer v2 (13/11):**
+  - Tomadas novas em `Data/Film/trailer2.json` (mundo normal) e `trailer3.json`. A `trailer3` grava com
+    `-Extra '-VortexQuietWorld -VortexNoWildlife'`: nenhum bicho do mundo nasce, só os do comando.
+  - Campos novos do modo filme:
+    - `HeightTo` e `RadiusTo`: câmera que sobe ou se aproxima;
+    - `Track` boss ou hero: segue o chefe ou o herói;
+    - `HeroNear`;
+    - `Fight`: o herói bate sozinho;
+    - `Ride` + `Turn`/`TurnAt`: cavalo com curva;
+    - `chase`: câmera atrás de quem segue;
+    - `ScareAt`;
+    - `LookZ`;
+    - `Keep`: não mata nada no fim da tomada.
+  - **O Bram agora segura o martelo e solta faíscas** (`VortexNpc.cpp`, `TickForgeHammer`). Vale no jogo também; ainda não foi testado jogando.
+  - As fadas de perto não aparecem na câmera (ver depois). A forja nova ficou escura e o trailer usa a antiga.
+- **Pendente:** trocar `Docs/Github/trailer.mp4` pelo novo e fazer o push só quando o usuário pedir.
+  - A cena do cavalo tem trechos ruins (escuro e na água), não usados.
 
 ## Comandos de teste novos e bichos da vila de frente (12/11; compilado; comandos não testados no jogo)
 

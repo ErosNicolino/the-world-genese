@@ -1,4 +1,4 @@
-#include "Creatures/VortexNpc.h"
+﻿#include "Creatures/VortexNpc.h"
 
 #include "Creatures/VortexBlockBody.h"
 
@@ -25,6 +25,10 @@
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
 #include "World/VortexTerrainData.h"
+#include "Combat/VortexHitFx.h"
+#include "Combat/VortexWeaponComponent.h"
+#include "Combat/VortexWeaponDefinition.h"
+#include "Components/StaticMeshComponent.h"
 
 AVortexNpc::AVortexNpc()
 {
@@ -536,9 +540,59 @@ void AVortexNpc::TalkTo(AActor* Listener)
     if (!To.IsNearlyZero()) SetActorRotation(FRotator(0.f, To.Rotation().Yaw, 0.f));
 }
 
+namespace
+{
+    // 12/11: o ferreiro martelando (Npc_Martelar) segura o martelo do Bram e solta faíscas quando o martelo desce e para
+    // (o fundo da batida). Só visual: nasce na hora e some quando ele larga o trabalho.
+    void TickForgeHammer(AVortexNpc* Npc, float DeltaSeconds)
+    {
+        struct FSwing { float LastZ = 0.f, LastSpeed = 0.f, Cooldown = 0.f; };
+        static TMap<TWeakObjectPtr<AVortexNpc>, FSwing> Swings;
+        const bool bWorking = Npc->GetActivity() == TEXT("Npc_Martelar");
+        UStaticMeshComponent* Hammer = nullptr;
+        TInlineComponentArray<UStaticMeshComponent*> Meshes(Npc);
+        for (UStaticMeshComponent* M : Meshes) if (M->GetFName() == TEXT("ForgeHammer")) Hammer = M;
+        if (!bWorking) { if (Hammer) Hammer->SetVisibility(false); Swings.Remove(Npc); return; }
+        if (!Hammer)
+        {
+            const UVortexWeaponDefinition* Weapon = UVortexWeaponComponent::LoadType(TEXT("martelo_de_bram"));
+            if (!Weapon || !Weapon->VisualMesh) return;
+            Hammer = NewObject<UStaticMeshComponent>(Npc, TEXT("ForgeHammer"));
+            Hammer->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+            Hammer->SetupAttachment(Npc->GetMesh(), UVortexWeaponComponent::HandBoneFor(Weapon, Npc->GetMesh()));
+            Hammer->SetCastShadow(false);
+            Hammer->SetStaticMesh(Weapon->VisualMesh);
+            Hammer->RegisterComponent();
+        }
+        Hammer->SetVisibility(true);
+        if (DeltaSeconds <= 0.f || Npc->GetNetMode() == NM_DedicatedServer) return;
+        FSwing& S = Swings.FindOrAdd(Npc);
+        const FVector Head = Hammer->Bounds.Origin;
+        const float Speed = (Head.Z - S.LastZ) / DeltaSeconds;
+        S.Cooldown -= DeltaSeconds;
+        // descia rápido e parou: bateu na bigorna
+        if (S.LastSpeed < -120.f && Speed > -20.f && S.Cooldown <= 0.f)
+        {
+            S.Cooldown = .3f;
+            FActorSpawnParameters Params;
+            Params.ObjectFlags |= RF_Transient;
+            Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+            if (AVortexHitBurst* Sparks = Npc->GetWorld()->SpawnActor<AVortexHitBurst>(Head, FRotator::ZeroRotator, Params))
+            {
+                const TSharedPtr<FVortexTerrainData> Terrain = AVortexTerrainStreamer::SharedData();
+                const float Ground = Terrain ? Terrain->GroundAt(Head.X, Head.Y) : Head.Z - 100.f;
+                Sparks->Start(FVector::UpVector, FLinearColor(5.f, 2.6f, .7f), 26, Ground > -299.f ? Ground : Head.Z - 100.f);
+            }
+        }
+        S.LastZ = Head.Z;
+        S.LastSpeed = Speed;
+    }
+}
+
 void AVortexNpc::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
+    TickForgeHammer(this, DeltaSeconds);
     if (!HasAuthority()) return;
     static const bool bNoRoutines = FParse::Param(FCommandLine::Get(), TEXT("VortexNoRoutines"));
     const bool bRoutine = !bNoRoutines && VortexNpcRoutine::HasRoutine(NpcId);

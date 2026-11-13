@@ -25,7 +25,7 @@
     <img src="Docs/Github/trailer-capa.jpg" alt="Trailer de The World Gêneses (clique para assistir)" width="85%">
   </a>
   <br>
-  <sub>▶ Clique na imagem para assistir ao trailer (25 s). Imagens gravadas dentro do jogo, sem edição de cena.</sub>
+  <sub>▶ Clique na imagem para assistir ao trailer (1:14). Tudo gravado dentro do jogo e montado no FilmCraft, no ritmo de "The Hero's Journey".</sub>
 </p>
 
 ---
@@ -169,8 +169,8 @@ Boa parte do trabalho é feita por scripts, para que tudo possa ser refeito e te
 - **Testes de verdade:** scripts `Tools/Run*.ps1` abrem o jogo escondido, jogam um trecho (combate, lobo, matilha,
   rede, salvamento) e conferem o resultado. As fotos saem em `Saved/Screenshots`.
 - **Desempenho:** um passeio a galope mede o FPS, o pior 1% e o que trava (`RunRoamBench.ps1`).
-- **Vídeo:** um modo filme passeia com a câmera pela vila e salva cada quadro (`RecordFilm.ps1`); o trailer acima
-  saiu dele.
+- **Vídeo:** um modo filme lê as tomadas de um JSON (`Data/Film`): câmera que gira, sobe ou segue o chefe e o cavalo,
+  herói lutando sozinho, clima e hora. Ele salva cada quadro (`RecordFilm.ps1`, `RecordGameplay.ps1`). O trailer acima saiu dele.
 - **Arte:** scripts do Blender montam as casas, as armas e as animações (`Tools/Blender`).
 - **Chat de testes:** dentro do jogo, a tecla T abre comandos como `/clima tempestade`, `/noite` e `/spawn lobo`
   ([lista](Docs/COMANDOS_DE_TESTE.md)).

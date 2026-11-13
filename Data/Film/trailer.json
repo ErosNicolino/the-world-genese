@@ -1,0 +1,21 @@
+{
+  "_comment": "Tomadas do trailer (12/11), lidas pelo modo filme (-VortexFilm=trailer, Tools/RecordFilm.ps1). Medidas em metros. Kind: orbit (gira em volta de At: Radius, Height acima do chão de At, From e Sweep em graus) ou dolly (anda de At até To a Height do chão, olhando para Look ou para a frente). Hour 0-24; Weather: Clear, Cloudy, Rain, Storm, Snow, Blizzard, Fog. Commands: comandos do chat sem a barra, rodados no herói (que fica em Hero, ou em At).",
+  "Shots": [
+    { "Name": "ygg_amanhecer", "Kind": "orbit", "At": [2910, 390], "Radius": 110, "Height": 30, "LookHeight": 55, "From": 200, "Sweep": 20, "Seconds": 8, "Hour": 9.5, "HideHero": true },
+    { "Name": "vila_alto_tarde", "Kind": "orbit", "At": [18, 21], "Radius": 52, "Height": 26, "LookHeight": 2.5, "From": -140, "Sweep": 20, "Seconds": 7, "Hour": 16.5, "HideHero": true },
+    { "Name": "heroi_portao", "Kind": "orbit", "At": [18, -103], "Radius": 4.5, "Height": 1.7, "LookHeight": 1.4, "From": 60, "Sweep": 40, "Seconds": 6, "Hour": 17.6 },
+    { "Name": "forja", "Kind": "orbit", "At": [-18.3, 56.3], "Hero": [-11, 40], "Radius": 13, "Height": 4.5, "LookHeight": 2, "From": 210, "Sweep": 22, "Seconds": 6, "Hour": 10 },
+    { "Name": "vila_rua_noite", "Kind": "dolly", "At": [23, -6], "To": [23, -2.2], "Height": 2, "LookHeight": 1.5, "Look": [43, 1], "Seconds": 5, "Hour": 20.5, "HideHero": true },
+    { "Name": "vila_praca_chuva", "Kind": "orbit", "At": [18, 21], "Hero": [13, 24], "Radius": 13, "Height": 4.2, "LookHeight": 1.2, "From": 150, "Sweep": 18, "Seconds": 7, "Hour": 21, "Weather": "Rain" },
+    { "Name": "floresta_fadas", "Kind": "orbit", "At": [2880, 720], "Radius": 7, "Height": 2.2, "LookHeight": 1.3, "From": 0, "Sweep": 35, "Seconds": 6, "Hour": 17.2, "Commands": ["spawn fada 4"] },
+    { "Name": "lobos_planicie", "Kind": "orbit", "At": [73, 46], "Radius": 8, "Height": 3, "LookHeight": 1, "From": 30, "Sweep": 40, "Seconds": 6, "Hour": 9, "Commands": ["spawn lobo 6 4"] },
+    { "Name": "tempestade_valdora", "Kind": "orbit", "At": [480, -300], "Radius": 45, "Height": 12, "LookHeight": 3, "From": 120, "Sweep": 15, "Seconds": 6, "Hour": 15, "Weather": "Storm", "HideHero": true },
+    { "Name": "brasafenda_vulcao", "Kind": "orbit", "At": [-1470, -2700], "Radius": 50, "Height": 18, "LookHeight": 6, "From": 0, "Sweep": 18, "Seconds": 6, "Hour": 19.2, "HideHero": true },
+    { "Name": "raikor_picos", "Kind": "orbit", "At": [780, -2550], "Radius": 50, "Height": 22, "LookHeight": 8, "From": 90, "Sweep": 18, "Seconds": 6, "Hour": 8.5, "Weather": "Cloudy", "HideHero": true },
+    { "Name": "nivaluz_nevasca", "Kind": "orbit", "At": [3000, -2700], "Radius": 12, "Height": 3.5, "LookHeight": 1.4, "From": 200, "Sweep": 25, "Seconds": 6, "Hour": 12, "Weather": "Blizzard" },
+    { "Name": "lodonegro_neblina", "Kind": "orbit", "At": [-1980, 960], "Radius": 30, "Height": 9, "LookHeight": 2, "From": 40, "Sweep": 18, "Seconds": 6, "Hour": 7.5, "Weather": "Fog", "HideHero": true },
+    { "Name": "solcanion_mesas", "Kind": "orbit", "At": [-2070, -1020], "Radius": 50, "Height": 16, "LookHeight": 6, "From": 300, "Sweep": 18, "Seconds": 6, "Hour": 17.5, "HideHero": true },
+    { "Name": "aurivale_campos", "Kind": "orbit", "At": [2640, -1260], "Radius": 40, "Height": 14, "LookHeight": 4, "From": 120, "Sweep": 18, "Seconds": 6, "Hour": 16, "HideHero": true },
+    { "Name": "morthuria_noite", "Kind": "orbit", "At": [480, 1710], "Radius": 35, "Height": 12, "LookHeight": 3, "From": 250, "Sweep": 18, "Seconds": 6, "Hour": 22, "HideHero": true }
+  ]
+}

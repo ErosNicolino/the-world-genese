@@ -398,6 +398,9 @@ bool UVortexCreatureSubsystem::NearestBanditCamp(const FVector2D& From, int32 Ri
 
 void UVortexCreatureSubsystem::GenerateCell(const FIntPoint& CellKey)
 {
+    // 12/11: -VortexQuietWorld (filmagem): nenhum bicho do mundo nasce; os do /spawn e os chefes fixos continuam
+    static const bool bQuiet = FParse::Param(FCommandLine::Get(), TEXT("VortexQuietWorld"));
+    if (bQuiet) return;
     const TSharedPtr<FVortexTerrainData> Terrain = AVortexTerrainStreamer::SharedData();
     const FBox2D Bounds = Terrain->MapBounds();
     constexpr float Region = CellSize;   // quadras de 72 m, como o Godot
