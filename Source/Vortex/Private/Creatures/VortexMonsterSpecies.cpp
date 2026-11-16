@@ -1,4 +1,4 @@
-#include "Creatures/VortexMonsterSpecies.h"
+﻿#include "Creatures/VortexMonsterSpecies.h"
 
 // As espécies do Godot (Art/ValleyMonster.*.cs, RegionalBoss.cs, RuneColossus.cs), em centímetros.
 // Os tempos de impacto são os dos clipes (ValleyMonster.Moves.cs: Info); os alcances e as recargas,
@@ -46,18 +46,23 @@ namespace
             FVortexMonsterMove Leap = Move(TEXT("Leap"), TEXT("Leap"), K::Lunge, .9f, 280.f, 650.f, 210.f, 1.35f, 1.3f);
             Leap.LungeFrom = .42f; Leap.LungeDistance = 550.f; Leap.OwnCooldown = 5.5f; Leap.bTelegraph = true; Leap.bMagic = true;
             D.Moves.Add(Leap);
-            FVortexMonsterMove Tackle = Move(TEXT("Tackle"), TEXT("Attack"), K::Strike, .38f, 0.f, 240.f, 250.f, 1.f, 1.2f);
-            Tackle.FrontDot = .5f; Tackle.bMagic = true;
-            D.Moves.Add(Tackle);
+            // 13/11 (o usuário: "o slime dar cabeçadas porque o esticar está bugado, e cuspir líquido"): a cabeçada é um
+            // pulinho curto de frente (não estica a gelatina); de longe, cospe uma bola da cor dela que vira poça
+            FVortexMonsterMove Headbutt = Move(TEXT("Headbutt"), TEXT("Attack"), K::Lunge, .4f, 0.f, 260.f, 190.f, 1.f, 1.1f);
+            Headbutt.LungeFrom = .2f; Headbutt.LungeDistance = 210.f; Headbutt.bMagic = true;
+            D.Moves.Add(Headbutt);
+            FVortexMonsterMove Spit = Move(TEXT("Spit"), TEXT("Attack"), K::Lob, .45f, 380.f, 900.f, 160.f, .7f, 1.5f);
+            Spit.OwnCooldown = 5.f; Spit.bMagic = true; Spit.Flight = .8f; Spit.bLobTint = true;
+            D.Moves.Add(Spit);
             return D;
         };
         Add(Gota(TEXT("Slime"), TEXT("GOTA DE JADE"), 220.f, 3.f, 10.f, FLinearColor(.18f, .85f, .55f), NAME_None));
         Add(Gota(TEXT("SlimeFire"), TEXT("GOTA DE BRASA"), 240.f, 3.2f, 12.f, FLinearColor(1.f, .45f, .1f), TEXT("burn")));
         {
             FVortexSpeciesDef D = Gota(TEXT("SlimePoison"), TEXT("GOTA PEÇONHENTA"), 210.f, 3.f, 10.f, FLinearColor(.7f, .25f, 1.f), TEXT("poison"));
-            FVortexMonsterMove Spit = Move(TEXT("Spit"), TEXT("Attack"), K::Lob, .4f, 380.f, 900.f, 170.f, .8f, 1.4f);
-            Spit.OwnCooldown = 4.f; Spit.bMagic = true; Spit.Flight = .8f;
-            D.Moves.Add(Spit);
+            // a peçonhenta: o cuspe dela (o de toda gota) envenena e sai mais vezes
+            for (FVortexMonsterMove& M : D.Moves)
+                if (M.Id == TEXT("Spit")) { M.OwnCooldown = 4.f; M.Status = TEXT("poison"); M.StatusTime = 5.f; }
             Add(D);
         }
         {
@@ -76,13 +81,13 @@ namespace
             D.bFearful = true; D.bMagic = true; D.HitClip = TEXT("Tremble"); D.HitSound = TEXT("poison_smoke");
             D.Splash = FLinearColor(.55f, .9f, .25f); D.Telegraph = FLinearColor(.6f, 1.f, .25f);
             FVortexMonsterMove Spores = Move(TEXT("Spores"), TEXT("Spores"), K::Area, .55f, 0.f, 290.f, 290.f, .8f, .5f);
-            Spores.OwnCooldown = 7.f; Spores.bMagic = true; Spores.bTelegraph = true;
+            Spores.OwnCooldown = 7.f; Spores.bMagic = true; Spores.bTelegraph = true; Spores.Status = TEXT("poison"); Spores.StatusTime = 4.f;
             D.Moves.Add(Spores);
             FVortexMonsterMove Hop = Move(TEXT("Hop"), TEXT("Hop"), K::Hop, .48f, 0.f, 330.f, 0.f, 0.f, .35f);
             Hop.OwnCooldown = 2.2f; Hop.LungeFrom = .1f; Hop.LungeDistance = 240.f;
             D.Moves.Add(Hop);
             FVortexMonsterMove Spit = Move(TEXT("Spit"), TEXT("Attack"), K::Lob, .45f, 250.f, 850.f, 170.f, 1.f, 1.8f);
-            Spit.Flight = .6f; Spit.bMagic = true;
+            Spit.Flight = .6f; Spit.bMagic = true; Spit.Status = TEXT("poison"); Spit.StatusTime = 5.f;
             D.Moves.Add(Spit);
             // 10/11 (o Cogumelo Corrompido do Meshy): Raízes Corrompidas, o chão marca embaixo do herói e as raízes estouram ali
             FVortexMonsterMove Roots = Move(TEXT("Roots"), TEXT("Roots"), K::Area, 1.05f, 300.f, 900.f, 220.f, 1.3f, 1.f);
@@ -90,8 +95,13 @@ namespace
             D.Moves.Add(Roots);
             // Nuvem Corrompida: perto, um anel grande em volta dele vira uma nuvem de esporos (recarga longa)
             FVortexMonsterMove Burst = Move(TEXT("Burst"), TEXT("Burst"), K::Area, .95f, 0.f, 420.f, 450.f, 1.1f, 1.2f);
-            Burst.OwnCooldown = 14.f; Burst.bMagic = true; Burst.bTelegraph = true;
+            Burst.OwnCooldown = 14.f; Burst.bMagic = true; Burst.bTelegraph = true; Burst.Status = TEXT("poison"); Burst.StatusTime = 6.f;
             D.Moves.Add(Burst);
+            // 13/11: Espinhos: três fileiras de espinhos saem do chão, uma atrás da outra, na direção do herói
+            // (AVortexMonster::StartMove põe as três marcas; o dano sai pelas marcas)
+            FVortexMonsterMove Thorns = Move(TEXT("Thorns"), TEXT("Roots"), K::Area, .8f, 250.f, 800.f, 150.f, 1.f, 1.2f);
+            Thorns.OwnCooldown = 8.f; Thorns.bMagic = true;
+            D.Moves.Add(Thorns);
             Add(D);
         }
         {   // Golem Musgoso: lento e pesado; soco, pancada no chão em área e pedra arremessada
@@ -99,14 +109,20 @@ namespace
             D.Radius = 65.f; D.Height = 235.f; D.Speed = 150.f; D.Accel = 500.f; D.Sight = 1700.f; D.Hits = 6.f; D.BaseDamage = 22.f;
             D.HitSound = TEXT("golem_slam"); D.StepSound = TEXT("golem_step"); D.Splash = FLinearColor(.36f, .4f, .3f);
             D.Telegraph = FLinearColor(.6f, 1.f, .8f);
-            FVortexMonsterMove Slam = Move(TEXT("Slam"), TEXT("Slam"), K::Area, .65f, 0.f, 340.f, 360.f, 1.15f, 1.6f);
+            // 13/11: o agarrão: o herói colado nele há 3 s é pego e arremessado longe (vem antes na lista de golpes de perto)
+            FVortexMonsterMove Grab = Move(TEXT("Grab"), TEXT("Grab"), K::Strike, .7f, 0.f, 260.f, 300.f, .9f, 1.6f);
+            Grab.FrontDot = .2f; Grab.OwnCooldown = 10.f; Grab.CloseFor = 3.f; Grab.Hurl = 1500.f;
+            D.Moves.Add(Grab);
+            // a batida com as duas mãos: a onda sísmica corre pelo chão (maior e mais lenta que a pancada de antes)
+            FVortexMonsterMove Slam = Move(TEXT("Quake"), TEXT("Slam"), K::Area, .7f, 0.f, 380.f, 460.f, 1.25f, 1.7f);
             Slam.OwnCooldown = 6.5f; Slam.bTelegraph = true;
             D.Moves.Add(Slam);
             FVortexMonsterMove Punch = Move(TEXT("Punch"), TEXT("Attack"), K::Strike, .55f, 0.f, 290.f, 300.f, 1.f, 1.4f);
             Punch.FrontDot = .3f;
             D.Moves.Add(Punch);
-            FVortexMonsterMove Throw = Move(TEXT("Throw"), TEXT("Throw"), K::Lob, .95f, 550.f, 1700.f, 210.f, 1.2f, 1.2f);
-            Throw.OwnCooldown = 7.f; Throw.Flight = 1.f;
+            // a pedra grande: as pedras sobem do chão para as mãos antes de ele arremessar
+            FVortexMonsterMove Throw = Move(TEXT("Boulder"), TEXT("Pickup"), K::Lob, 1.05f, 550.f, 1700.f, 260.f, 1.35f, 1.3f);
+            Throw.OwnCooldown = 7.f; Throw.Flight = 1.1f; Throw.LobScale = 2.6f;
             D.Moves.Add(Throw);
             Add(D);
         }
@@ -124,6 +140,10 @@ namespace
             FVortexMonsterMove Dive = Move(TEXT("Dive"), TEXT("Dive"), K::Lunge, .55f, 170.f, 520.f, 270.f, 1.f, 1.8f);
             Dive.LungeFrom = .15f; Dive.LungeDistance = 300.f; Dive.Retreat = 1.3f; Dive.bMagic = true;
             D.Moves.Add(Dive);
+            // 13/11: o sonar: de longe, arcos de som na direção do herói; quem é pego fica tonto (anda devagar por 2,5 s)
+            FVortexMonsterMove Sonar = Move(TEXT("Sonar"), TEXT("Screech"), K::Strike, .5f, 300.f, 800.f, 820.f, .45f, 1.2f);
+            Sonar.FrontDot = .75f; Sonar.OwnCooldown = 8.f; Sonar.bMagic = true; Sonar.Slow = .45f; Sonar.SlowTime = 2.5f;
+            D.Moves.Add(Sonar);
             Add(D);
         }
         {   // Sapo-Gigante do Brejo: lingüada que alcança 4,6 m e salto de barriga

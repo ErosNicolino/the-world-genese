@@ -14,6 +14,12 @@
     { "id": "elfo_gelo", "nome": "Azul-gelo", "pele": "clara" },
     { "id": "dark_vermelho", "nome": "Vermelho", "pele": "escura" },
     { "id": "dark_violeta", "nome": "Violeta", "pele": "escura" },
-    { "id": "dark_prata", "nome": "Prata", "pele": "escura" }
+    { "id": "dark_prata", "nome": "Prata", "pele": "escura" },
+    { "id": "diabo_ambar", "nome": "Âmbar", "pele": "diabo" },
+    { "id": "diabo_brasa", "nome": "Brasa", "pele": "diabo" },
+    { "id": "diabo_veneno", "nome": "Veneno", "pele": "diabo" },
+    { "id": "morto_azul", "nome": "Caveira azul", "pele": "morto" },
+    { "id": "morto_verde", "nome": "Caveira verde", "pele": "morto" },
+    { "id": "morto_roxo", "nome": "Caveira roxa", "pele": "morto" }
   ]
 }

@@ -19,7 +19,10 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FEMALE = "--feminino" in sys.argv
 STYLE_ID = sys.argv[sys.argv.index("--estilo") + 1] if "--estilo" in sys.argv else "padrao"
-ARGS = [a for i, a in enumerate(sys.argv[1:], 1) if not a.startswith("--") and sys.argv[i - 1] != "--estilo"]
+# --pintura <azul|vermelha|branca>: a pintura de guerra do bárbaro por baixo dos olhos (sai em eyes_<estilo>_p<cor>.png)
+PAINT_ID = sys.argv[sys.argv.index("--pintura") + 1] if "--pintura" in sys.argv else ""
+PAINT = {"": None, "azul": (40, 92, 180, 255), "vermelha": (160, 30, 28, 255), "branca": (226, 226, 222, 255)}[PAINT_ID]
+ARGS = [a for i, a in enumerate(sys.argv[1:], 1) if not a.startswith("--") and sys.argv[i - 1] not in ("--estilo", "--pintura")]
 RACE = ARGS[0] if ARGS else "humano"
 FOLDER = os.path.join(ROOT, "Data", "Heroes", RACE + "_Mixamo", "Face")
 EYE_FRAMES = ["aberto", "meio", "fechado", "esquerda", "direita", "bravo", "feliz", "dor"]
@@ -87,6 +90,14 @@ STYLES = {
     "dark_vermelho": {"iris": (138, 18, 30, 255), "iris_low": (232, 60, 60, 255), "brow_color": (196, 196, 214, 255)},
     "dark_violeta": {"iris": (88, 38, 160, 255), "iris_low": (182, 112, 242, 255), "brow_color": (196, 196, 214, 255)},
     "dark_prata": {"iris": (118, 124, 146, 255), "iris_low": (216, 222, 236, 255), "brow_color": (196, 196, 214, 255)},
+    # 14/11: o demônio (olhos de brasa, sobrancelha escura e brava) e o morto-vivo (olhos acesos, sem sobrancelha quase)
+    "diabo_ambar": {"iris": (150, 84, 10, 255), "iris_low": (255, 196, 40, 255), "brow_color": (30, 14, 16, 255), "top": 9, "brow": (5, 5, 6, 6)},
+    "diabo_brasa": {"iris": (150, 30, 10, 255), "iris_low": (255, 110, 40, 255), "brow_color": (30, 14, 16, 255), "top": 9, "brow": (5, 5, 6, 6)},
+    "diabo_veneno": {"iris": (40, 110, 20, 255), "iris_low": (150, 240, 70, 255), "brow_color": (30, 14, 16, 255), "top": 9, "brow": (5, 5, 6, 6)},
+    # o morto-vivo é um esqueleto: skull = caveira (órbitas escuras com um ponto aceso, nariz e dentes), sem sobrancelha
+    "morto_azul": {"skull": True, "iris_low": (120, 230, 255, 255)},
+    "morto_verde": {"skull": True, "iris_low": (150, 255, 130, 255)},
+    "morto_roxo": {"skull": True, "iris_low": (210, 140, 255, 255)},
 }
 STYLE = STYLES[STYLE_ID]
 BROW = STYLE.get("brow_color", BROW)
@@ -95,6 +106,7 @@ if "iris" in STYLE:
 if "iris_low" in STYLE:
     IRIS_LOW = STYLE["iris_low"]
 FRECKLE = (176, 104, 80, 255)
+SOCKET = (22, 18, 24, 255)      # as órbitas, o nariz e os vãos dos dentes da caveira
 
 # como na referência (01/11): olhos grandes de 4 x 5 casas, escuros, com um brilho comprido do lado de fora, e
 # sobrancelhas finas por cima da parte de dentro; entre os olhos, 4 casas (o vão de um nariz, sem nariz)
@@ -104,6 +116,27 @@ EYES = [(2, 1), (13, -1)]                        # a coluna do lado de fora e o 
 def eye_frame(name):
     img = blank(EYE_BOX)
     look = {"esquerda": -1, "direita": 1}.get(name, 0)
+    if PAINT:
+        # uma faixa de um lado ao outro na altura dos olhos e dois riscos descendo por fora deles; os olhos vão por cima
+        for col in range(16):
+            cell(img, EYE_BOX, col, 9, PAINT, 1, 2)
+        for col, row, h in ((0, 11, 2), (15, 11, 2), (7, 5, 3), (8, 5, 3)):
+            cell(img, EYE_BOX, col, row, PAINT, 1, h)
+    if STYLE.get("skull"):
+        # a caveira: órbitas de 4 x 4 (linhas 6 a 9), o ponto aceso de 2 x 2 dentro (é ele que olha para os lados e pisca),
+        # o nariz (2 casas) e os dentes (uma linha com vãos); o mesmo no feminino
+        for start, step in EYES:
+            for o in range(4):
+                for row in range(7 if name == "feliz" else 6, 10):
+                    if row == 6 and ((name == "bravo" and o >= 2) or (name == "dor" and o < 2)):
+                        continue
+                    cell(img, EYE_BOX, start + step * o, row, SOCKET)
+            glow = {"fechado": [], "meio": [(1, 8), (2, 8)], "feliz": [(1, 8), (2, 8)], "dor": [(2, 8)]}.get(name, [(1, 7), (2, 7), (1, 8), (2, 8)])
+            for o, row in glow:
+                cell(img, EYE_BOX, start + step * o + look, row, IRIS_LOW)
+        for col, row in ((7, 10), (8, 10), (4, 12), (6, 12), (9, 12), (11, 12)):
+            cell(img, EYE_BOX, col, row, SOCKET)
+        return img
     for start, step in EYES:
         def put(o, row, color, start=start, step=step):
             """o: 0 = a coluna de fora do olho, 3 = a de dentro (perto do nariz); o olhar desloca o olho inteiro."""
@@ -210,7 +243,7 @@ def sheet(frames):
 
 eyes = [eye_frame(n) for n in EYE_FRAMES]
 mouths = [mouth_frame(n) for n in MOUTH_FRAMES]
-SUFFIX = "" if STYLE_ID == "padrao" else "_" + STYLE_ID
+SUFFIX = "" if STYLE_ID == "padrao" and not PAINT else "_" + STYLE_ID + ("_p" + PAINT_ID if PAINT else "")
 sheet(eyes).save(os.path.join(FOLDER, ("eyes_f%s.png" if FEMALE else "eyes%s.png") % SUFFIX))
 if not FEMALE and not SUFFIX:
     sheet(mouths).save(os.path.join(FOLDER, "mouth.png"))

@@ -3,6 +3,7 @@
 // e tudo ligado. Mede FPS, o pior 1% e os quadros longos, e o tempo de cada sistema (VortexProbe).
 #if !UE_BUILD_SHIPPING
 #include "Framework/VortexCreatureSmoke.h"
+#include "Framework/VortexJson.h"
 #include "World/VortexCreatureSubsystem.h"
 #include "Misc/CoreDelegates.h"
 
@@ -36,6 +37,9 @@
 #include "Engine/Engine.h"
 #include "Framework/VortexCharacterMovementComponent.h"
 #include "World/VortexWorldLayout.h"
+#include "Framework/VortexLook.h"
+#include "Combat/VortexWeaponComponent.h"
+#include "Combat/VortexWeaponDefinition.h"
 
 namespace VortexRoamBench
 {
@@ -48,18 +52,18 @@ namespace VortexRoamBench
     {
         struct FShot
         {
-            FString Name, Kind, Weather, Track;
+            FString Name, Kind, Weather, Track, Race, Appearance, Weapon;   // Race/Appearance: o corpo do herói; Weapon: o tipo da arma na mão
             FVector2D At, To, Look, Hero, HeroNear;
             float Radius = 3000.f, Height = 1500.f, LookHeight = 200.f, From = 0.f, Sweep = 20.f, Seconds = 5.f, Hour = 12.f, Fov = 70.f;
             float HeightTo = -1.f, RadiusTo = -1.f, LookZ = -1.f, HeroYaw = 0.f, ScareAt = -1.f, Turn = 0.f, TurnAt = .5f;
-            bool bHideHero = false, bLook = false, bNear = false, bFight = false, bRide = false, bKeep = false;
+            bool bHideHero = false, bLook = false, bNear = false, bFight = false, bRide = false, bKeep = false, bMortal = false, bWalk = false, bLate = false, bFree = false;   // Late: os comandos rodam quando a gravação começa (o primeiro golpe aparece); Free: o herói não fica travado (pode ser arremessado)   // Mortal: sem o modo deus (a reação ao dano aparece), curando a cada 2 s
             TArray<FString> Commands;
         };
         TArray<FShot> Shots;
         FString File = TEXT("trailer"), Text;
         FParse::Value(FCommandLine::Get(), TEXT("VortexFilm="), File);
         TSharedPtr<FJsonObject> Root;
-        if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Film") / (File + TEXT(".json")))) || !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root.IsValid())
+        if (!(Root = VortexJson::Load(FString(TEXT("Data/Film")) / (File + TEXT(".json")))).IsValid())
         {
             UE_LOG(LogTemp, Error, TEXT("VORTEX_FILM sem Data/Film/%s.json (ou JSON com erro)"), *File);
             FPlatformMisc::RequestExit(false);
@@ -81,6 +85,10 @@ namespace VortexRoamBench
             Shot.Kind = O->GetStringField(TEXT("Kind"));
             O->TryGetStringField(TEXT("Weather"), Shot.Weather);
             O->TryGetStringField(TEXT("Track"), Shot.Track);
+            O->TryGetStringField(TEXT("Race"), Shot.Race); O->TryGetStringField(TEXT("Appearance"), Shot.Appearance); O->TryGetStringField(TEXT("Weapon"), Shot.Weapon);
+            O->TryGetBoolField(TEXT("Mortal"), Shot.bMortal);
+            O->TryGetBoolField(TEXT("Walk"), Shot.bWalk);
+            O->TryGetBoolField(TEXT("Late"), Shot.bLate); O->TryGetBoolField(TEXT("Free"), Shot.bFree);   // anda devagar para HeroYaw (o andar, não a corrida)
             Point(O, TEXT("At"), Shot.At);
             Shot.To = Shot.Hero = Shot.At;
             Point(O, TEXT("To"), Shot.To);
@@ -144,7 +152,7 @@ namespace VortexRoamBench
                 S->bEntered = true;
                 S->Eye = FVector::ZeroVector;
                 S->SwingIn = 0.f;
-                if (!Shot.bRide) Hero->GetCharacterMovement()->DisableMovement();
+                if (!Shot.bRide && !Shot.bWalk && !Shot.bFree) Hero->GetCharacterMovement()->DisableMovement();
                 else Hero->GetCharacterMovement()->SetMovementMode(MOVE_Walking);   // a tomada anterior deixou travado
                 Hero->SetActorLocationAndRotation(FVector(Shot.Hero, Ground(Shot.Hero) + 110.f), FRotator(0.f, Shot.HeroYaw, 0.f), false, nullptr, ETeleportType::TeleportPhysics);
                 Controller->SetControlRotation(FRotator(0.f, Shot.HeroYaw, 0.f));
@@ -155,7 +163,17 @@ namespace VortexRoamBench
                     for (uint8 W = 0; W <= uint8(EVortexWeather::Fog); ++W)
                         if (Shot.Weather.Equals(UVortexWeatherSubsystem::WeatherName(EVortexWeather(W)), ESearchCase::IgnoreCase)) Weather->ForceWeather(EVortexWeather(W));
                 }
-                for (const FString& Command : Shot.Commands) GEngine->Exec(World, *(TEXT("Vortex.Cmd ") + Command));
+                if (!Shot.Race.IsEmpty())
+                {
+                    FVortexLook Look;
+                    Look.Race = FName(*Shot.Race);
+                    if (!Shot.Appearance.IsEmpty()) Look.Appearance = FName(*Shot.Appearance);
+                    Hero->ApplyLook(Look);
+                }
+                if (!Shot.Weapon.IsEmpty())
+                    if (UVortexWeaponDefinition* Type = UVortexWeaponComponent::LoadType(FName(*Shot.Weapon))) Hero->GetWeapon()->Equip(Type);
+                if (Shot.bMortal) GEngine->Exec(World, TEXT("Vortex.Cmd deus"));
+                if (!Shot.bLate) for (const FString& Command : Shot.Commands) GEngine->Exec(World, *(TEXT("Vortex.Cmd ") + Command));
                 // ScareAt: o herói sai de perto logo depois dos comandos (as fadas fogem de quem chega) e volta para At na hora
                 if (Shot.ScareAt >= 0.f)
                 {
@@ -167,6 +185,7 @@ namespace VortexRoamBench
             }
             S->Time += Delta;
             if (State) State->SetDayHour(Shot.Hour);
+            if (Shot.bMortal && FMath::Fmod(S->Time, 2.f) < Delta) GEngine->Exec(World, TEXT("Vortex.Cmd curar"));
             const float T = S->bRolling ? FMath::Clamp(S->Time / Shot.Seconds, 0.f, 1.f) : 0.f;
             // o chefe: o do posto da Caldeira (um de teste só se ele não nasceu)
             if (Shot.Track == TEXT("boss") && !S->Boss.IsValid())
@@ -210,6 +229,7 @@ namespace VortexRoamBench
                 Controller->SetControlRotation(FRotator(0.f, Yaw, 0.f));
                 Hero->AddMovementInput(FRotator(0.f, Yaw, 0.f).Vector(), 1.f);
             }
+            if (Shot.bWalk && S->bRolling) Hero->AddMovementInput(FRotator(0.f, Shot.HeroYaw, 0.f).Vector(), .3f);
             if (Shot.bFight)
             {
                 // bate no inimigo vivo mais perto (até 25 m), virado para ele
@@ -265,11 +285,13 @@ namespace VortexRoamBench
                 const bool bWaitHorse = Shot.bRide && !Hero->IsMounted() && S->Time < 20.f;
                 if (S->Time < 3.f || bWaitBoss || bWaitHorse || (S->Time < 25.f && (Streamer->PendingChunks() > 0 || GetNumAsyncPackages() > 0))) return true;
                 S->bRolling = true; S->Time = 0.f; S->Frame = 0;
+                if (Shot.bLate) for (const FString& Command : Shot.Commands) GEngine->Exec(World, *(TEXT("Vortex.Cmd ") + Command));
                 return true;
             }
             FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir() / FString::Printf(TEXT("Film/%s/f_%05d.png"), *Shot.Name, S->Frame++), false, false);
             if (S->Time < Shot.Seconds) return true;
             if (Shot.bRide) Hero->GetVortexMovement()->bWantsToSprint = false;
+            if (Shot.bMortal) { GEngine->Exec(World, TEXT("Vortex.Cmd curar")); GEngine->Exec(World, TEXT("Vortex.Cmd deus")); }
             if (!Shot.bKeep) { GEngine->Exec(World, TEXT("Vortex.Cmd matar 300")); S->Boss = nullptr; }
             ++S->Index; S->Time = 0.f; S->bRolling = S->bEntered = false;
             return true;

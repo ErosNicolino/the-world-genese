@@ -1,4 +1,5 @@
 #include "World/VortexFallingLeaves.h"
+#include "Framework/VortexJson.h"
 
 #include "Camera/PlayerCameraManager.h"
 #include "Components/InstancedStaticMeshComponent.h"
@@ -66,10 +67,8 @@ void AVortexFallingLeaves::BeginPlay()
 {
     Super::BeginPlay();
     if (GetNetMode() == NM_DedicatedServer) { Destroy(); return; }
-    FString Text;
     TSharedPtr<FJsonObject> Json;
-    if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/World/folhas.json")))
-        && FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json) && Json.IsValid())
+    if ((Json = VortexJson::Load(TEXT("Data/World/folhas.json"))).IsValid())
     {
         for (const auto& Pair : Json->Values)
         {

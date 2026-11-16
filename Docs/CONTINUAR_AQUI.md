@@ -1,10 +1,634 @@
-# Continuar aqui (atualizado em 12/11/2026)
+# Continuar aqui (atualizado em 16/11/2026)
 
 Onde o trabalho parou, para retomar numa conversa nova (ou numa conta nova). O passo a passo técnico do que está
 abaixo fica em [02_Combate/PERSONAGEM_BASE_BLOCOS.md](02_Combate/PERSONAGEM_BASE_BLOCOS.md) e
 [02_Combate/ANIMACOES_MIXAMO_EMOTES.md](02_Combate/ANIMACOES_MIXAMO_EMOTES.md).
 
-## ONDE PARAMOS (12/11, manhã): ler primeiro
+## AUDITORIA DE 16/11 (manhã): o que a auditoria achou e o que foi corrigido. LER PRIMEIRO
+
+O usuário pediu a auditoria do repositório (`/ponytail-audit`) e depois mandou corrigir tudo. Compilado; os testes de
+foto do cavalo (`RunMountShots`) e do Estádio (`RunStadiumShot`) rodaram depois. **Falta o usuário jogar.**
+
+- **Queda de luz por herói** (`VortexArrival`, `VortexCharacter.cpp`): o "estava no Estádio" era um só para o jogo
+  inteiro; sair para o menu dentro do Estádio e carregar outro herói no vale tocava a queda ali. Agora guarda qual
+  herói estava lá. O herói volta a aparecer se a câmera de cinema não nascer ou se ele morrer esperando o chão; o
+  relógio da espera não sobra de um mundo para o outro.
+- **Tutorial por herói** (`VortexAimHUD.cpp`): o passo e o "pulei" eram do processo; o segundo herói novo da mesma
+  sessão ficava sem tutorial, e o tutorial de um herói novo aparecia num herói antigo carregado depois.
+- **Cavalo** (`CanHarm`, `VortexCombatComponent.cpp`): só o dono e os monstros ferem o cavalo domado, e nunca dentro
+  da vila (antes qualquer jogador matava o cavalo de outro, para sempre).
+- **Fruta** (`ServerHorse`): o [E] só dá fruta com o cavalo abaixo de 70% de vida; acima disso monta.
+- **Poção** (`TickPotion`): o modelo da garrafa só é procurado enquanto o herói bebe (era a cada quadro, para sempre).
+- **Animação parada não entra** (`Tools/glb_motion.py`, usado por `ImportPowerAnims.py` e `ImportHorseAnims.py`):
+  o importador recusa e avisa o clipe em que nenhum osso se mexe. `python Tools/glb_motion.py <arquivo.glb>` lista o
+  quanto cada clipe varia. Os 452 clipes que já existem passam.
+- **Assobio do cavalo** (`VortexMountShots.cpp`): não era defeito do jogo. O cavalo anda 40 m a 6,8 m/s e chegava em
+  cima do limite do teste (6 s); qualquer atraso reprovava. O teste agora mede aos 7,5 s e registra a distância e a
+  velocidade a cada segundo. O limite de tempo do `RunMountShots.ps1` subiu de 300 para 480 s.
+- **JSON num lugar só** (`Source/VortexData/Public/Framework/VortexJson.h`): `VortexJson::Load("Data/...")` lê o
+  arquivo e avisa no log se ele falta ou está quebrado. Trocado em 34 lugares; os outros 10 leem de outra pasta ou têm
+  uma lista na raiz e ficaram como estavam. O `VortexWorld` passou a depender do `VortexData` (só para isso).
+- **Testes fora do GameMode**: os 31 `Begin...` foram para `VortexGameModeTests.cpp`; o `VortexGameMode.cpp` caiu de
+  3.554 para 623 linhas. Eles já ficavam fora do instalador (`#if !UE_BUILD_SHIPPING`): a auditoria errou nesse ponto.
+
+O que **não** foi feito, de propósito:
+
+- **Dungeons** (`VortexDungeons.cpp`): a auditoria sugeriu tirar por não rodar ainda. Ficou: é uma etapa planejada, e
+  as regras dela já estão na ficha do herói e na HUD.
+- **Estados soltos nos `.cpp`**: não foram levados para os cabeçalhos (recompila tudo e mexe em código sem teste em
+  movimento). Foram corrigidos os que davam defeito de verdade (a queda e o tutorial, acima). Os mapas por ator
+  (`TMap<TWeakObjectPtr...>`) não dão defeito: só guardam entradas mortas, pequenas.
+- **Apagar as cópias de `../Backups`** (8,9 GB): esperando o usuário confirmar.
+
+## PEDIDO DE 16/11 (madrugada): braço do arco, poção, pedra do golem, ombros na 1ª pessoa e cavalo. LER PRIMEIRO
+
+O usuário gostou do arco em primeira pessoa e pediu ajustes. Compila (16/11, 170 s); **ninguém viu nada disto no jogo**. Nada foi para o git nem para o itch.
+
+- **Braço do arco** (`VortexWeaponParts.cpp`, `TickBowString`): "meio fino e estica". Grossura de 4,6/4 para 7,5/7 cm e
+  comprimento fixo de 60 cm (ia da mão até um cotovelo fora da tela e esticava com a corda).
+- **Poção:**
+  - a animação era a do anão do Godot (`clips.json`: `Beber` vem de `anao_Beber.fbx`). Clipe novo `Vida_Beber` em
+    `Tools/Blender/life_anims_hand.py` (gerado com `MakePowerAnims.py --vida`, importado com `VORTEX_ANIMS=vida`); o
+    `VortexAnimInstance.cpp` usa ele e cai no `Beber` se faltar. Feito às cegas (ângulos calculados): conferir se a mão
+    chega à boca. Cópia dos clipes de antes em `Backups/vida_2026-11-16`;
+  - a garrafa herdava a escala da mão: agora tem 18 cm no humano (`TickPotion`, `VortexCharacter.cpp`);
+  - ao acabar de beber (não ao cancelar) sai o efeito `Pwheal` em volta do herói, verde na vida e azul na mana. O tamanho
+    do efeito é fixo (feito para os poderes): pode ficar grande para uma poção.
+- **Pedra do golem** (`VortexMonster.cpp`, `Lob`): não havia limite de distância e o voo dura o mesmo a qualquer distância,
+  então com o herói renascido na vila a pedra cruzava o mapa em 1 s. Agora o alvo morto ou a mais de 1,5 vez o alcance
+  do golpe não leva o arremesso. A pedra nunca foi guiada no voo: ela mira onde o herói vai estar; essa antecipação
+  (`miraAdiantada` em `Data/Creatures/ia_monstros.json`) foi de 0,75 para 0,4 e **vale para todos os arremessos e tiros
+  dos monstros**.
+- **Ombros na primeira pessoa (as outras armas):** durante o golpe o braço de cima afina para 40% e o antebraço desfaz a
+  escala (mão e arma iguais); parado ou olhando para baixo o corpo aparece inteiro. Número em
+  `Data/Characters/vida.json` (`primeira_pessoa.braco_no_golpe`; 1 = desligado). É uma tentativa: outras ideias ditas ao
+  usuário (braços próprios na câmera como os do arco; câmera avançar no golpe).
+- **Cavalo:**
+  - câmera solta montado (`UpdateAimFacing`): o cavalo só vira para onde anda, também na primeira pessoa;
+  - o domado apanha de heróis (do dono também) e morre (`CanHarm` em `VortexCombatComponent.cpp`; `Die`): o dono perde o
+    cavalo (`MountCoat` zerado) e precisa domar outro. Montado ele continua sem colisão (não apanha). Os monstros não
+    miram nele;
+  - ferido, o [E] dá uma fruta silvestre e cura 35% (`Feed`); inteiro ou sem fruta, o [E] monta. Sem animação de comer;
+  - sela de blocos e rédeas de corda com física (`VortexHorseTack.cpp`, novo): a sela segue o osso `Saddle`; as rédeas
+    vão da boca às mãos de quem monta ou ao arção. As medidas são em cm do modelo, na lista do começo do arquivo.
+- **Cavalo, segunda parte (16/11, o usuário: "sim, faça", com o Blender pelo MCP):**
+  - **o cavalo do jogo é o do Meshy** (`Data/Modelos/Cavalo/Horse_Skinned.glb`, ossos `Bone_000`..`Bone_035` e `Saddle`),
+    não o de blocos de `Data/GodotMonsters/Horse_*`. A cabeça é o `Bone_028`; a sela fica a 1,12 m; o lombo tem 52 cm de
+    largura na sela. Os arreios (`VortexHorseTack.cpp`) foram medidos nele;
+  - freada: clipe `Brake` (0,95 s; senta nas patas de trás, as da frente travam à frente), de
+    `Tools/Blender/MakeHorseAnims.py` -> `Data/Modelos/Cavalo/Horse_Anims.glb`, posto nas cinco pelagens por
+    `Tools/ImportHorseAnims.py` (só animações; o `ImportHorse.py` refaz as pastas e apaga o clipe: rodar de novo depois
+    dele). Toca quando o cavalo vinha a galope e para em menos de 0,5 s (`VortexMonsterAnimInstance.cpp`);
+  - subir e descer: clipes `Montar` e `Desmontar` (0,79 s) de `Tools/Blender/MakeMountAnims.py` ->
+    `Monta_humano.glb` + `monta.json`, importados com `VORTEX_ANIMS=monta` e `Tools/ImportPowerAnims.py`. O herói agora
+    vai até o cavalo ao montar (antes o cavalo pulava para debaixo dele) e a malha desliza do lado esquerdo até a sela
+    (`VortexMountSlide`, no `VortexCharacter.cpp`); ao descer, o contrário. Arquivo do Blender em
+    `modelando ainda/monta_2026-11-16.blend`;
+  - poeira do galope: a cada batida acima de 5,2 m/s, terra e pedrinhas (`VortexHitFx::Splash`) e uma nuvem `Dust` atrás
+    (`VortexMonster.cpp`, junto dos passos);
+  - **não feito:** o trote (o usuário não pediu; o cavalo tem `Idle`, `Walk`, `Run`, `Rear`, `Hit`, `Death`, `Eat` e agora
+    `Brake`).
+
+## PEDIDO DE 16/11 (madrugada de 17): cavalo (poeira, salto, subir e descer), poção na mão e defesa de perto. LER PRIMEIRO
+
+O usuário testou e pediu. Compila; os clipes foram conferidos dentro dos arquivos exportados e a sela e as rédeas por
+foto ([cavalo](Images/cavalo_arreios_2026-11-16.jpg)); **o resto ninguém viu no jogo**.
+
+- **Subir e descer não tocavam** ("fica sentado, levita até o chão e aparece em pé"): o `Montar` e o `Desmontar` chegaram
+  ao jogo parados. Duas causas no Blender 5: exportar com `ACTIONS` só anima o clipe ativo, e as faixas NLA que vêm do
+  arquivo importado ficam sem clipe e travam tudo no descanso. Os geradores (`MakeMountAnims.py`, `MakeHorseAnims.py`)
+  agora apagam as faixas herdadas, põem cada clipe na sua faixa (`push`) e exportam com `NLA_TRACKS`. **Conferir sempre no
+  .glb se o clipe mexe** (o script de conferência está nesta conversa: lê os acessores do canal de um osso).
+- **Poeira do cavalo não saía montado:** montado, o cavalo vai preso ao herói com o movimento desligado, e o teste "no
+  chão" nunca valia. Agora vale o chão do cavaleiro (`VortexMonster.cpp`, os passos). A cada batida: poeira (pequena ao
+  passo, maior e com terra e pedrinhas a galope) e as pegadas (`VortexHorseTack::Hoof`: as 60 últimas marcas ficam).
+- **Salto do cavalo:** clipe `Jump` (laço de 0,7 s; patas da frente recolhidas, as de trás esticadas) enquanto o cavaleiro
+  está no ar (`VortexMonsterAnimInstance.cpp`). Importado nas cinco pelagens com o `Brake`.
+- **Poção na mão:** a garrafa é posta no mundo a cada quadro (`TickPotion`): 18 cm, pelo meio da caixa do modelo, entre
+  a mão e a boca, inclinada. O clipe `Vida_Beber` foi refeito à mão no `MakeMountAnims.py` (o de camadas abria o braço
+  para o lado: a mão ficava a 40 cm do rosto). Não sei qual ponta do modelo é o gargalo: pode sair de cabeça para baixo.
+- **Defesa de perto:** `meleeTaken` 0,65 no `Data/Rpg/balance.json` (lido no `IncomingDamage`, `VortexHeroSheet.cpp`): com
+  espada, martelo ou adagas na mão o herói recebe 35% menos dano. Arco e cajado continuam em 1. O dano não mudou.
+- **`RunMountShots` reprovou em dois pontos** ("o cavalo veio com o assobio 40 m -> 21 m", "ficou onde chegou"). Não sei se
+  já reprovava antes de hoje: conferir. Domar, montar, galopar (1083 cm/s) e desmontar passaram.
+- **Auditoria do jogo** pedida pelo usuário: dita na conversa (prioridades: fechar o primeiro capítulo jogável, testar o
+  que está 🟡, instalador e git em dia, o painel `Docs/README.md` parado em 23/10).
+
+## PEDIDO DE 16/11 (noite): a queda vai para a saída do Estádio; pedestais e plantas novos. LER PRIMEIRO
+
+O usuário testou: "pulei a cutscene e não teve a queda; essas árvores no coliseu tão muito feias; melhore os pedestais das
+armas, um do lado do outro; faça eu spawnar nele normal e a saída eu caindo no mundo com essa animação, uma luz caindo lá de
+cima e acertando o chão na praça com a poeira subindo, bem épico". Compila; **conferido por fotos** do
+`Tools/RunStadiumShot.ps1` ([chegada](Images/chegada_praca_2026-11-16.jpg), [coliseu](Images/coliseu_2026-11-16.jpg));
+falta o usuário jogar. **Isto substitui a seção de baixo no que ela diz da chegada, das árvores e dos pedestais.**
+
+- **Chegada na praça** (`VortexArrival`, `VortexCharacter.cpp`): não toca mais quando a HQ fecha. O herói acorda no
+  Estádio normalmente; ao sair pelo portão dourado, a máquina dele percebe que saiu do Estádio, esconde o herói, espera
+  a tela "Preparando o mundo..." sair (`AVortexHudBase::IsLoadingScreen`) e o chão existir, e aí: uma câmera de cinema
+  (`ACameraActor`, num ponto com céu aberto perto do herói) olha para cima, um disco verde se abre a 260 m (o véu), a luz
+  desce com rastro em 3,2 s, bate na praça (coluna de luz, `Pwgroundslam`, `Pwshockwave`, `Pwruneseal`, três ondas de
+  poeira e oito em volta, pedrinhas, tremor da câmera), o herói aparece no `Pouso` e a câmera volta para ele (0,9 s).
+  - As peças de luz são componentes da câmera, não do herói (escondido o herói, elas sumiam junto: foi o primeiro erro).
+  - Só na máquina de quem joga; os controles ficam travados uns 5,3 s.
+  - Defeito que ficou: na praça a câmera acha lugar entre duas casas, e as paredes aparecem nas bordas do quadro do céu.
+  - O teste ganhou as fotos `estadio_chegada_1..7` (`VortexArrival::Age`, passo 9 do `BeginStadiumShot`).
+- **Pedestais:** hoje só existem 5 armas (3 na ala marcial, o arco e o cajado); o desenho serve para as 23 se voltarem.
+  Duas fileiras desencontradas (11,8 m e 14,6 m do centro, 7,5° entre um e o seguinte; a de trás sobre um tambor de
+  55 cm, `Raise`), pedestal redondo (base de basalto e travertino, fuste de mármore com anéis de bronze, capitel escuro,
+  disco de luz na cor da ala, tapete redondo com aro de bronze) e um pórtico de duas colunas atrás de cada grupo.
+- **Plantas:** saíram as bolas verdes. O bloco do fim do `Build` usa os props do mundo (`Content/Vortex/Props`) pelo
+  `Prop(modelo, lugar, altura)`: 8 árvores (`tree_willow`, `tree_oak`, `tree_cherry`...) na arquibancada, moitas e
+  samambaias, `rock_mossy`, trevo e flores na areia. O `grass_tall` fica cinza fora do terreno (falta o material de
+  vento): não usar. Também entraram o anel de pedra e quatro caminhos de laje, e tochas no muro (sem luz própria).
+- **Poço de seiva:** o brilho desceu de 2,2 para 0,7 (aditivo: estourava em branco) e a luz de 45 para 22 cd.
+- As duas primeiras fotos do teste (`arena`, `arquibancada`) saem borradas e azuladas: são os primeiros quadros.
+
+## PEDIDO DE 16/11 (depois): chegada ao Estádio e o coliseu como na história
+
+O usuário: "uma animação depois do trailer inicial, caindo no estádio da escolha de armas como diz a historinha, saindo
+do véu como uma luz e caindo como um pouso de super-herói; melhore o coliseu também como na historinha, mais bonito e
+detalhado". **Ninguém viu no jogo**; o pouso foi visto só no Blender.
+
+- **Chegada** (`VortexArrival`, no `VortexCharacter.cpp`; chamada quando a HQ fecha, em `VortexAimHUD.cpp`): o herói fica
+  escondido, uma luz verde-jade com rastro desce 140 m em 2,6 s (a câmera acompanha), bate na arena (`Pwgroundslam`,
+  `Pwruneseal` como o círculo que se apaga, poeira, tranco da câmera, som `boss_stomp`) e o herói aparece no clipe `Pouso`
+  (2,1 s: joelho e punho no chão, ergue a cabeça, levanta). Os controles ficam travados nesses 4,7 s.
+  - Só na máquina de quem joga, como a HQ: os amigos veem o herói parado.
+  - Só acontece quando a HQ abre sozinha (herói novo); rever a HQ pelo menu de pausa não repete a chegada.
+  - O clipe `Pouso` está no `Tools/Blender/MakeMountAnims.py` (junto de `Montar` e `Desmontar`). O punho fica a ~35 cm do
+    chão e o pé direito uns 14 cm no ar (o braço e a perna do boneco de blocos são curtos): ajustar se o usuário notar.
+- **Coliseu** (`VortexAwakeningStadium.cpp`, um bloco no fim do `Build`, só enfeite sem colisão): poço de seiva no centro
+  (borda de pedra irregular, seiva brilhando, raízes, veios de luz pelo chão e uma luz jade), hera no muro da arena e
+  no da galeria, musgo, moitas, blocos soltos e árvores novas na arquibancada, o alto do muro quebrado, entulho e tambores
+  de coluna ao pé do muro e tufos de capim na areia. O anel dos pedestais e a saída ficaram limpos. Para voltar ao de
+  antes, apagar o bloco. Por conferir: o FPS (são umas 1.500 peças a mais, em lotes) e se as plantas cobrem algum texto.
+- A HQ pede "à noite" e "em ruínas": a hora do dia e as paredes não foram mexidas (o coliseu continua inteiro, só gasto).
+
+## PEDIDO DE 14/11 (noite): as outras raças no corpo de blocos. LER PRIMEIRO
+
+O usuário: "crie agora as outras raças com base nas atuais, da melhor forma para fazer elas". Compila; o
+`RunHeroShots` passou e fotografou as 6 raças no jogo ([foto](Images/racas_blocos_2026-11-14.png)). **Falta o usuário
+jogar e olhar o menu de criação** (não foi fotografado). Nada foi para o git nem para o itch.
+
+- **Como:** o caminho do elfo, agora para todas. Anão, bárbaro, demônio e morto-vivo usam a malha, as animações, os
+  cabelos, as roupas e as armaduras do humano (`HeroModelFor` devolve sempre o `Hero_humano`). Cada raça muda a pele,
+  os olhos, um traço e o tamanho. As quatro estão abertas no menu (`IsRaceOpen`).
+- **Dados (sem compilar):** `Data/Looks/racas.json` (peles, traço, largura; lido por `VortexRaceLook`, no
+  `VortexLook.cpp`; a estrutura está no `VortexFaceStyles.h`). A altura continua em `meters` do `look_catalog.json`.
+- **Escolhas do herói:** `Look.Pieces["raca_pele"]` e `["raca_traco"]`; a malha do traço vai em `peca_orelha`. Os elfos
+  já criados (`elfo_pele`, `elfo_orelha`) continuam valendo.
+- **Por raça:**
+  - anão: 0,98 m e 22% mais largo; peles clara, corada e bronze; barba (longa, trançada, curta, bigode ou sem), na cor
+    do cabelo; no corpo feminino o padrão é sem barba;
+  - bárbaro: 2,05 m; peles bronze, clara e gelo; pintura de guerra azul, vermelha ou branca (rosto e braços);
+  - demônio: peles vermelha, roxa e carvão; chifres (curvos, curtos, longos, de carneiro) com a cauda; olhos âmbar,
+    brasa e veneno;
+  - morto-vivo: **é um esqueleto, não um zumbi** (pedido do usuário, 14/11 à noite). Peles osso, osso antigo e cinzas;
+    rosto de caveira (órbitas escuras com um ponto aceso azul, verde ou roxo, nariz e dentes: `"skull"` no
+    `MakeBlockFace.py`); corpo 20% mais fino (`largura` 0,8); cristais que brilham (ombro, coroa, costas ou sem).
+    Fotos: [rosto](Images/esqueleto_rosto_2026-11-14.png) e [corpo](Images/esqueleto_corpo_2026-11-14.png). O corpo
+    continua de blocos cheios (sem costelas à mostra) e o cabelo continua podendo ser escolhido.
+- **Pintura e barba (15/11, pedido do usuário: "pareciam blocos por cima do rosto, em cima dos olhos; a barba não
+  combina com o cabelo"):**
+  - a pintura de guerra do rosto agora é pintada na textura dos olhos, por baixo deles: `MakeBlockFace.py humano --estilo
+    <estilo> --pintura <azul|vermelha|branca> [--feminino]` gera `T_humano_Eyes_[F_]<estilo>_p<cor>` (48 texturas, os 8
+    estilos do humano). O `VortexCharacter.cpp` escolhe essa textura quando o traço é `P_pintura_<cor>`; a peça ficou só
+    com as faixas dos braços. [Foto](Images/barbaro_pintura_2026-11-15.png);
+  - a barba ficou toda abaixo da linha dos olhos (eles descem até 5,4 abaixo do meio da cabeça), com costeletas que sobem
+    até o cabelo; o tom `"cabelo"` do `MakeBlockOutfit.py` ficou mais claro (150 a 206), porque a barba saía 3 vezes mais
+    escura que o cabelo. **As franjas dos capuzes usam o mesmo tom: só mudam quando forem geradas de novo.**
+    [Foto](Images/anao_barba_2026-11-15.png).
+- **Dano, arma e primeira pessoa por raça (15/11, pedido do usuário: "o bárbaro dá 32 com a habilidade do martelo no
+  nível 1; as armas proporcionais ao tamanho; a primeira pessoa está bugada dependendo do tamanho"):**
+  - dano: a Força da raça entrava inteira no golpe (no nível 1: humano 4, bárbaro 10,8 = 2,7 vezes). Agora vale 1/4
+    (`effects.damage_per_strength` e o novo `damage_per_intelligence`, no `rpg.json` e no `Tools/BuildRpgData.py`) e os
+    multiplicadores ficaram: bárbaro 1,15, anão 1,1, demônio 1,05 e magia 1,1, elfo 0,9 / flecha 1,15 / magia 1,1. No
+    nível 1, com a arma inicial: bárbaro +44%, anão +24%, demônio +12%, morto-vivo -12%, elfo -27% (flecha +22%, magia
+    +38%). O martelo: humano 12, bárbaro 17. **Só calculado, não medido no jogo;**
+  - arma: `UVortexWeaponComponent::ApplyVisual` desfaz o esticado do corpo e deixa a arma por igual, na média da largura
+    e da altura da raça (anão 0,78, bárbaro 1,52, morto-vivo 0,91). O alcance do golpe não mudou;
+  - primeira pessoa (`TickFirstPerson`): os olhos avançam pela largura do corpo, e a folga à frente do peito não encolhe
+    nas raças pequenas (a câmera corta o que fica a menos de 10 cm). [Fotos](Images/racas_primeira_pessoa_2026-11-15.png).
+    **O defeito de verdade (achado depois, o usuário apontou o anão e o bárbaro):** desde 14/11 o `HeroModelFor` devolvia
+    o corpo inteiro quando pediam o corpo sem cabeça (`Hero_<raça>_FP`, que não existe no corpo de blocos). A cabeça
+    deixava de sumir na primeira pessoa e o próprio rosto enchia a tela no golpe, em todas as raças. Agora o pedido do
+    `_FP` devolve nulo e a cabeça some pela animação (`bHideHead`), como antes.
+- **Arco em primeira pessoa (15/11, o usuário achou feia e aprovou a lista de melhorias):** tudo em
+  `UVortexWeaponParts::TickBowString` (`VortexWeaponParts.cpp`), [fotos](Images/arco_primeira_pessoa_2026-11-15.png):
+  - descansando o arco fica baixo e deitado; puxando sobe para perto da mira, quase em pé;
+  - dois braços de bloco na pele do herói (`W_braco_1p`, de `Tools/Blender/MakeViewArm.py` e `Tools/ImportViewArm.py`: uma
+    caixa com o UV num pedaço de pele, que recebe o material do corpo): um segura o cabo, o outro puxa a corda;
+  - a corda puxa mais e ficou mais fina, a madeira "dobra" com a carga (escala), a flecha ficou mais grossa;
+  - ao soltar: tranco do arco para a frente e a corda vibra; a visão fecha até 9° com a carga (`TickFirstPerson`);
+  - conferir: `Tools/RunWeaponCloseUp.ps1 -Types arco_de_betula -BowFirstPerson`.
+  - **Não conferido em movimento** (só fotos): a mão da corda quase não aparece nas fotos; os braços não têm manga da
+    roupa; as posições são números no código (os `FVector` de `At`, `Elbow`), fáceis de ajustar.
+- **Carregamento (14/11 à noite):** as peles das raças (pasta `Elfo`) e os traços (`P_orelha_`, `P_chifre_`, `P_barba_`,
+  `P_pintura_`, `P_cristal_`) entraram no `UVortexCreatureSubsystem::Preload`, atrás da tela de carregamento. A fila ficou
+  com 809 pacotes. Não pôr a pasta `Pecas` inteira nem as `Armaduras`: testado, a fila foi a 2.228 pacotes e o
+  carregamento de ~60 s para 128 s no editor (a tela de carregamento desiste aos 25 s e a fila cheia trava o jogo).
+- **Gerar de novo:**
+  - peles: `python Tools/MakeElfSkins.py` (saem em `Data/Heroes/humano_Mixamo/Elfo/T_<raça>_<pele>[_F].png`; a pasta
+    ficou com o nome antigo);
+  - olhos: `python Tools/MakeBlockFace.py humano --estilo diabo_*|morto_* [--feminino]` e `Data/Looks/rostos.json`;
+  - traços: `Tools/Blender/piece_designs.py` (`HORNS`, `TAIL`, `BEARDS`, `CRYSTALS`, a pintura) e
+    `MakeBlockOutfit.py -- jogo P_chifre_*|P_barba_*|P_pintura_*|P_cristal_*`;
+  - importar: `ImportBlockFaces.py` e `VORTEX_PECAS=1 VORTEX_ONLY=chifre_curvos,barba,pintura,cristal... ImportBlockArmor.py`
+    (o filtro é o id sem o `P_` e sem o último pedaço). Para trocar uma malha, apagar antes o `.uasset` dela.
+- **Limites conhecidos:**
+  - o capacete esconde o traço (chifres, barba, cauda, cristais), como já escondia as orelhas do elfo;
+  - a cauda e os cristais das costas atravessam capas e saias;
+  - o corpo é o do humano esticado: a arma na mão estica junto (pouco no anão, bastante no bárbaro);
+  - os NPCs de outras raças continuam no boneco antigo (`VortexBlockBody.cpp`);
+  - os modelos antigos `Hero_anao`, `Hero_barbaro`... ficaram no Content, sem uso;
+  - o espírito continua para depois.
+- **Cópia do código de antes:** `Backups/racas_2026-11-14`.
+
+## PEDIDO DE 14/11 (à tarde): Monolith, efeitos Niagara novos dos poderes e reforço das animações. LER PRIMEIRO
+
+O usuário: "use o monolith, pode refazer de todas as espadas e arcos, as habilidades; pode abrir o blender mcp e o unreal
+separadamente em partes; baixe tudo, eu permito de terceiro". Compila; os efeitos foram vistos em foto (prévia do
+editor e uma tomada do catálogo dentro do jogo); ninguém viu um poder de arma de verdade com eles.
+
+- **Monolith (MCP da Unreal, github.com/tumourlove/monolith, v0.24.0, MIT):** o código-fonte está em `Plugins/Monolith`
+  (fora do git, pelo `.gitignore`), compilado junto com o projeto. O `Monolith.uplugin` foi enxugado para 6 módulos de
+  editor (Core, Niagara, Material, Editor, Index, Source); o original está em `Monolith.uplugin.completo`. Nada dele
+  entra no jogo empacotado (só módulos de editor).
+  - Ele sobe um servidor HTTP na porta 9316 quando o editor abre (visível na rede local: desligar em Editor Preferences
+    > Plugins > Monolith se estiver numa rede que não é de confiança).
+  - O Claude fala com ele direto por HTTP: `Tools/Fx/mono.py` (não precisa do MCP configurado nem do `monolith_proxy.exe`).
+  - Ao abrir, o editor indexa os assets (uns minutos, só na primeira vez).
+  - Se o editor for fechado à força, na próxima vez ele para numa janela "restaurar pacotes" e o Monolith não responde:
+    apagar `Saved/Autosaves/PackageRestoreData.json` antes de abrir.
+  - A foto de prévia (`preview_system`) sai preta com a câmera automática: usar câmera fixa (`Tools/Fx/sheet.py`).
+- **Efeitos novos dos poderes (22 sistemas Niagara, um por tipo):** `/Game/Vortex/Fx/Poderes/NS_Pw<tipo>` (dash,
+  groundslam, runeseal, shockwave, whirl, orbit, flurry, sweep, reap, overload, holyslam, tidewave, firewall, heal,
+  volley, pierce, burst3, arrowrain, explosive, fireball, Charge e Basic), feitos por `Tools/Fx/BuildPowerFx.py`
+  (as peças em `Tools/Fx/fx.py`: anel no chão, selo girando, corte, onda que avança, estouro de estrelas, jorro que
+  sobe, poeira, marca no chão). Refazer: abrir o editor e rodar `python BuildPowerFx.py [tipo ...]` em `Tools/Fx`.
+  - Fotos: `Docs/Images/poderes_niagara_jogo_2026-11-14.png` (no jogo, meio-dia, cor padrão) e `poderes_niagara_previa_2026-11-14.png`.
+  - Materiais: `M_FxParticula` (translúcido, cor cheia, parâmetro `Densidade` = 3: segura a cor de dia) e `M_FxParticulaAd` (aditivo: faíscas e clarões),
+    com uma instância por imagem em `Poderes/Mat`. As imagens são as 42 do Kenney (`/Game/Vortex/Combat/Sprites`).
+  - No jogo (`VortexMonsterFx.cpp`, `PowerSystemOf`): o tipo "Pw..." que tem sistema novo usa ele, preso ao herói e
+    virado para onde ele olha, com `User.Color` = a cor do elemento da arma; as camadas e as imagens antigas do tipo
+    ficam de reserva (valem se o sistema não existir). Os efeitos próprios de cada arma (`AVortexPowerFx`) continuam.
+  - Os tamanhos são fixos (feitos para um raio de uns 2,5 m): o raio do poder não escala o efeito novo.
+- **Animações dos 70 poderes (reforço, não refeitas à mão):** `Tools/Blender/MakePowerAnims.py` ganhou o `PUNCH`
+  (só nas espadas e nos arcos): giro do tronco, inclinação e avanço um pouco maiores, pulo 25% mais alto, a cabeça
+  fica no alvo (antes olhava para o chão ao inclinar) e o peito chega atrasado no giro. O tempo não mudou (o instante
+  do golpe continua casando). Geradas e importadas (71 de 71). `-- <raiz> --sem-reforco` volta ao de antes; cópia das
+  anteriores em `Backups/poderes_2026-11-14`. Ninguém viu o resultado.
+- **Carregamento:** o aquecimento dos efeitos na tela de carregamento subiu (65 sistemas; ~20 s na primeira vez depois
+  da mudança, quando os materiais novos compilam).
+
+## PEDIDO DE 14/11 (depois): poderes das espadas e dos arcos, e o agarrão do golem derruba
+
+O usuário: "confira todas as habilidades secundárias dos arcos todos e das espadas todas, veja por que trava às vezes
+usar e resolva, e melhore as animações e efeitos de cada um combinando mais, porque tem uns muito simples e feios; e
+faça quando o golem ataca você para longe você cair também". Compila; o jogo abre (conferido); ninguém viu os efeitos.
+
+- **Travada ao usar (três causas achadas no código, corrigidas; não medido):** a lista dos 335 efeitos
+  (`Data/Rpg/power_fx.json`, 197 KB) era lida no primeiro poder; `M_PowerSolid`, `M_PowerFlipbook` e as 9 folhas de
+  quadros (`T_FB_*`) eram carregados na hora; e os estouros de elemento (`VortexSwords::ElementBurst`) também. Tudo no
+  pré-carregamento (`VortexPowerFxWarm::Collect` em `VortexPowerFx.cpp`, chamado pelo `AVortexFxWarmup`). O
+  pré-carregamento foi de ~4 s para ~10 s na primeira abertura (compila os materiais; depois fica em cache).
+  Os clipes e o som do poder já eram carregados ao equipar a arma (`VortexSwords::Preload`).
+- **Efeitos:** os 70 poderes (35 espadas, 35 arcos) já tinham cada um o seu efeito montado (`power_fx.json`). Por cima,
+  entrou uma camada por TIPO de poder (20 tipos: `Pwdash`, `Pwgroundslam`, `Pwruneseal`, `Pwshockwave`, `Pwwhirl`,
+  `Pworbit`, `Pwflurry`, `Pwsweep`, `Pwreap`, `Pwoverload`, `Pwholyslam`, `Pwtidewave`, `Pwfirewall`, `Pwheal`, `Pwvolley`,
+  `Pwpierce`, `Pwburst3`, `Pwarrowrain`, `Pwexplosive`, `Pwfireball`, mais `PwCharge` e `PwBasic`), na cor do elemento da
+  arma (`VortexSwords::OnSpecialPose` -> `AVortexMonsterFx`, com `Custom` = a cor; as imagens com `bTint`).
+- **NÃO feito: as animações dos 70 poderes.** São geradas por `Tools/Blender/MakePowerAnims.py`; refazer uma a uma à mão
+  é trabalho de vários dias. Perguntar quais ele acha feias e refazer essas no Blender pelo MCP.
+- **O agarrão do golem derruba:** `VortexKnockdown::Down` (2,8 s) no arremesso (`VortexMonster.cpp`): voa caindo, bate
+  e levanta com os clipes `Dano_Queda`/`Dano_Levantar`.
+
+## PEDIDO DE 14/11 (depois): raio fluido, luz da vila à noite e moradores travando. LER PRIMEIRO
+
+Compila; **ninguém viu no jogo** (ele pediu para não gravar). Nada disto está no instalador do itch (o de 14/11, 03:53).
+
+- **Raio do Núcleo fluido, mais grosso e menos branco** (`VortexVolcanicBoss.cpp`): o chefe só virava a cada tique de
+  dano (5 por segundo); agora o giro é contínuo, 30 vezes por segundo (`DoBeam`), e o feixe alisa a direção
+  (`BeamLooks.Yaw`, para os convidados). Miolo de 0,22 para 0,6 e laranja; camadas de 210/460 para 480/1000 cm.
+- **Luz da vila à noite** (`VortexTown.cpp`): os números foram para `Data/Town/luzes.json` (não precisa compilar):
+  postes 38 -> 16 candelas, janelas 9 -> 4, vidro dos lampiões 2,5 -> 1,4. É a 4ª vez que isso muda (90, 30, 70, 38):
+  se ele achar fraco ou forte, ajustar no arquivo. As luzes de dentro das casas (8) e a exposição da câmera não mudaram.
+- **Moradores amontoados nas portas** (`VortexNpc.cpp`, `BeginPlay`): morador não bate mais em morador
+  (`IgnoreActorWhenMoving` dos dois lados); numa porta de 1 m dois em sentidos opostos se trancavam e os de trás
+  empilhavam. O herói e o cenário continuam sólidos. Causa não confirmada no jogo: é a leitura do código.
+- **Grade de caminhos refeita** (`Tools/Town/BuildNpcNav.py` -> `Data/Population/vila_nav.json`; a de antes em
+  `Backups/vila_nav_2026-11-14.json`): a porta das casas fechadas (`closed_door`, de 11/11) não entrava como parede e o
+  interior delas contava como chão. 42 casas, 8 construções, nenhuma porta isolada.
+
+## PEDIDO DE 14/11 (antes de ele dormir): painéis das opções e as 5 armas iniciais. LER PRIMEIRO
+
+O usuário: "melhore agora o Esc, as opções dentro do jogo que os painéis bugaram, e veja todas as armas iniciais, as 5,
+seus golpes, melhore eles (as adagas feias e simples, entre outras), como o efeito da espada, o de longo alcance, o
+corte, muito simples, parece um png voando reto; pode fazer, não me pergunte nada porque vou dormir".
+
+- **Instalador de 14/11 no itch:** gerado às 03:53 (1.468 MB, 12 min) e enviado ao canal `windows-instalador`
+  (build 2382360). Tem tudo até o Raio do Núcleo, o saque no chão e a arena sem outros monstros. **NÃO tem** o que
+  está abaixo (painéis e armas): refazer e enviar só quando ele pedir.
+- **Painéis das opções (corrigido e visto em foto, `Docs/Images/opcoes_abas_2026-11-14.png`):** com as 7 abas de 11/11 a
+  fila passava da moldura (a "Interface" ficava para fora, no menu e no Esc) e "Tela cheia sem borda" saía da caixa do
+  valor. `VortexOptionsPanel.cpp`: abas com letra 11 e folgas menores; caixa do valor de 190 para 232. O Esc usa o
+  mesmo painel; a foto conferida foi a do menu (`-VortexOptionsShot`). Se o defeito que ele viu era outro, perguntar.
+- **As 5 armas iniciais (compila; NINGUÉM VIU):** a cada golpe do combo, por cima do rastro de sempre, o efeito próprio
+  da arma (`VortexCharacter.cpp` chama `AVortexMonsterFx` com os nomes `Sw...`, definidos em `VortexMonsterFx.cpp`):
+  espada (`SwSword1..3`: corte de luz, o 3º com estrela e onda), adagas (`SwDagger1..3`: riscos de garra cruzados, o 3º
+  uma rajada), martelo (`SwHammer1/2` e `SwHammerSlam`), arco (`SwBow1/3`: o estalo da corda) e cajado (`SwStaff1/3`: o
+  círculo de runas). Não aparece em primeira pessoa. Os golpes em si (dano, tempo, animação) não mudaram.
+- **Corte de longo alcance da espada (compila; NINGUÉM VIU):** `VortexSlashWave.cpp`: a lua balança enquanto voa,
+  cresce mais, a cada 0,8 m rasga o chão (`WaveTrail`: risco de luz, poeira e faíscas) e estoura ao bater (`WaveHit`).
+
+## PEDIDO DE 14/11 (manhã, depois de ele jogar): raio, saque, monstros na arena e instalador. LER PRIMEIRO
+
+O usuário gostou da cratera e dos golpes novos do Azhûr ("gostei"). Pediu e foi feito (compila; ninguém viu no jogo):
+
+- **Raio do Núcleo refeito** (`UVortexVolcanicBoss::UpdateBeam`): o cilindro virou o miolo fino e branco; por fora, dois
+  pares de planos em cruz com `T_Fx_trace_01` no `M_FxSprite` (o meio laranja e o halo vermelho); acende em 0,18 s,
+  treme, e a cada 0,1 s solta `AzBeamHit` onde toca o chão (labareda, faíscas e rastro queimado). O estado fica em
+  `BeamLooks` (mapa estático no `.cpp`).
+- **Itens do chefe no céu:** a busca do chão em `AVortexItemDrop::Spawn` era por canal e batia na cápsula do próprio
+  bicho. Agora só objetos estáticos contam; sem nada embaixo, o terreno.
+- **Outros monstros na arena:** o sorteio de postos de 13/11 podia girar um posto para dentro da cratera. `InCaldera`
+  (66 m do centro) em `VortexCreatureSubsystem.cpp`: nenhum posto cai lá, nem ao renascer. E os monstros que não são
+  chefe (e os lobos) ignoram o herói que está a menos de 50 m do centro (`FindTarget`, `VortexWolf.cpp`).
+  Não há parede para bicho: um que venha andando ainda pode entrar pelas duas entradas.
+- **Instalador:** `Tools/PackageAlpha.ps1` e depois `Tools/PushItch.ps1 -Target eros-nicolino/the-world-geneses -Only
+  windows-instalador`, a pedido dele. Ver o resultado na conversa (o Linux continua na versão de 10/11).
+
+## PEDIDO DE 14/11 (manhã): cratera do Azhûr e habilidades dele do zero. LER PRIMEIRO
+
+O usuário: "habilidades do boss travando quando ele usa, e muito feias, não combina, crie do zero cada uma, mas primeiro
+faça o local do boss melhor, tá muito feio, umas paredes retangulares aleatórias, é para ser uma cratera de meteoro".
+
+- **Feito: a borda da cratera modelada** (compila; NINGUÉM VIU NO JOGO, ele pediu para não gravar). No Blender pelo MCP
+  (`modelando ainda/cratera_azhur_2026-11-14.blend`): anel de 43,3 m (pé de dentro) a ~60 m, paredes em três degraus com
+  blocos de falha, crista serrilhada (17 a 25 m), 170 pedregulhos, 70 lascas tombadas para fora do centro, 16 fendas
+  de lava (material `Lava`) e os dois vãos das entradas (norte e sul, como no código). Fotos do modelo em
+  `Docs/Images/cratera_modelo_*_2026-11-14.png`. Exportado em `Data/Modelos/Caldeira/*.fbx`, importado com
+  `Tools/ImportCaldeira.py` -> `/Game/Vortex/World/Caldeira/SM_CrateraBorda` (12,7 mil triângulos, sem colisão) e
+  `SM_CrateraLasca` (o cristal das agulhas de obsidiana, no lugar do cubo).
+- No `AVortexLavaArena::BuildCrater` (`VortexCaldera.cpp`): os 118 blocos de antes viram `CraterRimBlocks`, invisíveis,
+  só colisão; a peça assenta na altura média do chão a 43,3 m. Sem a peça, volta tudo como era. Por conferir jogando:
+  a altura da peça em relação ao chão, vãos onde o terreno é baixo, árvores atravessando por fora (a peça vai até 60 m
+  e a vegetação só some até 57 m) e o FPS.
+- Não feito da cratera: o chão continua plano (sem tigela) e os riscos de queimado no chão não foram postos.
+- **Feito: travada dos golpes do Azhûr (parte dela).** Os 8 efeitos dele que eram carregados do disco na hora do golpe
+  entram no pré-carregamento (`VortexHitFx.cpp`). Não medido. Os clipes de animação dele não foram vistos.
+- **Feito (14/11): as habilidades do Azhûr refeitas do zero, só o visual** (compila; NINGUÉM VIU; dano e tempos iguais).
+  - Cada golpe chama `MulticastFx` com um nome `Az...` (`VortexVolcanicBoss.cpp`); o `MulticastFx_Implementation` manda
+    para o `AVortexMonsterFx` (Scale = raio em cm, Rotation.Yaw = direção, Life = duração dos que usam o tempo do golpe).
+  - Em `VortexMonsterFx.cpp`: `LayersOf` (ondas) e `SpritesOf` (imagens) de `AzHook`, `AzHammer`, `AzStomp`, `AzSweep`,
+    `AzCombo`, `AzCharge`, `AzBurst`, `AzFissure`, `AzLaunch`, `AzMeteor`, `AzPillar`, `AzShed`, `AzUltimate`. Paleta: magma
+    (laranja, brasa, queimado) e o ciano das runas dele. `IsTimed`: `AzCharge`, `AzWarn` e `AzWarnRing` duram o que quem
+    chama mandar (`Spawn` com `InDelay` negativo) e as imagens usam frações dessa duração.
+  - Avisos: `Mark` solta `AzWarn`/`AzWarnRing` por cima da marca antiga (só nas de raio >= 300 cm; as fendas não).
+  - Mais 23 imagens do Kenney importadas (41 no total: chamas, fogo, queimado, fumaça, runas).
+  - Ficaram como eram: o feixe do Raio do Núcleo (`MulticastBeam`), a pedra do meteoro em voo (`MulticastMeteor`), as
+    poças de lava, a morte e o despertar. Os efeitos Niagara antigos (`NS_Stone_Impact` etc.) não são mais chamados
+    pelos golpes, mas continuam no projeto e no pré-carregamento.
+  - Por conferir jogando: tamanhos (são vezes o raio do golpe), se as imagens no chão ficam viradas certo, se o aviso
+    de fogo briga com a marca antiga, e o FPS no Despertar do Núcleo (60 fendas x 3 imagens).
+
+## PEDIDOS DE 14/11 (madrugada), depois de o usuário jogar. LER PRIMEIRO
+
+Ele gostou dos efeitos novos ("gostei muito de como tá"). Pediu seis coisas; quatro estão feitas e compiladas, **sem
+ninguém ter visto jogando** (ele pediu para não gravar clipes: compilar e deixar ele testar).
+
+- **Feito: queimadura e veneno infinitos.** Cada tique do dano por tempo é um golpe do herói, e o golpe com arma de fogo
+  ou veneno (ou a armadura) punha o dano por tempo de novo. Guarda `GVortexInDotTick` em `VortexCombatComponent.cpp`.
+- **Feito: a pedra do golem.** Com o herói no ar (arremessado pelo agarrão) o alvo era um ponto no meio do ar; agora é
+  sempre o chão (`VortexMonster.cpp`, `Lob`). A pedra grande derruba: `VortexKnockdown` em `VortexLobbed.cpp` (atordoa
+  1,5 s, empurra e toca o clipe `Death` do herói até acabar; `VortexAnimInstance.cpp`). Atalho: só no servidor.
+- **Feito: épico fácil demais.** A chance do saque é por peça e são 12 peças por raridade: o golem comum soltava épico em
+  18% das mortes e lendário em 10%. Agora o golem dá ~3,6% raro, 1,2% épico, 0,4% lendário; bandido e goblin ~2,4% raro;
+  o Colosso 12% épico e 6% lendário por sorteio (sorteia 3). Mudado em `Data/Rpg/arsenal.json` e `armors.json` e nos
+  geradores (`Tools/Armor/BuildArmors.py`, `Tools/BuildArsenal.py`). Os baús não foram mexidos (o raro dá 30% épico).
+- **Feito: travada no primeiro golpe.** O `AVortexFxWarmup` (`VortexHitFx.cpp`) agora solta na tela de carregamento todas
+  as partículas e imagens dos efeitos dos monstros (`VortexMonsterFxWarm::Collect`, em `VortexMonsterFx.cpp`); o log
+  diz `VORTEX_FX_WARMUP monstros: N partículas, N imagens`. Não medi se a travada sumiu; os clipes de animação novos
+  do golem ainda carregam na hora.
+- **Feito (14/11): queda, levantar e reações de dano do herói**, no Blender pelo MCP
+  (`modelando ainda/heroi_dano_2026-11-14.blend` -> `Data/Heroes/humano_Mixamo/Dano_humano.glb` + `dano.json`; importar com
+  `VORTEX_ANIMS=dano` e `Tools/ImportPowerAnims.py`): `Dano_Queda` (0,97 s), `Dano_Levantar` (0,87 s), `Dano_Frente`,
+  `Dano_Esq`, `Dano_Dir`, `Dano_Barriga`, `Dano_Forte`. No `VortexAnimInstance.cpp`: o derrubado toca a queda e, no fim do
+  tempo, o levantar (2,2 s ao todo, `VortexLobbed.cpp`); cada golpe sorteia uma reação e o que tira mais de 15% da vida
+  usa a `Dano_Forte`. As reações tocam só no tronco (como o `Hit` antigo). Ninguém viu no jogo.
+- **Feito (14/11): golpes do lobo refeitos à mão** (`modelando ainda/lobo_golpes_2026-11-14.blend`, copiado para
+  `Data/Modelos/Lobo/Lobo_Ametista.blend`; o de antes em `Backups/lobo_2026-11-14`; `Tools/ImportAmethystWolf.py`):
+  `Attack` (recolhe, bota em 0,3 s e sacode a presa), `Bite2`, `Pounce` (agacha, estica no ar, abocanha em 0,55 s) e
+  `Howl` (senta e ergue o focinho). O lobo não tem osso de mandíbula: a boca não abre. As patas não têm IK e podem
+  escorregar ou sair do chão em alguns quadros. Ninguém viu no jogo.
+- **Feito (14/11): efeitos novos nos golpes do Azhûr** (supus que é ele o "boss inicial"; o usuário não confirmou):
+  `UVortexVolcanicBoss::MulticastFx` solta, por cima da partícula de cada golpe, `BossSlam` (pancada), `BossBlast`
+  (explosão do núcleo) e `BossPillar` (pilar de lava), definidos em `VortexMonsterFx.cpp`. O usuário confirmou que o
+  "boss inicial" é o Azhûr.
+- **Feito (14/11): ataques do Azhûr mais movimentados, só nos dados** (`Data/Creatures/azhur.json`; os de antes em
+  `Backups/azhur_2026-11-14`): fase 1 com menos pausa (gap 0,9 -> 0,75) e 15% de chance de emendar; 2 meteoros (4 na
+  fase 2); 8 colunas na erupção (12); a ruptura deixa lava 3 s na fase 1; o raio do núcleo sai mais (peso 1 -> 2).
+  Nenhum golpe novo foi criado e o dano não mudou. Ninguém lutou com ele depois disso.
+- Cuidado no Blender pelo MCP: `save_as_mainfile` por cima de um `.blend` de onde vieram os objetos (`libraries.load`)
+  dá erro; salvar com outro nome e copiar depois de fechar.
+
+## EM ANDAMENTO (13/11, tarde): golpes, animações e efeitos dos monstros. LER PRIMEIRO
+
+Compilado e gravado em clipes, mas **incompleto e com falhas conhecidas** (lista abaixo). Nada disto está no instalador
+do itch nem no GitHub. Nenhum processo da Unreal ou do Blender aberto.
+
+**O pedido do usuário (13/11):**
+- Golpes poucos ou feios, efeitos simples e repetidos. **Regra: cada golpe com um efeito único, nunca o mesmo efeito em
+  duas coisas** (ele reclamou do "efeito dourado" em tudo).
+- Depois ele pediu o estilo do Roblox: efeitos bonitos ou realistas, com partículas e brilho, "não precisa ser tudo
+  quadrado".
+- Pode usar os apps do ArtCraft, o MCP do Blender e o MCP da Unreal (os MCP só com o app aberto; um app pesado por vez).
+- Por bicho:
+  - **Lobo:** uivo que atordoa quem tem nível menor (igual ou maior não sofre nada); mordida com uma bocarra grande na
+    tela, como o "Bite" dos Pokémon clássicos.
+  - **Slime:** cabeçadas (o esticar estava bugado) e cuspir líquido.
+  - **Morcego:** rasante, tornado e sonar.
+  - **Cogumelo:** veneno de verdade na nuvem e no cuspe; golpe novo de espinhos que saem do chão.
+  - **Golem:** batida com as duas mãos com impacto sísmico; pegar uma pedra grande do chão (com animação) e arremessar;
+    soco normal; agarrar o herói que fica muito tempo perto e jogar longe.
+
+**O que foi escrito (tudo compila):**
+- `VortexMonsterSpecies.h`: campos novos no golpe (`Status`/`StatusTime`, `Slow`/`SlowTime`, `Hurl`, `CloseFor`,
+  `LobScale`, `bLobTint`).
+- `VortexMonsterSpecies.cpp`:
+  - Gota (todas): `Headbutt` (pulinho curto, no lugar do `Tackle` que esticava) e `Spit` na cor dela; a peçonhenta envenena.
+  - Cogumelo: `Spores`, `Burst` e `Spit` envenenam; golpe novo `Thorns` (três fileiras de espinhos até o herói).
+  - Golem: `Grab` (herói colado há 3 s, arremessa a 1500 cm/s), `Quake` (era `Slam`), `Punch`, `Boulder` (pedra 2,6x).
+  - Morcego: `Sonar` novo (quem é pego anda a 45% por 2,5 s); `Dive`, `Screech` (o tornado) e `Nip` continuam.
+- `VortexMonster.cpp`: os efeitos por golpe em `StartMove`; veneno, lentidão e arremesso em `ResolveMove`; o agarrão só
+  entra na escolha com o herói colado (`CloseSince`); o multicast passa a direção e a cor da espécie ao efeito.
+- `VortexMonsterFx.h/.cpp`: efeitos novos (`Howl`, `Bite`, `Headbutt`, `GelPool`, `GelDrip`, `Swoop`, `Sonar`, `Spikes`,
+  `Quake`, `Rubble`, `Hurl`), cones (presas e espinhos), rastro de quem o efeito segue e uma camada de partículas
+  Niagara por efeito (`SparkOf`), sempre presa ao efeito para sumir com ele.
+- `VortexLobbed.h/.cpp`: tamanho, cor e veneno do que é arremessado. `VortexTelegraph.h/.cpp`: a marca leva o veneno.
+- `VortexWolf.cpp`: o uivo atordoa 1,6 s quem está a até 9 m com nível menor que o do lobo (aviso na tela); efeitos
+  `Howl` e `Bite` disparados em `UpdateSounds`, na troca de estado.
+- Herói: atordoado quase não anda e não golpeia; tonto anda devagar (`VortexCharacterMovementComponent.cpp`,
+  `BeginPrimaryAttack`). **Atalho:** o estado vive só no servidor; convidados sentem por correção de posição.
+- `VortexTelegraph.cpp`: **a origem do "efeito dourado"**: o lobo tem classe própria e caía no "não é monstro", então
+  todo bote dele soltava a onda dourada dos chefes. Corrigido (some nos clipes novos).
+- Modo filme: `Late` (os comandos rodam quando a gravação começa) e `Free` (o herói não fica travado).
+  Conferência: `Data/Film/monstros.json`, com `RecordFilm.ps1 -Shots monstros -Extra '-VortexQuietWorld -VortexNoWildlife'`.
+  Os clipes ficam em `Saved/Film/clips/mon_*.mp4`.
+
+**Visto funcionando nos clipes:** os espinhos do cogumelo, o rastro do rasante, o tornado, a batida do golem com as
+pedras subindo antes do arremesso, a onda dourada sumiu.
+
+**FALHAS CONHECIDAS (começar por aqui):**
+1. **Efeitos do lobo (13/11, noite): uivo e bocarra vistos em clipe; falta o usuário jogar.**
+   - O uivo nascia, mas eram cubinhos de 15 cm soltos. Agora cada pedaço estica até o vizinho e o anel fecha
+     (`VortexMonsterFx.cpp`, `Howl` em `Place`). Visto no clipe: `Docs/Images/lobo_uivo_2026-11-13.png`. Os anéis
+     sobem até a altura do rosto do herói; falta o usuário dizer se gostou.
+   - A bocarra nunca foi vista porque **o lobo sozinho nunca morde**: ele ronda a 320-430 cm e ataca assim que a
+     espera acaba, e de 300 a 520 cm o golpe é sempre o bote (`Think`, perto de `StartAttack`). Nem com o herói
+     andando até ele (tomada `mon_lobo_mordida`, `Walk` + `Track` hero): só botes no log (`VORTEX_WOLF_ATTACK state=6`).
+   - O usuário escolheu "bocarra no bote": no estado `Pounce`, `UpdateSounds` solta o `Bite` em cima da presa, com .23 s de
+     espera para fechar no impacto. Visto no clipe: `Docs/Images/lobo_bocarra_2026-11-13.png` (presas em cima e embaixo
+     do herói e o sangue). Só visto de lado; nos convidados nasce 3,5 m à frente do lobo (o alvo não é replicado).
+   - `RecordFilm.ps1 -Only` com mais de uma tomada: passar entre aspas (`-Only 'a,b'`), senão grava vazio.
+2. **Agarrão do golem (13/11, noite): corrigido e visto em clipe** (`Docs/Images/golem_agarrao_2026-11-13.png`; falta o
+   usuário jogar). No sorteio comum ele quase nunca saía: agora o golpe com `CloseFor` passa na frente quando cabe
+   (peso 1000 em `Think`) e arremessa pela distância, não pelo acerto (`ResolveMove`). No log saiu duas vezes em 20 s
+   (a recarga é de 10 s) e o herói foi parar a 7,8 m. Ainda usa o clipe `Throw` (falta a animação própria, item 5).
+   Log novo: `VORTEX_MOVE espécie golpe dist=` a cada golpe de monstro (serve para conferir o item 3).
+   **Fadas (13/11, pedido "tamanho de boneca, tipo Funko Pop"):** `escala` 2,0 -> 3,5 no `fadas.json` (~32 cm). Não visto no jogo.
+3. **Conferidos em 13/11, noite (clipes e log; falta o usuário jogar):** o uivo atordoa ("Atordoado pelo uivo!"), o sonar
+   deixa tonto, o cuspe do cogumelo envenena, a gota cospe na cor dela (`Docs/Images/gota_cuspe_2026-11-13.png`), o sonar
+   solta os arcos (`Docs/Images/morcego_sonar_2026-11-13.png`), a pedra grande do golem sai. A cabeçada acontece (23 vezes
+   no log), mas a estrela dela mal se vê no meio das gotas.
+   - **No modo deus nada disso entra:** o dano zerado faz `ApplyHit` devolver falso e o golpe conta como erro (por isso o
+     lobo só dava `MISS`). As tomadas de gota, morcego e cogumelo agora usam `Mortal`.
+   - Avisos do herói vão para o log como `VORTEX_NOTICE` (`UVortexHeroSheet::Notice`).
+   - A gota colada no herói nunca cospe (o cuspe é de 3,8 a 9 m): só cospe chegando. Com 4 gotas, 1 cuspiu.
+   - Não sei o que são as nuvens roxas em volta das gotas no clipe (parece o efeito de nascer pelo comando). Na tomada
+     aparecem também o texto "[E] pegar" e os itens caídos das tomadas anteriores.
+4. **Partículas Niagara escolhidas às cegas** (não vi cada uma tocando): podem não combinar. Estão em `SparkOf`.
+5. **Animações novas do golem (13/11, noite): feitas e vistas em clipe; falta o usuário jogar.**
+   - `Pickup` (abaixa, mãos no chão, ergue acima da cabeça e arremessa no quadro 26 = 1,05 s) e `Grab` (abre os braços,
+     fecha no herói, ergue e joga no quadro 17 = 0,7 s), a 24 qps, no mesmo esqueleto. Feitas no Blender pelo MCP:
+     `modelando ainda/golem_animacoes_2026-11-13.blend` (poses por giros no espaço do esqueleto, pés plantados pelo quadril).
+   - Exportadas em `Data/Modelos/Golem_Musgoso/Golem_Skinned.glb` (9 clipes; o de antes em `Backups/golem_2026-11-13`) e
+     importadas com `VORTEX_SPECIES=Golem` + `Tools/ImportMeshyMonsters.py`. `VortexMonsterSpecies.cpp`: `Grab` usa o clipe
+     `Grab` e `Boulder` o `Pickup`.
+   - As pedrinhas do `Rubble` agora se juntam nas mãos no chão e sobem com elas (`Place`, tempos .70 a .90 s medidos no
+     clipe gravado). Ainda sobem um instante antes dos braços e somem antes de a rocha aparecer.
+   - Falhas: o herói não fica preso nas mãos no agarrão (sai voando do lugar); `Grab`, `Boulder` e
+     `Quake` não têm som em `PlayMoveSound`.
+   - Cuidado: `read_factory_settings` pelo MCP do Blender derruba o próprio MCP (precisa reabrir o Blender).
+   - Os clipes leves para mandar ao usuário ficam em `Saved/Film/clips/enviar` (720p).
+6. Um morcego aparece em todas as gravações mesmo com `-VortexQuietWorld` (nasce por outro caminho; não investigado).
+7. **Efeitos mais bonitos (13/11, noite): piloto do lobo feito e gravado; ESPERA o usuário aprovar o estilo.**
+   - Plano aprovado: catálogo -> piloto no lobo -> o usuário aprova pelo vídeo -> os outros bichos, um por vez (gota,
+     morcego, cogumelo, golem), sem repetir efeito entre golpes. Ele liberou baixar pacotes de efeitos e usar o
+     EffectCraft se faltar algo; até aqui não precisou.
+   - **Como ficou o código** (`VortexMonsterFx.cpp`): `LayersOf(Kind)` dá as camadas de partículas Niagara do golpe
+     (caminho, instante, escala, altura); o `Tick` solta cada uma quando a idade passa pelo instante. Quem tem camadas
+     não usa o `SparkOf`. Para um golpe novo: uma lista `static const FLayer X[]` e uma linha no fim de `LayersOf`.
+   - Lobo: `Howl` = 3 ondas lilás/roxas rente ao chão (-75 cm), a distorção do ar e a `NS_Sparkling_Moon` em cima; as
+     barras de cubos saíram. `Bite` = no fechar (.3 s) a onda vermelha de pé, `NS_Anime_Star_03` e a distorção; as
+     presas continuam cones brancos sem brilho (o `M_SolidColor` não emite luz).
+     Fotos: `Docs/Images/lobo_uivo_estilo_novo_2026-11-13.png`; clipe em `Saved/Film/clips/enviar/mon_lobo.mp4`.
+   - **Os outros 13 efeitos também ganharam camadas** (13/11, noite; compilado e gravado): cada golpe com a onda da cor
+     dele mais a partícula própria; `GROUND` (-9999) na altura = rente ao chão. O usuário disse "pode continuar e
+     melhorar" e pediu para baixar mais efeitos.
+   - **Problema achado: de dia as ondas quase somem.** São aditivas (só somam luz) e no chão claro do deserto ao meio-dia
+     ficam brancas e fracas; à noite (o lobo) ficam ótimas. Saída planejada: sprites com transparência de verdade (não
+     aditiva), que seguram a cor de dia.
+   - **Imagens do Kenney Particle Pack no jogo (14/11, madrugada; compila; NINGUÉM VIU AINDA).** O pacote (CC0, 80 PNG) está
+     em `modelando ainda/efeitos_baixados/kenney_particle_pack`; 18 imagens foram para `Data/Fx/Sprites` e, com
+     `Tools/ImportFxSprites.py` (commandlet), para `/Game/Vortex/Combat/Sprites/T_Fx_<nome>`, junto do material
+     `M_FxSprite` (translúcido, sem luz; `Tex`, `Color`, `Strength`). São brancas no fundo preto: a forma sai do vermelho.
+   - No código: `SpritesOf(Kind)` em `VortexMonsterFx.cpp` dá as imagens de cada golpe (instante, duração, tamanho em
+     vezes o diâmetro, cor, modo: 0 no chão, 1 de frente para a câmera, 2 de pé na direção do golpe); o `Tick` cria os
+     planos e anima. Os 15 efeitos têm imagens (a mordida: clarão, arranhão vermelho, corte e estrela).
+     Por conferir jogando: se os planos aparecem virados certo, o tamanho e se as cores seguram de dia.
+   - **O usuário pediu para NÃO gravar clipes para conferir (demora): compilar e deixar ele testar.**
+   - Outros pacotes CC0 vistos e não baixados: PVFX Foundry e PVFX Foundry Thirteen (itch.io, folhas de animação de
+     impactos e cortes; o itch só baixa clicando na página).
+   - Nos clipes de teste aparecem itens caídos, "[E] pegar" e fachos de subir de nível das tomadas anteriores, e uma
+     fumaça roxa onde o bicho nasce pelo comando: é do teste, não dos golpes.
+   - Catálogo: `Vortex.Fx pedaço1,pedaço2` (`/fx` no chat) põe as partículas em grade, 6 por fileira; a ordem sai no
+     log (`VORTEX_FX n nome`). Tomadas em `Data/Film/fx_catalogo.json`, clipes `Saved/Film/clips/fx_*.mp4`. Defeito: as
+     partículas em laço da tomada anterior continuam na seguinte e se misturam.
+   - Material bom visto no catálogo: ondas de choque em 9 cores (deitadas, de pé e de distorção), `Free_Spells`
+     (explosão e onda laranja), `NS_Impact_Frame_Advanced_*` (clarão que toma a tela inteira: usar com cuidado),
+     `NS_Sparkling_*` e `NS_Anime_Star_*`.
+
+**O que já levantei no código (para não reler tudo):**
+- Os golpes ficam em `VortexMonsterSpecies.cpp`, um `FVortexMonsterMove` por golpe; tipos em `EVortexMoveKind`.
+- O lobo tem classe própria (`VortexWolf.cpp`), fora dessa lista; os estados estão em `EVortexWolfState`.
+- O aviso no chão é o `AVortexTelegraph`; o arremesso é o `AVortexLobbed`.
+- A IA comum lê `Data/Creatures/ia_monstros.json`; o Azhûr tem os golpes em `Data/Creatures/azhur.json`.
+- Partículas disponíveis e ainda sem uso: `NS_Anime_Star_03`, `NS_Impact_Frame_02_Static`, `NS_Sparkling_Star`,
+  `NS_Sparkling_Skull`, `NS_feather`, `NS_Basic_1` a `NS_Basic_15`. As do Azhûr (`NS_Stone_Impact`, `NS_Rock_Debris`)
+  não usar: são do chefe.
+
+## ONDE PARAMOS (13/11, madrugada): ler primeiro
+
+- **Instalador do Windows refeito em 13/11** com tudo de 11/11 a 13/11 (`Tools/PackageAlpha.ps1`, `Build/Installer`) e
+  enviado ao itch, canal `windows-instalador` (`Tools/PushItch.ps1 -Only windows-instalador`). O Linux continua na versão de 10/11.
+- **Feito em 12 e 13/11, além do que está em "Antes disso":**
+  1. **GitHub:** repositório privado `ErosNicolino/the-world-genese` (só código, dados e textos) com README, galeria e
+     licença proprietária. O perfil do GitHub ganhou o card do jogo. O trailer abre no YouTube (não listado):
+     https://youtu.be/VxLjuB3mnEc (o GitHub não toca o .mp4 do repositório).
+  2. **Trailer de 1:14:** montado no FilmCraft e cortado no ritmo de "The Hero's Journey" (Suno). Ver "Vídeo do jogo" abaixo.
+  3. **Modo filme:** tomadas em `Data/Film/*.json`, `Tools/RecordFilm.ps1` e `Tools/RecordGameplay.ps1`, câmeras novas e
+     mundo quieto (`-VortexQuietWorld`).
+  4. **No jogo de verdade:** o Bram, quando martela, segura o martelo e solta faíscas na bigorna (`VortexNpc.cpp`).
+     Ninguém viu jogando ainda.
+- **Camada de vida do herói (13/11; compilado e gravado em clipes; falta o usuário jogar; NÃO está no instalador de 13/11):**
+  - Soma por cima de qualquer clipe, para todas as armas (`VortexAnimInstance.cpp`, `TickLife` e `ApplyLife`):
+    - respiração;
+    - troca de peso;
+    - a cabeça olha para o inimigo ou a pessoa mais perto, ou dá olhadas;
+    - postura de alerta com inimigo perto;
+    - passo à frente no golpe (só na tela) e recuo no tiro.
+  - Homem, mulher e elfo usam o mesmo corpo e os mesmos clipes; cada um tem um jeito próprio. Os moradores respiram e olham para o herói.
+  - O herói desta máquina agora recua um pouco ao apanhar (`VortexHitFx.cpp`).
+  - Todos os números ficam em `Data/Characters/vida.json` (não precisa compilar).
+  - Conferência: `Data/Film/anim_teste.json` (21 clipes: parado, dano com `Mortal`, 13 armas), gravado com
+    `RecordFilm.ps1 -Shots anim_teste -Extra '-VortexQuietWorld -VortexNoWildlife'`.
+  - **Clipes novos (13/11, importados e gravados; falta o usuário jogar):** `Tools/Blender/life_anims_hand.py` define e
+    `MakePowerAnims.py --vida` gera `Vida_humano.glb`; na Unreal, `VORTEX_ANIMS=vida` com `Tools/ImportPowerAnims.py`
+    (rodar pelo Bash com barras normais: pelo PowerShell o caminho "4 - Projetos" é cortado).
+    - `Idle_F` (mulher) e `Idle_E` (elfo): o parado de cada corpo, quando a arma não tem pose própria.
+    - `Walk_F`: o andar da mulher, com o quadril.
+    - `Vida_Olhar`, `Vida_Ombros`, `Vida_Arma`: gestos sorteados a cada 8 a 14 s parado, junto com o espreguiçar.
+    - A mão na cintura da mulher não saiu (as camadas do gerador não abrem o cotovelo para o lado).
+    - Só o gesto `Vida_Arma` foi visto em clipe; os outros dois não foram conferidos.
+- **Postos do vale sorteados a cada partida (13/11; compilado e conferido no log; falta o usuário jogar):**
+  - Pedido do usuário: "quem entra e sai da vila sempre vai saber os spawns".
+  - Em `LoadFixed`, cada posto fixo (menos o chefe) gira em volta da vila por um ângulo sorteado pelo `SpawnSalt` da
+    partida. A distância do centro fica a mesma, então os fracos continuam perto dos portões.
+  - O bicho vencido volta a 15-60 m de onde nasceu (eram 6-20 m): `respawn_move_cm` em `spawn_tuning.json`. Vale para
+    o mundo todo. `WanderSpotFree` agora exige 140 m do centro da vila (eram 90).
+  - Nenhuma missão usa posto fixo (só o `VortexCreatureSubsystem` lê `creature_posts.json`).
+  - Os testes (linha de comando com Shot, Bench, Smoke ou CloseUp) ficam com `SpawnSalt` 0 e não sorteiam.
+    `-VortexSpawnSalt=N` força um sorteio num teste.
+  - Conferido com `-VortexSpawnSalt=111` e `=222`: só 1 posto (o chefe) ficou no mesmo lugar nos dois; 3 pares a
+    menos de 30 m em cada sorteio (eram 8 a 10).
+- **Bichos amontoados perto da vila (13/11; compilado e conferido no mapa; falta o usuário jogar):**
+  - Causa: os ~25 postos fixos do Godot que caíam dentro da vila (com os 45 m de folga dos portões) eram todos empurrados
+    para a mesma faixa de 130 a 190 m (`UVortexCreatureSubsystem::LoadFixed`).
+  - Agora cada um vai para um anel sorteado entre 145 e 260 m e fica a 45 m dos outros (`fixed_min_gap_cm` em
+    `Data/Population/spawn_tuning.json`); sem lugar, não nasce.
+  - Conferência: o log mostra `VORTEX_POSTS` e, fora do Shipping, uma linha `VORTEX_POST x y espécie` por posto.
+    Mapa em `Docs/Images/postos_vale_2026-11-13.png`.
+- **Pendências do trailer:**
+  - as fadas não aparecem de perto na câmera;
+  - a forja nova ficou escura (o trailer usa a antiga);
+  - a cena do herói na rua à noite raspa na parede.
+- **Próximo, quando o usuário pedir:**
+  - monstros novos próprios de cada região;
+  - o que ele achar jogando o instalador novo.
+
+### Antes disso (12/11, manhã)
+
 
 - **Tudo compilado e no Content, nada pendente no meio.** Nenhum processo da Unreal ou do Blender aberto.
 - **Feito de 11/11 a 12/11, sem o usuário ter jogado ainda** (as seções abaixo, de cima para baixo):
@@ -16,8 +640,7 @@ abaixo fica em [02_Combate/PERSONAGEM_BASE_BLOCOS.md](02_Combate/PERSONAGEM_BASE
   6. os bugs da rodada da noite (quinas do chão, grama, placas, brilho de metal, nível dos monstros nos portões,
      plantas nas saídas, volume inicial);
   7. FPS, casas fechadas (só as lojas abrem), ícones das lojas no mapa e as opções com o "Aplicar".
-- **Instalador:** NÃO refeito, a pedido do usuário ("vamos arrumando umas coisas"). O de `Build/Installer` é das 19:52
-  de 11/11 e não tem nada do que veio depois. Gerar com `Tools/PackageAlpha.ps1` só quando ele pedir. Nada enviado ao itch.
+- **Instalador:** refeito e enviado ao itch em 13/11 (ver acima).
 - **Próximo, quando o usuário pedir:**
   - monstros novos próprios de cada região (ele disse "vamos fazer depois");
   - o que ele achar jogando.
@@ -381,7 +1004,7 @@ Relatados com prints: o Bram martelando o ar; o lampião rente ao chão e virado
 
 ## Próximo: as raças que faltam no corpo de blocos (10/11)
 
-Abertas no menu: humano e elfo (`IsRaceOpen` no `VortexFrontEnd.cpp`). Faltam anão, bárbaro, diabo e morto-vivo. O
+**Feito em 14/11 (ver o topo).** Antes: abertas no menu só humano e elfo; faltavam anão, bárbaro, diabo e morto-vivo. O
 **espírito fica para depois de todas elas** (o usuário, 10/11).
 
 ## Espírito (decidido em 09/11; adiado para depois das outras raças)

@@ -1,4 +1,5 @@
 #include "Framework/VortexMenuStage.h"
+#include "Framework/VortexJson.h"
 
 #include "Camera/CameraComponent.h"
 #include "Combat/VortexWeaponComponent.h"
@@ -46,10 +47,8 @@ namespace
         static FStageLight Light = []()
         {
             FStageLight Out;
-            FString Text;
             TSharedPtr<FJsonObject> Root;
-            if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/UI/menu_palco.json"))) &&
-                FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) && Root.IsValid())
+            if ((Root = VortexJson::Load(TEXT("Data/UI/menu_palco.json"))).IsValid())
             {
                 Root->TryGetNumberField(TEXT("luz_preenchimento"), Out.Fill);
                 Root->TryGetNumberField(TEXT("luz_altura"), Out.Height);

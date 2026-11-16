@@ -1,0 +1,46 @@
+{
+  "_sobre": "As raças no corpo de blocos do humano (14/11). Todas usam a malha, as animações, os cabelos e as roupas do humano; muda a pele, os olhos, o traço e o tamanho. Lido por VortexRaceLook (VortexLook.cpp) ao abrir o jogo: mudar aqui não precisa compilar. largura = quanto o corpo é mais largo que o do humano na mesma altura (a altura vem de 'meters' em Data/GodotCharacter/look_catalog.json). peles: a primeira é a padrão; id 'padrao' = a pele do humano; as outras são as texturas T_<raça>_<id>[_F] de Tools/MakeElfSkins.py; rostos = o grupo de olhos (o campo 'pele' de rostos.json; vazio = os do humano); rosto = os olhos padrão. traco: o que a raça escolhe no menu; peca = a malha (Tools/Blender/piece_designs.py), com {op} e {pele}; a primeira opção é a padrão (padraoFeminino troca no corpo feminino); 'nenhum' = sem peça. O capacete esconde o traço.",
+  "racas": [
+    {
+      "id": "elfo", "largura": 1.0,
+      "peles": [
+        { "id": "clara", "nome": "Clara", "rostos": "clara", "rosto": "elfo_verde" },
+        { "id": "escura", "nome": "Dark elfo", "rostos": "escura", "rosto": "dark_vermelho" }
+      ],
+      "traco": { "titulo": "Orelhas", "peca": "P_orelha_{op}_{pele}", "opcoes": [
+        { "id": "longa", "nome": "Longa" }, { "id": "curta", "nome": "Curta" }, { "id": "tras", "nome": "Para trás" }, { "id": "caida", "nome": "Caída" } ] }
+    },
+    {
+      "id": "anao", "largura": 1.22,
+      "peles": [ { "id": "padrao", "nome": "Clara" }, { "id": "corada", "nome": "Corada" }, { "id": "bronze", "nome": "Bronze" } ],
+      "traco": { "titulo": "Barba", "peca": "P_barba_{op}", "padraoFeminino": "nenhum", "opcoes": [
+        { "id": "longa", "nome": "Longa" }, { "id": "trancada", "nome": "Trançada" }, { "id": "curta", "nome": "Curta" }, { "id": "bigode", "nome": "Bigode" }, { "id": "nenhum", "nome": "Sem barba" } ] }
+    },
+    {
+      "id": "barbaro", "largura": 1.08,
+      "peles": [ { "id": "bronze", "nome": "Bronze" }, { "id": "padrao", "nome": "Clara" }, { "id": "gelo", "nome": "Gelo" } ],
+      "traco": { "titulo": "Pintura de guerra", "peca": "P_pintura_{op}", "opcoes": [
+        { "id": "azul", "nome": "Azul" }, { "id": "vermelha", "nome": "Vermelha" }, { "id": "branca", "nome": "Branca" }, { "id": "nenhum", "nome": "Sem pintura" } ] }
+    },
+    {
+      "id": "diabo", "largura": 1.0,
+      "peles": [
+        { "id": "vermelha", "nome": "Vermelha", "rostos": "diabo", "rosto": "diabo_ambar" },
+        { "id": "roxa", "nome": "Roxa", "rostos": "diabo", "rosto": "diabo_ambar" },
+        { "id": "carvao", "nome": "Carvão", "rostos": "diabo", "rosto": "diabo_brasa" }
+      ],
+      "traco": { "titulo": "Chifres", "peca": "P_chifre_{op}_{pele}", "opcoes": [
+        { "id": "curvos", "nome": "Curvos" }, { "id": "curtos", "nome": "Curtos" }, { "id": "longos", "nome": "Longos" }, { "id": "carneiro", "nome": "De carneiro" } ] }
+    },
+    {
+      "id": "morto_vivo", "largura": 0.8,
+      "peles": [
+        { "id": "osso", "nome": "Osso", "rostos": "morto", "rosto": "morto_azul" },
+        { "id": "antigo", "nome": "Osso antigo", "rostos": "morto", "rosto": "morto_verde" },
+        { "id": "cinzas", "nome": "Cinzas", "rostos": "morto", "rosto": "morto_roxo" }
+      ],
+      "traco": { "titulo": "Cristais", "peca": "P_cristal_{op}", "opcoes": [
+        { "id": "ombro", "nome": "No ombro" }, { "id": "coroa", "nome": "Coroa" }, { "id": "costas", "nome": "Nas costas" }, { "id": "nenhum", "nome": "Sem cristais" } ] }
+    }
+  ]
+}

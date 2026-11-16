@@ -1,0 +1,22 @@
+{
+ "Montar": {
+  "item": "Montar",
+  "kind": "monta",
+  "seconds": 0.792
+ },
+ "Desmontar": {
+  "item": "Desmontar",
+  "kind": "monta",
+  "seconds": 0.792
+ },
+ "Pouso": {
+  "item": "Pouso",
+  "kind": "monta",
+  "seconds": 2.083
+ },
+ "Vida_Beber": {
+  "item": "Vida_Beber",
+  "kind": "monta",
+  "seconds": 1.25
+ }
+}

@@ -1,4 +1,5 @@
 #include "Rpg/VortexArmor.h"
+#include "Framework/VortexJson.h"
 
 #include "AbilitySystemComponent.h"
 #include "Combat/VortexAttributes.h"
@@ -53,10 +54,8 @@ namespace
         static FTable T = []()
         {
             FTable Out;
-            FString Text;
             TSharedPtr<FJsonObject> Root;
-            if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Rpg/armors.json"))) ||
-                !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root) return Out;
+            if (!(Root = VortexJson::Load(TEXT("Data/Rpg/armors.json"))).IsValid()) return Out;
             for (const auto& Pair : Root->GetObjectField(TEXT("pieces"))->Values)
             {
                 const TSharedPtr<FJsonObject> O = Pair.Value->AsObject();

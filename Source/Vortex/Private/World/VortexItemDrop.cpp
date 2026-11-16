@@ -1,4 +1,6 @@
 #include "World/VortexItemDrop.h"
+#include "World/VortexTerrainStreamer.h"
+#include "World/VortexTerrainData.h"
 
 #include "Camera/PlayerCameraManager.h"
 #include "Combat/VortexSwords.h"
@@ -53,7 +55,10 @@ AVortexItemDrop* AVortexItemDrop::Spawn(UWorld* World, FName InItem, int32 InCou
     FVector Ground = At + Side;
     FHitResult Hit;
     FCollisionQueryParams Query(SCENE_QUERY_STAT(VortexItemDrop), false);
-    if (World->LineTraceSingleByChannel(Hit, Ground + FVector(0, 0, 200), Ground - FVector(0, 0, 3000), ECC_WorldStatic, Query)) Ground = Hit.ImpactPoint;
+    // 14/11 (o usuário: "os itens quando ele morre ficam no céu"): a busca pelo canal batia na cápsula do próprio bicho
+    // (num chefe de 7 m o item parava lá em cima). Agora só o cenário (objetos estáticos) conta como chão
+    if (World->LineTraceSingleByObjectType(Hit, Ground + FVector(0, 0, 200), Ground - FVector(0, 0, 3000), FCollisionObjectQueryParams(ECC_WorldStatic), Query)) Ground = Hit.ImpactPoint;
+    else if (const TSharedPtr<FVortexTerrainData> Terrain = AVortexTerrainStreamer::SharedData()) Ground.Z = Terrain->GroundAt(Ground.X, Ground.Y);   // sem cenário embaixo: o terreno
     FActorSpawnParameters Params;
     Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
     AVortexItemDrop* Drop = World->SpawnActorDeferred<AVortexItemDrop>(StaticClass(), FTransform(At), nullptr, nullptr, ESpawnActorCollisionHandlingMethod::AlwaysSpawn);

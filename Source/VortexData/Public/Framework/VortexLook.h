@@ -139,7 +139,7 @@ public:
     /** Os cabelos do humano de blocos (o primeiro é o padrão). */
     static const TArray<FVortexBlockHair>& BlockHairs();
     static const FVortexBlockHair* BlockHair(const FVortexLook& Look);
-    static bool HasBlockHair(FName RaceId) { return RaceId == TEXT("humano") || RaceId == TEXT("elfo"); }   // o elfo usa o corpo do humano (09/11)
+    static bool HasBlockHair(FName RaceId) { return !RaceId.IsNone(); }   // 14/11: todas as raças usam o corpo do humano (Data/Looks/racas.json)
     /** As roupas do humano de blocos (a primeira de cada corpo é a padrão). */
     static const TArray<FVortexBlockOutfit>& BlockOutfits();
     static const FVortexBlockOutfit* BlockOutfit(const FVortexLook& Look);

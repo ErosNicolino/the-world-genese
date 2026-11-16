@@ -198,6 +198,15 @@ void AVortexNpc::ApplyLook()
 void AVortexNpc::BeginPlay()
 {
     Super::BeginPlay();
+    // 14/11 (o usuário: "muitos NPCs travam ao andar, ficam todos amontoados num canto, normalmente nas portas"): numa
+    // porta de 1 m dois moradores em sentidos opostos se trancavam, e os de trás empilhavam. Morador não bate em morador
+    // (o desvio do FollowRoute continua afastando um do outro em lugar aberto); o herói e o cenário continuam sólidos
+    for (TActorIterator<AVortexNpc> It(GetWorld()); It; ++It)
+        if (*It != this)
+        {
+            GetCapsuleComponent()->IgnoreActorWhenMoving(*It, true);
+            It->GetCapsuleComponent()->IgnoreActorWhenMoving(this, true);
+        }
     // 08/11: as crianças da vila (os passantes pequenos): o ator inteiro menor, a cápsula junto
     if (bChild) SetActorScale3D(FVector(.72f));
     if (GetNetMode() != NM_DedicatedServer)

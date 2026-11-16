@@ -263,7 +263,7 @@ namespace VortexHeroShots
                 if (Race == TEXT("elfo")) { Look.Appearance = TEXT("female"); Look.Pieces.Add(TEXT("block_outfit"), TEXT("block_outfit_Elfo_mago_f")); }   // 09/11: o vestido de tecido na foto
                 Hero->ApplyLook(Look);
                 const USkeletalMesh* Mesh = Hero->GetMesh()->GetSkeletalMeshAsset();
-                const bool bOk = Mesh && Mesh->GetName() == TEXT("Hero_") + (Race == TEXT("elfo") ? FString(TEXT("humano")) : Race.ToString());   // o elfo usa o corpo do humano
+                const bool bOk = Mesh && Mesh->GetName() == TEXT("Hero_humano");   // 14/11: todas as raças usam o corpo do humano
                 S->bPass &= bOk;
                 UE_LOG(LogTemp, Display, TEXT("VORTEX_HERO_SHOTS %s modelo %s %s"), *Race.ToString(), Mesh ? *Mesh->GetName() : TEXT("nenhum"), bOk ? TEXT("ok") : TEXT("FALHOU"));
                 S->Phase = 1;

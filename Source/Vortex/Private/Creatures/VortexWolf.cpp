@@ -1,4 +1,4 @@
-#include "Creatures/VortexWolf.h"
+﻿#include "Creatures/VortexWolf.h"
 #include "Rpg/VortexRpg.h"
 #include "World/VortexTown.h"
 #include "Combat/VortexWeaponComponent.h"
@@ -28,6 +28,9 @@
 #include "UObject/ConstructorHelpers.h"
 #include "World/VortexTerrainStreamer.h"
 #include "EngineUtils.h"
+#include "Rpg/VortexHeroSheet.h"
+#include "Combat/VortexMonsterFx.h"
+#include "World/VortexWorldLayout.h"
 
 AVortexWolf::AVortexWolf()
 {
@@ -264,8 +267,25 @@ void AVortexWolf::UpdateSounds(float DeltaSeconds)
     {
         switch (WolfState)
         {
-        case EVortexWolfState::Howl: VortexAudio::Play(this, TEXT("wolf_howl"), At, 1.f, .08f); break;
-        case EVortexWolfState::Pounce: VortexAudio::Play(this, TEXT("wolf_pounce"), At, .9f); break;
+        case EVortexWolfState::Howl:
+            VortexAudio::Play(this, TEXT("wolf_howl"), At, 1.f, .08f);
+            // 13/11: os anéis do uivo saem da boca dele
+            AVortexMonsterFx::Spawn(GetWorld(), TEXT("Howl"), At + FVector(0.f, 0.f, 40.f), 750.f, .25f);
+            break;
+        // a mordida: a bocarra de presas aparece grande na frente dele e fecha na hora do golpe
+        case EVortexWolfState::Bite:
+        case EVortexWolfState::Combo:
+            AVortexMonsterFx::Spawn(GetWorld(), TEXT("Bite"), At + GetActorForwardVector() * 170.f + FVector(0.f, 0.f, 70.f), 190.f, 0.f, nullptr, GetActorRotation().Yaw);
+            break;
+        case EVortexWolfState::Pounce:
+        {
+            VortexAudio::Play(this, TEXT("wolf_pounce"), At, .9f);
+            // 13/11 (o usuário: "bocarra no bote"): a bocarra fecha em cima da presa na hora do impacto (.55 s; ela fecha .32 s depois de nascer)
+            // shortcut: nos convidados o alvo não chega pela rede e a bocarra nasce 3,5 m à frente do lobo; replicar o alvo se ficar fora do lugar
+            AActor* Prey = Target.Get();
+            AVortexMonsterFx::Spawn(GetWorld(), TEXT("Bite"), Prey ? Prey->GetActorLocation() : At + GetActorForwardVector() * 350.f + FVector(0.f, 0.f, 40.f), 190.f, .23f, Prey, GetActorRotation().Yaw);
+            break;
+        }
         case EVortexWolfState::Observe:
         case EVortexWolfState::Chase:
         case EVortexWolfState::Circle:
@@ -375,6 +395,12 @@ namespace
 {
     // a vila só existe no continente (o AVortexTown nasce com o terreno): nos mapas de teste, perto da origem, a regra
     // da vila fazia o lobo largar a caça (RunWolfSmoke e RunPackSmoke falhavam)
+    /** 14/11: a cratera do Azhûr é só do chefe: o lobo trata quem está lá dentro como quem está na cidade. */
+    bool InCaldera(const FVector& At)
+    {
+        return FVector2D::DistSquared(FVector2D(At), FVector2D(VortexWorldLayout::CalderaCenterX, VortexWorldLayout::CalderaCenterY)) < FMath::Square(5000.f);
+    }
+
     bool InTown(UWorld* World, const FVector& At)
     {
         return AVortexTown::Contains(At) && TActorIterator<AVortexTown>(World);
@@ -419,7 +445,7 @@ void AVortexWolf::Think()
     {
         AVortexCharacter* Candidate = It->Get() ? Cast<AVortexCharacter>(It->Get()->GetPawn()) : nullptr;
         // dentro da cidade ninguém é atacado (como os outros monstros, AVortexMonster::FindTarget)
-        if (!Candidate || InTown(GetWorld(), Candidate->GetActorLocation())) continue;
+        if (!Candidate || InTown(GetWorld(), Candidate->GetActorLocation()) || InCaldera(Candidate->GetActorLocation())) continue;
         const float DistanceSq = FVector::DistSquared2D(GetActorLocation(), Candidate->GetActorLocation());
         if (DistanceSq < BestDistanceSq && CanSee(Candidate)) { Nearest = Candidate; BestDistanceSq = DistanceSq; }
     }
@@ -428,7 +454,7 @@ void AVortexWolf::Think()
     if (!Nearest && PackId >= 0)
     {
         AVortexCharacter* Shared = Coordinator()->SharedTarget(PackId);
-        if (Shared && !InTown(GetWorld(), Shared->GetActorLocation()) && FVector::DistSquared2D(GetActorLocation(), Shared->GetActorLocation()) < FMath::Square(2500.f) && CanSee(Shared))
+        if (Shared && !InTown(GetWorld(), Shared->GetActorLocation()) && !InCaldera(Shared->GetActorLocation()) && FVector::DistSquared2D(GetActorLocation(), Shared->GetActorLocation()) < FMath::Square(2500.f) && CanSee(Shared))
         {
             Nearest = Shared;
             Target = Shared;
@@ -495,6 +521,15 @@ void AVortexWolf::Think()
     {
         bHasHowled = true;
         SetState(EVortexWolfState::Howl);
+        // 13/11 (o usuário: "um uivo que atordoa nível menor; do mesmo ou maior não surte efeito"): quem ouve de perto
+        // (até 9 m) e tem nível menor que o do lobo fica atordoado 1,6 s
+        for (TActorIterator<AVortexCharacter> It(GetWorld()); It; ++It)
+        {
+            if (FVector::Dist(It->GetActorLocation(), GetActorLocation()) > 900.f || !It->GetSheet() || !Combat->CanHarm(*It)) continue;
+            const bool bWeaker = It->GetSheet()->GetLevel() < Level;
+            if (bWeaker && It->GetCombat()) It->GetCombat()->Stun(1.6f);
+            It->GetSheet()->PushNotice(bWeaker ? TEXT("Atordoado pelo uivo!") : TEXT("Você resistiu ao uivo"), 2);
+        }
         StopMoving();
         FrenzyUntil = Now + 7.f;
         bFrenzied = true;

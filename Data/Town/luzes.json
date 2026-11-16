@@ -1,0 +1,6 @@
+{
+ "_doc": "As luzes da vila à noite (14/11; AVortexTown, lidas ao abrir o jogo: mudar aqui não precisa compilar). poste e janela: candelas de cada luz com a noite cheia (eram 38 e 9). vidro: o brilho do vidro dos lampiões (era 2,5). De dia ficam todas apagadas.",
+ "poste": 16,
+ "janela": 4,
+ "vidro": 1.4
+}

@@ -186,6 +186,12 @@ void UVortexWeaponComponent::ApplyVisual()
             const FName Bone = HandBoneFor(EquippedDefinition, Owner->GetMesh());
             if (Visual->GetAttachSocketName() != Bone) Visual->AttachToComponent(Owner->GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, Bone);
             Visual->SetRelativeRotation(GripRotationFor(Bone));
+            // 15/11: a arma do tamanho da raça, sem esticar: o corpo das raças tem largura e altura diferentes (o anão largo,
+            // o morto-vivo fino) e a arma herdava isso. Fica por igual, na média das duas (anão 0,78; bárbaro 1,52)
+            const FVector Body = Owner->GetMesh()->GetRelativeScale3D();
+            const FVector Even = FVector((Body.X + Body.Z) * .5f) / FVector(FMath::Max(Body.X, .01), FMath::Max(Body.Y, .01), FMath::Max(Body.Z, .01));
+            Visual->SetRelativeScale3D(Even);
+            if (UStaticMeshComponent* Other = Owner->GetWeaponVisualLeft()) Other->SetRelativeScale3D(Even);
             UStaticMesh* Pixel = EquippedDefinition ? PixelSwordFor(Owner) : nullptr;
             VortexSwords::Preload(Owner);   // 07/11: o poder da arma nova já carregado
             Visual->SetStaticMesh(Pixel ? Pixel : EquippedDefinition ? EquippedDefinition->VisualMesh.Get() : nullptr);

@@ -1,4 +1,5 @@
 #include "Framework/VortexIntroComic.h"
+#include "Framework/VortexJson.h"
 #include "VortexUiImpl.h"
 
 #include "Components/AudioComponent.h"
@@ -259,10 +260,8 @@ namespace
 
         void Load()
         {
-            FString Json;
             TSharedPtr<FJsonObject> Root;
-            if (!FFileHelper::LoadFileToString(Json, *(FPaths::ProjectDir() / TEXT("Data/UI/Abertura/abertura.json"))) ||
-                !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Json), Root) || !Root.IsValid()) return;
+            if (!(Root = VortexJson::Load(TEXT("Data/UI/Abertura/abertura.json"))).IsValid()) return;
             FString SongName;
             if (Root->TryGetStringField(TEXT("music"), SongName))
             {

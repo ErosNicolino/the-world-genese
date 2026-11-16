@@ -1653,7 +1653,8 @@
  "effects": {
   "health_per_vitality": 6,
   "mana_per_mana": 5,
-  "damage_per_strength": 1.0,
+  "damage_per_strength": 0.25,
+  "damage_per_intelligence": 0.25,
   "crit_chance_per_agility": 0.0075,
   "crit_multiplier": 1.8,
   "mana_regen_per_spirit": 0.025,
@@ -1700,25 +1701,25 @@
    "canMagic": true
   },
   "elfo": {
-   "melee": 0.8,
-   "ranged": 1.2,
-   "magic": 1.2,
+   "melee": 0.9,
+   "ranged": 1.15,
+   "magic": 1.1,
    "taken": 1.0,
    "hpRegen": 1.0,
    "mpRegen": 1.2,
    "canMagic": true
   },
   "diabo": {
-   "melee": 1.1,
+   "melee": 1.05,
    "ranged": 1.0,
-   "magic": 1.2,
+   "magic": 1.1,
    "taken": 1.1,
    "hpRegen": 1.0,
    "mpRegen": 1.0,
    "canMagic": true
   },
   "anao": {
-   "melee": 1.2,
+   "melee": 1.1,
    "ranged": 0.6,
    "magic": 0.0,
    "taken": 0.9,
@@ -1727,7 +1728,7 @@
    "canMagic": false
   },
   "barbaro": {
-   "melee": 1.35,
+   "melee": 1.15,
    "ranged": 0.9,
    "magic": 0.6,
    "taken": 0.8,

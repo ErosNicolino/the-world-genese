@@ -3,6 +3,7 @@
 // herói espera o chão montar, fica de pé (não cai) e tira a foto; no fim, o mapa (M) do continente.
 #if !UE_BUILD_SHIPPING
 #include "Framework/VortexCreatureSmoke.h"
+#include "Framework/VortexJson.h"
 
 #include "AbilitySystemComponent.h"
 #include "Camera/CameraActor.h"
@@ -101,11 +102,9 @@ namespace VortexWorldShots
         // 07/11: as raízes da Árvore do Mundo mais perto da cidade (world_features.json: mudam quando o mapa é refeito):
         // a de rio de cima e atravessada andando, a que sai do chão de cima
         {
-            FString Text;
             TSharedPtr<FJsonObject> Json;
             const TArray<TSharedPtr<FJsonValue>>* Roots = nullptr;
-            if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/GodotWorld/world_features.json"))) &&
-                FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json) && Json.IsValid() && Json->TryGetArrayField(TEXT("roots"), Roots))
+            if ((Json = VortexJson::Load(TEXT("Data/GodotWorld/world_features.json"))).IsValid() && Json->TryGetArrayField(TEXT("roots"), Roots))
             {
                 TSharedPtr<FJsonObject> Arch, Emerge;
                 auto At = [](const TSharedPtr<FJsonObject>& O) { const TArray<TSharedPtr<FJsonValue>>& A = O->GetArrayField(TEXT("at")); return FVector2D(A[0]->AsNumber(), A[1]->AsNumber()) * 100.f; };

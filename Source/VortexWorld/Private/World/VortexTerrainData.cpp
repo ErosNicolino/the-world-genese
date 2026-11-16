@@ -1,4 +1,5 @@
 #include "World/VortexTerrainData.h"
+#include "Framework/VortexJson.h"
 #include "World/VortexWorldLayout.h"
 
 #include "Misc/FileHelper.h"
@@ -185,11 +186,9 @@ TSharedPtr<FVortexTerrainData> FVortexTerrainData::Load(const FString& Directory
     // 06/11: a vila nova (Data/GodotTown/vila.json, Tools/Town/BuildVila.py) fica num chão plano: dentro dos polígonos do
     // "flatten" a altura vira "level"; até "blend" metros para fora ela volta aos poucos para a do terreno (sem degrau)
     {
-        FString Text;
         TSharedPtr<FJsonObject> Plan;
         const TSharedPtr<FJsonObject>* Flatten = nullptr;
-        if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/GodotTown/vila.json"))) &&
-            FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Plan) && Plan.IsValid() && Plan->TryGetObjectField(TEXT("flatten"), Flatten))
+        if ((Plan = VortexJson::Load(TEXT("Data/GodotTown/vila.json"))).IsValid() && Plan->TryGetObjectField(TEXT("flatten"), Flatten))
         {
             const float Level = (*Flatten)->GetNumberField(TEXT("level")) * 100.f;
             const float Blend = FMath::Max(1.f, (float)(*Flatten)->GetNumberField(TEXT("blend")) * 100.f);

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "GameFramework/Actor.h"
 #include "VortexTelegraph.generated.h"
@@ -26,6 +26,9 @@ public:
     static AVortexTelegraph* Spawn(AActor* Source, const FVector& At, float Radius, float Delay, float Damage, bool bRing,
         const FLinearColor& Color, bool bMagic = false, float Stun = 0.f);
 
+    /** 13/11, servidor: o que a marca deixa em quem acerta ("poison", a nuvem do cogumelo). */
+    FName Status;
+    float StatusTime = 0.f;
     UPROPERTY(Replicated) float Radius = 300.f;
     UPROPERTY(Replicated) float Delay = 1.f;
     UPROPERTY(Replicated) bool bRing = false;

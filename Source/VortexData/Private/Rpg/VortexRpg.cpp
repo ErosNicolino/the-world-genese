@@ -1,4 +1,5 @@
 #include "Rpg/VortexRpg.h"
+#include "Framework/VortexJson.h"
 
 #include "Dom/JsonObject.h"
 #include "Engine/Texture2D.h"
@@ -92,10 +93,8 @@ namespace VortexRpg
 void FVortexRpgCatalog::LoadBalance()
 {
     // o balanceamento dos pontos e das criaturas (02/11), à mão: o rpg.json sai do Godot (Tools/BuildRpgData.py)
-    FString Text;
     TSharedPtr<FJsonObject> Root;
-    if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Rpg/balance.json"))) ||
-        !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root) return;
+    if (!(Root = VortexJson::Load(TEXT("Data/Rpg/balance.json"))).IsValid()) return;
     auto Number = [](const TSharedPtr<FJsonObject>& O, const TCHAR* Key, float& Out) { double V = 0.0; if (O->TryGetNumberField(Key, V)) Out = float(V); };
     Number(Root, TEXT("levelDamage"), LevelDamage);
     // 07/11: a escala do golpe de cada tipo de arma e os números do nível do item
@@ -157,8 +156,7 @@ void FVortexRpgCatalog::LoadArsenal()
     // o arsenal por cima dos itens do Godot: variantes com elemento, preços, conjuntos de armadura
     FString Text;
     TSharedPtr<FJsonObject> Root;
-    if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Rpg/arsenal.json"))) ||
-        !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root) return;
+    if (!(Root = VortexJson::Load(TEXT("Data/Rpg/arsenal.json"))).IsValid()) return;
     auto Fill = [](FVortexItemDef& Def, const TSharedPtr<FJsonObject>& O)
     {
         FString S;

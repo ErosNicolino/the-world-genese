@@ -1,4 +1,5 @@
 #include "Rpg/VortexHeroSheet.h"
+#include "Framework/VortexJson.h"
 
 #include "Persistence/VortexWorldSave.h"
 
@@ -256,7 +257,8 @@ FVortexHeroStats UVortexHeroSheet::ComputeStats() const
     // golpe: Força (corpo a corpo), Destreza (flechas), Inteligência e Mana (magia) + o Ataque / Poder de magia
     S.Attack = 1.f + Over(Strength) * E(TEXT("damage_per_strength"), 1.f) + S.Official[Attack];
     S.RangedAttack = 1.f + FMath::Max(0.f, Over(Agility)) * E(TEXT("damage_per_strength"), 1.f) + S.Official[Attack];
-    S.SkillPower = 1.f + FMath::Max(0.f, Over(Intelligence)) + FMath::RoundToFloat(FMath::Max(0.f, Over(ManaAttr)) * .35f) + S.Official[Skill];
+    // 15/11: a Inteligência e a Mana da raça com peso em dados, como a Força (rpg.json: effects)
+    S.SkillPower = 1.f + (FMath::Max(0.f, Over(Intelligence)) + FMath::RoundToFloat(FMath::Max(0.f, Over(ManaAttr)) * .35f)) * E(TEXT("damage_per_intelligence"), 1.f) + S.Official[Skill];
     S.Defense = S.Official[Defense];
     S.Resistance = S.Official[Resistance];
     const float LuckPoints = FMath::Max(0.f, Over(Luck));
@@ -505,7 +507,19 @@ float UVortexHeroSheet::IncomingDamage(float Base, bool bMagic)
     // 02/11: a Defesa e a Resistência dividem o golpe (passa K / (K + defesa), K pelo nível: balance.json), como a
     // armadura do LoL: nunca fica imune e nunca vira um golpe só. (Antes a Defesa tirava direto do golpe.)
     const float Mitigated = Base * (1.f - (bMagic ? S.MagicReduction() : S.PhysicalReduction()));
-    return FMath::Max(1.f, FMath::RoundToFloat(FMath::Max(1.f, Mitigated) * S.Race.Taken));
+    // 16/11 (o usuário: "de espada preciso chegar muito perto e levar muitos golpes; não vale a pena escolher a espada"): com
+    // arma de perto na mão o herói apanha menos (meleeTaken do Data/Rpg/balance.json, lido uma vez; 1 = como era)
+    static const float MeleeTaken = []
+    {
+        FString Text;
+        TSharedPtr<FJsonObject> Json;
+        double Value = 1.0;
+        if ((Json = VortexJson::Load(TEXT("Data/Rpg/balance.json"))).IsValid()) Json->TryGetNumberField(TEXT("meleeTaken"), Value);
+        return float(FMath::Clamp(Value, .2, 1.5));
+    }();
+    const AVortexCharacter* Fighter = Cast<AVortexCharacter>(GetOwner());
+    const float Close = Fighter && Fighter->IsMeleeWeapon() ? MeleeTaken : 1.f;
+    return FMath::Max(1.f, FMath::RoundToFloat(FMath::Max(1.f, Mitigated) * S.Race.Taken * Close));
 }
 
 void UVortexHeroSheet::Leech(float DamageDealt)
@@ -618,6 +632,7 @@ void UVortexHeroSheet::MulticastLevelUp_Implementation(int32 NewLevel)
 
 void UVortexHeroSheet::Notice(const FString& Text, uint8 Kind)
 {
+    UE_LOG(LogTemp, Log, TEXT("VORTEX_NOTICE %s"), *Text);   // os avisos no log: confere veneno, tontura e atordoamento nas gravações sem HUD
     if (IsOwnerLocal())
     {
         Notices.Add({ Text, GetWorld() ? float(GetWorld()->GetTimeSeconds()) : 0.f, Kind });
@@ -697,10 +712,8 @@ namespace
         static TMap<FName, FName> Items;
         if (Items.IsEmpty())
         {
-            FString Text;
             TSharedPtr<FJsonObject> Json;
-            if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Rpg/weapons.json"))) &&
-                FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json) && Json)
+            if ((Json = VortexJson::Load(TEXT("Data/Rpg/weapons.json"))).IsValid())
             {
                 for (const TSharedPtr<FJsonValue>& V : Json->GetArrayField(TEXT("types")))
                 {

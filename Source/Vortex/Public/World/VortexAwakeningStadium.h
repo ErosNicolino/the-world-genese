@@ -110,7 +110,7 @@ private:
     void BuildWing(FName Wing, float Angle);
     void BuildExit();
     void Gate(float Angle, float From, float To, const FLinearColor& Color, float WallH = 5.6f);
-    void BuildPedestal(FName Type, const FVector& At, const FVector2D& Face, const FLinearColor& Color);
+    void BuildPedestal(FName Type, const FVector& Foot, const FVector2D& Face, const FLinearColor& Color, float Raise = 0.f);
 
     // peças (em metros, relativas a Origin; ângulo em graus: 0 = norte (+Y), 90 = leste (+X))
     UMaterialInterface* Material(FName Name);

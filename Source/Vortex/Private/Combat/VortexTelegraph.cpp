@@ -1,4 +1,4 @@
-#include "Combat/VortexTelegraph.h"
+﻿#include "Combat/VortexTelegraph.h"
 
 #include "Combat/VortexCombatComponent.h"
 #include "Combat/VortexHitFx.h"
@@ -16,6 +16,7 @@
 #include "NiagaraSystem.h"
 #include "World/VortexTerrainData.h"
 #include "World/VortexTerrainStreamer.h"
+#include "Rpg/VortexHeroSheet.h"
 
 AVortexTelegraph::AVortexTelegraph()
 {
@@ -141,7 +142,8 @@ void AVortexTelegraph::Resolve()
             if (FMath::Abs(Feet.Z - Center.Z) > 300.f || Distance > Radius) continue;
             if (bRing && Distance < Radius * .45f) continue;   // anel: o miolo é seguro
             if (!Combat->CanHarm(*It)) continue;
-            Combat->ApplyHit(*It, Damage, bMagic ? EVortexDamageKind::Magic : EVortexDamageKind::Melee, Stun);
+            if (Combat->ApplyHit(*It, Damage, bMagic ? EVortexDamageKind::Magic : EVortexDamageKind::Melee, Stun) && Status == TEXT("poison") && It->GetSheet())
+                It->GetSheet()->ApplyPoison(StatusTime);
         }
     }
     MulticastImpact();
@@ -157,7 +159,9 @@ void AVortexTelegraph::MulticastImpact_Implementation()
         // eles têm o efeito da espécie (AVortexMonsterFx)
         const AVortexMonster* Monster = Cast<AVortexMonster>(GetOwner());
         // (o golem vulcânico tem os efeitos dele, menores: as marcas dele em arco e em linha davam dezenas de ondas)
-        const bool bBigShow = !Monster || (Monster->IsBoss() && !Monster->GetVolcanic());
+        // 13/11: o lobo tem classe própria (não é AVortexMonster) e caía no "não é monstro": a onda dourada em todo bote dele
+        const IVortexCreature* Creature = Cast<IVortexCreature>(GetOwner());
+        const bool bBigShow = Monster ? Monster->IsBoss() && !Monster->GetVolcanic() : !Creature || Creature->IsBoss();
         const float Size = Radius / 300.f;
         if (bBigShow)
             if (UNiagaraSystem* Wave = LoadObject<UNiagaraSystem>(nullptr, TEXT("/Game/Free_Spells/VFX_Niagara/NS_Free_Spells_Shockwave.NS_Free_Spells_Shockwave")))

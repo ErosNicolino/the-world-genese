@@ -8,7 +8,7 @@
  "passeioParado": 0.35,
  "atacantesMax": 2,
  "repetirPeso": 0.3,
- "miraAdiantada": 0.75,
+ "miraAdiantada": 0.4,
 
  "desvioPadrao": 0.25,
  "desvio_Goblin": 0.45,

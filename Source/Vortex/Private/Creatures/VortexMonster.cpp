@@ -1,4 +1,5 @@
-#include "Creatures/VortexMonster.h"
+﻿#include "Creatures/VortexMonster.h"
+#include "Framework/VortexJson.h"
 #include "Rpg/VortexRpg.h"
 
 #include "Framework/VortexProbe.h"
@@ -7,6 +8,7 @@
 #include "Combat/VortexAttributes.h"
 #include "Combat/VortexCombatComponent.h"
 #include "Combat/VortexWeaponFx.h"
+#include "Combat/VortexHitFx.h"
 #include "Combat/VortexMonsterFx.h"
 #include "Combat/VortexLobbed.h"
 #include "Combat/VortexTelegraph.h"
@@ -25,6 +27,7 @@
 #include "World/VortexTown.h"
 #include "World/VortexCaldera.h"
 #include "World/VortexTerrainData.h"
+#include "World/VortexWorldLayout.h"
 #include "Rpg/VortexHeroSheet.h"
 #include "Creatures/VortexBlockBody.h"
 #include "Creatures/VortexDress.h"
@@ -49,6 +52,8 @@
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"
 
+namespace VortexKnockdown { void Down(AVortexCharacter* Hero, float Seconds); }   // VortexLobbed.cpp
+
 namespace
 {
     float Smooth(float T) { T = FMath::Clamp(T, 0.f, 1.f); return T * T * (3.f - 2.f * T); }
@@ -61,10 +66,8 @@ namespace
         if (!bLoaded)
         {
             bLoaded = true;
-            FString Text;
             TSharedPtr<FJsonObject> Json;
-            if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Creatures/ia_monstros.json")))
-                && FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json) && Json.IsValid())
+            if ((Json = VortexJson::Load(TEXT("Data/Creatures/ia_monstros.json"))).IsValid())
                 for (const auto& Pair : Json->Values)
                 {
                     double Number = 0.0;
@@ -601,6 +604,8 @@ AVortexCharacter* AVortexMonster::FindTarget(float Range) const
             Hero->GetAbilitySystemComponent()->GetNumericAttribute(UVortexAttributes::GetHealthAttribute()) <= 0.f) continue;
         // dentro da cidade ninguém é atacado (VillageBounds do Godot)
         if (AVortexTown::Contains(Hero->GetActorLocation())) continue;
+        // 14/11: dentro da cratera do Azhûr só o chefe ataca (os outros desistem de quem entra e não seguem para dentro)
+        if (!IsBoss() && FVector2D::DistSquared(FVector2D(Hero->GetActorLocation()), FVector2D(VortexWorldLayout::CalderaCenterX, VortexWorldLayout::CalderaCenterY)) < FMath::Square(5000.f)) continue;
         const float Distance = FVector::Dist2D(Hero->GetActorLocation(), GetActorLocation());
         if (Distance < BestDistance && FMath::Abs(Hero->GetActorLocation().Z - GetActorLocation().Z) < 1500.f)
         {
@@ -674,7 +679,17 @@ void AVortexMonster::ThinkPassive(double Now)
 
 bool AVortexMonster::Feed(AVortexCharacter* By)
 {
-    if (!HasAuthority() || !IsHorse() || Tamer || bDead || !By) return false;
+    if (!HasAuthority() || !IsHorse() || bDead || !By) return false;
+    if (Tamer)
+    {
+        // 16/11 (o usuário: "dar frutinha para ele para curar"): o domado ferido come e recupera 35% da vida
+        const float Max = AbilitySystem->GetNumericAttribute(UVortexAttributes::GetMaxHealthAttribute());
+        AbilitySystem->SetNumericAttributeBase(UVortexAttributes::GetHealthAttribute(),
+            FMath::Min(Max, AbilitySystem->GetNumericAttribute(UVortexAttributes::GetHealthAttribute()) + Max * .35f));
+        MulticastSound(TEXT("heal"), .5f);
+        ForceNetUpdate();
+        return false;
+    }
     const double Now = GetWorld()->GetTimeSeconds();
     // 2 a 4 frutas, pelo posto (o mesmo cavalo pede sempre o mesmo)
     if (TameFed == 0) TameNeed = uint8(2 + FMath::Abs(PostId >= 0 ? PostId : int32(GetUniqueID())) % 3);
@@ -1024,18 +1039,24 @@ void AVortexMonster::ThinkHostile(double Now)
         TArray<float, TInlineAllocator<8>> Weights;
         float Total = 0.f;
         bool bChecked = false, bSees = true;
+        // desde quando o herói está colado neste monstro (o agarrão do golem: FVortexMonsterMove::CloseFor)
+        static TMap<TWeakObjectPtr<const AVortexMonster>, double> CloseSince;
+        double* Since = CloseSince.Find(this);
+        if (Distance > 320.f || !Since) { CloseSince.Add(this, Now); Since = CloseSince.Find(this); }
         for (int32 i = 0; i < D.Moves.Num(); ++i)
         {
             const FVortexMonsterMove& M = D.Moves[i];
             const double* Ready = MoveReady.Find(i);
             if (Distance < M.MinRange || Distance > M.MaxRange || (Ready && Now < *Ready)) continue;
+            if (M.CloseFor > 0.f && Now - *Since < M.CloseFor) continue;
             if (FMath::Abs(HeroAt.Z - GetActorLocation().Z) > 260.f && M.Kind != EVortexMoveKind::Lob) continue;
             if (M.Kind == EVortexMoveKind::Shoot)
             {
                 if (!bChecked) { bChecked = true; bSees = CanSee(Hero); }
                 if (!bSees) continue;
             }
-            const float W = i == LastMove ? Ai(TEXT("repetirPeso"), .3f) : 1.f;
+            // o golpe que espera o herói colado (o agarrão) passa na frente quando cabe: no sorteio comum quase nunca saía
+            const float W = M.CloseFor > 0.f ? 1000.f : i == LastMove ? Ai(TEXT("repetirPeso"), .3f) : 1.f;
             Options.Add(i);
             Weights.Add(W);
             Total += W;
@@ -1111,6 +1132,7 @@ bool AVortexMonster::StartMove(int32 Index, double Now)
     AVortexCharacter* Hero = Target.Get();
     if (!Hero) return false;
     Acting = Index;
+    UE_LOG(LogTemp, Log, TEXT("VORTEX_MOVE %s %s dist=%.0f"), *GetSpecies().ToString(), *M.Id.ToString(), FVector::Dist2D(GetActorLocation(), Hero->GetActorLocation()));
     ActStart = Now;
     ActImpact = Now + M.Impact;
     ActEnd = Now + FMath::Max(M.Impact + .25f, M.Impact * 1.6f);
@@ -1141,7 +1163,11 @@ bool AVortexMonster::StartMove(int32 Index, double Now)
         // o chão avisa onde vai bater; o dano sai pelo aviso (na hora do impacto)
         const FVector At = M.Kind == EVortexMoveKind::Lunge ? LungeTo
             : M.bAtTarget ? HeroAt - FVector(0.f, 0.f, Hero->GetSimpleCollisionHalfHeight()) : Here;
-        AVortexTelegraph::Spawn(this, At, M.Reach, M.Impact, FMath::RoundToFloat(AttackDamage * M.Scale), false, D.Telegraph, M.bMagic);
+        if (AVortexTelegraph* Mark = AVortexTelegraph::Spawn(this, At, M.Reach, M.Impact, FMath::RoundToFloat(AttackDamage * M.Scale), false, D.Telegraph, M.bMagic))
+        {
+            Mark->Status = M.Status;
+            Mark->StatusTime = M.StatusTime;
+        }
     }
     Act(M.Clip);
     PlayMoveSound(M);
@@ -1171,6 +1197,24 @@ bool AVortexMonster::StartMove(int32 Index, double Now)
         }
     }
     else if (M.Id == TEXT("Slam") || M.Id == TEXT("Stomp")) MulticastMoveFx(TEXT("Dust"), Feet, M.Reach * .8f, M.Impact, false);
+    // ---- 13/11: um efeito só de cada golpe novo
+    else if (M.Id == TEXT("Quake")) MulticastMoveFx(TEXT("Quake"), Feet, M.Reach, M.Impact, false);
+    else if (M.Id == TEXT("Boulder")) MulticastMoveFx(TEXT("Rubble"), Here, 220.f, 0.f, false);
+    else if (M.Id == TEXT("Headbutt")) MulticastMoveFx(TEXT("Headbutt"), LungeTo + Toward * D.Radius, 70.f, M.Impact, false);
+    else if (M.Id == TEXT("Dive")) MulticastMoveFx(TEXT("Swoop"), Here, 60.f, M.LungeFrom, true);
+    else if (M.Id == TEXT("Sonar")) MulticastMoveFx(TEXT("Sonar"), Here, M.Reach * .9f, M.Impact * .6f, false);
+    else if (M.Id == TEXT("Thorns"))
+    {
+        // três fileiras, da frente dele até o herói, uma a cada 0,22 s: dá para sair de lado
+        const FVector Ground = HeroAt - FVector(0.f, 0.f, Hero->GetSimpleCollisionHalfHeight());
+        for (int32 Row = 0; Row < 3; ++Row)
+        {
+            const FVector At = FMath::Lerp(Feet + Toward * 160.f, Ground, (Row + 1) / 3.f);
+            const float When = M.Impact + Row * .22f;
+            if (AVortexTelegraph* Mark = AVortexTelegraph::Spawn(this, At, M.Reach, When, FMath::RoundToFloat(AttackDamage * M.Scale), false, D.Telegraph, true))
+                MulticastMoveFx(TEXT("Spikes"), Mark->GetActorLocation(), M.Reach, When, false);
+        }
+    }
     else if (M.Id == TEXT("Leap")) MulticastMoveFx(TEXT("Splash"), LungeTo - FVector(0.f, 0.f, GetSimpleCollisionHalfHeight()), M.Reach * .7f, M.Impact, false);
     return true;
 }
@@ -1191,6 +1235,23 @@ void AVortexMonster::ResolveMove()
             // gota de brasa queima, gota peçonhenta envenena
             if (D.OnHit == TEXT("burn")) Hero->GetSheet()->ApplyBurn(3.f);
             else if (D.OnHit == TEXT("poison")) Hero->GetSheet()->ApplyPoison(5.f);
+            if (M.Status == TEXT("poison")) Hero->GetSheet()->ApplyPoison(M.StatusTime);
+            // 13/11: o sonar deixa tonto (devagar); o agarrão joga longe
+            if (M.SlowTime > 0.f)
+            {
+                if (UVortexCombatComponent* Theirs = Hero->GetCombat()) Theirs->ApplySlow(M.Slow, M.SlowTime);
+                Hero->GetSheet()->PushNotice(TEXT("Tonto com o sonar!"), 2);
+            }
+        }
+        // o agarrão joga longe quem está ao alcance, mesmo sem dano (aparado, modo deus): vale a distância, não o acerto
+        if (M.Hurl > 0.f && Hero && FVector::Dist2D(Hero->GetActorLocation(), GetActorLocation()) <= M.Reach + D.Radius)
+        {
+            const FVector Away = (Hero->GetActorLocation() - GetActorLocation()).GetSafeNormal2D();
+            Hero->LaunchCharacter(Away * M.Hurl + FVector(0.f, 0.f, M.Hurl * .45f), true, true);
+            // 14/11 (o usuário: "quando o golem ataca você para longe, você cair também"): voa caindo de costas, bate no
+            // chão e levanta (os mesmos clipes da pedra; 2,8 s: o voo é mais comprido)
+            VortexKnockdown::Down(Hero, 2.8f);
+            AVortexMonsterFx::Spawn(GetWorld(), TEXT("Hurl"), Hero->GetActorLocation(), 60.f, 0.f, Hero);   // shortcut: só na máquina do anfitrião, passar por multicast se os convidados sentirem falta
         }
         break;
     case EVortexMoveKind::Area:
@@ -1200,11 +1261,13 @@ void AVortexMonster::ResolveMove()
         {
             if (FVector::Dist2D(It->GetActorLocation(), GetActorLocation()) > M.Reach + D.Radius * .5f) continue;
             if (FMath::Abs(It->GetActorLocation().Z - GetActorLocation().Z) > 260.f) continue;
-            if (Combat->CanHarm(*It)) Combat->ApplyHit(*It, Amount, Kind);
+            if (Combat->CanHarm(*It) && Combat->ApplyHit(*It, Amount, Kind) && M.Status == TEXT("poison") && It->GetSheet()) It->GetSheet()->ApplyPoison(M.StatusTime);
         }
         break;
     case EVortexMoveKind::Lob:
-        if (Hero)
+        // 16/11 (o usuário: "renasci no spawn e a pedra teletransportou até mim"): o alvo que morreu ou foi para longe
+        // durante a preparação não leva o arremesso (o voo dura o mesmo a qualquer distância: cruzava o mapa em 1 s)
+        if (Hero && !Hero->IsDead() && FVector::Dist2D(Hero->GetActorLocation(), GetActorLocation()) <= M.MaxRange * 1.5f)
         {
             const FVector From = GetActorLocation() + FVector(0.f, 0.f, D.Height * .4f) + GetActorForwardVector() * D.Radius;
             const float Distance = FVector::Dist2D(Hero->GetActorLocation(), GetActorLocation());
@@ -1212,7 +1275,16 @@ void AVortexMonster::ResolveMove()
             // 10/11 (IA, fase 1): mira para onde o herói vai estar quando cair (não onde ele está)
             FVector Land = Hero->GetActorLocation() + Hero->GetVelocity().GetSafeNormal2D() * Hero->GetVelocity().Size2D() * Flight * Ai(TEXT("miraAdiantada"), .75f);
             Land.Z = Hero->GetActorLocation().Z - Hero->GetSimpleCollisionHalfHeight();
-            AVortexLobbed::Throw(this, From, Land, Flight, Amount, M.Reach, !M.bMagic);
+            // 13/11 (o usuário: "a pedra vai toda torta e não longe"): com o herói no ar (arremessado pelo agarrão, pulando) o
+            // alvo era um ponto no meio do ar. O alvo é sempre o chão debaixo de onde ele vai estar
+            if (const TSharedPtr<FVortexTerrainData> Terrain = AVortexTerrainStreamer::SharedData())
+                Land.Z = FMath::Max(Land.Z - 1500.f, Terrain->GroundAt(Land.X, Land.Y));
+            if (AVortexLobbed* Shot = AVortexLobbed::Throw(this, From + FVector(0.f, 0.f, M.LobScale > 1.f ? D.Height * .35f : 0.f), Land, Flight, Amount, M.Reach, !M.bMagic,
+                M.LobScale, M.bLobTint ? D.Splash : FLinearColor(-1.f, 0.f, 0.f)))
+            {
+                Shot->Status = M.Status;
+                Shot->StatusTime = M.StatusTime;
+            }
         }
         break;
     case EVortexMoveKind::Shoot:
@@ -1469,10 +1541,18 @@ void AVortexMonster::AlertPack(AVortexCharacter* By)
     }
 }
 
+namespace VortexHorseTack { void Tick(AVortexMonster* Horse, float Dt); void Hoof(AVortexMonster* Horse, const FVector& Feet, float Yaw); }   // VortexHorseTack.cpp: a sela, as rédeas e as pegadas
+
 void AVortexMonster::Die()
 {
     ReleaseToken();
     bDead = true;
+    // 16/11 (o usuário: "o cavalo tá imortal"): o domado morre de verdade; o dono fica sem cavalo até domar outro
+    if (IsHorse() && Tamer && Tamer->GetSheet())
+    {
+        Tamer->GetSheet()->SetMountCoat(NAME_None);
+        Tamer->GetSheet()->PushNotice(TEXT("Seu cavalo morreu"), 1);
+    }
     bEngaged = false;
     Acting = INDEX_NONE;
     LungeStart = -1.f;
@@ -1531,7 +1611,8 @@ void AVortexMonster::MulticastMeteor_Implementation(FVector_NetQuantize At, floa
 
 void AVortexMonster::MulticastMoveFx_Implementation(FName Fx, FVector_NetQuantize At, float Radius, float Delay, bool bFollow)
 {
-    AVortexMonsterFx::Spawn(GetWorld(), Fx, At, Radius, Delay, bFollow ? this : nullptr);
+    // o efeito aponta para onde o monstro olha e, na gota, leva a cor dela
+    AVortexMonsterFx::Spawn(GetWorld(), Fx, At, Radius, Delay, bFollow ? this : nullptr, GetActorRotation().Yaw, Def() ? Def()->Splash : FLinearColor(-1.f, 0.f, 0.f));
 }
 
 void AVortexMonster::MulticastSound_Implementation(FName Sound, float Volume)
@@ -1562,15 +1643,31 @@ void AVortexMonster::Tick(float DeltaSeconds)
         const AActor* Parent = GetAttachParentActor();
         if ((Rider && Parent != Rider) || (!Rider && Parent && Parent->IsA<AVortexCharacter>())) ApplyRiding();
     }
+    if (IsHorse() && GetNetMode() != NM_DedicatedServer) VortexHorseTack::Tick(this, DeltaSeconds);
     // passos (em todas as máquinas que desenham)
     if (GetNetMode() != NM_DedicatedServer && !bDead)
     {
         const float Speed = GetVelocity().Size2D();
         StepTimer -= DeltaSeconds;
-        if (Speed > 120.f && StepTimer <= 0.f && !D->bFlying && GetCharacterMovement()->IsMovingOnGround())
+        // 16/11 (o usuário: "cadê a poeira?"): montado, o cavalo vai preso ao herói com o movimento desligado, então "no chão"
+        // nunca valia e nem passo nem poeira saíam justamente quando se cavalga. Montado, vale o chão do cavaleiro
+        const bool bOnGround = Rider ? Rider->GetCharacterMovement()->IsMovingOnGround() : GetCharacterMovement()->IsMovingOnGround();
+        if (Speed > 120.f && StepTimer <= 0.f && !D->bFlying && bOnGround)
         {
             StepTimer = FMath::Clamp(60.f / FMath::Max(Speed, 1.f) * (D->Radius / 30.f), .18f, .8f);
             const FVector Feet = GetActorLocation() - FVector(0.f, 0.f, GetCapsuleComponent()->GetScaledCapsuleHalfHeight());
+            // 16/11 (o usuário: "a poeira que sobe ao andar, os traços do andar"): a cada batida fica a pegada no chão e sobe
+            // poeira atrás: um sopro pequeno ao passo, e terra, pedrinhas e uma nuvem maior quanto mais depressa
+            if (IsHorse())
+            {
+                const FVector Back = -GetVelocity().GetSafeNormal2D();
+                const FVector Behind = Feet + Back * 70.f + FVector(FMath::FRandRange(-25.f, 25.f), FMath::FRandRange(-25.f, 25.f), 0.f);
+                const float Fast = FMath::Clamp((Speed - 250.f) / 900.f, 0.f, 1.f);
+                VortexHorseTack::Hoof(this, Feet, GetActorRotation().Yaw);
+                AVortexMonsterFx::Spawn(GetWorld(), TEXT("Dust"), Behind, FMath::Lerp(38.f, 120.f, Fast));
+                if (Fast > .15f) VortexHitFx::Splash(GetWorld(), Behind, FLinearColor(.34f, .26f, .17f), FMath::RoundToInt(FMath::Lerp(3.f, 10.f, Fast)));
+                if (Fast > .6f) AVortexMonsterFx::Spawn(GetWorld(), TEXT("Dust"), Behind + Back * 110.f, 150.f, .1f);
+            }
             if (!D->StepSound.IsNone()) VortexAudio::Play(this, D->StepSound, Feet, D->bBoss ? .7f : .25f, .12f);
             else VortexAudio::Play(this, VortexAudio::StepSound(Feet, StepVariant++), Feet, FMath::Clamp(D->Radius / 120.f, .12f, .35f), .15f);
         }

@@ -1,4 +1,5 @@
 #include "Creatures/VortexVolcanicBoss.h"
+#include "Framework/VortexJson.h"
 
 #include "AbilitySystemComponent.h"
 #include "Combat/VortexAttributes.h"
@@ -8,6 +9,10 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Creatures/VortexMonster.h"
+#include "Combat/VortexMonsterFx.h"
+#include "Engine/Texture2D.h"
+#include "GameFramework/PlayerController.h"
+#include "Camera/PlayerCameraManager.h"
 #include "Creatures/VortexMonsterSpecies.h"
 #include "Dom/JsonObject.h"
 #include "Engine/StaticMesh.h"
@@ -69,10 +74,8 @@ AVortexCharacter* UVortexVolcanicBoss::Target() const
 
 void UVortexVolcanicBoss::Load()
 {
-    FString Text;
     TSharedPtr<FJsonObject> Root;
-    if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Creatures/azhur.json"))) ||
-        !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root)
+    if (!(Root = VortexJson::Load(TEXT("Data/Creatures/azhur.json"))).IsValid())
     {
         UE_LOG(LogTemp, Error, TEXT("VORTEX_AZHUR sem Data/Creatures/azhur.json"));
         return;
@@ -422,7 +425,11 @@ FVector UVortexVolcanicBoss::Ground(const FVector& At) const
 void UVortexVolcanicBoss::Mark(const FVector& At, float Radius, float Delay, float Damage, bool bRing, bool bMagic, float Stun)
 {
     if (AVortexMonster* M = Body())
+    {
         AVortexTelegraph::Spawn(M, Ground(At), Radius, FMath::Max(.15f, Delay), Damage, bRing, Magma, bMagic, Stun);
+        // 14/11: o aviso em tons de fogo, na mesma linguagem dos golpes novos (AzWarn / AzWarnRing, em VortexMonsterFx.cpp)
+        if (Radius >= 300.f) MulticastFx(bRing ? TEXT("AzWarnRing") : TEXT("AzWarn"), Ground(At), FRotator::ZeroRotator, Radius, FMath::Max(.15f, Delay), false);
+    }
 }
 
 void UVortexVolcanicBoss::Fx(FName System, const FVector& At, float Scale, float Life, const FRotator& Rotation, bool bFollow)
@@ -444,7 +451,7 @@ void UVortexVolcanicBoss::DoHook(const FAbility& A)
         const float Angle = -Arc * .5f + Arc * i / 4.f;
         Mark(Here + Forward.RotateAngleAxis(Angle, FVector::UpVector) * Reach * .75f, A.Get(TEXT("radius"), 300.f), A.Get(TEXT("impact"), 1.f), Hit(A), false, false, A.Get(TEXT("stun")));
     }
-    Later(A.Get(TEXT("impact"), 1.f), [this, Here, Forward, Reach]() { Fx(TEXT("NS_Stone_Impact"), Ground(Here + Forward * Reach * .7f), 1.4f, 1.2f); });
+    Later(A.Get(TEXT("impact"), 1.f), [this, Here, Forward, Reach]() { MulticastFx(TEXT("AzHook"), Ground(Here + Forward * Reach * .7f), Forward.Rotation(), Reach * .6f, 0.f, false); });
     Sfx(TEXT("azhur_whoosh"), Here, 1.f, A.Get(TEXT("impact"), 1.f) - .35f);
     Sfx(TEXT("azhur_slam"), Here + Forward * Reach * .7f, .6f, A.Get(TEXT("impact"), 1.f));
 }
@@ -457,7 +464,7 @@ void UVortexVolcanicBoss::DoHammer(const FAbility& A)
     const float Impact = A.Get(TEXT("impact"), 1.46f);
     Mark(At, A.Get(TEXT("radius"), 430.f), Impact, Hit(A), false, false, .4f);
     if (M->Phase >= 2) Mark(At, A.Get(TEXT("ring"), 1050.f), Impact + .45f, Hit(A) * .6f, true, false);
-    Later(Impact, [this, At]() { Fx(TEXT("NS_Stone_Impact"), Ground(At), 2.f, 1.4f); Fx(TEXT("NS_Rock_Debris"), Ground(At), 1.4f, 1.6f); });
+    Later(Impact, [this, At, Radius = A.Get(TEXT("radius"), 430.f)]() { MulticastFx(TEXT("AzHammer"), Ground(At), FRotator::ZeroRotator, Radius, 0.f, false); });
     Sfx(TEXT("azhur_whoosh"), At, .8f, Impact - .3f);
     Sfx(TEXT("azhur_slam"), At, 1.f, Impact);
 }
@@ -469,7 +476,7 @@ void UVortexVolcanicBoss::DoStomp(const FAbility& A)
     const float Impact = A.Get(TEXT("impact"), 1.07f);
     Mark(Here, A.Get(TEXT("radius"), 650.f), Impact, Hit(A), false, false, A.Get(TEXT("stun")));
     if (M->Phase >= 2) Mark(Here, A.Get(TEXT("ring2"), 1250.f), Impact + .5f, Hit(A) * .7f, true, false);
-    Later(Impact, [this, Here]() { Fx(TEXT("NS_Stone_Impact"), Ground(Here), 2.4f, 1.4f); });
+    Later(Impact, [this, Here, Radius = A.Get(TEXT("radius"), 650.f)]() { MulticastFx(TEXT("AzStomp"), Ground(Here), FRotator::ZeroRotator, Radius, 0.f, false); });
     Sfx(TEXT("azhur_slam"), Here, 1.f, Impact);
     if (M->Phase >= 2) Sfx(TEXT("azhur_slam"), Here, .6f, Impact + .5f);
 }
@@ -490,7 +497,7 @@ void UVortexVolcanicBoss::DoSweep(const FAbility& A)
         const FVector At = Here + Forward.RotateAngleAxis(-Arc * .5f + Arc * U, FVector::UpVector) * Reach;
         const float Delay = FMath::Lerp(From, To, U);
         Mark(At, A.Get(TEXT("radius"), 320.f), Delay, Hit(A), false, false, .3f);
-        Later(Delay, [this, At]() { Fx(TEXT("NS_Rock_Debris"), Ground(At), 1.f, 1.2f); });
+        Later(Delay, [this, At, Radius = A.Get(TEXT("radius"), 320.f)]() { MulticastFx(TEXT("AzSweep"), Ground(At), FRotator::ZeroRotator, Radius, 0.f, false); });
     }
 }
 
@@ -512,7 +519,7 @@ void UVortexVolcanicBoss::DoCombo(const FAbility& A)
         {
             Mark(At, Radius, FMath::Min(Lead, Hits[i]), Damage, false, false, i == 2 ? .5f : .2f);
         });
-        Later(Hits[i], [this, At, i]() { Fx(TEXT("NS_Stone_Impact"), Ground(At), i == 2 ? 2.f : 1.2f, 1.2f); });
+        Later(Hits[i], [this, At, Radius]() { MulticastFx(TEXT("AzCombo"), Ground(At), FRotator::ZeroRotator, Radius, 0.f, false); });
         Sfx(TEXT("azhur_whoosh"), At, .7f, Hits[i] - .3f);
         Sfx(TEXT("azhur_slam"), At, i == 2 ? 1.f : .7f, Hits[i]);
     }
@@ -525,9 +532,9 @@ void UVortexVolcanicBoss::DoCoreBurst(const FAbility& A)
     AVortexMonster* M = Body();
     const FVector Here = M->GetActorLocation();
     const float Impact = A.Get(TEXT("impact"), 1.75f);
-    Fx(TEXT("NS_MagmaCore_Charge"), Here, 2.2f, Impact, FRotator::ZeroRotator, true);
+    MulticastFx(TEXT("AzCharge"), Here, FRotator::ZeroRotator, 520.f, Impact, true);
     Mark(Here, A.Get(TEXT("radius"), 1000.f), Impact, Hit(A), false, true);
-    Later(Impact, [this, Here]() { Fx(TEXT("NS_MagmaCore_Explosion"), Here, 3.f, 1.8f); });
+    Later(Impact, [this, Here, Radius = A.Get(TEXT("radius"), 1000.f)]() { MulticastFx(TEXT("AzBurst"), Ground(Here), FRotator::ZeroRotator, Radius, 0.f, false); });
     Sfx(TEXT("azhur_charge"), Here, 1.f, FMath::Max(0.f, Impact - 1.5f));
     Sfx(TEXT("azhur_explode"), Here, 1.f, Impact);
 }
@@ -547,7 +554,7 @@ void UVortexVolcanicBoss::DoFissure(const FAbility& A, const FVector& From, cons
         if (i % 3 == 0) Sfx(TEXT("azhur_fissure"), At, .8f, When);
         Later(When, [this, At, Direction, Lava, M]()
         {
-            Fx(TEXT("NS_Volcanic_Fissure"), Ground(At), 1.f, 1.8f, Direction.Rotation());
+            MulticastFx(TEXT("AzFissure"), Ground(At), Direction.Rotation(), 230.f, 0.f, false);
             if (Lava > 0.f && IsValid(M)) M->MulticastLavaPool(Ground(At), 150.f, Lava);
         });
     }
@@ -572,11 +579,11 @@ void UVortexVolcanicBoss::DoMeteor(const FAbility& A)
         {
             if (!IsValid(M)) return;
             M->MulticastMeteor(Land, Flight);
-            Fx(TEXT("NS_Molten_Meteor"), M->GetActorLocation() + FVector(0.f, 0.f, 500.f), 2.f, Flight, (Land - M->GetActorLocation()).Rotation());
+            MulticastFx(TEXT("AzLaunch"), M->GetActorLocation() + FVector(0.f, 0.f, 420.f), FRotator::ZeroRotator, 260.f, 0.f, false);
         });
         Later(Release + Flight + .1f * i, [this, M, Land, Life = A.Get(TEXT("lavaLife"), 8.f)]()
         {
-            Fx(TEXT("NS_Stone_Impact"), Land, 1.5f, 1.2f);
+            MulticastFx(TEXT("AzMeteor"), Land, FRotator::ZeroRotator, 380.f, 0.f, false);
             if (IsValid(M) && Life > 0.f) M->MulticastLavaPool(Land, 230.f, Life);
         });
     }
@@ -591,11 +598,22 @@ void UVortexVolcanicBoss::DoBeam(const FAbility& A)
     const float Sweep = A.Get(TEXT("sweep"), 70.f), Length = A.Get(TEXT("length"), 2400.f), Width = A.Get(TEXT("width"), 170.f);
     const float BaseYaw = M->GetActorRotation().Yaw;
     const float Damage = Hit(A, TEXT("damage"), .22f);
-    Fx(TEXT("NS_MagmaCore_Charge"), M->GetActorLocation(), 2.f, Start, FRotator::ZeroRotator, true);
+    MulticastFx(TEXT("AzCharge"), M->GetActorLocation(), FRotator::ZeroRotator, 420.f, Start, true);
     Later(Start, [this, End, Start, Length]() { MulticastBeam(End - Start, Length); });
     Sfx(TEXT("azhur_charge"), M->GetActorLocation(), .8f);
     Sfx(TEXT("azhur_beam"), M->GetActorLocation(), 1.f, Start);
     const int32 Ticks = FMath::Max(1, FMath::RoundToInt((End - Start) / Tick));
+    // 14/11 (o usuário: "o raio meio travado quando ele vai movendo"): ele só virava a cada tique de dano (5 vezes por
+    // segundo). O giro agora é contínuo, 30 vezes por segundo; o dano continua nos tiques
+    const int32 Turns = FMath::Max(1, FMath::CeilToInt((End - Start) * 30.f));
+    for (int32 j = 0; j <= Turns; ++j)
+    {
+        const float U = float(j) / Turns;
+        Later(Start + (End - Start) * U, [M, U, BaseYaw, Sweep]()
+        {
+            if (IsValid(M) && !M->bDead) M->SetActorRotation(FRotator(0.f, BaseYaw + FMath::Lerp(-Sweep * .5f, Sweep * .5f, U), 0.f));
+        });
+    }
     for (int32 i = 0; i <= Ticks; ++i)
     {
         const float U = float(i) / Ticks;
@@ -638,7 +656,7 @@ void UVortexVolcanicBoss::DoEruption(const FAbility& A)
         const float Delay = FMath::Lerp(From, To, Spots.Num() > 1 ? float(i) / (Spots.Num() - 1) : 0.f);
         const FVector At = Spots[i];
         Mark(At, A.Get(TEXT("radius"), 260.f), Delay, Hit(A), false, true);
-        Later(Delay, [this, At]() { Fx(TEXT("NS_Lava_Pillar"), Ground(At), 1.2f, 1.6f); });
+        Later(Delay, [this, At, Radius = A.Get(TEXT("radius"), 260.f)]() { MulticastFx(TEXT("AzPillar"), Ground(At), FRotator::ZeroRotator, Radius, 0.f, false); });
         Sfx(TEXT("azhur_eruption"), At, .8f, Delay);
     }
 }
@@ -657,7 +675,7 @@ void UVortexVolcanicBoss::DoShed(const FAbility& A)
     Later(Impact, [this, M, Here, Count, Reach, Radius, Damage]()
     {
         if (!IsValid(M)) return;
-        Fx(TEXT("NS_Rock_Debris"), Ground(Here), 2.4f, 2.f);
+        MulticastFx(TEXT("AzShed"), Ground(Here), FRotator::ZeroRotator, 700.f, 0.f, false);
         const FVector From = Here + FVector(0.f, 0.f, M->Def()->Height * .2f);
         for (int32 i = 0; i < Count; ++i)
         {
@@ -675,12 +693,12 @@ void UVortexVolcanicBoss::DoUltimate(const FAbility& A)
     AVortexMonster* M = Body();
     const FVector Here = M->GetActorLocation();
     const float Impact = A.Get(TEXT("impact"), 4.45f);
-    Fx(TEXT("NS_MagmaCore_Charge"), Here, 3.f, Impact, FRotator::ZeroRotator, true);
+    MulticastFx(TEXT("AzCharge"), Here, FRotator::ZeroRotator, 760.f, Impact, true);
     Later(FMath::Max(0.f, Impact - 2.2f), [this, Here, Impact, Radius = A.Get(TEXT("radius"), 1800.f), Damage = Hit(A)]()
     {
         Mark(Here, Radius, 2.2f, Damage, true, true, .6f);
     });
-    Later(Impact, [this, Here]() { Fx(TEXT("NS_MagmaCore_Explosion"), Here, 5.f, 2.2f); });
+    Later(Impact, [this, Here, Radius = A.Get(TEXT("radius"), 1800.f)]() { MulticastFx(TEXT("AzUltimate"), Ground(Here), FRotator::ZeroRotator, Radius, 0.f, false); });
     Sfx(TEXT("azhur_charge"), Here, 1.f, .6f);
     Sfx(TEXT("azhur_charge"), Here, 1.f, 2.4f);
     Sfx(TEXT("azhur_roar"), Here, 1.f, 3.4f);
@@ -714,6 +732,14 @@ void UVortexVolcanicBoss::DoUltimate(const FAbility& A)
 void UVortexVolcanicBoss::MulticastFx_Implementation(FName System, FVector_NetQuantize At, FRotator Rotation, float Scale, float Life, bool bFollow)
 {
     if (GetNetMode() == NM_DedicatedServer) return;
+    // 14/11 (o usuário: "habilidades muito feias, não combina, crie do zero cada uma"): os golpes chamam os efeitos novos
+    // pelo nome "Az..." (VortexMonsterFx.cpp: ondas de magma e imagens próprias de cada golpe). Aqui Scale é o raio em cm,
+    // Rotation.Yaw para onde o golpe aponta e Life a duração dos que usam o tempo do golpe (a carga e os avisos)
+    if (System.ToString().StartsWith(TEXT("Az")))
+    {
+        AVortexMonsterFx::Spawn(GetWorld(), System, FVector(At) + FVector(0.f, 0.f, 20.f), Scale, Life > 0.f ? -Life : 0.f, bFollow ? GetOwner() : nullptr, Rotation.Yaw);
+        return;
+    }
     UNiagaraSystem* Asset = LoadObject<UNiagaraSystem>(nullptr, *FString::Printf(TEXT("%s%s.%s"), FxFolder, *System.ToString(), *System.ToString()));
     if (!Asset) return;
     UNiagaraComponent* C = bFollow && GetOwner()
@@ -772,27 +798,108 @@ void UVortexVolcanicBoss::MulticastBeam_Implementation(float Seconds, float Leng
     if (BeamFire) BeamFire->Activate(true);
 }
 
+// 14/11 (o usuário: "o raio do núcleo muito feio e simples, não parece um raio"): o feixe em camadas. O cilindro de
+// antes vira o miolo fino e branco de tão quente; por fora, dois pares de planos em cruz com um risco de luz de borda
+// macia (o meio laranja e o halo vermelho largo); ele acende afinando para engrossar, treme, e onde toca o chão solta
+// labaredas e deixa o rastro queimado (AzBeamHit). O estado fica aqui (sem mexer no .h)
+namespace
+{
+    struct FBeamLook
+    {
+        TWeakObjectPtr<UStaticMeshComponent> Planes[4];
+        TWeakObjectPtr<UMaterialInstanceDynamic> Mats[4];
+        double StartedAt = 0.0, NextHit = 0.0;
+        float Yaw = 0.f;   // para onde o feixe aponta, alisado (nos convidados o giro do chefe chega aos saltos)
+        bool bWasOn = false;
+    };
+    TMap<TWeakObjectPtr<const UVortexVolcanicBoss>, FBeamLook> BeamLooks;
+}
+
 void UVortexVolcanicBoss::UpdateBeam()
 {
     if (!BeamMesh) return;
-    const bool bOn = GetWorld()->GetTimeSeconds() < BeamUntil;
+    const double Now = GetWorld()->GetTimeSeconds();
+    const bool bOn = Now < BeamUntil;
+    FBeamLook& Look = BeamLooks.FindOrAdd(this);
     if (!bOn)
     {
         if (BeamMesh->IsVisible()) BeamMesh->SetVisibility(false);
         if (BeamFire && BeamFire->IsActive()) BeamFire->Deactivate();
+        for (TWeakObjectPtr<UStaticMeshComponent>& Plane : Look.Planes) if (Plane.IsValid() && Plane->IsVisible()) Plane->SetVisibility(false);
+        Look.bWasOn = false;
         return;
     }
+    if (!Look.bWasOn) { Look.bWasOn = true; Look.StartedAt = Now; Look.NextHit = Now; }
     const AVortexMonster* M = Body();
     if (!M || !M->Def()) return;
     // do núcleo (no peito) até o chão à frente: o cilindro da engine tem 100 cm de altura, deitado na direção do feixe
-    const FVector Core = M->GetActorLocation() + FVector(0.f, 0.f, M->Def()->Height * .15f) + M->GetActorForwardVector() * M->Def()->Radius * .6f;
-    FVector End = M->GetActorLocation() + M->GetActorForwardVector() * BeamLength;
+    const float BodyYaw = M->GetActorRotation().Yaw;
+    if (float(Now - Look.StartedAt) < .05f) Look.Yaw = BodyYaw;
+    Look.Yaw += FMath::FindDeltaAngleDegrees(Look.Yaw, BodyYaw) * FMath::Min(1.f, GetWorld()->GetDeltaSeconds() * 16.f);
+    const FVector Aim = FRotator(0.f, Look.Yaw, 0.f).Vector();
+    const FVector Core = M->GetActorLocation() + FVector(0.f, 0.f, M->Def()->Height * .15f) + Aim * M->Def()->Radius * .6f;
+    FVector End = M->GetActorLocation() + Aim * BeamLength;
     End = Ground(End) + FVector(0.f, 0.f, 40.f);
     const FVector Dir = End - Core;
-    const float Flicker = 1.f + .15f * FMath::Sin(GetWorld()->GetTimeSeconds() * 40.f);
-    BeamMesh->SetWorldLocation((Core + End) * .5f);
-    BeamMesh->SetWorldRotation(FRotationMatrix::MakeFromZ(Dir.GetSafeNormal()).Rotator());
-    BeamMesh->SetWorldScale3D(FVector(.55f * Flicker, .55f * Flicker, Dir.Size() / 100.f));
+    const FVector Axis = Dir.GetSafeNormal(), Mid = (Core + End) * .5f;
+    const float T = float(Now);
+    // acende em 0,18 s e apaga nos últimos 0,2 s
+    const float Open = FMath::Clamp(float(Now - Look.StartedAt) / .18f, 0.f, 1.f) * FMath::Clamp(float(BeamUntil - Now) / .2f, 0.f, 1.f);
+    const float Flicker = 1.f + .12f * FMath::Sin(T * 43.f) + .06f * FMath::Sin(T * 97.f);
+    // o miolo: fino e branco
+    BeamMesh->SetWorldLocation(Mid);
+    BeamMesh->SetWorldRotation(FRotationMatrix::MakeFromZ(Axis).Rotator());
+    // 14/11 (o usuário: "muito fino e branco"): o miolo mais grosso e amarelo-alaranjado (o branco fica só no centro)
+    BeamMesh->SetWorldScale3D(FVector(.6f * Open * Flicker, .6f * Open * Flicker, Dir.Size() / 100.f));
+    if (BeamMaterial)
+    {
+        BeamMaterial->SetVectorParameterValue(TEXT("Color"), FLinearColor(1.f, .5f, .12f));
+        BeamMaterial->SetScalarParameterValue(TEXT("Intensity"), 6.f);
+    }
+    // as camadas de luz: de frente para a câmera e em cruz (de qualquer lado o feixe tem corpo)
+    UMaterialInterface* Sprite = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Vortex/Combat/M_FxSprite.M_FxSprite"));
+    UTexture2D* Streak = LoadObject<UTexture2D>(nullptr, TEXT("/Game/Vortex/Combat/Sprites/T_Fx_trace_01.T_Fx_trace_01"));
+    const APlayerController* Viewer = GetWorld()->GetFirstPlayerController();
+    const FVector Eye = Viewer && Viewer->PlayerCameraManager ? Viewer->PlayerCameraManager->GetCameraLocation() : Mid + FVector(0.f, 0.f, 500.f);
+    FVector Face = (Eye - Mid) - Axis * FVector::DotProduct(Eye - Mid, Axis);
+    Face = Face.IsNearlyZero() ? FVector::UpVector : Face.GetSafeNormal();
+    const FVector Side = FVector::CrossProduct(Axis, Face);
+    for (int32 i = 0; Sprite && Streak && i < 4; ++i)
+    {
+        if (!Look.Planes[i].IsValid())
+        {
+            UStaticMeshComponent* Plane = NewObject<UStaticMeshComponent>(GetOwner());
+            Plane->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Plane.Plane")));
+            Plane->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+            Plane->SetCastShadow(false);
+            Plane->SetUsingAbsoluteLocation(true);
+            Plane->SetUsingAbsoluteRotation(true);
+            Plane->SetUsingAbsoluteScale(true);
+            Plane->SetupAttachment(GetOwner()->GetRootComponent());
+            Plane->TranslucencySortPriority = 20 + i;
+            UMaterialInstanceDynamic* Mat = UMaterialInstanceDynamic::Create(Sprite, this);
+            Mat->SetTextureParameterValue(TEXT("Tex"), Streak);
+            Mat->SetVectorParameterValue(TEXT("Color"), i < 2 ? FLinearColor(3.2f, .22f, .03f) : FLinearColor(4.f, 1.3f, .16f));
+            Plane->SetMaterial(0, Mat);
+            Plane->RegisterComponent();
+            Look.Planes[i] = Plane;
+            Look.Mats[i] = Mat;
+        }
+        UStaticMeshComponent* Plane = Look.Planes[i].Get();
+        const bool bHalo = i < 2;
+        // o risco da imagem corre no Y do plano: o Y vai ao longo do feixe; a frente do plano (Z) olha a câmera ou o lado
+        const float Wide = (bHalo ? 1000.f : 480.f) * Open * (bHalo ? 2.f - Flicker : Flicker);
+        Plane->SetVisibility(true);
+        Plane->SetWorldLocationAndRotation(Mid, FRotationMatrix::MakeFromYZ(Axis, i % 2 ? Side : Face).Rotator());
+        Plane->SetWorldScale3D(FVector(FMath::Max(.01f, Wide / 100.f), Dir.Size() * 1.15f / 100.f, 1.f));
+        if (UMaterialInstanceDynamic* Mat = Look.Mats[i].Get()) Mat->SetScalarParameterValue(TEXT("Strength"), (bHalo ? .7f : 1.f) * Open);
+    }
+    // onde ele toca o chão: labaredas e o rastro queimado, a cada 0,1 s
+    if (Now >= Look.NextHit)
+    {
+        Look.NextHit = Now + .1;
+        AVortexMonsterFx::Spawn(GetWorld(), TEXT("AzBeamHit"), End, 190.f);
+    }
     if (BeamFire) BeamFire->SetWorldLocation(End);
 }
 

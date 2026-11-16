@@ -302,6 +302,19 @@ void AVortexLavaArena::BuildCrater()
     UInstancedStaticMeshComponent* Barrier = Set(TEXT("CraterBarrier"), nullptr, true);
     Barrier->SetVisibility(false);
     Barrier->SetHiddenInGame(true);
+    // 14/11 (o usuário: "umas paredes retangulares aleatórias; é para ser uma cratera de meteoro"): a borda agora é uma
+    // peça modelada (Tools/ImportCaldeira.py: paredes em degraus, crista com lascas, pedregulhos e fendas de lava). Os
+    // blocos de antes continuam no lugar, invisíveis, só para segurar quem tenta subir; sem a peça, valem os de antes
+    UStaticMesh* RimMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Game/Vortex/World/Caldeira/SM_CrateraBorda.SM_CrateraBorda"));
+    UInstancedStaticMeshComponent* RimBlocks = RimMesh ? Set(TEXT("CraterRimBlocks"), nullptr, true) : Walls;
+    if (RimMesh)
+    {
+        RimBlocks->SetVisibility(false);
+        RimBlocks->SetHiddenInGame(true);
+        RimBlocks->SetCastShadow(false);
+    }
+    // as agulhas de obsidiana: um cristal de seis lados no lugar do cubo
+    if (UStaticMesh* Shard = LoadObject<UStaticMesh>(nullptr, TEXT("/Game/Vortex/World/Caldeira/SM_CrateraLasca.SM_CrateraLasca"))) Spikes->SetStaticMesh(Shard);
     const FVector2D C(UVortexCalderaSubsystem::CenterX, UVortexCalderaSubsystem::CenterY);
     FRandomStream Rng(7331);
     const auto Ground = [&Data](float X, float Y) { return Data->GroundAt(X, Y); };
@@ -417,18 +430,35 @@ void AVortexLavaArena::BuildCrater()
         const float Z = FMath::Min(Ground(P.X, P.Y), Ground(P.X - FMath::Cos(Angle) * 400.f, P.Y - FMath::Sin(Angle) * 400.f)) - 250.f;
         const float Yaw = FMath::RadiansToDegrees(Angle);
         const float Tilt = Rng.FRandRange(-7.f, -3.f);    // a parede de dentro debruça sobre a arena (não dá apoio)
-        Box(Walls, FVector(P, Z + Height * .5f + 125.f), FRotator(Tilt, Yaw, Rng.FRandRange(-4.f, 4.f)),
+        Box(RimBlocks, FVector(P, Z + Height * .5f + 125.f), FRotator(Tilt, Yaw, Rng.FRandRange(-4.f, 4.f)),
             FVector(Rng.FRandRange(700.f, 1000.f), 2.f * UE_PI * R / Columns * 1.25f, Height + 250.f));
         // barreira invisível acima do paredão (nem pulando por cima)
         Box(Barrier, FVector(P, Z + Height + 1700.f), FRotator(0.f, Yaw, 0.f), FVector(900.f, 2.f * UE_PI * R / Columns * 1.3f, 3000.f));
-        if (Ramp > .9f && Rng.FRand() < .12f)
+        if (Ramp > .9f && Rng.FRand() < .12f && !RimMesh)   // (com a borda modelada, as fendas de lava e as lascas da crista já vêm nela)
         {
             const FVector2D Face = C + FVector2D(FMath::Cos(Angle), FMath::Sin(Angle)) * (R - 470.f);
             Box(Veins, FVector(Face, Z + Height * .45f + 200.f), FRotator(0.f, Yaw, Rng.FRandRange(-10.f, 10.f)), FVector(30.f, 45.f, Height * .7f));
         }
-        if (Ramp > .9f && Rng.FRand() < .45f)
+        if (Ramp > .9f && Rng.FRand() < .45f && !RimMesh)
             Box(Spikes, FVector(P, Z + Height + 300.f), FRotator(Rng.FRandRange(-20.f, 20.f), Rng.FRandRange(0.f, 90.f), Rng.FRandRange(-25.f, 5.f)),
                 FVector(110.f, 110.f, Rng.FRandRange(350.f, 650.f)));
+    }
+    if (RimMesh && bVisual)
+    {
+        // o pé da parede de dentro fica a 43,3 m do centro: a peça assenta na altura média do chão ali (ela desce 5 m
+        // abaixo disso, para não abrir vão onde o terreno é mais baixo)
+        float Sum = 0.f;
+        for (int32 k = 0; k < 16; ++k) Sum += Ground(C.X + FMath::Cos(k * UE_PI / 8.f) * 4330.f, C.Y + FMath::Sin(k * UE_PI / 8.f) * 4330.f);
+        UStaticMeshComponent* Rim = NewObject<UStaticMeshComponent>(this, TEXT("CraterRim"));
+        Rim->SetupAttachment(RootComponent);
+        Rim->SetUsingAbsoluteLocation(true);
+        Rim->SetUsingAbsoluteRotation(true);
+        Rim->SetUsingAbsoluteScale(true);
+        Rim->SetStaticMesh(RimMesh);
+        Rim->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+        Rim->SetWorldLocation(FVector(C, Sum / 16.f));
+        Rim->RegisterComponent();
+        UE_LOG(LogTemp, Display, TEXT("VORTEX_CALDERA borda modelada em z=%.0f"), Sum / 16.f);
     }
     // ---- agulhas de obsidiana espalhadas no chão (longe do meio, onde ele luta)
     for (int32 k = 0; k < 13; ++k)

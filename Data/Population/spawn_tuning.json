@@ -4,6 +4,10 @@
   "pack_spread_cm": [500, 750],
   "bandit_camp_cm": 450,
   "night_chance": 0.22,
+  "fixed_min_gap_cm": 4500,
+  "respawn_move_cm": [1500, 6000],
+  "_respawn_move": "13/11: o bicho vencido volta a esta distância (mínima, máxima) de onde nasceu.",
+  "_fixed_min_gap": "13/11: os postos fixos do vale que caíam dentro da vila são empurrados para fora; cada um fica a esta distância dos outros (sem lugar, não nasce). Maior = menos bichos perto dos portões.",
   "_regions": "0 mar, 1 Valdora, 2 Brasafenda, 3 Raikor, 4 Nivaluz, 5 Solcânion, 6 Aurivale, 7 Lodonegro, 8 Morthúria, 9 Verdalume. Repetir um nome deixa ele mais comum. Slime vira a gota da região sozinho.",
   "regions": [
     [],

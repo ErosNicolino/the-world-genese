@@ -24,10 +24,10 @@ NEW_ICONS = ROOT / "Data" / "UI" / "SkillIcons" / "Novos"
 # Multiplicadores do RaceCatalog.cs do Godot (1 = humano; taken < 1 apanha menos)
 RACES = {
     "humano": {"melee": 1.0, "ranged": 1.0, "magic": 1.0, "taken": 1.0, "hpRegen": 1.0, "mpRegen": 1.0, "canMagic": True},
-    "elfo": {"melee": .80, "ranged": 1.20, "magic": 1.20, "taken": 1.0, "hpRegen": 1.0, "mpRegen": 1.2, "canMagic": True},
-    "diabo": {"melee": 1.10, "ranged": 1.0, "magic": 1.20, "taken": 1.10, "hpRegen": 1.0, "mpRegen": 1.0, "canMagic": True},
-    "anao": {"melee": 1.20, "ranged": .60, "magic": 0.0, "taken": .90, "hpRegen": 1.0, "mpRegen": 1.0, "canMagic": False},
-    "barbaro": {"melee": 1.35, "ranged": .90, "magic": .60, "taken": .80, "hpRegen": 1.0, "mpRegen": 1.0, "canMagic": True},
+    "elfo": {"melee": .90, "ranged": 1.15, "magic": 1.10, "taken": 1.0, "hpRegen": 1.0, "mpRegen": 1.2, "canMagic": True},
+    "diabo": {"melee": 1.05, "ranged": 1.0, "magic": 1.10, "taken": 1.10, "hpRegen": 1.0, "mpRegen": 1.0, "canMagic": True},
+    "anao": {"melee": 1.10, "ranged": .60, "magic": 0.0, "taken": .90, "hpRegen": 1.0, "mpRegen": 1.0, "canMagic": False},
+    "barbaro": {"melee": 1.15, "ranged": .90, "magic": .60, "taken": .80, "hpRegen": 1.0, "mpRegen": 1.0, "canMagic": True},
     "morto_vivo": {"melee": 1.0, "ranged": 1.0, "magic": 1.0, "taken": 1.0, "hpRegen": 2.0, "mpRegen": 2.0, "canMagic": True},
 }
 
@@ -86,7 +86,8 @@ def main():
         "loot": loot,
         "starting": {"bag": [{"item": e[0], "count": e[1]} for e in items_doc["starting"]["bag"]]},
         "xpSources": progression["xp_sources"],
-        "effects": progression["attributes"]["effects"],
+        # 15/11: a Força e a Inteligência da raça valem 1/4 no golpe (no nível 1 o bárbaro batia 2,7x o humano)
+        "effects": {**progression["attributes"]["effects"], "damage_per_strength": .25, "damage_per_intelligence": .25},
         # os 12 oficiais recebem os pontos de nível; os oito antigos ficam na base (mais a raça)
         "officialPerPoint": {k: v for k, v in progression["official_per_point"].items() if not k.startswith("_")},
         "attributeBase": progression["attributes"]["base"],

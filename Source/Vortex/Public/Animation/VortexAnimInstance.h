@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Animation/AnimInstance.h"
 #include "Animation/AnimInstanceProxy.h"
@@ -7,6 +7,17 @@
 
 class UAnimSequence;
 class USkeletalMesh;
+
+/** 13/11: a camada de vida, já em números finais para a pose (TickLife calcula, ApplyLife aplica; ajustes em
+ *  Data/Characters/vida.json): respiração, troca de peso, olhar, alerta e o passo do golpe. */
+struct FVortexLifePose
+{
+    float BreathDeg = 0.f, BreathLift = 0.f;      // o peito sobe e desce
+    float SwayCm = 0.f, SwayDeg = 0.f;            // o peso troca de perna (e o quadril parado de lado, o jeito do corpo)
+    float LookYaw = 0.f, LookPitch = 0.f;         // a cabeça segue quem está perto (ou dá olhadas)
+    float StepCm = 0.f, CrouchCm = 0.f;           // o passo à frente do golpe; a postura de alerta
+    float SpineDeg = 0.f, ChinDeg = 0.f;
+};
 
 /**
  * Animação do aventureiro feita em C++ (sem grafo de Animation Blueprint): a cada quadro escolhe o
@@ -78,6 +89,7 @@ public:
     bool bArmsOnly = false;
     /** 0..1: correndo com Shift o tronco inclina para a frente (andar e correr pareciam a mesma animação). */
     float Lean = 0.f;
+    FVortexLifePose Life;
 #if !UE_BUILD_SHIPPING
     /** Testes (VortexHeroShots): força a inclinação da corrida para a foto. */
     static inline bool bDebugLean = false;
@@ -109,6 +121,15 @@ private:
     uint8 NpcGestureSeq = 0;   // 08/11: o último gesto do morador já tocado
     float NpcGestureLeft = 0.f;
     float LastHealth = -1.f, HitAge = 99.f, DrawAge = 99.f;
+    // a camada de vida
+    float LifeClock = 0.f, LifeIdle = 0.f, LifeAlert = 0.f, BreathPhase = 0.f, SwayPhase = 0.f, LifeScan = 0.f, GlanceIn = 4.f, GlanceLeft = 0.f;
+    float StepAge = 99.f, StepSize = 0.f;
+    FVector2D LookGoal = FVector2D::ZeroVector, Glance = FVector2D::ZeroVector;
+    bool bLifeFoe = false;
+    int32 LifeSerial = 0;
+    FName IdleGesture;            // o gesto de quem está parado há um tempo (Vida_*, ArmStretching)
+    float IdleGestureAt = 10.f;
+    void TickLife(float DeltaSeconds, const class ACharacter* Owner, float Speed, bool bBusy);
     TWeakObjectPtr<const class UVortexWeaponDefinition> LastDefinition;
     void Play(FName Name, bool bLoop, float NewRate, float InBlend = BlendTime, UAnimSequence* Override = nullptr);
 };
@@ -144,6 +165,8 @@ private:
     bool bHideArms = false;
     bool bArmsOnly = false;
     float Lean = 0.f;
+    FVortexLifePose Life;
+    void ApplyLife(FPoseContext& Output) const;
     void ApplyBody(FPoseContext& Output) const;
     /** Braços abertos (Body.ArmSpread) e a inclinação da corrida (Lean), girando no espaço do componente. */
     void ApplyPosture(FPoseContext& Output) const;

@@ -10,7 +10,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "Data", "Heroes", "Mixamo")
 OUT = os.path.join(ROOT, "Data", "Heroes", "humano_Mixamo", "Elfo")
 # a cor na sombra mais funda e na parte mais clara da pele do humano
-TONES = {"clara": ((205, 178, 158), (255, 240, 226)), "escura": ((50, 43, 74), (112, 100, 146))}
+# 14/11: as outras raças usam o mesmo corpo (Data/Looks/racas.json): a pasta continua "Elfo", o nome é T_<raça>_<pele>
+TONES = {"elfo_clara": ((205, 178, 158), (255, 240, 226)), "elfo_escura": ((50, 43, 74), (112, 100, 146)),
+         "anao_corada": ((176, 112, 92), (246, 196, 170)), "anao_bronze": ((128, 82, 56), (206, 150, 110)),
+         "barbaro_bronze": ((136, 90, 60), (214, 160, 118)), "barbaro_gelo": ((150, 160, 176), (232, 238, 246)),
+         "diabo_vermelha": ((112, 26, 28), (206, 66, 56)), "diabo_roxa": ((58, 34, 92), (136, 90, 172)), "diabo_carvao": ((38, 34, 42), (100, 92, 104)),
+         # o morto-vivo é um esqueleto: tons de osso (novo, antigo e queimado)
+         "morto_vivo_osso": ((150, 138, 112), (238, 230, 208)), "morto_vivo_antigo": ((104, 82, 52), (192, 164, 116)), "morto_vivo_cinzas": ((50, 48, 54), (126, 124, 132))}
 
 
 def is_skin(r, g, b):
@@ -37,7 +43,7 @@ for suffix, name in (("", "humano_cor.png"), ("_F", "humano_cor_f.png")):
                 if a and is_skin(r, g, b):
                     t = (luma((r, g, b)) - lo) / max(1.0, hi - lo)
                     px[x, y] = tuple(round(dark[i] + (light[i] - dark[i]) * t) for i in range(3)) + (a,)
-        out.save(os.path.join(OUT, "T_elfo_%s%s.png" % (tone, suffix)))
+        out.save(os.path.join(OUT, "T_%s%s.png" % (tone, suffix)))
         sheet.append(out.resize((out.width * 5, out.height * 5), Image.NEAREST))
 w, h = sheet[0].size
 preview = Image.new("RGB", (w * len(sheet), h), (60, 60, 60))

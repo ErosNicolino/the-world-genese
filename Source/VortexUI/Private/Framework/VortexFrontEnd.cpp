@@ -69,7 +69,7 @@ namespace VortexUi
     // por enquanto só o humano pode ser escolhido (01/11, pedido seu); as outras raças ficam com cadeado
     bool IsRaceOpen(FName Race)
     {
-        return Race == TEXT("humano") || Race == TEXT("elfo");
+        return !Race.IsNone();   // 14/11: todas abertas (o corpo do humano com a pele e o traço da raça)
     }
 
     FSlateFontInfo Font(int32 Size, const TCHAR* Weight = TEXT("Regular"), int32 Spacing = 0)
@@ -2185,7 +2185,9 @@ TSharedRef<SWidget> SVortexFrontEnd::BuildHairPanel()
     TSharedRef<SVerticalBox> Styles = Pairs(StyleButtons);
     // os rostos (Data/Looks/rostos.json): os olhos e as sobrancelhas de cada estilo, nos dois corpos
     TArray<TSharedRef<SWidget>> FaceButtons;
-    const FName Tone = Look.Pieces.FindRef(TEXT("elfo_pele"));   // vazio no humano
+    const FVortexRaceLook* RaceLook = VortexRaceLook(Look.Race);   // nulo no humano
+    const FVortexRaceChoice* SkinNow = RaceLook ? RaceLook->Skins.FindByPredicate([this](const FVortexRaceChoice& C) { return C.Id == Look.Pieces.FindRef(TEXT("raca_pele")); }) : nullptr;
+    const FName Tone = SkinNow ? SkinNow->Faces : FName();   // o grupo de olhos da pele; vazio = os do humano
     for (const FVortexFaceStyle& Face : VortexFaceStyles())
     {
         if (Face.Pele != Tone) continue;                    // os olhos de cada pele
@@ -2333,16 +2335,16 @@ TSharedRef<SWidget> SVortexFrontEnd::BuildHairPanel()
 
     // 09/11: o elfo: as 2 peles (trocar refaz a tela, porque os olhos dependem dela) e os 4 tipos de orelha
     TSharedRef<SWidget> ElfBox = SNullWidget::NullWidget;
-    if (Look.Race == TEXT("elfo"))
+    if (RaceLook)   // 14/11: as peles e o traço de cada raça (Data/Looks/racas.json)
     {
         TArray<TSharedRef<SWidget>> Skins, Ears;
-        for (const TPair<FName, FString>& Skin : { TPair<FName, FString>(TEXT("clara"), TEXT("Clara")), TPair<FName, FString>(TEXT("escura"), TEXT("Dark elfo")) })
+        for (const FVortexRaceChoice& Skin : RaceLook->Skins)
         {
-            const FName Id = Skin.Key;
-            Skins.Add(Choice(Skin.Value, [this, Id]() { return Look.Pieces.FindRef(TEXT("elfo_pele")) == Id; }, [this, Id]()
+            const FName Id = Skin.Id;
+            Skins.Add(Choice(Skin.Name, [this, Id]() { return Look.Pieces.FindRef(TEXT("raca_pele")) == Id; }, [this, Id]()
             {
-                if (Look.Pieces.FindRef(TEXT("elfo_pele")) == Id) return;
-                Look.Pieces.Add(TEXT("elfo_pele"), Id);
+                if (Look.Pieces.FindRef(TEXT("raca_pele")) == Id) return;
+                Look.Pieces.Add(TEXT("raca_pele"), Id);
                 Look = FVortexLookCatalog::Get().Normalized(Look);
                 Sound(TEXT("equip"), .45f);
                 ShowLookOnStage();
@@ -2351,13 +2353,13 @@ TSharedRef<SWidget> SVortexFrontEnd::BuildHairPanel()
             PageAt = Keep;
             }));
         }
-        for (const TPair<FName, FString>& Ear : { TPair<FName, FString>(TEXT("curta"), TEXT("Curta")), TPair<FName, FString>(TEXT("longa"), TEXT("Longa")), TPair<FName, FString>(TEXT("tras"), TEXT("Para trás")), TPair<FName, FString>(TEXT("caida"), TEXT("Caída")) })
+        for (const FVortexRaceChoice& Ear : RaceLook->Traits)
         {
-            const FName Id = Ear.Key;
-            Ears.Add(Choice(Ear.Value, [this, Id]() { return Look.Pieces.FindRef(TEXT("elfo_orelha")) == Id; }, [this, Id]()
+            const FName Id = Ear.Id;
+            Ears.Add(Choice(Ear.Name, [this, Id]() { return Look.Pieces.FindRef(TEXT("raca_traco")) == Id; }, [this, Id]()
             {
-                if (Look.Pieces.FindRef(TEXT("elfo_orelha")) == Id) return;
-                Look.Pieces.Add(TEXT("elfo_orelha"), Id);
+                if (Look.Pieces.FindRef(TEXT("raca_traco")) == Id) return;
+                Look.Pieces.Add(TEXT("raca_traco"), Id);
                 Look = FVortexLookCatalog::Get().Normalized(Look);
                 Sound(TEXT("equip"), .45f);
                 ShowLookOnStage();
@@ -2366,7 +2368,7 @@ TSharedRef<SWidget> SVortexFrontEnd::BuildHairPanel()
         ElfBox = SNew(SVerticalBox)
             + SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)[Title(TEXT("Pele"))]
             + SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 10.f)[Pairs(Skins)]
-            + SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)[Title(TEXT("Orelhas"))]
+            + SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 8.f)[Title(RaceLook->TraitTitle)]
             + SVerticalBox::Slot().AutoHeight().Padding(0.f, 0.f, 0.f, 10.f)[Pairs(Ears)];
     }
 
@@ -3061,7 +3063,7 @@ void SVortexFrontEnd::TickShot()
             Elf.Pieces.Add(TEXT("elfo_pele"), Cases[Index].Skin);
             Elf.Pieces.Add(TEXT("elfo_orelha"), Cases[Index].Ear); Elf.Pieces.Add(TEXT("peca_chapeu"), Index == 0 ? TEXT("P_elfo_tiara_azul") : Index == 1 ? TEXT("P_chapeu_bruxa") : Index == 2 ? TEXT("P_chapeu_cacador") : TEXT("P_chapeu_capuz_marrom")); Elf.Pieces.Add(TEXT("peca_acessorio"), Index == 0 ? TEXT("P_elfo_colar_verde") : Index == 2 ? TEXT("P_acess_corrente") : TEXT("P_acess_lenco")); Elf.Pieces.Add(TEXT("peca_cintura"), Index == 0 ? TEXT("P_acess_bolsa_redonda") : Index == 1 ? TEXT("P_acess_cinto_ervas") : Index == 2 ? TEXT("P_acess_cinto_bolsas") : TEXT("P_acess_bolsa_lateral"));
             Look = FVortexLookCatalog::Get().Normalized(Elf);
-            UE_LOG(LogTemp, Display, TEXT("VORTEX_ELF_MENU %d pele %s orelha %s olhos %s traje %s"), Index, *Look.Pieces.FindRef(TEXT("elfo_pele")).ToString(), *Look.Pieces.FindRef(TEXT("peca_orelha")).ToString(),
+            UE_LOG(LogTemp, Display, TEXT("VORTEX_ELF_MENU %d pele %s orelha %s olhos %s traje %s"), Index, *Look.Pieces.FindRef(TEXT("raca_pele")).ToString(), *Look.Pieces.FindRef(TEXT("peca_orelha")).ToString(),
                 *Look.Pieces.FindRef(TEXT("block_face")).ToString(), *Look.Pieces.FindRef(TEXT("block_outfit")).ToString());
             Go(EPage::Creator);
             ShowLookOnStage();

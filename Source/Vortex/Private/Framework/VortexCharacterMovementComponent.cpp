@@ -1,4 +1,4 @@
-#include "Framework/VortexCharacterMovementComponent.h"
+﻿#include "Framework/VortexCharacterMovementComponent.h"
 #include "Rpg/VortexArmor.h"
 #include "Combat/VortexClassSkills.h"
 #include "Framework/VortexCharacter.h"
@@ -6,6 +6,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/Character.h"
 #include "World/VortexWaterZone.h"
+#include "Combat/VortexCombatComponent.h"
 
 namespace
 {
@@ -136,6 +137,14 @@ float UVortexCharacterMovementComponent::GetMaxSpeed() const
         const float Blessing = Hero && Hero->GetClassSkills() ? 1.f + Hero->GetClassSkills()->SpeedBonus() : 1.f;
         // a cavalo: o galope (correr) e o trote, bem mais rápidos que a pé (o galope é o de antes de 01/11, 620 x 1,75)
         if (Hero && Hero->IsMounted()) return (bWantsToSprint ? WalkSpeed * 2.85f : WalkSpeed * 1.6f) * Blessing;
+        // 13/11: atordoado (o uivo do lobo) quase não anda; tonto (o sonar do morcego) anda devagar
+        // shortcut: o estado vive só no servidor (StunnedUntil e SlowUntil não replicam); o convidado sente por correção de
+        // posição. Replicar no UVortexCombatComponent se ficar aos trancos no multiplayer
+        if (const UVortexCombatComponent* Hurt = Hero ? Hero->GetCombat() : nullptr)
+        {
+            if (Hurt->IsStunned()) return WalkSpeed * .04f;
+            if (Hurt->MoveScale() < 1.f) return WalkSpeed * 1.5f * Hurt->MoveScale();
+        }
         // presa na teia: quase parada até cortar
         if (Hero && Hero->IsWebbed()) return WalkSpeed * .12f;
         // bebendo uma poção: só anda devagar

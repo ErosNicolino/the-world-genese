@@ -1,0 +1,37 @@
+{
+ "Dano_Queda": {
+  "item": "Dano_Queda",
+  "kind": "dano",
+  "seconds": 0.967
+ },
+ "Dano_Levantar": {
+  "item": "Dano_Levantar",
+  "kind": "dano",
+  "seconds": 0.867
+ },
+ "Dano_Frente": {
+  "item": "Dano_Frente",
+  "kind": "dano",
+  "seconds": 0.433
+ },
+ "Dano_Esq": {
+  "item": "Dano_Esq",
+  "kind": "dano",
+  "seconds": 0.433
+ },
+ "Dano_Dir": {
+  "item": "Dano_Dir",
+  "kind": "dano",
+  "seconds": 0.433
+ },
+ "Dano_Barriga": {
+  "item": "Dano_Barriga",
+  "kind": "dano",
+  "seconds": 0.533
+ },
+ "Dano_Forte": {
+  "item": "Dano_Forte",
+  "kind": "dano",
+  "seconds": 0.7
+ }
+}

@@ -1,6 +1,6 @@
 ﻿# The World Gêneses no Unreal: painel do projeto
 
-Atualizado em 23/10/2026. Esta é a página de entrada. Ela mostra o que já foi feito, o que espera o seu teste no editor e o que ainda falta. Os relatórios completos estão nas pastas abaixo.
+Atualizado em 16/11/2026 (as linhas de novembro entraram no fim da tabela de correções; as marcas 🟡 antigas não foram revistas: só você, jogando, passa uma linha para ✅; o dia a dia está em [CONTINUAR_AQUI.md](CONTINUAR_AQUI.md)). Esta é a página de entrada. Ela mostra o que já foi feito, o que espera o seu teste no editor e o que ainda falta. Os relatórios completos estão nas pastas abaixo.
 
 **Para testar tudo de uma vez:** [TESTAR_TUDO.md](TESTAR_TUDO.md) — `Tools\RunAllTests.ps1` roda todos os testes automáticos, e o guia traz um passeio de ~20 min no editor.
 
@@ -14,6 +14,8 @@ Atualizado em 23/10/2026. Esta é a página de entrada. Ela mostra o que já foi
 | [04_Interface](04_Interface) | HUD, menu com palco 3D, seleção de raça e criação de herói |
 | [05_Referencias](05_Referencias) | Inventário dos pacotes de `VortexReferencia` e onde cada um pode servir |
 | [Images](Images) | Fotos usadas nos relatórios (antes e depois) |
+| [Github](Github) | O que aparece no GitHub: banner, capa do trailer, fotos da galeria e o prompt da música do trailer (Suno) |
+| [Videos](Videos) | O trailer em alta qualidade (`trailer_geneses_2026-11.mp4`); no YouTube: https://youtu.be/VxLjuB3mnEc |
 | [Midia](Midia) | A canção e as folhas da HQ de abertura (`Abertura`), outras músicas e vídeos |
 | [A_Lenda_de_Genese_e_o_Jogo.pdf](A_Lenda_de_Genese_e_o_Jogo.pdf) | A história do mundo pela canção "Acorde": o que o jogo já tem e o que falta |
 
@@ -124,6 +126,11 @@ O plano geral e a auditoria do Godot ficam fora desta pasta, em [`../../AUDITORI
 | HUD cartoon (cartão do herói, bússola em fita, barra de chefe, missão, avisos, barra de habilidades), minimapa nítido (1 ponto por bloco, gira com a câmera) e mapa do mundo em tela cheia (arrastar, zoom no mouse, detalhe por bloco, nuvens no inexplorado, marcador, filtros) | 🟡 | [HUD_CARTOON_MINIMAPA_MAPA](04_Interface/HUD_CARTOON_MINIMAPA_MAPA.md) |
 | Revisão das 264 habilidades de classe: pressa que zerava as recargas, alcance igual ao do texto, zonas na mira, bênçãos "só sua", nomes, ícones recortados de novo e escolhidos por habilidade, 8 gestos do Godot (com a variante de cada arma); teste que lança todas | 🟡 | [REVISAO_HABILIDADES](02_Combate/REVISAO_HABILIDADES.md) |
 | HQ de abertura "Acorde": 24 quadros em 2 folhas que pintam, câmera de quadro em quadro no tempo da canção, legenda com os versos, clarão, folha virando e o "ACORDE" final; abre no primeiro despertar e pela pausa (A HISTÓRIA) | 🟡 | [ABERTURA_QUADRINHOS](03_Mundo/ABERTURA_QUADRINHOS.md) |
+| Novembro (10 a 14/11): chão em pixel art e grama nova, vila maior com as casas do kit, forja de Bram, clima e bichos da cidade, bandidos e acampamentos, golpes e efeitos dos monstros, Azhûr e a cratera refeitos, poderes das espadas e dos arcos, as outras raças no corpo de blocos, as 5 armas iniciais e os painéis das opções | 🟡 | [CONTINUAR_AQUI](CONTINUAR_AQUI.md) |
+| Chegada pelo véu (16/11): ao sair do Estádio do Despertar, uma luz cai do céu na praça e o herói pousa com poeira e onda de choque; coliseu com pedestais lado a lado, pórtico, poço de seiva, hera, árvores e tochas | 🟡 | [CONTINUAR_AQUI](CONTINUAR_AQUI.md) |
+| Cavalo (16/11): sela e rédeas com física, câmera livre montado, cavalo mortal (só o dono e os monstros o ferem, nunca na vila) que se cura com fruta abaixo de 70% de vida, freada, salto, poeira e marcas de casco, subir e descer pelo estribo | 🟡 | [CONTINUAR_AQUI](CONTINUAR_AQUI.md) |
+| Combate e 1ª pessoa (16/11): braço do arco, braço fino no golpe, poção na mão com efeito de cura ou mana, pedra do golem sem atravessar o mapa, quem luta de perto leva 35% menos dano (`Data/Rpg/balance.json`, `meleeTaken`) | 🟡 | [CONTINUAR_AQUI](CONTINUAR_AQUI.md) |
+| Auditoria do código (16/11): queda e tutorial por herói, importador que recusa animação parada (`Tools/glb_motion.py`), leitura de JSON num lugar só (`VortexJson::Load`), testes do GameMode em arquivo próprio (`VortexGameModeTests.cpp`) | 🟡 | [CONTINUAR_AQUI](CONTINUAR_AQUI.md) |
 
 ### O que dá para fazer no jogo hoje
 

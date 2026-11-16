@@ -129,6 +129,15 @@ def curve(t, keys):
     return keys[-1][1]
 
 
+# 14/11 (o usuário: "melhore as animações de cada um; tem uns muito simples e feios"): o reforço dos poderes das espadas e
+# dos arcos, sem mexer no tempo (o instante do golpe continua casando com o poder). Só vale quando PUNCH está ligado:
+#  - os movimentos do corpo um pouco maiores (o giro do tronco, a inclinação, o avanço; o pulo mais alto);
+#  - a cabeça fica no alvo: desfaz parte do giro e da inclinação do tronco (antes o herói olhava para o chão ao inclinar);
+#  - o peito chega atrasado no giro (o quadril puxa, o peito vem atrás): o golpe ganha peso.
+PUNCH = False
+GAIN = {"twist": 1.18, "lean": 1.15, "push": 1.2, "tilt": 1.15}
+
+
 def build(segments, layers, total=None):
     """segments: [(clipe, de, até, segundos)]: os trechos em sequência (cada um emenda no anterior em 0,08 s).
     layers: {nome: [(t, valor)]} em fração do tempo total: spin (graus em volta do eixo de cima), lift (fração da altura
@@ -155,6 +164,13 @@ def build(segments, layers, total=None):
             pose = blend(sample(pn, pb_), pose, smooth((t - starts[k]) / .08))
         u = t / total
         val = {n: curve(u, keys) for n, keys in layers.items()}
+        if PUNCH:
+            for n, g in GAIN.items():
+                if n in val:
+                    val[n] *= g
+            if val.get("lift", 0) > 0:
+                val["lift"] *= 1.25
+            late = curve(u - .05, layers["twist"]) * GAIN["twist"] if "twist" in layers else 0
         turn(pose, HIPS, UP, val.get("spin", 0))
         turn(pose, P + "Spine", SIDE, -val.get("lean", 0) * .5)
         turn(pose, P + "Spine1", SIDE, -val.get("lean", 0) * .5)
@@ -170,6 +186,12 @@ def build(segments, layers, total=None):
         for side in ("Left", "Right"):
             turn(pose, P + side + "ForeArm", SIDE, -val.get("elbows", 0) - val.get("elb" + side[0].lower(), 0))
         turn(pose, P + "Head", SIDE, -val.get("look", 0))
+        if PUNCH:
+            turn(pose, P + "Spine2", UP, (late - val.get("twist", 0)) * .5)       # o peito atrasado
+            turn(pose, P + "Neck", UP, -val.get("twist", 0) * .3)                 # a cabeça no alvo
+            turn(pose, P + "Head", UP, -val.get("twist", 0) * .3)
+            turn(pose, P + "Neck", SIDE, val.get("lean", 0) * .3)
+            turn(pose, P + "Head", SIDE, val.get("lean", 0) * .25)
         lift, push = val.get("lift", 0), val.get("push", 0)
         if lift or push:
             shift(pose, UP * (lift * HIP_H) + FRONT * (push * HIP_H))
@@ -376,6 +398,21 @@ def export(glb_name, json_name, report):
     log("exportado", glb, len(report), "animações")
 
 
+if __name__ == "__main__" and "--vida" in ARGS:
+    # 13/11: Vida_humano.glb + vida.json: o parado da mulher e do elfo, o de alerta, os gestos e o andar da mulher
+    exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "life_anims_hand.py"), encoding="utf-8").read())
+    report = {}
+    for name, (base, period, layers) in VIDA_ANIMS.items():
+        if ONLY and name not in ONLY:
+            continue
+        # sem os segundos: o clipe de base inteiro, no tempo dele (o andar); com: a pose de base parada
+        segs = [(base, 0, 1, length(clip(base)) / FPS)] if period is None else [(base, 0, 0, period)]
+        secs = write(name, build(segs, layers))
+        report[name] = {"item": name, "kind": "vida", "seconds": round(secs, 3)}
+        log("%-20s %.2f s" % (name, secs))
+    export("Vida_humano.glb", "vida.json", report)
+    sys.exit(0)
+
 if __name__ == "__main__" and NPC:
     # Npc_humano.glb + npc.json: os clipes em laço do que cada morador faz parado (AVortexNpc, npc_schedule.json)
     exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "npc_anims_hand.py"), encoding="utf-8").read())
@@ -412,6 +449,7 @@ if __name__ == "__main__":
     swords = json.load(open(os.path.join(ROOT, "Data", "Rpg", "swords.json"), encoding="utf-8"))["swords"]
     bows = json.load(open(os.path.join(ROOT, "Data", "Rpg", "bows.json"), encoding="utf-8"))["bows"]
     report = {}
+    PUNCH = "--sem-reforco" not in ARGS
     for table, kindname, fn in ((swords, "espada", sword_anim), (bows, "arco", bow_anim)):
         for item, w in table.items():
             kind = w["power"].get("kind")

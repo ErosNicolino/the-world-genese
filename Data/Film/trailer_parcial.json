@@ -1,0 +1,152 @@
+﻿{
+    "Shots":  [
+                  {
+                      "Name":  "ygg_amanhecer",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 2910,
+                                 390
+                             ],
+                      "Radius":  110,
+                      "Height":  30,
+                      "LookHeight":  55,
+                      "From":  200,
+                      "Sweep":  20,
+                      "Seconds":  8,
+                      "Hour":  9.5,
+                      "HideHero":  true
+                  },
+                  {
+                      "Name":  "lobos_planicie",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 73,
+                                 46
+                             ],
+                      "Radius":  8,
+                      "Height":  3,
+                      "LookHeight":  1,
+                      "From":  30,
+                      "Sweep":  40,
+                      "Seconds":  6,
+                      "Hour":  9,
+                      "Commands":  [
+                                       "spawn lobo 6 4"
+                                   ]
+                  },
+                  {
+                      "Name":  "brasafenda_vulcao",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 -1470,
+                                 -2700
+                             ],
+                      "Radius":  50,
+                      "Height":  18,
+                      "LookHeight":  6,
+                      "From":  0,
+                      "Sweep":  18,
+                      "Seconds":  6,
+                      "Hour":  19.2,
+                      "HideHero":  true
+                  },
+                  {
+                      "Name":  "raikor_picos",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 780,
+                                 -2550
+                             ],
+                      "Radius":  50,
+                      "Height":  22,
+                      "LookHeight":  8,
+                      "From":  90,
+                      "Sweep":  18,
+                      "Seconds":  6,
+                      "Hour":  8.5,
+                      "Weather":  "Cloudy",
+                      "HideHero":  true
+                  },
+                  {
+                      "Name":  "nivaluz_nevasca",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 3000,
+                                 -2700
+                             ],
+                      "Radius":  12,
+                      "Height":  3.5,
+                      "LookHeight":  1.4,
+                      "From":  200,
+                      "Sweep":  25,
+                      "Seconds":  6,
+                      "Hour":  12,
+                      "Weather":  "Blizzard"
+                  },
+                  {
+                      "Name":  "lodonegro_neblina",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 -1980,
+                                 960
+                             ],
+                      "Radius":  30,
+                      "Height":  9,
+                      "LookHeight":  2,
+                      "From":  40,
+                      "Sweep":  18,
+                      "Seconds":  6,
+                      "Hour":  7.5,
+                      "Weather":  "Fog",
+                      "HideHero":  true
+                  },
+                  {
+                      "Name":  "solcanion_mesas",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 -2070,
+                                 -1020
+                             ],
+                      "Radius":  50,
+                      "Height":  16,
+                      "LookHeight":  6,
+                      "From":  300,
+                      "Sweep":  18,
+                      "Seconds":  6,
+                      "Hour":  17.5,
+                      "HideHero":  true
+                  },
+                  {
+                      "Name":  "aurivale_campos",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 2640,
+                                 -1260
+                             ],
+                      "Radius":  40,
+                      "Height":  14,
+                      "LookHeight":  4,
+                      "From":  120,
+                      "Sweep":  18,
+                      "Seconds":  6,
+                      "Hour":  16,
+                      "HideHero":  true
+                  },
+                  {
+                      "Name":  "morthuria_noite",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 480,
+                                 1710
+                             ],
+                      "Radius":  35,
+                      "Height":  12,
+                      "LookHeight":  3,
+                      "From":  250,
+                      "Sweep":  18,
+                      "Seconds":  6,
+                      "Hour":  22,
+                      "HideHero":  true
+                  }
+              ]
+}

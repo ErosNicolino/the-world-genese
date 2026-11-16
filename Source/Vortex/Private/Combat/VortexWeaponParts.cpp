@@ -111,6 +111,7 @@ void UVortexWeaponParts::Clear(FHolder& H)
     for (TWeakObjectPtr<UStaticMeshComponent>& P : H.Pages) if (P.IsValid()) P->DestroyComponent();
     if (H.Rope.IsValid()) H.Rope->DestroyComponent();
     if (H.Tip.IsValid()) H.Tip->DestroyComponent();
+    for (TWeakObjectPtr<UStaticMeshComponent>& Arm : H.Arms) if (Arm.IsValid()) Arm->DestroyComponent();
     H = FHolder();
 }
 
@@ -382,7 +383,11 @@ void UVortexWeaponParts::TickBowString(FHolder& H, AVortexCharacter* Hero, float
     if (bOnCamera)
     {
         const bool bPulling = LastSwing == VortexSpecialPose::Hold && SwingAge < 3.2f;
-        H.ViewDraw = FMath::FInterpTo(H.ViewDraw, bPulling ? 1.f : 0.f, DeltaTime, 14.f);
+        // 15/11: soltou: um tranco para a frente que some em ~0,3 s
+        if (H.bViewPulling && !bPulling) H.ViewKick = 1.f;
+        H.bViewPulling = bPulling;
+        H.ViewKick = FMath::Max(0.f, H.ViewKick - DeltaTime * 3.5f);
+        H.ViewDraw = FMath::FInterpTo(H.ViewDraw, bPulling ? 1.f : 0.f, DeltaTime, bPulling ? 10.f : 7.f);
         const FBox Box = Mesh->GetBoundingBox();
         const FVector Mid0 = (H.TipA + H.TipB) * .5f, Long0 = (H.TipA - H.TipB).GetSafeNormal();
         // o eixo da curva da madeira: o mais comprido depois do arco; "frente" é da corda para a madeira
@@ -395,15 +400,23 @@ void UVortexWeaponParts::TickBowString(FHolder& H, AVortexCharacter* Hero, float
         ViewDepth = FMath::Max(Box.Max[Curve] - Mid0[Curve], Mid0[Curve] - Box.Min[Curve]);
         const float D = FMath::SmoothStep(0.f, 1.f, H.ViewDraw);
         const FQuat Mesh0 = FRotationMatrix::MakeFromXZ(Front0, Long0).ToQuat();
-        const FQuat Want = FRotationMatrix::MakeFromXZ(FMath::Lerp(FVector(.92f, -.2f, .12f), FVector(.9f, -.38f, .16f), D), FMath::Lerp(FVector(.05f, -.22f, .97f), FVector(.05f, -.12f, .99f), D)).ToQuat();
+        // 15/11: descansando fica baixo e deitado para dentro (antes tomava a lateral da tela de cima a baixo); puxando
+        // sobe para perto da mira, quase em pé, com a flecha apontando para ela
+        const FQuat Want = FRotationMatrix::MakeFromXZ(FMath::Lerp(FVector(.9f, -.3f, .0f), FVector(.97f, -.2f, .08f), D), FMath::Lerp(FVector(.2f, -.55f, .8f), FVector(.03f, -.2f, .98f), D)).ToQuat();
         const FQuat Turn = Want * Mesh0.Inverse();
         const float Size = 58.f / FMath::Max(1.f, FVector::Dist(H.TipA, H.TipB));
+        // a madeira "dobra" com a carga: mais funda na curva e um pouco mais curta (as pontas vêm para trás)
+        const float Bend = D * Charge;
+        FVector Scale(Size);
+        Scale[Curve] *= 1.f + .3f * Bend;
+        Scale[LongAxis] *= 1.f - .07f * Bend;
         // puxada cheia: treme de leve
-        const float Shake = Charge >= 1.f && bPulling ? FMath::Sin(SwingAge * 70.f) * .18f : 0.f;
-        const FVector At = FMath::Lerp(FVector(40.f, 28.f, -17.f), FVector(38.f, 19.f, -11.f), D) + FVector(0.f, Shake, Shake * .6f);
-        Bow->SetRelativeTransform(FTransform(Turn, At - Turn.RotateVector(Mid0 * Size), FVector(Size)));
+        const float Shake = Charge >= 1.f && bPulling ? FMath::Sin(SwingAge * 70.f) * .3f : 0.f;
+        const float Kick = H.ViewKick * H.ViewKick;
+        const FVector At = FMath::Lerp(FVector(42.f, 27.f, -24.f), FVector(50.f, 13.f, -7.f), D) + FVector(5.f * Kick, Shake, Shake * .6f + 1.5f * Kick);
+        Bow->SetRelativeTransform(FTransform(Turn, At - Turn.RotateVector(Mid0 * Scale), Scale));
         ViewFront = Bow->GetAttachParent()->GetComponentTransform().TransformVectorNoScale(Want.GetAxisX());
-        ViewDepth *= Size;
+        ViewDepth *= Scale[Curve];
     }
     const FTransform& World = Bow->GetComponentTransform();
     const FVector A = World.TransformPosition(H.TipA);
@@ -411,7 +424,7 @@ void UVortexWeaponParts::TickBowString(FHolder& H, AVortexCharacter* Hero, float
     const FVector Rest = (A + B) * .5f;
     // puxando: a corda vai até a mão que não segura o arco (no máximo 75% do comprimento do arco para trás)
     FVector Goal = Rest;
-    if (bOnCamera) { if (LastSwing == VortexSpecialPose::Hold && SwingAge < 3.2f) Goal = Rest - ViewFront * FVector::Dist(A, B) * (.1f + .25f * Charge); }
+    if (bOnCamera) { if (LastSwing == VortexSpecialPose::Hold && SwingAge < 3.2f) Goal = Rest - ViewFront * FVector::Dist(A, B) * (.12f + .33f * Charge); }   // 15/11: puxa mais (era .1 + .25)
     else if (LastSwing == VortexSpecialPose::Hold && SwingAge < 3.2f)
     {
         USkeletalMeshComponent* Body = Cast<USkeletalMeshComponent>(Bow->GetAttachParent());
@@ -429,7 +442,8 @@ void UVortexWeaponParts::TickBowString(FHolder& H, AVortexCharacter* Hero, float
     // solta: mola rápida e pouco amortecida (a corda vibra), presa no ponto da mão enquanto puxa
     const FVector Offset = H.Nock;
     if (Goal != Rest) { H.Nock = Goal - Rest; H.NockSpeed = FVector::ZeroVector; }
-    else if (bOnCamera) { H.Nock = FMath::VInterpTo(H.Nock, FVector::ZeroVector, DeltaTime, 18.f); H.NockSpeed = FVector::ZeroVector; }   // perto da câmera a mola jogava a corda pela tela
+    // perto da câmera a mola jogava a corda pela tela: ali a corda volta na hora e vibra pouco, junto do tranco (15/11)
+    else if (bOnCamera) { H.Nock = ViewFront * (FMath::Sin((1.f - H.ViewKick) * 45.f) * 1.6f * H.ViewKick * H.ViewKick); H.NockSpeed = FVector::ZeroVector; }
     else
     {
         const float Dt = FMath::Min(DeltaTime, 1.f / 30.f);
@@ -480,10 +494,65 @@ void UVortexWeaponParts::TickBowString(FHolder& H, AVortexCharacter* Hero, float
                 const float Past = FMath::Max(8.f, FVector::Dist(A, B) * .12f);
                 const float Len = FVector::Dist(Grip, Mid) + Past;
                 const float Long = Len / MeshLen;
-                const float Thick = bOnCamera ? .6f : FMath::Clamp(Long, .8f, 1.3f);   // perto da câmera a pena tomava a tela
+                const float Thick = bOnCamera ? .85f : FMath::Clamp(Long, .8f, 1.3f);   // perto da câmera a pena tomava a tela (15/11: .6 sumia)
                 const FVector Tip = Grip + Dir * Past;
                 Arrow->SetWorldTransform(FTransform(Dir.Rotation(), Tip - Dir * (Box.Max.X * Long), FVector(Long, Thick, Thick)));
             }
+        }
+    }
+    // 15/11: os braços de bloco na primeira pessoa (Tools/Blender/MakeViewArm.py: uma caixa de 1 m com o UV na pele, que
+    // recebe o material do corpo do herói): um segura o arco pelo cabo, o outro puxa a corda; os dois saem da tela por baixo
+    {
+        static UStaticMesh* ArmMesh = Keep(LoadPart(TEXT("W_braco_1p")));
+        const bool bPulling = LastSwing == VortexSpecialPose::Hold && SwingAge < 3.2f;
+        for (int32 i = 0; i < 2; ++i)
+        {
+            if (!H.Arms[i].IsValid() && bOnCamera && ArmMesh)
+            {
+                UStaticMeshComponent* Arm = NewObject<UStaticMeshComponent>(GetOwner());
+                Arm->SetStaticMesh(ArmMesh);
+                Arm->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+                Arm->SetUsingAbsoluteLocation(true);
+                Arm->SetUsingAbsoluteRotation(true);
+                Arm->SetUsingAbsoluteScale(true);
+                Arm->SetOnlyOwnerSee(true);
+                Arm->SetCastShadow(false);
+                Arm->SetupAttachment(GetOwner()->GetRootComponent());
+                Arm->RegisterComponent();
+                H.Arms[i] = Arm;
+            }
+            UStaticMeshComponent* Arm = H.Arms[i].Get();
+            if (!Arm) continue;
+            // a mão da corda só aparece puxando (e um instante depois de soltar, parada onde soltou)
+            const bool bShow = bOnCamera && Bow->IsVisible() && (i == 0 || H.ViewDraw > .03f);
+            Arm->SetVisibility(bShow);
+            if (!bShow) continue;
+            if (UMaterialInterface* Skin = Hero->GetMesh()->GetMaterial(0); Skin && Arm->GetMaterial(0) != Skin) Arm->SetMaterial(0, Skin);
+            const FTransform Cam = Bow->GetAttachParent()->GetComponentTransform();
+            FVector Hand, Elbow;
+            // as mãos ficam abaixo da flecha (no cabo e na corda), para não cobrir ela
+            FVector Down = (B - A).GetSafeNormal();
+            if (FVector::DotProduct(Down, Cam.GetUnitAxis(EAxis::Z)) > 0.f) Down = -Down;
+            if (i == 0)
+            {
+                Hand = Rest + ViewFront * ViewDepth + Down * 4.f;   // o cabo: o meio da madeira
+                Elbow = Cam.TransformPosition(FVector(14.f, 44.f, -34.f));
+            }
+            else
+            {
+                if (bPulling) H.HandHold = Cam.InverseTransformPosition(Mid + Down * 2.5f);
+                const float In = FMath::SmoothStep(0.f, 1.f, H.ViewDraw);
+                Hand = Cam.TransformPosition(FMath::Lerp(FVector(4.f, 36.f, -30.f), H.HandHold, In));
+                Elbow = Cam.TransformPosition(FVector(-8.f, 12.f, -34.f));   // sobe por baixo, separado do braço do arco
+            }
+            const FVector Dir = (Hand - Elbow).GetSafeNormal();
+            const FVector End = Hand + Dir * (i == 0 ? 2.5f : 0.f);   // a mão do arco passa um pouco do cabo (fecha em volta)
+            const FVector Size = ArmMesh->GetBoundingBox().GetSize();
+            // 16/11 (o usuário: "meio fino e estica"): a grossura perto da do braço do corpo e o comprimento fixo (ia da
+            // mão até o cotovelo fora da tela e esticava com a corda); o que sobra sai por trás da câmera
+            const float Thick = i == 0 ? 7.5f : 7.f, Len = 60.f;
+            Arm->SetWorldTransform(FTransform(Dir.Rotation(), End - Dir * (Len * .5f),
+                FVector(Len / FMath::Max(1., Size.X), Thick / FMath::Max(1., Size.Y), Thick / FMath::Max(1., Size.Z))));
         }
     }
     // dois trechos: ponta de cima -> meio -> ponta de baixo (fios de ~0,5 cm)
@@ -492,7 +561,7 @@ void UVortexWeaponParts::TickBowString(FHolder& H, AVortexCharacter* Hero, float
     {
         const FVector Dir = (S.Value - S.Key).GetSafeNormal();
         const float Len = FVector::Dist(S.Key, S.Value);
-        const float Thick = .5f * Bow->GetComponentScale().X;
+        const float Thick = (bOnCamera ? .3f : .5f) * Bow->GetComponentScale().GetMin();   // 15/11: mais fina perto da câmera
         Segments.Add(FTransform(FQuat::FindBetweenNormals(FVector::UpVector, Dir.IsNearlyZero() ? FVector::UpVector : Dir), (S.Key + S.Value) * .5f,
             FVector(Thick / 50.f, Thick / 50.f, Len / 100.f)));
     }

@@ -1,0 +1,16 @@
+{
+  "_comment": "13/11: a camada de vida do herói e dos moradores (VortexAnimInstance.cpp, TickLife/ApplyLife): soma por cima de qualquer clipe. Ângulos em graus, distâncias em cm, tempos em segundos. Ajustar aqui não precisa compilar.",
+  "respiracao": { "periodo": 3.6, "periodo_alerta": 2.2, "graus": 1.3, "graus_andando": 0.5, "sobe_cm": 0.5 },
+  "peso": { "periodo": 9.0, "lado_cm": 1.6, "graus": 1.5 },
+  "olhar": { "yaw_max": 60, "pitch_max": 20, "inimigo_m": 15, "gente_m": 6, "olhada_de": 3, "olhada_ate": 7, "olhada_yaw": 35, "olhada_pitch": 8, "velocidade": 5 },
+  "primeira_pessoa": { "braco_no_golpe": 0.4 },
+  "alerta": { "raio_m": 12, "agacha_cm": 2.5, "tronco_graus": 4 },
+  "passo": { "padrao_cm": 18, "sai_s": 0.10, "segura_s": 0.22, "volta_s": 0.5, "recuo_tiro_cm": 5,
+             "armas": { "martelo_de_bram": 26, "espadao": 26, "machado": 24, "alabarda": 24, "foice": 22, "maca_sagrada": 22, "lanca_do_patrulheiro": 28, "katana_do_vento": 22,
+                        "adagas_gemeas": 14, "manoplas_de_ferro": 16, "machados_duplos": 18, "espada_escudo": 16, "chicote": 10, "correntes": 10 } },
+  "jeito": {
+    "male":   { "quadril_graus": 0.0, "queixo_graus": 0.0, "tronco_graus": 1.0, "peso": 1.0, "respiracao": 1.0 },
+    "female": { "quadril_graus": 2.5, "queixo_graus": 1.0, "tronco_graus": 0.0, "peso": 1.3, "respiracao": 0.9 },
+    "elfo":   { "quadril_graus": 1.0, "queixo_graus": 3.0, "tronco_graus": 1.5, "peso": 0.6, "respiracao": 0.7 }
+  }
+}

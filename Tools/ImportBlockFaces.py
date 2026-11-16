@@ -43,7 +43,7 @@ for path in sorted(glob.glob(os.path.join(FOLDER, "eyes_*.png"))):
     lines.append(name)
 
 # 09/11: as 2 peles do elfo (Tools/MakeElfSkins.py)
-for path in sorted(glob.glob(os.path.join(root, "Data", "Heroes", "humano_Mixamo", "Elfo", "T_elfo_*.png"))):
+for path in sorted(glob.glob(os.path.join(root, "Data", "Heroes", "humano_Mixamo", "Elfo", "T_*.png"))):
     name = os.path.splitext(os.path.basename(path))[0]
     t = unreal.AssetImportTask()
     t.filename = path

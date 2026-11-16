@@ -1,0 +1,173 @@
+{
+ "_comment": "Catálogo de partículas (13/11): cada tomada põe em fila as partículas do comando fx. A ordem sai no log (VORTEX_FX).",
+ "Shots": [
+  {
+   "Name": "fx_ondas",
+   "Kind": "orbit",
+   "At": [
+    3005,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 13,
+   "Height": 8,
+   "LookHeight": 1.5,
+   "From": 180,
+   "Sweep": 0,
+   "Seconds": 6,
+   "Hour": 19,
+   "Fov": 80,
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "espada_de_cinzas",
+   "Commands": [
+    "fx Shockwave_01_White,Shockwave_02_White,Shockwave_Vertical_01_White_1s,Distortion_01_1s,Free_Spells_Shockwave,Free_Spells_Explosion,Free_Spells_Circle"
+   ],
+   "Late": true
+  },
+  {
+   "Name": "fx_brilhos",
+   "Kind": "orbit",
+   "At": [
+    3005,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 13,
+   "Height": 8,
+   "LookHeight": 1.5,
+   "From": 180,
+   "Sweep": 0,
+   "Seconds": 6,
+   "Hour": 19,
+   "Fov": 80,
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "espada_de_cinzas",
+   "Commands": [
+    "fx Sparkling,feather,leaf"
+   ],
+   "Late": true
+  },
+  {
+   "Name": "fx_impactos",
+   "Kind": "orbit",
+   "At": [
+    3005,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 13,
+   "Height": 8,
+   "LookHeight": 1.5,
+   "From": 180,
+   "Sweep": 0,
+   "Seconds": 6,
+   "Hour": 19,
+   "Fov": 80,
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "espada_de_cinzas",
+   "Commands": [
+    "fx Impact_Frame_Advanced,Anime_Star_01,Anime_Star_02,Anime_Star_03,Lightning_Example"
+   ],
+   "Late": true
+  },
+  {
+   "Name": "fx_basicos",
+   "Kind": "orbit",
+   "At": [
+    3005,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 13,
+   "Height": 8,
+   "LookHeight": 1.5,
+   "From": 180,
+   "Sweep": 0,
+   "Seconds": 6,
+   "Hour": 19,
+   "Fov": 80,
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "espada_de_cinzas",
+   "Commands": [
+    "fx NS_Basic_"
+   ],
+   "Late": true
+  },
+  {
+   "Name": "fx_auras",
+   "Kind": "orbit",
+   "At": [
+    3005,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 13,
+   "Height": 8,
+   "LookHeight": 1.5,
+   "From": 180,
+   "Sweep": 0,
+   "Seconds": 6,
+   "Hour": 19,
+   "Fov": 80,
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "espada_de_cinzas",
+   "Commands": [
+    "fx Free_Spells_Aura,Free_Spells_Buff,LevelUp"
+   ],
+   "Late": true
+  },
+  {
+   "Name": "fx_poderes",
+   "Kind": "orbit",
+   "At": [
+    3005,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 13,
+   "Height": 8,
+   "LookHeight": 1.5,
+   "From": 180,
+   "Sweep": 0,
+   "Seconds": 7,
+   "Hour": 13,
+   "Fov": 80,
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "espada_de_cinzas",
+   "Commands": [
+    "fx NS_Pw"
+   ],
+   "Late": true
+  }
+ ]
+}

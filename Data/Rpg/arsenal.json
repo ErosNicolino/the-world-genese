@@ -5270,61 +5270,61 @@
     "item": "juramento_celeste",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.003
    },
    {
     "item": "tridente_do_primeiro_selo",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.003
    },
    {
     "item": "estrela_guia",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.003
    },
    {
     "item": "voz_do_santuario",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.003
    },
    {
     "item": "genese",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.003
    },
    {
     "item": "asas_da_aurora",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.003
    },
    {
     "item": "arco_da_arvore_do_mundo",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.003
    },
    {
     "item": "arco_das_estrelas",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.003
    },
    {
     "item": "arco_do_primeiro_rio",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.003
    },
    {
     "item": "arco_do_vendaval_eterno",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.003
    },
    {
     "item": "arm_noite_violeta_head",
@@ -5402,217 +5402,217 @@
     "item": "arm_grifo_dourado_head",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_grifo_dourado_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_grifo_dourado_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_grifo_dourado_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_magma_head",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_magma_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_magma_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_magma_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_bosque_ancestral_head",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_bosque_ancestral_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_bosque_ancestral_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_bosque_ancestral_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.012
+    "chance": 0.005
    },
    {
     "item": "arm_espelho_head",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_espelho_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_espelho_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_espelho_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_sem_sombra_head",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_sem_sombra_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_sem_sombra_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_sem_sombra_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_andarilho_head",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_andarilho_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_andarilho_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_andarilho_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.002
    },
    {
     "item": "arm_aurora_head",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    },
    {
     "item": "arm_aurora_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    },
    {
     "item": "arm_aurora_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    },
    {
     "item": "arm_aurora_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    },
    {
     "item": "arm_arvore_mundo_head",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    },
    {
     "item": "arm_arvore_mundo_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    },
    {
     "item": "arm_arvore_mundo_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    },
    {
     "item": "arm_arvore_mundo_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    },
    {
     "item": "arm_estrelas_head",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    },
    {
     "item": "arm_estrelas_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    },
    {
     "item": "arm_estrelas_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    },
    {
     "item": "arm_estrelas_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.004
+    "chance": 0.001
    }
   ],
   "golem": [
@@ -5620,421 +5620,421 @@
     "item": "juramento_celeste",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.0002
    },
    {
     "item": "tridente_do_primeiro_selo",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.0002
    },
    {
     "item": "estrela_guia",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.0002
    },
    {
     "item": "voz_do_santuario",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.0002
    },
    {
     "item": "genese",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.0002
    },
    {
     "item": "asas_da_aurora",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.0002
    },
    {
     "item": "arco_da_arvore_do_mundo",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.0002
    },
    {
     "item": "arco_das_estrelas",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.0002
    },
    {
     "item": "arco_do_primeiro_rio",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.0002
    },
    {
     "item": "arco_do_vendaval_eterno",
     "min": 1,
     "max": 1,
-    "chance": 0.02
+    "chance": 0.0002
    },
    {
     "item": "arm_guarda_real_head",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_guarda_real_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_guarda_real_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_guarda_real_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_geada_head",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_geada_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_geada_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_geada_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_mare_head",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_mare_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_mare_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_mare_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.01
+    "chance": 0.003
    },
    {
     "item": "arm_noite_violeta_head",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_noite_violeta_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_noite_violeta_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_noite_violeta_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_escorpiao_head",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_escorpiao_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_escorpiao_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_escorpiao_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_dragao_rubro_head",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_dragao_rubro_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_dragao_rubro_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_dragao_rubro_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.001
    },
    {
     "item": "arm_grifo_dourado_head",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_grifo_dourado_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_grifo_dourado_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_grifo_dourado_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_magma_head",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_magma_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_magma_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_magma_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_bosque_ancestral_head",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_bosque_ancestral_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_bosque_ancestral_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_bosque_ancestral_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.008
+    "chance": 0.0003
    },
    {
     "item": "arm_espelho_head",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_espelho_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_espelho_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_espelho_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_sem_sombra_head",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_sem_sombra_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_sem_sombra_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_sem_sombra_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_andarilho_head",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_andarilho_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_andarilho_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_andarilho_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.006
+    "chance": 0.0001
    },
    {
     "item": "arm_aurora_head",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    },
    {
     "item": "arm_aurora_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    },
    {
     "item": "arm_aurora_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    },
    {
     "item": "arm_aurora_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    },
    {
     "item": "arm_arvore_mundo_head",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    },
    {
     "item": "arm_arvore_mundo_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    },
    {
     "item": "arm_arvore_mundo_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    },
    {
     "item": "arm_arvore_mundo_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    },
    {
     "item": "arm_estrelas_head",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    },
    {
     "item": "arm_estrelas_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    },
    {
     "item": "arm_estrelas_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    },
    {
     "item": "arm_estrelas_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.003
+    "chance": 5e-05
    }
   ],
   "bandit": [
@@ -6042,145 +6042,145 @@
     "item": "arm_guarda_real_head",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_guarda_real_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_guarda_real_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_guarda_real_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_geada_head",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_geada_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_geada_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_geada_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_mare_head",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_mare_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_mare_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_mare_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_noite_violeta_head",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    },
    {
     "item": "arm_noite_violeta_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    },
    {
     "item": "arm_noite_violeta_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    },
    {
     "item": "arm_noite_violeta_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    },
    {
     "item": "arm_escorpiao_head",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    },
    {
     "item": "arm_escorpiao_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    },
    {
     "item": "arm_escorpiao_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    },
    {
     "item": "arm_escorpiao_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    },
    {
     "item": "arm_dragao_rubro_head",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    },
    {
     "item": "arm_dragao_rubro_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    },
    {
     "item": "arm_dragao_rubro_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    },
    {
     "item": "arm_dragao_rubro_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.005
+    "chance": 0.0004
    }
   ],
   "goblin": [
@@ -6188,73 +6188,73 @@
     "item": "arm_guarda_real_head",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_guarda_real_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_guarda_real_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_guarda_real_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_geada_head",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_geada_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_geada_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_geada_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_mare_head",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_mare_chest",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_mare_legs",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    },
    {
     "item": "arm_mare_boots",
     "min": 1,
     "max": 1,
-    "chance": 0.015
+    "chance": 0.002
    }
   ]
  }

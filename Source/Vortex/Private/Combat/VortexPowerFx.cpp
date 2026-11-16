@@ -1,4 +1,6 @@
 #include "Combat/VortexPowerFx.h"
+#include "Framework/VortexJson.h"
+#include "UObject/StrongObjectPtr.h"
 
 #include "Components/InstancedStaticMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -36,10 +38,8 @@ namespace
         static TMap<FName, FDef> All = []()
         {
             TMap<FName, FDef> Out;
-            FString Text;
             TSharedPtr<FJsonObject> Root;
-            if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Rpg/power_fx.json"))) ||
-                !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root) return Out;
+            if (!(Root = VortexJson::Load(TEXT("Data/Rpg/power_fx.json"))).IsValid()) return Out;
             for (const auto& Pair : Root->GetObjectField(TEXT("fx"))->Values)
             {
                 const TSharedPtr<FJsonObject> O = Pair.Value->AsObject();
@@ -110,6 +110,24 @@ float AVortexPowerFx::HitTime(FName Key)
 {
     const FDef* Def = Defs().Find(Key);
     return Def ? Def->Hit : 0.f;
+}
+
+// 14/11 (o usuário: "trava às vezes ao usar"): o que o primeiro poder carregava na hora, agora na tela de carregamento
+// (AVortexFxWarmup, VortexHitFx.cpp): a lista dos 335 efeitos (um JSON de 197 KB lido no primeiro uso), os três
+// materiais e as nove folhas de quadros. Ficam carregados a partida toda
+namespace VortexPowerFxWarm
+{
+    void Collect(TArray<UMaterialInterface*>& Materials)
+    {
+        static TArray<TStrongObjectPtr<UObject>> Keep;
+        Defs();
+        for (const TCHAR* Path : { TEXT("/Game/Vortex/Combat/M_PowerSolid.M_PowerSolid"), TEXT("/Game/Vortex/Combat/M_PowerFx.M_PowerFx"),
+                 TEXT("/Game/Vortex/VFX/M_PowerFlipbook.M_PowerFlipbook"), TEXT("/Game/Vortex/Combat/M_SlashArc.M_SlashArc") })
+            if (UMaterialInterface* Mat = LoadObject<UMaterialInterface>(nullptr, Path)) { Materials.Add(Mat); if (Keep.Num() < 64) Keep.Emplace(Mat); }
+        for (const TCHAR* Name : { TEXT("agua"), TEXT("brilho"), TEXT("faisca"), TEXT("fogo"), TEXT("folhas"), TEXT("fumaca"), TEXT("gelo"), TEXT("luz"), TEXT("poeira") })
+            if (UTexture* Atlas = LoadObject<UTexture>(nullptr, *FString::Printf(TEXT("/Game/Vortex/VFX/Flipbooks/T_FB_%s.T_FB_%s"), Name, Name)))
+                if (Keep.Num() < 64) Keep.Emplace(Atlas);
+    }
 }
 
 AVortexPowerFx* AVortexPowerFx::Spawn(ACharacter* InHero, FName Item)

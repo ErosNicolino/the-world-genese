@@ -1,4 +1,5 @@
 #include "World/VortexFairies.h"
+#include "Framework/VortexJson.h"
 
 #include "Camera/PlayerCameraManager.h"
 #include "Components/PoseableMeshComponent.h"
@@ -48,10 +49,8 @@ void AVortexFairies::BeginPlay()
     Super::BeginPlay();
     if (GetNetMode() == NM_DedicatedServer) { Destroy(); return; }
     // os ajustes (só números)
-    FString Text;
     TSharedPtr<FJsonObject> Json;
-    if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Creatures/Fada/fadas.json")))
-        && FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json) && Json.IsValid())
+    if ((Json = VortexJson::Load(TEXT("Data/Creatures/Fada/fadas.json"))).IsValid())
         for (const auto& Pair : Json->Values)
         {
             double Number = 0.0;

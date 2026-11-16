@@ -1,5 +1,5 @@
 {
-  "_doc": "Azhûr, o golem vulcânico (02/11). Lido pelo UVortexVolcanicBoss ao nascer: mudar aqui não precisa compilar. Tempos em segundos desde o começo do clipe (iguais aos de Tools/Blender/azhur_moves.py), distâncias e raios em cm, dano como múltiplo do golpe do Azhûr no nível dele. Ver Docs/03_Mundo/AZHUR_GOLEM_VULCANICO.md.",
+  "_doc": "Azhûr, o golem vulcânico (02/11). Lido pelo UVortexVolcanicBoss ao nascer: mudar aqui não precisa compilar. Tempos em segundos desde o começo do clipe (iguais aos de Tools/Blender/azhur_moves.py), distâncias e raios em cm, dano como múltiplo do golpe do Azhûr no nível dele. Ver Docs/03_Mundo/AZHUR_GOLEM_VULCANICO.md. 14/11 (o usuário: \"melhore os ataques\"): fase 1 com menos pausa (gap 0,9 -> 0,75) e 15% de emenda; 2 meteoros (4 na fase 2); 8 colunas na erupção (12); a ruptura deixa lava 3 s; o raio sai mais (peso 2). Os de antes: Backups/azhur_2026-11-14.",
   "health": 3400,
   "speed": 190,
   "speedPhase2": 235,
@@ -11,7 +11,7 @@
   "phaseTransitionSeconds": 3.0,
   "stagger": { "_doc": "Resistência: dano acumulado (fração da vida) que derruba; atordoado leva mais dano.", "health": 0.09, "stunSeconds": 4.0, "damageTaken": 1.3, "cooldown": 14 },
   "phases": {
-    "1": { "damage": 1.0, "recovery": 1.0, "cooldown": 1.0, "comboChance": 0.0, "gap": 0.9 },
+    "1": { "damage": 1.0, "recovery": 1.0, "cooldown": 1.0, "comboChance": 0.15, "gap": 0.75 },
     "2": { "damage": 1.2, "recovery": 0.6, "cooldown": 0.7, "comboChance": 0.45, "gap": 0.35, "coreGlow": 2.6 }
   },
   "abilities": {
@@ -28,13 +28,13 @@
     "coreBurst": { "clip": "CoreBurst", "phase": 1, "min": 0, "max": 1000, "weight": 2, "duration": 2.8, "impact": 1.75, "recovery": 1.0, "cooldown": 12,
                    "damage": 1.6, "radius": 1000, "magic": true, "label": "CORAÇÃO INCANDESCENTE · corra para longe" },
     "fissure":   { "clip": "Punch", "phase": 1, "min": 500, "max": 2600, "weight": 2, "duration": 1.6, "impact": 0.8, "recovery": 0.9, "cooldown": 8,
-                   "damage": 1.0, "segments": 9, "step": 290, "radius": 230, "travel": 0.11, "lavaLife": 0, "lavaLifePhase2": 6, "magic": true, "label": "RUPTURA MAGMÁTICA · saia da linha" },
+                   "damage": 1.0, "segments": 9, "step": 290, "radius": 230, "travel": 0.11, "lavaLife": 3, "lavaLifePhase2": 6, "magic": true, "label": "RUPTURA MAGMÁTICA · saia da linha" },
     "meteor":    { "clip": "Throw", "phase": 1, "min": 700, "max": 4000, "weight": 2, "duration": 2.1, "impact": 1.52, "flight": 0.9, "recovery": 0.9, "cooldown": 7,
-                   "damage": 1.2, "radius": 380, "count": 1, "countPhase2": 3, "spread": 520, "lavaLife": 8, "magic": true, "label": "METEORO VULCÂNICO · saia do círculo" },
-    "beam":      { "clip": "Beam", "phase": 1, "min": 600, "max": 2600, "weight": 1, "duration": 4.2, "impact": 1.0, "impactEnd": 3.4, "recovery": 1.6, "cooldown": 16,
+                   "damage": 1.2, "radius": 380, "count": 2, "countPhase2": 4, "spread": 520, "lavaLife": 8, "magic": true, "label": "METEORO VULCÂNICO · saia do círculo" },
+    "beam":      { "clip": "Beam", "phase": 1, "min": 600, "max": 2600, "weight": 2, "duration": 4.2, "impact": 1.0, "impactEnd": 3.4, "recovery": 1.6, "cooldown": 16,
                    "damage": 0.22, "tick": 0.2, "length": 2400, "width": 170, "sweep": 70, "magic": true, "label": "RAIO DO NÚCLEO · fique atrás dele" },
     "eruption":  { "clip": "Eruption", "phase": 1, "min": 0, "max": 4000, "weight": 1, "duration": 2.6, "impact": 1.0, "impactEnd": 2.0, "recovery": 1.0, "cooldown": 18,
-                   "damage": 1.1, "radius": 260, "count": 6, "countPhase2": 10, "aroundHeroes": 2, "area": 1700, "magic": true, "label": "ERUPÇÃO VULCÂNICA · fuja das colunas" },
+                   "damage": 1.1, "radius": 260, "count": 8, "countPhase2": 12, "aroundHeroes": 2, "area": 1700, "magic": true, "label": "ERUPÇÃO VULCÂNICA · fuja das colunas" },
     "shed":      { "clip": "Shed", "phase": 2, "min": 0, "max": 1500, "weight": 2, "duration": 2.4, "impact": 1.38, "recovery": 1.0, "cooldown": 15,
                    "damage": 1.2, "radius": 700, "fragments": 8, "fragmentRadius": 200, "fragmentDamage": 0.6, "fragmentReach": 1400, "label": "ARMADURA DERRETIDA · os fragmentos voam" },
     "ultimate":  { "clip": "Ultimate", "phase": 1, "min": 0, "max": 5000, "weight": 0, "duration": 5.6, "impact": 4.45, "recovery": 2.2, "cooldown": 45, "firstAt": 0.75,

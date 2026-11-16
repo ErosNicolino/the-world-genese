@@ -1,4 +1,5 @@
 #include "World/VortexTown.h"
+#include "Framework/VortexJson.h"
 
 #include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -26,6 +27,27 @@
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
 
+// As luzes da vila à noite (Data/Town/luzes.json): candelas de cada poste e de cada janela acesa, e o brilho do vidro dos
+// lampiões. Lido uma vez; sem o arquivo, valem os números de quem chama
+static float NightLight(const TCHAR* Key, float Default)
+{
+    static TMap<FString, float> Values;
+    static bool bLoaded = false;
+    if (!bLoaded)
+    {
+        bLoaded = true;
+        TSharedPtr<FJsonObject> Json;
+        if ((Json = VortexJson::Load(TEXT("Data/Town/luzes.json"))).IsValid())
+            for (const auto& Pair : Json->Values)
+            {
+                double Number = 0.0;
+                if (Pair.Value.IsValid() && Pair.Value->TryGetNumber(Number)) Values.Add(FString(Pair.Key), float(Number));
+            }
+    }
+    const float* Found = Values.Find(Key);
+    return Found ? *Found : Default;
+}
+
 namespace
 {
     // 08/11: o que fica guardado em "static" precisa de AddToRoot: senão a limpeza de memória apaga ao trocar de mapa e a
@@ -39,10 +61,8 @@ namespace
 
     TSharedPtr<FJsonObject> ReadJson(const TCHAR* File)
     {
-        FString Text;
         TSharedPtr<FJsonObject> Json;
-        if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / File)) ||
-            !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json)) return nullptr;
+        if (!(Json = VortexJson::Load(File)).IsValid()) return nullptr;
         return Json;
     }
 
@@ -727,13 +747,15 @@ void AVortexTown::Tick(float DeltaSeconds)
         Lamp->SetVisibility(Level > .01f);
         // 30/10: 90 -> 30 (pedido: "a luz das coisas muito forte, como das lâmpadas"); 07/11: 30 -> 70 ("os postes
         // não iluminam nada"), com o raio maior
-        Lamp->SetIntensity(38.f * Level);   // 07/11: 70 -> 38 (o usuário: "as luzes à noite muito fortes")
+        // 14/11 (o usuário, de novo: "a iluminação da cidade muito forte de noite; de dia perfeito"): os números saíram
+        // do código para Data/Town/luzes.json (ajustar não precisa compilar). Os postes: 38 -> 16
+        Lamp->SetIntensity(NightLight(TEXT("poste"), 16.f) * Level);
     }
     for (UPointLightComponent* Glow : Windows)
     {
         if (!Glow) continue;
         Glow->SetVisibility(Level > .01f);
-        Glow->SetIntensity(9.f * Level);
+        Glow->SetIntensity(NightLight(TEXT("janela"), 4.f) * Level);
     }
-    if (UMaterialInstanceDynamic* Glass = LanternGlass.Get()) Glass->SetScalarParameterValue(TEXT("Glow"), 2.5f * Level);
+    if (UMaterialInstanceDynamic* Glass = LanternGlass.Get()) Glass->SetScalarParameterValue(TEXT("Glow"), NightLight(TEXT("vidro"), 1.4f) * Level);
 }

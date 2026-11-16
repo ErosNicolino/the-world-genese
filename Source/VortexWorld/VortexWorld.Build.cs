@@ -20,7 +20,8 @@ public class VortexWorld : ModuleRules
             "StaticMeshDescription",
             "RenderCore",
             "RHI",
-            "Json"
+            "Json",
+            "VortexData"   // 16/11: só o VortexJson::Load (o VortexData não depende de ninguém do jogo)
         });
 
         PrivateDependencyModuleNames.AddRange(new[]

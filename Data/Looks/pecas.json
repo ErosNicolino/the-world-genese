@@ -420,6 +420,138 @@
    "audience": "M",
    "hidesHair": false
   },
+  "P_chifre_curtos_vermelha": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_chifre_curtos_roxa": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_chifre_curtos_carvao": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_chifre_curvos_vermelha": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_chifre_curvos_roxa": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_chifre_curvos_carvao": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_chifre_longos_vermelha": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_chifre_longos_roxa": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_chifre_longos_carvao": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_chifre_carneiro_vermelha": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_chifre_carneiro_roxa": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_chifre_carneiro_carvao": {
+   "slot": "orelha",
+   "name": "Chifres",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_barba_curta": {
+   "slot": "orelha",
+   "name": "Barba",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_barba_longa": {
+   "slot": "orelha",
+   "name": "Barba",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_barba_trancada": {
+   "slot": "orelha",
+   "name": "Barba",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_barba_bigode": {
+   "slot": "orelha",
+   "name": "Barba",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_pintura_azul": {
+   "slot": "orelha",
+   "name": "Pintura de guerra",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_pintura_vermelha": {
+   "slot": "orelha",
+   "name": "Pintura de guerra",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_pintura_branca": {
+   "slot": "orelha",
+   "name": "Pintura de guerra",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_cristal_ombro": {
+   "slot": "orelha",
+   "name": "Cristais",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_cristal_coroa": {
+   "slot": "orelha",
+   "name": "Cristais",
+   "audience": "M",
+   "hidesHair": false
+  },
+  "P_cristal_costas": {
+   "slot": "orelha",
+   "name": "Cristais",
+   "audience": "M",
+   "hidesHair": false
+  },
   "P_elfo_camisa_marfim": {
    "slot": "camisa",
    "name": "Camisa de Marfim",

@@ -95,22 +95,24 @@ namespace VortexOptionsUi
             TSharedRef<SHorizontalBox> TabBar = SNew(SHorizontalBox);
             for (int32 i = 0; i < Tabs.Num(); ++i)
             {
-                TabBar->AddSlot().AutoWidth().Padding(0.f, 0.f, 6.f, 0.f)
+                TabBar->AddSlot().AutoWidth().Padding(0.f, 0.f, 4.f, 0.f)
                 [
-                    SNew(VortexUiJuice::SJuicyButton).ButtonStyle(&Style(2)).ContentPadding(FMargin(16.f, 8.f, 16.f, 0.f))
+                    // 14/11 (o usuário: "os painéis bugaram"): com as 7 abas de 11/11 a fila passava da moldura (a "Interface" ficava para
+                    // fora, no menu e no Esc). Letra e folgas menores: as 7 cabem nos dois painéis
+                    SNew(VortexUiJuice::SJuicyButton).ButtonStyle(&Style(2)).ContentPadding(FMargin(9.f, 8.f, 9.f, 0.f))
                     .OnClicked_Lambda([this, i]() { SelectTab(i); return FReply::Handled(); })
                     [
                         SNew(SVerticalBox)
                         + SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center)
                         [
-                            SNew(STextBlock).Text(FText::FromString(FText::FromString(Tabs[i]).ToUpper().ToString())).Font(Font(14, TEXT("Bold"), 140))
+                            SNew(STextBlock).Text(FText::FromString(FText::FromString(Tabs[i]).ToUpper().ToString())).Font(Font(11, TEXT("Bold"), 70))
                             .ColorAndOpacity_Lambda([this, i]() { return FSlateColor(i == Tab ? Gold : Muted); })
                         ]
                         + SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center).Padding(0.f, 7.f, 0.f, 0.f)
                         [
                             // sublinhado que cresce na aba escolhida
                             SNew(SBox).HeightOverride(3.f)
-                            .WidthOverride_Lambda([this, i]() { return i == Tab ? FOptionalSize(18.f + 70.f * Ease(float(Now() - TabAt) / .25f)) : FOptionalSize(0.f); })
+                            .WidthOverride_Lambda([this, i]() { return i == Tab ? FOptionalSize(14.f + 40.f * Ease(float(Now() - TabAt) / .25f)) : FOptionalSize(0.f); })
                             [SNew(SImage).Image(Round(2.f)).ColorAndOpacity(Gold)]
                         ]
                     ]
@@ -352,12 +354,12 @@ namespace VortexOptionsUi
                     [
                         SNew(VortexUiJuice::SJuicyButton).ButtonStyle(&Style(1)).OnClicked_Lambda([this, Index]() { Change(Index, 1); return FReply::Handled(); })
                         [
-                            SNew(SBox).WidthOverride(190.f).HeightOverride(44.f).VAlign(VAlign_Center)
+                            SNew(SBox).WidthOverride(232.f).HeightOverride(44.f).VAlign(VAlign_Center)   // 232 (eram 190): "Tela cheia sem borda" saía da caixa
                             [
                                 SNew(SVerticalBox)
                                 + SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center)
                                 [
-                                    SNew(STextBlock).Text_Lambda([this, Index]() { return FText::FromString(ValueOf(Index)); }).Font(VortexUiKit::Outlined(Font(15, TEXT("Bold"))))
+                                    SNew(STextBlock).Text_Lambda([this, Index]() { return FText::FromString(ValueOf(Index)); }).Font(VortexUiKit::Outlined(Font(14, TEXT("Bold"))))
                                     .ColorAndOpacity_Lambda([this, Name]()
                                     {
                                         // o valor que acabou de mudar acende e volta ao creme

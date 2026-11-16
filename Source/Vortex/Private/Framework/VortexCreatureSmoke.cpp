@@ -4,6 +4,7 @@
 // principal: "O Despertado" (falar com a Rhea), "Recruta do Vale" (3 gotas de jade) e as entregas.
 #if !UE_BUILD_SHIPPING
 #include "Framework/VortexCreatureSmoke.h"
+#include "Framework/VortexJson.h"
 #include "World/VortexItemDrop.h"
 
 #include "AbilitySystemComponent.h"
@@ -324,10 +325,8 @@ namespace VortexWeaponCloseUp
         FString List;
         if (!FParse::Value(FCommandLine::Get(), TEXT("VortexWeaponCloseUp="), List, false))
         {
-            FString Text;
             TSharedPtr<FJsonObject> Json;
-            if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Rpg/weapons.json"))) &&
-                FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json) && Json)
+            if ((Json = VortexJson::Load(TEXT("Data/Rpg/weapons.json"))).IsValid())
             {
                 for (const TSharedPtr<FJsonValue>& V : Json->GetArrayField(TEXT("types"))) S->Types.Add(FName(*V->AsObject()->GetStringField(TEXT("id"))));
             }

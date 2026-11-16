@@ -612,6 +612,13 @@ namespace VortexDevChatImpl
             }
             return Made > 0 ? FString::Printf(TEXT("%d x %s nível %d."), Made, *Found[0]->Title, Level) : Fail(TEXT("Não nasceu (chão ainda não carregou?)."));
         }
+        if (Command == TEXT("fx"))
+        {
+            // o catálogo de partículas (Vortex.Fx, em VortexMonsterFx.cpp): /fx star,shockwave
+            if (!Args.IsValidIndex(1)) return Fail(TEXT("Uso: /fx pedaço1,pedaço2 (pedaços do nome das partículas)"));
+            GEngine->Exec(Hero->GetWorld(), *(TEXT("Vortex.Fx ") + Args[1]));
+            return TEXT("Partículas em fila à sua frente por 20 s (a ordem sai no log: VORTEX_FX).");
+        }
         if (Command == TEXT("portal"))
         {
             const FString Rank = Args.IsValidIndex(1) ? Args[1].ToUpper().Left(1) : FString(TEXT("E"));

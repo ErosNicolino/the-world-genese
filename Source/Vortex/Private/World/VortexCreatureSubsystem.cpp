@@ -1,4 +1,5 @@
-#include "World/VortexCreatureSubsystem.h"
+﻿#include "World/VortexCreatureSubsystem.h"
+#include "Framework/VortexJson.h"
 
 #include "Framework/VortexProbe.h"
 #include "NiagaraSystem.h"
@@ -26,6 +27,7 @@
 #include "World/VortexTerrainData.h"
 #include "World/VortexTerrainStreamer.h"
 #include "World/VortexTown.h"
+#include "World/VortexWorldLayout.h"
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
 #include "GameFramework/Character.h"
@@ -55,6 +57,7 @@ void UVortexCreatureSubsystem::OnWorldBeginPlay(UWorld& InWorld)
     const bool bTest = Command.Contains(TEXT("Smoke")) || Command.Contains(TEXT("Shot")) || Command.Contains(TEXT("Bench")) ||
         Command.Contains(TEXT("CloseUp"));
     SpawnSalt = bTest ? 0 : (FMath::Rand() | 1);
+    FParse::Value(*Command, TEXT("VortexSpawnSalt="), SpawnSalt);   // testes: um sorteio escolhido (os testes ficam no 0)
     bActive = true;
     InWorld.GetTimerManager().SetTimer(UpdateHandle, FTimerDelegate::CreateUObject(this, &UVortexCreatureSubsystem::Update), .5f, true, 1.f);
 }
@@ -134,14 +137,23 @@ void UVortexCreatureSubsystem::Build()
     UE_LOG(LogTemp, Display, TEXT("VORTEX_CREATURES %d postos fixos"), Posts.Num());
 }
 
+// 14/11 (o usuário: "tem outros monstros na arena, era para ter só o boss"): a cratera do Azhûr e a borda dela (66 m do
+// centro) são só do chefe: nenhum posto cai ali, nem no sorteio da partida nem ao renascer
+static bool InCaldera(const FVector2D& At)
+{
+    return FVector2D::DistSquared(At, FVector2D(VortexWorldLayout::CalderaCenterX, VortexWorldLayout::CalderaCenterY)) < FMath::Square(6600.f);
+}
+
 bool UVortexCreatureSubsystem::WanderSpotFree(const FVector2D& At) const
 {
+    if (InCaldera(At)) return false;
     const TSharedPtr<FVortexTerrainData> Terrain = AVortexTerrainStreamer::SharedData();
     if (!Terrain.IsValid() || !Terrain->InMap(At.X, At.Y)) return false;
     const float Ground = Terrain->QuickGround(At.X, At.Y);
     if (Ground < Terrain->WaterLevel || Ground <= -299.f) return false;
-    // longe da vila (os mesmos 90 m do sorteio das quadras) e nunca dentro dela
-    return FVector2D::Distance(At, FVector2D(0.f, 1500.f)) > 9000.f && !AVortexTown::Contains(FVector(At.X, At.Y, Ground));
+    // longe da vila e nunca dentro dela
+    // 13/11: 140 m (eram 90): com o passeio maior ao renascer, o bicho não volta na folga dos portões
+    return FVector2D::Distance(At, FVector2D(0.f, 1500.f)) > 14000.f && !AVortexTown::Contains(FVector(At.X, At.Y, Ground));
 }
 
 void UVortexCreatureSubsystem::AddPost(const FPost& Post)
@@ -205,7 +217,9 @@ void UVortexCreatureSubsystem::Preload()
         Packages.Add(Extra);
     // 11/11: os moradores da vila (o boneco do herói com cabelo, roupa, olhos e as animações de ofício): carregados um a um
     // quando apareciam, travavam o quadro em até 150 ms no jogo empacotado ao chegar perto da praça
-    for (const TCHAR* Folder : { TEXT("/Game/Vortex/Characters/Heroes/humano/Hair"), TEXT("/Game/Vortex/Characters/Heroes/humano/Roupas") })
+    // 14/11: e as peles das raças (a pasta Elfo): outro jogador de outra raça chegando carregava a pele na hora
+    for (const TCHAR* Folder : { TEXT("/Game/Vortex/Characters/Heroes/humano/Hair"), TEXT("/Game/Vortex/Characters/Heroes/humano/Roupas"),
+        TEXT("/Game/Vortex/Characters/Heroes/humano/Elfo") })
     {
         TArray<FAssetData> Assets;
         Registry.GetAssetsByPath(FName(Folder), Assets, true);
@@ -215,6 +229,13 @@ void UVortexCreatureSubsystem::Preload()
         TArray<FAssetData> Assets;
         Registry.GetAssetsByPath(TEXT("/Game/Vortex/Characters/Heroes/humano"), Assets, false);
         for (const FAssetData& Asset : Assets) if (Asset.AssetName.ToString().StartsWith(TEXT("T_humano_"))) Packages.Add(Asset.PackageName);
+        // 14/11: os traços das raças (orelhas, chifres, barbas, pinturas, cristais). Só eles: a pasta Pecas inteira com as
+        // armaduras levava a fila de 619 para 2.228 pacotes e o carregamento de 34 s para 128 s (no editor)
+        Assets.Reset();
+        Registry.GetAssetsByPath(TEXT("/Game/Vortex/Characters/Heroes/humano/Pecas"), Assets, false);
+        for (const FAssetData& Asset : Assets)
+            for (const TCHAR* Trait : { TEXT("P_orelha_"), TEXT("P_chifre_"), TEXT("P_barba_"), TEXT("P_pintura_"), TEXT("P_cristal_") })
+                if (Asset.AssetName.ToString().Contains(Trait)) { Packages.Add(Asset.PackageName); break; }
         Assets.Reset();
         Registry.GetAssetsByPath(TEXT("/Game/Vortex/Characters/Heroes/Anims/humano"), Assets, false);
         for (const FAssetData& Asset : Assets) if (Asset.AssetName.ToString().Contains(TEXT("_Npc_"))) Packages.Add(Asset.PackageName);
@@ -270,7 +291,7 @@ static int32 WolfPackSize(FRandomStream& Rng) { return 1 + Rng.RandRange(0, 2); 
 // Data/Population/spawn_tuning.json (lido uma vez; sem o arquivo, os valores abaixo)
 struct FSpawnTuning
 {
-    float GroupChance = .36f, SpreadMin = 500.f, SpreadMax = 750.f, BanditCamp = 450.f, NightChance = .22f;
+    float GroupChance = .36f, SpreadMin = 500.f, SpreadMax = 750.f, BanditCamp = 450.f, NightChance = .22f, FixedGap = 4500.f, MoveMin = 1500.f, MoveMax = 6000.f;
     TArray<TArray<FName>> Regions;
 };
 static const FSpawnTuning& SpawnTuning()
@@ -278,13 +299,18 @@ static const FSpawnTuning& SpawnTuning()
     static const FSpawnTuning Tuning = []
     {
         FSpawnTuning T;
-        FString Text;
         TSharedPtr<FJsonObject> Root;
-        if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Population/spawn_tuning.json"))) ||
-            !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root) return T;
+        if (!(Root = VortexJson::Load(TEXT("Data/Population/spawn_tuning.json"))).IsValid()) return T;
         Root->TryGetNumberField(TEXT("group_chance"), T.GroupChance);
         Root->TryGetNumberField(TEXT("bandit_camp_cm"), T.BanditCamp);
         Root->TryGetNumberField(TEXT("night_chance"), T.NightChance);
+        Root->TryGetNumberField(TEXT("fixed_min_gap_cm"), T.FixedGap);
+        const TArray<TSharedPtr<FJsonValue>>* Move = nullptr;
+        if (Root->TryGetArrayField(TEXT("respawn_move_cm"), Move) && Move->Num() == 2)
+        {
+            T.MoveMin = (*Move)[0]->AsNumber();
+            T.MoveMax = FMath::Max(T.MoveMin, float((*Move)[1]->AsNumber()));
+        }
         const TArray<TSharedPtr<FJsonValue>>* Spread = nullptr;
         if (Root->TryGetArrayField(TEXT("pack_spread_cm"), Spread) && Spread->Num() == 2)
         {
@@ -305,10 +331,8 @@ static const FSpawnTuning& SpawnTuning()
 
 void UVortexCreatureSubsystem::LoadFixed()
 {
-    FString Text;
     TSharedPtr<FJsonObject> Root;
-    if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Population/creature_posts.json"))) ||
-        !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root) return;
+    if (!(Root = VortexJson::Load(TEXT("Data/Population/creature_posts.json"))).IsValid()) return;
     const TArray<TSharedPtr<FJsonValue>>& AreaValues = Root->GetArrayField(TEXT("area_cm"));
     if (AreaValues.Num() == 4)
     {
@@ -342,17 +366,38 @@ void UVortexCreatureSubsystem::LoadFixed()
         const FVector2D Center(0.f, 1500.f);
         // o nível do Godot menos a curva do Godot = o quanto este posto é mais forte que os vizinhos (elite, chefe)
         const int32 GodotCurve = FMath::RoundToInt(1.f + FVector2D(Post.At.X / 100.f, Post.At.Y / 100.f - 4.f).Size() / 42.f);
+        // 13/11 (o usuário: "quem entra e sai da vila sempre vai saber os spawns"): a cada partida o posto gira em volta
+        // da vila por um ângulo sorteado. A distância do centro fica a mesma (os fracos continuam perto dos portões);
+        // o chefe não muda de lugar e os testes (SpawnSalt 0) continuam com os lugares do Godot
+        if (!Post.bBoss && SpawnSalt)
+        {
+            FRandomStream Spin(HashCombine(GetTypeHash(Posts.Num()), uint32(SpawnSalt)));
+            for (int32 Try = 0; Try < 12; ++Try)
+            {
+                const FVector2D To = Center + (Post.At - Center).GetRotated(Spin.FRandRange(0.f, 360.f));
+                const bool bFree = !InCaldera(To) && (!Terrain || Terrain->QuickGround(To.X, To.Y) > Terrain->WaterLevel + 20.f) &&
+                    !Posts.ContainsByPredicate([&](const FPost& Other) { return FVector2D::Distance(Other.At, To) < SpawnTuning().FixedGap * .6f; });
+                if (bFree) { Post.At = To; break; }
+            }
+        }
+        if (!Post.bBoss && InCaldera(Post.At)) continue;   // (um posto do Godot dentro da cratera, ou o sorteio que não achou lugar)
         if (!Post.bBoss && InTown(Post.At))
         {
             const FVector2D Dir = (Post.At - Center).GetSafeNormal();
             bool bDry = false;
-            // do lado de fora da muralha nova: anéis de 130 a 190 m do centro, girando até achar chão seco
-            for (int32 Ring = 0; Ring < 4 && !bDry; ++Ring)
+            // do lado de fora da muralha nova: anéis de 145 a 245 m do centro, girando até achar chão seco
+            // 13/11 (o usuário: "tudo amontoado perto da vila, parece que foram empurrados"): os ~25 postos de dentro caíam
+            // todos na mesma faixa estreita. Agora cada um fica a FixedGap (45 m) dos que já existem; sem lugar, não nasce
+            const float Gap = SpawnTuning().FixedGap;
+            // cada posto começa num anel sorteado pela posição dele (senão todos caíam no primeiro: um círculo de bichos)
+            const uint32 Seed = HashCombine(GetTypeHash(FMath::RoundToInt(Post.At.X)), GetTypeHash(FMath::RoundToInt(Post.At.Y)));
+            for (int32 Ring = 0; Ring < 5 && !bDry; ++Ring)
                 for (int32 Turn = 0; Turn < 18 && !bDry; ++Turn)
                 {
-                    const float Radius = 13000.f + Ring * 2000.f + FVector2D::Distance(Post.At, Center) * .1f;
+                    const float Radius = 14500.f + ((Ring + Seed) % 5) * 2500.f + (Seed >> 8) % 1500;
                     const FVector2D Try = Center + (Dir.IsNearlyZero() ? FVector2D(1.f, 0.f) : Dir).GetRotated(Turn * 20.f) * Radius;
-                    bDry = (!Terrain || Terrain->QuickGround(Try.X, Try.Y) > Terrain->WaterLevel + 20.f) && !InTown(Try);
+                    bDry = (!Terrain || Terrain->QuickGround(Try.X, Try.Y) > Terrain->WaterLevel + 20.f) && !InTown(Try) &&
+                        !Posts.ContainsByPredicate([&](const FPost& Other) { return FVector2D::Distance(Other.At, Try) < Gap; });
                     if (bDry) Post.At = Try;
                 }
             if (!bDry) continue;
@@ -380,6 +425,15 @@ void UVortexCreatureSubsystem::LoadFixed()
         }
         AddPost(Post);
     }
+    // conferência: quantos postos fixos e os dois mais próximos (fora os companheiros de matilha, que nascem juntos)
+    float Closest = BIG_NUMBER;
+    for (int32 A = 0; A < Posts.Num(); ++A)
+        for (int32 B = A + 1; B < Posts.Num(); ++B)
+            if (Posts[A].PackSlot <= 0 && Posts[B].PackSlot <= 0) Closest = FMath::Min(Closest, FVector2D::Distance(Posts[A].At, Posts[B].At));
+    UE_LOG(LogTemp, Display, TEXT("VORTEX_POSTS fixos %d, os dois mais próximos a %.0f m"), Posts.Num(), Closest / 100.f);
+#if !UE_BUILD_SHIPPING
+    for (const FPost& P : Posts) UE_LOG(LogTemp, Display, TEXT("VORTEX_POST %.0f %.0f %s %d"), P.At.X, P.At.Y, *P.Species.ToString(), P.PackSlot);
+#endif
 }
 
 // BanditCampAt: VortexWorldLayout::BanditCampAt (módulo VortexWorld)
@@ -802,14 +856,14 @@ void UVortexCreatureSubsystem::Update()
         if (Now < Post.DeadUntil) continue;
         Post.DeadUntil = 0.0;
         Live.Remove(Index);
-        // do mato e já vencido: volta noutro ponto, a 6-20 m de onde nasceu (o bando inteiro anda o mesmo tanto)
+        // do mato e já vencido: volta noutro ponto, a 15-60 m de onde nasceu (respawn_move_cm; eram 6-20 m, dava para decorar)
         if (Post.bWander && Post.Deaths > Post.MovedFor)
         {
             Post.MovedFor = Post.Deaths;
             FRandomStream Move(HashCombine(GetTypeHash(Post.PackId >= 0 ? Post.PackId : Index), GetTypeHash(Post.Deaths * 7919 + SpawnSalt)));
             for (int32 Try = 0; Try < 6; ++Try)
             {
-                const float Angle = Move.FRand() * UE_TWO_PI, Distance = 600.f + Move.FRand() * 1400.f;
+                const float Angle = Move.FRand() * UE_TWO_PI, Distance = FMath::Lerp(SpawnTuning().MoveMin, SpawnTuning().MoveMax, Move.FRand());
                 const FVector2D To = Post.Origin + FVector2D(FMath::Cos(Angle), FMath::Sin(Angle)) * Distance;
                 if (WanderSpotFree(To)) { Post.At = To; break; }
             }

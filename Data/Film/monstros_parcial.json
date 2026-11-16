@@ -1,0 +1,120 @@
+﻿{
+    "Shots":  [
+                  {
+                      "Name":  "mon_gota",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 3003,
+                                 -2700
+                             ],
+                      "Hero":  [
+                                   3000,
+                                   -2700
+                               ],
+                      "HeroYaw":  0,
+                      "Radius":  7.5,
+                      "Height":  2.6,
+                      "LookHeight":  1.0,
+                      "From":  115,
+                      "Sweep":  30,
+                      "Seconds":  14,
+                      "Hour":  13,
+                      "Fov":  60,
+                      "Race":  "humano",
+                      "Appearance":  "male",
+                      "Weapon":  "espada_de_cinzas",
+                      "Commands":  [
+                                       "spawn gota de jade 5 4"
+                                   ],
+                      "Late":  true,
+                      "Mortal":  true
+                  },
+                  {
+                      "Name":  "mon_morcego",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 3003,
+                                 -2700
+                             ],
+                      "Hero":  [
+                                   3000,
+                                   -2700
+                               ],
+                      "HeroYaw":  0,
+                      "Radius":  7.5,
+                      "Height":  2.6,
+                      "LookHeight":  1.0,
+                      "From":  115,
+                      "Sweep":  30,
+                      "Seconds":  14,
+                      "Hour":  13,
+                      "Fov":  60,
+                      "Race":  "humano",
+                      "Appearance":  "male",
+                      "Weapon":  "espada_de_cinzas",
+                      "Commands":  [
+                                       "spawn morcego 5 1"
+                                   ],
+                      "Late":  true,
+                      "Mortal":  true
+                  },
+                  {
+                      "Name":  "mon_cogumelo",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 3003,
+                                 -2700
+                             ],
+                      "Hero":  [
+                                   3000,
+                                   -2700
+                               ],
+                      "HeroYaw":  0,
+                      "Radius":  7.5,
+                      "Height":  2.6,
+                      "LookHeight":  1.0,
+                      "From":  115,
+                      "Sweep":  30,
+                      "Seconds":  14,
+                      "Hour":  13,
+                      "Fov":  60,
+                      "Race":  "humano",
+                      "Appearance":  "male",
+                      "Weapon":  "espada_de_cinzas",
+                      "Commands":  [
+                                       "spawn cogumelo 5 1"
+                                   ],
+                      "Late":  true,
+                      "Mortal":  true
+                  },
+                  {
+                      "Name":  "mon_golem",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 3003,
+                                 -2700
+                             ],
+                      "Hero":  [
+                                   3000,
+                                   -2700
+                               ],
+                      "HeroYaw":  0,
+                      "Radius":  10,
+                      "Height":  2.6,
+                      "LookHeight":  1.0,
+                      "From":  115,
+                      "Sweep":  30,
+                      "Seconds":  20,
+                      "Hour":  13,
+                      "Fov":  60,
+                      "Race":  "humano",
+                      "Appearance":  "male",
+                      "Weapon":  "espada_de_cinzas",
+                      "Commands":  [
+                                       "spawn golem 5 1"
+                                   ],
+                      "Late":  true,
+                      "Free":  true
+                  }
+              ]
+}

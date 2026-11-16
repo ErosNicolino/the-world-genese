@@ -213,9 +213,12 @@ S = [
 # onde se acha: as comuns e incomuns nas lojas (o Garrick vende as de metal; a Rosa, as de couro e pano); das raras para
 # cima, só no saque dos bichos (cada peça, a chance por bicho vencido; os semi-chefes sorteiam 3 vezes)
 SHOP = {"viajante": "rosa", "recruta": "rosa", "cacador": "rosa", "malha_ferro": "garrick", "batedor": "rosa", "bronze": "garrick"}
-LOOT = {"rare": {"bandit": .015, "goblin": .015, "golem": .01}, "epic": {"golem": .015, "bandit": .005, "runecolossus": .01},
-        "legendary": {"runecolossus": .012, "golem": .008}, "unique": {"runecolossus": .008, "golem": .006},
-        "divine": {"runecolossus": .004, "golem": .003}}
+# 13/11: a chance é POR PEÇA e são 12 peças por raridade: com os números de antes um golem comum soltava épico em 18% das
+# mortes e lendário em 10% (o usuário: "em 2 min ganhei 1"). Agora, somando as 12: golem ~3,6% raro, 1,2% épico, 0,4%
+# lendário; bandido e goblin ~2,4% raro; o Colosso (chefe, sorteia 3 vezes) 12% épico, 6% lendário, 2,4% único por sorteio
+LOOT = {"rare": {"bandit": .002, "goblin": .002, "golem": .003}, "epic": {"golem": .001, "bandit": .0004, "runecolossus": .01},
+        "legendary": {"runecolossus": .005, "golem": .0003}, "unique": {"runecolossus": .002, "golem": .0001},
+        "divine": {"runecolossus": .001, "golem": .00005}}
 
 
 def describe(p):

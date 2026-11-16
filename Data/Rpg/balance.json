@@ -12,6 +12,8 @@
   "groupRange": 4000,
   "groupXpBonus": 0.1,
   "groupHealthPerHero": 0.5,
+  "meleeTaken": 0.65,
+  "_doc_meleeTaken": "16/11: com arma de perto na mão (espada, martelo, adagas) o herói recebe o dano vezes isto (0,65 = 35% a menos), porque precisa ficar colado no inimigo; arco e cajado continuam em 1. Vale também no PvP. 1 = desligado.",
   "pvpDamage": 0.5,
   "_doc_pvp": "Herói contra herói (duelo e PvP): o golpe calculado pela ficha de quem bate, menos a defesa de quem apanha, vezes pvpDamage.",
   "_doc_grupo": "Em grupo (02/11): cada herói vivo a até groupRange cm do bicho vencido ganha o XP inteiro (sem dividir), com +groupXpBonus por companheiro; o bicho leva menos dano com mais heróis perto (a vida vale 1 + groupHealthPerHero por herói a mais).",

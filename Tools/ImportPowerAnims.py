@@ -9,6 +9,7 @@ Saved/Logs/ImportPowerAnims.txt.
 """
 import json
 import os
+import sys
 
 import unreal
 
@@ -19,11 +20,22 @@ tools = unreal.AssetToolsHelpers.get_asset_tools()
 # VORTEX_ANIMS=classes importa só elas
 _which = os.environ.get("VORTEX_ANIMS", "poderes")
 # 08/11: VORTEX_ANIMS=npc importa os ofícios dos moradores (Npc_humano.glb + npc.json, MakePowerAnims.py --npc)
-_files = {"classes": ("Classes_humano.glb", "classes.json"), "npc": ("Npc_humano.glb", "npc.json")}.get(_which, ("Poderes_humano.glb", "poderes.json"))
+_files = {"classes": ("Classes_humano.glb", "classes.json"), "npc": ("Npc_humano.glb", "npc.json"),
+          # 13/11: VORTEX_ANIMS=vida (MakePowerAnims.py --vida)
+          "vida": ("Vida_humano.glb", "vida.json"),
+          # 14/11: VORTEX_ANIMS=dano: a queda, o levantar e as reações de dano, feitas à mão no Blender pelo MCP
+          # (modelando ainda/heroi_dano_2026-11-14.blend -> Dano_humano.glb + dano.json)
+          "dano": ("Dano_humano.glb", "dano.json"),
+          # 16/11: VORTEX_ANIMS=monta: subir e descer do cavalo (Tools/Blender/MakeMountAnims.py)
+          "monta": ("Monta_humano.glb", "monta.json")}.get(_which, ("Poderes_humano.glb", "poderes.json"))
 SRC = os.path.join(root, "Data", "Heroes", "humano_Mixamo", _files[0])
 report = json.load(open(os.path.join(root, "Data", "Heroes", "humano_Mixamo", _files[1]), encoding="utf-8"))
 ANIMS = "/Game/Vortex/Characters/Heroes/Anims/humano"
 STAGING = "/Game/Vortex/Characters/Heroes/humano/_poderes"
+# 16/11: clipe em que nenhum osso se mexe não entra (Montar e Desmontar chegaram parados ao jogo)
+sys.path.insert(0, os.path.join(root, "Tools"))
+import glb_motion  # noqa: E402
+STILL = glb_motion.still(SRC)
 skeleton = library.load_asset("/Game/Vortex/Characters/Heroes/humano/Hero_humano_Skeleton")
 lines = ["esqueleto: %s" % (skeleton.get_path_name() if skeleton else "NENHUM")]
 kind = lambda p: str(library.find_asset_data(p).asset_class_path.asset_name)
@@ -57,7 +69,7 @@ for p in library.list_assets(STAGING, recursive=True):
         continue
     asset = library.load_asset(p)
     name = next((n for n in sorted(report, key=len, reverse=True) if asset.get_name().endswith(n)), None)
-    if not name:
+    if not name or name in STILL or asset.get_name() in STILL:
         library.delete_asset(p.split(".")[0])
         continue
     asset.set_editor_property("enable_root_motion", False)
@@ -73,5 +85,8 @@ for p in library.list_assets(STAGING, recursive=True):
                                                          moved.get_editor_property("skeleton").get_name()))
 library.delete_directory(STAGING)
 lines.insert(0, "%d de %d animações" % (count, len(report)))
+if STILL:
+    lines.insert(1, "RECUSADOS (parados, exportar de novo): " + ", ".join(STILL))
+    unreal.log_error("VORTEX_POWER_ANIMS PARADOS " + ", ".join(STILL))
 open(os.path.join(root, "Saved", "Logs", "ImportPowerAnims.txt"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
 unreal.log_warning("VORTEX_POWER_ANIMS " + lines[0] + " | " + lines[1])

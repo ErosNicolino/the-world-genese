@@ -248,8 +248,9 @@ for table, family, kind_name in (("swords", "espada_de_cinzas", "Espada"), ("bow
             items[item] = dict(fields, description="%s %s. %s" % (kind_name, RARITY_NAME[sw["rarity"]], power), rarity=sw["rarity"],
                                type="weapon", slot="weapon", stack=1, stats=sw["stats"], use={}, family=family, trait="")
         if sw["rarity"] == "divine":
-            for species in ("runecolossus", "golem"):
-                loot.setdefault(species, []).append({"item": item, "min": 1, "max": 1, "chance": .02})
+            # 13/11: por arma (são umas 10): o Colosso ~3% no total, o golem comum ~0,2% (era 2% cada: 20% por golem)
+            for species, chance in (("runecolossus", .003), ("golem", .0002)):
+                loot.setdefault(species, []).append({"item": item, "min": 1, "max": 1, "chance": chance})
 
 # 07/11: as 21 armaduras das pranchas do usuário (Tools/Armor/BuildArmors.py -> Data/Rpg/armors.json): 84 peças e os
 # conjuntos; a passiva vai no texto do item e o jogo a lê do armors.json (VortexArmor.cpp)

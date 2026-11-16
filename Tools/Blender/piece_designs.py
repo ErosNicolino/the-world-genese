@@ -840,6 +840,66 @@ for _kind, _seg in EARS.items():
     for _tone in ("clara", "escura"):
         CATALOG["P_orelha_%s_%s" % (_kind, _tone)] = ("orelha", "Orelha", M, False, None, (lambda s=_seg, t=_tone: ear(s, "pele_" + t)))
 
+
+# ---- 14/11: os traços das outras raças (Data/Looks/racas.json), no mesmo espaço das orelhas: o personagem veste sozinho.
+# Medidas em texels a partir do meio da parte: x para os lados, y negativo para a frente, z para cima
+def pair(part, segments, tone, name, both=True, fat=1.0):
+    for s in ((-1, 1) if both else (1,)):
+        for x, y, z, sx, sy, sz in segments:
+            block(part, (s * x, y, z), (sx * fat, sy * fat, sz), tone, [], name)
+
+
+HORNS = {
+    "curtos": [(5, -3, 8.2, 2.4, 2.4, 2.4), (5.4, -3.3, 9.9, 1.6, 1.6, 1.8)],
+    "curvos": [(6, -2, 8, 2.6, 2.6, 2.4), (7, -2.6, 10, 2.2, 2.2, 2.4), (7.4, -4, 11.8, 1.8, 1.8, 2), (7, -5.4, 13.2, 1.2, 1.4, 1.6)],
+    "longos": [(5.5, 0, 8, 2.6, 2.6, 2.4), (6.2, 1.6, 10, 2.2, 2.4, 2.4), (6.8, 3.6, 12, 1.8, 2.2, 2.2), (7.2, 5.6, 13.8, 1.4, 1.8, 2), (7.4, 7.2, 15.2, 1, 1.2, 1.4)],
+    "carneiro": [(8.8, 1, 5, 2.2, 3, 3), (10.4, 2.6, 4, 2.2, 3, 3), (11.2, 3.6, 1.6, 2, 2.8, 2.6), (10.8, 2, -.6, 2, 2.6, 2.2), (10, -.4, -1.2, 1.6, 2.2, 1.8)],
+}
+TAIL = [(0, 4.4, -1, 1.6, 2.4, 1.6), (0, 6.4, -2.4, 1.4, 2.6, 1.4), (0, 8.4, -4, 1.4, 2.6, 1.4), (0, 10.4, -5.2, 1.2, 2.6, 1.2), (0, 12.2, -5.4, 1.2, 2.2, 1.2),
+        (0, 13.6, -4.4, 1.2, 1.4, 1.8), (0, 14.2, -2.8, 1, 1, 2), (0, 14.2, -1, 2.8, 1, 2.2), (0, 14.2, .6, 1.4, 1, 1.4)]
+# os de cima da cabeça saem do cabelo (a capa do cabelo tem uns 3 texels): mais altos que o desenho
+for _kind in ("curtos", "curvos", "longos"):
+    HORNS[_kind] = [(x, y, 7 + (z - 7) * 1.8, sx, sy, sz * 1.8) for x, y, z, sx, sy, sz in HORNS[_kind]]
+for _kind, _seg in HORNS.items():
+    for _tone in ("vermelha", "roxa", "carvao"):
+        CATALOG["P_chifre_%s_%s" % (_kind, _tone)] = ("orelha", "Chifres", M, False, None,
+                                                      (lambda s=_seg, t=_tone: (pair("cabeca", s, "chifre", "chifre", fat=1.35), pair("quadril", TAIL, "pele_" + t, "cauda", False, 1.3))))
+
+# 15/11: os olhos descem até 5,4 abaixo do meio da cabeça (a linha 12 da grade do rosto): na frente, a barba fica toda
+# abaixo disso (antes o queixo e o bigode cobriam a parte de baixo dos olhos). O queixo, embaixo do queixo, as laterais,
+# as costeletas (sobem até o cabelo, para a barba não ficar solta dele) e o bigode
+JAW = [(0, -8.4, -6.6, 13, 1.4, 2.3), (0, -8.2, -8.4, 11, 1.8, 2), (8.4, -4.2, -6.2, 1.4, 8, 3.2), (8.3, -5.6, -1.2, 1.1, 3, 7.2), (2.7, -8.9, -5.95, 4.8, 1.4, 1.1)]
+BEARDS = {
+    "curta": [],
+    "longa": [(0, -8.7, -9, 10, 1.6, 3.4), (0, -8.7, -12, 7.4, 1.5, 3), (0, -8.7, -14.6, 4.4, 1.3, 2.4)],
+    "trancada": [(3, -8.8, -9.4, 2.4, 1.8, 4.2), (3, -8.8, -13.6, 1.8, 1.6, 3.4), (0, -8.7, -8.4, 4, 1.4, 2)],
+    "bigode": None,
+}
+for _kind, _seg in BEARDS.items():
+    if _seg is None:
+        _build = lambda: pair("cabeca", [(2.7, -8.7, -5.95, 4.8, 1.2, 1.1), (5.5, -8.7, -6.9, 1.4, 1.2, 1.4)], "cabelo", "barba")
+    elif _kind == "trancada":
+        _build = lambda s=_seg: (pair("cabeca", JAW + s, "cabelo", "barba"), pair("cabeca", [(3, -8.8, -11.7, 2.8, 2.2, 1)], "dourado", "anel"))
+    else:
+        _build = lambda s=_seg: pair("cabeca", JAW + s, "cabelo", "barba")
+    CATALOG["P_barba_" + _kind] = ("orelha", "Barba", M, False, None, _build)
+
+# a pintura de guerra do bárbaro: a do rosto é pintada na textura dos olhos (Tools/MakeBlockFace.py --pintura, 15/11:
+# os riscos em blocos ficavam por cima dos olhos); a peça ficou só com as faixas nos braços (por baixo das mangas)
+for _tone in ("azul", "vermelha", "branca"):
+    CATALOG["P_pintura_" + _tone] = ("orelha", "Pintura de guerra", M, False, None, (lambda t="tinta_" + _tone: (
+        shell("braco", .3, .42, off=.14, color=t, name="pintura"), shell("braco", .5, .56, off=.14, color=t, name="pintura"),
+        shell("antebraco", .35, .45, off=.14, color=t, name="pintura"))))
+
+# os cristais que ergueram o morto-vivo ("*" = brilha): no ombro, em coroa ou nas costas
+CRYSTALS = {
+    "ombro": ("torso", [(11.2, 0, 12.5, 3, 3, 9), (14, 1, 10, 2.4, 2.4, 6), (10.6, 3, 11, 2, 2, 6), (12.6, -2.8, 10, 2, 2, 5)], False),   # por fora da cabeça (16 de largura), em cima do braço
+    "coroa": ("cabeca", [(5.6, 1, 9, 2, 2, 4.4), (3, -4.4, 9.2, 1.8, 1.8, 4.8), (3, 5.4, 9.6, 2, 2, 5.6), (0, -5.8, 8.6, 1.4, 1.4, 3)], True),
+    "costas": ("torso", [(0, 5.6, 5, 2.6, 3.4, 6), (3.4, 5.2, 2.4, 2, 2.8, 4.4), (0, 5.2, -1.4, 1.8, 2.4, 3.6), (3, 5.2, 7, 1.6, 2.2, 3.2)], True),
+}
+for _kind, (_part, _seg, _both) in CRYSTALS.items():
+    CATALOG["P_cristal_" + _kind] = ("orelha", "Cristais", M, False, None, (lambda p=_part, s=_seg, b=_both: pair(p, s, "*ciano", "cristal", b)))
+
 EM, EF = "E_pecas_masc", "E_pecas_fem"
 
 

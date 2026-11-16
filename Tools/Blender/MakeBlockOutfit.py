@@ -116,10 +116,18 @@ C = {
     # 09/11: as orelhas dos elfos (a pele de Tools/MakeElfSkins.py)
     "pele_clara": [(214, 190, 170), (232, 212, 194), (246, 230, 214), (255, 240, 226)],
     "pele_escura": [(54, 47, 78), (72, 63, 100), (92, 82, 124), (112, 100, 146)],
+    # 14/11: a cauda do demônio (as peles de Tools/MakeElfSkins.py), os chifres e a pintura de guerra do bárbaro
+    "pele_vermelha": [(120, 30, 30), (150, 42, 38), (180, 54, 48), (206, 66, 56)],
+    "pele_roxa": [(62, 38, 98), (86, 54, 122), (110, 72, 148), (136, 90, 172)],
+    "pele_carvao": [(42, 38, 46), (60, 54, 64), (80, 72, 84), (100, 92, 104)],
+    "chifre": [(40, 30, 30), (62, 48, 44), (92, 74, 64), (132, 112, 94)],
+    "tinta_azul": [(30, 70, 150), (40, 92, 180), (54, 116, 206), (78, 142, 226)],
+    "tinta_vermelha": [(130, 22, 22), (160, 30, 28), (188, 40, 34), (210, 56, 46)],
+    "tinta_branca": [(196, 196, 192), (218, 218, 214), (234, 234, 230), (246, 246, 242)],
     # 10/11: o top do corpo feminino (T_humano_Pixel_F), para o busto
     "top_f": [(190, 162, 139), (212, 188, 165), (232, 212, 190), (244, 228, 208)],
     # a franja dos capuzes: só os tons (o material multiplica pela cor do cabelo do herói)
-    "cabelo": [(100, 100, 100), (116, 116, 116), (128, 128, 128), (142, 142, 142)],
+    "cabelo": [(150, 150, 150), (170, 170, 170), (188, 188, 188), (206, 206, 206)],   # 15/11: mais claro (era 100 a 142): a textura da peça é sRGB e os tons do cabelo são lineares, a barba saía bem mais escura que o cabelo
 }
 
 # os NPCs (02/11): a roupa de cada um, no corpo dele
@@ -225,6 +233,7 @@ PART_BONE["cabeca"] = "Head"
 # (pintar ali parecia o queixo com a textura da roupa: a choker saiu)
 PARTS["pescoco"] = PARTS["cabeca"].cut(.93, 1.0)
 PART_BONE["pescoco"] = "Head"
+log("partes (texels, de lo a hi): " + "; ".join("%s %s" % (k, [(round(PARTS[k].lo[a] / TEX, 1), round(PARTS[k].hi[a] / TEX, 1)) for a in range(3)]) for k in ("cabeca", "torso", "quadril")))
 BUST = None
 if FEMALE:
     pts = [p for p in group_points(["Spine2"]) if p.y < TORSO.lo.y - TEX * .3]

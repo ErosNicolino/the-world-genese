@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 
@@ -51,6 +51,15 @@ struct FVortexMonsterMove
     float Duration = 1.f;        // Pattern: tempo da ação inteira
     TArray<FVortexMark> Marks;   // Pattern
     FString Label;               // o que aparece na barra do chefe ("PINÇAS · afaste-se da frente")
+    // 13/11: os golpes novos dos monstros comuns
+    FName Status;                // o que o golpe deixa em quem acerta: "poison" (StatusTime segundos)
+    float StatusTime = 0.f;
+    float Slow = 1.f;            // quem apanha anda a esta fração da velocidade por SlowTime segundos (o sonar)
+    float SlowTime = 0.f;
+    float Hurl = 0.f;            // Strike: arremessa o herói a esta velocidade (cm/s) para longe (o agarrão do golem)
+    float CloseFor = 0.f;        // só escolhe o golpe se o herói está colado há este tempo (s)
+    float LobScale = 1.f;        // Lob: o tamanho do que é arremessado (a pedra grande do golem)
+    bool bLobTint = false;       // Lob: o cuspe na cor da espécie (a gota), não o veneno verde
 };
 
 /** Uma espécie do Godot: tamanho, ritmo, vida, dano, golpes e o que acontece ao vencê-la. */

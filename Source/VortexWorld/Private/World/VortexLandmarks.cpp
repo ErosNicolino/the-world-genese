@@ -1,4 +1,5 @@
 #include "World/VortexLandmarks.h"
+#include "Framework/VortexJson.h"
 #include "World/VortexWorldHooks.h"
 #include "World/VortexWorldLayout.h"
 
@@ -41,10 +42,8 @@ namespace
         static const FMarvelData Loaded = []
         {
             FMarvelData Out;
-            FString Text;
             TSharedPtr<FJsonObject> Json;
-            if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/GodotWorld/world_features.json"))) ||
-                !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json) || !Json.IsValid()) return Out;
+            if (!(Json = VortexJson::Load(TEXT("Data/GodotWorld/world_features.json"))).IsValid()) return Out;
             auto At = [](const TSharedPtr<FJsonObject>& O)
             {
                 const TArray<TSharedPtr<FJsonValue>>* A = nullptr;
@@ -268,13 +267,10 @@ void AVortexLandmarks::BeginPlay()
     Super::BeginPlay();
     // as peças: as da cidade (town.json) e as élficas (elven_props.json, copiado do Godot)
     Models = MakeShared<FJsonObject>();
-    FString Text;
     TSharedPtr<FJsonObject> Json;
-    if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/GodotTown/town.json"))) &&
-        FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json) && Json.IsValid())
+    if ((Json = VortexJson::Load(TEXT("Data/GodotTown/town.json"))).IsValid())
         for (const TPair<FString, TSharedPtr<FJsonValue>> Pair : Json->GetObjectField(TEXT("models"))->Values) Models->SetField(Pair.Key, Pair.Value);
-    if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/GodotWorld/elven_props.json"))) &&
-        FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json) && Json.IsValid())
+    if ((Json = VortexJson::Load(TEXT("Data/GodotWorld/elven_props.json"))).IsValid())
         for (const TPair<FString, TSharedPtr<FJsonValue>> Pair : Json->Values) Models->SetField(Pair.Key, Pair.Value);
     // a árvore do mundo fica sempre (é o marco do horizonte)
     BuildSite(Yggdrasil);

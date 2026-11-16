@@ -1,4 +1,4 @@
-#include "Combat/VortexHitFx.h"
+﻿#include "Combat/VortexHitFx.h"
 #include "Framework/VortexAudio.h"
 #include "ProceduralMeshComponent.h"
 #include "TimerManager.h"
@@ -26,6 +26,10 @@
 #include "TimerManager.h"
 #include "World/VortexTerrainData.h"
 #include "World/VortexTerrainStreamer.h"
+
+class UTexture2D;
+namespace VortexPowerFxWarm { void Collect(TArray<UMaterialInterface*>& Materials); }   // VortexPowerFx.cpp
+namespace VortexMonsterFxWarm { void Collect(TArray<UNiagaraSystem*>& Systems, TArray<UTexture2D*>& Sprites); }   // VortexMonsterFx.cpp
 
 namespace VortexHitFx
 {
@@ -106,11 +110,11 @@ namespace VortexHitFx
 
         // 4) respingos no ponto do acerto (do lado de quem bate), sangue ou palha
         const FVector Toward = Source ? (Source->GetActorLocation() - Target->GetActorLocation()).GetSafeNormal2D() : FVector::ForwardVector;
-        // 5) o alvo recua um pouco a cada golpe (chefes quase nada; o herói desta máquina não, a câmera já treme)
-        if (const ACharacter* Body = Cast<ACharacter>(Target); Body && Body->GetMesh() && !(Body->IsLocallyControlled() && Body->IsPlayerControlled()))
+        // 5) o alvo recua um pouco a cada golpe (chefes quase nada; 13/11: o herói desta máquina também, menos: a câmera já treme)
+        if (const ACharacter* Body = Cast<ACharacter>(Target); Body && Body->GetMesh())
         {
             const AVortexMonster* Monster = Cast<AVortexMonster>(Target);
-            const float Size = Monster && Monster->IsBoss() ? 3.f : bCrit ? 15.f : 9.f;
+            const float Size = Monster && Monster->IsBoss() ? 3.f : Body->IsLocallyControlled() && Body->IsPlayerControlled() ? 7.f : bCrit ? 15.f : 9.f;
             Recoil(Body->GetMesh(), -Toward * Size);
         }
         const FVector At = Target->GetActorLocation() + Toward * 30.f + FVector(0.f, 0.f, IsDummy(Target) ? 50.f : 25.f);
@@ -304,6 +308,21 @@ void AVortexFxWarmup::BeginPlay()
         TEXT("/Game/ArrowTrail/FX/NS_ArrowTrail_Fire_02.NS_ArrowTrail_Fire_02"),
         TEXT("/Game/Vefects/Free_Fire/Shared/Particles/NS_Fire_Medium.NS_Fire_Medium"),
         TEXT("/Game/Vortex/Bosses/Azhur/FX/NS_MagmaCore_Explosion.NS_MagmaCore_Explosion"),
+        // 14/11: os estouros de elemento dos poderes das armas (VortexSwords::ElementBurst): eram carregados no golpe
+        TEXT("/Game/Free_Spells/VFX_Niagara/NS_Free_Spells_Buff_Fire.NS_Free_Spells_Buff_Fire"), TEXT("/Game/Free_Spells/VFX_Niagara/NS_Free_Spells_Buff_Air.NS_Free_Spells_Buff_Air"),
+        TEXT("/Game/Free_Spells/VFX_Niagara/NS_Free_Spells_Buff_Lightning.NS_Free_Spells_Buff_Lightning"), TEXT("/Game/Free_Spells/VFX_Niagara/NS_Free_Spells_Buff_Healing.NS_Free_Spells_Buff_Healing"),
+        TEXT("/Game/Free_Spells/VFX_Niagara/NS_Free_Spells_Buff_Soul.NS_Free_Spells_Buff_Soul"), TEXT("/Game/Free_Spells/VFX_Niagara/NS_Free_Spells_Buff_Mana.NS_Free_Spells_Buff_Mana"),
+        TEXT("/Game/Free_Spells/VFX_Niagara/NS_Free_Spells_LevelUp.NS_Free_Spells_LevelUp"), TEXT("/Game/Free_Spells/VFX_Niagara/NS_Free_Spells_Aura_Soul.NS_Free_Spells_Aura_Soul"),
+        // 14/11 (o usuário: "habilidades do boss travando quando ele usa"): os outros oito efeitos do Azhûr eram
+        // carregados do disco na hora de cada golpe (UVortexVolcanicBoss::MulticastFx)
+        TEXT("/Game/Vortex/Bosses/Azhur/FX/NS_Core_Beam.NS_Core_Beam"),
+        TEXT("/Game/Vortex/Bosses/Azhur/FX/NS_Lava_Pillar.NS_Lava_Pillar"),
+        TEXT("/Game/Vortex/Bosses/Azhur/FX/NS_MagmaCore_Charge.NS_MagmaCore_Charge"),
+        TEXT("/Game/Vortex/Bosses/Azhur/FX/NS_Molten_Meteor.NS_Molten_Meteor"),
+        TEXT("/Game/Vortex/Bosses/Azhur/FX/NS_Rock_Debris.NS_Rock_Debris"),
+        TEXT("/Game/Vortex/Bosses/Azhur/FX/NS_Stone_Impact.NS_Stone_Impact"),
+        TEXT("/Game/Vortex/Bosses/Azhur/FX/NS_Volcanic_Death.NS_Volcanic_Death"),
+        TEXT("/Game/Vortex/Bosses/Azhur/FX/NS_Volcanic_Fissure.NS_Volcanic_Fissure"),
     };
     for (const TCHAR* Path : Systems)
     {
@@ -311,6 +330,44 @@ void AVortexFxWarmup::BeginPlay()
         {
             UNiagaraFunctionLibrary::SpawnSystemAttached(Effect, RootComponent, NAME_None, FVector::ZeroVector, FRotator::ZeroRotator, EAttachLocation::KeepRelativeOffset, true);
         }
+    }
+    // 13/11: os efeitos dos monstros (ondas, partículas e imagens de cada golpe): a lista vem do VortexMonsterFx.cpp
+    {
+        TArray<UNiagaraSystem*> MonsterSystems;
+        TArray<UTexture2D*> MonsterSprites;
+        VortexMonsterFxWarm::Collect(MonsterSystems, MonsterSprites);
+        for (UNiagaraSystem* Effect : MonsterSystems)
+            UNiagaraFunctionLibrary::SpawnSystemAttached(Effect, RootComponent, NAME_None, FVector::ZeroVector, FRotator::ZeroRotator, EAttachLocation::KeepRelativeOffset, true);
+        if (UMaterialInterface* Sprite = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Vortex/Combat/M_FxSprite.M_FxSprite")))
+            for (UTexture2D* Tex : MonsterSprites)
+            {
+                UStaticMeshComponent* Part = NewObject<UStaticMeshComponent>(this);
+                Part->SetupAttachment(RootComponent);
+                Part->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Plane.Plane")));
+                UMaterialInstanceDynamic* Mat = UMaterialInstanceDynamic::Create(Sprite, this);
+                Mat->SetTextureParameterValue(TEXT("Tex"), Tex);
+                Part->SetMaterial(0, Mat);
+                Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+                Part->SetCastShadow(false);
+                Part->RegisterComponent();
+            }
+        UE_LOG(LogTemp, Display, TEXT("VORTEX_FX_WARMUP monstros: %d partículas, %d imagens"), MonsterSystems.Num(), MonsterSprites.Num());
+    }
+    // 14/11: os poderes das espadas e dos arcos: a lista, os materiais (compilados aqui) e as folhas de quadros
+    {
+        TArray<UMaterialInterface*> PowerMaterials;
+        VortexPowerFxWarm::Collect(PowerMaterials);
+        for (UMaterialInterface* Mat : PowerMaterials)
+            for (const TCHAR* Shape : { TEXT("/Engine/BasicShapes/Cube.Cube"), TEXT("/Engine/BasicShapes/Plane.Plane") })
+            {
+                UStaticMeshComponent* Part = NewObject<UStaticMeshComponent>(this);
+                Part->SetupAttachment(RootComponent);
+                Part->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, Shape));
+                Part->SetMaterial(0, Mat);
+                Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+                Part->SetCastShadow(false);
+                Part->RegisterComponent();
+            }
     }
     // materiais nas malhas em que eles aparecem (malha comum, lote e malha gerada)
     auto Mesh = [this](const TCHAR* Shape, const TCHAR* MaterialPath)
@@ -333,6 +390,8 @@ void AVortexFxWarmup::BeginPlay()
     // 11/11: o brilho e a fumaça do saque (o primeiro bicho vencido travou 1,8 s no jogo empacotado carregando estes)
     Mesh(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"), TEXT("/Game/Vortex/Combat/M_DropRing.M_DropRing"));
     Mesh(TEXT("/Engine/BasicShapes/Sphere.Sphere"), TEXT("/Game/Vortex/Combat/M_FxPuff.M_FxPuff"));
+    Mesh(TEXT("/Engine/BasicShapes/Cone.Cone"), TEXT("/Game/Vortex/Combat/M_FxFunnel.M_FxFunnel"));
+    Mesh(TEXT("/Engine/BasicShapes/Cone.Cone"), TEXT("/Game/Vortex/Combat/M_SolidColor.M_SolidColor"));
     UInstancedStaticMeshComponent* Bits = NewObject<UInstancedStaticMeshComponent>(this);
     Bits->SetupAttachment(RootComponent);
     Bits->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Cube.Cube")));

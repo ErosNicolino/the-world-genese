@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
@@ -15,6 +15,12 @@ class UStaticMeshComponent;
  * - Tornado: o mini tornado de vento do morcego (o guincho), um funil girando que se abre para cima e a poeira na base;
  * - Dust: o anel de poeira e pedrinhas da pancada no chão (golem, gota de ferro);
  * - Splash: o respingo de lama do salto do sapo.
+ * 13/11 (o usuário: "sempre um único para cada"): um efeito só de cada golpe novo:
+ * - Howl: os anéis do uivo do lobo; Bite: a bocarra de presas que fecha na vítima (a mordida do lobo);
+ * - Headbutt: a estrela de impacto da cabeçada da gota; GelPool / GelDrip: o cuspe da gota, na cor dela;
+ * - Swoop: o rastro do rasante do morcego; Sonar: os arcos de som que avançam;
+ * - Spikes: os espinhos que saem do chão (cogumelo); Quake: a onda sísmica do golem (as pedras pulam quando ela passa);
+ * - Rubble: as pedras que sobem do chão para as mãos do golem; Hurl: as linhas de vento de quem foi arremessado.
  * Só no cliente (visual); quem chama é o multicast do monstro ou o AVortexLobbed.
  */
 UCLASS()
@@ -25,7 +31,9 @@ class VORTEX_API AVortexMonsterFx : public AActor
 public:
     AVortexMonsterFx();
     /** Cria o efeito em At (Follow: segue o ator, o tornado no morcego); Delay: espera antes de começar (o impacto). */
-    static AVortexMonsterFx* Spawn(UWorld* World, FName Kind, const FVector& At, float Radius, float Delay = 0.f, AActor* Follow = nullptr);
+    /** Yaw: para onde o efeito aponta (a bocarra, o sonar, a cabeçada). Tint: a cor de quem tem cor própria (a gota). */
+    static AVortexMonsterFx* Spawn(UWorld* World, FName Kind, const FVector& At, float Radius, float Delay = 0.f, AActor* Follow = nullptr,
+        float Yaw = 0.f, const FLinearColor& Tint = FLinearColor(-1.f, 0.f, 0.f));
     virtual void Tick(float DeltaSeconds) override;
 
 private:
@@ -45,6 +53,13 @@ private:
     UPROPERTY() TArray<TObjectPtr<class UMaterialInstanceDynamic>> Fading;
     TArray<float> FadingStrength;
     TArray<FBit> PuffBits;
+    // 13/11: cones (as presas e os espinhos) e o caminho de quem o efeito segue (os rastros)
+    UPROPERTY() TObjectPtr<UInstancedStaticMeshComponent> Cones;
+    TArray<FBit> ConeBits;
+    TArray<FVector> Trail;
+    FLinearColor Custom = FLinearColor(-1.f, 0.f, 0.f);
+    bool bSparked = false;   // as partículas do efeito já saíram (uma vez, no instante do golpe)
+    FTransform PlaceCone(const FBit& Bit, float T) const;
     float BaseZ = 0.f;
     FTransform PlacePuff(const FBit& Bit, float T) const;
     TWeakObjectPtr<AActor> FollowActor;

@@ -1,4 +1,4 @@
-#include "Framework/VortexCharacter.h"
+﻿#include "Framework/VortexCharacter.h"
 #include "Misc/PackageName.h"
 
 #include "Components/WindDirectionalSourceComponent.h"
@@ -41,6 +41,7 @@
 #include "Framework/VortexPings.h"
 #include "GameFramework/PlayerState.h"
 #include "Combat/VortexHitFx.h"
+#include "Combat/VortexMonsterFx.h"
 #include "NiagaraComponent.h"
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraSystem.h"
@@ -78,6 +79,11 @@ namespace VortexGraphics { float FirstPersonFieldOfView(); }   // VortexGraphics
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/PointLightComponent.h"
+#include "Camera/PlayerCameraManager.h"
+#include "Camera/CameraActor.h"
+#include "Camera/CameraComponent.h"
+#include "EngineUtils.h"
 #include "Components/InputComponent.h"
 #include "Engine/StaticMesh.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -616,7 +622,10 @@ namespace
 
 USkeletalMesh* AVortexCharacter::HeroModelFor(FName Race, FName Appearance)
 {
-    if (Race.IsNone() || Race == TEXT("elfo")) Race = TEXT("humano");   // 09/11: o elfo é o corpo do humano; muda a pele, os olhos e as orelhas
+    // 15/11: o corpo sem cabeça da primeira pessoa (Hero_<raça>_FP) não existe para o corpo de blocos: sem isto a linha de
+    // baixo devolvia o corpo inteiro, a cabeça deixava de sumir e o próprio rosto aparecia na tela no golpe
+    if (Race.ToString().EndsWith(TEXT("_FP"))) return nullptr;
+    Race = TEXT("humano");   // 14/11: todas as raças são o corpo do humano (09/11: o elfo); muda a pele, os olhos, o traço e o tamanho (Data/Looks/racas.json)
     const FString Id = Race.ToString();
     // 05/11: o corpo feminino é a MESMA malha do masculino (o usuário: "o corpo é idêntico"); muda só a textura (o top,
     // T_<raça>_Pixel_F) e os olhos com cílios, no ApplyHeroModel. A malha à parte (Feminino/Hero_<raça>, com busto e
@@ -682,19 +691,29 @@ void AVortexCharacter::ApplyHeroModel(USkeletalMesh* Model, const FVortexLook& I
             if (UTexture* Eyes = LoadObject<UTexture>(nullptr, *FString::Printf(TEXT("/Game/Vortex/Characters/Heroes/%s/T_%s_Eyes_F.T_%s_Eyes_F"), *Id, *Id, *Id)))
                 FaceMaterial->SetTextureParameterValue(TEXT("Eyes"), Eyes);
         }
-        if (CurrentLook.Race == TEXT("elfo"))
+        // a pele da raça (a pasta "Elfo" ficou com as de todas; sem a textura, "padrao", fica a do humano)
+        if (const FName RaceSkin = CurrentLook.Pieces.FindRef(TEXT("raca_pele")); !RaceSkin.IsNone() && RaceSkin != TEXT("padrao"))
         {
-            const FString Tone = FString::Printf(TEXT("T_elfo_%s%s"), *CurrentLook.Pieces.FindRef(TEXT("elfo_pele")).ToString(), CurrentLook.Appearance == TEXT("female") ? TEXT("_F") : TEXT(""));
+            const FString Tone = FString::Printf(TEXT("T_%s_%s%s"), *CurrentLook.Race.ToString(), *RaceSkin.ToString(), CurrentLook.Appearance == TEXT("female") ? TEXT("_F") : TEXT(""));
             if (UTexture* Skin = LoadObject<UTexture>(nullptr, *FString::Printf(TEXT("/Game/Vortex/Characters/Heroes/humano/Elfo/%s.%s"), *Tone, *Tone)))
                 FaceMaterial->SetTextureParameterValue(TEXT("Base"), Skin);
         }
         // o estilo do rosto (Data/Looks/rostos.json, Tools/ImportBlockFaces.py): os olhos do estilo, no corpo escolhido
         const FName Style = CurrentLook.Pieces.FindRef(TEXT("block_face"));
-        if (!Style.IsNone() && Style != TEXT("padrao") && VortexFaceStyles().ContainsByPredicate([Style](const FVortexFaceStyle& F) { return F.Id == Style; }))
+        const bool bStyle = !Style.IsNone() && Style != TEXT("padrao") && VortexFaceStyles().ContainsByPredicate([Style](const FVortexFaceStyle& F) { return F.Id == Style; });
+        // 15/11: a pintura de guerra do bárbaro é pintada no rosto, por baixo dos olhos (T_humano_Eyes_<estilo>_p<cor>,
+        // Tools/MakeBlockFace.py --pintura); a peça P_pintura_<cor> ficou só com as faixas dos braços
+        const FString Trait = CurrentLook.Pieces.FindRef(TEXT("peca_orelha")).ToString();
+        const FString Paint = Trait.StartsWith(TEXT("P_pintura_")) ? TEXT("_p") + Trait.RightChop(10) : FString();
+        for (const FString& Tail : { Paint, FString() })
         {
-            const FString Name = FString::Printf(TEXT("T_%s_Eyes_%s%s"), *Id, CurrentLook.Appearance == TEXT("female") ? TEXT("F_") : TEXT(""), *Style.ToString());
+            if (!bStyle && Tail.IsEmpty()) break;
+            const FString Name = FString::Printf(TEXT("T_%s_Eyes_%s%s%s"), *Id, CurrentLook.Appearance == TEXT("female") ? TEXT("F_") : TEXT(""), bStyle ? *Style.ToString() : TEXT("padrao"), *Tail);
             if (UTexture* Eyes = LoadObject<UTexture>(nullptr, *FString::Printf(TEXT("/Game/Vortex/Characters/Heroes/%s/%s.%s"), *Id, *Name, *Name)))
+            {
                 FaceMaterial->SetTextureParameterValue(TEXT("Eyes"), Eyes);
+                break;
+            }
         }
     }
     else if (UMaterialInterface* Skin = LoadObject<UMaterialInterface>(nullptr, *FString::Printf(TEXT("/Game/Vortex/Characters/Heroes/%s/MI_Hero_%s.MI_Hero_%s"), *Id, *Id, *Id)))
@@ -712,6 +731,7 @@ void AVortexCharacter::ApplyHeroModel(USkeletalMesh* Model, const FVortexLook& I
     FVortexBodyShape Shape;
     if (Race) Shape.Meters = Race->Shape.Meters;
     Shape.Height = Shape.Width = Shape.Stature();
+    if (const FVortexRaceLook* Wide = VortexRaceLook(CurrentLook.Race)) Shape.Width *= Wide->Width;   // o anão parrudo, o morto-vivo magro
     // braços abertos para fora em quem tem o corpo largo (o braço entrava no corpo; as adagas se juntavam na frente).
     // Medido no Blender com a animação parada do aventureiro
     // e o ombro um pouco para fora do tronco (a junta ficava funda dentro do colete). O anão e o humano têm as juntas do
@@ -1085,6 +1105,23 @@ void AVortexCharacter::UpdateSounds(float DeltaSeconds)
                 const VortexWeaponKit::FKit* Kit = VortexWeaponKit::Find(Definition->WeaponId);
                 const FName Family = Kit ? Kit->Family : NAME_None;
                 const FName SwordSwing(*FString::Printf(TEXT("sword_swing_%d"), 1 + Attack.SwingIndex % 3));
+                // 14/11 (o usuário: "veja as 5 armas iniciais, os golpes; as adagas feias e simples, entre outras"): por cima
+                // do rastro de sempre, o efeito próprio de cada arma inicial em cada golpe do combo (VortexMonsterFx.cpp, "Sw...")
+                if (GetNetMode() != NM_DedicatedServer && !(IsLocallyControlled() && IsFirstPerson()))
+                {
+                    static const TMap<FName, const TCHAR*> Flair = { { TEXT("espada_de_cinzas"), TEXT("SwSword") }, { TEXT("adagas_gemeas"), TEXT("SwDagger") },
+                        { TEXT("martelo_de_bram"), TEXT("SwHammer") }, { TEXT("arco_de_betula"), TEXT("SwBow") }, { TEXT("cajado_de_ilsa"), TEXT("SwStaff") } };
+                    if (const TCHAR* const* Base = Flair.Find(Definition->WeaponId))
+                    {
+                        const int32 Step = Attack.SwingIndex % 3;
+                        const bool bRanged = Swing.Mode != TEXT("melee") && Swing.Mode != TEXT("slam");
+                        // o arco e o cajado têm um efeito para os dois primeiros e outro para o terceiro; o martelo, a pancada no chão
+                        const FString Kind = Swing.Mode == TEXT("slam") ? FString(TEXT("SwHammerSlam"))
+                            : bRanged ? FString(*Base) + (Step == 2 ? TEXT("3") : TEXT("1")) : FString(*Base) + FString::FromInt(Step + 1);
+                        const float Size = Swing.Mode == TEXT("slam") ? FMath::Max(Swing.RadiusCm, 200.f) : bRanged ? 90.f : (Weapon->MeleeReach(Swing)) * .5f;
+                        AVortexMonsterFx::Spawn(GetWorld(), FName(*Kind), GetActorLocation(), Size, FMath::Max(0.f, Swing.ActiveStart / Pace), this, GetActorRotation().Yaw);
+                    }
+                }
                 if (Swing.Mode == TEXT("melee") || Swing.Mode == TEXT("slam"))
                 {
                     VortexAudio::Play(this, VortexAudio::WeaponSound(this, TEXT("swing"), Attack.SwingIndex, SwordSwing), GetActorLocation(), .8f);
@@ -1134,8 +1171,307 @@ void AVortexCharacter::UpdateSounds(float DeltaSeconds)
     }
 }
 
+// 16/11 (o usuário: "criar uma animação de subir e descer no cavalo"): ao montar o corpo sobe do lado esquerdo do cavalo
+// até a sela, e ao descer escorrega da sela até o chão, em 0,78 s (o tempo dos clipes Montar e Desmontar). É só a malha
+// que desliza: a cápsula já está no lugar final. O estado fica aqui para não mexer no .h
+// shortcut: nos outros jogos a suavização da rede volta ao descer e pode cortar o deslize do amigo; passar para o
+// movimento (UVortexCharacterMovementComponent) se os convidados notarem
+namespace VortexMountSlide
+{
+    struct FSlide { double Start = -100.0; float Lift = 0.f; bool bUp = false, bMounted = false, bSliding = false; };
+    static TMap<TWeakObjectPtr<const AVortexCharacter>, FSlide> Slides;
+    static constexpr float Seconds = .78f;
+
+    float Age(const AVortexCharacter* Hero, bool& bUp)
+    {
+        const FSlide* S = Hero ? Slides.Find(Hero) : nullptr;
+        if (!S || !Hero->GetWorld()) return 1000.f;
+        bUp = S->bUp;
+        return float(Hero->GetWorld()->GetTimeSeconds() - S->Start);
+    }
+
+    static void Tick(AVortexCharacter* Hero, bool bMounted, float MountLift)
+    {
+        FSlide* S = Slides.Find(Hero);
+        if (!S)
+        {
+            if (!bMounted) return;   // quem nunca montou não entra na lista
+            for (auto It = Slides.CreateIterator(); It; ++It) if (!It.Key().IsValid()) It.RemoveCurrent();
+            S = &Slides.Add(Hero);
+        }
+        const double Now = Hero->GetWorld()->GetTimeSeconds();
+        if (bMounted && MountLift > 0.f) S->Lift = MountLift;
+        if (S->bMounted != bMounted) { S->bMounted = bMounted; S->bUp = bMounted; S->Start = Now; S->bSliding = true; }
+        if (!S->bSliding) return;
+        const float T = FMath::Clamp(float(Now - S->Start) / Seconds, 0.f, 1.f);
+        // subindo: fica no chão até o pé chegar ao estribo (30%), depois sobe e passa para o meio; descendo: o contrário
+        const float Go = FMath::SmoothStep(0.f, 1.f, S->bUp ? (T - .3f) / .6f : T / .7f);
+        const FVector Base(0.f, 0.f, -Hero->GetCapsuleComponent()->GetUnscaledCapsuleHalfHeight() + MountLift);
+        const FVector Offset = S->bUp ? FVector(0.f, -62.f * (1.f - Go), -S->Lift * (1.f - Go) + FMath::Sin(Go * UE_PI) * 14.f)
+            : FVector(0.f, 60.f * (1.f - Go), S->Lift * (1.f - Go) + FMath::Sin(Go * UE_PI) * 8.f);
+        Hero->GetMesh()->SetRelativeLocation(Base + Offset);
+        if (T >= 1.f) S->bSliding = false;
+    }
+}
+
+// 16/11 (o usuário: "a saída, eu caindo no mundo com essa animação: uma luz caindo lá de cima e acertando o chão na praça
+// com a poeira subindo, bem épico"): ao sair do Estádio pelo portão dourado, o herói chega à praça como na história ("uma
+// luz atravessa o véu e uma alma cai do céu"). Uma câmera de cinema, de lado, mostra o céu: um clarão verde-jade se abre
+// lá no alto (o véu), a luz desce com um rastro cada vez mais depressa, bate na praça (coluna de luz, três ondas de
+// poeira, pedrinhas, tranco) e o herói aparece no pouso de super-herói (clipe Pouso, Tools/Blender/MakeMountAnims.py), ergue
+// a cabeça e se levanta; a câmera volta para ele.
+// Só na máquina de quem joga; a cápsula não sai do lugar (o herói fica escondido durante a queda). Antes (16/11, cedo) isto
+// tocava quando a HQ fechava, dentro do Estádio: pular a HQ pulava a chegada, e o usuário preferiu acordar lá normalmente.
+// O estado fica aqui para não mexer no .h
+namespace VortexArrival
+{
+    struct FArrival
+    {
+        TWeakObjectPtr<AVortexCharacter> Hero;
+        TWeakObjectPtr<UStaticMeshComponent> Orb, Trail, Veil;
+        TWeakObjectPtr<UPointLightComponent> Light;
+        TWeakObjectPtr<ACameraActor> Camera;
+        FVector CameraAt = FVector::ZeroVector;
+        double Start = 0.0;
+        bool bLanded = false, bBack = false;
+    };
+    static FArrival Now;
+    static TWeakObjectPtr<AVortexCharacter> Waiting;   // saiu do Estádio: espera o chão da praça carregar
+    static double WaitingSince = 0.0;
+    // quem estava no Estádio (por herói: um "estava" só do processo fazia a queda tocar no herói seguinte, carregado no vale)
+    static TWeakObjectPtr<AVortexCharacter> WasInStadium;
+    static constexpr float Fall = 3.2f, Hold = 2.1f, Back = .9f, Sky = 26000.f;
+
+    /** Há quantos segundos a queda começou (-1: não está chegando). Para os testes (VortexGameMode.cpp). */
+    float Age(const AVortexCharacter* Hero) { return Hero && Now.Hero.Get() == Hero ? float(Hero->GetWorld()->GetTimeSeconds() - Now.Start) : -1.f; }
+
+    /** Há quantos segundos o herói pousou (-1: não está chegando ou ainda cai). O clipe Pouso dura Hold. */
+    float LandedFor(const AVortexCharacter* Hero)
+    {
+        if (!Hero || Now.Hero.Get() != Hero || !Now.bLanded) return -1.f;
+        return float(Hero->GetWorld()->GetTimeSeconds() - Now.Start) - Fall;
+    }
+
+    static void End()
+    {
+        if (AVortexCharacter* Hero = Now.Hero.Get())
+        {
+            Hero->SetActorHiddenInGame(false);
+            if (APlayerController* Player = Cast<APlayerController>(Hero->GetController()))
+            {
+                Player->SetIgnoreMoveInput(false);
+                Player->SetIgnoreLookInput(false);
+                if (Player->GetViewTarget() != Hero) Player->SetViewTarget(Hero);
+            }
+        }
+        if (ACameraActor* Camera = Now.Camera.Get()) Camera->Destroy();   // leva as peças de luz junto
+        Now = FArrival();
+    }
+
+    static void Start(AVortexCharacter* Hero)
+    {
+        if (Now.Hero.IsValid()) End();
+        Now.Hero = Hero;
+        Now.Start = Hero->GetWorld()->GetTimeSeconds();
+        // a câmera de cinema: baixa, olhando para cima. Escolhe, em volta do herói, o primeiro lugar com o céu aberto em cima
+        // e sem parede até ele (na praça, de lado e atrás ficava debaixo do beiral de uma casa)
+        const FVector Here = Hero->GetActorLocation();
+        const FVector Right = Hero->GetActorRightVector(), Front = Hero->GetActorForwardVector();
+        FVector CameraAt = Here - Front * 900.f + FVector(0.f, 0.f, 60.f);
+        {
+            FCollisionQueryParams Query(SCENE_QUERY_STAT(VortexArrivalCamera), false, Hero);
+            const FVector Spots[] = { Right * 950.f - Front * 700.f, -Right * 950.f - Front * 700.f, -Front * 1100.f, Right * 1000.f, -Right * 1000.f,
+                Right * 600.f - Front * 450.f, -Right * 600.f - Front * 450.f, -Front * 650.f, Right * 450.f + Front * 450.f, -Right * 450.f + Front * 450.f };
+            for (const FVector& Spot : Spots)
+            {
+                const FVector Try = Here + Spot + FVector(0.f, 0.f, 60.f);
+                FHitResult Hit;
+                // folga de 1,6 m em volta (um poste ou uma quina de casa colados na lente estragam o quadro)
+                if (Hero->GetWorld()->OverlapBlockingTestByChannel(Try + FVector(0.f, 0.f, 130.f), FQuat::Identity, ECC_Visibility, FCollisionShape::MakeSphere(160.f), Query)) continue;
+                if (Hero->GetWorld()->LineTraceSingleByChannel(Hit, Here + FVector(0.f, 0.f, 60.f), Try, ECC_Visibility, Query)) continue;
+                if (Hero->GetWorld()->LineTraceSingleByChannel(Hit, Try, Try + FVector(0.f, 0.f, 6000.f), ECC_Visibility, Query)) continue;
+                if (Hero->GetWorld()->LineTraceSingleByChannel(Hit, Try, Here + FVector(0.f, 0.f, 5000.f), ECC_Visibility, Query)) continue;
+                CameraAt = Try;
+                break;
+            }
+        }
+        Now.CameraAt = CameraAt;
+        FActorSpawnParameters CameraParams;
+        CameraParams.ObjectFlags |= RF_Transient;
+        ACameraActor* Camera = Hero->GetWorld()->SpawnActor<ACameraActor>(CameraAt, (Here + FVector(0.f, 0.f, 3000.f) - CameraAt).Rotation(), CameraParams);
+        if (!Camera) { Hero->SetActorHiddenInGame(false); Now = FArrival(); return; }   // sem câmera não há queda: o herói não pode ficar escondido
+        Camera->GetCameraComponent()->SetConstraintAspectRatio(false);
+        Camera->GetCameraComponent()->SetFieldOfView(82.f);
+        Now.Camera = Camera;
+        UMaterialInterface* Glow = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Vortex/Stadium/M_StadiumGlow.M_StadiumGlow"));
+        auto Make = [&](const TCHAR* Mesh, float Strength, const FLinearColor& Tone = FLinearColor(.2f, 1.f, .55f))
+        {
+            // as peças são da câmera, não do herói: o herói fica escondido durante a queda e levaria as peças junto
+            UStaticMeshComponent* Part = NewObject<UStaticMeshComponent>(Camera);
+            Part->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, Mesh));
+            if (UMaterialInstanceDynamic* Jade = Glow ? UMaterialInstanceDynamic::Create(Glow, Part) : nullptr)
+            {
+                Jade->SetVectorParameterValue(TEXT("Color"), Tone);
+                Jade->SetScalarParameterValue(TEXT("Glow"), Strength);
+                Part->SetMaterial(0, Jade);
+            }
+            Part->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+            Part->SetCastShadow(false);
+            Part->SetUsingAbsoluteLocation(true);
+            Part->SetUsingAbsoluteRotation(true);
+            Part->SetUsingAbsoluteScale(true);
+            Part->SetBoundsScale(50.f);   // some longe da origem do herói: não pode ser cortado por estar "fora da tela"
+            Part->SetupAttachment(Camera->GetRootComponent());
+            Part->RegisterComponent();
+            return Part;
+        };
+        // de dia o brilho (aditivo) some contra o céu claro: bem forte
+        Now.Orb = Make(TEXT("/Engine/BasicShapes/Sphere.Sphere"), 12.f);
+        Now.Trail = Make(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"), 7.f);
+        Now.Veil = Make(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"), 1.3f, FLinearColor(.02f, .85f, .32f));   // verde mesmo: mais forte virava um disco branco
+        UPointLightComponent* Light = NewObject<UPointLightComponent>(Camera);
+        Light->SetMobility(EComponentMobility::Movable);
+        Light->SetUsingAbsoluteLocation(true);
+        Light->SetupAttachment(Camera->GetRootComponent());
+        Light->SetLightColor(FLinearColor(.3f, 1.f, .6f));
+        Light->SetIntensityUnits(ELightUnits::Candelas);
+        Light->SetAttenuationRadius(5000.f);
+        Light->SetCastShadows(false);
+        Light->RegisterComponent();
+        Now.Light = Light;
+        Hero->SetActorHiddenInGame(true);
+        if (APlayerController* Player = Cast<APlayerController>(Hero->GetController()))
+        {
+            Player->SetIgnoreMoveInput(true);
+            Player->SetIgnoreLookInput(true);
+            Player->SetViewTarget(Camera);
+        }
+        VortexAudio::Play(Hero, TEXT("meteor"), Here, .9f, 0.f);
+    }
+
+    static void Tick(AVortexCharacter* Hero, float DeltaSeconds)
+    {
+        if (!Hero->IsLocallyControlled()) return;
+        const double Time = Hero->GetWorld()->GetTimeSeconds();
+        // saiu do Estádio (o portão dourado leva para a praça): esconde o herói e espera o chão de lá existir nesta máquina
+        const bool bInStadium = AVortexAwakeningStadium::Contains(Hero->GetActorLocation());
+        if (WasInStadium.Get() == Hero && !bInStadium && !Hero->IsDead())
+        {
+            Waiting = Hero;
+            WaitingSince = Time;
+            Hero->SetActorHiddenInGame(true);
+        }
+        if (bInStadium) WasInStadium = Hero;
+        else if (WasInStadium.Get() == Hero) WasInStadium = nullptr;
+        if (Waiting.Get() == Hero)
+        {
+            if (Hero->IsDead()) { Waiting = nullptr; Hero->SetActorHiddenInGame(false); return; }
+            float Ground = 0.f;
+            AVortexTerrainStreamer* Streamer = nullptr;
+            for (TActorIterator<AVortexTerrainStreamer> It(Hero->GetWorld()); It; ++It) Streamer = *It;
+            // a tela "Preparando o mundo..." cobre a chegada à praça: a queda só começa quando ela sai (e o chão existe; o
+            // servidor põe o herói no chão 0,2 s depois disso: 0,7 s de folga). Depois de 40 s, começa de qualquer jeito
+            const APlayerController* Player = Cast<APlayerController>(Hero->GetController());
+            const AVortexHudBase* Hud = Player ? Cast<AVortexHudBase>(Player->GetHUD()) : nullptr;
+            static double ReadySince = 0.0;
+            if (ReadySince > Time) ReadySince = Time;   // sobrou de outro mundo (o relógio recomeça do zero): senão esperava os 40 s
+            const bool bReady = (!Streamer || Streamer->GroundReadyAt(Hero->GetActorLocation().X, Hero->GetActorLocation().Y, Ground)) && !(Hud && Hud->IsLoadingScreen());
+            if (!bReady) ReadySince = Time;
+            if (Time - ReadySince > .7 || Time - WaitingSince > 40.) { Waiting = nullptr; Start(Hero); }
+            return;
+        }
+        if (Now.Hero.Get() != Hero) return;
+        const float T = float(Time - Now.Start);
+        if (T >= Fall + Hold + Back || Hero->IsDead()) { End(); return; }
+        const FVector Ground = Hero->GetActorLocation() - FVector(0.f, 0.f, Hero->GetCapsuleComponent()->GetScaledCapsuleHalfHeight());
+        const float U = FMath::Clamp(T / Fall, 0.f, 1.f);
+        // os primeiros 25% são o clarão se abrindo no véu; depois cai cada vez mais depressa
+        const float Drop = FMath::Square(FMath::Clamp((U - .25f) / .75f, 0.f, 1.f));
+        const FVector At = Ground + FVector(0.f, 0.f, 70.f + Sky * (1.f - Drop));
+        const float After = FMath::Max(0.f, T - Fall);
+        const float Fade = FMath::Clamp(1.f - After / .6f, 0.f, 1.f);
+        if (UStaticMeshComponent* Orb = Now.Orb.Get())
+        {
+            // de longe a luz precisa ser grande para se ver; chegando, encolhe até o tamanho do herói e estoura no impacto
+            const float Size = FMath::Lerp(14.f, 1.6f, Drop) * FMath::Clamp(U / .2f, 0.f, 1.f) * (1.f + .12f * FMath::Sin(T * 33.f));
+            Orb->SetWorldLocation(At);
+            Orb->SetWorldScale3D(FVector(After > 0.f ? Fade * (1.6f + After * 7.f) : Size));   // (com 22 o clarão tomava a tela inteira de branco)
+            Orb->SetVisibility(Fade > 0.f);
+        }
+        if (UStaticMeshComponent* Trail = Now.Trail.Get())
+        {
+            // o rastro: do clarão para cima, até o véu; no impacto vira uma coluna de luz que engrossa e some
+            const float Len = FMath::Max(100.f, Ground.Z + Sky + 500.f - At.Z);
+            const float Wide = After > 0.f ? (1.2f + After * 9.f) * Fade : FMath::Lerp(4.f, .7f, Drop);
+            Trail->SetWorldLocation(At + FVector(0.f, 0.f, Len * .5f));
+            Trail->SetWorldScale3D(FVector(Wide, Wide, Len / 100.f));
+            Trail->SetVisibility(Fade > 0.f && U > .2f);
+        }
+        if (UStaticMeshComponent* Veil = Now.Veil.Get())
+        {
+            // o véu: um disco de luz que se abre lá no alto, de onde a alma cai, e se fecha depois do impacto
+            const float Open = FMath::SmoothStep(0.f, 1.f, U / .3f) * FMath::Clamp(1.f - After / 1.2f, 0.f, 1.f);
+            Veil->SetWorldLocation(Ground + FVector(0.f, 0.f, Sky + 600.f));
+            Veil->SetWorldScale3D(FVector(150.f * Open, 150.f * Open, .2f));
+            Veil->SetVisibility(Open > 0.01f);
+        }
+        if (UPointLightComponent* Light = Now.Light.Get())
+        {
+            Light->SetWorldLocation(At + FVector(0.f, 0.f, 120.f));
+            // (3000 cd lavava a praça inteira de verde-branco)
+            Light->SetIntensity(After > 0.f ? 1100.f * FMath::Clamp(1.f - After / 1.2f, 0.f, 1.f) : 500.f * Drop * Drop);
+        }
+        APlayerController* Player = Cast<APlayerController>(Hero->GetController());
+        if (ACameraActor* Camera = Now.Camera.Get())
+        {
+            // acompanha a luz descendo; no impacto treme e depois chega um pouco mais perto do herói
+            const FVector Shake = After > 0.f && After < .7f ? FMath::VRand() * 26.f * (1.f - After / .7f) : FVector::ZeroVector;
+            const FVector Look = After > 0.f ? Hero->GetActorLocation() + FVector(0.f, 0.f, 20.f) : At;
+            const FVector Where = FMath::Lerp(Now.CameraAt, Hero->GetActorLocation() + FVector(0.f, 0.f, 40.f), FMath::SmoothStep(0.f, 1.f, After / Hold) * .35f);
+            FRotator Want = (Look - Where).Rotation();
+            Want.Pitch = FMath::Min(Want.Pitch, 78.f);
+            Camera->SetActorLocationAndRotation(Where + Shake, FMath::RInterpTo(Camera->GetActorRotation(), Want, DeltaSeconds, After > 0.f ? 4.f : 9.f));
+            Camera->GetCameraComponent()->SetFieldOfView(FMath::Lerp(82.f, 62.f, FMath::SmoothStep(0.f, 1.f, After / Hold)));
+        }
+        if (T >= Fall && !Now.bLanded)
+        {
+            Now.bLanded = true;
+            Hero->SetActorHiddenInGame(false);
+            const FLinearColor Jade(.25f, 1.f, .55f), Earth(.62f, .52f, .36f);
+            UWorld* World = Hero->GetWorld();
+            const float Yaw = Hero->GetActorRotation().Yaw;
+            AVortexMonsterFx::Spawn(World, TEXT("Pwgroundslam"), Hero->GetActorLocation(), 420.f, 0.f, Hero, Yaw, Jade);
+            AVortexMonsterFx::Spawn(World, TEXT("Pwshockwave"), Hero->GetActorLocation(), 420.f, .05f, Hero, Yaw, Jade);
+            AVortexMonsterFx::Spawn(World, TEXT("Pwruneseal"), Hero->GetActorLocation(), 300.f, .25f, Hero, Yaw, Jade);   // o círculo de luz que se apaga
+            // a poeira: três ondas que se abrem, cada uma maior e um pouco depois, e pedrinhas para todo lado
+            AVortexMonsterFx::Spawn(World, TEXT("Dust"), Ground, 300.f);
+            AVortexMonsterFx::Spawn(World, TEXT("Dust"), Ground, 560.f, .12f);
+            AVortexMonsterFx::Spawn(World, TEXT("Dust"), Ground, 860.f, .28f);
+            for (int32 i = 0; i < 8; ++i)
+            {
+                const FVector Out = FRotator(0.f, i * 45.f + 20.f, 0.f).Vector();
+                AVortexMonsterFx::Spawn(World, TEXT("Dust"), Ground + Out * 330.f, 200.f, .08f + .03f * i);
+                VortexHitFx::Splash(World, Ground + Out * 120.f, Earth, 9);
+            }
+            VortexHitFx::Splash(World, Ground, FLinearColor(.4f, 1.f, .6f), 12);
+            VortexAudio::Play(Hero, TEXT("boss_stomp"), Ground, 1.f, 0.f);
+            VortexAudio::Play(Hero, TEXT("rock_impact"), Ground, 1.f, 0.f);
+        }
+        // a câmera volta para o herói, suave, enquanto ele acaba de se levantar
+        if (After > Hold && !Now.bBack && Player)
+        {
+            Now.bBack = true;
+            Player->SetControlRotation(FRotator(-12.f, Hero->GetActorRotation().Yaw, 0.f));
+            Player->SetViewTargetWithBlend(Hero, Back, VTBlend_Cubic);
+            Player->SetIgnoreMoveInput(false);
+            Player->SetIgnoreLookInput(false);
+        }
+    }
+}
+
 void AVortexCharacter::Tick(float DeltaSeconds)
 {
+    VortexArrival::Tick(this, DeltaSeconds);
     // presa numa teia (o dono e o servidor calculam igual: a velocidade é a mesma nos dois)
     if (const AVortexPointsOfInterest* Pois = AVortexPointsOfInterest::Find(GetWorld()))
     {
@@ -1172,6 +1508,7 @@ void AVortexCharacter::Tick(float DeltaSeconds)
         const bool bHorse = Riding.ContainsByPredicate([this](const AActor* A) { const AVortexMonster* H = Cast<AVortexMonster>(A); return H && H->GetRider() == this; });
         if (!bHorse) SetMountLift(0.f);
     }
+    VortexMountSlide::Tick(this, Mount != nullptr, MountLift);
     // e para de ignorar o cavalo de antes (o cavalo pode ter chegado solto antes de saber que não tinha mais cavaleiro)
     if (!Mount && GetCapsuleComponent()->GetMoveIgnoreActors().Num())
     {
@@ -1597,6 +1934,7 @@ void AVortexCharacter::BeginPrimaryAttack()
 {
     if (CancelDrinkInstead()) return;
     if (IsMouseOnWindow() || Mount || IsDead()) return;   // janela do herói aberta: o mouse é dela; montado não luta
+    if (Combat && Combat->IsStunned()) return;   // 13/11: atordoado (o uivo do lobo) não golpeia
     // teia na frente (ou presa nela): o golpe corta (aqui e no servidor)
     if (AVortexPointsOfInterest* Pois = AVortexPointsOfInterest::Find(GetWorld()))
         if (Pois->SlashWeb(GetActorLocation(), GetControlRotation().Vector()) && !HasAuthority()) ServerSlashWeb();
@@ -1712,6 +2050,15 @@ void AVortexCharacter::TickPotion()
         bWasDrinking = bDrinking;
         if (bDrinking) VortexAudio::Play(this, TEXT("drink"), GetActorLocation(), .9f, .05f);
     }
+    // 16/11 (o usuário: "sem efeito de cura ao tomar"): bebeu até o fim (não cancelou) -> o efeito de cura em volta do
+    // herói, verde na vida e azul na mana. O estado fica aqui para não mexer no .h
+    {
+        static TMap<TWeakObjectPtr<const AVortexCharacter>, TPair<FName, float>> Sips;
+        if (bDrinking) Sips.Add(this, TPair<FName, float>(Sheet->GetDrinkItem(), Sheet->DrinkElapsed()));
+        else if (TPair<FName, float> Sip; Sips.RemoveAndCopyValue(this, Sip) && Sip.Value >= UVortexHeroSheet::DrinkSeconds - .2f)
+            AVortexMonsterFx::Spawn(GetWorld(), TEXT("Pwheal"), GetActorLocation(), 160.f, 0.f, this, GetActorRotation().Yaw,
+                Sip.Key == TEXT("potion_blue") ? FLinearColor(.25f, .55f, 1.f) : FLinearColor(.3f, 1.f, .4f));
+    }
     // a garrafinha na mão esquerda (no corpo e na primeira pessoa), da cor da poção
     auto Ensure = [this](TObjectPtr<UStaticMeshComponent>& Bottle, USkeletalMeshComponent* Hand, bool bView)
     {
@@ -1741,13 +2088,41 @@ void AVortexCharacter::TickPotion()
         if (ViewBody.Num()) Ensure(PotionView, ViewBody[0], true);
         const FName Item = Sheet ? Sheet->GetDrinkItem() : NAME_None;
         const TCHAR* Model = Item == TEXT("potion_blue") ? TEXT("W_pocao_azul") : Item == TEXT("potion_green") || Item == TEXT("bread") ? TEXT("W_pocao_verde") : TEXT("W_pocao_vermelha");
-        UStaticMesh* BottleMesh = LoadObject<UStaticMesh>(nullptr, *FString::Printf(TEXT("/Game/Vortex/Weapons/Models/%s/StaticMeshes/%s.%s"), Model, Model, Model));
-        if (!BottleMesh) BottleMesh = LoadObject<UStaticMesh>(nullptr, *FString::Printf(TEXT("/Game/Vortex/Weapons/Models/%s.%s"), Model, Model));
+        // só procura o modelo enquanto bebe (antes procurava a cada quadro, para sempre, depois da primeira poção)
+        UStaticMesh* BottleMesh = bDrinking ? LoadObject<UStaticMesh>(nullptr, *FString::Printf(TEXT("/Game/Vortex/Weapons/Models/%s/StaticMeshes/%s.%s"), Model, Model, Model)) : nullptr;
+        if (bDrinking && !BottleMesh) BottleMesh = LoadObject<UStaticMesh>(nullptr, *FString::Printf(TEXT("/Game/Vortex/Weapons/Models/%s.%s"), Model, Model));
         const bool bFirst = bFirstPerson && FirstPersonBlend > .5f;
         for (UStaticMeshComponent* Bottle : { PotionBody.Get(), PotionView.Get() })
         {
             if (!Bottle) continue;
             if (bDrinking && Bottle->GetStaticMesh() != BottleMesh) Bottle->SetStaticMesh(BottleMesh);
+            // 16/11 (o usuário: "poção minúscula"): tamanho próprio, ~18 cm no humano (herdava a escala da mão)
+            if (bDrinking && BottleMesh && Bottle == PotionBody)
+            {
+                // 16/11 (o usuário: "tá sem a poção na mão quando bebe"): presa ao soquete ela herdava a escala e o giro da mão
+                // e a origem do modelo (sumia ou saía minúscula). Agora é posta no mundo a cada quadro: 18 cm de altura no
+                // humano, pelo meio da caixa do modelo, entre a mão e a boca, e inclinada para a boca (está bebendo)
+                const FBox Box = BottleMesh->GetBoundingBox();
+                const FVector Size = Box.GetSize();
+                const int32 Long = Size.X > Size.Y ? (Size.X > Size.Z ? 0 : 2) : (Size.Y > Size.Z ? 1 : 2);
+                const float Stature = BodyShape.Stature();
+                const float Scale = 18.f * Stature / FMath::Max(1., Size[Long]);
+                FVector Axis = FVector::ZeroVector;
+                Axis[Long] = 1.f;
+                const FVector Hand = GetMesh()->GetSocketLocation(TEXT("Hand_L"));
+                FVector Head = GetActorLocation() + FVector(0.f, 0.f, 45.f * Stature);
+                for (const TCHAR* Name : { TEXT("mixamorig_Head"), TEXT("mixamorig:Head"), TEXT("Head") })
+                    if (GetMesh()->GetBoneIndex(Name) != INDEX_NONE) { Head = GetMesh()->GetBoneLocation(Name); break; }
+                const FVector Mouth = Head + GetActorForwardVector() * (26.f * Stature) + FVector(0.f, 0.f, 5.f * Stature);
+                const FVector ToMouth = (Mouth - Hand).GetSafeNormal();
+                const FVector Up = (FVector::UpVector * .55f + ToMouth * .85f).GetSafeNormal();
+                const FQuat Turn = FQuat::FindBetweenNormals(Axis, Up);
+                const FVector Center = Hand + ToMouth * (7.f * Stature) + FVector(0.f, 0.f, 3.f * Stature);
+                Bottle->SetUsingAbsoluteLocation(true);
+                Bottle->SetUsingAbsoluteRotation(true);
+                Bottle->SetUsingAbsoluteScale(true);
+                Bottle->SetWorldTransform(FTransform(Turn, Center - Turn.RotateVector(Box.GetCenter() * Scale), FVector(Scale)));
+            }
             const bool bView = Bottle == PotionView;
             Bottle->SetVisibility(bDrinking && (bView ? bFirst && !bHeroModel : true));
             if (!bView) Bottle->SetOwnerNoSee(bFirst && !bHeroModel);
@@ -2198,7 +2573,10 @@ void AVortexCharacter::TickFirstPerson(float DeltaSeconds)
     // correndo, a animação inclina o corpo para a frente: os olhos vão junto (olhando para baixo o corpo aparecia muito à
     // frente da câmera)
     const float RunAhead = bHeroModel && bGround ? FMath::Clamp((Speed - 160.f) / 300.f, 0.f, 1.f) * (5.f + 13.f * Down) * Stature : 0.f;
-    FVector Eye = bHeroModel ? FVector((8.f + 14.f * Down) * Stature + RunAhead, 0.f, (44.f - 4.f * Down) * Stature + Bob + MountLift)
+    // 15/11: para a frente pela largura do corpo (o peito do anão é mais fundo que a altura dele diz: os olhos ficavam
+    // dentro do peito), nunca menos que a do humano
+    const float Depth = FMath::Max(Stature, BodyShape.Width);
+    FVector Eye = bHeroModel ? FVector((8.f + 14.f * Down) * Depth + RunAhead, 0.f, (44.f - 4.f * Down) * Stature + Bob + MountLift)
         : FVector(22.f, 0.f, 56.f * Stature + Bob + MountLift);
     // 03/11 (o usuário: "correndo e olhando para baixo ainda vejo dentro do tronco"): os olhos nunca ficam atrás da frente
     // do peito de verdade (o osso Spine2 da pose de agora, que a corrida inclina), olhando para baixo
@@ -2207,7 +2585,9 @@ void AVortexCharacter::TickFirstPerson(float DeltaSeconds)
             if (GetMesh()->GetBoneIndex(Name) != INDEX_NONE)
             {
                 const float ChestX = GetActorTransform().InverseTransformPosition(GetMesh()->GetBoneLocation(Name)).X;
-                const float Front = ChestX + (15.f + 9.f * Down) * Stature;
+                // a frente do peito (9 cm x a largura) e uma folga que não encolhe nas raças pequenas (a câmera corta o
+                // que fica a menos de 10 cm: no anão cortava o peito e mostrava o corpo por dentro)
+                const float Front = ChestX + 9.f * BodyShape.Width + (6.f + 9.f * Down) * FMath::Max(1.f, Stature);
                 Eye.X = FMath::Lerp(Eye.X, FMath::Max(Eye.X, Front), FMath::Clamp(Down * 3.f, 0.f, 1.f));
                 break;
             }
@@ -2225,7 +2605,9 @@ void AVortexCharacter::TickFirstPerson(float DeltaSeconds)
     CameraBoom->bDoCollisionTest = A < .9f;
     // o atraso de seguir só fora da primeira pessoa (dentro da cabeça ele balançaria a visão)
     CameraBoom->bEnableCameraLag = A < .05f && !bGodotBenchCamera;
-    FollowCamera->SetFieldOfView(FMath::Lerp(VortexGraphics::FieldOfView(), VortexGraphics::FirstPersonFieldOfView(), A) - (bAimHeld ? 7.f : 0.f));
+    // 15/11: puxando o arco a visão fecha um pouco com a carga (até 9°) e abre de volta ao soltar
+    const float WantFov = FMath::Lerp(VortexGraphics::FieldOfView(), VortexGraphics::FirstPersonFieldOfView(), A) - (bAimHeld ? 7.f : 0.f) - (Weapon ? Weapon->DrawCharge() * 9.f * A : 0.f);
+    FollowCamera->SetFieldOfView(FMath::FInterpTo(FollowCamera->FieldOfView, WantFov, DeltaSeconds, 14.f));
     if (!bFirstPerson && FirstPersonBlend <= 0.f)
     {
         CameraBoom->bDoCollisionTest = true;
@@ -2235,6 +2617,14 @@ void AVortexCharacter::TickFirstPerson(float DeltaSeconds)
 
 void AVortexCharacter::UpdateAimFacing()
 {
+    if (Mount)
+    {
+        // 16/11 (o usuário: "movo o mouse e o cavalo move também"): montado, a câmera fica solta (dá para se ver de lado);
+        // o cavalo só vira para onde anda
+        bUseControllerRotationYaw = false;
+        GetCharacterMovement()->bOrientRotationToMovement = true;
+        return;
+    }
     if (bFirstPerson)
     {
         // primeira pessoa: o corpo vira junto com o olhar
@@ -2428,9 +2818,21 @@ void AVortexCharacter::ServerHorse_Implementation(AVortexMonster* Horse)
     // o seu cavalo: monta
     if (Horse->GetTamer() == this)
     {
+        // 16/11: ferido (abaixo de 70%), ele come uma fruta silvestre e se cura; senão (ou sem fruta na mochila), o E monta
+        if (Horse->GetHealthFraction() < .7f && Sheet->TakeItem(TEXT("frutas_silvestres"), 1) >= 1)
+        {
+            Horse->Feed(this);
+            Sheet->PushNotice(FString::Printf(TEXT("O cavalo comeu e se curou (%d%%)"), FMath::RoundToInt(Horse->GetHealthFraction() * 100.f)), 3);
+            return;
+        }
+        // 16/11: o herói vai até o cavalo (antes o cavalo pulava para debaixo do herói); o corpo sobe pelo lado esquerdo
+        // com o clipe Montar (VortexMountSlide)
+        GetCharacterMovement()->StopMovementImmediately();
+        SetActorLocationAndRotation(FVector(Horse->GetActorLocation().X, Horse->GetActorLocation().Y,
+            Horse->GetActorLocation().Z - Horse->GetCapsuleComponent()->GetScaledCapsuleHalfHeight() + GetCapsuleComponent()->GetScaledCapsuleHalfHeight() + 2.f),
+            FRotator(0.f, Horse->GetActorRotation().Yaw, 0.f), false, nullptr, ETeleportType::TeleportPhysics);
         Mount = Horse;
         Horse->SetRider(this);
-        SetActorRotation(FRotator(0.f, Horse->GetActorRotation().Yaw, 0.f));
         ForceNetUpdate();
         return;
     }

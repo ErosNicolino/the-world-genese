@@ -429,6 +429,9 @@ void AVortexAimHUD::DrawHUD()
     // 07/11: no Estádio (herói novo) o tutorial passo a passo (Alpha -1); F1 abre a lista completa por cima
     // (começado no Estádio, segue fora dele até o último passo ou o Backspace)
     static bool bTutorialStarted = false;
+    // por herói: o "começou" do processo fazia o tutorial de um herói novo aparecer no herói antigo carregado depois
+    static TWeakObjectPtr<const AVortexCharacter> TutorialHero;
+    if (TutorialHero.Get() != Hero) { TutorialHero = Hero; bTutorialStarted = false; }
     bTutorialStarted |= Hero->GetSheet() && Hero->GetSheet()->NeedsAwakening();
     if (bShowControls) DrawControls(Hero, 1.f);
     else if (bTutorialStarted) DrawControls(Hero, -1.f);
@@ -1593,6 +1596,9 @@ void AVortexAimHUD::DrawControls(AVortexCharacter* Hero, float Alpha)
         static float Progress = 0.f, DoneAt = -1.f;
         static FRotator LastView = FRotator::ZeroRotator;
         static bool bSkipped = false;
+        // por herói: o segundo herói novo da mesma sessão ficava sem tutorial (o passo e o "pulei" eram do processo)
+        static TWeakObjectPtr<const AVortexCharacter> StepsHero;
+        if (StepsHero.Get() != Hero) { StepsHero = Hero; Step = 0; Progress = 0.f; DoneAt = -1.f; bSkipped = false; }
         APlayerController* PC = GetOwningPlayerController();
         const float Now = GetWorld()->GetTimeSeconds();
         const float Dt = GetWorld()->GetDeltaSeconds();

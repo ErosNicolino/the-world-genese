@@ -1,4 +1,5 @@
 #include "Creatures/VortexNpcRoutine.h"
+#include "Framework/VortexJson.h"
 
 #include "Dom/JsonObject.h"
 #include "Engine/World.h"
@@ -62,10 +63,8 @@ namespace
 
     TSharedPtr<FJsonObject> ReadJson(const TCHAR* Relative)
     {
-        FString Text;
         TSharedPtr<FJsonObject> Json;
-        if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / Relative)) ||
-            !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json) || !Json.IsValid()) return nullptr;
+        if (!(Json = VortexJson::Load(Relative)).IsValid()) return nullptr;
         return Json;
     }
 

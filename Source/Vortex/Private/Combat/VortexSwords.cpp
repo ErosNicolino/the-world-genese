@@ -1,4 +1,7 @@
 #include "Combat/VortexSwords.h"
+#include "Framework/VortexJson.h"
+#include "Combat/VortexProjectile.h"
+#include "Combat/VortexMonsterFx.h"
 #include "Rpg/VortexRpg.h"
 #include "Combat/VortexPowerFx.h"
 #include "Misc/PackageName.h"
@@ -34,10 +37,8 @@ namespace
             TMap<FName, VortexSwords::FSword> Out;
             for (const TCHAR* File : { TEXT("swords"), TEXT("bows") })
             {
-                FString Text;
                 TSharedPtr<FJsonObject> Root;
-                if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / FString::Printf(TEXT("Data/Rpg/%s.json"), File))) ||
-                    !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root) continue;
+                if (!(Root = VortexJson::Load(FString::Printf(TEXT("Data/Rpg/%s.json"), File))).IsValid()) continue;
                 const bool bBow = FCString::Strcmp(File, TEXT("bows")) == 0;
                 for (const auto& Pair : Root->GetObjectField(File)->Values)
                 {
@@ -174,6 +175,15 @@ void VortexSwords::OnSpecialPose(const ACharacter* Hero, int32 Serial)
     const FName Item = Sheet ? Sheet->GetEquipped(VortexRpg::Weapon) : NAME_None;
     const bool bHold = Vortex->GetWeapon()->GetAttackState().SwingIndex == VortexSpecialPose::Hold;
     AVortexPowerFx::Spawn(const_cast<ACharacter*>(Hero), bHold ? FName(*(Item.ToString() + TEXT("_carga"))) : Item);
+    // 14/11 (o usuário: "tem uns muito simples e feios; combinando mais"): por cima do efeito de cada arma, a camada do
+    // tipo de poder dela (VortexMonsterFx.cpp, "Pw<tipo>": runas, cortes, ondas), na cor do elemento da arma
+    {
+        const FString Kind = bHold ? FString(TEXT("PwCharge")) : Sword->bHasKit ? TEXT("Pw") + Sword->Kit.Special.ToString() : FString(TEXT("PwBasic"));
+        const FLinearColor Tone = Sword->Element.IsNone() ? FLinearColor(.75f, .85f, 1.f) : AVortexProjectile::ElementColor(Sword->Element == TEXT("lightning") ? FName(TEXT("arcane")) : Sword->Element);
+        const float* Radius = Sword->Kit.Values.Find(TEXT("radius"));
+        AVortexMonsterFx::Spawn(Hero->GetWorld(), FName(*Kind), Hero->GetActorLocation(), FMath::Clamp(Radius ? *Radius * .6f : 220.f, 160.f, 420.f), 0.f,
+            const_cast<ACharacter*>(Hero), Hero->GetActorRotation().Yaw, Tone);
+    }
     const TCHAR* Prefix = Sword->Weapon == TEXT("arco_de_betula") ? TEXT("bw_") : TEXT("sw_");
     VortexAudio::Play(Hero, FName(*(Prefix + Sword->Key)), Hero->GetActorLocation(), .9f);
 }

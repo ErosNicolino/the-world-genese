@@ -1,4 +1,5 @@
 #include "Combat/VortexClassSkills.h"
+#include "Framework/VortexJson.h"
 
 #include "AbilitySystemComponent.h"
 #include "Animation/AnimSequence.h"
@@ -787,10 +788,8 @@ UAnimSequence* UVortexClassSkills::GestureClip(const FString& Gesture, FName Wea
     if (!bRead)
     {
         bRead = true;
-        FString Text;
         TSharedPtr<FJsonObject> Root;
-        if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Rpg/weapons.json"))) &&
-            FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) && Root.IsValid())
+        if ((Root = VortexJson::Load(TEXT("Data/Rpg/weapons.json"))).IsValid())
         {
             for (const TSharedPtr<FJsonValue>& Value : Root->GetArrayField(TEXT("types")))
             {

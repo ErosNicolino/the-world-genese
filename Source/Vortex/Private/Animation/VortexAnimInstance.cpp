@@ -1,4 +1,5 @@
-#include "Animation/VortexAnimInstance.h"
+﻿#include "Animation/VortexAnimInstance.h"
+#include "Framework/VortexJson.h"
 #include "Creatures/VortexNpc.h"
 #include "Combat/VortexSwords.h"
 #include "Misc/PackageName.h"
@@ -17,6 +18,17 @@
 #include "Engine/World.h"
 #include "GameFramework/GameStateBase.h"
 #include "ReferenceSkeleton.h"
+#include "EngineUtils.h"
+#include "Creatures/VortexCreature.h"
+#include "Dom/JsonObject.h"
+#include "Serialization/JsonReader.h"
+#include "Serialization/JsonSerializer.h"
+#include "Misc/FileHelper.h"
+#include "Misc/Paths.h"
+
+namespace VortexKnockdown { float Remaining(const AActor* Who); }   // VortexLobbed.cpp
+namespace VortexMountSlide { float Age(const AVortexCharacter* Hero, bool& bUp); }   // VortexCharacter.cpp
+namespace VortexArrival { float LandedFor(const AVortexCharacter* Hero); }   // VortexCharacter.cpp
 
 namespace
 {
@@ -140,14 +152,21 @@ void UVortexAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
         if (DebugSpeed > 0.f) Speed = DebugSpeed;
 #endif
         const bool bFalling = Movement->IsFalling();
-        if (Speed > 35.f || bFalling || !Character->GetEmote().IsNone()) IdleFor = 0.f;
+        if (Speed > 35.f || bFalling || !Character->GetEmote().IsNone()) { IdleFor = 0.f; IdleGesture = NAME_None; }
         // correndo (Shift, acima da velocidade de andar): inclina o tronco (a disparada do Mixamo já vem inclinada)
         Lean = FMath::FInterpTo(Lean, !bFalling && !Movement->IsSwimmingInWater() && !Character->IsMounted() && Speed > 560.f && !Clip(TEXT("Sprint")) ? 1.f : 0.f, DeltaSeconds, 6.f);
 #if !UE_BUILD_SHIPPING
         if (bDebugLean) Lean = 1.f;
 #endif
         UAnimSequence* WantedHold = nullptr;
-        if (!Character->IsDead() && !Movement->IsDodging() && !Character->IsMounted() && !Movement->IsSwimmingInWater() && Character->GetEmote().IsNone())
+        // 16/11: subindo ou descendo do cavalo (Montar / Desmontar, Tools/Blender/MakeMountAnims.py), enquanto o corpo desliza
+        bool bMountUp = false;
+        const bool bMountClip = VortexMountSlide::Age(Character, bMountUp) < .78f && !Character->IsDead() && Clip(bMountUp ? TEXT("Montar") : TEXT("Desmontar"));
+        // 16/11: a chegada ao Estádio: ajoelhado no impacto e se levantando (Pouso, 2,1 s)
+        const float Landed = VortexArrival::LandedFor(Character);
+        if (Landed >= 0.f && Landed < 2.05f && Clip(TEXT("Pouso"))) Play(TEXT("Pouso"), false, 1.f, 0.f);
+        else if (bMountClip) Play(bMountUp ? TEXT("Montar") : TEXT("Desmontar"), false, 1.f, .08f);
+        else if (!Character->IsDead() && !Movement->IsDodging() && !Character->IsMounted() && !Movement->IsSwimmingInWater() && Character->GetEmote().IsNone())
         {
             const UVortexWeaponComponent* HoldWeapon = Character->GetWeapon();
             const UVortexWeaponDefinition* HoldDef = HoldWeapon ? HoldWeapon->GetDefinition() : nullptr;
@@ -163,6 +182,14 @@ void UVortexAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
         if (Character->IsDead())
         {
             if (CurrentName != TEXT("Death")) Play(TEXT("Death"), false, 1.f, .15f);
+        }
+        else if (const float Down = VortexKnockdown::Remaining(Character); Down > 0.f)
+        {
+            // derrubado (a pedra do golem). 14/11: os clipes próprios, feitos no Blender (Tools/ImportPowerAnims.py,
+            // VORTEX_ANIMS=dano): cai de costas, fica no chão e, no fim do tempo, levanta. Sem eles, o clipe de morte
+            if (!Clip(TEXT("Dano_Queda")) || !Clip(TEXT("Dano_Levantar"))) { if (CurrentName != TEXT("Death")) Play(TEXT("Death"), false, 1.6f, .1f); }
+            else if (Down > ClipLength(TEXT("Dano_Levantar"))) { if (CurrentName != TEXT("Dano_Queda")) Play(TEXT("Dano_Queda"), false, 1.f, .08f); }
+            else if (CurrentName != TEXT("Dano_Levantar")) Play(TEXT("Dano_Levantar"), false, 1.f, .1f);
         }
         else if (Movement->IsDodging())
         {
@@ -293,6 +320,8 @@ void UVortexAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
                 // 10/11 (o usuário: "a corrida ainda muito rápida, frenética; animação mais lenta e a pisada maior"): 1,7
                 // correndo (a corrida a ~0,73x no mesmo chão)
                 const float Stride = bWalkIntent ? 1.16f : 1.7f;
+                // 13/11: a mulher anda com o quadril (o mesmo passo e a mesma duração do Walk)
+                if (Best == TEXT("Walk") && Character->GetLook().Appearance == TEXT("female") && Clip(TEXT("Walk_F"))) Best = TEXT("Walk_F");
                 if (const UAnimSequence* Sequence = Clip(Best))
                     Play(Best, true, FMath::Clamp(BestRate / Stride, .6f, 2.6f) / Sequence->RateScale, BlendTime);
             }
@@ -308,12 +337,23 @@ void UVortexAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
             {
                 // parado muito tempo (14 s): espreguiça uma vez e volta (o clipe da raça, se tiver)
                 IdleFor += DeltaSeconds;
-                const float Stretch = StanceIdle ? 0.f : ClipLength(TEXT("ArmStretching"));
-                if (Stretch > 0.f && IdleFor > 14.f && IdleFor < 14.f + Stretch) Play(TEXT("ArmStretching"), false, 1.f, .4f);
+                // 13/11: de tempos em tempos um gesto sorteado (olhar em volta, soltar os ombros, conferir a arma, espreguiçar);
+                // tranquilo e sem a pose da arma. O parado de base é o do corpo: o da mulher, o do elfo ou o comum
+                if (!StanceIdle && LifeAlert < .3f && IdleFor > IdleGestureAt && IdleGesture.IsNone())
+                {
+                    TArray<FName> Have;
+                    for (const TCHAR* Name : { TEXT("Vida_Olhar"), TEXT("Vida_Ombros"), TEXT("Vida_Arma"), TEXT("ArmStretching") }) if (Clip(Name)) Have.Add(Name);
+                    if (Have.Num()) IdleGesture = Have[FMath::RandHelper(Have.Num())];
+                    else IdleFor = 0.f;
+                }
+                const float Gesture = IdleGesture.IsNone() ? 0.f : ClipLength(IdleGesture);
+                if (Gesture > 0.f && !StanceIdle && IdleFor < IdleGestureAt + Gesture) Play(IdleGesture, false, 1.f, .4f);
                 else
                 {
-                    if (Stretch > 0.f && IdleFor >= 14.f + Stretch) IdleFor = 0.f;
-                    Play(StanceIdle ? FName(*(TEXT("Stance_") + StanceIdle->GetName())) : FName(TEXT("Idle")), true, 1.f, .4f, StanceIdle);
+                    if (!IdleGesture.IsNone()) { IdleGesture = NAME_None; IdleFor = 0.f; IdleGestureAt = FMath::FRandRange(8.f, 14.f); }
+                    const FVortexLook& Look = Character->GetLook();
+                    const FName Own = Look.Race == TEXT("elfo") ? FName(TEXT("Idle_E")) : Look.Appearance == TEXT("female") ? FName(TEXT("Idle_F")) : FName(TEXT("Idle"));
+                    Play(StanceIdle ? FName(*(TEXT("Stance_") + StanceIdle->GetName())) : Clip(Own) ? Own : FName(TEXT("Idle")), true, 1.f, .4f, StanceIdle);
                 }
             }
         }
@@ -326,7 +366,9 @@ void UVortexAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
             {
                 // o herói do Mixamo bebe com o clipe dele (Beber); os outros, com o do aventureiro
                 DrinkPose = LoadObject<UAnimSequence>(nullptr, TEXT("/Game/Vortex/Weapons/VxClips/Adventurer_VortexClips/SkeletalMeshes/Adventurer_VortexClipsVx_Drink_LeftArm.Adventurer_VortexClipsVx_Drink_LeftArm"));
-                if (!Fits(DrinkPose)) DrinkPose = Clip(TEXT("Beber"));
+                // 16/11: o Beber vinha do anão do Godot (anao_Beber.fbx: a mão não chegava à boca); o Vida_Beber é feito no corpo de blocos
+                if (!Fits(DrinkPose)) DrinkPose = Clip(TEXT("Vida_Beber"));
+                if (!DrinkPose) DrinkPose = Clip(TEXT("Beber"));
             }
             DrinkTime = DrinkSheet->DrinkElapsed();
             DrinkAlpha = FMath::Min(1.f, DrinkAlpha + DeltaSeconds / .1f);
@@ -454,9 +496,23 @@ void UVortexAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
             DrawAge = LastDefinition.IsValid() ? 0.f : 99.f;
             LastDefinition = NowDefinition;
         }
+        TickLife(DeltaSeconds, Character, Speed, bFalling || Movement->IsDodging() || Character->IsMounted() || Movement->IsSwimmingInWater() || Character->IsDead() || !Character->GetEmote().IsNone());
         DrawAge += DeltaSeconds;
         const float Health = Character->GetVitals() ? Character->GetVitals()->GetHealth() : 0.f;
-        if (LastHealth >= 0.f && Health < LastHealth - .5f && Health > 0.f) HitAge = 0.f;
+        // 14/11 (o usuário: "mais opções de dano"): cada golpe sorteia uma reação (Dano_Frente, _Esq, _Dir, _Barriga ou a
+        // antiga); o golpe forte (mais de 15% da vida de uma vez) usa a Dano_Forte. O sorteado fica aqui (sem mexer no .h)
+        static TMap<TWeakObjectPtr<const UObject>, FName> HitClips;
+        if (LastHealth >= 0.f && Health < LastHealth - .5f && Health > 0.f)
+        {
+            HitAge = 0.f;
+            static const FName Light[] = { TEXT("Hit"), TEXT("Dano_Frente"), TEXT("Dano_Esq"), TEXT("Dano_Dir"), TEXT("Dano_Barriga") };
+            const float MaxHealth = Character->GetVitals() ? FMath::Max(1.f, Character->GetVitals()->GetMaxHealth()) : 100.f;
+            FName Pick = LastHealth - Health > MaxHealth * .15f ? FName(TEXT("Dano_Forte")) : Light[FMath::RandHelper(UE_ARRAY_COUNT(Light))];
+            if (!Clip(Pick)) Pick = TEXT("Hit");
+            if (HitClips.Num() > 64) for (auto It = HitClips.CreateIterator(); It; ++It) if (!It.Key().IsValid()) It.RemoveCurrent();
+            HitClips.Add(this, Pick);
+        }
+        const FName HitName = HitClips.Contains(this) ? HitClips.FindRef(this) : FName(TEXT("Hit"));
         LastHealth = Health;
         HitAge += DeltaSeconds;
         if (!DesiredUpperBody && !Movement->IsDodging())
@@ -467,11 +523,11 @@ void UVortexAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
                 DesiredTime = DrawAge * Clip(TEXT("Sacar"))->RateScale;
                 DesiredName = TEXT("Sacar");
             }
-            else if (const float HitLength = ClipLength(TEXT("Hit")); HitLength > 0.f && HitAge < HitLength)
+            else if (const float HitLength = ClipLength(HitName); HitLength > 0.f && HitAge < HitLength)
             {
-                DesiredUpperBody = Clip(TEXT("Hit"));
+                DesiredUpperBody = Clip(HitName);
                 DesiredTime = HitAge;
-                DesiredName = TEXT("Hit");
+                DesiredName = HitName;
             }
         }
         // o arco parado vai de corpo inteiro: o clipe do Mixamo põe o arqueiro de lado (quadril a -91°) com o braço do arco
@@ -533,6 +589,7 @@ void UVortexAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
         else if (NpcGestureLeft > 0.f) Play(Npc->GetGesture(), false, 1.f, .25f);
         else if (Npc && !Npc->GetActivity().IsNone() && Clip(Npc->GetActivity())) Play(Npc->GetActivity(), true, 1.f, .4f);
         else Play(TEXT("Idle"), true, 1.f);
+        TickLife(DeltaSeconds, Other, Speed, OtherMovement && OtherMovement->IsFalling());
     }
     StateTime += DeltaSeconds;
     CurrentTime += DeltaSeconds * Rate;
@@ -590,6 +647,7 @@ void FVortexAnimInstanceProxy::PreUpdate(UAnimInstance* InAnimInstance, float De
     bHideArms = Instance->bHideArms;
     bArmsOnly = Instance->bArmsOnly;
     Lean = Instance->Lean;
+    Life = Instance->Life;
 }
 
 // Proporção da raça. Os ossos do aventureiro ficam alinhados ao corpo: o eixo de comprimento de
@@ -741,6 +799,8 @@ void FVortexAnimInstanceProxy::KeepArmsOnly(FPoseContext& Output) const
     }
 }
 
+namespace { float SwingArmThin(); }   // Data/Characters/vida.json (definida junto do LifeTuning, mais abaixo)
+
 bool FVortexAnimInstanceProxy::Evaluate(FPoseContext& Output)
 {
     if (!Current)
@@ -856,6 +916,7 @@ bool FVortexAnimInstanceProxy::Evaluate(FPoseContext& Output)
     }
     ApplyBody(Output);
     ApplyPosture(Output);
+    ApplyLife(Output);
     // 10/11 (o usuário: "a cintura vira mas a parte de baixo não, e quebra"): a torção do tronco em volta da coluna caía
     // inteira na primeira vértebra (Spine), logo acima do quadril, e o bloco quebrava ali. Agora ela se reparte em terços
     // pelas 3 vértebras: o peito e os braços terminam no mesmo lugar (a mira não muda), só a cintura torce menos
@@ -907,6 +968,27 @@ bool FVortexAnimInstanceProxy::Evaluate(FPoseContext& Output)
             if (Bone.GetInt() != INDEX_NONE) Output.Pose[Bone].SetScale3D(FVector(.001f));
         }
     }
+    // 16/11 (o usuário: "os ombros aparecem quando ataco e atrapalham; gosto de ver o corpo olhando para baixo"): na primeira
+    // pessoa, só durante o golpe, o braço de cima afina; o antebraço desfaz a escala, então a mão e a arma não mudam
+    if (bHideHead && !bHideArms && UpperBodyAlpha > 0.f)
+    {
+        const FBoneContainer& Bones = Output.Pose.GetBoneContainer();
+        const float Thin = FMath::Lerp(1.f, FMath::Clamp(SwingArmThin(), .05f, 1.f), UpperBodyAlpha);
+        for (const TCHAR* Side : { TEXT("Left"), TEXT("Right") })
+        {
+            const int32 Arm = RoleBone(Bones.GetReferenceSkeleton(), *(FString(Side) + TEXT("Arm")), *(FString(Side) + TEXT("Arm")));
+            const int32 Fore = RoleBone(Bones.GetReferenceSkeleton(), *(FString(Side) + TEXT("ForeArm")), *(FString(Side) + TEXT("ForeArm")));
+            const FCompactPoseBoneIndex A = Arm != INDEX_NONE ? Bones.MakeCompactPoseIndex(FMeshPoseBoneIndex(Arm)) : FCompactPoseBoneIndex(INDEX_NONE);
+            const FCompactPoseBoneIndex F = Fore != INDEX_NONE ? Bones.MakeCompactPoseIndex(FMeshPoseBoneIndex(Fore)) : FCompactPoseBoneIndex(INDEX_NONE);
+            if (A.GetInt() == INDEX_NONE || F.GetInt() == INDEX_NONE) continue;
+            // ao comprido do osso (para onde o antebraço fica) não muda: o cotovelo continua no lugar
+            const FVector Along = Output.Pose.GetRefPose(F).GetTranslation().GetAbs();
+            FVector Scale(Thin);
+            Scale[Along.X >= Along.Y && Along.X >= Along.Z ? 0 : Along.Y >= Along.Z ? 1 : 2] = 1.f;
+            Output.Pose[A].SetScale3D(Output.Pose[A].GetScale3D() * Scale);
+            Output.Pose[F].SetScale3D(Output.Pose[F].GetScale3D() / Scale);
+        }
+    }
     if (bHideHead)
     {
         const FBoneContainer& Bones = Output.Pose.GetBoneContainer();
@@ -918,4 +1000,210 @@ bool FVortexAnimInstanceProxy::Evaluate(FPoseContext& Output)
         }
     }
     return true;
+}
+
+// ---- 13/11: a camada de vida (respiração, peso, olhar, alerta, passo do golpe) ----------------------------------------
+
+namespace
+{
+    struct FLifeFlavor { float Hip = 0.f, Chin = 0.f, Spine = 0.f, Sway = 1.f, Breath = 1.f; };
+    struct FLifeTuning
+    {
+        float BreathPeriod = 3.6f, BreathAlert = 2.2f, BreathDeg = 1.3f, BreathMoving = .5f, BreathLift = .5f;
+        float SwayPeriod = 9.f, SwayCm = 1.6f, SwayDeg = 1.5f;
+        float YawMax = 60.f, PitchMax = 20.f, FoeRange = 1500.f, FolkRange = 600.f, GlanceFrom = 3.f, GlanceTo = 7.f, GlanceYaw = 35.f, GlancePitch = 8.f, LookSpeed = 5.f;
+        float AlertRange = 1200.f, Crouch = 2.5f, AlertSpine = 4.f;
+        float Step = 18.f, StepOut = .10f, StepHold = .22f, StepBack = .5f, ShotRecoil = 5.f;
+        float SwingArm = .4f;   // primeira pessoa: a grossura do braço de cima durante o golpe (1 = não afina)
+        TMap<FName, float> Steps;
+        FLifeFlavor Male, Female, Elf;
+    };
+
+    /** Data/Characters/vida.json, lido uma vez (sem o arquivo valem os números acima). */
+    const FLifeTuning& LifeTuning()
+    {
+        static FLifeTuning T;
+        static bool bLoaded = false;
+        if (bLoaded) return T;
+        bLoaded = true;
+        TSharedPtr<FJsonObject> Root;
+        if (!(Root = VortexJson::Load(TEXT("Data/Characters/vida.json"))).IsValid()) return T;
+        auto Num = [](const TSharedPtr<FJsonObject>& O, const TCHAR* Key, float& Out, float Scale = 1.f) { double D; if (O.IsValid() && O->TryGetNumberField(Key, D)) Out = float(D) * Scale; };
+        auto Obj = [&](const TCHAR* Key) { const TSharedPtr<FJsonObject>* O = nullptr; return Root->TryGetObjectField(Key, O) ? *O : TSharedPtr<FJsonObject>(); };
+        const TSharedPtr<FJsonObject> B = Obj(TEXT("respiracao")), W = Obj(TEXT("peso")), L = Obj(TEXT("olhar")), A = Obj(TEXT("alerta")), S = Obj(TEXT("passo")), J = Obj(TEXT("jeito"));
+        Num(B, TEXT("periodo"), T.BreathPeriod); Num(B, TEXT("periodo_alerta"), T.BreathAlert); Num(B, TEXT("graus"), T.BreathDeg);
+        Num(B, TEXT("graus_andando"), T.BreathMoving); Num(B, TEXT("sobe_cm"), T.BreathLift);
+        Num(W, TEXT("periodo"), T.SwayPeriod); Num(W, TEXT("lado_cm"), T.SwayCm); Num(W, TEXT("graus"), T.SwayDeg);
+        Num(L, TEXT("yaw_max"), T.YawMax); Num(L, TEXT("pitch_max"), T.PitchMax); Num(L, TEXT("inimigo_m"), T.FoeRange, 100.f); Num(L, TEXT("gente_m"), T.FolkRange, 100.f);
+        Num(L, TEXT("olhada_de"), T.GlanceFrom); Num(L, TEXT("olhada_ate"), T.GlanceTo); Num(L, TEXT("olhada_yaw"), T.GlanceYaw); Num(L, TEXT("olhada_pitch"), T.GlancePitch);
+        Num(L, TEXT("velocidade"), T.LookSpeed);
+        Num(A, TEXT("raio_m"), T.AlertRange, 100.f); Num(A, TEXT("agacha_cm"), T.Crouch); Num(A, TEXT("tronco_graus"), T.AlertSpine);
+        Num(S, TEXT("padrao_cm"), T.Step); Num(S, TEXT("sai_s"), T.StepOut); Num(S, TEXT("segura_s"), T.StepHold); Num(S, TEXT("volta_s"), T.StepBack); Num(S, TEXT("recuo_tiro_cm"), T.ShotRecoil);
+        Num(Obj(TEXT("primeira_pessoa")), TEXT("braco_no_golpe"), T.SwingArm);
+        const TSharedPtr<FJsonObject>* Weapons = nullptr;
+        if (S.IsValid() && S->TryGetObjectField(TEXT("armas"), Weapons))
+            for (const auto& Pair : (*Weapons)->Values) T.Steps.Add(FName(*Pair.Key), float(Pair.Value->AsNumber()));
+        auto Flavor = [&](const TCHAR* Key, FLifeFlavor& F)
+        {
+            const TSharedPtr<FJsonObject>* O = nullptr;
+            if (!J.IsValid() || !J->TryGetObjectField(Key, O)) return;
+            Num(*O, TEXT("quadril_graus"), F.Hip); Num(*O, TEXT("queixo_graus"), F.Chin); Num(*O, TEXT("tronco_graus"), F.Spine); Num(*O, TEXT("peso"), F.Sway); Num(*O, TEXT("respiracao"), F.Breath);
+        };
+        Flavor(TEXT("male"), T.Male); Flavor(TEXT("female"), T.Female); Flavor(TEXT("elfo"), T.Elf);
+        return T;
+    }
+
+    float SwingArmThin() { return LifeTuning().SwingArm; }
+}
+
+void UVortexAnimInstance::TickLife(float DeltaSeconds, const ACharacter* Owner, float Speed, bool bBusy)
+{
+    const FLifeTuning& T = LifeTuning();
+    const AVortexCharacter* Hero = Cast<AVortexCharacter>(Owner);
+    const FLifeFlavor& Flavor = !Hero ? T.Male : Hero->GetLook().Race == TEXT("elfo") ? T.Elf : Hero->GetLook().Appearance == TEXT("female") ? T.Female : T.Male;
+    LifeClock += DeltaSeconds;
+    const bool bStill = Speed < 35.f && !bBusy;
+    LifeIdle = FMath::FInterpTo(LifeIdle, bStill ? 1.f : 0.f, DeltaSeconds, 4.f);
+
+    // quem está perto (a cada 0,3 s): o inimigo vivo mais perto (alerta e olhar); senão gente (outro herói, morador)
+    LifeScan -= DeltaSeconds;
+    if (LifeScan <= 0.f)
+    {
+        LifeScan = .3f;
+        const FVector Here = Owner->GetActorLocation();
+        const AActor* Best = nullptr;
+        float BestDistance = 0.f;
+        bLifeFoe = false;
+        for (TActorIterator<ACharacter> It(Owner->GetWorld()); It; ++It)
+        {
+            const ACharacter* Other = *It;
+            if (Other == Owner || Other->IsHidden()) continue;
+            const float Distance = FVector::Dist(Other->GetActorLocation(), Here);
+            const IVortexCreature* Creature = Cast<IVortexCreature>(Other);
+            const bool bFoe = Hero && Creature && !Creature->IsCreatureDead() && !Creature->IsPassive();
+            // o morador só olha para os heróis; o herói, para todo mundo
+            if (!Hero && !Other->IsA<AVortexCharacter>()) continue;
+            if (Distance > (bFoe ? T.FoeRange : T.FolkRange) || (Creature && !bFoe && Creature->IsCreatureDead())) continue;
+            if (!Best || (bFoe && !bLifeFoe) || (bFoe == bLifeFoe && Distance < BestDistance)) { Best = Other; BestDistance = Distance; bLifeFoe = bFoe; }
+        }
+        LookGoal = FVector2D::ZeroVector;
+        if (Best)
+        {
+            const FVector To = Best->GetActorLocation() + FVector(0.f, 0.f, 40.f) - (Here + FVector(0.f, 0.f, 60.f));
+            const float Yaw = FRotator::NormalizeAxis(To.Rotation().Yaw - Owner->GetActorRotation().Yaw);
+            // atrás do ombro não vira a cabeça (viraria o pescoço ao contrário)
+            if (FMath::Abs(Yaw) < 105.f) LookGoal = FVector2D(FMath::Clamp(Yaw, -T.YawMax, T.YawMax), FMath::Clamp(To.Rotation().Pitch, -T.PitchMax, T.PitchMax));
+        }
+        if (bLifeFoe && BestDistance > T.AlertRange) bLifeFoe = false;
+        if (!Best && Hero)
+        {
+            // ninguém perto: uma olhada para o lado de vez em quando
+            GlanceIn -= .3f;
+            GlanceLeft -= .3f;
+            if (GlanceIn <= 0.f)
+            {
+                GlanceIn = FMath::FRandRange(T.GlanceFrom, T.GlanceTo);
+                GlanceLeft = FMath::FRandRange(1.2f, 2.4f);
+                Glance = FVector2D(FMath::FRandRange(-T.GlanceYaw, T.GlanceYaw), FMath::FRandRange(-T.GlancePitch, T.GlancePitch * .5f));
+            }
+            if (GlanceLeft > 0.f) LookGoal = Glance;
+        }
+    }
+    LifeAlert = FMath::FInterpTo(LifeAlert, bLifeFoe ? 1.f : 0.f, DeltaSeconds, 3.f);
+    // golpeando, mirando ou ocupado: a cabeça é do clipe
+    const float LookAlpha = bBusy || UpperBodyAlpha > .3f ? 0.f : 1.f;
+    Life.LookYaw = FMath::FInterpTo(Life.LookYaw, LookGoal.X * LookAlpha, DeltaSeconds, T.LookSpeed);
+    Life.LookPitch = FMath::FInterpTo(Life.LookPitch, LookGoal.Y * LookAlpha, DeltaSeconds, T.LookSpeed);
+
+    // respiração: mais curta em alerta; andando quase some
+    BreathPhase += DeltaSeconds * 2.f * PI / FMath::Max(.5f, FMath::Lerp(T.BreathPeriod, T.BreathAlert, LifeAlert) / FMath::Max(.3f, Flavor.Breath));
+    const float Breath = FMath::Sin(BreathPhase) * (bBusy ? 0.f : FMath::Lerp(T.BreathMoving, T.BreathDeg, LifeIdle));
+    Life.BreathDeg = Breath;
+    Life.BreathLift = Breath / FMath::Max(.1f, T.BreathDeg) * T.BreathLift;
+    // o peso troca de perna devagar (só parado e tranquilo); o quadril de lado é o jeito do corpo
+    SwayPhase += DeltaSeconds * 2.f * PI / FMath::Max(1.f, T.SwayPeriod);
+    const float Sway = FMath::Sin(SwayPhase) * LifeIdle * (1.f - LifeAlert) * Flavor.Sway;
+    Life.SwayCm = Sway * T.SwayCm;
+    Life.SwayDeg = Sway * T.SwayDeg + Flavor.Hip * LifeIdle * (1.f - LifeAlert);
+    Life.CrouchCm = T.Crouch * LifeAlert * LifeIdle;
+    Life.SpineDeg = Flavor.Spine * LifeIdle - T.AlertSpine * LifeAlert * LifeIdle;
+    Life.ChinDeg = Flavor.Chin * LifeIdle;
+
+    // o passo do golpe: sai rápido, segura e volta (só na tela, como o recuo: a posição de verdade e a rede não mudam)
+    if (const UVortexWeaponComponent* Weapon = Hero ? Hero->GetWeapon() : nullptr)
+    {
+        const FVortexAttackState& Attack = Weapon->GetAttackState();
+        if (Attack.Serial != LifeSerial)
+        {
+            LifeSerial = Attack.Serial;
+            const UVortexWeaponDefinition* Definition = Weapon->GetDefinition();
+            if (Attack.SwingIndex != INDEX_NONE && Definition && Definition->Swings.IsValidIndex(Attack.SwingIndex))
+            {
+                const FName Mode = Definition->Swings[Attack.SwingIndex].Mode;
+                const float* Own = T.Steps.Find(Definition->WeaponId);
+                StepSize = Mode == TEXT("melee") || Mode == TEXT("slam") ? (Own ? *Own : T.Step) : -T.ShotRecoil;
+                // o terceiro golpe do combo vai mais fundo; correndo o corpo já anda
+                if (StepSize > 0.f) StepSize *= (Attack.SwingIndex % 3 == 2 ? 1.35f : 1.f) * FMath::Clamp(1.f - Speed / 400.f, .25f, 1.f);
+                StepAge = 0.f;
+            }
+        }
+    }
+    StepAge += DeltaSeconds;
+    const float Out = StepAge < T.StepOut ? StepAge / FMath::Max(.01f, T.StepOut) : StepAge < T.StepHold ? 1.f : 1.f - FMath::Clamp((StepAge - T.StepHold) / FMath::Max(.01f, T.StepBack), 0.f, 1.f);
+    Life.StepCm = StepSize * FMath::SmoothStep(0.f, 1.f, Out);
+}
+
+void FVortexAnimInstanceProxy::ApplyLife(FPoseContext& Output) const
+{
+    const FBoneContainer& Bones = Output.Pose.GetBoneContainer();
+    const FReferenceSkeleton& Reference = Bones.GetReferenceSkeleton();
+    auto Find = [&](const TCHAR* Old, const TCHAR* Mixamo)
+    {
+        const int32 Mesh = RoleBone(Reference, Old, Mixamo);
+        return Mesh == INDEX_NONE ? FCompactPoseBoneIndex(INDEX_NONE) : Bones.MakeCompactPoseIndex(FMeshPoseBoneIndex(Mesh));
+    };
+    auto ComponentRotation = [&](FCompactPoseBoneIndex Bone)
+    {
+        FQuat Q = FQuat::Identity;
+        for (FCompactPoseBoneIndex B = Bone; B.GetInt() != INDEX_NONE; B = Bones.GetParentBoneIndex(B)) Q = Output.Pose[B].GetRotation() * Q;
+        return Q;
+    };
+    // gira (ou empurra) o osso no espaço do componente: o modelo olha para +Y, +X é o lado esquerdo, +Z para cima
+    auto Turn = [&](FCompactPoseBoneIndex Bone, const FVector& Axis, float Degrees)
+    {
+        if (Bone.GetInt() == INDEX_NONE || FMath::IsNearlyZero(Degrees)) return;
+        const FCompactPoseBoneIndex Parent = Bones.GetParentBoneIndex(Bone);
+        const FQuat ParentQ = Parent.GetInt() == INDEX_NONE ? FQuat::Identity : ComponentRotation(Parent);
+        Output.Pose[Bone].SetRotation((ParentQ.Inverse() * FQuat(Axis, FMath::DegreesToRadians(Degrees)) * ParentQ * Output.Pose[Bone].GetRotation()).GetNormalized());
+    };
+    auto Push = [&](FCompactPoseBoneIndex Bone, const FVector& Offset)
+    {
+        if (Bone.GetInt() == INDEX_NONE || Offset.IsNearlyZero()) return;
+        const FCompactPoseBoneIndex Parent = Bones.GetParentBoneIndex(Bone);
+        const FQuat ParentQ = Parent.GetInt() == INDEX_NONE ? FQuat::Identity : ComponentRotation(Parent);
+        Output.Pose[Bone].AddToTranslation(ParentQ.Inverse().RotateVector(Offset));
+    };
+    const FVector Side(1.f, 0.f, 0.f), Front(0.f, 1.f, 0.f), Up(0.f, 0.f, 1.f);
+    const FCompactPoseBoneIndex Hips = Find(TEXT("Hips"), TEXT("Hips")), Spine = Find(TEXT("Torso"), TEXT("Spine")), Chest = Find(TEXT("Torso"), TEXT("Spine2")),
+        Mid = Find(TEXT("Torso"), TEXT("Spine1")), Neck = Find(TEXT("Head"), TEXT("Neck")), Head = Find(TEXT("Head"), TEXT("Head"));
+    const bool bSpineChain = Chest != Spine;   // o herói do Mixamo tem três vértebras; o antigo, só o tronco
+    // quadril: troca de peso (para o lado e inclinado), o passo do golpe e a postura de alerta
+    Push(Hips, Side * Life.SwayCm + Front * Life.StepCm + Up * -Life.CrouchCm);
+    Turn(Hips, Front, Life.SwayDeg);
+    Turn(Spine, Front, -Life.SwayDeg * .8f);   // os ombros ficam quase nivelados
+    Turn(Spine, Side, Life.SpineDeg);
+    // respiração: o peito abre e sobe; a cabeça compensa para não balançar junto
+    if (bSpineChain)
+    {
+        Turn(Mid, Side, Life.BreathDeg * .6f);
+        Turn(Chest, Side, Life.BreathDeg * .4f);
+        Push(Chest, Up * Life.BreathLift);
+    }
+    else Turn(Spine, Side, Life.BreathDeg);
+    // o olhar: um pouco no peito, o resto entre o pescoço e a cabeça
+    const float NeckShare = Neck != Head ? .4f : 0.f;
+    if (bSpineChain) Turn(Chest, Up, Life.LookYaw * .15f);
+    if (NeckShare > 0.f) { Turn(Neck, Up, Life.LookYaw * .35f); Turn(Neck, Side, Life.LookPitch * NeckShare - Life.BreathDeg * .5f); }
+    Turn(Head, Up, Life.LookYaw * (bSpineChain ? .5f : .7f));
+    Turn(Head, Side, Life.LookPitch * (1.f - NeckShare) + Life.ChinDeg - (NeckShare > 0.f ? 0.f : Life.BreathDeg * .5f));
 }

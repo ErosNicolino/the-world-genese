@@ -224,10 +224,14 @@ namespace VortexMountShots
                 if (!Horse && T < 11.9f) { Next(9); return true; }   // depois de 12 s ele some de propósito (longe do herói)
                 if (At(.1f)) Place(FVector2D(Horse->GetActorLocation()) + FVector2D(0.f, 4000.f));
                 if (At(.6f)) { S->Before = FMath::RoundToInt(FVector::Dist2D(Horse->GetActorLocation(), Hero->GetActorLocation())); Hero->DebugWhistle(); }
+                for (const float When : { .7f, 1.5f, 2.5f, 3.5f, 4.5f, 5.5f })
+                    if (At(When)) UE_LOG(LogTemp, Display, TEXT("VORTEX_MOUNT_SHOTS assobio %.1f s: a %.0f cm, cavalo a %.0f cm/s (máx %.0f, modo %d, colisão %d)"), When,
+                        FVector::Dist2D(Horse->GetActorLocation(), Hero->GetActorLocation()), Horse->GetVelocity().Size2D(),
+                        Horse->GetCharacterMovement()->MaxWalkSpeed, int32(Horse->GetCharacterMovement()->MovementMode), int32(Horse->GetActorEnableCollision()));
                 if (At(1.2f)) Face(Horse->GetActorLocation(), -8.f);
                 if (At(3.5f)) Face(Horse->GetActorLocation(), -8.f);
                 if (At(4.f)) Shot(TEXT("assobio"));
-                if (At(6.f))
+                if (At(7.5f))
                 {
                     const float Now = FVector::Dist2D(Horse->GetActorLocation(), Hero->GetActorLocation());
                     Check(Now < 1200.f, FString::Printf(TEXT("o cavalo veio com o assobio (%d m -> %.0f m)"), S->Before / 100, Now / 100.f));

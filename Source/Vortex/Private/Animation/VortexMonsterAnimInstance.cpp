@@ -5,6 +5,8 @@
 #include "AnimationRuntime.h"
 #include "Creatures/VortexMonster.h"
 #include "Creatures/VortexMonsterSpecies.h"
+#include "Framework/VortexCharacter.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Combat/VortexWeaponComponent.h"
 #include "Combat/VortexWeaponDefinition.h"
 
@@ -109,7 +111,27 @@ void UVortexMonsterAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
         }
         const bool bFinished = bOneShot && Current && CurrentTime * Rate >= Current->GetPlayLength() - .02f;
         if (bOneShot && bFinished && !Monster->IsCreatureDead() && !(Monster->IsPassive() && Monster->GetActClip() == D->AlertClip)) bOneShot = false;
-        if (!bOneShot && !Monster->IsCreatureDead())
+        // 16/11 (o usuário: "dele parando quando está correndo"): vinha a galope e parou em menos de meio segundo -> a
+        // freada (Brake: senta nas patas de trás); se voltar a andar no meio, larga o clipe
+        if (Monster->IsHorse() && !Monster->IsCreatureDead())
+        {
+            const float Speed = Monster->GetVelocity().Size2D();
+            const double Now = GetWorld()->GetTimeSeconds();
+            if (Speed > D->Speed * .8f) LastFastTime = Now;
+            else if (Speed < 150.f && Now - LastFastTime < .5 && !bOneShot && Clip(TEXT("Brake")))
+            {
+                Play(TEXT("Brake"), false, 1.f, .1f);
+                bOneShot = true;
+                LastFastTime = -10.0;
+            }
+            else if (bOneShot && CurrentName == TEXT("Brake") && Speed > 220.f) bOneShot = false;
+        }
+        // 16/11 (o usuário: "ao pular com o cavalo ele continua andando no ar"): com o cavaleiro no ar, o salto (Jump, em laço:
+        // as patas da frente recolhidas, as de trás esticadas)
+        const AVortexCharacter* Jockey = Monster->IsHorse() ? Monster->GetRider() : nullptr;
+        if (!bOneShot && !Monster->IsCreatureDead() && Jockey && Jockey->GetCharacterMovement()->IsFalling() && Clip(TEXT("Jump")))
+            Play(TEXT("Jump"), true, 1.f, .12f);
+        else if (!bOneShot && !Monster->IsCreatureDead())
         {
             const float Speed = Monster->GetVelocity().Size2D();
             if (D->bFlying) Play(D->IdleClip, true, FMath::Clamp(.8f + Speed / 600.f, .8f, 1.5f));

@@ -37,6 +37,12 @@ private:
         // arco: as pontas (espaço da arma, achadas nos vértices) e a vibração da corda
         bool bTipsFound = false;
         float ViewDraw = 0.f;   // primeira pessoa: 0 descansando, 1 puxando
+        // 15/11: primeira pessoa: o tranco ao soltar (1 e cai), se puxava no quadro anterior, os dois braços de bloco
+        // (o que segura o arco e o que puxa a corda) e onde a mão da corda estava ao soltar (no espaço da câmera)
+        float ViewKick = 0.f;
+        bool bViewPulling = false;
+        TWeakObjectPtr<UStaticMeshComponent> Arms[2];
+        FVector HandHold = FVector::ZeroVector;
         FVector TipA = FVector::ZeroVector, TipB = FVector::ZeroVector;
         FVector Nock = FVector::ZeroVector, NockSpeed = FVector::ZeroVector;
     };

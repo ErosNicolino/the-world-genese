@@ -2,6 +2,7 @@
 // tela cheia ("o mini mapa e o mapa em si não têm qualidade nem foco real"). As peças vêm de Tools/MakeHudCartoon.py;
 // as medidas são as do esboço aprovado (Docs/Images/hud_esboco), em pixels de uma tela 1920x1080.
 #include "Framework/VortexAimHUD.h"
+#include "Framework/VortexJson.h"
 #include "Combat/VortexSwords.h"
 #include "Creatures/VortexMonster.h"
 #include "Creatures/VortexVolcanicBoss.h"
@@ -101,10 +102,8 @@ namespace
         if (!bLoaded)
         {
             bLoaded = true;
-            FString Json;
             TSharedPtr<FJsonObject> Root;
-            if (FFileHelper::LoadFileToString(Json, *(FPaths::ProjectDir() / TEXT("Data/Rpg/weapons.json"))) &&
-                FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Json), Root) && Root)
+            if ((Root = VortexJson::Load(TEXT("Data/Rpg/weapons.json"))).IsValid())
             {
                 for (const TSharedPtr<FJsonValue>& Value : Root->GetArrayField(TEXT("types")))
                 {
@@ -729,11 +728,9 @@ namespace
         static bool bRead = false;
         if (bRead) return Places;
         bRead = true;
-        FString Text;
         TSharedPtr<FJsonObject> Json;
         const TArray<TSharedPtr<FJsonValue>>* Pieces = nullptr;
-        if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/GodotTown/vila.json"))) ||
-            !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Json) || !Json.IsValid() || !Json->TryGetArrayField(TEXT("pieces"), Pieces))
+        if (!(Json = VortexJson::Load(TEXT("Data/GodotTown/vila.json"))).IsValid() || !Json->TryGetArrayField(TEXT("pieces"), Pieces))
             return Places;
         for (const TSharedPtr<FJsonValue>& Value : *Pieces)
         {

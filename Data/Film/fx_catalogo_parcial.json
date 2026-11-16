@@ -1,0 +1,32 @@
+﻿{
+    "Shots":  [
+                  {
+                      "Name":  "fx_poderes",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 3005,
+                                 -2700
+                             ],
+                      "Hero":  [
+                                   3000,
+                                   -2700
+                               ],
+                      "HeroYaw":  0,
+                      "Radius":  13,
+                      "Height":  8,
+                      "LookHeight":  1.5,
+                      "From":  180,
+                      "Sweep":  0,
+                      "Seconds":  7,
+                      "Hour":  13,
+                      "Fov":  80,
+                      "Race":  "humano",
+                      "Appearance":  "male",
+                      "Weapon":  "espada_de_cinzas",
+                      "Commands":  [
+                                       "fx NS_Pw"
+                                   ],
+                      "Late":  true
+                  }
+              ]
+}

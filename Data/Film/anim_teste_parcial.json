@@ -1,0 +1,28 @@
+﻿{
+    "Shots":  [
+                  {
+                      "Name":  "anim_e_idle",
+                      "Kind":  "orbit",
+                      "At":  [
+                                 3000,
+                                 -2700
+                             ],
+                      "Hero":  [
+                                   3000,
+                                   -2700
+                               ],
+                      "HeroYaw":  0,
+                      "Radius":  3.2,
+                      "Height":  1.7,
+                      "LookHeight":  1.0,
+                      "From":  20,
+                      "Sweep":  20,
+                      "Seconds":  10,
+                      "Hour":  13,
+                      "Fov":  60,
+                      "Race":  "elfo",
+                      "Appearance":  "female",
+                      "Weapon":  "espada_de_cinzas"
+                  }
+              ]
+}

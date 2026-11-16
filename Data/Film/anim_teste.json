@@ -1,0 +1,659 @@
+{
+ "_comment": "Clipes de conferência das animações do herói (13/11): parado, levando dano (Mortal) e batendo com cada arma, nos três corpos. Gravar com -Extra '-VortexQuietWorld -VortexNoWildlife'.",
+ "Shots": [
+  {
+   "Name": "anim_m_idle",
+   "Kind": "orbit",
+   "At": [
+    -11,
+    40
+   ],
+   "Hero": [
+    -11,
+    40
+   ],
+   "HeroYaw": 0,
+   "Radius": 3.2,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 20,
+   "Sweep": 20,
+   "Seconds": 24,
+   "Hour": 15,
+   "Fov": 60,
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "espada_de_cinzas"
+  },
+  {
+   "Name": "anim_m_dano",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 6,
+   "Hour": 13,
+   "Fov": 60,
+   "Mortal": true,
+   "Commands": [
+    "spawn lobo 3 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "espada_de_cinzas"
+  },
+  {
+   "Name": "anim_m_espada",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "espada_de_cinzas"
+  },
+  {
+   "Name": "anim_f_idle",
+   "Kind": "orbit",
+   "At": [
+    -11,
+    40
+   ],
+   "Hero": [
+    -11,
+    40
+   ],
+   "HeroYaw": 0,
+   "Radius": 3.2,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 20,
+   "Sweep": 20,
+   "Seconds": 10,
+   "Hour": 15,
+   "Fov": 60,
+   "Race": "humano",
+   "Appearance": "female",
+   "Weapon": "espada_de_cinzas"
+  },
+  {
+   "Name": "anim_f_dano",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 6,
+   "Hour": 13,
+   "Fov": 60,
+   "Mortal": true,
+   "Commands": [
+    "spawn lobo 3 2"
+   ],
+   "Race": "humano",
+   "Appearance": "female",
+   "Weapon": "espada_de_cinzas"
+  },
+  {
+   "Name": "anim_f_espada",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "female",
+   "Weapon": "espada_de_cinzas"
+  },
+  {
+   "Name": "anim_e_idle",
+   "Kind": "orbit",
+   "At": [
+    3000,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 3.2,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 20,
+   "Sweep": 20,
+   "Seconds": 10,
+   "Hour": 13,
+   "Fov": 60,
+   "Race": "elfo",
+   "Appearance": "female",
+   "Weapon": "espada_de_cinzas"
+  },
+  {
+   "Name": "anim_e_dano",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 6,
+   "Hour": 13,
+   "Fov": 60,
+   "Mortal": true,
+   "Commands": [
+    "spawn lobo 3 2"
+   ],
+   "Race": "elfo",
+   "Appearance": "female",
+   "Weapon": "espada_de_cinzas"
+  },
+  {
+   "Name": "anim_e_espada",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "elfo",
+   "Appearance": "female",
+   "Weapon": "espada_de_cinzas"
+  },
+  {
+   "Name": "anim_w_martelo_de_bram",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "martelo_de_bram"
+  },
+  {
+   "Name": "anim_w_adagas_gemeas",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "adagas_gemeas"
+  },
+  {
+   "Name": "anim_w_cajado_de_ilsa",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "cajado_de_ilsa"
+  },
+  {
+   "Name": "anim_w_arco_de_betula",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "arco_de_betula"
+  },
+  {
+   "Name": "anim_w_lanca_do_patrulheiro",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "lanca_do_patrulheiro"
+  },
+  {
+   "Name": "anim_w_katana_do_vento",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "katana_do_vento"
+  },
+  {
+   "Name": "anim_w_machado",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "machado"
+  },
+  {
+   "Name": "anim_w_espadao",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "espadao"
+  },
+  {
+   "Name": "anim_w_manoplas_de_ferro",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "manoplas_de_ferro"
+  },
+  {
+   "Name": "anim_w_espada_escudo",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "espada_escudo"
+  },
+  {
+   "Name": "anim_w_foice",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "foice"
+  },
+  {
+   "Name": "anim_w_varinha",
+   "Kind": "orbit",
+   "At": [
+    3001.5,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.6,
+   "Height": 1.7,
+   "LookHeight": 1.0,
+   "From": 140,
+   "Sweep": 25,
+   "Seconds": 5,
+   "Hour": 13,
+   "Fov": 60,
+   "Fight": true,
+   "Commands": [
+    "spawn lobo 40 2"
+   ],
+   "Race": "humano",
+   "Appearance": "male",
+   "Weapon": "varinha"
+  },
+  {
+   "Name": "anim_m_andar",
+   "Race": "humano",
+   "Appearance": "male",
+   "From": 150,
+   "Kind": "chase",
+   "Track": "hero",
+   "At": [
+    3000,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.5,
+   "Height": 1.6,
+   "LookHeight": 1.0,
+   "Sweep": 0,
+   "Seconds": 6,
+   "Hour": 13,
+   "Fov": 60,
+   "Walk": true,
+   "Weapon": "espada_de_cinzas"
+  },
+  {
+   "Name": "anim_f_andar",
+   "Race": "humano",
+   "Appearance": "female",
+   "From": 150,
+   "Kind": "chase",
+   "Track": "hero",
+   "At": [
+    3000,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.5,
+   "Height": 1.6,
+   "LookHeight": 1.0,
+   "Sweep": 0,
+   "Seconds": 6,
+   "Hour": 13,
+   "Fov": 60,
+   "Walk": true,
+   "Weapon": "espada_de_cinzas"
+  },
+  {
+   "Name": "anim_f_andar_costas",
+   "Race": "humano",
+   "Appearance": "female",
+   "From": 0,
+   "Kind": "chase",
+   "Track": "hero",
+   "At": [
+    3000,
+    -2700
+   ],
+   "Hero": [
+    3000,
+    -2700
+   ],
+   "HeroYaw": 0,
+   "Radius": 4.5,
+   "Height": 1.6,
+   "LookHeight": 1.0,
+   "Sweep": 0,
+   "Seconds": 6,
+   "Hour": 13,
+   "Fov": 60,
+   "Walk": true,
+   "Weapon": "espada_de_cinzas"
+  }
+ ]
+}

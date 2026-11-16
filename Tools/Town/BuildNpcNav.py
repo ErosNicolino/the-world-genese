@@ -69,7 +69,9 @@ def main():
             if top > .45 and bottom < 1.7:
                 box(px, pz, yaw, b[0], b[2], b[3], b[5])
         doors = info.get("doors", []) or info.get("closed_door", [])
-        for d in info.get("doors", []):
+        # 14/11: a porta das casas fechadas ("closed_door", 11/11) não entrava como parede: na grade o vão ficava aberto e
+        # o interior da casa fechada contava como chão (um ponto "perto" podia cair lá dentro, atrás da porta de verdade)
+        for d in info.get("doors", []) + info.get("closed_door", []):
             if not label:           # a porta fechada da casa (a dobradiça em x, a folha para +x)
                 box(px, pz, yaw, d[0] + d[3] * .5, d[2], d[3], .2)
         if doors:

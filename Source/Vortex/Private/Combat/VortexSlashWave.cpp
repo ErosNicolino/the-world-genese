@@ -2,6 +2,7 @@
 
 #include "Combat/VortexCombatComponent.h"
 #include "Combat/VortexHitFx.h"
+#include "Combat/VortexMonsterFx.h"
 #include "Components/PointLightComponent.h"
 #include "Components/InstancedStaticMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -181,6 +182,8 @@ void AVortexSlashWave::Tick(float DeltaSeconds)
     if (bBurst)
     {
         // ao bater: a lua se abre e some num instante
+        // 14/11: e estoura (a onda de pé, a estrela e as faíscas)
+        if (BurstAge <= 0.f && GetNetMode() != NM_DedicatedServer) AVortexMonsterFx::Spawn(GetWorld(), TEXT("WaveHit"), GetActorLocation(), 160.f, 0.f, nullptr, GetActorRotation().Yaw);
         BurstAge += DeltaSeconds;
         const float T = FMath::Clamp(BurstAge / BurstSeconds, 0.f, 1.f);
         // ao bater: o arco se abre num clarão e some
@@ -198,7 +201,15 @@ void AVortexSlashWave::Tick(float DeltaSeconds)
     Travelled = FMath::Min(Range, Speed * Age);
     const FVector From = Start + Direction * Before, To = Start + Direction * Travelled;
     // aparece rápido e perde força perto do fim do alcance
-    UpdateLook(FMath::Min(1.f, Age / .06f) * (1.f - .6f * FMath::Square(Travelled / Range)), 1.f + .15f * (Travelled / Range));
+    UpdateLook(FMath::Min(1.f, Age / .06f) * (1.f - .6f * FMath::Square(Travelled / Range)), 1.f + .35f * (Travelled / Range));
+    // 14/11 (o usuário: "parece um png voando reto"): a lua balança de um lado para o outro enquanto voa (não é uma
+    // figura parada), cresce mais, e a cada 0,8 m rasga o chão: o risco de luz, a poeira e as faíscas ficam para trás
+    if (GetNetMode() != NM_DedicatedServer)
+    {
+        SetActorRotation(FRotator(4.f * FMath::Sin(Age * 23.f), Direction.Rotation().Yaw, 16.f * FMath::Sin(Age * 15.f)));
+        if (FMath::FloorToInt(Travelled / 80.f) != FMath::FloorToInt(Before / 80.f))
+            AVortexMonsterFx::Spawn(GetWorld(), TEXT("WaveTrail"), To, 110.f, 0.f, nullptr, Direction.Rotation().Yaw + 90.f);
+    }
     if (!HasAuthority())
     {
         SetActorLocation(To);

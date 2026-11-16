@@ -1,4 +1,5 @@
 #include "Framework/VortexLook.h"
+#include "Framework/VortexJson.h"
 #include "Framework/VortexFaceStyles.h"
 #include "Framework/VortexPieces.h"
 
@@ -17,10 +18,8 @@ namespace
     TArray<TSharedPtr<FJsonObject>> LookEntries(const TCHAR* File, const TCHAR* Field)
     {
         TArray<TSharedPtr<FJsonObject>> Out;
-        FString Text;
         TSharedPtr<FJsonObject> Root;
-        if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Looks") / File)) ||
-            !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root.IsValid())
+        if (!(Root = VortexJson::Load(FString(TEXT("Data/Looks")) / File)).IsValid())
         {
             UE_LOG(LogTemp, Warning, TEXT("VORTEX_LOOK sem Data/Looks/%s"), File);
             return Out;
@@ -333,6 +332,7 @@ FVortexLook FVortexLookCatalog::Normalized(const FVortexLook& In) const
         // a roupa: a escolhida, se for deste corpo; senão a primeira dele
         const FName* Outfit = Lower.Find(TEXT("block_outfit"));
         const bool bElf = Look.Race == TEXT("elfo");
+        const FVortexRaceLook* RaceLook = VortexRaceLook(Look.Race);
         const bool bOutfit = Outfit && BlockOutfits().ContainsByPredicate([Outfit, &Look](const FVortexBlockOutfit& O) { return O.Id == *Outfit && O.Fits(Look.Appearance) && O.FitsRace(Look.Race); });
         // o elfo começa com o traje élfico do corpo dele
         const FVortexBlockOutfit* First = BlockOutfits().FindByPredicate([&Look, bElf](const FVortexBlockOutfit& O) { return !O.Body.IsNone() && O.Fits(Look.Appearance) && (bElf ? O.Race == Look.Race : O.FitsRace(Look.Race)); });
@@ -340,19 +340,34 @@ FVortexLook FVortexLookCatalog::Normalized(const FVortexLook& In) const
         // o rosto: o escolhido, se existir (VortexFaceStyles); senão o padrão
         const FName* Face = Lower.Find(TEXT("block_face"));
         // 09/11: o elfo escolhe a pele (2) e a orelha (4 tipos); os olhos dependem da pele. "peca_orelha" é a malha que o personagem veste
-        FName Pele;
-        if (bElf)
+        // 14/11: vale para todas as raças do arquivo (racas.json); "elfo_pele" e "elfo_orelha" são as chaves dos heróis de antes
+        FName Pele, DefaultFace = TEXT("padrao");
+        if (RaceLook)
         {
-            const FName* Tone = Lower.Find(TEXT("elfo_pele"));
-            Pele = Tone && *Tone == TEXT("escura") ? FName(TEXT("escura")) : FName(TEXT("clara"));
-            Look.Pieces.Add(TEXT("elfo_pele"), Pele);
-            const FName* Ear = Lower.Find(TEXT("elfo_orelha"));
-            const FName EarId = Ear && (*Ear == TEXT("curta") || *Ear == TEXT("longa") || *Ear == TEXT("tras") || *Ear == TEXT("caida")) ? *Ear : FName(TEXT("longa"));
-            Look.Pieces.Add(TEXT("elfo_orelha"), EarId);
-            Look.Pieces.Add(TEXT("peca_orelha"), FName(*FString::Printf(TEXT("P_orelha_%s_%s"), *EarId.ToString(), *Pele.ToString())));
+            auto Pick = [&Lower](const TArray<FVortexRaceChoice>& List, const TCHAR* Key, const TCHAR* Old, FName Fallback) -> const FVortexRaceChoice*
+            {
+                const FName* Saved = Lower.Find(Key);
+                if (!Saved) Saved = Lower.Find(Old);
+                const FVortexRaceChoice* Found = Saved ? List.FindByPredicate([Saved](const FVortexRaceChoice& C) { return C.Id == *Saved; }) : nullptr;
+                if (!Found && !Fallback.IsNone()) Found = List.FindByPredicate([Fallback](const FVortexRaceChoice& C) { return C.Id == Fallback; });
+                return Found ? Found : List.Num() ? &List[0] : nullptr;
+            };
+            const FVortexRaceChoice* Skin = Pick(RaceLook->Skins, TEXT("raca_pele"), TEXT("elfo_pele"), NAME_None);
+            if (Skin)
+            {
+                Look.Pieces.Add(TEXT("raca_pele"), Skin->Id);
+                Pele = Skin->Faces;
+                if (!Skin->Face.IsNone()) DefaultFace = Skin->Face;
+            }
+            if (const FVortexRaceChoice* Trait = Pick(RaceLook->Traits, TEXT("raca_traco"), TEXT("elfo_orelha"), Look.Appearance == TEXT("female") ? RaceLook->FemaleTrait : FName()))
+            {
+                Look.Pieces.Add(TEXT("raca_traco"), Trait->Id);
+                if (Trait->Id != TEXT("nenhum"))
+                    Look.Pieces.Add(TEXT("peca_orelha"), FName(*RaceLook->TraitPiece.Replace(TEXT("{op}"), *Trait->Id.ToString()).Replace(TEXT("{pele}"), Skin ? *Skin->Id.ToString() : TEXT(""))));
+            }
         }
         const bool bFace = Face && VortexFaceStyles().ContainsByPredicate([Face, Pele](const FVortexFaceStyle& F) { return F.Id == *Face && F.Pele == Pele; });
-        Look.Pieces.Add(TEXT("block_face"), bFace ? *Face : !bElf ? FName(TEXT("padrao")) : Pele == TEXT("escura") ? FName(TEXT("dark_vermelho")) : FName(TEXT("elfo_verde")));
+        Look.Pieces.Add(TEXT("block_face"), bFace ? *Face : DefaultFace);
         // as roupas separadas: só as que existem, neste espaço e deste corpo
         for (const FVortexWearSlot& Wear : VortexWearSlots())
             if (const FName* Id = Lower.Find(Wear.Key))
@@ -429,6 +444,52 @@ const TArray<FVortexFaceStyle>& VortexFaceStyles()
     return Styles;
 }
 
+const FVortexRaceLook* VortexRaceLook(FName Race)
+{
+    // Data/Looks/racas.json (mudar não precisa compilar)
+    static const TArray<FVortexRaceLook> Races = []()
+    {
+        auto Choices = [](const TSharedPtr<FJsonObject>& From, const TCHAR* Field)
+        {
+            TArray<FVortexRaceChoice> Out;
+            const TArray<TSharedPtr<FJsonValue>>* List = nullptr;
+            if (From->TryGetArrayField(Field, List))
+                for (const TSharedPtr<FJsonValue>& Value : *List)
+                {
+                    const TSharedPtr<FJsonObject> C = Value->AsObject();
+                    FString Faces, Face;
+                    C->TryGetStringField(TEXT("rostos"), Faces);
+                    C->TryGetStringField(TEXT("rosto"), Face);
+                    Out.Add({ FName(*C->GetStringField(TEXT("id"))), C->GetStringField(TEXT("nome")), FName(*Faces), FName(*Face) });
+                }
+            return Out;
+        };
+        TArray<FVortexRaceLook> Out;
+        for (const TSharedPtr<FJsonObject>& Entry : LookEntries(TEXT("racas.json"), TEXT("racas")))
+        {
+            FVortexRaceLook R;
+            R.Race = FName(*Entry->GetStringField(TEXT("id")));
+            double Width = 1.0;
+            Entry->TryGetNumberField(TEXT("largura"), Width);
+            R.Width = FMath::Clamp(float(Width), .7f, 1.5f);
+            R.Skins = Choices(Entry, TEXT("peles"));
+            const TSharedPtr<FJsonObject>* Trait = nullptr;
+            if (Entry->TryGetObjectField(TEXT("traco"), Trait))
+            {
+                FString Female;
+                (*Trait)->TryGetStringField(TEXT("titulo"), R.TraitTitle);
+                (*Trait)->TryGetStringField(TEXT("peca"), R.TraitPiece);
+                (*Trait)->TryGetStringField(TEXT("padraoFeminino"), Female);
+                R.FemaleTrait = FName(*Female);
+                R.Traits = Choices(*Trait, TEXT("opcoes"));
+            }
+            Out.Add(MoveTemp(R));
+        }
+        return Out;
+    }();
+    return Races.FindByPredicate([Race](const FVortexRaceLook& R) { return R.Race == Race; });
+}
+
 const TArray<FVortexWearSlot>& VortexWearSlots()
 {
     // 10/11 (o usuário: "em vez de peça por peça, presets"): sem espaços de roupa separada no menu
@@ -445,11 +506,9 @@ const TArray<FVortexWearPiece>& VortexWearPieces()
     static const TArray<FVortexWearPiece> Pieces = []()
     {
         TArray<FVortexWearPiece> Out;
-        FString Text;
         TSharedPtr<FJsonObject> Root;
         const TSharedPtr<FJsonObject>* List = nullptr;
-        if (!FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Looks/pecas.json"))) ||
-            !FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) || !Root.IsValid() || !Root->TryGetObjectField(TEXT("pieces"), List))
+        if (!(Root = VortexJson::Load(TEXT("Data/Looks/pecas.json"))).IsValid() || !Root->TryGetObjectField(TEXT("pieces"), List))
         {
             UE_LOG(LogTemp, Warning, TEXT("VORTEX_LOOK sem Data/Looks/pecas.json"));
             return Out;
@@ -478,10 +537,9 @@ float VortexWearFranjaZ()
 {
     static const float Z = []()
     {
-        FString Text;
         TSharedPtr<FJsonObject> Root;
         double Value = 133.0;
-        if (FFileHelper::LoadFileToString(Text, *(FPaths::ProjectDir() / TEXT("Data/Looks/pecas.json"))) && FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Text), Root) && Root.IsValid())
+        if ((Root = VortexJson::Load(TEXT("Data/Looks/pecas.json"))).IsValid())
             Root->TryGetNumberField(TEXT("franjaZ"), Value);
         return float(Value);
     }();

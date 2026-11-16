@@ -31,6 +31,7 @@ private:
     float Rate = 1.f, PreviousRate = 1.f;
     int32 SeenSerial = INDEX_NONE;
     bool bOneShot = false;
+    double LastFastTime = -10.0;   // 16/11: a última vez em que o cavalo estava a galope (para a freada)
     UAnimSequence* Clip(FName Name);
     void Play(FName Name, bool bLoop, float NewRate = 1.f, float Blend = .15f);
     float BlendDuration = .15f;

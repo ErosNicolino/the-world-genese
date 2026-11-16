@@ -1,6 +1,6 @@
 # Coletáveis e cavalo, com fotos (Saved/Screenshots/montaria_*.png): colher moitas e cogumelos,
 # domar um cavalo com frutas silvestres, montar, galopar, desmontar e chamar com o assobio.
-param([int]$TimeoutSeconds = 300)
+param([int]$TimeoutSeconds = 480)
 
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot

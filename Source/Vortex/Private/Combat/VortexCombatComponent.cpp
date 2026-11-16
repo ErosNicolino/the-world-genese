@@ -24,6 +24,7 @@
 #include "Rpg/VortexHeroSheet.h"
 #include "Combat/VortexClassSkills.h"
 #include "Combat/VortexWeaponComponent.h"
+#include "Creatures/VortexMonster.h"
 #include "Framework/VortexCharacter.h"
 #include "Framework/VortexAudio.h"
 #include "Framework/VortexCharacterMovementComponent.h"
@@ -132,7 +133,13 @@ bool UVortexCombatComponent::CanHarm(const AActor* Target) const
     // 02/11: PvP aberto (pedido do usuário): herói contra herói de fora do grupo, fora da vila (a vila é segura)
     const bool bPvp = Duel && Source->IsA<AVortexCharacter>() && Target->IsA<AVortexCharacter>() && !Duel->SameParty(Target) &&
         !AVortexTown::Contains(Source->GetActorLocation()) && !AVortexTown::Contains(Target->GetActorLocation());
-    if (!OtherCombat || (!bDuel && !bPvp && (Faction == EVortexFaction::Neutral || OtherCombat->Faction == EVortexFaction::Neutral ||
+    // 16/11 (o usuário: "posso acertar meu próprio cavalo"): o cavalo domado apanha de herói e de monstro (e pode morrer);
+    // ele mesmo continua sem ferir ninguém
+    const AVortexMonster* Steed = Cast<AVortexMonster>(Target);
+    // só o dono e os monstros (outro herói matava o cavalo de alguém para sempre, até por acidente), e nunca na vila
+    const bool bSteed = Steed && Steed->IsHorse() && Steed->GetTamer() && Faction != EVortexFaction::Neutral &&
+        (Steed->GetTamer() == Source || !Source->IsA<AVortexCharacter>()) && !AVortexTown::Contains(Target->GetActorLocation());
+    if (!OtherCombat || (!bDuel && !bPvp && !bSteed && (Faction == EVortexFaction::Neutral || OtherCombat->Faction == EVortexFaction::Neutral ||
         Faction == OtherCombat->Faction))) return false;
     // 02/11: dentro do domo do duelo só os dois se ferem; de fora para dentro (e de dentro para fora) nada passa
     if (!bDuel && (AVortexDuelDome::Containing(GetWorld(), Target->GetActorLocation(), 60.f) || AVortexDuelDome::Containing(GetWorld(), Source->GetActorLocation(), 60.f))) return false;
@@ -351,9 +358,14 @@ void UVortexCombatComponent::ApplyEmpower(float Factor, float Seconds)
     EmpowerUntil = GetWorld()->GetTimeSeconds() + Seconds;
 }
 
+// 13/11 (o usuário: "queimadura e veneno parecem infinitos"): cada tique do dano por tempo é um golpe do herói, e o
+// golpe do herói com arma de fogo ou veneno (ou a armadura) punha o dano por tempo de novo: nunca acabava. Enquanto um
+// tique está sendo aplicado, ninguém ganha dano por tempo
+static bool GVortexInDotTick = false;
+
 void UVortexCombatComponent::ApplyDot(float Dps, float Seconds, AActor* Source)
 {
-    if (!GetOwner() || !GetOwner()->HasAuthority() || Seconds <= 0.f || Dps <= 0.f) return;
+    if (GVortexInDotTick || !GetOwner() || !GetOwner()->HasAuthority() || Seconds <= 0.f || Dps <= 0.f) return;
     DotDps = FMath::Max(DotDps * (GetWorld()->GetTimeSeconds() < DotUntil ? 1.f : 0.f), Dps);
     DotUntil = GetWorld()->GetTimeSeconds() + Seconds;
     DotSource = Source;
@@ -371,6 +383,7 @@ void UVortexCombatComponent::TickDot()
         return;
     }
     // metade do dano por segundo a cada meio segundo; não atordoa nem empurra
+    TGuardValue<bool> Guard(GVortexInDotTick, true);
     From->ApplyHit(GetOwner(), FMath::Max(1.f, FMath::RoundToFloat(DotDps * .5f)), EVortexDamageKind::Magic, 0.f);
 }
 

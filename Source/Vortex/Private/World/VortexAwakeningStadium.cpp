@@ -25,7 +25,9 @@ namespace
     // medidas do AwakeningStadium.cs do Godot (metros)
     constexpr float ArenaRadius = 17.f;
     // os pedestais das armas: anel dentro da arena, 10 graus entre um e outro (~2,3 m)
-    constexpr float PedestalRing = 13.3f, PedestalStep = 10.f;
+    // 16/11: duas fileiras desencontradas (a de trás mais alta): 7,5 graus entre um pedestal e o seguinte, 15 entre vizinhos
+    // da mesma fileira (3 m na da frente, 3,8 m na de trás; antes era uma fila só, a 2,3 m um do outro)
+    constexpr float PedestalRing = 11.8f, PedestalBack = 14.6f, PedestalStep = 7.5f;
     constexpr float PodiumHeight = 3.2f, StandsInner = 18.f, Tier = 1.3f, TierRise = .95f, FacadeRadius = 28.5f;
     constexpr int32 Tiers = 7;
     constexpr float GateHalf = 2.6f, ExitAngle = 135.f;
@@ -313,6 +315,199 @@ void AVortexAwakeningStadium::Build()
     BuildFacade();
     for (const FWing& Wing : Wings) BuildWing(Wing.Id, Wing.Angle);
     BuildExit();
+    // 16/11 (o usuário: "melhore o coliseu como na historinha, mais bonito e detalhado"): na história ele é um coliseu antigo
+    // tomado por plantas, erguido em volta de um poço de seiva (Docs/03_Mundo/HISTORIA_DO_MUNDO.md e a HQ, C19b). Tudo aqui
+    // é enfeite por cima do que já existia (sem colisão, para não mudar por onde se anda); fica dentro do Build para não
+    // mexer no .h
+    {
+        FRandomStream Rng(21);
+        UMaterialInterface* Grass = Material(TEXT("grass"));
+        UMaterialInterface* Stone = Material(TEXT("limestone_blocks"));
+        UMaterialInterface* Pale = Material(TEXT("travertine"));
+        UMaterialInterface* Wood = Material(TEXT("wood"));
+        auto NearBanner = [](float A) { const float Off = FMath::Fmod(A + 360.f, 90.f); return Off < 9.f || Off > 81.f; };   // os estandartes das alas (0, 90, 180, 270)
+        // ---- o poço de seiva no meio da arena (por cima da rosa dos ventos): borda de pedra, a seiva brilhando, raízes e
+        // veios de luz que correm pelo chão até as quatro alas
+        UMaterialInterface* GlowBase = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Vortex/Stadium/M_StadiumGlow.M_StadiumGlow"));
+        UMaterialInstanceDynamic* Sap = GlowBase ? UMaterialInstanceDynamic::Create(GlowBase, this) : nullptr;
+        if (Sap)
+        {
+            Sap->SetVectorParameterValue(TEXT("Color"), FLinearColor(.12f, 1.f, .5f));
+            Sap->SetScalarParameterValue(TEXT("Glow"), .7f);   // 2,2 estourava em branco (aditivo): a seiva tem que ficar verde
+            Cylinder(Material(TEXT("basalt")), FVector(0, 0, .1f), 1.75f, .12f);
+            Cylinder(Sap, FVector(0, 0, .17f), 1.45f, .04f);
+            for (int32 k = 0; k < 14; ++k)
+            {
+                const float A = k * 360.f / 14;
+                const float H = .16f + Rng.FRand() * .2f;   // a borda é baixa e irregular, com pedras faltando
+                if (k != 3 && k != 9) Box(k % 3 == 0 ? Pale : Stone, Dir(A) * 1.66f + FVector(0, 0, H * .5f + .08f), FVector(.66f, H, .34f), A + Rng.FRandRange(-6.f, 6.f));
+            }
+            for (int32 k = 0; k < 8; ++k)
+            {
+                const float A = k * 45.f + 22.5f + Rng.FRandRange(-9.f, 9.f);
+                // os veios: três trechos cada vez mais finos, um pouco tortos
+                float R = 1.9f;
+                for (int32 Part = 0; Part < 3; ++Part)
+                {
+                    const float Len = 1.3f + Rng.FRand() * 1.1f, Bend = A + Rng.FRandRange(-10.f, 10.f);
+                    Box(Sap, Dir(A) * R + Dir(Bend) * (Len * .5f) + FVector(0, 0, .035f), FVector(.07f - Part * .018f, .02f, Len), Bend);
+                    R += Len * .92f;
+                }
+                // as raízes saindo do poço
+                const float RootA = k * 45.f + Rng.FRandRange(-12.f, 12.f), RootLen = 1.6f + Rng.FRand() * 1.8f;
+                Box(Wood, Dir(RootA) * (1.5f + RootLen * .5f) + FVector(0, 0, .09f), FVector(.24f, .2f, RootLen), RootA);
+                Box(Wood, Dir(RootA) * (1.5f + RootLen) + Dir(RootA + 35.f) * .5f + FVector(0, 0, .06f), FVector(.15f, .13f, 1.1f), RootA + 35.f);
+            }
+            UPointLightComponent* Well = NewObject<UPointLightComponent>(this);
+            Well->SetMobility(EComponentMobility::Movable);
+            Well->SetupAttachment(Root);
+            Well->SetWorldLocation(Origin() + M(FVector(0, 0, 1.3f)));
+            Well->SetLightColor(FLinearColor(.25f, 1.f, .55f));
+            Well->SetIntensityUnits(ELightUnits::Candelas);
+            Well->SetIntensity(22.f);
+            Well->SetAttenuationRadius(900.f);
+            Well->SetCastShadows(false);
+            Well->RegisterComponent();
+        }
+        // ---- o piso: um anel de pedra em volta do poço e quatro caminhos de laje até os grupos de armas
+        Cylinder(Material(TEXT("marble_dark")), FVector(0, 0, .008f), 4.5f, .016f);
+        Cylinder(Pale, FVector(0, 0, .016f), 4.25f, .02f);
+        for (int32 k = 0; k < 4; ++k)
+        {
+            const float A = k * 90.f;
+            for (int32 Slab = 0; Slab < 6; ++Slab)
+            {
+                // lajes soltas, umas tortas e uma ou outra faltando: caminho antigo
+                if (Rng.FRand() < .12f) continue;
+                Box(Slab % 2 ? Pale : Stone, Dir(A) * (5.1f + Slab * .98f) + FVector(0, 0, .012f), FVector(1.5f + Rng.FRand() * .3f, .024f, .9f), A + Rng.FRandRange(-4.f, 4.f));
+            }
+        }
+        // ---- as plantas e as pedras de verdade do mundo (Content/Vortex/Props), assentadas pela base e na altura pedida.
+        // 16/11 (o usuário: "essas árvores no coliseu tão muito feias"): antes eram um cilindro com duas bolas verdes
+        auto Prop = [&](const TCHAR* Model, const FVector& At, float Height, float Yaw = -1.f)
+        {
+            const FName Key(*FString::Printf(TEXT("prop_%s"), Model));
+            UInstancedStaticMeshComponent* Ism = nullptr;
+            if (TObjectPtr<UInstancedStaticMeshComponent>* Found = Batches.Find(Key)) Ism = *Found;
+            else
+            {
+                if (UStaticMesh* Mesh = LoadObject<UStaticMesh>(nullptr, *FString::Printf(TEXT("/Game/Vortex/Props/%s/%s/StaticMeshes/%s.%s"), Model, Model, Model, Model)))
+                {
+                    Ism = NewObject<UInstancedStaticMeshComponent>(this);
+                    Ism->SetupAttachment(Root);
+                    Ism->SetStaticMesh(Mesh);
+                    Ism->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+                    Ism->SetMobility(EComponentMobility::Static);
+                    Ism->RegisterComponent();
+                }
+                Batches.Add(Key, Ism);
+            }
+            if (!Ism) return;
+            const FBoxSphereBounds Bounds = Ism->GetStaticMesh()->GetBounds();
+            const float Scale = Height * 100.f / FMath::Max(1.f, Bounds.BoxExtent.Z * 2.f);
+            Ism->AddInstance(FTransform(FRotator(0.f, Yaw < 0.f ? Rng.FRand() * 360.f : Yaw, 0.f),
+                Origin() + M(At) - FVector(0.f, 0.f, (Bounds.Origin.Z - Bounds.BoxExtent.Z) * Scale), FVector(Scale)), true);
+        };
+        static const TCHAR* Bushes[] = { TEXT("bush_green"), TEXT("fern_giant"), TEXT("bush_flower"), TEXT("fern"), TEXT("bush_green"), TEXT("bush_berry") };
+        static const TCHAR* Blooms[] = { TEXT("clover"), TEXT("flowers_daisy"), TEXT("poppy"), TEXT("clover"), TEXT("dandelion"), TEXT("flowers_bell"), TEXT("fern") };   // (o capim alto do mundo fica cinza sem o material de vento)
+        auto Bush = [&](const FVector& At, float Height) { Prop(Bushes[Rng.RandRange(0, UE_ARRAY_COUNT(Bushes) - 1)], At, Height); };
+        // ---- hera descendo do alto do muro da arena e do muro da galeria (faixas finas, em tufos de três)
+        for (int32 i = 0; i < 70; ++i)
+        {
+            const float A = Rng.FRand() * 360.f;
+            if (GateDistance(A, ArenaRadius) < GateHalf + .6f || NearBanner(A)) continue;
+            for (int32 Strand = 0; Strand < 3; ++Strand)
+            {
+                const float Len = .5f + Rng.FRand() * Rng.FRand() * 2.3f, Off = (Strand - 1) * .22f + Rng.FRandRange(-.05f, .05f);
+                Box(Grass, Dir(A + Off * 3.4f) * (ArenaRadius - .06f) + FVector(0, 0, PodiumHeight + .22f - Len * .5f), FVector(.13f + Rng.FRand() * .1f, Len, .06f), A);
+            }
+            if (Rng.FRand() < .55f) Bush(Dir(A) * (ArenaRadius + .35f) + FVector(0, 0, PodiumHeight + .2f), .5f + Rng.FRand() * .5f);
+        }
+        const float GalleryR = StandsInner + Tiers * Tier + .8f, GalleryY = PodiumHeight + Tiers * TierRise;
+        for (int32 i = 0; i < 60; ++i)
+        {
+            const float A = Rng.FRand() * 360.f;
+            if (GateDistance(A, GalleryR) < GateHalf + 1.4f) continue;
+            for (int32 Strand = 0; Strand < 3; ++Strand)
+            {
+                const float Len = 1.f + Rng.FRand() * 3.4f;
+                Box(Grass, Dir(A + (Strand - 1) * .75f) * (GalleryR + 1.07f) + FVector(0, 0, GalleryY + 5.25f - Len * .5f), FVector(.2f + Rng.FRand() * .16f, Len, .07f), A);
+            }
+        }
+        // ---- a arquibancada: musgo nos degraus, moitas e samambaias, pedras com musgo e blocos soltos
+        for (int32 i = 0; i < 190; ++i)
+        {
+            const float A = Rng.FRand() * 360.f;
+            const int32 T = Rng.RandRange(0, Tiers - 1);
+            const float R = StandsInner + T * Tier + Tier * .5f, Top = PodiumHeight + (T + 1) * TierRise;
+            if (GateDistance(A, R) < GateHalf + .8f) continue;
+            const float Roll = Rng.FRand();
+            if (Roll < .42f) Box(Grass, Dir(A) * R + FVector(0, 0, Top + .07f), FVector(.8f + Rng.FRand() * 2.4f, .05f, Tier * (.5f + Rng.FRand() * .45f)), A);
+            else if (Roll < .72f) Bush(Dir(A) * R + FVector(0, 0, Top + .05f), .55f + Rng.FRand() * .7f);
+            else if (Roll < .86f) Prop(TEXT("rock_mossy"), Dir(A) * R + FVector(0, 0, Top + .05f), .35f + Rng.FRand() * .45f);
+            else Box(Rng.FRand() < .5f ? Stone : Pale, Dir(A) * (R + Rng.FRandRange(-.3f, .3f)) + FVector(0, 0, Top + .22f), FVector(.4f + Rng.FRand() * .6f, .28f + Rng.FRand() * .3f, .4f + Rng.FRand() * .5f), Rng.FRand() * 360.f);
+        }
+        // árvores do mundo nascidas entre as pedras, no alto da arquibancada (ângulo, degrau, modelo, altura); nenhuma na saída
+        struct FStandTree { float Angle; int32 Tier; const TCHAR* Model; float Height; };
+        static const FStandTree StandTrees[] = {
+            { 28.f, 5, TEXT("tree_willow"), 7.5f }, { 72.f, 3, TEXT("tree_birch"), 6.f }, { 104.f, 6, TEXT("tree_oak"), 8.f },
+            { 172.f, 4, TEXT("tree_cherry"), 6.5f }, { 208.f, 6, TEXT("tree_elven"), 8.5f }, { 251.f, 3, TEXT("tree_autumn"), 6.f },
+            { 289.f, 5, TEXT("tree_oak"), 7.5f }, { 334.f, 4, TEXT("tree_cherry"), 6.f } };
+        for (const FStandTree& Tree : StandTrees)
+        {
+            const float R = StandsInner + Tree.Tier * Tier + Tier * .5f, Top = PodiumHeight + (Tree.Tier + 1) * TierRise;
+            Prop(Tree.Model, Dir(Tree.Angle) * R + FVector(0, 0, Top - .1f), Tree.Height);
+            // as raízes levantaram o degrau: pedras soltas e mato em volta do tronco
+            for (int32 k = 0; k < 4; ++k)
+            {
+                const FVector Around = Dir(Tree.Angle + Rng.FRandRange(-3.f, 3.f)) * (R + Rng.FRandRange(-.5f, .5f)) + FVector(0, 0, Top + .05f);
+                if (k % 2) Prop(TEXT("rock_mossy"), Around, .3f + Rng.FRand() * .3f); else Bush(Around, .5f + Rng.FRand() * .4f);
+            }
+        }
+        // ---- o alto do muro quebrado: blocos de alturas diferentes
+        for (int32 k = 0; k < 80; ++k)
+        {
+            const float A = (k + .5f) * 360.f / 80;
+            if (GateDistance(A, GalleryR) < GateHalf + 1.2f || Rng.FRand() < .45f) continue;
+            const float H = .3f + Rng.FRand() * 1.5f, Chord = 2.f * PI * GalleryR / 80;
+            Box(Stone, Dir(A) * (GalleryR + 1.4f) + FVector(0, 0, GalleryY + 5.2f + H * .5f), FVector(Chord * (.45f + Rng.FRand() * .5f), H, .6f), A);
+        }
+        // ---- tochas no muro da arena (um suporte de bronze e a chama, sem luz própria: são muitas), entre os estandartes
+        for (int32 k = 0; k < 24; ++k)
+        {
+            const float A = k * 15.f + 7.5f;
+            if (GateDistance(A, ArenaRadius) < GateHalf + .8f || NearBanner(A)) continue;
+            const FVector Hold = Dir(A) * (ArenaRadius - .22f) + FVector(0, 0, 2.35f);
+            Box(Material(TEXT("bronze")), Hold, FVector(.1f, .08f, .4f), A);
+            Cylinder(Material(TEXT("bronze")), Hold - Dir(A) * .2f + FVector(0, 0, .1f), .09f, .28f);
+            if (Sap) Cone(GlowBase, Hold - Dir(A) * .2f + FVector(0, 0, .24f), .1f, .34f);
+        }
+        // ---- a arena: pedras com musgo, entulho e tambores de coluna caídos ao pé do muro (atrás dos pedestais)
+        for (int32 i = 0; i < 40; ++i)
+        {
+            const float A = Rng.FRand() * 360.f, R = 16.f + Rng.FRand() * .7f;
+            if (GateDistance(A, R) < GateHalf + 1.f) continue;
+            const float Roll = Rng.FRand();
+            if (Roll < .25f)
+            {
+                // um tambor de coluna tombado: três fatias em fila, de lado
+                const float Lay = A + 90.f + Rng.FRandRange(-20.f, 20.f);
+                for (int32 Part = 0; Part < 3; ++Part) Box(Pale, Dir(A) * R + Dir(Lay) * (Part * .62f) + FVector(0, 0, .28f), FVector(.56f, .56f, .58f), Lay + Part * 4.f);
+            }
+            else if (Roll < .6f) Prop(TEXT("rock_mossy"), Dir(A) * R, .4f + Rng.FRand() * .6f);
+            else Box(Rng.FRand() < .6f ? Stone : Pale, Dir(A) * R + FVector(0, 0, .16f), FVector(.3f + Rng.FRand() * .7f, .2f + Rng.FRand() * .35f, .3f + Rng.FRand() * .6f), Rng.FRand() * 360.f);
+            if (Rng.FRand() < .6f) Bush(Dir(A + 2.5f) * (R + .2f), .45f + Rng.FRand() * .5f);
+        }
+        // capim e flores na areia, mais cheios perto do muro e do poço; os pedestais, os caminhos e a saída ficam limpos
+        for (int32 i = 0; i < 200; ++i)
+        {
+            const float A = Rng.FRand() * 360.f, R = 2.4f + FMath::Sqrt(Rng.FRand()) * 14.2f;
+            const float OnPath = FMath::Abs(FMath::Fmod(A + 45.f, 90.f) - 45.f) * PI / 180.f * R;   // metros até o caminho mais perto
+            if (FMath::Abs(R - PedestalRing) < 1.5f || FMath::Abs(R - PedestalBack) < 1.5f || GateDistance(A, R) < GateHalf + .3f) continue;
+            if (R > 4.6f && R < 11.f && OnPath < 1.1f) continue;
+            Prop(Blooms[Rng.RandRange(0, UE_ARRAY_COUNT(Blooms) - 1)], Dir(A) * R, .28f + Rng.FRand() * .3f);
+        }
+    }
     UE_LOG(LogTemp, Display, TEXT("VORTEX_STADIUM montado lotes=%d pedestais=%d"), Batches.Num(), Pedestals.Num());
 }
 
@@ -516,22 +711,57 @@ void AVortexAwakeningStadium::BuildWing(FName Wing, float Angle)
     for (int32 i = 0; i < N; ++i)
     {
         const float A = Angle + (i - (N - 1) * .5f) * PedestalStep;
-        const FVector At = Dir(A) * PedestalRing;
-        Box(Cloth(Color), At + FVector(0, 0, .015f), FVector(1.9f, .02f, 1.9f), A);
-        BuildPedestal(Types[i], At, FVector2D(-Dir(A)), Color);
+        const bool bBack = i % 2 == 1;
+        BuildPedestal(Types[i], Dir(A) * (bBack ? PedestalBack : PedestalRing), FVector2D(-Dir(A)), Color, bBack ? .55f : 0.f);
     }
+    // 16/11: um pórtico atrás do grupo, emoldurando o estandarte: duas colunas e a arquitrave
+    const FVector Side(D.Y, -D.X, 0.f);
+    for (const float S : { -1.f, 1.f }) Column(Material(TEXT("travertine")), D * (ArenaRadius - .75f) + Side * (2.5f * S), 3.95f, .3f, false);
+    Box(Material(TEXT("travertine")), D * (ArenaRadius - .75f) + FVector(0, 0, 4.18f), FVector(6.f, .42f, .8f), Angle);
+    Box(Material(TEXT("bronze")), D * (ArenaRadius - 1.16f) + FVector(0, 0, 4.18f), FVector(5.6f, .1f, .03f), Angle);
 }
 
-void AVortexAwakeningStadium::BuildPedestal(FName Type, const FVector& At, const FVector2D& Face, const FLinearColor& Color)
+void AVortexAwakeningStadium::BuildPedestal(FName Type, const FVector& Foot, const FVector2D& Face, const FLinearColor& Color, float Raise)
 {
     const float Facing = FMath::RadiansToDegrees(FMath::Atan2(Face.X, Face.Y));
-    // plinto de basalto, corpo de mármore com frisos de bronze, tampo na cor da ala
-    Box(Material(TEXT("basalt")), At + FVector(0, 0, .12f), FVector(1.3f, .24f, 1.3f), Facing, true);
-    Box(Material(TEXT("marble")), At + FVector(0, 0, .62f), FVector(.95f, .78f, .95f), Facing, true);
-    Box(Material(TEXT("bronze")), At + FVector(0, 0, .3f), FVector(1.f, .06f, 1.f), Facing);
-    Box(Material(TEXT("bronze")), At + FVector(0, 0, 1.04f), FVector(1.12f, .1f, 1.12f), Facing);
-    Box(Cloth(Color), At + FVector(0, 0, 1.1f), FVector(.9f, .03f, .9f), Facing);
-    Box(Material(TEXT("bronze")), At + FVector(0, 0, .66f) + FVector(Face.X, Face.Y, 0) * .49f, FVector(.82f, .26f, .03f), Facing);
+    // 16/11 (o usuário: "melhore os pedestais das armas"): redondo, em degraus: um tapete redondo na cor da ala com aro de
+    // bronze, base de basalto e travertino, fuste de mármore com dois anéis de bronze, capitel escuro e um disco de luz
+    // na cor da ala debaixo da arma. Os da fileira de trás ficam sobre um tambor de pedra (Raise), para aparecerem por
+    // cima dos da frente. Antes: um cubo de mármore num tapete quadrado
+    Cylinder(Material(TEXT("bronze")), Foot + FVector(0, 0, .008f), 1.33f, .014f);
+    Cylinder(Cloth(Color), Foot + FVector(0, 0, .014f), 1.25f, .02f);
+    if (Raise > 0.f)
+    {
+        Cylinder(Material(TEXT("limestone_blocks")), Foot + FVector(0, 0, Raise * .5f), .84f, Raise, true);
+        Cylinder(Material(TEXT("travertine")), Foot + FVector(0, 0, Raise - .03f), .92f, .06f);
+    }
+    const FVector At = Foot + FVector(0, 0, Raise);
+    Cylinder(Material(TEXT("basalt")), At + FVector(0, 0, .09f), .72f, .18f, true);
+    Cylinder(Material(TEXT("travertine")), At + FVector(0, 0, .24f), .58f, .12f, true);
+    Cylinder(Material(TEXT("marble")), At + FVector(0, 0, .63f), .36f, .66f, true);
+    Cylinder(Material(TEXT("bronze")), At + FVector(0, 0, .335f), .4f, .05f);
+    Cylinder(Material(TEXT("bronze")), At + FVector(0, 0, .925f), .4f, .05f);
+    Cylinder(Material(TEXT("marble_dark")), At + FVector(0, 0, 1.02f), .52f, .12f, true);
+    Cylinder(Material(TEXT("bronze")), At + FVector(0, 0, 1.09f), .46f, .03f);
+    {
+        const FName Key(*FString::Printf(TEXT("glow_%s"), *Color.ToFColor(true).ToHex()));
+        TObjectPtr<UMaterialInterface>* Found = Materials.Find(Key);
+        UMaterialInterface* Shine = Found ? Found->Get() : nullptr;
+        if (!Found)
+        {
+            UMaterialInterface* Glow = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Vortex/Stadium/M_StadiumGlow.M_StadiumGlow"));
+            UMaterialInstanceDynamic* Made = Glow ? UMaterialInstanceDynamic::Create(Glow, this) : nullptr;
+            if (Made)
+            {
+                Made->SetVectorParameterValue(TEXT("Color"), Lighten(Color, .25f));
+                Made->SetScalarParameterValue(TEXT("Glow"), 1.6f);
+            }
+            Materials.Add(Key, Made);
+            Shine = Made;
+        }
+        if (Shine) Cylinder(Shine, At + FVector(0, 0, 1.112f), .38f, .012f);
+    }
+    Box(Material(TEXT("bronze")), At + FVector(0, 0, .63f) + FVector(Face.X, Face.Y, 0) * .37f, FVector(.4f, .22f, .03f), Facing);
     FPedestal Pedestal;
     Pedestal.Type = Type;
     Pedestal.Where = Origin() + M(At);
